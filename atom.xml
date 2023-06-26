@@ -3,11 +3,11 @@
   <title>zzy</title>
   
   
-  <link href="https://github.com/YWzzy/YWzzy.github.io/atom.xml" rel="self"/>
+  <link href="http://example.com/atom.xml" rel="self"/>
   
-  <link href="https://github.com/YWzzy/YWzzy.github.io/"/>
+  <link href="http://example.com/"/>
   <updated>2023-06-26T08:28:24.512Z</updated>
-  <id>https://github.com/YWzzy/YWzzy.github.io/</id>
+  <id>http://example.com/</id>
   
   <author>
     <name>zzy</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>如何去搞前端基建</title>
-    <link href="https://github.com/YWzzy/YWzzy.github.io/2023/06/26/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/"/>
-    <id>https://github.com/YWzzy/YWzzy.github.io/2023/06/26/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/</id>
+    <link href="http://example.com/2023/06/26/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/"/>
+    <id>http://example.com/2023/06/26/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/</id>
     <published>2023-06-26T07:46:35.814Z</published>
     <updated>2023-06-26T08:28:24.512Z</updated>
     
@@ -36,16 +36,16 @@
     
     
     
-    <category term="compatible" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/compatible/"/>
+    <category term="compatible" scheme="http://example.com/tags/compatible/"/>
     
-    <category term="js" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/js/"/>
+    <category term="js" scheme="http://example.com/tags/js/"/>
     
   </entry>
   
   <entry>
     <title>前端四大手写</title>
-    <link href="https://github.com/YWzzy/YWzzy.github.io/2023/06/26/frontend/interview/qian-duan-si-da-shou-xie/"/>
-    <id>https://github.com/YWzzy/YWzzy.github.io/2023/06/26/frontend/interview/qian-duan-si-da-shou-xie/</id>
+    <link href="http://example.com/2023/06/26/frontend/interview/qian-duan-si-da-shou-xie/"/>
+    <id>http://example.com/2023/06/26/frontend/interview/qian-duan-si-da-shou-xie/</id>
     <published>2023-06-26T07:44:30.744Z</published>
     <updated>2023-06-26T07:47:49.853Z</updated>
     
@@ -61,16 +61,16 @@
     
     
     
-    <category term="compatible" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/compatible/"/>
+    <category term="compatible" scheme="http://example.com/tags/compatible/"/>
     
-    <category term="js" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/js/"/>
+    <category term="js" scheme="http://example.com/tags/js/"/>
     
   </entry>
   
   <entry>
     <title>html常见兼容问题</title>
-    <link href="https://github.com/YWzzy/YWzzy.github.io/2023/06/26/compatible/html-compatible/"/>
-    <id>https://github.com/YWzzy/YWzzy.github.io/2023/06/26/compatible/html-compatible/</id>
+    <link href="http://example.com/2023/06/26/compatible/html-compatible/"/>
+    <id>http://example.com/2023/06/26/compatible/html-compatible/</id>
     <published>2023-06-26T07:32:09.657Z</published>
     <updated>2023-06-26T07:35:47.768Z</updated>
     
@@ -87,16 +87,16 @@
     
     
     
-    <category term="compatible" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/compatible/"/>
+    <category term="compatible" scheme="http://example.com/tags/compatible/"/>
     
-    <category term="html" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/html/"/>
+    <category term="html" scheme="http://example.com/tags/html/"/>
     
   </entry>
   
   <entry>
     <title>js常见兼容问题</title>
-    <link href="https://github.com/YWzzy/YWzzy.github.io/2023/06/26/compatible/js-compatible/"/>
-    <id>https://github.com/YWzzy/YWzzy.github.io/2023/06/26/compatible/js-compatible/</id>
+    <link href="http://example.com/2023/06/26/compatible/js-compatible/"/>
+    <id>http://example.com/2023/06/26/compatible/js-compatible/</id>
     <published>2023-06-26T07:32:00.216Z</published>
     <updated>2023-06-26T07:36:32.600Z</updated>
     
@@ -113,16 +113,16 @@
     
     
     
-    <category term="compatible" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/compatible/"/>
+    <category term="compatible" scheme="http://example.com/tags/compatible/"/>
     
-    <category term="js" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/js/"/>
+    <category term="js" scheme="http://example.com/tags/js/"/>
     
   </entry>
   
   <entry>
     <title>css常见兼容问题</title>
-    <link href="https://github.com/YWzzy/YWzzy.github.io/2023/06/26/compatible/css-compatible/"/>
-    <id>https://github.com/YWzzy/YWzzy.github.io/2023/06/26/compatible/css-compatible/</id>
+    <link href="http://example.com/2023/06/26/compatible/css-compatible/"/>
+    <id>http://example.com/2023/06/26/compatible/css-compatible/</id>
     <published>2023-06-26T02:41:31.842Z</published>
     <updated>2023-06-26T07:31:25.722Z</updated>
     
@@ -138,9 +138,9 @@
     
     
     
-    <category term="css" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/css/"/>
+    <category term="css" scheme="http://example.com/tags/css/"/>
     
-    <category term="compatible" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/compatible/"/>
+    <category term="compatible" scheme="http://example.com/tags/compatible/"/>
     
   </entry>
   
