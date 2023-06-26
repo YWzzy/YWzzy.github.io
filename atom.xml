@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>zzy</title>
   
   
   <link href="https://github.com/YWzzy/YWzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://github.com/YWzzy/YWzzy.github.io/"/>
-  <updated>2023-06-26T03:13:53.235Z</updated>
+  <updated>2023-06-26T07:47:52.689Z</updated>
   <id>https://github.com/YWzzy/YWzzy.github.io/</id>
   
   <author>
@@ -17,36 +17,130 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>My New Post</title>
-    <link href="https://github.com/YWzzy/YWzzy.github.io/2023/06/26/my-new-post/"/>
-    <id>https://github.com/YWzzy/YWzzy.github.io/2023/06/26/my-new-post/</id>
-    <published>2023-06-26T03:13:53.000Z</published>
-    <updated>2023-06-26T03:13:53.235Z</updated>
+    <title>如何去搞前端基建</title>
+    <link href="https://github.com/YWzzy/YWzzy.github.io/2023/06/26/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/"/>
+    <id>https://github.com/YWzzy/YWzzy.github.io/2023/06/26/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/</id>
+    <published>2023-06-26T07:46:35.814Z</published>
+    <updated>2023-06-26T07:47:52.689Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://juejin.cn/post/7144881028661723167#heading-22&quot;&gt;https://juejin.cn/post/7144881028661723167#heading-22&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
     
     
     
     
+    <category term="compatible" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/compatible/"/>
+    
+    <category term="js" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/js/"/>
     
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://github.com/YWzzy/YWzzy.github.io/2023/06/26/hello-world/"/>
-    <id>https://github.com/YWzzy/YWzzy.github.io/2023/06/26/hello-world/</id>
+    <title>前端四大手写</title>
+    <link href="https://github.com/YWzzy/YWzzy.github.io/2023/06/26/frontend/interview/qian-duan-si-da-shou-xie/"/>
+    <id>https://github.com/YWzzy/YWzzy.github.io/2023/06/26/frontend/interview/qian-duan-si-da-shou-xie/</id>
+    <published>2023-06-26T07:44:30.744Z</published>
+    <updated>2023-06-26T07:47:49.853Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;要问程序员最心虚的面试题，如果要投票选择，&lt;strong&gt;手撕代码&lt;/strong&gt;一定是前三位的。其中在前端领域，以&lt;strong&gt;手写 bind&lt;/strong&gt;、&lt;strong&gt;手写深拷贝&lt;/strong&gt;、&lt;strong&gt;手写</summary>
+        
+      
+    
+    
+    
+    
+    <category term="compatible" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/compatible/"/>
+    
+    <category term="js" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>html常见兼容问题</title>
+    <link href="https://github.com/YWzzy/YWzzy.github.io/2023/06/26/compatible/html-compatible/"/>
+    <id>https://github.com/YWzzy/YWzzy.github.io/2023/06/26/compatible/html-compatible/</id>
+    <published>2023-06-26T07:32:09.657Z</published>
+    <updated>2023-06-26T07:35:47.768Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;fwfFj&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="compatible" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/compatible/"/>
+    
+    <category term="html" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js常见兼容问题</title>
+    <link href="https://github.com/YWzzy/YWzzy.github.io/2023/06/26/compatible/js-compatible/"/>
+    <id>https://github.com/YWzzy/YWzzy.github.io/2023/06/26/compatible/js-compatible/</id>
+    <published>2023-06-26T07:32:00.216Z</published>
+    <updated>2023-06-26T07:36:32.600Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;aqBRj&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;iPhone7用for…in-遍历数组失效&quot;&gt;&lt;a href=&quot;#iPhone7用for…in-遍历数组失效&quot; class=&quot;headerlink&quot; title=&quot;iPhone7用for…in</summary>
+        
+      
+    
+    
+    
+    
+    <category term="compatible" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/compatible/"/>
+    
+    <category term="js" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css常见兼容问题</title>
+    <link href="https://github.com/YWzzy/YWzzy.github.io/2023/06/26/compatible/css-compatible/"/>
+    <id>https://github.com/YWzzy/YWzzy.github.io/2023/06/26/compatible/css-compatible/</id>
     <published>2023-06-26T02:41:31.842Z</published>
-    <updated>2023-06-26T02:41:31.842Z</updated>
+    <updated>2023-06-26T07:31:25.722Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+    <summary type="html">&lt;h4 id=&quot;移动端的-1px&quot;&gt;&lt;a href=&quot;#移动端的-1px&quot; class=&quot;headerlink&quot; title=&quot;移动端的 1px&quot;&gt;&lt;/a&gt;移动端的 1px&lt;/h4&gt;&lt;p&gt;问题描述：1px 的边框。在高清屏下，移动端的 1px 会很粗。&lt;br</summary>
         
       
     
     
     
+    
+    <category term="css" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/css/"/>
+    
+    <category term="compatible" scheme="https://github.com/YWzzy/YWzzy.github.io/tags/compatible/"/>
     
   </entry>
   
