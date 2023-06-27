@@ -1,0 +1,2404 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>如何去搞前端基建 | 会飞的锅</title>
+
+  <link rel="icon" type="image/gif" href="https://64.media.tumblr.com/a67a7238cd2833d859a7ea4cfa4fb8a4/0e0717e3c39dfac5-0c/s500x750/94ba555d15a68a38482896903d15494df88ff9b1.gif">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    
+        <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    
+
+    
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="会飞的锅" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
+
+  
+    <div class="preloader_2" id="loader">
+  <div class="loader"></div>
+</div>
+
+  
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+</script>
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://avatars.githubusercontent.com/u/48836340?v=4" alt="logo">
+      <h3 class="drawer-box-head_title">会飞的锅</h3>
+      <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(4)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(4)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(4)">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-music" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>关于我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://bing.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>bing</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://avatars.githubusercontent.com/u/48836340?v=4" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">会飞的锅</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="Home">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="Archives">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="Tags">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="Categories">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-music" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>关于我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://bing.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>bing</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://w.wallhaven.cc/full/l8/wallhaven-l82mz2.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        如何去搞前端基建
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2023-06-27 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-detail-header_category">
+              前端
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <meta name="referrer" content="no-referrer" />
+
+
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7144881028661723167#heading-22">https://juejin.cn/post/7144881028661723167#heading-22</a></p>
+<p><a name="FN5iV"></a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>大家好，我是<a href="https://link.juejin.cn/?target=https://github.com/YWzzy">yinhan</a>，话说当下，前端职位在近十年的磨砺之下，已是百花齐放万家争鸣，前端也不再是以前那个单纯的切图仔；<br />要问为什么不单纯，无异于 前端工程化、前端 devops、前端跨端、前端工具化、前端 CI&#x2F;CD、前端 BFF、微前端 这些技术的出现，然而这些日新月异的技术聚合，咱们可以称其为 前端基建；<br />其实无论您是想成为 高级前端工程师，还是一名 合格的 Leader，都离不开对 <strong>前端技术与业务的基础建设沉淀</strong>；<br />看完全文，我相信 <strong>您的收获会远不止于此</strong> ~<br><a name="mD7nC"></a></p>
+<h1 id="一、什么是基建？"><a href="#一、什么是基建？" class="headerlink" title="一、什么是基建？"></a>一、什么是基建？</h1><p>基建 这个词无论身处哪个行业，基本都会存在；只是在最近几年的软件计算机行业中尤为流行；<br />在建筑行业：一幢大厦所需的地基，脚手架，一块砖、一片瓦、一袋水泥、一扇窗等等咱都可以称之为基础建设的一部分；<br />在汽车行业：一辆汽车所需的车架子、发动机、车轱辘、方向盘、门窗等等咱也可称之为基础建设的一部分；<br />那么在互联网软件行业呢？<br />笔者的理解是：在软件行业，站在广义的角度上来讲基建包含了：业务基建、工程基建、前端基建、后端基建 等等；（此处仅笔者个人理解，如果意见不一样，以你的为准）<br><a name="VUwSL"></a></p>
+<h2 id="业务基建？"><a href="#业务基建？" class="headerlink" title="业务基建？"></a>业务基建？</h2><p>业务基建 是指公司某个业务团队层面所维护的 前端基建、后端基建、基本规范文档、产品规则、设计规范、研发流程、测试边界、上线标准以及业务中台 等等的建设；<br />业务基建 服务于整个业务团队<br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103192-d8ab0706-9dbe-409a-b3b6-e9fca379d5d5.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103192-d8ab0706-9dbe-409a-b3b6-e9fca379d5d5.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="vZHeV"></a></p>
+<h2 id="工程基建？"><a href="#工程基建？" class="headerlink" title="工程基建？"></a>工程基建？</h2><p>工程基建 指的是业务团队内所有工程师的的一些 编码规范、api规范、前后端协作、环境部署、微服务、微前端、性能、安全防御、统计监控、可视化 等等的建设；<br />工程基建 服务于整个工程团队；<br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103192-d8ab0706-9dbe-409a-b3b6-e9fca379d5d5.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103192-d8ab0706-9dbe-409a-b3b6-e9fca379d5d5.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4" alt="工程基建"><br><a name="sUoPL"></a></p>
+<h2 id="前端基建？"><a href="#前端基建？" class="headerlink" title="前端基建？"></a>前端基建？</h2><p>前端基建 指的是业务团队内的前端工程师执行的一些基础建设，包括了 前端规范文档、前端脚手架、前端模板、前端组件库、前端工具库、前端BFF、前端CI&#x2F;CD的构建部署、前端数据埋点 等等；<br />前端基建 仅服务于前端团队；<br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103292-69a329ee-2913-4281-90ea-8b19710ba834.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103292-69a329ee-2913-4281-90ea-8b19710ba834.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="RB8uY"></a></p>
+<h2 id="后端基建？"><a href="#后端基建？" class="headerlink" title="后端基建？"></a>后端基建？</h2><p>后端基建 指的是业务团队内的后端工程师执行的一些基础建设，包括了 后端规范文档、后端模板、安全、日志、微服务、RESTful API、中间件、数据库、分布式、权限控制、服务器性能并发 等等；<br />注意：后端基建 仅服务于后端团队；<br><a name="YPeSd"></a></p>
+<h2 id="关系图"><a href="#关系图" class="headerlink" title="关系图"></a>关系图</h2><p><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103126-d59552e2-a23e-450f-ac97-8309c2839051.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103126-d59552e2-a23e-450f-ac97-8309c2839051.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br />看到这里，咱们已经明白了公司基建的一些基本分类和概括，下面我们也主要介绍下本文的主题前端基建；<br><a name="hEQFR"></a></p>
+<h1 id="二、为什么要做前端基建？"><a href="#二、为什么要做前端基建？" class="headerlink" title="二、为什么要做前端基建？"></a>二、为什么要做前端基建？</h1><p><a name="amcFS"></a></p>
+<h2 id="场景复现"><a href="#场景复现" class="headerlink" title="场景复现"></a>场景复现</h2><p><strong>场景一：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103136-94a241c3-415a-417b-9c96-b64f6e5abf32.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103136-94a241c3-415a-417b-9c96-b64f6e5abf32.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="KX7VW"></a></p>
+<h2 id="前端基建意义与作用"><a href="#前端基建意义与作用" class="headerlink" title="前端基建意义与作用"></a>前端基建意义与作用</h2><ul>
+<li>业务复用；</li>
+<li>提升研发效率；</li>
+<li>规范研发流程；</li>
+<li>团队技术提升；</li>
+<li>团队的技术影响力；</li>
+<li>开源建设；<br><a name="ZDuKL"></a></li>
+</ul>
+<h1 id="三、前端基建如何推动落地？"><a href="#三、前端基建如何推动落地？" class="headerlink" title="三、前端基建如何推动落地？"></a>三、前端基建如何推动落地？</h1><p><a name="TPbJ5"></a></p>
+<h2 id="技术基建简要流程"><a href="#技术基建简要流程" class="headerlink" title="技术基建简要流程"></a>技术基建简要流程</h2><p>要说 前端基建，最主要的难点莫过于如何去推动落地，其中不乏需要前端同学的付出，还需要领导的支持等等，下面我给大家罗列一下大致的步骤（因团队而异）</p>
+<ol>
+<li><strong>要合适的同学（资源）</strong><ul>
+<li>挨个与前端同学商议，或者自己钦点某位同学等等；而且要有动力，切勿急于求成、半途而废，注重系统思维，也千万不要找不稳定的同学（切记切记切记）</li>
+</ul>
+</li>
+<li><strong>要解决的问题（问题）</strong><ul>
+<li>针对现有公司前端人员架构、技术架构以及业务架构做对应的方案，这个没有固定的套路，不同公司所面临的问题也不一致；</li>
+</ul>
+</li>
+<li><strong>要解决问题方案计划书（方案）</strong><ul>
+<li>到目前，咱们已经有人（前端同学），也有具体想要做的事了，那么接下来很重要的一步就是出解决方案找领导确认了；</li>
+<li>其实就类似你有一个很好 idea，写了一份特别详细的商业计划书（BP）去找投资人拉投资是一个道理；</li>
+<li>不过最后能不能打动你的投资人，这就取决于你的 BP 做的是否够吸引人了；</li>
+</ul>
+</li>
+<li><strong>要具体执行的步骤（执行）</strong><ul>
+<li>天底下没有一蹴而就的事，工作也是，所以对于一个现有的技术团队，咱们最好是从渐进式出发，在对现有业务不影响的前提下去做增量式的研发；<br><a name="Jwfjz"></a></li>
+</ul>
+</li>
+</ol>
+<h2 id="技术基建四大特性（切记）"><a href="#技术基建四大特性（切记）" class="headerlink" title="技术基建四大特性（切记）"></a>技术基建四大特性（切记）</h2><ul>
+<li>技术的健全性</li>
+<li>基建的稳定性</li>
+<li>研发的效率性</li>
+<li>业务的体验性</li>
+</ul>
+<p>到这里，我相信大家对前端基建已有初步的了解，可能会有同学已经想跃跃欲试了，但是前端基建到底有些什么呢？咱们一起往下看。<br><a name="E6zrL"></a></p>
+<h1 id="四、前端基建都有什么？"><a href="#四、前端基建都有什么？" class="headerlink" title="四、前端基建都有什么？"></a>四、前端基建都有什么？</h1><p>前端基建 在每个公司甚者每个业务团队都会有差异，其中有 技术栈的差异，有编码的差异，有文档注释的差异 等等；<br />为了迎合主要的前端基建市场，结合我司以及大部分公司的基建所需，下面给大家介绍一些符合大众的常用基建部分（后续会持续更新）；<br />下面所有分类只会简单介绍，详细相关文章会在《<a target="_blank" rel="noopener" href="https://juejin.cn/column/7139087916306792462">前端搞基建</a>》专栏后续发表（敬请期待…）；<br><a name="McB2d"></a></p>
+<h2 id="1-前端规范（Standard）"><a href="#1-前端规范（Standard）" class="headerlink" title="1. 前端规范（Standard）"></a>1. 前端规范（Standard）</h2><p>正所谓：前端不规范，后面看着办 ~<br />我相信规范两个词，是所有同学的噩梦，怕他不规范，又怕他太规范，这可真是难为死这个规范了；<br /><strong>假设招聘现有三个候选人，你会选择哪个呢？</strong></p>
+<ul>
+<li>一名 <strong>“摆烂”</strong> 的程序员，写的代码能运行就行；</li>
+<li>一名 <strong>“合格”</strong> 的程序员，写的代码能运行且无 BUG；</li>
+<li>一名 <strong>“优秀”</strong> 的程序员，写的代码能运行无 BUG 且可读性、可维护性、可复用性都高；</li>
+</ul>
+<p>答案显而易见 ~<br /><strong>前端规范的意义：</strong></p>
+<ul>
+<li>降低开发的成本；</li>
+<li>保证代码的一致性；</li>
+<li>提升团队的整体效率；</li>
+</ul>
+<p><strong>前端规范有什么？</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103622-9e027779-344f-40f3-b7c6-ef32bc760582.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103622-9e027779-344f-40f3-b7c6-ef32bc760582.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="KQ0yz"></a></p>
+<h2 id="2-前端文档（Document）"><a href="#2-前端文档（Document）" class="headerlink" title="2.前端文档（Document）"></a>2.前端文档（Document）</h2><p>其实在许许多多的小型公司，文档缺失是一项必不可少的问题；无论是 业务文档，还是 技术文档，还是 其它文档等等；<br /><strong>问题点：</strong></p>
+<ul>
+<li>有些公司招人进来上午安环境，下午直接开始撸需求代码；</li>
+<li>有些公司的新人来公司一个月了竟然还不知道公司组织架构与业务划分；</li>
+<li>有些公司老对新几乎无交集，全靠新人猜，一个需求做下来竟然不知道做的什么，只知道一直很忙；</li>
+<li>有些公司在安排员工去开发另一个项目业务，竟然无从下手，不知所措；</li>
+<li>……</li>
+</ul>
+<p>所以一个合格的公司文档是必不可少的，无论是 新人自治，还是老带新，业务转岗 等等；<br /><strong>前端文档的意义：</strong></p>
+<ul>
+<li>对新人友好，快速上手；</li>
+<li>快速融入团队；</li>
+<li>快速了解业务；</li>
+</ul>
+<p><strong>前端文档有什么？</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103692-08d1ea0a-9cb6-42fd-b628-6c8afcc5decb.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103692-08d1ea0a-9cb6-42fd-b628-6c8afcc5decb.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="rgekp"></a></p>
+<h2 id="3-前端项目模板管理（Templates）"><a href="#3-前端项目模板管理（Templates）" class="headerlink" title="3. 前端项目模板管理（Templates）"></a>3. 前端项目模板管理（Templates）</h2><p>前端项目模板 说直白点就是，公司前端所对应的项目模板，以便快速创建项目；<br /><strong>场景一：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103909-f0324e60-6e8d-42e4-bfc0-2d4f640104e7.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103909-f0324e60-6e8d-42e4-bfc0-2d4f640104e7.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br /><strong>前端项目模板主要意义：</strong></p>
+<ul>
+<li>快速创建项目，提升效率；</li>
+<li>项目技术栈统一，方便管理；</li>
+</ul>
+<p><strong>前端项目模板有什么？</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103939-19ed21a0-0ad9-4652-a66e-1a5a47ba12f6.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157103939-19ed21a0-0ad9-4652-a66e-1a5a47ba12f6.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="Jonae"></a></p>
+<h2 id="4-前端脚手架（CLI）"><a href="#4-前端脚手架（CLI）" class="headerlink" title="4. 前端脚手架（CLI）"></a>4. 前端脚手架（CLI）</h2><p>前端脚手架 作为衡量一个成熟前端团队的标准，我相信很多前端er 都对他已经很了解了；<br />但是目前市面上对脚手架的应用我相信90%以上的团队仅限用于项目的快速创建，也就是使用现成的模板通过命令行快速搭建；<br />那么我们做这个脚手架是不是已经做到了 资源最大化 呢？<br />显然是没有的，如何去做我会在后续的文章中详解，大家敬请期待…<br /><strong>场景一：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104008-f0a7309d-38b3-4737-8ec3-5d47561a8d7c.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104008-f0a7309d-38b3-4737-8ec3-5d47561a8d7c.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br /><strong>前端脚手架的意义：</strong></p>
+<ul>
+<li>快速搭建项目；</li>
+<li>技术栈统一；</li>
+<li>规范代码风格；</li>
+<li>提升研发效率；</li>
+<li>自动化；</li>
+</ul>
+<p><strong>前端脚手架有什么？</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104029-0ba5548c-0c68-4d58-ab7a-31619236f947.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104029-0ba5548c-0c68-4d58-ab7a-31619236f947.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="tVBKN"></a></p>
+<h2 id="5-前端组件库（UI-Design）"><a href="#5-前端组件库（UI-Design）" class="headerlink" title="5. 前端组件库（UI Design）"></a>5. 前端组件库（UI Design）</h2><p>前端 UI 组件库：在开源社区有数不胜数的组件库，例如 Ant Design、Element UI、Vant UI 等等（实在太多啦），如果你觉得某个组件库很适合用在你的项目，那么你将少一半的开发时间，是不是摸鱼的时间又多了一半呢？<br />但是在一些中大型的公司，他们<strong>有他们的标准，不可能去使用一些现成的组件库；</strong><br />而且现成的一些开源组件库中的样式与交互达不到公司设计师的要求，所以这时候 为了统一业务的设计规范与样式，咱们可以马不停蹄地赶紧向领导去提一提搞一个组件库试试看咯！<br /><strong>场景重现：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104069-53f50ff9-f30f-4268-a334-6c5be44c5958.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104069-53f50ff9-f30f-4268-a334-6c5be44c5958.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br /><strong>前端组件库的意义：</strong></p>
+<ul>
+<li>组件复用，提升研发效率；</li>
+</ul>
+<p><strong>前端组件库有什么？</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104279-b0e414ba-41cd-40a2-812f-312baa3e3ae9.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104279-b0e414ba-41cd-40a2-812f-312baa3e3ae9.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="KTnoC"></a></p>
+<h2 id="6-前端响应式设计-or-自适应设计"><a href="#6-前端响应式设计-or-自适应设计" class="headerlink" title="6. 前端响应式设计 or 自适应设计"></a>6. 前端响应式设计 or 自适应设计</h2><p>响应式设计（Responseive Design） 指的是一个网站同一页面在不同屏幕尺寸下有不同的布局；一套代码能在所有终端能够正常展示，并不是为每个终端做一个特定版本，响应式是为解决移动互联网浏览器而诞生的。<br />自适应设计（Adaptive web design） 需要开发多套界面，通过检测视口以及设备，来判断当前访问的设备是pc端与移动端，从而返回不同的页面。<br /><strong>前端响应式设计：</strong></p>
+<ul>
+<li>一套代码提升研发效率；</li>
+<li>不同分辨率设备灵活性强；</li>
+<li>快速适配多端；</li>
+</ul>
+<p><strong>前端自适应设计：</strong></p>
+<ul>
+<li>设计与体验较好；</li>
+<li>性能相对好；</li>
+</ul>
+<p>注意：<br />一个项目到底是用<strong>响应式设计</strong>，还是<strong>自适应设计</strong>，这个取决于项目的排版和设计的出入程度;<br />所以如果公司PC端和H5端的排版设计有较大的出入还是建议使用自适应设计；反之可以考虑响应式设计；<br />切入盲目选择；<br><a name="BxqK1"></a></p>
+<h2 id="7-前端工具库（类-Hooks-x2F-Utils）"><a href="#7-前端工具库（类-Hooks-x2F-Utils）" class="headerlink" title="7. 前端工具库（类 Hooks &#x2F; Utils）"></a>7. 前端工具库（类 Hooks &#x2F; Utils）</h2><p>开源社区有数不胜数的 前端工具库，如 Day.js、axios、loadsh 等等，只是其中功能未必是你想要的；<br />而且许多 前端工具库边界考量范围大，这样就增加库的体积，明明我想要的只是一个简单的功能，可还是引入了整个库，这样就得不偿失；<br />可能有同学要说不是有 Tree Shaking 了吗，难道有了 按需引入 有了 Tree Shaking 我们就可以为所欲为了吗<br />一些中大型企业团队为了复用某些工具方法，提升研发效率，一般都会封装一个工具库，身为一个合格的基建搬砖工，前端工具库怎么能少得了呢？<br /><strong>前端工具库的意义：</strong></p>
+<ul>
+<li>工具方法复用，提升研发效率；</li>
+<li>减少代码量；</li>
+<li>团队技术提升；</li>
+</ul>
+<p><strong>前端工具库有什么？</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104353-bb2fc1f6-f90d-45c8-a43b-84f7669b4a25.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104353-bb2fc1f6-f90d-45c8-a43b-84f7669b4a25.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="jMjja"></a></p>
+<h2 id="8-前端工具自动化（Tools）"><a href="#8-前端工具自动化（Tools）" class="headerlink" title="8. 前端工具自动化（Tools）"></a>8. 前端工具自动化（Tools）</h2><p>可能会有同学疑惑，这个前端工具和上面的前端工具不是一样的吗？</p>
+<ul>
+<li>前端工具自动化 主要针对的代码上层的格式、规范、测试方面的自动化工具；</li>
+<li>前端工具库 主要针对的是代码层面的方法复用工具，所以其本质上有较为明显的区别；</li>
+</ul>
+<p><strong>场景重现：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104390-f3548c35-c620-4714-bddd-382c922b2fa7.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104390-f3548c35-c620-4714-bddd-382c922b2fa7.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br /><strong>前端工具自动化的意义：</strong></p>
+<ul>
+<li>代码质量与风格的统一；</li>
+<li>自动化编码流程；</li>
+<li>提升效率；</li>
+</ul>
+<p><strong>前端工具自动化有什么？</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104522-0bf97777-e7cb-48c0-a396-4168c51df863.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104522-0bf97777-e7cb-48c0-a396-4168c51df863.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="ijHEN"></a></p>
+<h2 id="9-接口数据聚合（BFF）"><a href="#9-接口数据聚合（BFF）" class="headerlink" title="9. 接口数据聚合（BFF）"></a>9. 接口数据聚合（BFF）</h2><p>前端 BFF（Backends For Frontends） 即服务于前端的后端，也称聚合层或者中间层；<br />主要将后端复杂的微服务，聚合成对各种不同用户端（无线&#x2F;Web&#x2F;H5&#x2F;第三方等）友好和统一的API；<br /><strong>场景重现：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104879-08251786-380c-412c-927f-2b56044a3fc5.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104879-08251786-380c-412c-927f-2b56044a3fc5.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br /><strong>前端 BFF 的意义：</strong></p>
+<ul>
+<li>聚合 API，释放后端；</li>
+<li>解耦合各个业务；</li>
+<li>后端微服务引入；</li>
+<li>易维护和修改 API；</li>
+<li>更好的安全性；</li>
+<li>更好的前端错误处理；</li>
+</ul>
+<p><strong>前端 BFF 的简单架构：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104856-218c8b92-661a-4429-afb4-cc433e88e198.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104856-218c8b92-661a-4429-afb4-cc433e88e198.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="i5C8n"></a></p>
+<h2 id="10-前端-SSR-推进"><a href="#10-前端-SSR-推进" class="headerlink" title="10. 前端 SSR 推进"></a>10. 前端 SSR 推进</h2><p>服务器端渲染（Server-Side Rendering） 是指由服务端完成页面的 HTML 结构拼接的页面处理技术，发送到浏览器，然后为其绑定状态与事件，成为完全可交互页面的过程。<br />简单理解就是html是由服务端写出，可以动态改变页面内容，即所谓的动态页面。早年的 <a href="https://link.juejin.cn/?target=https://baike.baidu.com/item/php/9337">php</a>、<a href="https://link.juejin.cn/?target=https://baike.baidu.com/item/asp/128906">asp</a> 、<a href="https://link.juejin.cn/?target=https://baike.baidu.com/item/jsp/141543">jsp</a> 这些 Server Page 都是 SSR 的。<br />由于公司主要是C端用户，而且 SEO 要求极高，所以在前后端分离的情况下，SSR 就必不可少了 ~<br /><strong>场景一：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104999-c2d07874-ea37-4813-afce-dc789679d052.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104999-c2d07874-ea37-4813-afce-dc789679d052.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br /><strong>前端 SSR 的目的：</strong></p>
+<ul>
+<li>前后端分离；</li>
+<li>首屏加载速度快；</li>
+<li>利于 SEO；<br><a name="BfMuC"></a></li>
+</ul>
+<h2 id="11-前端自动化构建部署（CI-x2F-CD）"><a href="#11-前端自动化构建部署（CI-x2F-CD）" class="headerlink" title="11. 前端自动化构建部署（CI&#x2F;CD）"></a>11. 前端自动化构建部署（CI&#x2F;CD）</h2><p>前端 CI&#x2F;CD 一般是指持续集成、部署、发布的一个过程；<br />用白话文讲，就是你每次 git commit 代码后，都会自动的为你部署项目至 测试环境、预生产环境、生产环境，不用你每次手动的去打包后 cv 到多个服务器和环境；<br /><strong>前端 CI&#x2F;CD 的意义：</strong></p>
+<ul>
+<li>提高开发人员生产力；</li>
+<li>自动化发布；</li>
+<li>提高代码质量；</li>
+<li>更快地提供更新；</li>
+</ul>
+<p><strong>前端 CI&#x2F;CD 有什么？</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104802-556c26a8-3069-4925-b6db-b9c778169476.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157104802-556c26a8-3069-4925-b6db-b9c778169476.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="T8JYg"></a></p>
+<h2 id="12-全链路前端监控-x2F-数据埋点系统"><a href="#12-全链路前端监控-x2F-数据埋点系统" class="headerlink" title="12. 全链路前端监控&#x2F;数据埋点系统"></a>12. 全链路前端监控&#x2F;数据埋点系统</h2><p>在大部分 To C 的项目中，我相信产品和运营都需要 统计线上产品在用户中的行为和使用情况，因为这样可以更快的去了解用户群里的使用情况，从而升级和迭代产品，使其更加贴近用户。<br /><strong>场景一：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105105-05d4158c-135d-43dc-b293-fa82fe4c55a8.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105105-05d4158c-135d-43dc-b293-fa82fe4c55a8.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br /><strong>前端监控&#x2F;数据埋点的目的是：</strong></p>
+<ul>
+<li>实现精准的点对点营销；</li>
+<li>可以做相关的分类统计；</li>
+<li>为用户画像的构建提供数据支持；</li>
+<li>指导产品研发以及优化用户体验；</li>
+</ul>
+<p><strong>前端监控&#x2F;数据埋点有哪些数据？</strong></p>
+<ul>
+<li>行为数据：时间、地点、人物、交互、交互的内容；</li>
+<li>质量数据：浏览器加载情况、错误异常等；</li>
+<li>环境数据：浏览器相关的元数据以及地理、运营商等；</li>
+<li>运营数据：PV、UV、转化率、留存率（很直观的数据）；<br><a name="Sxzk0"></a></li>
+</ul>
+<h2 id="13-前端可视化平台"><a href="#13-前端可视化平台" class="headerlink" title="13. 前端可视化平台"></a>13. 前端可视化平台</h2><p>前端可视化 字面意义理解就是用肉眼可见的就称呼为前端可视化；即所见即所得；<br />笔者这里的理解 前端可视化 包括了 数据可视化、图形可视化、VR 全景可视化、中后台视觉可视化 等等；<br />其中每一个都需要花费大量的人力与精力，如果你想全方面的从入门到精通，可以看看<a target="_blank" rel="noopener" href="https://juejin.cn/user/712139263189303">月影大佬</a>的可视化教程。<br />目前公司在基于前端基建这块，所做的可视化主要是基于大家的工作流程以及工作效率所做的一个 工程可视化平台；<br /><strong>场景一：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105264-c330d510-e0bb-4882-8e2c-17dab219e8cc.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105264-c330d510-e0bb-4882-8e2c-17dab219e8cc.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br /><strong>前端工程可视化平台的目的：</strong></p>
+<ul>
+<li>方便项目管理；</li>
+<li>高效提升工作效率；</li>
+<li>一键搞定CI&#x2F;CD流；</li>
+</ul>
+<p><strong>前端工程可视化平台有什么？</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157106022-5dcbd2ae-bdeb-4334-ae93-72e2be9d51fc.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157106022-5dcbd2ae-bdeb-4334-ae93-72e2be9d51fc.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="yQgmu"></a></p>
+<h2 id="14-前端性能优化"><a href="#14-前端性能优化" class="headerlink" title="14. 前端性能优化"></a>14. 前端性能优化</h2><p>性能优化这个词，我相信只要是程序员，多多少少都听过，而且都经历过；<br />如果你的项目是 ToB 项目，可能性能优化不会做到极致；<br />但是你的项目是 ToC 项目呢，那性能优化是不是就是一个你必须要考量的点呢？<br /><strong>场景重现：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105522-3c778742-f481-4770-84a8-f1b5e7d5ef4b.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105522-3c778742-f481-4770-84a8-f1b5e7d5ef4b.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br />好家伙，用户直接崩溃，这是什么破网站，这么 🌶 🐔 ；<br /><strong>前端性能优化的意义：</strong></p>
+<ul>
+<li>页面加载的更快；</li>
+<li>更好的用户体验；</li>
+<li>降低服务器负荷；</li>
+<li>提升编码的能力；</li>
+</ul>
+<p><strong>前端性能优化都有什么？</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105542-6d141ec1-7eaf-4ab8-8de3-52a6c6ee9ba9.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105542-6d141ec1-7eaf-4ab8-8de3-52a6c6ee9ba9.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="MUaAD"></a></p>
+<h2 id="15-前端低代码平台搭建（建设中）"><a href="#15-前端低代码平台搭建（建设中）" class="headerlink" title="15. 前端低代码平台搭建（建设中）"></a>15. 前端低代码平台搭建（建设中）</h2><p>维基百科定义：低代码开发平台（LCDP） 本身也是一种软件，它为开发者提供了一个创建应用软件的开发环境；与传统编写代码的 IDE 不同，低代码开发平台提供更易用的可视化 IDE。<br />简单来讲，低代码（Low Code）就是一种可视化搭建系统，从字面意思来讲，一是可视化；二是少写代码。<br />无代码（No Code） 同样从字面上来理解，一是可视化，二是不写代码。<br /><strong>场景一：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105642-c5437ded-0deb-4a53-a281-4bbf3a0fa599.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105642-c5437ded-0deb-4a53-a281-4bbf3a0fa599.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br /><strong>前端低代码平台的意义：</strong></p>
+<ul>
+<li><strong>降低开发成本；</strong></li>
+<li><strong>所见即所得；</strong></li>
+<li><strong>一站式研发；</strong></li>
+<li><strong>技术收敛；</strong></li>
+<li><strong>专业门槛低；</strong></li>
+<li><strong>对新人友好，上手快；</strong></li>
+</ul>
+<p>注意：<br />低代码平台一般较针对于一些业务使用率较大且多是 ToB 的平台，所以判断当前系统是否需要使用低代码平台，建议在有大量业务的支撑前提下，否则得不偿失；<br />用新技术，更多的不是因为先进，而是适合。<br><a name="A5dpY"></a></p>
+<h2 id="16-微前端（Micro-App）"><a href="#16-微前端（Micro-App）" class="headerlink" title="16. 微前端（Micro App）"></a>16. 微前端（Micro App）</h2><p>微前端（Micro-Frontends） 并没有定义框架或 API，它其实是一个类似 微服务架构 的概念；将 微服务 的概念扩展到了前端世界；<br />说微服务可能有些前端同学会感觉陌生，以咱们前端的角度一句话概括就是： 将您的大型前端应用拆分为多个小型前端应用，这样每个小型前端应用都有自己的仓库，可以专注于单一的某个功能；<br />需要强调的是，尽管我们将前端应用拆分为多个项目，但它们最终还是会被集成到一个单页前端应用程序中；因此，通过使用微前端架构，您不会在用户体验上有任何损失，只会有过之而无不及；<br /><strong>场景一：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105710-811e06bd-d9a4-46d2-8b21-60123228e6e4.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105710-811e06bd-d9a4-46d2-8b21-60123228e6e4.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br /><strong>为什么要用微前端：</strong></p>
+<ul>
+<li>技术上的灵活选择；</li>
+<li>更快的且独立的部署；</li>
+<li>团队代码的相互隔离；</li>
+<li>并行开发和团队的自治；</li>
+<li>项目的增量升级；</li>
+</ul>
+<p><strong>微前端的价值：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105978-9c61f61b-26cb-474e-a3fd-7187874549e7.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105978-9c61f61b-26cb-474e-a3fd-7187874549e7.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><strong>》</strong><br><a name="CHHyo"></a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>关于前端基建，在每个公司基建部分都会有所差异，有纯自动化一条龙的，有半自动化的等等；<br />但是如果我们细心的会发现，在几乎所有大中厂中，基建部分都不会少了 前端规范、前端文档、前端脚手架、前端组件库、前端工具库，所以如果实在是公司资源与业务限制，这几个还是值得去一探究竟的。<br />其实很多公司基建都不是一触而蹴的，基本上都是在常年累月的业务当中去 发现问题，定位问题，最后解决问题，然后在这个过程当中自然而然的沉淀出前端各个面向的基础设施，团队成员也会在这个过程当中找到适合自己的前端领域，并且深耕下去。<br />该系列会是一个持续更新系列，关于 前端基建，笔者主要会从如下图几个方面讲解，如果您想第一时间看到我的更新文章，可以<a target="_blank" rel="noopener" href="https://juejin.cn/user/2305054774145918/columns">关注我</a>和我的《<a target="_blank" rel="noopener" href="https://juejin.cn/column/7139087916306792462">前端要搞基建</a>》专栏<br /><img src="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105961-c45c173c-41ce-4af5-a4d6-9494fb10a98c.webp" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/webp/300943/1675157105961-c45c173c-41ce-4af5-a4d6-9494fb10a98c.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4"><br><a name="wOatq"></a></p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1>
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/compatible/" class="">
+              compatible
+            </a>
+          
+            <a href="/tags/js/" class="">
+              js
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>会飞的锅</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2023/06/27/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/" target="_blank" title="如何去搞前端基建">https://ywzzy.github.io/2023/06/27/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/vq/wallhaven-vqy7rl.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/vq/wallhaven-vqy7rl.jpg" srcset="https://avatars.githubusercontent.com/u/48836340?v=4" alt="">
+    </div>
+    <a href="/2023/06/27/frontend/collection/shu-ju-chu-li/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">数据处理库</div>
+      </div>
+      
+      <!-- <div class="content">
+        
+
+
+1. 工具库
+（1）LodashLodash是一个一致性、模块化、高性能、提高开发者效率的JavaScript 实
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/l8/wallhaven-l82mz2.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/l8/wallhaven-l82mz2.jpg" srcset="https://avatars.githubusercontent.com/u/48836340?v=4" src="" alt="">
+    </div>
+    <a href="/2023/06/27/frontend/interview/qian-duan-si-da-shou-xie/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">前端四大手写</div>
+      </div>
+      <!-- <div class="content">
+        
+
+要问程序员最心虚的面试题，如果要投票选择，手撕代码一定是前三位的。其中在前端领域，以手写 bind、手写深拷贝、手写
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://avatars.githubusercontent.com/u/48836340?v=4" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://avatars.githubusercontent.com/u/48836340?v=4'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>会飞的锅</h2>
+        
+        
+          <p>热爱生活，热爱code</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">会飞的锅</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/mailto:1738348915@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/YWzzy"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1738348915"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+      <div class="widget testWidget" id="testWidget" style="order: -1;background: #fff">
+        <header>
+          
+            <a style="color: #d63130" target="_blank" rel="noopener" href='http://baidu.com'><i class="fab fa-weibo fa-fw" aria-hidden="true"></i><span class='name'>微博热搜</span></a>
+          
+        </header>
+        <div class="content">
+           <div id="myWeibo">
+<!-- 如果不要滚动，则去掉 vue-seamless-scroll标签就行了，这个插件使用cdn向左向右滚动好像有问题 -->
+<vue-seamless-scroll :data="content" :class-option="classOption" class="warp" > <div class="weibo-container" v-for="(item, index) in content" :key="index"> <div class="left"> <div class="order" :class="{ red: index<=2 }">{{index + 1}}</div> <div class="name"><a :href="item.url" target="_blank">{{item.name}}</a></div> </div> <div class="hot">{{item.hot}}</div> </div> </vue-seamless-scroll> </div>
+<script defer src="/weibo/index.js"></script> <link href="/weibo/index.css" rel="stylesheet"> 
+        </div>
+    </div>
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%9F%BA%E5%BB%BA%EF%BC%9F"><span class="toc-text">一、什么是基建？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%9A%E5%8A%A1%E5%9F%BA%E5%BB%BA%EF%BC%9F"><span class="toc-text">业务基建？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E7%A8%8B%E5%9F%BA%E5%BB%BA%EF%BC%9F"><span class="toc-text">工程基建？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%9F%BA%E5%BB%BA%EF%BC%9F"><span class="toc-text">前端基建？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E5%9F%BA%E5%BB%BA%EF%BC%9F"><span class="toc-text">后端基建？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="toc-text">关系图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9A%E5%89%8D%E7%AB%AF%E5%9F%BA%E5%BB%BA%EF%BC%9F"><span class="toc-text">二、为什么要做前端基建？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E5%A4%8D%E7%8E%B0"><span class="toc-text">场景复现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%9F%BA%E5%BB%BA%E6%84%8F%E4%B9%89%E4%B8%8E%E4%BD%9C%E7%94%A8"><span class="toc-text">前端基建意义与作用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%89%8D%E7%AB%AF%E5%9F%BA%E5%BB%BA%E5%A6%82%E4%BD%95%E6%8E%A8%E5%8A%A8%E8%90%BD%E5%9C%B0%EF%BC%9F"><span class="toc-text">三、前端基建如何推动落地？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%9F%BA%E5%BB%BA%E7%AE%80%E8%A6%81%E6%B5%81%E7%A8%8B"><span class="toc-text">技术基建简要流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%9F%BA%E5%BB%BA%E5%9B%9B%E5%A4%A7%E7%89%B9%E6%80%A7%EF%BC%88%E5%88%87%E8%AE%B0%EF%BC%89"><span class="toc-text">技术基建四大特性（切记）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%89%8D%E7%AB%AF%E5%9F%BA%E5%BB%BA%E9%83%BD%E6%9C%89%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">四、前端基建都有什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E7%AB%AF%E8%A7%84%E8%8C%83%EF%BC%88Standard%EF%BC%89"><span class="toc-text">1. 前端规范（Standard）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%89%8D%E7%AB%AF%E6%96%87%E6%A1%A3%EF%BC%88Document%EF%BC%89"><span class="toc-text">2.前端文档（Document）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E6%A8%A1%E6%9D%BF%E7%AE%A1%E7%90%86%EF%BC%88Templates%EF%BC%89"><span class="toc-text">3. 前端项目模板管理（Templates）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%89%8D%E7%AB%AF%E8%84%9A%E6%89%8B%E6%9E%B6%EF%BC%88CLI%EF%BC%89"><span class="toc-text">4. 前端脚手架（CLI）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E5%BA%93%EF%BC%88UI-Design%EF%BC%89"><span class="toc-text">5. 前端组件库（UI Design）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%89%8D%E7%AB%AF%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1-or-%E8%87%AA%E9%80%82%E5%BA%94%E8%AE%BE%E8%AE%A1"><span class="toc-text">6. 前端响应式设计 or 自适应设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7%E5%BA%93%EF%BC%88%E7%B1%BB-Hooks-x2F-Utils%EF%BC%89"><span class="toc-text">7. 前端工具库（类 Hooks &#x2F; Utils）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%88Tools%EF%BC%89"><span class="toc-text">8. 前端工具自动化（Tools）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%8E%A5%E5%8F%A3%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88%EF%BC%88BFF%EF%BC%89"><span class="toc-text">9. 接口数据聚合（BFF）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%89%8D%E7%AB%AF-SSR-%E6%8E%A8%E8%BF%9B"><span class="toc-text">10. 前端 SSR 推进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E9%83%A8%E7%BD%B2%EF%BC%88CI-x2F-CD%EF%BC%89"><span class="toc-text">11. 前端自动化构建部署（CI&#x2F;CD）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E5%85%A8%E9%93%BE%E8%B7%AF%E5%89%8D%E7%AB%AF%E7%9B%91%E6%8E%A7-x2F-%E6%95%B0%E6%8D%AE%E5%9F%8B%E7%82%B9%E7%B3%BB%E7%BB%9F"><span class="toc-text">12. 全链路前端监控&#x2F;数据埋点系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E5%89%8D%E7%AB%AF%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0"><span class="toc-text">13. 前端可视化平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-text">14. 前端性能优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E5%89%8D%E7%AB%AF%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA%EF%BC%88%E5%BB%BA%E8%AE%BE%E4%B8%AD%EF%BC%89"><span class="toc-text">15. 前端低代码平台搭建（建设中）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-%E5%BE%AE%E5%89%8D%E7%AB%AF%EF%BC%88Micro-App%EF%BC%89"><span class="toc-text">16. 微前端（Micro App）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-text">最后</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/06/27/compatible/css-compatible/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/qz/wallhaven-qzlr5d.png" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/qz/wallhaven-qzlr5d.png" srcset="https://avatars.githubusercontent.com/u/48836340?v=4" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2023/06/27/compatible/css-compatible/">css常见兼容问题</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/06/27/compatible/html-compatible/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/vq/wallhaven-vqy7rl.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/vq/wallhaven-vqy7rl.jpg" srcset="https://avatars.githubusercontent.com/u/48836340?v=4" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2023/06/27/compatible/html-compatible/">html常见兼容问题</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/06/27/frontend/collection/react-ku/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/vq/wallhaven-vqy7rl.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/vq/wallhaven-vqy7rl.jpg" srcset="https://avatars.githubusercontent.com/u/48836340?v=4" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2023/06/27/frontend/collection/react-ku/">React 库</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/06/27/compatible/js-compatible/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/l8/wallhaven-l82mz2.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/l8/wallhaven-l82mz2.jpg" srcset="https://avatars.githubusercontent.com/u/48836340?v=4" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2023/06/27/compatible/js-compatible/">js常见兼容问题</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/06/27/frontend/collection/dong-hua-ku/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/vq/wallhaven-vqy7rl.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/vq/wallhaven-vqy7rl.jpg" srcset="https://avatars.githubusercontent.com/u/48836340?v=4" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2023/06/27/frontend/collection/dong-hua-ku/">动画库</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgb(0, 4, 6, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="/atom.xml" class="social">
+                  
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="mailto:1730241541@qq.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/yuang01/hexo-theme-bamboo" class="social">
+                  
+                    <i class="fas fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1730241541" class="social">
+                  
+                    <i class="fas fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2023 <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">zhangzhiyong</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a></p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>Total visits：<span id="busuanzi_value_site_pv"></span> times
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>Number of visitors：<span id="busuanzi_value_site_uv"></span> people
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><p><a target="_blank" rel="noopener" href="http://baidu.com/">Hello World</a></p>
+</div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', 'YWzzy/utterance_repo')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>
