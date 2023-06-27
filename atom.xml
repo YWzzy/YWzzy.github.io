@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>zzy</title>
+  <title>会飞的锅</title>
   
-  
+  <subtitle>一江蓑衣任平生</subtitle>
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
@@ -10,7 +10,7 @@
   <id>https://ywzzy.github.io/</id>
   
   <author>
-    <name>zzy</name>
+    <name>会飞的锅</name>
     
   </author>
   
