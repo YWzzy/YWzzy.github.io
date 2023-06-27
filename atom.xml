@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2023-06-27T05:12:53.248Z</updated>
+  <updated>2023-06-27T08:57:38.883Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>css常见兼容问题</title>
-    <link href="https://ywzzy.github.io/2023/06/27/compatible/css-compatible/"/>
-    <id>https://ywzzy.github.io/2023/06/27/compatible/css-compatible/</id>
-    <published>2023-06-27T05:12:17.000Z</published>
-    <updated>2023-06-27T05:12:53.248Z</updated>
+    <title>从输入url到页面加载</title>
+    <link href="https://ywzzy.github.io/2023/06/27/frontend/browser/cong-shu-ru-url-dao-ye-mian-jia-zai/"/>
+    <id>https://ywzzy.github.io/2023/06/27/frontend/browser/cong-shu-ru-url-dao-ye-mian-jia-zai/</id>
+    <published>2023-06-27T07:22:03.522Z</published>
+    <updated>2023-06-27T08:57:38.883Z</updated>
     
     
       
@@ -30,7 +30,8 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-&lt;h4 id=&quot;移动端的-1px&quot;&gt;&lt;a href=&quot;#移动端的-1px&quot; class=&quot;headerlink&quot; title=&quot;移动端的 1px&quot;&gt;&lt;/a&gt;移动端的</summary>
+&lt;p&gt;&lt;a name=&quot;section-3&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;对知识体系进行一次预评级&quot;&gt;&lt;a href=&quot;#对知识体系进行一次预评级&quot;</summary>
         
       
     
@@ -38,21 +39,25 @@
     
     <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="css" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/css/"/>
+    <category term="面试" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     
     
-    <category term="css" scheme="https://ywzzy.github.io/tags/css/"/>
+    <category term="浏览器" scheme="https://ywzzy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     
-    <category term="compatible" scheme="https://ywzzy.github.io/tags/compatible/"/>
+    <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="原理" scheme="https://ywzzy.github.io/tags/%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
   <entry>
-    <title>html常见兼容问题</title>
-    <link href="https://ywzzy.github.io/2023/06/27/compatible/html-compatible/"/>
-    <id>https://ywzzy.github.io/2023/06/27/compatible/html-compatible/</id>
-    <published>2023-06-27T05:12:17.000Z</published>
-    <updated>2023-06-27T05:12:55.958Z</updated>
+    <title>generator函数生成器及其实现</title>
+    <link href="https://ywzzy.github.io/2023/04/24/frontend/interview/generator-han-shu-sheng-cheng-qi-ji-qi-shi-xian/"/>
+    <id>https://ywzzy.github.io/2023/04/24/frontend/interview/generator-han-shu-sheng-cheng-qi-ji-qi-shi-xian/</id>
+    <published>2023-04-24T14:35:54.000Z</published>
+    <updated>2023-06-27T08:59:34.126Z</updated>
     
     
       
@@ -61,8 +66,7 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-&lt;p&gt;&lt;a name=&quot;fwfFj&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+&lt;p&gt;调用生成器函数会返回一个生成器对象，每次调用生成器对象的 next 方法会执行函数到下一次 yield 关键字停止执行，并且返回一个 { value: Value, done:</summary>
         
       
     
@@ -70,21 +74,25 @@
     
     <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="html" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/html/"/>
+    <category term="面试" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/"/>
     
     
-    <category term="compatible" scheme="https://ywzzy.github.io/tags/compatible/"/>
+    <category term="js" scheme="https://ywzzy.github.io/tags/js/"/>
     
-    <category term="html" scheme="https://ywzzy.github.io/tags/html/"/>
+    <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="原理" scheme="https://ywzzy.github.io/tags/%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="es6" scheme="https://ywzzy.github.io/tags/es6/"/>
     
   </entry>
   
   <entry>
-    <title>js常见兼容问题</title>
-    <link href="https://ywzzy.github.io/2023/06/27/compatible/js-compatible/"/>
-    <id>https://ywzzy.github.io/2023/06/27/compatible/js-compatible/</id>
-    <published>2023-06-27T05:12:17.000Z</published>
-    <updated>2023-06-27T05:12:59.182Z</updated>
+    <title>CDN</title>
+    <link href="https://ywzzy.github.io/2022/12/12/frontend/browser/cdn/"/>
+    <id>https://ywzzy.github.io/2022/12/12/frontend/browser/cdn/</id>
+    <published>2022-12-12T10:51:33.000Z</published>
+    <updated>2023-06-27T08:57:55.460Z</updated>
     
     
       
@@ -92,9 +100,102 @@
         
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-&lt;a name=&quot;aqBRj&quot;&gt;&lt;/a&gt;
 
-&lt;h3 id=&quot;iPhone7用for…in-遍历数组失效&quot;&gt;&lt;a href=&quot;#iPhone7用for…in-遍历数组失效&quot;</summary>
+&lt;p&gt;&lt;a name=&quot;ttqHt&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;CDN是什么&quot;&gt;&lt;a href=&quot;#CDN是什么&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据处理库</title>
+    <link href="https://ywzzy.github.io/2022/12/04/frontend/collection/shu-ju-chu-li/"/>
+    <id>https://ywzzy.github.io/2022/12/04/frontend/collection/shu-ju-chu-li/</id>
+    <published>2022-12-04T04:06:27.000Z</published>
+    <updated>2023-06-27T08:58:26.066Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="收藏" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%94%B6%E8%97%8F/"/>
+    
+    
+    <category term="收藏" scheme="https://ywzzy.github.io/tags/%E6%94%B6%E8%97%8F/"/>
+    
+    <category term="数据处理" scheme="https://ywzzy.github.io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何去搞前端基建</title>
+    <link href="https://ywzzy.github.io/2022/11/21/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/"/>
+    <id>https://ywzzy.github.io/2022/11/21/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/</id>
+    <published>2022-11-21T06:10:35.000Z</published>
+    <updated>2023-06-27T08:59:07.400Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="compatible" scheme="https://ywzzy.github.io/tags/compatible/"/>
+    
+    <category term="js" scheme="https://ywzzy.github.io/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>条件语句的优化</title>
+    <link href="https://ywzzy.github.io/2022/10/19/frontend/js/skill/tiao-jian-yu-ju-de-you-hua/"/>
+    <id>https://ywzzy.github.io/2022/10/19/frontend/js/skill/tiao-jian-yu-ju-de-you-hua/</id>
+    <published>2022-10-19T10:10:49.000Z</published>
+    <updated>2023-06-27T08:59:49.513Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;在日常的开发中，我们经常会编写一些条件语句，过多的 if…else会导致代码难以理解和维护，今天来分享几个优化条件语句的小技巧！&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
         
       
     
@@ -105,141 +206,18 @@
     <category term="js" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/js/"/>
     
     
-    <category term="compatible" scheme="https://ywzzy.github.io/tags/compatible/"/>
-    
     <category term="js" scheme="https://ywzzy.github.io/tags/js/"/>
     
-  </entry>
-  
-  <entry>
-    <title>React 库</title>
-    <link href="https://ywzzy.github.io/2023/06/27/frontend/collection/react-ku/"/>
-    <id>https://ywzzy.github.io/2023/06/27/frontend/collection/react-ku/</id>
-    <published>2023-06-27T05:12:17.000Z</published>
-    <updated>2023-06-27T05:18:06.516Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="收藏" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%94%B6%E8%97%8F/"/>
-    
-    
-    <category term="收藏" scheme="https://ywzzy.github.io/tags/%E6%94%B6%E8%97%8F/"/>
-    
-    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue 库</title>
-    <link href="https://ywzzy.github.io/2023/06/27/frontend/collection/vue-ku/"/>
-    <id>https://ywzzy.github.io/2023/06/27/frontend/collection/vue-ku/</id>
-    <published>2023-06-27T05:12:17.000Z</published>
-    <updated>2023-06-27T05:18:02.777Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="收藏" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%94%B6%E8%97%8F/"/>
-    
-    
-    <category term="收藏" scheme="https://ywzzy.github.io/tags/%E6%94%B6%E8%97%8F/"/>
-    
-    <category term="Vue" scheme="https://ywzzy.github.io/tags/Vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>动画库</title>
-    <link href="https://ywzzy.github.io/2023/06/27/frontend/collection/dong-hua-ku/"/>
-    <id>https://ywzzy.github.io/2023/06/27/frontend/collection/dong-hua-ku/</id>
-    <published>2023-06-27T05:12:17.000Z</published>
-    <updated>2023-06-27T05:18:22.687Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="收藏" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%94%B6%E8%97%8F/"/>
-    
-    
-    <category term="收藏" scheme="https://ywzzy.github.io/tags/%E6%94%B6%E8%97%8F/"/>
-    
-    <category term="动画" scheme="https://ywzzy.github.io/tags/%E5%8A%A8%E7%94%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>图标库</title>
-    <link href="https://ywzzy.github.io/2023/06/27/frontend/collection/tu-biao-ku/"/>
-    <id>https://ywzzy.github.io/2023/06/27/frontend/collection/tu-biao-ku/</id>
-    <published>2023-06-27T05:12:17.000Z</published>
-    <updated>2023-06-27T05:17:55.287Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;a name=&quot;uVpIM&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;1-IconPark&quot;&gt;&lt;a href=&quot;#1-IconPark&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="收藏" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%94%B6%E8%97%8F/"/>
-    
-    
-    <category term="收藏" scheme="https://ywzzy.github.io/tags/%E6%94%B6%E8%97%8F/"/>
-    
-    <category term="图标" scheme="https://ywzzy.github.io/tags/%E5%9B%BE%E6%A0%87/"/>
+    <category term="技巧" scheme="https://ywzzy.github.io/tags/%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
   <entry>
     <title>拖拽排序库</title>
-    <link href="https://ywzzy.github.io/2023/06/27/frontend/collection/tuo-zhuai-pai-xu-ku/"/>
-    <id>https://ywzzy.github.io/2023/06/27/frontend/collection/tuo-zhuai-pai-xu-ku/</id>
-    <published>2023-06-27T05:12:17.000Z</published>
-    <updated>2023-06-27T05:18:14.020Z</updated>
+    <link href="https://ywzzy.github.io/2022/08/16/frontend/collection/tuo-zhuai-pai-xu-ku/"/>
+    <id>https://ywzzy.github.io/2022/08/16/frontend/collection/tuo-zhuai-pai-xu-ku/</id>
+    <published>2022-08-15T17:18:44.000Z</published>
+    <updated>2023-06-27T08:58:36.870Z</updated>
     
     
       
@@ -267,11 +245,11 @@
   </entry>
   
   <entry>
-    <title>数据处理库</title>
-    <link href="https://ywzzy.github.io/2023/06/27/frontend/collection/shu-ju-chu-li/"/>
-    <id>https://ywzzy.github.io/2023/06/27/frontend/collection/shu-ju-chu-li/</id>
-    <published>2023-06-27T05:12:17.000Z</published>
-    <updated>2023-06-27T05:18:18.929Z</updated>
+    <title>跨域的产生于解决</title>
+    <link href="https://ywzzy.github.io/2022/08/05/solution/kua-yu-de-chan-sheng-yu-jie-jue/"/>
+    <id>https://ywzzy.github.io/2022/08/05/solution/kua-yu-de-chan-sheng-yu-jie-jue/</id>
+    <published>2022-08-05T03:19:58.000Z</published>
+    <updated>2023-06-27T09:00:08.582Z</updated>
     
     
       
@@ -280,7 +258,8 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-&lt;p&gt;&lt;img</summary>
+&lt;p&gt;&lt;a name=&quot;FoJXO&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;什么是跨域&quot;&gt;&lt;a href=&quot;#什么是跨域&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -288,21 +267,135 @@
     
     <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="收藏" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%94%B6%E8%97%8F/"/>
+    <category term="面试" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    <category term="解决方案" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     
     
-    <category term="收藏" scheme="https://ywzzy.github.io/tags/%E6%94%B6%E8%97%8F/"/>
+    <category term="浏览器" scheme="https://ywzzy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     
-    <category term="数据处理" scheme="https://ywzzy.github.io/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/"/>
+    <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="原理" scheme="https://ywzzy.github.io/tags/%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="跨域" scheme="https://ywzzy.github.io/tags/%E8%B7%A8%E5%9F%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>html常见兼容问题</title>
+    <link href="https://ywzzy.github.io/2022/07/30/compatible/html-compatible/"/>
+    <id>https://ywzzy.github.io/2022/07/30/compatible/html-compatible/</id>
+    <published>2022-07-30T10:40:46.000Z</published>
+    <updated>2023-06-27T08:56:53.152Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;a name=&quot;fwfFj&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="html" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/html/"/>
+    
+    
+    <category term="compatible" scheme="https://ywzzy.github.io/tags/compatible/"/>
+    
+    <category term="html" scheme="https://ywzzy.github.io/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>大文件上传和断点续传</title>
+    <link href="https://ywzzy.github.io/2022/06/21/solution/da-wen-jian-shang-chuan-he-duan-dian-xu-chuan/"/>
+    <id>https://ywzzy.github.io/2022/06/21/solution/da-wen-jian-shang-chuan-he-duan-dian-xu-chuan/</id>
+    <published>2022-06-21T01:05:06.000Z</published>
+    <updated>2023-06-27T09:00:03.242Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;a name=&quot;WK3tc&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="面试" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    <category term="解决方案" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="大文件上传" scheme="https://ywzzy.github.io/tags/%E5%A4%A7%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>现代浏览器内部揭秘</title>
+    <link href="https://ywzzy.github.io/2022/03/16/frontend/browser/xian-dai-liu-lan-qi-nei-bu-jie-mi/"/>
+    <id>https://ywzzy.github.io/2022/03/16/frontend/browser/xian-dai-liu-lan-qi-nei-bu-jie-mi/</id>
+    <published>2022-03-16T07:35:27.000Z</published>
+    <updated>2023-06-27T08:57:48.302Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;a name=&quot;f3a2f325&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;第一部分&quot;&gt;&lt;a href=&quot;#第一部分&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="面试" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="原理" scheme="https://ywzzy.github.io/tags/%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>文件处理库</title>
-    <link href="https://ywzzy.github.io/2023/06/27/frontend/collection/wen-jian-chu-li-ku/"/>
-    <id>https://ywzzy.github.io/2023/06/27/frontend/collection/wen-jian-chu-li-ku/</id>
-    <published>2023-06-27T05:12:17.000Z</published>
-    <updated>2023-06-27T05:18:10.406Z</updated>
+    <link href="https://ywzzy.github.io/2022/02/19/frontend/collection/wen-jian-chu-li-ku/"/>
+    <id>https://ywzzy.github.io/2022/02/19/frontend/collection/wen-jian-chu-li-ku/</id>
+    <published>2022-02-18T20:10:46.000Z</published>
+    <updated>2023-06-27T08:58:41.457Z</updated>
     
     
       
@@ -329,11 +422,11 @@
   </entry>
   
   <entry>
-    <title>前端四大手写</title>
-    <link href="https://ywzzy.github.io/2023/06/27/frontend/interview/qian-duan-si-da-shou-xie/"/>
-    <id>https://ywzzy.github.io/2023/06/27/frontend/interview/qian-duan-si-da-shou-xie/</id>
-    <published>2023-06-27T05:12:17.000Z</published>
-    <updated>2023-06-27T05:13:12.504Z</updated>
+    <title>js常见兼容问题</title>
+    <link href="https://ywzzy.github.io/2021/12/21/compatible/js-compatible/"/>
+    <id>https://ywzzy.github.io/2021/12/21/compatible/js-compatible/</id>
+    <published>2021-12-20T20:33:39.000Z</published>
+    <updated>2023-06-27T08:57:07.350Z</updated>
     
     
       
@@ -341,14 +434,17 @@
         
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+&lt;a name=&quot;aqBRj&quot;&gt;&lt;/a&gt;
 
-&lt;p&gt;要问程序员最心虚的面试题，如果要投票选择，&lt;strong&gt;手撕代码&lt;/strong&gt;一定是前三位的。其中在前端领域，以&lt;strong&gt;手写</summary>
+&lt;h3 id=&quot;iPhone7用for…in-遍历数组失效&quot;&gt;&lt;a href=&quot;#iPhone7用for…in-遍历数组失效&quot;</summary>
         
       
     
     
     
     <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="js" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/js/"/>
     
     
     <category term="compatible" scheme="https://ywzzy.github.io/tags/compatible/"/>
@@ -358,11 +454,11 @@
   </entry>
   
   <entry>
-    <title>如何去搞前端基建</title>
-    <link href="https://ywzzy.github.io/2023/06/27/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/"/>
-    <id>https://ywzzy.github.io/2023/06/27/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/</id>
-    <published>2023-06-27T05:12:17.000Z</published>
-    <updated>2023-06-27T05:13:08.607Z</updated>
+    <title>async_await及其实现</title>
+    <link href="https://ywzzy.github.io/2021/10/10/frontend/interview/async-await-ji-qi-shi-xian/"/>
+    <id>https://ywzzy.github.io/2021/10/10/frontend/interview/async-await-ji-qi-shi-xian/</id>
+    <published>2021-10-10T11:05:24.000Z</published>
+    <updated>2023-06-27T08:59:23.941Z</updated>
     
     
       
@@ -371,8 +467,7 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-
-&lt;p&gt;&lt;a</summary>
+&lt;p&gt;async和await关键字让我们可以用一种更简洁的方式写出基于Promise的异步行为，而无需刻意地链式调用promise。&lt;br&gt;&lt;a</summary>
         
       
     
@@ -380,10 +475,214 @@
     
     <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
+    <category term="面试" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/"/>
     
-    <category term="compatible" scheme="https://ywzzy.github.io/tags/compatible/"/>
     
     <category term="js" scheme="https://ywzzy.github.io/tags/js/"/>
+    
+    <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="原理" scheme="https://ywzzy.github.io/tags/%E5%8E%9F%E7%90%86/"/>
+    
+    <category term="手写" scheme="https://ywzzy.github.io/tags/%E6%89%8B%E5%86%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里前端开发规范</title>
+    <link href="https://ywzzy.github.io/2021/10/07/frontend/a-li-qian-duan-kai-fa-gui-fan/"/>
+    <id>https://ywzzy.github.io/2021/10/07/frontend/a-li-qian-duan-kai-fa-gui-fan/</id>
+    <published>2021-10-07T09:07:25.000Z</published>
+    <updated>2023-06-27T08:59:55.709Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;目录&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="规范" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E8%A7%84%E8%8C%83/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="规范" scheme="https://ywzzy.github.io/tags/%E8%A7%84%E8%8C%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue 库</title>
+    <link href="https://ywzzy.github.io/2021/09/19/frontend/collection/vue-ku/"/>
+    <id>https://ywzzy.github.io/2021/09/19/frontend/collection/vue-ku/</id>
+    <published>2021-09-19T04:12:49.000Z</published>
+    <updated>2023-06-27T09:04:36.451Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="收藏" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%94%B6%E8%97%8F/"/>
+    
+    
+    <category term="收藏" scheme="https://ywzzy.github.io/tags/%E6%94%B6%E8%97%8F/"/>
+    
+    <category term="Vue" scheme="https://ywzzy.github.io/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>debug断点调试</title>
+    <link href="https://ywzzy.github.io/2021/08/22/frontend/browser/debug/debug-duan-dian-diao-shi/"/>
+    <id>https://ywzzy.github.io/2021/08/22/frontend/browser/debug/debug-duan-dian-diao-shi/</id>
+    <published>2021-08-21T19:40:20.000Z</published>
+    <updated>2023-06-27T08:57:34.333Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;a name=&quot;62glah&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    <category term="调试" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/%E8%B0%83%E8%AF%95/"/>
+    
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React 库</title>
+    <link href="https://ywzzy.github.io/2021/06/22/frontend/collection/react-ku/"/>
+    <id>https://ywzzy.github.io/2021/06/22/frontend/collection/react-ku/</id>
+    <published>2021-06-21T23:21:41.000Z</published>
+    <updated>2023-06-27T08:58:51.051Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="收藏" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%94%B6%E8%97%8F/"/>
+    
+    
+    <category term="收藏" scheme="https://ywzzy.github.io/tags/%E6%94%B6%E8%97%8F/"/>
+    
+    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>console 调试技巧</title>
+    <link href="https://ywzzy.github.io/2021/06/20/frontend/browser/debug/console-diao-shi-ji-qiao/"/>
+    <id>https://ywzzy.github.io/2021/06/20/frontend/browser/debug/console-diao-shi-ji-qiao/</id>
+    <published>2021-06-20T10:55:24.000Z</published>
+    <updated>2023-06-27T08:57:27.063Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;a name=&quot;df368884&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    <category term="调试" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/%E8%B0%83%E8%AF%95/"/>
+    
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Chrome 性能监测</title>
+    <link href="https://ywzzy.github.io/2021/04/11/frontend/browser/debug/chrome-xing-neng-jian-ce/"/>
+    <id>https://ywzzy.github.io/2021/04/11/frontend/browser/debug/chrome-xing-neng-jian-ce/</id>
+    <published>2021-04-11T05:27:54.000Z</published>
+    <updated>2023-06-27T08:57:13.192Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;前端性能优化一直是前端工作中必不可少的一部分，但是我们如何知道哪些部分的性能有优化的空间呢？此时，Chrome</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    <category term="调试" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/%E8%B0%83%E8%AF%95/"/>
+    
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
+    
+    <category term="性能" scheme="https://ywzzy.github.io/tags/%E6%80%A7%E8%83%BD/"/>
     
   </entry>
   

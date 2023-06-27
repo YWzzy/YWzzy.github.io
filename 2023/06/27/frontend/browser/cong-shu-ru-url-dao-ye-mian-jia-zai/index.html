@@ -1,0 +1,2793 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>从输入url到页面加载 | 会飞的锅</title>
+
+  <link rel="icon" type="image/gif" href="https://64.media.tumblr.com/a67a7238cd2833d859a7ea4cfa4fb8a4/0e0717e3c39dfac5-0c/s500x750/94ba555d15a68a38482896903d15494df88ff9b1.gif">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    
+        <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    
+
+    
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="会飞的锅" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
+
+  
+    <div class="preloader_2" id="loader">
+  <div class="loader"></div>
+</div>
+
+  
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+</script>
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="logo">
+      <h3 class="drawer-box-head_title">会飞的锅</h3>
+      <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(4)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(4)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(4)">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-music" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>关于我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://bing.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>bing</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">会飞的锅</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="Home">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="Archives">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="Tags">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="Categories">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-music" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>关于我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://bing.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>bing</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://w.wallhaven.cc/full/3l/wallhaven-3l5v6v.jpg')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        从输入url到页面加载
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2023-06-27 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-detail-header_category">
+              前端
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/" class="post-detail-header_category">
+              面试
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="post-detail-header_category">
+              浏览器
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <meta name="referrer" content="no-referrer" />
+
+<p><a name="section-3"></a></p>
+<h2 id="对知识体系进行一次预评级"><a href="#对知识体系进行一次预评级" class="headerlink" title="对知识体系进行一次预评级"></a>对知识体系进行一次预评级</h2><p>看到这道题目，不借助搜索引擎，自己的心里是否有一个答案？<br />这里，以目前的经验（了解过一些处于不同阶段的相关前端人员的情况），大概有以下几种情况：（以下都是以点见面，实际上不同阶段人员一般都会有其它的隐藏知识点的）<br><a name="section-3-1"></a></p>
+<h3 id="level1"><a href="#level1" class="headerlink" title="level1:"></a><strong>level1:</strong></h3><p>完全没什么概念的，支支吾吾的回答，一般就是这种水平（大致形象点描述）：</p>
+<blockquote>
+<ul>
+<li>浏览器发起请求</li>
+<li>服务端返回数据</li>
+<li>前端解析成网页，执行脚本。。。</li>
+</ul>
+</blockquote>
+<p>这类人员一般都是：</p>
+<ul>
+<li>萌新（刚接触前端的，包括0-6个月都有可能有这种回答）</li>
+<li>沉淀人员（就是那种可能已经接触了前端几年，但是仍然处于初级阶段的那种。。。）</li>
+</ul>
+<p>当然了，后者一般还会偶尔提下<code>**http**</code><strong>、</strong><code>**后台**</code><strong>、</strong><code>**浏览器渲染**</code><strong>，</strong><code>**js引擎**</code>等等关键字，但基本都是一详细的问就不知道了。。。</p>
+<p><a name="section-3-2"></a></p>
+<h3 id="level2"><a href="#level2" class="headerlink" title="level2:"></a><strong>level2:</strong></h3><p>已经有初步概念，但是可能没有完整梳理过，导致无法形成一个完整的体系，或者是很多细节都不会展开，大概是这样子的：（可能符合若干条）</p>
+<blockquote>
+<ul>
+<li>知道浏览器输入url后会有http请求这个概念</li>
+<li>有后台这个概念，大致知道前后端的交互，知道前后端只要靠http报文通信</li>
+<li>知道浏览器接收到数据后会进行解析，有一定概念，但是具体流程不熟悉（如render树构建流程，layout、paint，复合层与简单层，常用优化方案等不是很熟悉）</li>
+<li>对于js引擎的解析流程有一定概念，但是细节不熟悉（如具体的形参，函数，变量提升，执行上下文以及VO、AO、作用域链，回收机制等概念不是很熟悉）</li>
+<li>如可能知道一些http规范初步概念，但是不熟悉（如http报文结构，常用头部，缓存机制，http2.0，https等特性，跨域与web安全等不是很熟悉）</li>
+</ul>
+</blockquote>
+<p>到这里，看到这上面一大堆的概念后，心里应该也会有点底了。。。<br /><strong>实际上，大部分的前端人员可能都处于level2</strong>，但是，跳出这个阶段并不容易，一般需要积累，不断学习，才能水到渠成<br />这类人员一般都是：</p>
+<ul>
+<li>工作1-3年左右的普通人员（占大多数，而且大多数人员工作3年左右并没有实质上的提升）</li>
+<li>工作3年以上的老人（这部分人大多都业务十分娴熟，一个当好几个用，但是，基础比较薄弱，可能没有尝试写过框架、组件、脚手架等）</li>
+</ul>
+<p>大部分的初中级都陷在这个阶段，如果要突破，不断学习，积累，自然能水到渠成，打通任督二脉</p>
+<p><a name="section-3-3"></a></p>
+<h3 id="level3"><a href="#level3" class="headerlink" title="level3:"></a><strong>level3:</strong></h3><p>基本能到这一步的，不是高阶就是接近高阶，因为很多概念并不是靠背就能理解的，而要理解这么多，需形成体系，一般都需要积累，非一日之功。<br />一般包括什么样的回答呢？（这里就以自己的简略回答进行举例），一般这个阶段的人员都会符合若干条（不一定全部，当然可能还有些是这里遗漏的）:</p>
+<blockquote>
+<ul>
+<li>首先略去那些键盘输入、和操作系统交互、以及屏幕显示原理、网卡等硬件交互之类的（前端向中，很多硬件原理暂时略去。。。）</li>
+<li>对浏览器模型有整体概念，知道浏览器是多进程的，浏览器内核是多线程的，清楚进程与线程之间得区别，以及输入url后会开一个新的网络线程</li>
+<li>对从开启网络线程到发出一个完整的http请求中间的过程有所了解（如dns查询，tcp&#x2F;ip链接，五层因特网协议栈等等，以及一些优化方案，如<code>dns-prefetch</code>）</li>
+<li>对从服务器接收到请求到对应后台接收到请求有一定了解（如负载均衡，安全拦截以及后台代码处理等）</li>
+<li>对后台和前台的http交互熟悉（包括http报文结构，场景头部，cookie，跨域，web安全，http缓存，http2.0，https等）</li>
+<li>对浏览器接收到http数据包后的解析流程熟悉（包括解析html，词法分析然后解析成dom树、解析css生成css规则树、合并成render树，然后layout、painting渲染、里面可能还包括复合图层的合成、GPU绘制、外链处理、加载顺序等）</li>
+<li>对JS引擎解析过程熟悉（包括JS的解释，预处理，执行上下文，VO，作用域链，this，回收机制等）</li>
+</ul>
+</blockquote>
+<p>可以看到，上述包括了一大堆的概念，仅仅是偏前端向，而且没有详细展开，就已经如此之多的概念了，所以，个人认为如果没有自己的见解，没有形成自己的知识体系，仅仅是看看，背背是没用的，过一段时间就会忘光了。<br />再说下一般这个阶段的都可能是什么样的人吧。（不一定准确，这里主要是靠少部分现实以及大部分推测得出）</p>
+<ul>
+<li>工作2年以上的前端（基本上如果按正常进度的话，至少接触前端两年左右才会开始走向高阶，当然，现在很多都是上学时就开始学了的，还有部分是天赋异禀，不好预估。。。）</li>
+<li>或者是已经十分熟悉其它某门语言，再转前端的人（基本上是很快就可以将前端水准提升上去）</li>
+</ul>
+<p>一般符合这个条件的都会有各种隐藏属性（如看过各大框架、组件的源码，写过自己的组件、框架、脚手架，做过大型项目，整理过若干精品博文等）</p>
+<p><a name="section-3-4"></a></p>
+<h3 id="level4"><a href="#level4" class="headerlink" title="level4:"></a><strong>level4:</strong></h3><p>由于本人层次尚未达到，所以大致说下自己的见解吧。<br />一般这个层次，很多大佬都并不仅仅是某个技术栈了，而是成为了技术专家，技术leader之类的角色。所以仅仅是回答某个技术问题已经无法看出水准了， 可能更多的要看架构，整体把控，大型工程构建能力等等<br />不过，对于某些执着于技术的大佬，大概会有一些回答吧：（猜的）</p>
+<blockquote>
+<ul>
+<li>从键盘谈起到系统交互</li>
+<li>从浏览器到CPU</li>
+<li>从调度机制到系统内核</li>
+<li>从数据请求到二进制、汇编</li>
+<li>从GPU绘图到LCD显示</li>
+<li>然后再分析系统底层的进程、内存等等</li>
+</ul>
+</blockquote>
+<p>总之，从软件到硬件，到材料，到分子，原子，量子，薛定谔的猫，人类起源，宇宙大爆炸，平行宇宙？感觉都毫无违和感。。。<br />这点可以参考下本题的原始出处：<br /><a target="_blank" rel="noopener" href="http://fex.baidu.com/blog/2014/05/what-happen/">从输入 URL 到页面加载完成的过程中都发生了什么事情？</a></p>
+<p><a name="section-4"></a></p>
+<h2 id="为什么说知识体系如此重要？"><a href="#为什么说知识体系如此重要？" class="headerlink" title="为什么说知识体系如此重要？"></a>为什么说知识体系如此重要？</h2><p>为什么说知识体系如此重要呢？这里举几个例子<br />假设有被问到这样一道题目（随意想到的一个）：</p>
+<ul>
+<li>如何理解<code>getComputedStyle</code></li>
+</ul>
+<p>在尚未梳理知识体系前，大概会这样回答：</p>
+<ul>
+<li>普通版本：<code>getComputedStyle</code>会获取当前元素所有最终使用的CSS属性值（最终计算后的结果），通过<code>window.getComputedStyle</code>等价于<code>document.defaultView.getComputedStyle</code>调用</li>
+<li>详细版本：<code>window.getComputedStyle(elem, null).getPropertyValue(&quot;height&quot;)</code>可能的值为<code>100px</code>，而且，就算是css上写的是<code>inherit</code>，<code>getComputedStyle</code>也会把它最终计算出来的。不过注意，如果元素的背景色透明，那么<code>getComputedStyle</code>获取出来的就是透明的这个背景（因为透明本身也是有效的），而不会是父节点的背景。所以它不一定是最终显示的颜色。</li>
+</ul>
+<p>就这个API来说，上述的回答已经比较全面了。<br />但是，其实它是可以继续延伸的。<br />譬如现在会这样回答：</p>
+<ul>
+<li><code>getComputedStyle</code>会获取当前元素所有最终使用的CSS属性值，<code>window.</code>和<code>document.defaultView.</code>等价…</li>
+<li><code>getComputedStyle</code>会引起回流，因为它需要获取祖先节点的一些信息进行计算（譬如宽高等），所以用的时候慎用，回流会引起性能问题。然后合适的话会将话题引导回流，重绘，浏览器渲染原理等等。当然也可以列举一些其它会引发回流的操作，如<code>offsetXXX</code>，<code>scrollXXX</code>，<code>clientXXX</code>，<code>currentStyle</code>等等</li>
+</ul>
+<p>再举一个例子：</p>
+<ul>
+<li><code>visibility: hidden</code>和<code>display: none</code>的区别</li>
+</ul>
+<p>可以如下回答：</p>
+<ul>
+<li>普通回答，一个隐藏，但占据位置，一个隐藏，不占据位置</li>
+<li>进一步，<code>display</code>由于隐藏后不占据位置，所以造成了dom树的改变，会引发回流，代价较大</li>
+<li>再进一步，当一个页面某个元素经常需要切换<code>display</code>时如何优化，一般会用复合层优化，或者要求低一点用<code>absolute</code>让其脱离普通文档流也行。然后可以将话题引到普通文档流，<code>absolute</code>文档流，复合图层的区别，</li>
+<li>再进一步可以描述下浏览器渲染原理以及复合图层和普通图层的绘制区别（复合图层单独分配资源，独立绘制，性能提升，但是不能过多，还有隐式合成等等）</li>
+</ul>
+<p>上面这些大概就是知识系统化后的回答，会更全面，容易由浅入深，而且一有机会就可以往更底层挖<br><a name="section-4-1"></a></p>
+<h3 id="前端向知识的重点"><a href="#前端向知识的重点" class="headerlink" title="前端向知识的重点"></a>前端向知识的重点</h3><p><strong>此部分的内容是站在个人视角分析的，并不是说就一定是正确答案</strong><br />首先明确，计算机方面的知识是可以无穷无尽的挖的，而本文的重点是梳理<strong>前端向</strong>的重点知识<br />对于<strong>前端向</strong>（这里可能没有提到<code>node.js</code>之类的，更多的是指客户端前端），这里将知识点按重要程度划分成以下几大类：</p>
+<ul>
+<li>核心知识，必须掌握的，也是最基础的，譬如浏览器模型，渲染原理，JS解析过程，JS运行机制等，作为骨架来承载知识体系</li>
+<li>重点知识，往往每一块都是一个知识点，而且这些知识点都很重要，譬如http相关，web安全相关，跨域处理等</li>
+<li>拓展知识，这一块可能更多的是了解，稍微实践过，但是认识上可能没有上面那么深刻，譬如五层因特网协议栈，hybrid模式，移动原生开发，后台相关等等（当然，在不同领域，可能有某些知识就上升到重点知识层次了，譬如hybrid开发时，懂原生开发是很重要的）</li>
+</ul>
+<p>为什么要按上面这种方式划分？<br />这大概与个人的技术成长有关。<br />记得最开始学前端知识时，是一点一点的积累，一个知识点一个知识点的攻克。<br />就这样，虽然在很长一段时间内积累了不少的知识，但是，总是无法将它串联到一起。每次梳理时都是很分散的，无法保持思路连贯性。<br />直到后来，在将浏览器渲染原理、JS运行机制、JS引擎解析流程梳理一遍后，感觉就跟打通了任督二脉一样，有了一个整体的架构，以前的知识点都连贯起来了。<br />梳理出了一个知识体系，以后就算再学新的知识，也会尽量往这个体系上靠拢，环环相扣，更容易理解，也更不容易遗忘<br><a name="section-5"></a></p>
+<h2 id="梳理主干流程"><a href="#梳理主干流程" class="headerlink" title="梳理主干流程"></a>梳理主干流程</h2><p>回到这道题上，如何回答呢？先梳理一个骨架<br />知识体系中，最重要的是骨架，脉络。有了骨架后，才方便填充细节。所以，先梳理下主干流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 从浏览器接收url到开启网络请求线程（这一部分可以展开浏览器的机制以及进程与线程之间的关系）</span><br><span class="line">2. 开启网络线程到发出一个完整的http请求（这一部分涉及到dns查询，tcp/ip请求，五层因特网协议栈等知识）</span><br><span class="line">3. 从服务器接收到请求到对应后台接收到请求（这一部分可能涉及到负载均衡，安全拦截以及后台内部的处理等等）</span><br><span class="line">4. 后台和前台的http交互（这一部分包括http头部、响应码、报文结构、cookie等知识，可以提下静态资源的cookie优化，以及编码解码，如gzip压缩等）</span><br><span class="line">5. 单独拎出来的缓存问题，http的缓存（这部分包括http缓存头部，etag，catch-control等）</span><br><span class="line">6. 浏览器接收到http数据包后的解析流程（解析html-词法分析然后解析成dom树、解析css生成css规则树、合并成render树，然后layout、painting渲染、复合图层的合成、GPU绘制、外链资源的处理、loaded和domcontentloaded等）</span><br><span class="line">7. CSS的可视化格式模型（元素的渲染规则，如包含块，控制框，BFC，IFC等概念）</span><br><span class="line">8. JS引擎解析过程（JS的解释阶段，预处理阶段，执行阶段生成执行上下文，VO，作用域链、回收机制等等）</span><br><span class="line">9. 其它（可以拓展不同的知识模块，如跨域，web安全，hybrid模式等等内容）</span><br></pre></td></tr></table></figure>
+
+<p>梳理出主干骨架，然后就需要往骨架上填充细节内容<br><a name="section-6"></a></p>
+<h2 id="从浏览器接收url到开启网络请求线程"><a href="#从浏览器接收url到开启网络请求线程" class="headerlink" title="从浏览器接收url到开启网络请求线程"></a>从浏览器接收url到开启网络请求线程</h2><p>这一部分展开的内容是：浏览器进程&#x2F;线程模型，JS的运行机制<br><a name="section-6-1"></a></p>
+<h3 id="多进程的浏览器"><a href="#多进程的浏览器" class="headerlink" title="多进程的浏览器"></a>多进程的浏览器</h3><p>浏览器是多进程的，有一个主控进程，以及每一个tab页面都会新开一个进程（某些情况下多个tab会合并进程）<br />进程可能包括主控进程，插件进程，GPU，tab页（浏览器内核）等等</p>
+<ul>
+<li>Browser进程：浏览器的主进程（负责协调、主控），只有一个</li>
+<li>第三方插件进程：每种类型的插件对应一个进程，仅当使用该插件时才创建</li>
+<li>GPU进程：最多一个，用于3D绘制</li>
+<li>浏览器渲染进程（内核）：默认每个Tab页面一个进程，互不影响，控制页面渲染，脚本执行，事件处理等（有时候会优化，如多个空白tab会合并成一个进程）</li>
+</ul>
+<p>如下图：<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596828180-d5b4f0a9-fafc-4381-a27e-831c7edb58ab.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596828180-d5b4f0a9-fafc-4381-a27e-831c7edb58ab.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br><a name="section-6-2"></a></p>
+<h3 id="多线程的浏览器内核"><a href="#多线程的浏览器内核" class="headerlink" title="多线程的浏览器内核"></a>多线程的浏览器内核</h3><p>每一个tab页面可以看作是浏览器内核进程，然后这个进程是多线程的，它有几大类子线程</p>
+<ul>
+<li>GUI线程</li>
+<li>JS引擎线程</li>
+<li>事件触发线程</li>
+<li>定时器线程</li>
+<li>网络请求线程</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596833651-e63a1e70-79f0-400c-8d54-6e5548d39d9e.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596833651-e63a1e70-79f0-400c-8d54-6e5548d39d9e.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br />可以看到，里面的JS引擎是内核进程中的一个线程，这也是为什么常说JS引擎是单线程的<br><a name="section-6-3"></a></p>
+<h3 id="解析URL"><a href="#解析URL" class="headerlink" title="解析URL"></a>解析URL</h3><p>输入URL后，会进行解析（URL的本质就是统一资源定位符）<br />URL一般包括几大部分：</p>
+<ul>
+<li><code>protocol</code>，协议头，譬如有http，ftp等</li>
+<li><code>host</code>，主机域名或IP地址</li>
+<li><code>port</code>，端口号</li>
+<li><code>path</code>，目录路径</li>
+<li><code>query</code>，即查询参数</li>
+<li><code>fragment</code>，即<code>#</code>后的hash值，一般用来定位到某个位置<br><a name="section-6-4"></a></li>
+</ul>
+<h3 id="网络请求都是单独的线程"><a href="#网络请求都是单独的线程" class="headerlink" title="网络请求都是单独的线程"></a>网络请求都是单独的线程</h3><p>每次网络请求时都需要开辟单独的线程进行，譬如如果URL解析到http协议，就会新建一个网络线程去处理资源下载<br />因此浏览器会根据解析出得协议，开辟一个网络线程，前往请求资源（这里，暂时理解为是浏览器内核开辟的，如有错误，后续修复）<br><a name="section-6-5"></a></p>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><p>由于篇幅关系，这里就大概介绍一个主干流程，关于浏览器的进程机制，更多可以参考以前总结的一篇文章（因为内容实在过多，里面包括JS运行机制，进程线程的详解）<br /><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000012925872">从浏览器多进程到JS单线程，JS运行机制最全面的一次梳理</a><br><a name="section-7"></a></p>
+<h2 id="开启网络线程到发出一个完整的http请求"><a href="#开启网络线程到发出一个完整的http请求" class="headerlink" title="开启网络线程到发出一个完整的http请求"></a>开启网络线程到发出一个完整的http请求</h2><p>这一部分主要内容包括：<code>dns</code>查询，<code>tcp/ip</code>请求构建，<code>五层因特网协议栈</code>等等<br />仍然是先梳理主干，有些详细的过程不展开（因为展开的话内容过多）<br><a name="section-7-1"></a></p>
+<h3 id="DNS查询得到IP"><a href="#DNS查询得到IP" class="headerlink" title="DNS查询得到IP"></a>DNS查询得到IP</h3><p>如果输入的是域名，需要进行dns解析成IP，大致流程：</p>
+<ul>
+<li>如果浏览器有缓存，直接使用浏览器缓存，否则使用本机缓存，再没有的话就是用host</li>
+<li>如果本地没有，就向dns域名服务器查询（当然，中间可能还会经过路由，也有缓存等），查询到对应的IP</li>
+</ul>
+<p>注意，域名查询时有可能是经过了CDN调度器的（如果有cdn存储功能的话）<br />而且，需要知道dns解析是很耗时的，因此如果解析域名过多，会让首屏加载变得过慢，可以考虑<code>dns-prefetch</code>优化<br />这一块可以深入展开，具体请去网上搜索，这里就不占篇幅了（网上可以看到很详细的解答）<br><a name="section-7-2"></a></p>
+<h3 id="tcp-x2F-ip请求"><a href="#tcp-x2F-ip请求" class="headerlink" title="tcp&#x2F;ip请求"></a>tcp&#x2F;ip请求</h3><p>http的本质就是<code>tcp/ip</code>请求<br />需要了解3次握手规则建立连接以及断开连接时的四次挥手<br />tcp将http长报文划分为短报文，通过三次握手与服务端建立连接，进行可靠传输<br /><strong>三次握手的步骤：（抽象派）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">客户端：hello，你是server么？</span><br><span class="line">服务端：hello，我是server，你是client么</span><br><span class="line">客户端：yes，我是client</span><br></pre></td></tr></table></figure>
+
+<p>建立连接成功后，接下来就正式传输数据<br />然后，待到断开连接时，需要进行四次挥手（因为是全双工的，所以需要四次挥手）<br /><strong>四次挥手的步骤：（抽象派）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">主动方：我已经关闭了向你那边的主动通道了，只能被动接收了</span><br><span class="line">被动方：收到通道关闭的信息</span><br><span class="line">被动方：那我也告诉你，我这边向你的主动通道也关闭了</span><br><span class="line">主动方：最后收到数据，之后双方无法通信</span><br></pre></td></tr></table></figure>
+
+<p><strong>tcp&#x2F;ip的并发限制</strong><br />浏览器对同一域名下并发的tcp连接是有限制的（2-10个不等）<br />而且在http1.0中往往一个资源下载就需要对应一个tcp&#x2F;ip请求<br />所以针对这个瓶颈，又出现了很多的资源优化方案<br /><strong>get和post的区别</strong><br />get和post虽然本质都是tcp&#x2F;ip，但两者除了在http层面外，在tcp&#x2F;ip层面也有区别。<br />get会产生一个tcp数据包，post两个<br />具体就是：</p>
+<ul>
+<li>get请求时，浏览器会把<code>headers</code>和<code>data</code>一起发送出去，服务器响应200（返回数据），</li>
+<li>post请求时，浏览器先发送<code>headers</code>，服务器响应<code>100 continue</code>， 浏览器再发送<code>data</code>，服务器响应200（返回数据）。</li>
+</ul>
+<p>再说一点，这里的区别是<code>specification</code>（规范）层面，而不是<code>implementation</code>（对规范的实现）<br><a name="section-7-3"></a></p>
+<h3 id="五层因特网协议栈"><a href="#五层因特网协议栈" class="headerlink" title="五层因特网协议栈"></a>五层因特网协议栈</h3><p>其实这个概念挺难记全的，记不全没关系，但是要有一个整体概念<br />其实就是一个概念： <strong>从客户端发出http请求到服务器接收，中间会经过一系列的流程。</strong><br />简括就是：<br /><strong>从应用层的发送http请求，到传输层通过三次握手建立tcp&#x2F;ip连接，再到网络层的ip寻址，再到数据链路层的封装成帧，最后到物理层的利用物理介质传输。</strong><br />当然，服务端的接收就是反过来的步骤<br />五层因特网协议栈其实就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.应用层(dns,http) DNS解析成IP并发送http请求</span><br><span class="line">2.传输层(tcp,udp) 建立tcp连接（三次握手）</span><br><span class="line">3.网络层(IP,ARP) IP寻址</span><br><span class="line">4.数据链路层(PPP) 封装成帧</span><br><span class="line">5.物理层(利用物理介质传输比特流) 物理传输（然后传输的时候通过双绞线，电磁波等各种介质）</span><br></pre></td></tr></table></figure>
+
+<p>当然，其实也有一个完整的OSI七层框架，与之相比，多了会话层、表示层。<br />OSI七层框架：<code>物理层</code>、<code>数据链路层</code>、<code>网络层</code>、<code>传输层</code>、<code>会话层</code>、<code>表示层</code>、<code>应用层</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">表示层：主要处理两个通信系统中交换信息的表示方式，包括数据格式交换，数据加密与解密，数据压缩与终端类型转换等</span><br><span class="line">会话层：它具体管理不同用户和进程之间的对话，如控制登陆和注销过程</span><br></pre></td></tr></table></figure>
+
+<p><a name="section-8"></a></p>
+<h2 id="从服务器接收到请求到对应后台接收到请求"><a href="#从服务器接收到请求到对应后台接收到请求" class="headerlink" title="从服务器接收到请求到对应后台接收到请求"></a>从服务器接收到请求到对应后台接收到请求</h2><p>服务端在接收到请求时，内部会进行很多的处理<br />这里由于不是专业的后端分析，所以只是简单的介绍下，不深入<br><a name="section-9"></a></p>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><p>对于大型的项目，由于并发访问量很大，所以往往一台服务器是吃不消的，所以一般会有若干台服务器组成一个集群，然后配合反向代理实现负载均衡<br />当然了，负载均衡不止这一种实现方式，这里不深入…<br />简单的说：<br /><strong>用户发起的请求都指向调度服务器（反向代理服务器，譬如安装了nginx控制负载均衡），然后调度服务器根据实际的调度算法，分配不同的请求给对应集群中的服务器执行，然后调度器等待实际服务器的HTTP响应，并将它反馈给用户</strong><br><a name="section-10"></a></p>
+<h2 id="后台的处理"><a href="#后台的处理" class="headerlink" title="后台的处理"></a>后台的处理</h2><p>一般后台都是部署到容器中的，所以一般为：</p>
+<ul>
+<li>先是容器接受到请求（如tomcat容器）</li>
+<li>然后对应容器中的后台程序接收到请求（如java程序）</li>
+<li>然后就是后台会有自己的统一处理，处理完后响应响应结果</li>
+</ul>
+<p>概括下：</p>
+<ul>
+<li>一般有的后端是有统一的验证的，如安全拦截，跨域验证</li>
+<li>如果这一步不符合规则，就直接返回了相应的http报文（如拒绝请求等）</li>
+<li>然后当验证通过后，才会进入实际的后台代码，此时是程序接收到请求，然后执行（譬如查询数据库，大量计算等等）</li>
+<li>等程序执行完毕后，就会返回一个http响应包（一般这一步也会经过多层封装）</li>
+<li>然后就是将这个包从后端发送到前端，完成交互<br><a name="section-11"></a></li>
+</ul>
+<h2 id="后台和前台的http交互"><a href="#后台和前台的http交互" class="headerlink" title="后台和前台的http交互"></a>后台和前台的http交互</h2><p>前后端交互时，http报文作为信息的载体<br />所以http是一块很重要的内容，这一部分重点介绍它<br><a name="section-11-1"></a></p>
+<h3 id="http报文结构"><a href="#http报文结构" class="headerlink" title="http报文结构"></a>http报文结构</h3><p>报文一般包括了：<code>通用头部</code>，<code>请求/响应头部</code>，<code>请求/响应体</code><br /><strong>通用头部</strong><br />这也是开发人员见过的最多的信息，包括如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Request Url: 请求的web服务器地址</span><br><span class="line">Request Method: 请求方式</span><br><span class="line">（Get、POST、OPTIONS、PUT、HEAD、DELETE、CONNECT、TRACE）</span><br><span class="line">Status Code: 请求的返回状态码，如200代表成功</span><br><span class="line">Remote Address: 请求的远程服务器地址（会转为IP）</span><br></pre></td></tr></table></figure>
+
+<p>譬如，在跨域拒绝时，可能是method为<code>options</code>，状态码为<code>404/405</code>等（当然，实际上可能的组合有很多）<br />其中，Method的话一般分为两批次：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HTTP1.0定义了三种请求方法： GET, POST 和 HEAD方法。</span><br><span class="line">以及几种Additional Request Methods：PUT、DELETE、LINK、UNLINK</span><br><span class="line">HTTP1.1定义了八种请求方法：GET、POST、HEAD、OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。</span><br></pre></td></tr></table></figure>
+
+<p><code>HTTP 1.0</code>定义参考：<a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc1945">https://tools.ietf.org/html/rfc1945</a><br /><code>HTTP 1.1</code>定义参考：<a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc2616">https://tools.ietf.org/html/rfc2616</a><br />这里面最常用到的就是状态码，很多时候都是通过状态码来判断，如（列举几个最常见的）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">200——表明该请求被成功地完成，所请求的资源发送回客户端</span><br><span class="line">304——自从上次请求后，请求的网页未修改过，请客户端使用本地缓存</span><br><span class="line">400——客户端请求有错（譬如可以是安全模块拦截）</span><br><span class="line">401——请求未经授权</span><br><span class="line">403——禁止访问（譬如可以是未登录时禁止）</span><br><span class="line">404——资源未找到</span><br><span class="line">500——服务器内部错误</span><br><span class="line">503——服务不可用</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>再列举下大致不同范围状态的意义</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1xx——指示信息，表示请求已接收，继续处理</span><br><span class="line">2xx——成功，表示请求已被成功接收、理解、接受</span><br><span class="line">3xx——重定向，要完成请求必须进行更进一步的操作</span><br><span class="line">4xx——客户端错误，请求有语法错误或请求无法实现</span><br><span class="line">5xx——服务器端错误，服务器未能实现合法的请求</span><br></pre></td></tr></table></figure>
+
+<p>总之，当请求出错时，状态码能帮助快速定位问题，完整版本的状态可以自行去互联网搜索<br /><strong>请求&#x2F;响应头部</strong><br />请求和响应头部也是分析时常用到的<br />常用的请求头部（部分）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Accept: 接收类型，表示浏览器支持的MIME类型</span><br><span class="line">（对标服务端返回的Content-Type）</span><br><span class="line">Accept-Encoding：浏览器支持的压缩类型,如gzip等,超出类型不能接收</span><br><span class="line">Content-Type：客户端发送出去实体内容的类型</span><br><span class="line">Cache-Control: 指定请求和响应遵循的缓存机制，如no-cache</span><br><span class="line">If-Modified-Since：对应服务端的Last-Modified，用来匹配看文件是否变动，只能精确到1s之内，http1.0中</span><br><span class="line">Expires：缓存控制，在这个时间内不会请求，直接使用缓存，http1.0，而且是服务端时间</span><br><span class="line">Max-age：代表资源在本地缓存多少秒，有效时间内不会请求，而是使用缓存，http1.1中</span><br><span class="line">If-None-Match：对应服务端的ETag，用来匹配文件内容是否改变（非常精确），http1.1中</span><br><span class="line">Cookie: 有cookie并且同域访问时会自动带上</span><br><span class="line">Connection: 当浏览器与服务器通信时对于长连接如何进行处理,如keep-alive</span><br><span class="line">Host：请求的服务器URL</span><br><span class="line">Origin：最初的请求是从哪里发起的（只会精确到端口）,Origin比Referer更尊重隐私</span><br><span class="line">Referer：该页面的来源URL(适用于所有类型的请求，会精确到详细页面地址，csrf拦截常用到这个字段)</span><br><span class="line">User-Agent：用户客户端的一些必要信息，如UA头部等</span><br></pre></td></tr></table></figure>
+
+<p>常用的响应头部（部分）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Headers: 服务器端允许的请求Headers</span><br><span class="line">Access-Control-Allow-Methods: 服务器端允许的请求方法</span><br><span class="line">Access-Control-Allow-Origin: 服务器端允许的请求Origin头部（譬如为*）</span><br><span class="line">Content-Type：服务端返回的实体内容的类型</span><br><span class="line">Date：数据从服务器发送的时间</span><br><span class="line">Cache-Control：告诉浏览器或其他客户，什么环境可以安全的缓存文档</span><br><span class="line">Last-Modified：请求资源的最后修改时间</span><br><span class="line">Expires：应该在什么时候认为文档已经过期,从而不再缓存它</span><br><span class="line">Max-age：客户端的本地资源应该缓存多少秒，开启了Cache-Control后有效</span><br><span class="line">ETag：请求变量的实体标签的当前值</span><br><span class="line">Set-Cookie：设置和页面关联的cookie，服务器通过这个头部把cookie传给客户端</span><br><span class="line">Keep-Alive：如果客户端有keep-alive，服务端也会有响应（如timeout=38）</span><br><span class="line">Server：服务器的一些相关信息</span><br></pre></td></tr></table></figure>
+
+<p>一般来说，请求头部和响应头部是匹配分析的。<br />譬如，请求头部的<code>Accept</code>要和响应头部的<code>Content-Type</code>匹配，否则会报错<br />譬如，跨域请求时，请求头部的<code>Origin</code>要匹配响应头部的<code>Access-Control-Allow-Origin</code>，否则会报跨域错误<br />譬如，在使用缓存时，请求头部的<code>If-Modified-Since</code>、<code>If-None-Match</code>分别和响应头部的<code>Last-Modified</code>、<code>ETag</code>对应<br />还有很多的分析方法，这里不一一赘述<br /><strong>请求&#x2F;响应实体</strong><br />http请求时，除了头部，还有消息实体，一般来说<br />请求实体中会将一些需要的参数都放入进入（用于post请求）。<br />譬如实体中可以放参数的序列化形式（<code>a=1&amp;b=2</code>这种），或者直接放表单对象（<code>Form Data</code>对象，上传时可以夹杂参数以及文件），等等<br />而一般响应实体中，就是放服务端需要传给客户端的内容<br />一般现在的接口请求时，实体中就是对于的信息的json格式，而像页面请求这种，里面就是直接放了一个html字符串，然后浏览器自己解析并渲染。<br /><strong>CRLF</strong><br />CRLF（Carriage-Return Line-Feed），意思是回车换行，一般作为分隔符存在<br />请求头和实体消息之间有一个CRLF分隔，响应头部和响应实体之间用一个CRLF分隔<br />一般来说（分隔符类别）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CRLF-&gt;Windows-style</span><br><span class="line">LF-&gt;Unix Style</span><br><span class="line">CR-&gt;Mac Style</span><br></pre></td></tr></table></figure>
+
+<p>如下图是对某请求的http报文结构的简要分析<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596826323-37c57fdf-d8fb-4c9e-9d0c-7f035baba086.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596826323-37c57fdf-d8fb-4c9e-9d0c-7f035baba086.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br><a name="section-11-2"></a></p>
+<h3 id="cookie以及优化"><a href="#cookie以及优化" class="headerlink" title="cookie以及优化"></a>cookie以及优化</h3><p>cookie是浏览器的一种本地存储方式，一般用来帮助客户端和服务端通信的，常用来进行身份校验，结合服务端的session使用。<br />场景如下（简述）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在登陆页面，用户登陆了</span><br><span class="line">此时，服务端会生成一个session，session中有对于用户的信息（如用户名、密码等）</span><br><span class="line">然后会有一个sessionid（相当于是服务端的这个session对应的key）</span><br><span class="line">然后服务端在登录页面中写入cookie，值就是:jsessionid=xxx</span><br><span class="line">然后浏览器本地就有这个cookie了，以后访问同域名下的页面时，自动带上cookie，自动检验，在有效时间内无需二次登陆。</span><br></pre></td></tr></table></figure>
+
+<p>上述就是cookie的常用场景简述（当然了，实际情况下得考虑更多因素）<br />一般来说，cookie是不允许存放敏感信息的（千万不要明文存储用户名、密码），因为非常不安全，如果一定要强行存储，首先，一定要在cookie中设置<code>httponly</code>（这样就无法通过js操作了），另外可以考虑rsa等非对称加密（因为实际上，浏览器本地也是容易被攻克的，并不安全）<br />另外，由于在同域名的资源请求时，浏览器会默认带上本地的cookie，针对这种情况，在某些场景下是需要优化的。<br />譬如以下场景：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">客户端在域名A下有cookie（这个可以是登陆时由服务端写入的）</span><br><span class="line">然后在域名A下有一个页面，页面中有很多依赖的静态资源（都是域名A的，譬如有20个静态资源）</span><br><span class="line">此时就有一个问题，页面加载，请求这些静态资源时，浏览器会默认带上cookie</span><br><span class="line">也就是说，这20个静态资源的http请求，每一个都得带上cookie，而实际上静态资源并不需要cookie验证</span><br><span class="line">此时就造成了较为严重的浪费，而且也降低了访问速度（因为内容更多了）</span><br></pre></td></tr></table></figure>
+
+<p>当然了，针对这种场景，是有优化方案的（多域名拆分）。具体做法就是：</p>
+<ul>
+<li>将静态资源分组，分别放到不同的域名下（如<code>static.base.com</code>）</li>
+<li>而<code>page.base.com</code>（页面所在域名）下请求时，是不会带上<code>static.base.com</code>域名的cookie的，所以就避免了浪费</li>
+</ul>
+<p>说到了多域名拆分，这里再提一个问题，那就是：</p>
+<ul>
+<li>在移动端，如果请求的域名数过多，会降低请求速度（因为域名整套解析流程是很耗费时间的，而且移动端一般带宽都比不上pc）</li>
+<li>此时就需要用到一种优化方案：<code>dns-prefetch</code>（让浏览器空闲时提前解析dns域名，不过也请合理使用，勿滥用）</li>
+</ul>
+<p>关于cookie的交互，可以看下图总结<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596827095-d66490b9-d964-48db-8891-a9a125d6d811.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596827095-d66490b9-d964-48db-8891-a9a125d6d811.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br><a name="section-11-3"></a></p>
+<h3 id="gzip压缩"><a href="#gzip压缩" class="headerlink" title="gzip压缩"></a>gzip压缩</h3><p>首先，明确<code>gzip</code>是一种压缩格式，需要浏览器支持才有效（不过一般现在浏览器都支持）， 而且gzip压缩效率很好（高达70%左右）<br />然后gzip一般是由<code>apache</code>、<code>tomcat</code>等web服务器开启<br />当然服务器除了gzip外，也还会有其它压缩格式（如deflate，没有gzip高效，且不流行）<br />所以一般只需要在服务器上开启了gzip压缩，然后之后的请求就都是基于gzip压缩格式的， 非常方便。<br><a name="section-11-4"></a></p>
+<h3 id="长连接与短连接"><a href="#长连接与短连接" class="headerlink" title="长连接与短连接"></a>长连接与短连接</h3><p>首先看<code>tcp/ip</code>层面的定义：</p>
+<ul>
+<li>长连接：一个tcp&#x2F;ip连接上可以连续发送多个数据包，在tcp连接保持期间，如果没有数据包发送，需要双方发检测包以维持此连接，一般需要自己做在线维持（类似于心跳包）</li>
+<li>短连接：通信双方有数据交互时，就建立一个tcp连接，数据发送完成后，则断开此tcp连接</li>
+</ul>
+<p>然后在http层面：</p>
+<ul>
+<li><code>http1.0</code>中，默认使用的是短连接，也就是说，浏览器没进行一次http操作，就建立一次连接，任务结束就中断连接，譬如每一个静态资源请求时都是一个单独的连接</li>
+<li>http1.1起，默认使用长连接，使用长连接会有这一行<code>Connection: keep-alive</code>，在长连接的情况下，当一个网页打开完成后，客户端和服务端之间用于传输http的tcp连接不会关闭，如果客户端再次访问这个服务器的页面，会继续使用这一条已经建立的连接</li>
+</ul>
+<p>注意： <strong>keep-alive不会永远保持，它有一个持续时间，一般在服务器中配置（如apache），另外长连接需要客户端和服务器都支持时才有效</strong><br><a name="section-11-5"></a></p>
+<h3 id="http-2-0"><a href="#http-2-0" class="headerlink" title="http 2.0"></a>http 2.0</h3><p>http2.0不是https，它相当于是http的下一代规范（譬如https的请求可以是http2.0规范的）<br />然后简述下http2.0与http1.1的显著不同点：</p>
+<ul>
+<li>http1.1中，每请求一个资源，都是需要开启一个tcp&#x2F;ip连接的，所以对应的结果是，每一个资源对应一个tcp&#x2F;ip请求，由于tcp&#x2F;ip本身有并发数限制，所以当资源一多，速度就显著慢下来</li>
+<li>http2.0中，一个tcp&#x2F;ip请求可以请求多个资源，也就是说，只要一次tcp&#x2F;ip请求，就可以请求若干个资源，分割成更小的帧请求，速度明显提升。</li>
+</ul>
+<p>所以，如果http2.0全面应用，很多http1.1中的优化方案就无需用到了（譬如打包成精灵图，静态资源多域名拆分等）<br />然后简述下http2.0的一些特性：</p>
+<ul>
+<li>多路复用（即一个tcp&#x2F;ip连接可以请求多个资源）</li>
+<li>首部压缩（http头部压缩，减少体积）</li>
+<li>二进制分帧（在应用层跟传送层之间增加了一个二进制分帧层，改进传输性能，实现低延迟和高吞吐量）</li>
+<li>服务器端推送（服务端可以对客户端的一个请求发出多个响应，可以主动通知客户端）</li>
+<li>请求优先级（如果流被赋予了优先级，它就会基于这个优先级来处理，由服务器决定需要多少资源来处理该请求。）<br><a name="section-11-6"></a></li>
+</ul>
+<h3 id="https"><a href="#https" class="headerlink" title="https"></a>https</h3><p>https就是安全版本的http，譬如一些支付等操作基本都是基于https的，因为http请求的安全系数太低了。<br />简单来看，https与http的区别就是： <strong>在请求前，会建立ssl链接，确保接下来的通信都是加密的，无法被轻易截取分析</strong><br />一般来说，如果要将网站升级成https，需要后端支持（后端需要申请证书等），然后https的开销也比http要大（因为需要额外建立安全链接以及加密等），所以一般来说http2.0配合https的体验更佳（因为http2.0更快了）<br />一般来说，主要关注的就是SSL&#x2F;TLS的握手流程，如下（简述）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1. 浏览器请求建立SSL链接，并向服务端发送一个随机数–Client random和客户端支持的加密方法，比如RSA加密，此时是明文传输。 </span><br><span class="line">2. 服务端从中选出一组加密算法与Hash算法，回复一个随机数–Server random，并将自己的身份信息以证书的形式发回给浏览器</span><br><span class="line">（证书里包含了网站地址，非对称加密的公钥，以及证书颁发机构等信息）</span><br><span class="line">3. 浏览器收到服务端的证书后</span><br><span class="line">    </span><br><span class="line">    - 验证证书的合法性（颁发机构是否合法，证书中包含的网址是否和正在访问的一样），如果证书信任，则浏览器会显示一个小锁头，否则会有提示</span><br><span class="line">    </span><br><span class="line">    - 用户接收证书后（不管信不信任），浏览会生产新的随机数–Premaster secret，然后证书中的公钥以及指定的加密方法加密`Premaster secret`，发送给服务器。</span><br><span class="line">    </span><br><span class="line">    - 利用Client random、Server random和Premaster secret通过一定的算法生成HTTP链接数据传输的对称加密key-`session key`</span><br><span class="line">    </span><br><span class="line">    - 使用约定好的HASH算法计算握手消息，并使用生成的`session key`对消息进行加密，最后将之前生成的所有信息发送给服务端。 </span><br><span class="line">    </span><br><span class="line">4. 服务端收到浏览器的回复</span><br><span class="line">    - 利用已知的加解密方式与自己的私钥进行解密，获取`Premaster secret`</span><br><span class="line">    </span><br><span class="line">    - 和浏览器相同规则生成`session key`</span><br><span class="line">    </span><br><span class="line">    - 使用`session key`解密浏览器发来的握手消息，并验证Hash是否与浏览器发来的一致</span><br><span class="line">    </span><br><span class="line">    - 使用`session key`加密一段握手消息，发送给浏览器</span><br><span class="line">    </span><br><span class="line">5. 浏览器解密并计算握手消息的HASH，如果与服务端发来的HASH一致，此时握手过程结束，</span><br></pre></td></tr></table></figure>
+
+<p><strong>之后所有的https通信数据将由之前浏览器生成的</strong><code>**session key**</code><strong>并利用对称加密算法进行加密</strong><br />这里放一张图（来源：<a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html">阮一峰-图解SSL&#x2F;TLS协议</a>）<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596826666-f955799e-75b6-4359-abf9-1fe56f15e6e8.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596826666-f955799e-75b6-4359-abf9-1fe56f15e6e8.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br><a name="section-12"></a></p>
+<h2 id="单独拎出来的缓存问题，http的缓存"><a href="#单独拎出来的缓存问题，http的缓存" class="headerlink" title="单独拎出来的缓存问题，http的缓存"></a>单独拎出来的缓存问题，http的缓存</h2><p>前后端的http交互中，使用缓存能很大程度上的提升效率，而且基本上对性能有要求的前端项目都是必用缓存的<br><a name="section-12-1"></a></p>
+<h3 id="强缓存与弱缓存"><a href="#强缓存与弱缓存" class="headerlink" title="强缓存与弱缓存"></a>强缓存与弱缓存</h3><p>缓存可以简单的划分成两种类型：<code>强缓存</code>（<code>200 from cache</code>）与<code>协商缓存</code>（<code>304</code>）<br />区别简述如下：</p>
+<ul>
+<li>强缓存（<code>200 from cache</code>）时，浏览器如果判断本地缓存未过期，就直接使用，无需发起http请求</li>
+<li>协商缓存（<code>304</code>）时，浏览器会向服务端发起http请求，然后服务端告诉浏览器文件未改变，让浏览器使用本地缓存</li>
+</ul>
+<p>对于协商缓存，使用<code>Ctrl + F5</code>强制刷新可以使得缓存无效<br />但是对于强缓存，在未过期时，必须更新资源路径才能发起新的请求（更改了路径相当于是另一个资源了，这也是前端工程化中常用到的技巧）<br><a name="section-12-2"></a></p>
+<h3 id="缓存头部简述"><a href="#缓存头部简述" class="headerlink" title="缓存头部简述"></a>缓存头部简述</h3><p>上述提到了强缓存和协商缓存，那它们是怎么区分的呢？<br />答案是通过不同的http头部控制<br />先看下这几个头部：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">If-None-Match/E-tag、If-Modified-Since/Last-Modified、Cache-Control/Max-Age、Pragma/Expires</span><br></pre></td></tr></table></figure>
+
+<p>这些就是缓存中常用到的头部，这里不展开。仅列举下大致使用。<br />属于强缓存控制的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（http1.1）Cache-Control/Max-Age</span><br><span class="line">（http1.0）Pragma/Expires</span><br></pre></td></tr></table></figure>
+
+<p>注意：<code>**Max-Age**</code><strong>不是一个头部，它是</strong><code>**Cache-Control**</code><strong>头部的值</strong><br />属于协商缓存控制的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（http1.1）If-None-Match/E-tag</span><br><span class="line">（http1.0）If-Modified-Since/Last-Modified</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，上述有提到<code>http1.1</code>和<code>http1.0</code>，这些不同的头部是属于不同http时期的<br />再提一点，其实HTML页面中也有一个meta标签可以控制缓存方案-<code>Pragma</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;META HTTP-EQUIV=&quot;Pragma&quot; CONTENT=&quot;no-cache&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>不过，这种方案还是比较少用到，因为支持情况不佳，譬如缓存代理服务器肯定不支持，所以不推荐<br><a name="section-12-3"></a></p>
+<h3 id="头部的区别"><a href="#头部的区别" class="headerlink" title="头部的区别"></a>头部的区别</h3><p>首先明确，http的发展是从http1.0到http1.1<br />而在http1.1中，出了一些新内容，弥补了http1.0的不足。<br /><strong>http1.0中的缓存控制：</strong></p>
+<ul>
+<li><code>Pragma</code>：严格来说，它不属于专门的缓存控制头部，但是它设置<code>no-cache</code>时可以让本地强缓存失效（属于编译控制，来实现特定的指令，主要是因为兼容http1.0，所以以前又被大量应用）</li>
+<li><code>Expires</code>：服务端配置的，属于强缓存，用来控制在规定的时间之前，浏览器不会发出请求，而是直接使用本地缓存，注意，Expires一般对应服务器端时间，如<code>Expires：Fri, 30 Oct 1998 14:19:41</code></li>
+<li><code>If-Modified-Since/Last-Modified</code>：这两个是成对出现的，属于协商缓存的内容，其中浏览器的头部是<code>If-Modified-Since</code>，而服务端的是<code>Last-Modified</code>，它的作用是，在发起请求时，如果<code>If-Modified-Since</code>和<code>Last-Modified</code>匹配，那么代表服务器资源并未改变，因此服务端不会返回资源实体，而是只返回头部，通知浏览器可以使用本地缓存。<code>Last-Modified</code>，顾名思义，指的是文件最后的修改时间，而且只能精确到<code>1s</code>以内</li>
+</ul>
+<p><strong>http1.1中的缓存控制：</strong></p>
+<ul>
+<li><code>Cache-Control</code>：缓存控制头部，有no-cache、max-age等多种取值</li>
+<li><code>Max-Age</code>：服务端配置的，用来控制强缓存，在规定的时间之内，浏览器无需发出请求，直接使用本地缓存，注意，Max-Age是Cache-Control头部的值，不是独立的头部，譬如<code>Cache-Control: max-age=3600</code>，而且它值得是绝对时间，由浏览器自己计算</li>
+<li><code>If-None-Match/E-tag</code>：这两个是成对出现的，属于协商缓存的内容，其中浏览器的头部是<code>If-None-Match</code>，而服务端的是<code>E-tag</code>，同样，发出请求后，如果<code>If-None-Match</code>和<code>E-tag</code>匹配，则代表内容未变，通知浏览器使用本地缓存，和Last-Modified不同，E-tag更精确，它是类似于指纹一样的东西，基于<code>FileEtag INode Mtime Size</code>生成，也就是说，只要文件变，指纹就会变，而且没有1s精确度的限制。</li>
+</ul>
+<p><strong>Max-Age相比Expires？</strong><br /><code>Expires</code>使用的是服务器端的时间<br />但是有时候会有这样一种情况-客户端时间和服务端不同步<br />那这样，可能就会出问题了，造成了浏览器本地的缓存无用或者一直无法过期<br />所以一般http1.1后不推荐使用<code>Expires</code><br />而<code>Max-Age</code>使用的是客户端本地时间的计算，因此不会有这个问题<br />因此推荐使用<code>Max-Age</code>。<br />注意，如果同时启用了<code>Cache-Control</code>与<code>Expires</code>，<code>Cache-Control</code>优先级高。<br /><strong>E-tag相比Last-Modified？</strong><br /><code>Last-Modified</code>：</p>
+<ul>
+<li>表明服务端的文件最后何时改变的</li>
+<li>它有一个缺陷就是只能精确到1s，</li>
+<li>然后还有一个问题就是有的服务端的文件会周期性的改变，导致缓存失效</li>
+</ul>
+<p>而<code>E-tag</code>：</p>
+<ul>
+<li>是一种指纹机制，代表文件相关指纹</li>
+<li>只有文件变才会变，也只要文件变就会变，</li>
+<li>也没有精确时间的限制，只要文件一遍，立马E-tag就不一样了</li>
+</ul>
+<p>如果同时带有<code>E-tag</code>和<code>Last-Modified</code>，服务端会优先检查<code>E-tag</code><br />各大缓存头部的整体关系如下图<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596826929-1f0b241c-2548-4b7e-abc1-93f42eedc27a.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596826929-1f0b241c-2548-4b7e-abc1-93f42eedc27a.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br><a name="section-13"></a></p>
+<h2 id="解析页面流程"><a href="#解析页面流程" class="headerlink" title="解析页面流程"></a>解析页面流程</h2><p>前面有提到http交互，那么接下来就是浏览器获取到html，然后解析，渲染<br /><strong>这部分很多都参考了网上资源，特别是图片，参考了来源中的文章</strong><br><a name="section-13-1"></a></p>
+<h3 id="流程简述"><a href="#流程简述" class="headerlink" title="流程简述"></a>流程简述</h3><p>浏览器内核拿到内容后，渲染步骤大致可以分为以下几步：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 解析HTML，构建DOM树</span><br><span class="line">2. 解析CSS，生成CSS规则树</span><br><span class="line">3. 合并DOM树和CSS规则，生成render树</span><br><span class="line">4. 布局render树（Layout/reflow），负责各元素尺寸、位置的计算</span><br><span class="line">5. 绘制render树（paint），绘制页面像素信息</span><br><span class="line">6. 浏览器会将各层的信息发送给GPU，GPU会将各层合成（composite），显示在屏幕上</span><br></pre></td></tr></table></figure>
+
+<p>如下图：<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596829677-38270453-c2a0-469f-8c29-4103c641bec2.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596829677-38270453-c2a0-469f-8c29-4103c641bec2.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br><a name="section-13-2"></a></p>
+<h3 id="HTML解析，构建DOM"><a href="#HTML解析，构建DOM" class="headerlink" title="HTML解析，构建DOM"></a>HTML解析，构建DOM</h3><p>整个渲染步骤中，HTML解析是第一步。<br />简单的理解，这一步的流程是这样的：<strong>浏览器解析HTML，构建DOM树。</strong><br />但实际上，在分析整体构建时，却不能一笔带过，得稍微展开。<br />解析HTML到构建出DOM当然过程可以简述如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bytes → characters → tokens → nodes → DOM</span><br></pre></td></tr></table></figure>
+
+<p>譬如假设有这样一个HTML页面：（以下部分的内容出自参考来源，修改了下格式）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;</span><br><span class="line">    &lt;link href=&quot;style.css&quot; rel=&quot;stylesheet&quot;&gt;</span><br><span class="line">    &lt;title&gt;Critical Path&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;p&gt;Hello &lt;span&gt;web performance&lt;/span&gt; students!&lt;/p&gt;</span><br><span class="line">    &lt;div&gt;&lt;img src=&quot;awesome-photo.jpg&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>浏览器的处理如下：<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596829219-ed51e09e-6e56-4557-a6b4-fd2362c2b401.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596829219-ed51e09e-6e56-4557-a6b4-fd2362c2b401.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br />列举其中的一些重点过程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. Conversion转换：浏览器将获得的HTML内容（Bytes）基于他的编码转换为单个字符</span><br><span class="line">2. Tokenizing分词：浏览器按照HTML规范标准将这些字符转换为不同的标记token。每个token都有自己独特的含义以及规则集</span><br><span class="line">3. Lexing词法分析：分词的结果是得到一堆的token，此时把他们转换为对象，这些对象分别定义他们的属性和规则</span><br><span class="line">4. DOM构建：因为HTML标记定义的就是不同标签之间的关系，这个关系就像是一个树形结构一样</span><br><span class="line">例如：body对象的父节点就是HTML对象，然后段略p对象的父节点就是body对象</span><br></pre></td></tr></table></figure>
+
+<p>最后的DOM树如下：<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596831267-4bc2c7b3-2682-4e30-b451-07de0442957b.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596831267-4bc2c7b3-2682-4e30-b451-07de0442957b.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br><a name="section-13-3"></a></p>
+<h3 id="生成CSS规则"><a href="#生成CSS规则" class="headerlink" title="生成CSS规则"></a>生成CSS规则</h3><p>同理，CSS规则树的生成也是类似。简述为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bytes → characters → tokens → nodes → CSSOM</span><br></pre></td></tr></table></figure>
+
+<p>譬如<code>style.css</code>内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">body &#123; font-size: 16px &#125;</span><br><span class="line">p &#123; font-weight: bold &#125;</span><br><span class="line">span &#123; color: red &#125;</span><br><span class="line">p span &#123; display: none &#125;</span><br><span class="line">img &#123; float: right &#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么最终的CSSOM树就是：<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596830151-b1681a32-9be9-4ff5-aa0a-89396221a409.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596830151-b1681a32-9be9-4ff5-aa0a-89396221a409.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br><a name="section-13-4"></a></p>
+<h3 id="构建渲染树"><a href="#构建渲染树" class="headerlink" title="构建渲染树"></a>构建渲染树</h3><p>当DOM树和CSSOM都有了后，就要开始构建渲染树了<br />一般来说，渲染树和DOM树相对应的，但不是严格意义上的一一对应<br />因为有一些不可见的DOM元素不会插入到渲染树中，如head这种不可见的标签或者<code>display: none</code>等<br />整体来说可以看图：<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596827869-e6ad6b79-a912-4bbd-ad09-af1cb6b9c96b.png#height=420&id=eOPtP&originHeight=420&originWidth=900&originalType=binary&ratio=1&rotation=0&showTitle=false&size=0&status=done&style=none&title=&width=900" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596827869-e6ad6b79-a912-4bbd-ad09-af1cb6b9c96b.png#height=420&id=eOPtP&originHeight=420&originWidth=900&originalType=binary&ratio=1&rotation=0&showTitle=false&size=0&status=done&style=none&title=&width=900" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br><a name="section-13-5"></a></p>
+<h3 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h3><p>有了render树，接下来就是开始渲染，基本流程如下：<br /><img src="https://cdn.nlark.com/yuque/0/2020/jpeg/164572/1588596831489-075f87dd-2cbe-4e92-af49-1bf03b96befa.jpeg" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/jpeg/164572/1588596831489-075f87dd-2cbe-4e92-af49-1bf03b96befa.jpeg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br />图中重要的四个步骤就是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 计算CSS样式</span><br><span class="line">2. 构建渲染树</span><br><span class="line">3. 布局，主要定位坐标和大小，是否换行，各种position overflow z-index属性</span><br><span class="line">4. 绘制，将图像绘制出来</span><br></pre></td></tr></table></figure>
+
+<p>然后，图中的线与箭头代表通过js动态修改了DOM或CSS，导致了重新布局（Layout）或渲染（Repaint）<br />这里Layout和Repaint的概念是有区别的：</p>
+<ul>
+<li>Layout，也称为Reflow，即回流。一般意味着元素的内容、结构、位置或尺寸发生了变化，需要重新计算样式和渲染树</li>
+<li>Repaint，即重绘。意味着元素发生的改变只是影响了元素的一些外观之类的时候（例如，背景色，边框颜色，文字颜色等），此时只需要应用新样式绘制这个元素就可以了</li>
+</ul>
+<p>回流的成本开销要高于重绘，而且一个节点的回流往往回导致子节点以及同级节点的回流， 所以优化方案中一般都包括，尽量避免回流。<br /><strong>什么会引起回流？</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.页面渲染初始化</span><br><span class="line">2.DOM结构改变，比如删除了某个节点</span><br><span class="line">3.render树变化，比如减少了padding</span><br><span class="line">4.窗口resize</span><br><span class="line">5.最复杂的一种：获取某些属性，引发回流，</span><br><span class="line">很多浏览器会对回流做优化，会等到数量足够时做一次批处理回流，</span><br><span class="line">但是除了render树的直接变化，当获取一些属性时，浏览器为了获得正确的值也会触发回流，这样使得浏览器优化无效，包括</span><br><span class="line">    （1）offset(Top/Left/Width/Height)</span><br><span class="line">     (2) scroll(Top/Left/Width/Height)</span><br><span class="line">     (3) cilent(Top/Left/Width/Height)</span><br><span class="line">     (4) width,height</span><br><span class="line">     (5) 调用了getComputedStyle()或者IE的currentStyle</span><br></pre></td></tr></table></figure>
+
+<p>回流一定伴随着重绘，重绘却可以单独出现<br />所以一般会有一些优化方案，如：</p>
+<ul>
+<li>减少逐项更改样式，最好一次性更改style，或者将样式定义为class并一次性更新</li>
+<li>避免循环操作dom，创建一个documentFragment或div，在它上面应用所有DOM操作，最后再把它添加到window.document</li>
+<li>避免多次读取offset等属性。无法避免则将它们缓存到变量</li>
+<li>将复杂的元素绝对定位或固定定位，使得它脱离文档流，否则回流代价会很高</li>
+</ul>
+<p><strong>注意：改变字体大小会引发回流</strong><br />再来看一个示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var s = document.body.style;</span><br><span class="line">s.padding = &quot;2px&quot;; // 回流+重绘</span><br><span class="line">s.border = &quot;1px solid red&quot;; // 再一次 回流+重绘</span><br><span class="line">s.color = &quot;blue&quot;; // 再一次重绘</span><br><span class="line">s.backgroundColor = &quot;#ccc&quot;; // 再一次 重绘</span><br><span class="line">s.fontSize = &quot;14px&quot;; // 再一次 回流+重绘</span><br><span class="line">// 添加node，再一次 回流+重绘</span><br><span class="line">document.body.appendChild(document.createTextNode(&#x27;abc!&#x27;));</span><br></pre></td></tr></table></figure>
+
+<p><a name="section-13-6"></a></p>
+<h3 id="简单层与复合层"><a href="#简单层与复合层" class="headerlink" title="简单层与复合层"></a>简单层与复合层</h3><p>上述中的渲染中止步于绘制，但实际上绘制这一步也没有这么简单，它可以结合复合层和简单层的概念来讲。<br />这里不展开，进简单介绍下：</p>
+<ul>
+<li>可以认为默认只有一个复合图层，所有的DOM节点都是在这个复合图层下的</li>
+<li>如果开启了硬件加速功能，可以将某个节点变成复合图层</li>
+<li>复合图层之间的绘制互不干扰，由GPU直接控制</li>
+<li>而简单图层中，就算是absolute等布局，变化时不影响整体的回流，但是由于在同一个图层中，仍然是会影响绘制的，因此做动画时性能仍然很低。而复合层是独立的，所以一般做动画推荐使用硬件加速</li>
+</ul>
+<p>更多参考：<br /><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000012925872#articleHeader16">普通图层和复合图层</a><br><a name="section-13-7"></a></p>
+<h3 id="Chrome中的调试"><a href="#Chrome中的调试" class="headerlink" title="Chrome中的调试"></a>Chrome中的调试</h3><p>Chrome的开发者工具中，Performance中可以看到详细的渲染过程：<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596829910-21624730-fe55-4792-93f0-d3ad6b197c63.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596829910-21624730-fe55-4792-93f0-d3ad6b197c63.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br><a name="section-13-8"></a></p>
+<h3 id="资源外链的下载"><a href="#资源外链的下载" class="headerlink" title="资源外链的下载"></a>资源外链的下载</h3><p>上面介绍了html解析，渲染流程。但实际上，在解析html时，会遇到一些资源连接，此时就需要进行单独处理了<br />简单起见，这里将遇到的静态资源分为一下几大类（未列举所有）：</p>
+<ul>
+<li>CSS样式资源</li>
+<li>JS脚本资源</li>
+<li>img图片类资源</li>
+</ul>
+<p><strong>遇到外链时的处理</strong><br />当遇到上述的外链时，会单独开启一个下载线程去下载资源（http1.1中是每一个资源的下载都要开启一个http请求，对应一个tcp&#x2F;ip链接）<br /><strong>遇到CSS样式资源</strong><br />CSS资源的处理有几个特点：</p>
+<ul>
+<li>CSS下载时异步，不会阻塞浏览器构建DOM树</li>
+<li>但是会阻塞渲染，也就是在构建render时，会等到css下载解析完毕后才进行（这点与浏览器优化有关，防止css规则不断改变，避免了重复的构建）</li>
+<li>有例外，<code>media query</code>声明的CSS是不会阻塞渲染的</li>
+</ul>
+<p><strong>遇到JS脚本资源</strong><br />JS脚本资源的处理有几个特点：</p>
+<ul>
+<li>阻塞浏览器的解析，也就是说发现一个外链脚本时，需等待脚本下载完成并执行后才会继续解析HTML</li>
+<li>浏览器的优化，一般现代浏览器有优化，在脚本阻塞时，也会继续下载其它资源（当然有并发上限），但是虽然脚本可以并行下载，解析过程仍然是阻塞的，也就是说必须这个脚本执行完毕后才会接下来的解析，并行下载只是一种优化而已</li>
+<li>defer与async，普通的脚本是会阻塞浏览器解析的，但是可以加上defer或async属性，这样脚本就变成异步了，可以等到解析完毕后再执行</li>
+</ul>
+<p>注意，defer和async是有区别的： <strong>defer是延迟执行，而async是异步执行。</strong><br />简单的说（不展开）：</p>
+<ul>
+<li><code>async</code>是异步执行，异步下载完毕后就会执行，不确保执行顺序，一定在<code>onload</code>前，但不确定在<code>DOMContentLoaded</code>事件的前或后</li>
+<li><code>defer</code>是延迟执行，在浏览器看起来的效果像是将脚本放在了<code>body</code>后面一样（虽然按规范应该是在<code>DOMContentLoaded</code>事件前，但实际上不同浏览器的优化效果不一样，也有可能在它后面）</li>
+</ul>
+<p><strong>遇到img图片类资源</strong><br />遇到图片等资源时，直接就是异步下载，不会阻塞解析，下载完毕后直接用图片替换原有src的地方<br><a name="section-13-9"></a></p>
+<h3 id="loaded和domcontentloaded"><a href="#loaded和domcontentloaded" class="headerlink" title="loaded和domcontentloaded"></a>loaded和domcontentloaded</h3><p>简单的对比：</p>
+<ul>
+<li>DOMContentLoaded 事件触发时，仅当DOM加载完成，不包括样式表，图片(譬如如果有async加载的脚本就不一定完成)</li>
+<li>load 事件触发时，页面上所有的DOM，样式表，脚本，图片都已经加载完成了<br><a name="section-14"></a></li>
+</ul>
+<h2 id="CSS的可视化格式模型"><a href="#CSS的可视化格式模型" class="headerlink" title="CSS的可视化格式模型"></a>CSS的可视化格式模型</h2><p><strong>这一部分内容很多参考《精通CSS-高级Web标准解决方案》以及参考来源</strong><br />前面提到了整体的渲染概念，但实际上文档树中的元素是按什么渲染规则渲染的，是可以进一步展开的，此部分内容即： <strong>CSS的可视化格式模型</strong><br />先了解：</p>
+<ul>
+<li>CSS中规定每一个元素都有自己的盒子模型（相当于规定了这个元素如何显示）</li>
+<li>然后可视化格式模型则是把这些盒子按照规则摆放到页面上，也就是如何布局</li>
+<li>换句话说，盒子模型规定了怎么在页面里摆放盒子，盒子的相互作用等等</li>
+</ul>
+<p>说到底： <strong>CSS的可视化格式模型就是规定了浏览器在页面中如何处理文档树</strong><br />关键字：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">包含块（Containing Block）</span><br><span class="line">控制框（Controlling Box）</span><br><span class="line">BFC（Block Formatting Context）</span><br><span class="line">IFC（Inline Formatting Context）</span><br><span class="line">定位体系</span><br><span class="line">浮动</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>另外，CSS有三种定位机制：<code>普通流</code>，<code>浮动</code>，<code>绝对定位</code>，如无特别提及，下文中都是针对普通流中的<br><a name="section-14-1"></a></p>
+<h3 id="包含块（Containing-Block）"><a href="#包含块（Containing-Block）" class="headerlink" title="包含块（Containing Block）"></a>包含块（Containing Block）</h3><p>一个元素的box的定位和尺寸，会与某一矩形框有关，这个框就称之为包含块。<br />元素会为它的子孙元素创建包含块，但是，并不是说元素的包含块就是它的父元素，元素的包含块与它的祖先元素的样式等有关系<br />譬如：</p>
+<ul>
+<li>根元素是最顶端的元素，它没有父节点，它的包含块就是初始包含块</li>
+<li>static和relative的包含块由它最近的块级、单元格或者行内块祖先元素的内容框（content）创建</li>
+<li>fixed的包含块是当前可视窗口</li>
+<li>absolute的包含块由它最近的position 属性为<code>absolute</code>、<code>relative</code>或者<code>fixed</code>的祖先元素创建<ul>
+<li>如果其祖先元素是行内元素，则包含块取决于其祖先元素的<code>direction</code>特性</li>
+<li>如果祖先元素不是行内元素，那么包含块的区域应该是祖先元素的内边距边界<br><a name="section-14-2"></a></li>
+</ul>
+</li>
+</ul>
+<h3 id="控制框（Controlling-Box）"><a href="#控制框（Controlling-Box）" class="headerlink" title="控制框（Controlling Box）"></a>控制框（Controlling Box）</h3><p>块级元素和块框以及行内元素和行框的相关概念<br /><strong>块框:</strong></p>
+<ul>
+<li>块级元素会生成一个块框（<code>Block Box</code>），块框会占据一整行，用来包含子box和生成的内容</li>
+<li>块框同时也是一个块包含框（<code>Containing Box</code>），里面要么只包含块框，要么只包含行内框（不能混杂），如果块框内部有块级元素也有行内元素，那么行内元素会被匿名块框包围</li>
+</ul>
+<p>关于<strong>匿名块框</strong>的生成，示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;DIV&gt;</span><br><span class="line">Some text</span><br><span class="line">&lt;P&gt;More text</span><br><span class="line">&lt;/DIV&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>div</code>生成了一个块框，包含了另一个块框<code>p</code>以及文本内容<code>Some text</code>，此时<code>Some text</code>文本会被强制加到一个匿名的块框里面，被<code>div</code>生成的块框包含（其实这个就是<code>IFC</code>中提到的行框，包含这些行内框的这一行匿名块形成的框，行框和行内框不同）<br />换句话说:<br /><strong>如果一个块框在其中包含另外一个块框，那么我们强迫它只能包含块框，因此其它文本内容生成出来的都是匿名块框（而不是匿名行内框）</strong><br /><strong>行内框：</strong></p>
+<ul>
+<li>一个行内元素生成一个行内框</li>
+<li>行内元素能排在一行，允许左右有其它元素</li>
+</ul>
+<p>关于<strong>匿名行内框</strong>的生成，示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;P&gt;Some &lt;EM&gt;emphasized&lt;/EM&gt; text&lt;/P&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>P</code>元素生成一个块框，其中有几个行内框（如<code>EM</code>），以及文本<code>Some</code>，<code>text</code>，此时会专门为这些文本生成匿名行内框<br /><strong>display属性的影响</strong><br /><code>display</code>的几个属性也可以影响不同框的生成：</p>
+<ul>
+<li><code>block</code>，元素生成一个块框</li>
+<li><code>inline</code>，元素产生一个或多个的行内框</li>
+<li><code>inline-block</code>，元素产生一个行内级块框，行内块框的内部会被当作块块来格式化，而此元素本身会被当作行内级框来格式化（这也是为什么会产生<code>BFC</code>）</li>
+<li><code>none</code>，不生成框，不再格式化结构中，当然了，另一个<code>visibility: hidden</code>则会产生一个不可见的框</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li>如果一个框里，有一个块级元素，那么这个框里的内容都会被当作块框来进行格式化，因为只要出现了块级元素，就会将里面的内容分块几块，每一块独占一行（出现行内可以用匿名块框解决）</li>
+<li>如果一个框里，没有任何块级元素，那么这个框里的内容会被当成行内框来格式化，因为里面的内容是按照顺序成行的排列<br><a name="section-14-3"></a></li>
+</ul>
+<h3 id="BFC（Block-Formatting-Context）"><a href="#BFC（Block-Formatting-Context）" class="headerlink" title="BFC（Block Formatting Context）"></a>BFC（Block Formatting Context）</h3><p>FC（格式上下文）？<br />FC即格式上下文，它定义框内部的元素渲染规则，比较抽象，譬如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FC像是一个大箱子，里面装有很多元素</span><br><span class="line">箱子可以隔开里面的元素和外面的元素（所以外部并不会影响FC内部的渲染）</span><br><span class="line">内部的规则可以是：如何定位，宽高计算，margin折叠等等</span><br></pre></td></tr></table></figure>
+
+<p>不同类型的框参与的FC类型不同，譬如块级框对应BFC，行内框对应IFC<br /><strong>注意，并不是说所有的框都会产生FC，而是符合特定条件才会产生，只有产生了对应的FC后才会应用对应渲染规则</strong><br /><strong>BFC规则：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在块格式化上下文中</span><br><span class="line">每一个元素左外边与包含块的左边相接触（对于从右到左的格式化，右外边接触右边）</span><br><span class="line">即使存在浮动也是如此（所以浮动元素正常会直接贴近它的包含块的左边，与普通元素重合）</span><br><span class="line">除非这个元素也创建了一个新的BFC</span><br></pre></td></tr></table></figure>
+
+<p>总结几点BFC特点：</p>
+<ol>
+<li>内部<code>box</code>在垂直方向，一个接一个的放置</li>
+<li>box的垂直方向由<code>margin</code>决定，属于同一个BFC的两个box间的margin会重叠</li>
+<li>BFC区域不会与<code>float box</code>重叠（可用于排版)</li>
+<li>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此</li>
+<li>计算BFC的高度时，浮动元素也参与计算（不会浮动坍塌）</li>
+</ol>
+<p>如何触发BFC？</p>
+<ol>
+<li>根元素</li>
+<li><code>float</code>属性不为<code>none</code></li>
+<li><code>position</code>为<code>absolute</code>或<code>fixed</code></li>
+<li><code>display</code>为<code>inline-block</code>, <code>flex</code>, <code>inline-flex</code>，<code>table</code>，<code>table-cell</code>，<code>table-caption</code></li>
+<li><code>overflow</code>不为<code>visible</code></li>
+</ol>
+<p>这里提下，<code>display: table</code>，它本身不产生BFC，但是它会产生匿名框（包含<code>display: table-cell</code>的框），而这个匿名框产生BFC<br />更多请自行网上搜索<br><a name="section-14-4"></a></p>
+<h3 id="IFC（Inline-Formatting-Context）"><a href="#IFC（Inline-Formatting-Context）" class="headerlink" title="IFC（Inline Formatting Context）"></a>IFC（Inline Formatting Context）</h3><p>IFC即行内框产生的格式上下文<br /><strong>IFC规则</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">在行内格式化上下文中</span><br><span class="line">框一个接一个地水平排列，起点是包含块的顶部。</span><br><span class="line">水平方向上的 margin，border 和 padding 在框之间得到保留</span><br><span class="line">框在垂直方向上可以以不同的方式对齐：它们的顶部或底部对齐，或根据其中文字的基线对齐</span><br></pre></td></tr></table></figure>
+
+<p><strong>行框</strong><br /><strong>包含那些框的长方形区域，会形成一行，叫做行框</strong><br />行框的宽度由它的包含块和其中的浮动元素决定，高度的确定由行高度计算规则决定<br />行框的规则：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">如果几个行内框在水平方向无法放入一个行框内，它们可以分配在两个或多个垂直堆叠的行框中（即行内框的分割）</span><br><span class="line">行框在堆叠时没有垂直方向上的分割且永不重叠</span><br><span class="line">行框的高度总是足够容纳所包含的所有框。不过，它可能高于它包含的最高的框（例如，框对齐会引起基线对齐）</span><br><span class="line">行框的左边接触到其包含块的左边，右边接触到其包含块的右边。</span><br></pre></td></tr></table></figure>
+
+<p><strong>结合补充下IFC规则：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">浮动元素可能会处于包含块边缘和行框边缘之间</span><br><span class="line">尽管在相同的行内格式化上下文中的行框通常拥有相同的宽度（包含块的宽度），它们可能会因浮动元素缩短了可用宽度，而在宽度上发生变化</span><br><span class="line">同一行内格式化上下文中的行框通常高度不一样（如，一行包含了一个高的图形，而其它行只包含文本）</span><br><span class="line">当一行中行内框宽度的总和小于包含它们的行框的宽，它们在水平方向上的对齐，取决于 `text-align` 特性</span><br><span class="line">空的行内框应该被忽略</span><br><span class="line">即不包含文本，保留空白符，margin/padding/border非0的行内元素，</span><br><span class="line">以及其他常规流中的内容(比如，图片，inline blocks 和 inline tables)，</span><br><span class="line">并且不是以换行结束的行框，</span><br><span class="line">必须被当作零高度行框对待</span><br></pre></td></tr></table></figure>
+
+<p>总结：</p>
+<ul>
+<li>行内元素总是会应用IFC渲染规则</li>
+<li>行内元素会应用IFC规则渲染，譬如<code>text-align</code>可以用来居中等</li>
+<li>块框内部，对于文本这类的匿名元素，会产生匿名行框包围，而行框内部就应用IFC渲染规则</li>
+<li>行内框内部，对于那些行内元素，一样应用IFC渲染规则</li>
+<li>另外，<code>inline-block</code>，会在元素外层产生IFC（所以这个元素是可以通过<code>text-align</code>水平居中的），当然，它内部则按照BFC规则渲染</li>
+</ul>
+<p>相比BFC规则来说，IFC可能更加抽象（因为没有那么条理清晰的规则和触发条件）<br />但总的来说，它就是行内元素自身如何显示以及在框内如何摆放的渲染规则，这样描述应该更容易理解<br><a name="section-14-5"></a></p>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>当然还有有一些其它内容：</p>
+<ul>
+<li>譬如常规流，浮动，绝对定位等区别</li>
+<li>譬如浮动元素不包含在常规流中</li>
+<li>譬如相对定位，绝对定位，<code>Fixed</code>定位等区别</li>
+<li>譬如<code>z-index</code>的分层显示机制等</li>
+</ul>
+<p>这里不一一展开，更多请参考：<br /><a target="_blank" rel="noopener" href="http://bbs.csdn.net/topics/340204423">http://bbs.csdn.net/topics/340204423</a><br><a name="section-15"></a></p>
+<h2 id="JS引擎解析过程"><a href="#JS引擎解析过程" class="headerlink" title="JS引擎解析过程"></a>JS引擎解析过程</h2><p>前面有提到遇到JS脚本时，会等到它的执行，实际上是需要引擎解析的，这里展开描述（介绍主干流程）<br><a name="section-15-1"></a></p>
+<h3 id="JS的解释阶段"><a href="#JS的解释阶段" class="headerlink" title="JS的解释阶段"></a>JS的解释阶段</h3><p>首先得明确： <strong>JS是解释型语音，所以它无需提前编译，而是由解释器实时运行</strong><br />引擎对JS的处理过程可以简述如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 读取代码，进行词法分析（Lexical analysis），然后将代码分解成词元（token）</span><br><span class="line">2. 对词元进行语法分析（parsing），然后将代码整理成语法树（syntax tree）</span><br><span class="line">3. 使用翻译器（translator），将代码转为字节码（bytecode）</span><br><span class="line">4. 使用字节码解释器（bytecode interpreter），将字节码转为机器码</span><br></pre></td></tr></table></figure>
+
+<p>最终计算机执行的就是机器码。<br />为了提高运行速度，现代浏览器一般采用即时编译（<code>JIT-Just In Time compiler</code>）<br />即字节码只在运行时编译，用到哪一行就编译哪一行，并且把编译结果缓存（<code>inline cache</code>）<br />这样整个程序的运行速度能得到显著提升。<br />而且，不同浏览器策略可能还不同，有的浏览器就省略了字节码的翻译步骤，直接转为机器码（如chrome的v8）<br />总结起来可以认为是： <strong>核心的</strong><code>**JIT**</code><strong>编译器将源码编译成机器码运行</strong><br><a name="section-15-2"></a></p>
+<h3 id="JS的预处理阶段"><a href="#JS的预处理阶段" class="headerlink" title="JS的预处理阶段"></a>JS的预处理阶段</h3><p>上述将的是解释器的整体过程，这里再提下在正式执行JS前，还会有一个预处理阶段 （譬如变量提升，分号补全等）<br />预处理阶段会做一些事情，确保JS可以正确执行，这里仅提部分：<br /><strong>分号补全</strong><br />JS执行是需要分号的，但为什么以下语句却可以正常运行呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;a&#x27;)</span><br><span class="line">console.log(&#x27;b&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>原因就是JS解释器有一个<a target="_blank" rel="noopener" href="http://inimino.org/~inimino/blog/javascript_semicolons">Semicolon Insertion</a>规则，它会按照一定规则，在适当的位置补充分号<br />譬如列举几条自动加分号的规则：</p>
+<ul>
+<li>当有换行符（包括含有换行符的多行注释），并且下一个<code>token</code>没法跟前面的语法匹配时，会自动补分号。</li>
+<li>当有<code>&#125;</code>时，如果缺少分号，会补分号。</li>
+<li>程序源代码结束时，如果缺少分号，会补分号。</li>
+</ul>
+<p>于是，上述的代码就变成了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#x27;a&#x27;);</span><br><span class="line">console.log(&#x27;b&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>所以可以正常运行<br />当然了，这里有一个经典的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function b() &#123;</span><br><span class="line">    return</span><br><span class="line">    &#123;</span><br><span class="line">        a: &#x27;a&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于分号补全机制，所以它变成了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function b() &#123;</span><br><span class="line">    return;</span><br><span class="line">    &#123;</span><br><span class="line">        a: &#x27;a&#x27;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以运行后是<code>undefined</code><br /><strong>变量提升</strong><br />一般包括函数提升和变量提升<br />譬如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = 1;</span><br><span class="line">b();</span><br><span class="line">function b() &#123;</span><br><span class="line">    console.log(&#x27;b&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">var a;</span><br></pre></td></tr></table></figure>
+
+<p>经过变量提升后，就变成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function b() &#123;</span><br><span class="line">    console.log(&#x27;b&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">var a;</span><br><span class="line">a = 1;</span><br><span class="line">b();</span><br></pre></td></tr></table></figure>
+
+<p>这里没有展开，其实展开也可以牵涉到很多内容的<br />譬如可以提下变量声明，函数声明，形参，实参的优先级顺序，以及es6中let有关的临时死区等<br><a name="section-15-3"></a></p>
+<h3 id="JS的执行阶段"><a href="#JS的执行阶段" class="headerlink" title="JS的执行阶段"></a>JS的执行阶段</h3><p>此阶段的内容中的图片来源：<a target="_blank" rel="noopener" href="http://www.cnblogs.com/TomXu/archive/2012/01/12/2308594.html">深入理解JavaScript系列（10）：JavaScript核心（晋级高手必读篇）</a><br />解释器解释完语法规则后，就开始执行，然后整个执行流程中大致包含以下概念：</p>
+<ul>
+<li>执行上下文，执行堆栈概念（如全局上下文，当前活动上下文）</li>
+<li>VO（变量对象）和AO（活动对象）</li>
+<li>作用域链</li>
+<li>this机制等</li>
+</ul>
+<p>这些概念如果深入讲解的话内容过多，因此这里仅提及部分特性<br /><strong>执行上下文简单解释</strong></p>
+<ul>
+<li>JS有<code>执行上下文</code>）</li>
+<li>浏览器首次载入脚本，它将创建<code>全局执行上下文</code>，并压入执行栈栈顶（不可被弹出）</li>
+<li>然后每进入其它作用域就创建对应的执行上下文并把它压入执行栈的顶部</li>
+<li>一旦对应的上下文执行完毕，就从栈顶弹出，并将上下文控制权交给当前的栈。</li>
+<li>这样依次执行（最终都会回到全局执行上下文）</li>
+</ul>
+<p>譬如，如果程序执行完毕，被弹出执行栈，然后有没有被引用（没有形成闭包），那么这个函数中用到的内存就会被垃圾处理器自动回收</p>
+<p>然后执行上下文与VO，作用域链，this的关系是：<br />每一个执行上下文，都有三个重要属性：</p>
+<ul>
+<li>变量对象(<code>Variable object，VO</code>)</li>
+<li>作用域链(<code>Scope chain</code>)</li>
+<li><code>this</code></li>
+</ul>
+<p><strong>VO与AO</strong><br />VO是执行上下文的属性（抽象概念），但是<strong>只有全局上下文的变量对象允许通过VO的属性名称来间接访问（因为在全局上下文里，全局对象自身就是变量对象）</strong><br />AO（<code>activation object</code>)，当函数被调用者激活，AO就被创建了<br />可以理解为：</p>
+<ul>
+<li>在函数上下文中：<code>VO === AO</code></li>
+<li>在全局上下文中：<code>VO === this === global</code></li>
+</ul>
+<p>总的来说，VO中会存放一些变量信息（如声明的变量，函数，<code>arguments</code>参数等等）<br /><strong>作用域链</strong><br />它是执行上下文中的一个属性，原理和原型链很相似，作用很重要。<br />譬如流程简述：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在函数上下文中，查找一个变量foo</span><br><span class="line">如果函数的VO中找到了，就直接使用</span><br><span class="line">否则去它的父级作用域链中（__parent__）找</span><br><span class="line">如果父级中没找到，继续往上找</span><br><span class="line">直到全局上下文中也没找到就报错</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596829648-61214bf4-f712-43b1-92ac-4a73ebee5594.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1588596829648-61214bf4-f712-43b1-92ac-4a73ebee5594.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br /><strong>this指针</strong><br />这也是JS的核心知识之一，由于内容过多，这里就不展开，仅提及部分<br />注意：<strong>this是执行上下文环境的一个属性，而不是某个变量对象的属性</strong><br />因此:</p>
+<ul>
+<li>this是没有一个类似搜寻变量的过程</li>
+<li>当代码中使用了this，这个 this的值就直接从执行的上下文中获取了，而不会从作用域链中搜寻</li>
+<li>this的值只取决中进入上下文时的情况</li>
+</ul>
+<p>所以经典的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var baz = 200;</span><br><span class="line">var bar = &#123;</span><br><span class="line">    baz: 100,</span><br><span class="line">    foo: function() &#123;</span><br><span class="line">        console.log(this.baz);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">var foo = bar.foo;</span><br><span class="line">// 进入环境：global</span><br><span class="line">foo(); // 200，严格模式中会报错，Cannot read property &#x27;baz&#x27; of undefined</span><br><span class="line">// 进入环境：global bar</span><br><span class="line">bar.foo(); // 100</span><br></pre></td></tr></table></figure>
+
+<p>就要明白了上面this的介绍，上述例子很好理解<br />更多参考：<br /><a target="_blank" rel="noopener" href="http://www.cnblogs.com/TomXu/archive/2012/01/17/2310479.html">深入理解JavaScript系列（13）：This? Yes,this!</a><br><a name="section-15-4"></a></p>
+<h3 id="回收机制"><a href="#回收机制" class="headerlink" title="回收机制"></a>回收机制</h3><p>JS有垃圾处理器，所以无需手动回收内存，而是由垃圾处理器自动处理。<br />一般来说，垃圾处理器有自己的回收策略。<br />譬如对于那些执行完毕的函数，如果没有外部引用（被引用的话会形成闭包），则会回收。（当然一般会把回收动作切割到不同的时间段执行，防止影响性能）<br />常用的两种垃圾回收规则是：</p>
+<ul>
+<li>标记清除</li>
+<li>引用计数</li>
+</ul>
+<p>Javascript引擎基础GC方案是（<code>simple GC</code>）：<code>mark and sweep</code>（标记清除），简单解释如下：</p>
+<ol>
+<li>遍历所有可访问的对象。</li>
+<li>回收已不可访问的对象。</li>
+</ol>
+<p>譬如：（出自javascript高程）</p>
+<blockquote>
+<p>当变量进入环境时，例如，在函数中声明一个变量，就将这个变量标记为“进入环境”。<br>从逻辑上讲，永远不能释放进入环境的变量所占用的内存，因为只要执行流进入相应的环境，就可能会用到它们。<br>而当变量离开环境时，则将其标记为“离开环境”。<br>垃圾回收器在运行的时候会给存储在内存中的所有变量都加上标记（当然，可以使用任何标记方式）。<br>然后，它会去掉环境中的变量以及被环境中的变量引用的变量的标记（闭包，也就是说在环境中的以及相关引用的变量会被去除标记）。<br>而在此之后再被加上标记的变量将被视为准备删除的变量，原因是环境中的变量已经无法访问到这些变量了。<br>最后，垃圾回收器完成内存清除工作，销毁那些带标记的值并回收它们所占用的内存空间。</p>
+</blockquote>
+<p>关于引用计数，简单点理解：<br /><strong>跟踪记录每个值被引用的次数，当一个值被引用时，次数</strong><code>**+1**</code><strong>，减持时</strong><code>**-1**</code><strong>，下次垃圾回收器会回收次数为</strong><code>**0**</code><strong>的值的内存（当然了，容易出循环引用的bug）</strong><br /><strong>GC的缺陷</strong><br />和其他语言一样，javascript的GC策略也无法避免一个问题： <strong>GC时，停止响应其他操作</strong><br />这是为了安全考虑。<br />而Javascript的GC在<code>100ms</code>甚至以上<br />对一般的应用还好，但对于JS游戏，动画对连贯性要求比较高的应用，就麻烦了。<br />这就是引擎需要优化的点： <strong>避免GC造成的长时间停止响应。</strong><br /><strong>GC优化策略</strong><br />这里介绍常用到的：<strong>分代回收（Generation GC）</strong><br />目的是通过区分“临时”与“持久”对象:</p>
+<ul>
+<li>多回收“临时对象”区（<code>young generation</code>）</li>
+<li>少回收“持久对象”区（<code>tenured generation</code>）</li>
+<li>减少每次需遍历的对象，从而减少每次GC的耗时。</li>
+</ul>
+<p>像node v8引擎就是采用的分代回收（和java一样，作者是java虚拟机作者。）<br />更多可以参考：<br /><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/33816534">V8 内存浅析</a><br><a name="section-16"></a></p>
+<h2 id="其它-1"><a href="#其它-1" class="headerlink" title="其它"></a>其它</h2><p><a name="section-16-1"></a></p>
+<h3 id="可以提到跨域"><a href="#可以提到跨域" class="headerlink" title="可以提到跨域"></a>可以提到跨域</h3><p>譬如发出网络请求时，会用AJAX，如果接口跨域，就会遇到跨域问题<br />可以参考：<br /><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000012469713">ajax跨域，这应该是最全的解决方案了</a><br><a name="section-16-2"></a></p>
+<h3 id="可以提到web安全"><a href="#可以提到web安全" class="headerlink" title="可以提到web安全"></a>可以提到web安全</h3><p>譬如浏览器在解析HTML时，有<code>XSSAuditor</code>，可以延伸到web安全相关领域<br />可以参考：<br /><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000012693772">AJAX请求真的不安全么？谈谈Web安全与AJAX的关系。</a><br><a name="section-16-3"></a></p>
+<h3 id="更多-1"><a href="#更多-1" class="headerlink" title="更多"></a>更多</h3><p>如可以提到<code>viewport</code>概念，讲讲物理像素，逻辑像素，CSS像素等概念<br />如熟悉Hybrid开发的话可以提及一下Hybrid相关内容以及优化<br />…<br><a name="section-17"></a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>上述这么多内容，目的是：<strong>梳理出自己的知识体系</strong><br />本文由于是前端向，所以知识梳理时有重点，很多其它的知识点都简述或略去了，重点介绍的模块总结：</p>
+<ul>
+<li>浏览器的进程&#x2F;线程模型、JS运行机制（这一块的详细介绍链接到了另一篇文章）</li>
+<li>http规范（包括报文结构，头部，优化，http2.0，https等）</li>
+<li>http缓存（单独列出来，因为它很重要）</li>
+<li>页面解析流程（HTML解析，构建DOM，生成CSS规则，构建渲染树，渲染流程，复合层的合成，外链的处理等）</li>
+<li>JS引擎解析过程（包括解释阶段，预处理阶段，执行阶段，包括执行上下文、VO、作用域链、this、回收机制等）</li>
+<li>跨域相关，web安全单独链接到了具体文章，其它如CSS盒模型，viewport等仅是提及概念</li>
+</ul>
+<p>关于本文的价值？<br /><strong>本文是个人阶段性梳理知识体系的成果</strong>，然后加以修缮后发布成文章，因此并不确保适用于所有人员<br />但是，个人认为本文还是有一定参考价值的<br><a name="section-18"></a></p>
+<h2 id="写在最后的话"><a href="#写在最后的话" class="headerlink" title="写在最后的话"></a>写在最后的话</h2><p>还是那句话：<strong>知识要形成体系</strong><br />梳理出知识体系后，有了一个骨架，知识点不易遗忘，而且学习新知识时也会更加迅速，更重要的是容易举一反三，可以由一个普通的问题，深挖拓展到底层原理<br />前端知识是无穷无尽的，本文也仅仅是简单梳理出一个承载知识体系的骨架而已，更多的内容仍然需要不断学习，积累<br />另外，本文结合<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000012925872">从浏览器多进程到JS单线程，JS运行机制最全面的一次梳理</a>这篇文章，更佳噢！<br><a name="section-19"></a></p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p><a name="section-19-1"></a></p>
+<h3 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h3><p>初次发布<code>2018.03.12</code>于我个人博客上面<br /><a target="_blank" rel="noopener" href="http://www.dailichun.com/2018/03/12/whenyouenteraurl.html">http://www.dailichun.com/2018/03/12/whenyouenteraurl.html</a><br><a name="section-19-2"></a></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000012925872">https://segmentfault.com/a/1190000012925872</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/">https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/</a></li>
+<li><a target="_blank" rel="noopener" href="https://coolshell.cn/articles/9666.html">https://coolshell.cn/articles/9666.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://igoro.com/archive/what-really-happens-when-you-navigate-to-a-url/">http://igoro.com/archive/what-really-happens-when-you-navigate-to-a-url/</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/dojiangv/article/details/51794535">http://blog.csdn.net/dojiangv/article/details/51794535</a></li>
+<li><a target="_blank" rel="noopener" href="http://bbs.csdn.net/topics/340204423">http://bbs.csdn.net/topics/340204423</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000004246731">https://segmentfault.com/a/1190000004246731</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.bubuko.com/infodetail-1379568.html">http://www.bubuko.com/infodetail-1379568.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://fex.baidu.com/blog/2014/05/what-happen/">http://fex.baidu.com/blog/2014/05/what-happen/</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/winter-cn/archive/2013/05/21/3091127.html">http://www.cnblogs.com/winter-cn/archive/2013/05/21/3091127.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://fanerge.github.io/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-webkit%E5%86%85%E6%A0%B8%E7%A0%94%E7%A9%B6.html">https://fanerge.github.io/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-webkit%E5%86%85%E6%A0%B8%E7%A0%94%E7%A9%B6.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/TomXu/archive/2012/01/12/2308594.html">http://www.cnblogs.com/TomXu/archive/2012/01/12/2308594.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000000489803">https://segmentfault.com/q/1010000000489803</a></li>
+</ul>
+<blockquote>
+<p>作者：撒网要见鱼<br>链接：<a target="_blank" rel="noopener" href="http://www.dailichun.com/2018/03/12/whenyouenteraurl.html">http://www.dailichun.com/2018/03/12/whenyouenteraurl.html</a></p>
+</blockquote>
+<blockquote>
+<p>时间：2018-03-12</p>
+</blockquote>
+<blockquote>
+<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="">
+              浏览器
+            </a>
+          
+            <a href="/tags/%E9%9D%A2%E8%AF%95/" class="">
+              面试
+            </a>
+          
+            <a href="/tags/%E5%8E%9F%E7%90%86/" class="">
+              原理
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>会飞的锅</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2023/06/27/frontend/browser/cong-shu-ru-url-dao-ye-mian-jia-zai/" target="_blank" title="从输入url到页面加载">https://ywzzy.github.io/2023/06/27/frontend/browser/cong-shu-ru-url-dao-ye-mian-jia-zai/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/d6/wallhaven-d6e1pg.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/d6/wallhaven-d6e1pg.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
+    </div>
+    <a href="/2023/04/24/frontend/interview/generator-han-shu-sheng-cheng-qi-ji-qi-shi-xian/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">generator函数生成器及其实现</div>
+      </div>
+      <!-- <div class="content">
+        
+
+调用生成器函数会返回一个生成器对象，每次调用生成器对象的 next 方法会执行函数到下一次 yield 关键字停止执
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://avatars.githubusercontent.com/u/48836340?v=4'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>会飞的锅</h2>
+        
+        
+          <p>热爱生活，热爱code</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">会飞的锅</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/mailto:1738348915@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/YWzzy"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1738348915"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+      <div class="widget testWidget" id="testWidget" style="order: -1;background: #fff">
+        <header>
+          
+            <a style="color: #d63130" target="_blank" rel="noopener" href='http://baidu.com'><i class="fab fa-weibo fa-fw" aria-hidden="true"></i><span class='name'>微博热搜</span></a>
+          
+        </header>
+        <div class="content">
+           <div id="myWeibo">
+<!-- 如果不要滚动，则去掉 vue-seamless-scroll标签就行了，这个插件使用cdn向左向右滚动好像有问题 -->
+<vue-seamless-scroll :data="content" :class-option="classOption" class="warp" > <div class="weibo-container" v-for="(item, index) in content" :key="index"> <div class="left"> <div class="order" :class="{ red: index<=2 }">{{index + 1}}</div> <div class="name"><a :href="item.url" target="_blank">{{item.name}}</a></div> </div> <div class="hot">{{item.hot}}</div> </div> </vue-seamless-scroll> </div>
+<script defer src="/weibo/index.js"></script> <link href="/weibo/index.css" rel="stylesheet"> 
+        </div>
+    </div>
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E8%BF%9B%E8%A1%8C%E4%B8%80%E6%AC%A1%E9%A2%84%E8%AF%84%E7%BA%A7"><span class="toc-text">对知识体系进行一次预评级</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#level1"><span class="toc-text">level1:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level2"><span class="toc-text">level2:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level3"><span class="toc-text">level3:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#level4"><span class="toc-text">level4:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E5%A6%82%E6%AD%A4%E9%87%8D%E8%A6%81%EF%BC%9F"><span class="toc-text">为什么说知识体系如此重要？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%90%91%E7%9F%A5%E8%AF%86%E7%9A%84%E9%87%8D%E7%82%B9"><span class="toc-text">前端向知识的重点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%B3%E7%90%86%E4%B8%BB%E5%B9%B2%E6%B5%81%E7%A8%8B"><span class="toc-text">梳理主干流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8E%A5%E6%94%B6url%E5%88%B0%E5%BC%80%E5%90%AF%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E7%BA%BF%E7%A8%8B"><span class="toc-text">从浏览器接收url到开启网络请求线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-text">多进程的浏览器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8"><span class="toc-text">多线程的浏览器内核</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90URL"><span class="toc-text">解析URL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E9%83%BD%E6%98%AF%E5%8D%95%E7%8B%AC%E7%9A%84%E7%BA%BF%E7%A8%8B"><span class="toc-text">网络请求都是单独的线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A"><span class="toc-text">更多</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E7%BD%91%E7%BB%9C%E7%BA%BF%E7%A8%8B%E5%88%B0%E5%8F%91%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%E7%9A%84http%E8%AF%B7%E6%B1%82"><span class="toc-text">开启网络线程到发出一个完整的http请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS%E6%9F%A5%E8%AF%A2%E5%BE%97%E5%88%B0IP"><span class="toc-text">DNS查询得到IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tcp-x2F-ip%E8%AF%B7%E6%B1%82"><span class="toc-text">tcp&#x2F;ip请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E5%B1%82%E5%9B%A0%E7%89%B9%E7%BD%91%E5%8D%8F%E8%AE%AE%E6%A0%88"><span class="toc-text">五层因特网协议栈</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A5%E6%94%B6%E5%88%B0%E8%AF%B7%E6%B1%82%E5%88%B0%E5%AF%B9%E5%BA%94%E5%90%8E%E5%8F%B0%E6%8E%A5%E6%94%B6%E5%88%B0%E8%AF%B7%E6%B1%82"><span class="toc-text">从服务器接收到请求到对应后台接收到请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-text">负载均衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E5%8F%B0%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-text">后台的处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E5%8F%B0%E5%92%8C%E5%89%8D%E5%8F%B0%E7%9A%84http%E4%BA%A4%E4%BA%92"><span class="toc-text">后台和前台的http交互</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#http%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84"><span class="toc-text">http报文结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie%E4%BB%A5%E5%8F%8A%E4%BC%98%E5%8C%96"><span class="toc-text">cookie以及优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gzip%E5%8E%8B%E7%BC%A9"><span class="toc-text">gzip压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%95%BF%E8%BF%9E%E6%8E%A5%E4%B8%8E%E7%9F%AD%E8%BF%9E%E6%8E%A5"><span class="toc-text">长连接与短连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-2-0"><span class="toc-text">http 2.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#https"><span class="toc-text">https</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E7%8B%AC%E6%8B%8E%E5%87%BA%E6%9D%A5%E7%9A%84%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98%EF%BC%8Chttp%E7%9A%84%E7%BC%93%E5%AD%98"><span class="toc-text">单独拎出来的缓存问题，http的缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E7%BC%93%E5%AD%98%E4%B8%8E%E5%BC%B1%E7%BC%93%E5%AD%98"><span class="toc-text">强缓存与弱缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%A4%B4%E9%83%A8%E7%AE%80%E8%BF%B0"><span class="toc-text">缓存头部简述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E9%83%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">头部的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E9%A1%B5%E9%9D%A2%E6%B5%81%E7%A8%8B"><span class="toc-text">解析页面流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E7%AE%80%E8%BF%B0"><span class="toc-text">流程简述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML%E8%A7%A3%E6%9E%90%EF%BC%8C%E6%9E%84%E5%BB%BADOM"><span class="toc-text">HTML解析，构建DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90CSS%E8%A7%84%E5%88%99"><span class="toc-text">生成CSS规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%B8%B2%E6%9F%93%E6%A0%91"><span class="toc-text">构建渲染树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93"><span class="toc-text">渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%B1%82%E4%B8%8E%E5%A4%8D%E5%90%88%E5%B1%82"><span class="toc-text">简单层与复合层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chrome%E4%B8%AD%E7%9A%84%E8%B0%83%E8%AF%95"><span class="toc-text">Chrome中的调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%A4%96%E9%93%BE%E7%9A%84%E4%B8%8B%E8%BD%BD"><span class="toc-text">资源外链的下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#loaded%E5%92%8Cdomcontentloaded"><span class="toc-text">loaded和domcontentloaded</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96%E6%A0%BC%E5%BC%8F%E6%A8%A1%E5%9E%8B"><span class="toc-text">CSS的可视化格式模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E5%90%AB%E5%9D%97%EF%BC%88Containing-Block%EF%BC%89"><span class="toc-text">包含块（Containing Block）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%A1%86%EF%BC%88Controlling-Box%EF%BC%89"><span class="toc-text">控制框（Controlling Box）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BFC%EF%BC%88Block-Formatting-Context%EF%BC%89"><span class="toc-text">BFC（Block Formatting Context）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IFC%EF%BC%88Inline-Formatting-Context%EF%BC%89"><span class="toc-text">IFC（Inline Formatting Context）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-text">其它</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS%E5%BC%95%E6%93%8E%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B"><span class="toc-text">JS引擎解析过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E7%9A%84%E8%A7%A3%E9%87%8A%E9%98%B6%E6%AE%B5"><span class="toc-text">JS的解释阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E7%9A%84%E9%A2%84%E5%A4%84%E7%90%86%E9%98%B6%E6%AE%B5"><span class="toc-text">JS的预处理阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS%E7%9A%84%E6%89%A7%E8%A1%8C%E9%98%B6%E6%AE%B5"><span class="toc-text">JS的执行阶段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="toc-text">回收机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83-1"><span class="toc-text">其它</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%88%B0%E8%B7%A8%E5%9F%9F"><span class="toc-text">可以提到跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%88%B0web%E5%AE%89%E5%85%A8"><span class="toc-text">可以提到web安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A-1"><span class="toc-text">更多</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E%E7%9A%84%E8%AF%9D"><span class="toc-text">写在最后的话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2"><span class="toc-text">博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">参考资料</span></a></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/06/27/frontend/browser/cong-shu-ru-url-dao-ye-mian-jia-zai/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/3l/wallhaven-3l5v6v.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/3l/wallhaven-3l5v6v.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2023/06/27/frontend/browser/cong-shu-ru-url-dao-ye-mian-jia-zai/">从输入url到页面加载</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/04/24/frontend/interview/generator-han-shu-sheng-cheng-qi-ji-qi-shi-xian/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/d6/wallhaven-d6e1pg.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/d6/wallhaven-d6e1pg.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">04-24</span>
+                
+              </div>
+              <a class="post-title" href="/2023/04/24/frontend/interview/generator-han-shu-sheng-cheng-qi-ji-qi-shi-xian/">generator函数生成器及其实现</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2022/12/12/frontend/browser/cdn/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/kx/wallhaven-kxkjk6.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/kx/wallhaven-kxkjk6.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-12</span>
+                
+              </div>
+              <a class="post-title" href="/2022/12/12/frontend/browser/cdn/">CDN</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2022/12/04/frontend/collection/shu-ju-chu-li/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/yx/wallhaven-yxgyyx.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/yx/wallhaven-yxgyyx.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-04</span>
+                
+              </div>
+              <a class="post-title" href="/2022/12/04/frontend/collection/shu-ju-chu-li/">数据处理库</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2022/11/21/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/1p/wallhaven-1pxyk3.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/1p/wallhaven-1pxyk3.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-21</span>
+                
+              </div>
+              <a class="post-title" href="/2022/11/21/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/">如何去搞前端基建</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgb(0, 4, 6, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="/atom.xml" class="social">
+                  
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="mailto:1730241541@qq.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/yuang01/hexo-theme-bamboo" class="social">
+                  
+                    <i class="fas fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1730241541" class="social">
+                  
+                    <i class="fas fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2023 <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">zhangzhiyong</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a></p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>Total visits：<span id="busuanzi_value_site_pv"></span> times
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>Number of visitors：<span id="busuanzi_value_site_uv"></span> people
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><p><a target="_blank" rel="noopener" href="http://baidu.com/">Hello World</a></p>
+</div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', 'YWzzy/utterance_repo')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

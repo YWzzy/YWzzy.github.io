@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>跨域的产生于解决 | 会飞的锅</title>
+
+  <link rel="icon" type="image/gif" href="https://64.media.tumblr.com/a67a7238cd2833d859a7ea4cfa4fb8a4/0e0717e3c39dfac5-0c/s500x750/94ba555d15a68a38482896903d15494df88ff9b1.gif">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    
+        <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    
+
+    
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="会飞的锅" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
+
+  
+    <div class="preloader_2" id="loader">
+  <div class="loader"></div>
+</div>
+
+  
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+</script>
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="logo">
+      <h3 class="drawer-box-head_title">会飞的锅</h3>
+      <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(4)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(4)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(4)">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-music" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>关于我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://bing.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>bing</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">会飞的锅</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="Home">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="Archives">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="Tags">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="Categories">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-music" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>关于我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://bing.com">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>bing</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://w.wallhaven.cc/full/rr/wallhaven-rrow61.png')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        跨域的产生于解决
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2022-08-05 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-detail-header_category">
+              前端
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/" class="post-detail-header_category">
+              面试
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="post-detail-header_category">
+              浏览器
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-detail-header_category">
+              解决方案
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <meta name="referrer" content="no-referrer" />
+
+<p><a name="FoJXO"></a></p>
+<h2 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h2><p><strong>跨域</strong>，是指浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对JavaScript实施的安全限制。<br /><strong>同源策略</strong>：是一个重要的安全策略，它用于限制一个origin的文档或者它加载的脚本如何能与另一个源的资源进行交互。它能帮助阻隔恶意文档，减少可能被攻击的媒介。所谓的同源，指的是协议、域名、端口相同。浏览器处于安全方面的考虑，只允许本域名下的接口交互，不同源的客户端脚本，在没有明确授权的情况下，不能读写对方的资源。</p>
+<p><a name="ThR4U"></a></p>
+<h3 id="同源策略限制的内容"><a href="#同源策略限制的内容" class="headerlink" title="同源策略限制的内容"></a>同源策略限制的内容</h3><ul>
+<li>Cookie , LocalStorage ,IndexedDB等存储性内容。</li>
+<li>DOM节点</li>
+<li>AJAX请求发送后,非同源会被浏览器拦截。<br />但是有三个标签是允许跨域加载资源:</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">XXX</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">XXX</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">XXX</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="Isv8E"></a></p>
+<h3 id="跨域产生的原因"><a href="#跨域产生的原因" class="headerlink" title="跨域产生的原因"></a>跨域产生的原因</h3><p>浏览器遵从同源策略，限制 <code>ajax</code> 跨域的原因在于 <code>ajax</code> 网络请求是可以携带 <code>cookie</code> 的（通过设置 <code>withCredentials</code> 为 <code>true</code> ），比如用户打开了浏览器，登录了 <code>weibo.com</code> ，然后又打开了<code>baidu.com</code>，这时候百度首页内的 <code>js</code> ，向 <code>weibo.com</code> 用 <code>withCredentials</code> 为 <code>true</code> 的 <code>ajax</code> 方式提交一个 <code>post</code> 请求，是会携带浏览器和 <code>weibo.com</code> 之间的 <code>cookie</code> 的，所以浏览器就默认禁止了 <code>ajax</code> 跨域。<br />只有当 <strong>protocol（协议）、domain（域名）、port（端口）三者一致，</strong>才是同源。</p>
+<p><a name="9QSxe"></a></p>
+<h3 id="反向代理和正向代理"><a href="#反向代理和正向代理" class="headerlink" title="反向代理和正向代理"></a>反向代理和正向代理</h3><p><a name="ubDH4"></a></p>
+<h4 id="反向代理-隐藏真实的服务器端"><a href="#反向代理-隐藏真实的服务器端" class="headerlink" title="反向代理:隐藏真实的服务器端"></a>反向代理:隐藏真实的服务器端</h4><p>类似场景：拨打总机号，然后一层层转接到分机<br />真实场景：访问淘宝—》反向代理服务器—》转发到真实的服务器—》返回资源给反向代理服务器—》返回给客户端<br><a name="iSzu3"></a></p>
+<h4 id="正向代理：隐藏真实的客户端"><a href="#正向代理：隐藏真实的客户端" class="headerlink" title="正向代理：隐藏真实的客户端"></a>正向代理：隐藏真实的客户端</h4><p>类似场景：A问B借钱，B不肯，A拜托B的挚友C帮忙，C问B借到了钱，然后把钱给了A，而B并不知道实际是A借的钱<br />真实场景：客户端请求访问 facebook.com,无法访问到资源，这时借助代理，代理请求facebook的资源，然后发送给客户端，facebook.com并不知道真正的客户端是谁</p>
+<p><a name="eJ8uM"></a></p>
+<h2 id="跨域的解决方案"><a href="#跨域的解决方案" class="headerlink" title="跨域的解决方案"></a>跨域的解决方案</h2><p><a name="PQI7q"></a></p>
+<h3 id="Nginx-反向代理"><a href="#Nginx-反向代理" class="headerlink" title="Nginx 反向代理"></a>Nginx 反向代理</h3><p><a name="7Qz7u"></a></p>
+<h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><p>Nginx 通过反向代理的方式保证当前域，能获取到静态资源和接口，不关心是怎么获取的。<br /><a target="_blank" rel="noopener" href="https://www.yuque.com/snb/efe/yignkl?view=doc_embed">Nginx 从入门到实践</a><br /><a target="_blank" rel="noopener" href="https://www.yuque.com/snb/efe/oz2qqg?view=doc_embed">nginx反向代理和负载均衡策略实战案例</a><br /><img src="https://cdn.nlark.com/yuque/0/2020/svg/164572/1591152392946-59e6393b-18d8-410d-8402-3e3d64406a8b.svg" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/svg/164572/1591152392946-59e6393b-18d8-410d-8402-3e3d64406a8b.svg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br><a name="RwELo"></a></p>
+<h4 id="配置-Nginx"><a href="#配置-Nginx" class="headerlink" title="配置 Nginx"></a>配置 Nginx</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">  <span class="attribute">listen</span>       <span class="number">80</span>;</span><br><span class="line">  <span class="attribute">server_name</span>  www.xxx.com;</span><br><span class="line">  <span class="attribute">index</span> index.html index.htm default.html default.htm;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">#ERROR-PAGE-START  错误页配置，可以注释、删除或修改</span></span><br><span class="line"> <span class="comment">#error_page 404 /www/wwwroot/index.html;</span></span><br><span class="line">  </span><br><span class="line">  <span class="section">location</span> / &#123;</span><br><span class="line">    <span class="comment">#proxy_pass http://abc.xx.com;</span></span><br><span class="line">    <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    <span class="attribute">root</span> /www/wwwroot/proxy.test;</span><br><span class="line">    <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$url</span>/ /index.html = <span class="number">404</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="section">location</span><span class="regexp"> ^~</span> /api/ &#123;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> Connection <span class="variable">$connection_upgrade</span>;</span><br><span class="line">    <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#持久化连接相关配置</span></span><br><span class="line">    <span class="comment">#proxy_connect_timeout 30s;</span></span><br><span class="line">    <span class="comment">#proxy_read_timeout 86400s;</span></span><br><span class="line">    <span class="comment">#proxy_send_timeout 30s;</span></span><br><span class="line">    <span class="comment">#proxy_http_version 1.1;</span></span><br><span class="line">    <span class="comment">#proxy_set_header Upgrade $http_upgrade;</span></span><br><span class="line">    <span class="comment">#proxy_set_header Connection $connection_upgrade;</span></span><br><span class="line">    </span><br><span class="line">    <span class="attribute">proxy_pass</span> http://app-api;</span><br><span class="line">    <span class="attribute">proxy_intercepe_errors</span> <span class="literal">on</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="ZSWIQ"></a></p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>前端代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  axios.<span class="property">defaults</span>.<span class="property">withCredentials</span> = <span class="literal">true</span>;</span><br><span class="line">  getlist.<span class="property">onclick</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    axios.<span class="title function_">get</span>(<span class="string">&quot;/api/list&quot;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  login.<span class="property">onclick</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    axios.<span class="title function_">post</span>(<span class="string">&quot;/api/login&quot;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>后端代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">router.<span class="title function_">get</span>(<span class="string">&quot;/api/list&quot;</span>, <span class="keyword">async</span> ctx =&gt; &#123;</span><br><span class="line">  ctx.<span class="property">body</span> = &#123;</span><br><span class="line">    <span class="attr">data</span>: [&#123; <span class="attr">name</span>: <span class="string">&quot;test&quot;</span> &#125;]</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br><span class="line">router.<span class="title function_">post</span>(<span class="string">&quot;/api/login&quot;</span>, <span class="keyword">async</span> ctx =&gt; &#123;</span><br><span class="line">  ctx.<span class="property">cookies</span>.<span class="title function_">set</span>(<span class="string">&quot;token&quot;</span>, token, &#123;</span><br><span class="line">    <span class="attr">expires</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(+<span class="keyword">new</span> <span class="title class_">Date</span>() + <span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">7</span>)</span><br><span class="line">  &#125;);</span><br><span class="line">  ctx.<span class="property">body</span> = &#123;</span><br><span class="line">    <span class="attr">msg</span>: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">    <span class="attr">code</span>: <span class="number">0</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><a name="uBkSN"></a></p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><p><a name="ONXWn"></a></p>
+<h3 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h3><p>CORS（cross-origin resource sharing），跨源资源共享（一般俗称『跨域请求』），跨域资源共享(CORS) 是一种机制，它使用额外的 HTTP 头来告诉浏览器 让运行在一个 origin (domain) 上的 Web 应用被准许访问来自不同源服务器上的指定的资源。当一个资源从与该资源本身所在的服务器<strong>「不同的域、协议或端口」</strong>请求一个资源时，资源会发起一个<strong>「跨域 HTTP 请求</strong>。 <br />MDN 上的介绍 (<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)%E3%80%82">https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)。</a><br />而在 cors 中会有 <strong>简单请求</strong> 和 <strong>预检请求（preflighted requests）</strong>的概念。<br /><strong>浏览器支持情况：</strong>当你使用 IE&lt;&#x3D;9, Opera&lt;12, or Firefox&lt;3.5 或者更加老的浏览器，这个时候请使用 JSONP 。</p>
+<p><a name="WQy3Q"></a></p>
+<h4 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h4><p>不会触发 CORS <strong>预检请求</strong>。这样的请求为“<strong>简单请求</strong>”，请注意，该术语并不属于 Fetch （其中定义了 CORS）规范。<br />若请求满足所有下述条件，则该请求可视为“<strong>简单请求</strong>”：</p>
+<ul>
+<li><strong>HTTP 方法</strong>只能是 GET、HEAD 或 POST；</li>
+<li><strong>HTTP 头</strong>只能是 Accept&#x2F;Accept-Language&#x2F;Conent-Language&#x2F;Content-Type&#x2F;DPR&#x2F;Downlink&#x2F;Save-Data&#x2F;Viewport-Width&#x2F;Width；</li>
+<li><strong>Content-Type 头</strong>只能是 text&#x2F;plain、multipart&#x2F;form-data 或 application&#x2F;x-www-form-urlencoded。</li>
+<li>请求中的任意 <code>XMLHttpRequestUpload</code> 对象均没有注册任何事件监听器；<code>XMLHttpRequestUpload</code> 对象可以使用 <code>XMLHttpRequest.upload</code> 属性访问。</li>
+<li>请求中没有使用 <code>ReadableStream</code> 对象。</li>
+</ul>
+<p><a name="Zbdfr"></a></p>
+<h4 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h4><p>除以上情况外的。</p>
+<p>看上去很是复杂。那么怎么理解这些限制呢？<br />其实，<strong>简单请求就是普通 HTML Form 在不依赖脚本的情况下可以发出的请求</strong>，比如表单的 method 如果指定为 POST ，可以用 enctype 属性指定用什么方式对表单内容进行编码，合法的值就是前述这三种。<br /><strong>非简单请求就是普通 HTML Form 无法实现的请求。</strong>比如 PUT 方法、需要其他的内容编码方式、自定义头之类的。</p>
+<p>对于服务器来说，第一，许多服务器压根没打算给跨源用。当然你不给 CORS 响应头，浏览器也不会使用响应结果，但是请求本身可能已经造成了后果。所以最好是默认禁止跨源请求。<br />第二，要回答某个请求是否接受跨源，可能涉及额外的计算逻辑。这个逻辑可能很简单，比如一律放行。也可能比较复杂，结果可能取决于哪个资源哪种操作来自哪个 origin。对浏览器来说，就是某个资源是否允许跨源这么简单；对服务器来说，计算成本却可大可小。所以我们希望最好不用每次请求都让服务器劳神计算。<br />CORS-preflight 就是这样一种机制，浏览器先单独请求一次，询问服务器某个资源是否可以跨源，如果不允许的话就不发实际的请求。注意先许可再请求等于默认禁止了跨源请求。如果允许的话，浏览器会记住，然后发实际请求，且之后每次就都直接请求而不用再询问服务器否可以跨源了。于是，服务器想支持跨源，就只要针对 preflight 进行跨源许可计算。本身真正的响应代码则完全不管这个事情。并且因为 preflight 是许可式的，也就是说如果服务器不打算接受跨源，什么事情都不用做。<br />但是这机制只能限于非简单请求。在处理简单请求的时候，如果服务器不打算接受跨源请求，不能依赖 CORS-preflight 机制。因为不通过 CORS，普通表单也能发起简单请求，所以默认禁止跨源是做不到的。<br />既然如此，简单请求发 preflight 就没有意义了，就算发了服务器也省不了后续每次的计算，反而在一开始多了一次 preflight。<br />有些人把简单请求不需要 preflight 理解为『向下兼容』。这也不能说错。但严格来说，并不是『为了向下兼容』而不能发。理论上浏览器可以区别对待表单请求和非表单请求 —— 对传统的跨源表单提交不发 preflight，从而保持兼容，只对非表单跨源请求发 preflight。<br />但这样做并没有什么好处，反而把事情搞复杂了。比如本来你可以直接用脚本发跨源普通请求，尽管（在服务器默认没有跨源处理的情况下）你无法得到响应结果，但是你的需求可能只是发送无需返回，比如打个日志。但现在如果服务器不理解 preflight 你就干不了这个事情了。<br />而且如果真的这样做，服务器就变成了默认允许跨源表单，如果想控制跨源，还是得（跟原本一样）直接在响应处理中执行跨源计算逻辑；另一方面服务器又需要增加对 preflight 请求的响应支持，执行类似的跨源计算逻辑以控制来自非表单的相同跨源请求。服务器通常没有区分表单&#x2F;非表单差异的需求，这样搞纯粹是折腾服务器端工程师。<br />所以简单请求不发 preflight 不是因为不能兼容，而是因为兼容的前提下发 preflight 对绝大多数服务器应用来说没有意义，反而把问题搞复杂了。</p>
+<p><a name="UdvCE"></a></p>
+<h4 id="Node-中的解决方案"><a href="#Node-中的解决方案" class="headerlink" title="Node 中的解决方案"></a>Node 中的解决方案</h4><p><a name="hIxcn"></a></p>
+<h5 id="原生方式"><a href="#原生方式" class="headerlink" title="原生方式"></a>原生方式</h5><p>我们来看下后端部分的解决方案。<code>Node</code> 中 <code>CORS</code> 的解决代码.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  ctx.<span class="title function_">set</span>(<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>, ctx.<span class="property">headers</span>.<span class="property">origin</span>);</span><br><span class="line">  ctx.<span class="title function_">set</span>(<span class="string">&quot;Access-Control-Allow-Credentials&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">  ctx.<span class="title function_">set</span>(<span class="string">&quot;Access-Control-Request-Method&quot;</span>, <span class="string">&quot;PUT,POST,GET,DELETE,OPTIONS&quot;</span>);</span><br><span class="line">  ctx.<span class="title function_">set</span>(</span><br><span class="line">    <span class="string">&quot;Access-Control-Allow-Headers&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Origin, X-Requested-With, Content-Type, Accept, cc&quot;</span></span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">if</span> (ctx.<span class="property">method</span> === <span class="string">&quot;OPTIONS&quot;</span>) &#123;</span><br><span class="line">    ctx.<span class="property">status</span> = <span class="number">204</span>;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">next</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><a name="97yOf"></a></p>
+<h5 id="第三方中间件"><a href="#第三方中间件" class="headerlink" title="第三方中间件"></a>第三方中间件</h5><p>为了方便也可以直接使用中间件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cors = <span class="built_in">require</span>(<span class="string">&quot;koa-cors&quot;</span>);</span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cors</span>());</span><br></pre></td></tr></table></figure>
+
+<p><a name="U4oIw"></a></p>
+<h5 id="关于-cors-的-cookie-问题"><a href="#关于-cors-的-cookie-问题" class="headerlink" title="关于 cors 的 cookie 问题"></a>关于 cors 的 cookie 问题</h5><p>想要传递 <code>cookie</code> 需要满足 3 个条件<br />1.web 请求设置<code>withCredentials</code><br />这里默认情况下在跨域请求，浏览器是不带 cookie 的。但是我们可以通过设置 <code>withCredentials</code> 来进行传递 <code>cookie</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原生 xml 的设置方式</span></span><br><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">xhr.<span class="property">withCredentials</span> = <span class="literal">true</span>;</span><br><span class="line"><span class="comment">// axios 设置方式</span></span><br><span class="line">axios.<span class="property">defaults</span>.<span class="property">withCredentials</span> = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2.<code>Access-Control-Allow-Credentials</code> 为 <code>true</code><br />3.<code>Access-Control-Allow-Origin</code>为非 <code>*</code><br />这里请求的方式，在 <code>chrome</code> 中是能看到返回值的，但是只要不满足以上其一，浏览器会报错，获取不到返回值。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1589176797624-53050b7f-68f9-4d79-b68f-70b5e2a29bfa.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1589176797624-53050b7f-68f9-4d79-b68f-70b5e2a29bfa.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access to XMLHttpRequest at &#x27;http://127.0.0.1:8080/api/corslist&#x27; from origin &#x27;http://127.0.0.1:8000&#x27; has been blocked by CORS policy: The value of the &#x27;Access-Control-Allow-Credentials&#x27; header in the response is &#x27;&#x27; which must be &#x27;true&#x27; when the request&#x27;s credentials mode is &#x27;include&#x27;. The credentials mode of requests initiated by the XMLHttpRequest is controlled by the withCredentials attribute.</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1589176807272-38d18a37-775a-4b63-bc69-d677a0add511.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1589176807272-38d18a37-775a-4b63-bc69-d677a0add511.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access to XMLHttpRequest at &#x27;http://127.0.0.1:8080/api/corslist&#x27; from origin &#x27;http://127.0.0.1:8000&#x27; has been blocked by CORS policy: The value of the &#x27;Access-Control-Allow-Origin&#x27; header in the response must not be the wildcard &#x27;*&#x27; when the request&#x27;s credentials mode is &#x27;include&#x27;. The credentials mode of requests initiated by the XMLHttpRequest is controlled by the withCredentials attribute.</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1589176815558-f9434297-a007-4a69-b00f-920142a35cda.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1589176815558-f9434297-a007-4a69-b00f-920142a35cda.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="image.png"></p>
+<p><a name="ljQmC"></a></p>
+<h4 id="前端示例"><a href="#前端示例" class="headerlink" title="前端示例"></a>前端示例</h4><p>分别演示一下前端部分 <code>简单请求</code> 和 <code>非简单请求</code></p>
+<p><a name="KzKmL"></a></p>
+<h5 id="简单请求-1"><a href="#简单请求-1" class="headerlink" title="简单请求"></a>简单请求</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.bootcss.com/axios/0.19.2/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript">  axios.<span class="title function_">get</span>(<span class="string">&quot;http://127.0.0.1:8080/api/corslist&quot;</span>);</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="jZPPo"></a></p>
+<h5 id="非简单请求-1"><a href="#非简单请求-1" class="headerlink" title="非简单请求"></a>非简单请求</h5><p>这里我们加入了一个非集合内的 <code>header</code> 头 <code>cc</code> 来达到非简单请求的目的。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.bootcss.com/axios/0.19.2/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript">  axios.<span class="title function_">get</span>(<span class="string">&quot;http://127.0.0.1:8080/api/corslist&quot;</span>, &#123; <span class="attr">header</span>: &#123; <span class="attr">cc</span>: <span class="string">&quot;xxx&quot;</span> &#125; &#125;);</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1589176826917-6898e954-0a04-47fe-b3d1-2cc1c5bff30b.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1589176826917-6898e954-0a04-47fe-b3d1-2cc1c5bff30b.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="image.png"></p>
+<p><a name="C1AVM"></a></p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>1、 在新版的 chrome 中，如果你发送了复杂请求，你却看不到 <code>options</code> 请求。可以在这里设置 <code>chrome://flags/#out-of-blink-cors</code> 设置成 <code>disbale</code> ，重启浏览器。对于非简单请求就能看到 <code>options</code> 请求了。<br />2、 一般情况下后端接口是不会开启这个跨域头的，除非是一些与用户无关的不太重要的接口。</p>
+<p><a name="SGGpx"></a></p>
+<h3 id="Node-正向代理"><a href="#Node-正向代理" class="headerlink" title="Node 正向代理"></a>Node 正向代理</h3><p>代理的思路为，利用服务端请求不会跨域的特性，让接口和当前站点同域。<br /><strong>代理前</strong><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1589176895466-02944916-21d4-4954-9611-3e7d1a11814d.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1589176895466-02944916-21d4-4954-9611-3e7d1a11814d.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="image.png"><br />这样，所有的资源以及请求都在一个域名下了。<br><a name="wOcP4"></a></p>
+<h4 id="cli-工具中的代理"><a href="#cli-工具中的代理" class="headerlink" title="cli 工具中的代理"></a>cli 工具中的代理</h4><p><a name="LoJVV"></a></p>
+<h5 id="1-Webpack-4-x"><a href="#1-Webpack-4-x" class="headerlink" title="1) Webpack (4.x)"></a>1) Webpack (4.x)</h5><p>在<code>webpack</code>中可以配置<code>proxy</code>来快速获得接口代理的能力。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;html-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">entry</span>: &#123;</span><br><span class="line">    <span class="attr">index</span>: <span class="string">&quot;./index.js&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;dist&quot;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">port</span>: <span class="number">8000</span>,</span><br><span class="line">    <span class="attr">proxy</span>: &#123;</span><br><span class="line">      <span class="string">&quot;/api&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">target</span>: <span class="string">&quot;http://localhost:8080&quot;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&quot;index.html&quot;</span>,</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&quot;webpack.html&quot;</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>前端接口请求省略。<br />脚手架中都会有关于代理的详细配置，这里省略。这些配置都是有着共同的底层包 <code>http-proxy-middleware</code> ，里面需要用到的各种 <code>websocket</code> ，<code>rewrite</code> 等功能，直接看这个库的配置就可以了。<br><a name="E68in"></a></p>
+<h4 id="使用自己的代理工具"><a href="#使用自己的代理工具" class="headerlink" title="使用自己的代理工具"></a>使用自己的代理工具</h4><p><strong>cors-anywhere</strong><br /><strong>服务端：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Listen on a specific host via the HOST environment variable</span></span><br><span class="line"><span class="keyword">var</span> host = process.<span class="property">env</span>.<span class="property">HOST</span> || <span class="string">&quot;0.0.0.0&quot;</span>;</span><br><span class="line"><span class="comment">// Listen on a specific port via the PORT environment variable</span></span><br><span class="line"><span class="keyword">var</span> port = process.<span class="property">env</span>.<span class="property">PORT</span> || <span class="number">7777</span>;</span><br><span class="line"><span class="keyword">var</span> cors_proxy = <span class="built_in">require</span>(<span class="string">&quot;cors-anywhere&quot;</span>);</span><br><span class="line">cors_proxy</span><br><span class="line">  .<span class="title function_">createServer</span>(&#123;</span><br><span class="line">    <span class="attr">originWhitelist</span>: [], <span class="comment">// Allow all origins</span></span><br><span class="line">    <span class="attr">requireHeader</span>: [<span class="string">&quot;origin&quot;</span>, <span class="string">&quot;x-requested-with&quot;</span>],</span><br><span class="line">    <span class="attr">removeHeaders</span>: [<span class="string">&quot;cookie&quot;</span>, <span class="string">&quot;cookie2&quot;</span>]</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">listen</span>(port, host, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Running CORS Anywhere on &quot;</span> + host + <span class="string">&quot;:&quot;</span> + port);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>前端代码：</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.bootcss.com/axios/0.19.2/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript">  axios.<span class="property">defaults</span>.<span class="property">withCredentials</span> = <span class="literal">true</span>;</span></span><br><span class="line"><span class="language-javascript">  getlist.<span class="property">onclick</span> = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    axios</span></span><br><span class="line"><span class="language-javascript">      .<span class="title function_">get</span>(<span class="string">&quot;http://127.0.0.1:7777/http://127.0.0.1:8080/api/corslist&quot;</span>)</span></span><br><span class="line"><span class="language-javascript">      .<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>);</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript">  &#125;;</span></span><br><span class="line"><span class="language-javascript">  login.<span class="property">onclick</span> = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    axios.<span class="title function_">post</span>(<span class="string">&quot;http://127.0.0.1:7777/http://127.0.0.1:8080/api/login&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">  &#125;;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>效果展示：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1589184916263-4d343acc-4804-45b0-9e9d-296d430341f6.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1589184916263-4d343acc-4804-45b0-9e9d-296d430341f6.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="image.png"><br><a name="c-charles"></a></p>
+<h4 id="charles"><a href="#charles" class="headerlink" title="charles"></a>charles</h4><p><a name="lWcvV"></a></p>
+<h5 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h5><p>这是一个测试、开发的神器。<a target="_blank" rel="noopener" href="https://juejin.im/post/5b8350b96fb9a019d9246c4c">介绍与使用</a><br />利用 charles 进行跨域，本质就是请求的拦截与代理。<br />在 <code>tools/map remote</code> 中设置代理<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1589185019849-762cb0a5-1010-4925-8a33-216d57bc0ac1.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1589185019849-762cb0a5-1010-4925-8a33-216d57bc0ac1.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br><a name="kzdel"></a></p>
+<h5 id="-1"><a href="#-1" class="headerlink" title=""></a></h5><p><a name="rdguw"></a></p>
+<h5 id="前端代码"><a href="#前端代码" class="headerlink" title="前端代码"></a>前端代码</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;getlist&quot;</span>&gt;</span>获取列表<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;login&quot;</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.bootcss.com/axios/0.19.2/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  axios.<span class="property">defaults</span>.<span class="property">withCredentials</span> = <span class="literal">true</span>;</span></span><br><span class="line"><span class="language-javascript">  getlist.<span class="property">onclick</span> = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    axios.<span class="title function_">get</span>(<span class="string">&quot;/api/corslist&quot;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;);</span></span><br><span class="line"><span class="language-javascript">  &#125;;</span></span><br><span class="line"><span class="language-javascript">  login.<span class="property">onclick</span> = <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    axios.<span class="title function_">post</span>(<span class="string">&quot;/api/login&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">  &#125;;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="pdvPw"></a></p>
+<h5 id="后端代码"><a href="#后端代码" class="headerlink" title="后端代码"></a>后端代码</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">router.get(&quot;/api/corslist&quot;, async ctx =&gt; &#123;</span><br><span class="line">  ctx.body = &#123;</span><br><span class="line">    data: [&#123; name: &quot;秋风的笔记&quot; &#125;]</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br><span class="line">router.post(&quot;/api/login&quot;, async ctx =&gt; &#123;</span><br><span class="line">  ctx.cookies.set(&quot;token&quot;, token, &#123;</span><br><span class="line">    expires: new Date(+new Date() + 1000 * 60 * 60 * 24 * 7)</span><br><span class="line">  &#125;);</span><br><span class="line">  ctx.body = &#123;</span><br><span class="line">    msg: &quot;成功&quot;,</span><br><span class="line">    code: 0</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><a name="sNw7N"></a></p>
+<h5 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h5><p>访问 <a target="_blank" rel="noopener" href="http://localhost:8000/charles">http://localhost:8000/charles</a><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1589185019811-c9644b6e-6fab-4115-bc8a-f46fca8dddc0.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1589185019811-c9644b6e-6fab-4115-bc8a-f46fca8dddc0.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p><a name="KYmI3"></a></p>
+<h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><p><code>JSONP</code> 主要就是利用了 <code>script</code> 标签没有跨域限制的这个特性来完成的。<br><a name="mLEgV"></a></p>
+<h4 id="使用限制"><a href="#使用限制" class="headerlink" title="使用限制"></a>使用限制</h4><p>仅支持 GET 方法，如果想使用完整的 REST 接口，请使用 CORS 或者其他代理方式。<br><a name="redp6"></a></p>
+<h4 id="流程解析"><a href="#流程解析" class="headerlink" title="流程解析"></a>流程解析</h4><p>1.前端定义解析函数（例如 jsonpCallback&#x3D;function(){….}）<br />2.通过 params 形式包装请求参数，并且声明执行函数(例如 cb&#x3D;jsonpCallback)<br />3.后端获取前端声明的执行函数（jsonpCallback），并以带上参数并调用执行函数的方式传递给前端。<br><a name="oM4cK"></a></p>
+<h4 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h4><p>后端实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Koa</span> = <span class="built_in">require</span>(<span class="string">&quot;koa&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> <span class="title class_">Koa</span>();</span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (ctx.<span class="property">path</span> === <span class="string">&quot;/api/jsonp&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; cb, msg &#125; = ctx.<span class="property">query</span>;</span><br><span class="line">    ctx.<span class="property">body</span> = <span class="string">`<span class="subst">$&#123;cb&#125;</span>(<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(&#123; msg &#125;)&#125;</span>)`</span>;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">8080</span>);</span><br></pre></td></tr></table></figure>
+
+<p>普通 js 示例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">jsonpCallback</span> = <span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  <span class="attr">src</span>=<span class="string">&quot;http://localhost:8080/api/jsonp?msg=hello&amp;cb=jsonpCallback&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>JQuery Ajax 示例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdn.bootcss.com/jquery/3.5.0/jquery.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  $.<span class="title function_">ajax</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">url</span>: <span class="string">&quot;http://localhost:8080/api/jsonp&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">dataType</span>: <span class="string">&quot;jsonp&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">type</span>: <span class="string">&quot;get&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">data</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">msg</span>: <span class="string">&quot;hello&quot;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">jsonp</span>: <span class="string">&quot;cb&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">success</span>: <span class="keyword">function</span>(<span class="params">data</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><a name="aRz5M"></a></p>
+<h4 id="原理解析"><a href="#原理解析" class="headerlink" title="原理解析"></a>原理解析</h4><p>其实这就是 js 的魔法<br />我们先来看最简单的 js 调用。嗯，很自然的调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">jsonpCallback</span> = <span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  jsonpCallback(&#123; a: 1 &#125;);</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>我们稍稍改造一下，外链的形式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">jsonpCallback</span> = <span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://localhost:8080/api/a.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="comment">// http://localhost:8080/api/a.js jsonpCallback(&#123;a:1&#125;);</span></span><br></pre></td></tr></table></figure>
+
+<p>我们再改造一下，我们把这个外链的 js 就当做是一个动态的接口，因为本身资源和接口一样，是一个请求，也包含各种参数，也可以动态化返回。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">jsonpCallback</span> = <span class="keyword">function</span>(<span class="params">res</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://localhost:8080/api/a.js?a=123&amp;cb=sonpCallback&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="comment">// http://localhost:8080/api/a.js jsonpCallback(&#123;a:123&#125;);</span></span><br></pre></td></tr></table></figure>
+
+<p>你仔细品，细细品，是不是 jsonp 有的优势就是 script 加载 js 的优势，加载的方式只不过换了一种说法。这也告诉我们一个道理，很多东西并没有那么神奇，是在你所学的知识范围内。就好比，桃树和柳树，如果你把他们当成很大跨度的东西去记忆理解，那么世上这么多树，你真的要累死了，你把他们都当成是树，哦吼？你会突然发现，你对世界上所有的树都有所了解，他们都会长叶子，光合作用….当然也有个例，但是你只需要去记忆这些细微的差别，抓住主干。。。嗯，反正就这么个道理。</p>
+<p><a name="zCLt6"></a></p>
+<h3 id="Websocket"><a href="#Websocket" class="headerlink" title="Websocket"></a>Websocket</h3><p><a target="_blank" rel="noopener" href="http://dev.w3.org/html5/websockets/">WebSocket</a> 规范定义了一种 API，可在网络浏览器和服务器之间建立“套接字”连接。简单地说：客户端和服务器之间存在持久的连接，而且双方都可以随时开始发送数据。详细教程可以看 <a target="_blank" rel="noopener" href="https://www.html5rocks.com/zh/tutorials/websockets/basics/">https://www.html5rocks.com/zh/tutorials/websockets/basics/</a><br />这种方式本质没有使用了 HTTP 的响应头, 因此也没有跨域的限制，没有什么过多的解释直接上代码吧。<br />前端部分</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">let</span> socket = <span class="keyword">new</span> <span class="title class_">WebSocket</span>(<span class="string">&quot;ws://localhost:8080&quot;</span>);</span><br><span class="line">  socket.<span class="property">onopen</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    socket.<span class="title function_">send</span>(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  socket.<span class="property">onmessage</span> = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>后端部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const WebSocket = require(&quot;ws&quot;);</span><br><span class="line">const server = new WebSocket.Server(&#123; port: 8080 &#125;);</span><br><span class="line">server.on(&quot;connection&quot;, function(socket) &#123;</span><br><span class="line">  socket.on(&quot;message&quot;, function(data) &#123;</span><br><span class="line">    socket.send(data);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><a name="8tAHi"></a></p>
+<h3 id="window-postMessage"><a href="#window-postMessage" class="headerlink" title="window.postMessage"></a>window.postMessage</h3><p><strong>window.postMessage()</strong> 方法可以安全地实现跨源通信。通常，对于两个不同页面的脚本，只有当执行它们的页面位于具有相同的协议（通常为 https），端口号（443 为 https 的默认值），以及主机 (两个页面的模数 <code>[Document.domain](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/domain)</code>设置为相同的值) 时，这两个脚本才能相互通信。<strong>window.postMessage()</strong> 方法提供了一种受控机制来规避此限制，只要正确的使用，这种方法就很安全。<br><a name="K6jTM"></a></p>
+<h4 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h4><p>1.页面和其打开的新窗口的数据传递<br />2.多窗口之间消息传递<br />3.页面与嵌套的 iframe 消息传递<br><a name="tw30z"></a></p>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p>详细用法看 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage">https://developer.mozilla.org/zh-CN/docs/Web/API/Window/postMessage</a><br /><code>otherWindow.postMessage(message, targetOrigin, [transfer]);</code></p>
+<ul>
+<li>otherWindow: 其他窗口的一个引用，比如 iframe 的 contentWindow 属性、执行<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/DOM/window.open">window.open</a>返回的窗口对象、或者是命名过或数值索引的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/DOM/window.frames">window.frames</a>。</li>
+<li>message: 将要发送到其他 window 的数据。</li>
+<li>targetOrigin: 通过窗口的 origin 属性来指定哪些窗口能接收到消息事件.</li>
+<li>transfer(可选) : 是一串和 message 同时传递的 <code>[Transferable](https://developer.mozilla.org/zh-CN/docs/Web/API/Transferable)</code> 对象. 这些对象的所有权将被转移给消息的接收方，而发送一方将不再保有所有权<br><a name="HkkTp"></a></li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span></span></span><br><span class="line"><span class="tag">  <span class="attr">src</span>=<span class="string">&quot;http://localhost:8080&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">id</span>=<span class="string">&quot;iframe&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">onload</span>=<span class="string">&quot;load()&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">load</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    iframe.<span class="property">contentWindow</span>.<span class="title function_">postMessage</span>(<span class="string">&quot;秋风的笔记&quot;</span>, <span class="string">&quot;http://localhost:8080&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">onmessage</span> = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>another.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">window</span>.<span class="property">onmessage</span> = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>); <span class="comment">// 秋风的笔记</span></span></span><br><span class="line"><span class="language-javascript">    e.<span class="property">source</span>.<span class="title function_">postMessage</span>(e.<span class="property">data</span>, e.<span class="property">origin</span>);</span></span><br><span class="line"><span class="language-javascript">  &#125;;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="irBuk"></a></p>
+<h3 id="document-domain-Iframe"><a href="#document-domain-Iframe" class="headerlink" title="document.domain + Iframe"></a>document.domain + Iframe</h3><p>从第 7 种到第 9 种方式，我觉得别人的写的已经很好了，为了完整性，我就拿别人的了。如有雷同….（不对，就是雷同….）不要说不出来。<br /><strong>该方式只能用于二级域名相同的情况下，比如</strong><code>**a.test.com**</code><strong>和</strong><code>**b.test.com**</code><strong>适用于该方式</strong>。 只需要给页面添加 <code>document.domain =&#39;test.com&#39;</code> 表示二级域名都相同就可以实现跨域。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">www.   baidu.  com     .</span><br><span class="line">三级域  二级域   顶级域   根域</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// a.test.com</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  helloa</span><br><span class="line">  <span class="tag">&lt;<span class="name">iframe</span></span></span><br><span class="line"><span class="tag">    <span class="attr">src</span>=<span class="string">&quot;http://b.test.com/b.html&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">onload</span>=<span class="string">&quot;load()&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">id</span>=<span class="string">&quot;frame&quot;</span></span></span><br><span class="line"><span class="tag">  &gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="property">domain</span> = <span class="string">&quot;test.com&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">load</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(frame.<span class="property">contentWindow</span>.<span class="property">a</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// b.test.com</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  hellob</span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="property">domain</span> = <span class="string">&quot;test.com&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> a = <span class="number">100</span>;</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="za19h"></a></p>
+<h3 id="window-location-hash-Iframe"><a href="#window-location-hash-Iframe" class="headerlink" title="window.location.hash + Iframe"></a>window.location.hash + Iframe</h3><p><a name="C4kD7"></a></p>
+<h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><p>原理就是通过 url 带 hash ，通过一个非跨域的中间页面来传递数据。<br><a name="U752Q"></a></p>
+<h4 id="实现流程"><a href="#实现流程" class="headerlink" title="实现流程"></a>实现流程</h4><p>一开始 a.html 给 c.html 传一个 hash 值，然后 c.html 收到 hash 值后，再把 hash 值传递给 b.html，最后 b.html 将结果放到 a.html 的 hash 值中。 同样的，a.html 和 b.htm l 是同域的，都是 <code>http://localhost:8000</code>，而 c.html 是<code>http://localhost:8080</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// a.html</span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;http://localhost:8080/hash/c.html#name1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(location.<span class="property">hash</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">window</span>.<span class="property">onhashchange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(location.<span class="property">hash</span>);</span></span><br><span class="line"><span class="language-javascript">  &#125;;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// b.html</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">window</span>.<span class="property">parent</span>.<span class="property">parent</span>.<span class="property">location</span>.<span class="property">hash</span> = location.<span class="property">hash</span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// c.html</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">console</span>.<span class="title function_">log</span>(location.<span class="property">hash</span>);</span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> iframe = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;iframe&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">  iframe.<span class="property">src</span> = <span class="string">&quot;http://localhost:8000/hash/b.html#name2&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(iframe);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="uIldR"></a></p>
+<h3 id="window-name-Iframe"><a href="#window-name-Iframe" class="headerlink" title="window.name + Iframe"></a>window.name + Iframe</h3><p>window 对象的 name 属性是一个很特别的属性，当该 window 的 location 变化，然后重新加载，它的 name 属性可以依然保持不变。<br />其中 a.html 和 b.html 是同域的，都是<code>http://localhost:8000</code>，而 c.html 是<code>http://localhost:8080</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// a.html</span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span></span></span><br><span class="line"><span class="tag">  <span class="attr">src</span>=<span class="string">&quot;http://localhost:8080/name/c.html&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">onload</span>=<span class="string">&quot;load()&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">id</span>=<span class="string">&quot;iframe&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">let</span> first = <span class="literal">true</span>;</span></span><br><span class="line"><span class="language-javascript">  <span class="comment">// onload事件会触发2次，第1次加载跨域页，并留存数据于window.name</span></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">function</span> <span class="title function_">load</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">if</span> (first) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 第1次onload(跨域页)成功后，切换到同域代理页面</span></span></span><br><span class="line"><span class="language-javascript">      iframe.<span class="property">src</span> = <span class="string">&quot;http://localhost:8000/name/b.html&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">      first = <span class="literal">false</span>;</span></span><br><span class="line"><span class="language-javascript">    &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 第2次onload(同域b.html页)成功后，读取同域window.name中数据</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(iframe.<span class="property">contentWindow</span>.<span class="property">name</span>);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>b.html 为中间代理页，与 a.html 同域，内容为空。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// b.html</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// c.html</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="variable language_">window</span>.<span class="property">name</span> = <span class="string">&quot;秋风的笔记&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>通过 iframe 的 src 属性由外域转向本地域，跨域数据即由 iframe 的 window.name 从外域传递到本地域。这个就巧妙地绕过了浏览器的跨域访问限制，但同时它又是安全操作。</p>
+<p><a name="U3CTa"></a></p>
+<h3 id="浏览器开启跨域（解决提出问题的人）"><a href="#浏览器开启跨域（解决提出问题的人）" class="headerlink" title="浏览器开启跨域（解决提出问题的人）"></a>浏览器开启跨域（解决提出问题的人）</h3><p><strong>非特殊必要情况，不建议使用。</strong><br><a name="windows"></a></p>
+<h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">找到你安装的目录</span><br><span class="line">.\Google\Chrome\Application\chrome.exe --disable-web-security --user-data-dir=xxxx</span><br></pre></td></tr></table></figure>
+
+<p><a name="mac"></a></p>
+<h4 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h4><p><code>~/Downloads/chrome-data</code> 这个目录可以自定义.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary  --disable-web-security --user-data-dir=~/Downloads/chrome-data</span><br></pre></td></tr></table></figure>
+
+<p><a name="pQ3iJ"></a></p>
+<h4 id="-2"><a href="#-2" class="headerlink" title=""></a></h4><p><a name="l0jyI"></a></p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p> <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzA5NzkwNDk3MQ==&mid=2650590313&idx=1&sn=e3fb1d08745d09afa06ffa7db44910d5&scene=21#wechat_redirect">CORS 为什么要区分『简单请求』和『预检请求』？</a></p>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="">
+              浏览器
+            </a>
+          
+            <a href="/tags/%E9%9D%A2%E8%AF%95/" class="">
+              面试
+            </a>
+          
+            <a href="/tags/%E5%8E%9F%E7%90%86/" class="">
+              原理
+            </a>
+          
+            <a href="/tags/%E8%B7%A8%E5%9F%9F/" class="">
+              跨域
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>会飞的锅</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2022/08/05/solution/kua-yu-de-chan-sheng-yu-jie-jue/" target="_blank" title="跨域的产生于解决">https://ywzzy.github.io/2022/08/05/solution/kua-yu-de-chan-sheng-yu-jie-jue/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/yx/wallhaven-yxg9rg.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/yx/wallhaven-yxg9rg.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+    </div>
+    <a href="/2022/08/16/frontend/collection/tuo-zhuai-pai-xu-ku/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">拖拽排序库</div>
+      </div>
+      
+      <!-- <div class="content">
+        
+
+
+1. React Beautiful Dndreact-beautiful-dnd 是一款美观且简单易用的 Rea
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/vq/wallhaven-vqy7rl.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/vq/wallhaven-vqy7rl.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
+    </div>
+    <a href="/2022/07/30/compatible/html-compatible/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">html常见兼容问题</div>
+      </div>
+      <!-- <div class="content">
+        
+
+
+前言iphoneX的“刘海”为相机和其他组件留出了空间，同时在底部也留有可操作区域。其实对于 web 前端来说，刘
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" class="lazyload placeholder" data-srcset="https://pica.zhimg.com/80/v2-61f99f8dcf899f54cad2a1aa28b21e44_1440w.webp" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" class="lazyload placeholder" data-srcset="https://pic2.zhimg.com/80/v2-29e78b52051ce542adf6d786d61fbd19_1440w.webp" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://avatars.githubusercontent.com/u/48836340?v=4'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>会飞的锅</h2>
+        
+        
+          <p>热爱生活，热爱code</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">会飞的锅</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/mailto:1738348915@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/YWzzy"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1738348915"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+      <div class="widget testWidget" id="testWidget" style="order: -1;background: #fff">
+        <header>
+          
+            <a style="color: #d63130" target="_blank" rel="noopener" href='http://baidu.com'><i class="fab fa-weibo fa-fw" aria-hidden="true"></i><span class='name'>微博热搜</span></a>
+          
+        </header>
+        <div class="content">
+           <div id="myWeibo">
+<!-- 如果不要滚动，则去掉 vue-seamless-scroll标签就行了，这个插件使用cdn向左向右滚动好像有问题 -->
+<vue-seamless-scroll :data="content" :class-option="classOption" class="warp" > <div class="weibo-container" v-for="(item, index) in content" :key="index"> <div class="left"> <div class="order" :class="{ red: index<=2 }">{{index + 1}}</div> <div class="name"><a :href="item.url" target="_blank">{{item.name}}</a></div> </div> <div class="hot">{{item.hot}}</div> </div> </vue-seamless-scroll> </div>
+<script defer src="/weibo/index.js"></script> <link href="/weibo/index.css" rel="stylesheet"> 
+        </div>
+    </div>
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B7%A8%E5%9F%9F"><span class="toc-text">什么是跨域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5%E9%99%90%E5%88%B6%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">同源策略限制的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%A8%E5%9F%9F%E4%BA%A7%E7%94%9F%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">跨域产生的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8C%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-text">反向代理和正向代理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86-%E9%9A%90%E8%97%8F%E7%9C%9F%E5%AE%9E%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF"><span class="toc-text">反向代理:隐藏真实的服务器端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%9A%E9%9A%90%E8%97%8F%E7%9C%9F%E5%AE%9E%E7%9A%84%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">正向代理：隐藏真实的客户端</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%A8%E5%9F%9F%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">跨域的解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-text">Nginx 反向代理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-Nginx"><span class="toc-text">配置 Nginx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-text">实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CORS"><span class="toc-text">CORS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82"><span class="toc-text">简单请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82"><span class="toc-text">非简单请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Node-%E4%B8%AD%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-text">Node 中的解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E6%96%B9%E5%BC%8F"><span class="toc-text">原生方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-text">第三方中间件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-cors-%E7%9A%84-cookie-%E9%97%AE%E9%A2%98"><span class="toc-text">关于 cors 的 cookie 问题</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E7%A4%BA%E4%BE%8B"><span class="toc-text">前端示例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82-1"><span class="toc-text">简单请求</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%9D%9E%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82-1"><span class="toc-text">非简单请求</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86"><span class="toc-text">Node 正向代理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cli-%E5%B7%A5%E5%85%B7%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%90%86"><span class="toc-text">cli 工具中的代理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-Webpack-4-x"><span class="toc-text">1) Webpack (4.x)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-text">使用自己的代理工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#charles"><span class="toc-text">charles</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#-1"><span class="toc-text"></span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="toc-text">前端代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="toc-text">后端代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%88%E6%9E%9C"><span class="toc-text">效果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSONP"><span class="toc-text">JSONP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%99%90%E5%88%B6"><span class="toc-text">使用限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90"><span class="toc-text">流程解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-text">使用示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90"><span class="toc-text">原理解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Websocket"><span class="toc-text">Websocket</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#window-postMessage"><span class="toc-text">window.postMessage</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E9%80%94"><span class="toc-text">用途</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%B3%95"><span class="toc-text">用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#document-domain-Iframe"><span class="toc-text">document.domain + Iframe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#window-location-hash-Iframe"><span class="toc-text">window.location.hash + Iframe</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-text">实现原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%B5%81%E7%A8%8B"><span class="toc-text">实现流程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#window-name-Iframe"><span class="toc-text">window.name + Iframe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%90%AF%E8%B7%A8%E5%9F%9F%EF%BC%88%E8%A7%A3%E5%86%B3%E6%8F%90%E5%87%BA%E9%97%AE%E9%A2%98%E7%9A%84%E4%BA%BA%EF%BC%89"><span class="toc-text">浏览器开启跨域（解决提出问题的人）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows"><span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mac"><span class="toc-text">Mac</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#-2"><span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">参考文章</span></a></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/06/27/frontend/browser/cong-shu-ru-url-dao-ye-mian-jia-zai/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/3l/wallhaven-3l5v6v.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/3l/wallhaven-3l5v6v.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2023/06/27/frontend/browser/cong-shu-ru-url-dao-ye-mian-jia-zai/">从输入url到页面加载</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/04/24/frontend/interview/generator-han-shu-sheng-cheng-qi-ji-qi-shi-xian/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/d6/wallhaven-d6e1pg.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/d6/wallhaven-d6e1pg.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">04-24</span>
+                
+              </div>
+              <a class="post-title" href="/2023/04/24/frontend/interview/generator-han-shu-sheng-cheng-qi-ji-qi-shi-xian/">generator函数生成器及其实现</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2022/12/12/frontend/browser/cdn/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/kx/wallhaven-kxkjk6.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/kx/wallhaven-kxkjk6.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-12</span>
+                
+              </div>
+              <a class="post-title" href="/2022/12/12/frontend/browser/cdn/">CDN</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2022/12/04/frontend/collection/shu-ju-chu-li/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/yx/wallhaven-yxgyyx.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/yx/wallhaven-yxgyyx.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-04</span>
+                
+              </div>
+              <a class="post-title" href="/2022/12/04/frontend/collection/shu-ju-chu-li/">数据处理库</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2022/11/21/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/1p/wallhaven-1pxyk3.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/1p/wallhaven-1pxyk3.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-21</span>
+                
+              </div>
+              <a class="post-title" href="/2022/11/21/frontend/infrastructure/ru-he-qu-gao-qian-duan-ji-jian/">如何去搞前端基建</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgb(0, 4, 6, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="/atom.xml" class="social">
+                  
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="mailto:1730241541@qq.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/yuang01/hexo-theme-bamboo" class="social">
+                  
+                    <i class="fas fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1730241541" class="social">
+                  
+                    <i class="fas fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2023 <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">zhangzhiyong</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a></p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>Total visits：<span id="busuanzi_value_site_pv"></span> times
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>Number of visitors：<span id="busuanzi_value_site_uv"></span> people
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><p><a target="_blank" rel="noopener" href="http://baidu.com/">Hello World</a></p>
+</div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: #42b983;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8062553743"
+  fixed='true'
+  autoplay='false'
+  theme='#42b983'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', 'YWzzy/utterance_repo')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>
