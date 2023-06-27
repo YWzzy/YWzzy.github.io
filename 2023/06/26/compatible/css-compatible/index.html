@@ -200,7 +200,7 @@
     <div class="drawer-box-head bg-color">
       <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
       <h3 class="drawer-box-head_title">zzy</h3>
-      <h5 class="drawer-box-head_desc">千磨万击还坚劲，任尔东西南北风</h5>
+      <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
     </div>
     
     <div class="drawer-box-content">
@@ -213,7 +213,7 @@
                   
                     <i class="fas fa-home" aria-hidden="true"></i>
                   
-                  <span class="name">首页</span>
+                  <span class="name">Home</span>
                 </a>
               
             </li>
@@ -224,7 +224,7 @@
                   
                     <i class="fas fa-archive" aria-hidden="true"></i>
                   
-                  <span class="name">归档</span>
+                  <span class="name">Archives</span>
                 </a>
               
             </li>
@@ -235,7 +235,7 @@
                   
                     <i class="fas fa-tags" aria-hidden="true"></i>
                   
-                  <span class="name">标签</span>
+                  <span class="name">Tags</span>
                 </a>
               
             </li>
@@ -246,43 +246,23 @@
                   
                     <i class="fas fa-bookmark" aria-hidden="true"></i>
                   
-                  <span class="name">分类</span>
+                  <span class="name">Categories</span>
                 </a>
               
             </li>
           
             <li class="drawer-box-content_item" style="position: relative;">
               
-                <a href="/friends" class="drawer-menu-item-link">
-                  
-                  <span class="name">友情链接</span>
-                </a>
-              
-            </li>
-          
-            <li class="drawer-box-content_item" style="position: relative;">
-              
-                <a href="/about" class="drawer-menu-item-link">
-                  
-                    <i class="fas" aria-hidden="true"></i>
-                  
-                  <span class="name">关于</span>
-                </a>
-              
-            </li>
-          
-            <li class="drawer-box-content_item" style="position: relative;">
-              
-                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(6)">
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(4)">
                   <span>
                     
                       <i class="fas fa-link"></i>
                     
                     <span class="name">更多</span>
                   </span>
-                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(6)}" aria-hidden="true"></i>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(4)}" aria-hidden="true"></i>
                 </a>
-                <ul class="drawer-sub-menu" v-if="isOpen(6)">
+                <ul class="drawer-sub-menu" v-if="isOpen(4)">
                   
                   <li>
                     <a href="/gallery">
@@ -294,7 +274,7 @@
                   </li>
                   
                   <li>
-                    <a href="/huoban">
+                    <a href="/friends">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
@@ -303,7 +283,7 @@
                   </li>
                   
                   <li>
-                    <a href="/me">
+                    <a href="/about">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
@@ -312,11 +292,11 @@
                   </li>
                   
                   <li>
-                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                    <a target="_blank" rel="noopener" href="http://bing.com">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
-                      <span>百度</span>
+                      <span>bing</span>
                     </a>
                   </li>
                   
@@ -398,64 +378,44 @@
           
             <li class="menu-item" style="position: relative;">
               
-                <a href="/" class="menu-item-link" title="首页">
+                <a href="/" class="menu-item-link" title="Home">
                   
                     <i class="fas fa-home" aria-hidden="true"></i>
                   
-                  <span class="name">首页</span>
+                  <span class="name">Home</span>
                 </a>
               
             </li>
           
             <li class="menu-item" style="position: relative;">
               
-                <a href="/archives" class="menu-item-link" title="归档">
+                <a href="/archives" class="menu-item-link" title="Archives">
                   
                     <i class="fas fa-archive" aria-hidden="true"></i>
                   
-                  <span class="name">归档</span>
+                  <span class="name">Archives</span>
                 </a>
               
             </li>
           
             <li class="menu-item" style="position: relative;">
               
-                <a href="/tags" class="menu-item-link" title="标签">
+                <a href="/tags" class="menu-item-link" title="Tags">
                   
                     <i class="fas fa-tags" aria-hidden="true"></i>
                   
-                  <span class="name">标签</span>
+                  <span class="name">Tags</span>
                 </a>
               
             </li>
           
             <li class="menu-item" style="position: relative;">
               
-                <a href="/categories" class="menu-item-link" title="分类">
+                <a href="/categories" class="menu-item-link" title="Categories">
                   
                     <i class="fas fa-bookmark" aria-hidden="true"></i>
                   
-                  <span class="name">分类</span>
-                </a>
-              
-            </li>
-          
-            <li class="menu-item" style="position: relative;">
-              
-                <a href="/friends" class="menu-item-link" title="友情链接">
-                  
-                  <span class="name">友情链接</span>
-                </a>
-              
-            </li>
-          
-            <li class="menu-item" style="position: relative;">
-              
-                <a href="/about" class="menu-item-link" title="关于">
-                  
-                    <i class="fas" aria-hidden="true"></i>
-                  
-                  <span class="name">关于</span>
+                  <span class="name">Categories</span>
                 </a>
               
             </li>
@@ -481,7 +441,7 @@
                   </li>
                   
                   <li>
-                    <a href="/huoban">
+                    <a href="/friends">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
@@ -490,7 +450,7 @@
                   </li>
                   
                   <li>
-                    <a href="/me">
+                    <a href="/about">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
@@ -499,11 +459,11 @@
                   </li>
                   
                   <li>
-                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                    <a target="_blank" rel="noopener" href="http://bing.com">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
-                      <span>百度</span>
+                      <span>bing</span>
                     </a>
                   </li>
                   
@@ -523,13 +483,13 @@
         <h2>
           <span>
             <i class="fas fa-search" aria-hidden="true"></i>
-            <span class="title">本地搜索</span>
+            <span class="title">Search</span>
           </span>
           <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
         </h2>
         <form class="site-search-form">
           <input type="text"
-            placeholder="请输入关键字"
+            placeholder="Please enter keywords"
             id="local-search-input" 
             @click="getSearchFile()"
             class="st-search-input"
@@ -627,10 +587,23 @@
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> 发表于：2023-06-26 |
+          <i class="fas fa-calendar"></i> Published in：2023-06-26 |
         </span>
       
 
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-detail-header_category">
+              前端
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/css/" class="post-detail-header_category">
+              css
+            </a>
+          
+        </span>
       
 
       
@@ -651,7 +624,9 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h4 id="移动端的-1px"><a href="#移动端的-1px" class="headerlink" title="移动端的 1px"></a>移动端的 1px</h4><p>问题描述：1px 的边框。在高清屏下，移动端的 1px 会很粗。<br />产生原因：首先先要了解一个概念：<strong>DPR(devicePixelRatio) 设备像素比</strong>，它是默认缩放为 100%的情况下，设备像素和 CSS 逻辑像素的比值。目前主流的屏幕 DPR&#x3D;2 或者 3。CSS中设置的px是逻辑像素,这就造成1px变成物理像素的2px或者3px，比如2 倍屏，设备的物理像素要实现 1 像素，所以 CSS 逻辑像素只能是 0.5px。<br />下面介绍最常用的方法<br />通过CSS :before 选择器或CSS :after 选择器设置height:1px，同时缩放0.5倍实现。</p>
+        <meta name="referrer" content="no-referrer" />
+
+<h4 id="移动端的-1px"><a href="#移动端的-1px" class="headerlink" title="移动端的 1px"></a>移动端的 1px</h4><p>问题描述：1px 的边框。在高清屏下，移动端的 1px 会很粗。<br />产生原因：首先先要了解一个概念：<strong>DPR(devicePixelRatio) 设备像素比</strong>，它是默认缩放为 100%的情况下，设备像素和 CSS 逻辑像素的比值。目前主流的屏幕 DPR&#x3D;2 或者 3。CSS中设置的px是逻辑像素,这就造成1px变成物理像素的2px或者3px，比如2 倍屏，设备的物理像素要实现 1 像素，所以 CSS 逻辑像素只能是 0.5px。<br />下面介绍最常用的方法<br />通过CSS :before 选择器或CSS :after 选择器设置height:1px，同时缩放0.5倍实现。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 底边框 */</span></span><br><span class="line"><span class="selector-class">.b-border</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.b-border</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#d9d9d9</span>;</span><br><span class="line">  -webkit-<span class="attribute">transform</span>: <span class="built_in">scaleY</span>(<span class="number">0.5</span>);</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scaleY</span>(<span class="number">0.5</span>);</span><br><span class="line">  -webkit-<span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 四条边 */</span></span><br><span class="line"><span class="selector-class">.setBorderAll</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  &amp;<span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0.5</span>);</span><br><span class="line">    <span class="attribute">transform-origin</span>: left top;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#e5e5e5</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><a name="KO4Ca"></a></p>
@@ -696,12 +671,12 @@
         
         <div class="tags">
           
-            <a href="/tags/css/" class="">
-              css
-            </a>
-          
             <a href="/tags/compatible/" class="">
               compatible
+            </a>
+          
+            <a href="/tags/css/" class="">
+              css
             </a>
           
         </div>
@@ -711,16 +686,16 @@
         <div class="copyright">
   <ul class="post-copyright">
     <li class="post-copyright-author">
-    <strong>作者:  </strong>zzy</a>
+    <strong>author:  </strong>zzy</a>
     </li>
     <li class="post-copyright-link">
-    <strong>文章链接:  </strong>
+    <strong>link:  </strong>
     <a href="/2023/06/26/compatible/css-compatible/" target="_blank" title="css常见兼容问题">https://ywzzy.github.io/2023/06/26/compatible/css-compatible/</a>
     </li>
     <li class="post-copyright-license">
-      <strong>版权声明:   </strong>
-      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
-      许可协议。转载请注明出处!
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
     </li>
   </ul>
 <div>
@@ -741,13 +716,15 @@
     </div>
     <a href="/2023/06/26/compatible/js-compatible/" class="post-nav-link">
       <div class="title">
-        <i class="fas fa-angle-left"></i> 上一篇:
+        <i class="fas fa-angle-left"></i> Prev:
         <div class="title-text">js常见兼容问题</div>
       </div>
       
       <!-- <div class="content">
         
-iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，觉得for...in遍历比for循环简洁，后期
+
+
+iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，觉得for...in遍历比for循环简洁，
       </div> -->
     </a>
   </div>
@@ -897,7 +874,7 @@ iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，�
           <h2>zzy</h2>
         
         
-          <p>我是副标题</p>
+          <p>热爱生活，热爱code</p>
 
         
         
@@ -928,7 +905,7 @@ iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，�
           
         
           
-            <a href="https://github.com/yuang01/hexo-theme-bamboo"
+            <a href="https://github.com/YWzzy"
               class="social fab fa-github flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
@@ -953,6 +930,22 @@ iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，�
     
   
   
+  
+    
+      <div class="widget testWidget" id="testWidget" style="order: -1;background: #fff">
+        <header>
+          
+            <a style="color: #d63130" target="_blank" rel="noopener" href='http://baidu.com'><i class="fab fa-weibo fa-fw" aria-hidden="true"></i><span class='name'>微博热搜</span></a>
+          
+        </header>
+        <div class="content">
+           <div id="myWeibo">
+<!-- 如果不要滚动，则去掉 vue-seamless-scroll标签就行了，这个插件使用cdn向左向右滚动好像有问题 -->
+<vue-seamless-scroll :data="content" :class-option="classOption" class="warp" > <div class="weibo-container" v-for="(item, index) in content" :key="index"> <div class="left"> <div class="order" :class="{ red: index<=2 }">{{index + 1}}</div> <div class="name"><a :href="item.url" target="_blank">{{item.name}}</a></div> </div> <div class="hot">{{item.hot}}</div> </div> </vue-seamless-scroll> </div>
+<script defer src="/weibo/index.js"></script> <link href="/weibo/index.css" rel="stylesheet"> 
+        </div>
+    </div>
+    
   
 
   <div class="layout_sticky">    
@@ -1436,6 +1429,38 @@ iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，�
         
           <div class="link">
             
+              
+                <a href="/atom.xml" class="social">
+                  
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="mailto:1730241541@qq.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/yuang01/hexo-theme-bamboo" class="social">
+                  
+                    <i class="fas fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1730241541" class="social">
+                  
+                    <i class="fas fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
           </div>
         
       
@@ -1451,11 +1476,11 @@ iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，�
             <!-- 不蒜子统计 -->
             <!-- 不蒜子统计 -->
 <span id="busuanzi_container_site_pv">
-      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+      <i class="fas fa-eye" aria-hidden="true"></i>Total visits：<span id="busuanzi_value_site_pv"></span> times
 </span>
 <span class="post-meta-divider">|</span>
 <span id="busuanzi_container_site_uv" style='display:none'>
-      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+      <i class="fas fa-users" aria-hidden="true"></i>Number of visitors：<span id="busuanzi_value_site_uv"></span> people
 </span>
 
           
@@ -1463,6 +1488,11 @@ iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，�
       
         
           <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><p><a target="_blank" rel="noopener" href="http://baidu.com/">Hello World</a></p>
+</div>
             
           </div>
         
@@ -1906,7 +1936,7 @@ iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，�
       },
       mounted() {
         const that = this;
-        var copy = '复制';
+        var copy = 'copy';
         /* code */
         var initCopyCode = function () {
           var copyHtml = '';

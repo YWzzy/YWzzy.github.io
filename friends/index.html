@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>友情链接 | zzy</title>
+  <title>friends | zzy</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -200,7 +200,7 @@
     <div class="drawer-box-head bg-color">
       <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
       <h3 class="drawer-box-head_title">zzy</h3>
-      <h5 class="drawer-box-head_desc">千磨万击还坚劲，任尔东西南北风</h5>
+      <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
     </div>
     
     <div class="drawer-box-content">
@@ -213,7 +213,7 @@
                   
                     <i class="fas fa-home" aria-hidden="true"></i>
                   
-                  <span class="name">首页</span>
+                  <span class="name">Home</span>
                 </a>
               
             </li>
@@ -224,7 +224,7 @@
                   
                     <i class="fas fa-archive" aria-hidden="true"></i>
                   
-                  <span class="name">归档</span>
+                  <span class="name">Archives</span>
                 </a>
               
             </li>
@@ -235,7 +235,7 @@
                   
                     <i class="fas fa-tags" aria-hidden="true"></i>
                   
-                  <span class="name">标签</span>
+                  <span class="name">Tags</span>
                 </a>
               
             </li>
@@ -246,43 +246,23 @@
                   
                     <i class="fas fa-bookmark" aria-hidden="true"></i>
                   
-                  <span class="name">分类</span>
+                  <span class="name">Categories</span>
                 </a>
               
             </li>
           
             <li class="drawer-box-content_item" style="position: relative;">
               
-                <a href="/friends" class="drawer-menu-item-link">
-                  
-                  <span class="name">友情链接</span>
-                </a>
-              
-            </li>
-          
-            <li class="drawer-box-content_item" style="position: relative;">
-              
-                <a href="/about" class="drawer-menu-item-link">
-                  
-                    <i class="fas" aria-hidden="true"></i>
-                  
-                  <span class="name">关于</span>
-                </a>
-              
-            </li>
-          
-            <li class="drawer-box-content_item" style="position: relative;">
-              
-                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(6)">
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(4)">
                   <span>
                     
                       <i class="fas fa-link"></i>
                     
                     <span class="name">更多</span>
                   </span>
-                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(6)}" aria-hidden="true"></i>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(4)}" aria-hidden="true"></i>
                 </a>
-                <ul class="drawer-sub-menu" v-if="isOpen(6)">
+                <ul class="drawer-sub-menu" v-if="isOpen(4)">
                   
                   <li>
                     <a href="/gallery">
@@ -294,7 +274,7 @@
                   </li>
                   
                   <li>
-                    <a href="/huoban">
+                    <a href="/friends">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
@@ -303,7 +283,7 @@
                   </li>
                   
                   <li>
-                    <a href="/me">
+                    <a href="/about">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
@@ -312,11 +292,11 @@
                   </li>
                   
                   <li>
-                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                    <a target="_blank" rel="noopener" href="http://bing.com">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
-                      <span>百度</span>
+                      <span>bing</span>
                     </a>
                   </li>
                   
@@ -398,64 +378,44 @@
           
             <li class="menu-item" style="position: relative;">
               
-                <a href="/" class="menu-item-link" title="首页">
+                <a href="/" class="menu-item-link" title="Home">
                   
                     <i class="fas fa-home" aria-hidden="true"></i>
                   
-                  <span class="name">首页</span>
+                  <span class="name">Home</span>
                 </a>
               
             </li>
           
             <li class="menu-item" style="position: relative;">
               
-                <a href="/archives" class="menu-item-link" title="归档">
+                <a href="/archives" class="menu-item-link" title="Archives">
                   
                     <i class="fas fa-archive" aria-hidden="true"></i>
                   
-                  <span class="name">归档</span>
+                  <span class="name">Archives</span>
                 </a>
               
             </li>
           
             <li class="menu-item" style="position: relative;">
               
-                <a href="/tags" class="menu-item-link" title="标签">
+                <a href="/tags" class="menu-item-link" title="Tags">
                   
                     <i class="fas fa-tags" aria-hidden="true"></i>
                   
-                  <span class="name">标签</span>
+                  <span class="name">Tags</span>
                 </a>
               
             </li>
           
             <li class="menu-item" style="position: relative;">
               
-                <a href="/categories" class="menu-item-link" title="分类">
+                <a href="/categories" class="menu-item-link" title="Categories">
                   
                     <i class="fas fa-bookmark" aria-hidden="true"></i>
                   
-                  <span class="name">分类</span>
-                </a>
-              
-            </li>
-          
-            <li class="menu-item" style="position: relative;">
-              
-                <a href="/friends" class="menu-item-link" title="友情链接">
-                  
-                  <span class="name">友情链接</span>
-                </a>
-              
-            </li>
-          
-            <li class="menu-item" style="position: relative;">
-              
-                <a href="/about" class="menu-item-link" title="关于">
-                  
-                    <i class="fas" aria-hidden="true"></i>
-                  
-                  <span class="name">关于</span>
+                  <span class="name">Categories</span>
                 </a>
               
             </li>
@@ -481,7 +441,7 @@
                   </li>
                   
                   <li>
-                    <a href="/huoban">
+                    <a href="/friends">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
@@ -490,7 +450,7 @@
                   </li>
                   
                   <li>
-                    <a href="/me">
+                    <a href="/about">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
@@ -499,11 +459,11 @@
                   </li>
                   
                   <li>
-                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                    <a target="_blank" rel="noopener" href="http://bing.com">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
-                      <span>百度</span>
+                      <span>bing</span>
                     </a>
                   </li>
                   
@@ -523,13 +483,13 @@
         <h2>
           <span>
             <i class="fas fa-search" aria-hidden="true"></i>
-            <span class="title">本地搜索</span>
+            <span class="title">Search</span>
           </span>
           <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
         </h2>
         <form class="site-search-form">
           <input type="text"
-            placeholder="请输入关键字"
+            placeholder="Please enter keywords"
             id="local-search-input" 
             @click="getSearchFile()"
             class="st-search-input"
@@ -651,16 +611,16 @@
         <div class="copyright">
   <ul class="post-copyright">
     <li class="post-copyright-author">
-    <strong>作者:  </strong>zzy</a>
+    <strong>author:  </strong>zzy</a>
     </li>
     <li class="post-copyright-link">
-    <strong>文章链接:  </strong>
+    <strong>link:  </strong>
     <a href="/friends/index.html" target="_blank" title="friends">https://ywzzy.github.io/friends/index.html</a>
     </li>
     <li class="post-copyright-license">
-      <strong>版权声明:   </strong>
-      本网站所有文章除特别声明外,均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
-      许可协议。转载请注明出处!
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
     </li>
   </ul>
 <div>
@@ -818,7 +778,7 @@
           <h2>zzy</h2>
         
         
-          <p>我是副标题</p>
+          <p>热爱生活，热爱code</p>
 
         
         
@@ -849,7 +809,7 @@
           
         
           
-            <a href="https://github.com/yuang01/hexo-theme-bamboo"
+            <a href="https://github.com/YWzzy"
               class="social fab fa-github flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
@@ -875,11 +835,63 @@
   
   
   
+    
+      <div class="widget testWidget" id="testWidget" style="order: -1;background: #fff">
+        <header>
+          
+            <a style="color: #d63130" target="_blank" rel="noopener" href='http://baidu.com'><i class="fab fa-weibo fa-fw" aria-hidden="true"></i><span class='name'>微博热搜</span></a>
+          
+        </header>
+        <div class="content">
+           <div id="myWeibo">
+<!-- 如果不要滚动，则去掉 vue-seamless-scroll标签就行了，这个插件使用cdn向左向右滚动好像有问题 -->
+<vue-seamless-scroll :data="content" :class-option="classOption" class="warp" > <div class="weibo-container" v-for="(item, index) in content" :key="index"> <div class="left"> <div class="order" :class="{ red: index<=2 }">{{index + 1}}</div> <div class="name"><a :href="item.url" target="_blank">{{item.name}}</a></div> </div> <div class="hot">{{item.hot}}</div> </div> </vue-seamless-scroll> </div>
+<script defer src="/weibo/index.js"></script> <link href="/weibo/index.css" rel="stylesheet"> 
+        </div>
+    </div>
+    
+  
 
   <div class="layout_sticky">    
     
       
         
+    <section class="widget side_category">
+      
+  <header>
+    
+      <a style="color: " href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+    
+  </header>
+
+
+      <div class='content'>
+        <ul class="entry navigation">
+          
+            <li><a class="flat-box"
+              title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
+              id="categoriesE5898DE7ABAF"
+              ><div class='name'>前端</div><div class='badge'>(5)</div></a></li>
+          
+            <li><a class="flat-box child"
+              title="/categories/%E5%89%8D%E7%AB%AF/css/" href="/categories/%E5%89%8D%E7%AB%AF/css/"
+              id="categoriesE5898DE7ABAFcss"
+              ><div class='name'>css</div><div class='badge'>(1)</div></a></li>
+          
+            <li><a class="flat-box child"
+              title="/categories/%E5%89%8D%E7%AB%AF/html/" href="/categories/%E5%89%8D%E7%AB%AF/html/"
+              id="categoriesE5898DE7ABAFhtml"
+              ><div class='name'>html</div><div class='badge'>(1)</div></a></li>
+          
+            <li><a class="flat-box child"
+              title="/categories/%E5%89%8D%E7%AB%AF/js/" href="/categories/%E5%89%8D%E7%AB%AF/js/"
+              id="categoriesE5898DE7ABAFjs"
+              ><div class='name'>js</div><div class='badge'>(1)</div></a></li>
+          
+        </ul>
+      </div>
+    </section>
+  
   
       
       
@@ -1028,7 +1040,7 @@
       
   <section class="widget side_archives">
     
-    <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">5</span></a></li></ul></div>
+    <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">June 2023</span><span class="card-archive-list-count">5</span></a></li></ul></div>
   </section>
 
       <section class="widget side_webinfo">
@@ -1055,7 +1067,7 @@
           <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
         </div>
         <script>
-          var BirthDay = new Date(new Date('2020/01/01'));
+          var BirthDay = new Date(new Date('2019/03/21'));
           var today = new Date();
           var timeold = (today.getTime() - BirthDay.getTime());
           var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
@@ -1088,8 +1100,8 @@
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Mon Jun 26 2023 16:50:43 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2023-06-26 日</div>
+            <div id="last-update" style="display: none;">Tue Jun 27 2023 10:26:01 GMT+0800 (中国标准时间)</div>
+            <div id="last-update-show">2023-06-27 日</div>
           
         </div>
         
@@ -1139,7 +1151,7 @@
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2023-06-26 日';
+            document.getElementById('last-update-show').innerHTML = '2023-06-27 日';
           }
         </script>
         
@@ -1148,6 +1160,32 @@
   </div>
 </section>
       
+  
+    <div class="widget historyToday" id="historyToday" style="order: -1;background: #fff">
+      <header>
+        
+          <a style="color: #d63130" target="_blank" rel="noopener" href='http://baidu.com'><i class="fas fa-calendar-week fa-fw" aria-hidden="true"></i><span class='name'>历史上的今天</span></a>
+        
+      </header>
+      <div class="content">
+         <div id="myHistorySwiper" @mouseenter="stopAutoPlay()" @mouseleave="startAutoPlay()"> <swiper class="myhistoryswiper" ref="myhistoryswiper" style="height:80px;" :options="swiperOption"> <swiper-slide v-for="(item, index) in content" :key="index"> {{item}} </swiper-slide> </swiper> </div> <script defer src="/historyToday/index.js"></script> 
+      </div>
+  </div>
+  
+    <div class="widget testLove" id="testLove" style="order: -1;background: #fff">
+      <header>
+        
+          <a style="color: #d63130" target="_blank" rel="noopener" href='http://baidu.com'><i class="fas fa-heart fa-fw" aria-hidden="true"></i><span class='name'>恋爱墙</span></a>
+        
+      </header>
+      <div class="content">
+        
+<div style="text-align: center;"> <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" style="width: 50px;height: 50px;vertical-align: -20px;border-radius: 50%;margin-right: 5px;margin-bottom: 5px;-webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);border: 2px solid #fff;" /> <svg viewbox="0 0 1024 1024" style="margin-left: 5px;margin-right: 5px;" version="1.0" width="15" height="15" class="my-face"> <path d="M863.597631 513.574282l-271.33965-140.213484L729.783667 81.926656c3.583731-7.87141 7.167462-15.742819 7.167462-25.214109C736.887134 25.226908 708.345275 0.012799 672.635953 0.012799a63.611229 63.611229 0 0 0-39.293053 12.607055c-1.791866 1.59988-3.519736 3.19976-5.311602 3.19976L147.87531 418.925381a55.547834 55.547834 0 0 0-19.646527 47.356448c1.791866 17.278704 14.27093 33.021523 32.125591 42.492813l271.33965 141.749369L292.504463 945.221908c-12.479064 25.214109-1.791866 53.563983 23.166262 69.306802 10.751194 6.335525 23.230258 9.47129 35.709322 9.47129 16.062795 0 32.125591-4.735645 44.604655-15.742819l480.091993-403.297753a55.547834 55.547834 0 0 0 19.646526-47.228458 61.243407 61.243407 0 0 0-32.12559-44.156688z" fill="#515151" /> </svg> <img src="https://a-oss.zmki.cn/20190601/img_9878.jpg" class="lazyload placeholder" data-srcset="https://a-oss.zmki.cn/20190601/img_9878.jpg" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" style="width: 50px;height: 50px;vertical-align: -20px;border-radius: 50%;margin-left: 5px;margin-bottom: 5px;-webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);border: 2px solid #fff;" /><br /> <span id="htmer_time"></span> </div>
+<script defer data-pjax src="/love/index.js"></script> 
+      </div>
+  </div>
+  
+
     
   </div>
 </aside>
@@ -1478,6 +1516,38 @@
         
           <div class="link">
             
+              
+                <a href="/atom.xml" class="social">
+                  
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="mailto:1730241541@qq.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/yuang01/hexo-theme-bamboo" class="social">
+                  
+                    <i class="fas fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1730241541" class="social">
+                  
+                    <i class="fas fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
           </div>
         
       
@@ -1493,11 +1563,11 @@
             <!-- 不蒜子统计 -->
             <!-- 不蒜子统计 -->
 <span id="busuanzi_container_site_pv">
-      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+      <i class="fas fa-eye" aria-hidden="true"></i>Total visits：<span id="busuanzi_value_site_pv"></span> times
 </span>
 <span class="post-meta-divider">|</span>
 <span id="busuanzi_container_site_uv" style='display:none'>
-      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+      <i class="fas fa-users" aria-hidden="true"></i>Number of visitors：<span id="busuanzi_value_site_uv"></span> people
 </span>
 
           
@@ -1505,6 +1575,11 @@
       
         
           <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><p><a target="_blank" rel="noopener" href="http://baidu.com/">Hello World</a></p>
+</div>
             
           </div>
         
@@ -1948,7 +2023,7 @@
       },
       mounted() {
         const that = this;
-        var copy = '复制';
+        var copy = 'copy';
         /* code */
         var initCopyCode = function () {
           var copyHtml = '';

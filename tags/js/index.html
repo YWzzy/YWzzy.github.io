@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>标签: js | zzy</title>
+  <title>Tag: js | zzy</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -200,7 +200,7 @@
     <div class="drawer-box-head bg-color">
       <img class="drawer-box-head_logo lazyload placeholder" src="/medias/logo.png" class="lazyload placeholder" data-srcset="/medias/logo.png" srcset="https://pic1.zhimg.com/v2-cd38920285d125be80b3eb504052c550_b.webp" alt="logo">
       <h3 class="drawer-box-head_title">zzy</h3>
-      <h5 class="drawer-box-head_desc">千磨万击还坚劲，任尔东西南北风</h5>
+      <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
     </div>
     
     <div class="drawer-box-content">
@@ -213,7 +213,7 @@
                   
                     <i class="fas fa-home" aria-hidden="true"></i>
                   
-                  <span class="name">首页</span>
+                  <span class="name">Home</span>
                 </a>
               
             </li>
@@ -224,7 +224,7 @@
                   
                     <i class="fas fa-archive" aria-hidden="true"></i>
                   
-                  <span class="name">归档</span>
+                  <span class="name">Archives</span>
                 </a>
               
             </li>
@@ -235,7 +235,7 @@
                   
                     <i class="fas fa-tags" aria-hidden="true"></i>
                   
-                  <span class="name">标签</span>
+                  <span class="name">Tags</span>
                 </a>
               
             </li>
@@ -246,43 +246,23 @@
                   
                     <i class="fas fa-bookmark" aria-hidden="true"></i>
                   
-                  <span class="name">分类</span>
+                  <span class="name">Categories</span>
                 </a>
               
             </li>
           
             <li class="drawer-box-content_item" style="position: relative;">
               
-                <a href="/friends" class="drawer-menu-item-link">
-                  
-                  <span class="name">友情链接</span>
-                </a>
-              
-            </li>
-          
-            <li class="drawer-box-content_item" style="position: relative;">
-              
-                <a href="/about" class="drawer-menu-item-link">
-                  
-                    <i class="fas" aria-hidden="true"></i>
-                  
-                  <span class="name">关于</span>
-                </a>
-              
-            </li>
-          
-            <li class="drawer-box-content_item" style="position: relative;">
-              
-                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(6)">
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(4)">
                   <span>
                     
                       <i class="fas fa-link"></i>
                     
                     <span class="name">更多</span>
                   </span>
-                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(6)}" aria-hidden="true"></i>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(4)}" aria-hidden="true"></i>
                 </a>
-                <ul class="drawer-sub-menu" v-if="isOpen(6)">
+                <ul class="drawer-sub-menu" v-if="isOpen(4)">
                   
                   <li>
                     <a href="/gallery">
@@ -294,7 +274,7 @@
                   </li>
                   
                   <li>
-                    <a href="/huoban">
+                    <a href="/friends">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
@@ -303,7 +283,7 @@
                   </li>
                   
                   <li>
-                    <a href="/me">
+                    <a href="/about">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
@@ -312,11 +292,11 @@
                   </li>
                   
                   <li>
-                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                    <a target="_blank" rel="noopener" href="http://bing.com">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
-                      <span>百度</span>
+                      <span>bing</span>
                     </a>
                   </li>
                   
@@ -398,64 +378,44 @@
           
             <li class="menu-item" style="position: relative;">
               
-                <a href="/" class="menu-item-link" title="首页">
+                <a href="/" class="menu-item-link" title="Home">
                   
                     <i class="fas fa-home" aria-hidden="true"></i>
                   
-                  <span class="name">首页</span>
+                  <span class="name">Home</span>
                 </a>
               
             </li>
           
             <li class="menu-item" style="position: relative;">
               
-                <a href="/archives" class="menu-item-link" title="归档">
+                <a href="/archives" class="menu-item-link" title="Archives">
                   
                     <i class="fas fa-archive" aria-hidden="true"></i>
                   
-                  <span class="name">归档</span>
+                  <span class="name">Archives</span>
                 </a>
               
             </li>
           
             <li class="menu-item" style="position: relative;">
               
-                <a href="/tags" class="menu-item-link" title="标签">
+                <a href="/tags" class="menu-item-link" title="Tags">
                   
                     <i class="fas fa-tags" aria-hidden="true"></i>
                   
-                  <span class="name">标签</span>
+                  <span class="name">Tags</span>
                 </a>
               
             </li>
           
             <li class="menu-item" style="position: relative;">
               
-                <a href="/categories" class="menu-item-link" title="分类">
+                <a href="/categories" class="menu-item-link" title="Categories">
                   
                     <i class="fas fa-bookmark" aria-hidden="true"></i>
                   
-                  <span class="name">分类</span>
-                </a>
-              
-            </li>
-          
-            <li class="menu-item" style="position: relative;">
-              
-                <a href="/friends" class="menu-item-link" title="友情链接">
-                  
-                  <span class="name">友情链接</span>
-                </a>
-              
-            </li>
-          
-            <li class="menu-item" style="position: relative;">
-              
-                <a href="/about" class="menu-item-link" title="关于">
-                  
-                    <i class="fas" aria-hidden="true"></i>
-                  
-                  <span class="name">关于</span>
+                  <span class="name">Categories</span>
                 </a>
               
             </li>
@@ -481,7 +441,7 @@
                   </li>
                   
                   <li>
-                    <a href="/huoban">
+                    <a href="/friends">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
@@ -490,7 +450,7 @@
                   </li>
                   
                   <li>
-                    <a href="/me">
+                    <a href="/about">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
@@ -499,11 +459,11 @@
                   </li>
                   
                   <li>
-                    <a target="_blank" rel="noopener" href="http://baidu.com">
+                    <a target="_blank" rel="noopener" href="http://bing.com">
                       
                       <i class="fas fa-film" style="margin-top: -20px;"></i>
                       
-                      <span>百度</span>
+                      <span>bing</span>
                     </a>
                   </li>
                   
@@ -523,13 +483,13 @@
         <h2>
           <span>
             <i class="fas fa-search" aria-hidden="true"></i>
-            <span class="title">本地搜索</span>
+            <span class="title">Search</span>
           </span>
           <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
         </h2>
         <form class="site-search-form">
           <input type="text"
-            placeholder="请输入关键字"
+            placeholder="Please enter keywords"
             id="local-search-input" 
             @click="getSearchFile()"
             class="st-search-input"
@@ -636,7 +596,7 @@
 
 <div class="tag">
   <div class="tag-name">
-    <div class="name" style="background-color: #A3E4D7;">js 分类</div>
+    <div class="name" style="background-color: #A3E4D7;">js category</div>
   </div>
   <!-- 每一篇文章卡片 -->
   <!-- hash算法 -->
@@ -665,6 +625,11 @@
             <div class="post-categories">
               <!-- 文章详情页的分类 -->
 
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+</div>
+
 
             </div>
           </div>
@@ -675,9 +640,12 @@
             </a>
           </div>
           <div class="post-content">
-            https://juejin.cn/post/7144881028661723167#heading-22
+            
 
-前言大家好，我是yinhan，话说当下，前端职位在近十年的磨砺之下，已是百花齐放万家争鸣，前端也不再是以前那个单纯的切图仔；要问为
+
+https://juejin.cn/post/7144881028661723167#heading-22
+
+前言大家好，我是yinhan，话说当下，前端职位在近十年的磨砺之下，已是百花齐放万家争鸣，前端也不再是以前那个单纯的切图仔；
           </div>
         </div>
         <div class="post-more">
@@ -716,6 +684,11 @@
             <div class="post-categories">
               <!-- 文章详情页的分类 -->
 
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+</div>
+
 
             </div>
           </div>
@@ -726,7 +699,9 @@
             </a>
           </div>
           <div class="post-content">
-            要问程序员最心虚的面试题，如果要投票选择，手撕代码一定是前三位的。其中在前端领域，以手写 bind、手写深拷贝、手写 EventHub（发布-订阅）、手写 Promise最为常见，我将他们称为四大手写。本文的目的就是要破除大家对四大手写的恐
+            
+
+要问程序员最心虚的面试题，如果要投票选择，手撕代码一定是前三位的。其中在前端领域，以手写 bind、手写深拷贝、手写 EventHub（发布-订阅）、手写 Promise最为常见，我将他们称为四大手写。本文的目的就是要破除大家对四大手写
           </div>
         </div>
         <div class="post-more">
@@ -765,6 +740,11 @@
             <div class="post-categories">
               <!-- 文章详情页的分类 -->
 
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a> <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/js/">js</a>
+</div>
+
 
             </div>
           </div>
@@ -776,9 +756,11 @@
           </div>
           <div class="post-content">
             
+
+
 iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，觉得for...in遍历比for循环简洁，后期在用户反馈后发现iPhone7不支持用for…in遍历数组解决方式： 改为for循环遍历
 
-移动端点击事件300 ms延
+移动端点击事件300 m
           </div>
         </div>
         <div class="post-more">
@@ -973,6 +955,38 @@ iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，�
         
           <div class="link">
             
+              
+                <a href="/atom.xml" class="social">
+                  
+                    <i class="fas fa-rss" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="mailto:1730241541@qq.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/yuang01/hexo-theme-bamboo" class="social">
+                  
+                    <i class="fas fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1730241541" class="social">
+                  
+                    <i class="fas fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
           </div>
         
       
@@ -988,11 +1002,11 @@ iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，�
             <!-- 不蒜子统计 -->
             <!-- 不蒜子统计 -->
 <span id="busuanzi_container_site_pv">
-      <i class="fas fa-eye" aria-hidden="true"></i>本站总访问量：<span id="busuanzi_value_site_pv"></span> 次
+      <i class="fas fa-eye" aria-hidden="true"></i>Total visits：<span id="busuanzi_value_site_pv"></span> times
 </span>
 <span class="post-meta-divider">|</span>
 <span id="busuanzi_container_site_uv" style='display:none'>
-      <i class="fas fa-users" aria-hidden="true"></i>本站访客数：<span id="busuanzi_value_site_uv"></span> 人
+      <i class="fas fa-users" aria-hidden="true"></i>Number of visitors：<span id="busuanzi_value_site_uv"></span> people
 </span>
 
           
@@ -1000,6 +1014,11 @@ iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，�
       
         
           <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><p><a target="_blank" rel="noopener" href="http://baidu.com/">Hello World</a></p>
+</div>
             
           </div>
         
@@ -1443,7 +1462,7 @@ iPhone7用for…in 遍历数组失效问题描述：最初学习使用js时，�
       },
       mounted() {
         const that = this;
-        var copy = '复制';
+        var copy = 'copy';
         /* code */
         var initCopyCode = function () {
           var copyHtml = '';
