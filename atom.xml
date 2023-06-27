@@ -274,9 +274,9 @@
     <category term="html" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/html/"/>
     
     
-    <category term="compatible" scheme="https://ywzzy.github.io/tags/compatible/"/>
-    
     <category term="html" scheme="https://ywzzy.github.io/tags/html/"/>
+    
+    <category term="compatible" scheme="https://ywzzy.github.io/tags/compatible/"/>
     
   </entry>
   
@@ -315,42 +315,6 @@
     <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
     <category term="大文件上传" scheme="https://ywzzy.github.io/tags/%E5%A4%A7%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>现代浏览器内部揭秘</title>
-    <link href="https://ywzzy.github.io/2022/03/16/frontend/browser/xian-dai-liu-lan-qi-nei-bu-jie-mi/"/>
-    <id>https://ywzzy.github.io/2022/03/16/frontend/browser/xian-dai-liu-lan-qi-nei-bu-jie-mi/</id>
-    <published>2022-03-16T07:35:27.000Z</published>
-    <updated>2023-06-27T08:57:48.302Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;a name=&quot;f3a2f325&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;第一部分&quot;&gt;&lt;a href=&quot;#第一部分&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="面试" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/"/>
-    
-    <category term="浏览器" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
-    
-    
-    <category term="浏览器" scheme="https://ywzzy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
-    
-    <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
-    <category term="原理" scheme="https://ywzzy.github.io/tags/%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
@@ -685,6 +649,42 @@
     <category term="es6" scheme="https://ywzzy.github.io/tags/es6/"/>
     
     <category term="Promise" scheme="https://ywzzy.github.io/tags/Promise/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>现代浏览器内部揭秘</title>
+    <link href="https://ywzzy.github.io/2021/03/16/frontend/browser/xian-dai-liu-lan-qi-nei-bu-jie-mi/"/>
+    <id>https://ywzzy.github.io/2021/03/16/frontend/browser/xian-dai-liu-lan-qi-nei-bu-jie-mi/</id>
+    <published>2021-03-16T07:35:27.000Z</published>
+    <updated>2023-06-27T09:33:48.128Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;a name=&quot;f3a2f325&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;第一部分&quot;&gt;&lt;a href=&quot;#第一部分&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="面试" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+    <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+    <category term="原理" scheme="https://ywzzy.github.io/tags/%E5%8E%9F%E7%90%86/"/>
     
   </entry>
   
