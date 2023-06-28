@@ -1,0 +1,2397 @@
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>前端监控 SDK 的一些技术要点原理分析 | 会飞的蜗</title>
+
+  <link rel="icon" type="image/gif" href="https://64.media.tumblr.com/a67a7238cd2833d859a7ea4cfa4fb8a4/0e0717e3c39dfac5-0c/s500x750/94ba555d15a68a38482896903d15494df88ff9b1.gif">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" rel="stylesheet">
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    
+        <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    
+
+    
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="会飞的蜗" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
+
+  
+    <div class="preloader_2" id="loader">
+  <div class="loader"></div>
+</div>
+
+  
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+</script>
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="logo">
+      <h3 class="drawer-box-head_title">会飞的蜗</h3>
+      <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(4)">
+                  <span>
+                    
+                      <i class="fas fa-link"></i>
+                    
+                    <span class="name">更多</span>
+                  </span>
+                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(4)}" aria-hidden="true"></i>
+                </a>
+                <ul class="drawer-sub-menu" v-if="isOpen(4)">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-music" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-regular fa-person" style="margin-top: -20px;"></i>
+                      
+                      <span>关于我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://bing.com">
+                      
+                      <i class="fas fa-solid fa-magnifying-glass" style="margin-top: -20px;"></i>
+                      
+                      <span>bing</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">会飞的蜗</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="Home">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="Archives">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="Tags">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="Categories">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="javascript:;" class="menu-item-link" title="更多">
+                  
+                    <i class="fas fa-link"></i>
+                  
+                  <span class="name">更多</span>
+                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
+                </a>
+                <ul class="sub-menu">
+                  
+                  <li>
+                    <a href="/gallery">
+                      
+                      <i class="fas fa-music" style="margin-top: -20px;"></i>
+                      
+                      <span>图库</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/friends">
+                      
+                      <i class="fas fa-film" style="margin-top: -20px;"></i>
+                      
+                      <span>友情连接</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a href="/about">
+                      
+                      <i class="fas fa-regular fa-person" style="margin-top: -20px;"></i>
+                      
+                      <span>关于我</span>
+                    </a>
+                  </li>
+                  
+                  <li>
+                    <a target="_blank" rel="noopener" href="http://bing.com">
+                      
+                      <i class="fas fa-solid fa-magnifying-glass" style="margin-top: -20px;"></i>
+                      
+                      <span>bing</span>
+                    </a>
+                  </li>
+                  
+                </ul>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://w.wallhaven.cc/full/we/wallhaven-weljr7.png')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        前端监控 SDK 的一些技术要点原理分析
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2023-06-28 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-detail-header_category">
+              前端
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/%E7%9B%91%E6%8E%A7/" class="post-detail-header_category">
+              监控
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <meta name="referrer" content="no-referrer" />
+
+<p>一个完整的前端监控平台包括三个部分：数据采集与上报、数据整理和存储、数据展示。<br />本文要讲的就是其中的第一个环节——数据采集与上报。下图是本文要讲述内容的大纲，大家可以先大致了解一下：<br /><img src="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142088-268849ae-1045-471d-8715-dff44a969954.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142088-268849ae-1045-471d-8715-dff44a969954.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif">，可以用它来写一些简单的 DEMO，帮助加深理解。再结合本文一起阅读，效果更好。<br><a name="o11zp"></a></p>
+<h2 id="性能数据采集"><a href="#性能数据采集" class="headerlink" title="性能数据采集"></a>性能数据采集</h2><p>chrome 开发团队提出了一系列用于检测网页性能的指标：</p>
+<ul>
+<li>FP(first-paint)，从页面加载开始到第一个像素绘制到屏幕上的时间</li>
+<li>FCP(first-contentful-paint)，从页面加载开始到页面内容的任何部分在屏幕上完成渲染的时间</li>
+<li>LCP(largest-contentful-paint)，从页面加载开始到最大文本块或图像元素在屏幕上完成渲染的时间</li>
+<li>CLS(layout-shift)，从页面加载开始和其<a href="https://link.juejin.cn/?target=https://developers.google.com/web/updates/2018/07/page-lifecycle-api">生命周期状态</a>变为隐藏期间发生的所有意外布局偏移的累积分数</li>
+</ul>
+<p>这四个性能指标都需要通过 <a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/PerformanceObserver">PerformanceObserver</a> 来获取（也可以通过 performance.getEntriesByName() 获取，但它不是在事件触发时通知的）。PerformanceObserver 是一个性能监测对象，用于监测性能度量事件。<br><a name="pQODz"></a></p>
+<h3 id="FP"><a href="#FP" class="headerlink" title="FP"></a>FP</h3><p>FP(first-paint)，从页面加载开始到第一个像素绘制到屏幕上的时间。其实把 FP 理解成白屏时间也是没问题的。<br />测量代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">entryHandler</span> = (<span class="params">list</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> entry <span class="keyword">of</span> list.<span class="title function_">getEntries</span>()) &#123;</span><br><span class="line">    <span class="keyword">if</span> (entry.<span class="property">name</span> === <span class="string">&quot;first-paint&quot;</span>) &#123;</span><br><span class="line">      observer.<span class="title function_">disconnect</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(entry);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> <span class="title class_">PerformanceObserver</span>(entryHandler);</span><br><span class="line"><span class="comment">// buffered 属性表示是否观察缓存数据，也就是说观察代码添加时机比事情触发时机晚也没关系。</span></span><br><span class="line">observer.<span class="title function_">observe</span>(&#123; <span class="attr">type</span>: <span class="string">&quot;paint&quot;</span>, <span class="attr">buffered</span>: <span class="literal">true</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>通过以上代码可以得到 FP 的内容:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">duration</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">entryType</span>: <span class="string">&quot;paint&quot;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;first-paint&quot;</span>,</span><br><span class="line">    <span class="attr">startTime</span>: <span class="number">359</span>, <span class="comment">// fp 时间</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中 startTime 就是我们要的绘制时间。<br><a name="EoHX8"></a></p>
+<h3 id="FCP"><a href="#FCP" class="headerlink" title="FCP"></a>FCP</h3><p>FCP(first-contentful-paint)，从页面加载开始到页面内容的任何部分在屏幕上完成渲染的时间。对于该指标，”内容”指的是文本、图像（包括背景图像）、<svg>元素或非白色的<canvas>元素。<br /><img src="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142180-f2cde2e9-9ca2-4d80-8713-10b88bc3285e.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142180-f2cde2e9-9ca2-4d80-8713-10b88bc3285e.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br />测量代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">entryHandler</span> = (<span class="params">list</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> entry <span class="keyword">of</span> list.<span class="title function_">getEntries</span>()) &#123;</span><br><span class="line">    <span class="keyword">if</span> (entry.<span class="property">name</span> === <span class="string">&quot;first-contentful-paint&quot;</span>) &#123;</span><br><span class="line">      observer.<span class="title function_">disconnect</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(entry);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> <span class="title class_">PerformanceObserver</span>(entryHandler);</span><br><span class="line">observer.<span class="title function_">observe</span>(&#123; <span class="attr">type</span>: <span class="string">&quot;paint&quot;</span>, <span class="attr">buffered</span>: <span class="literal">true</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>通过以上代码可以得到 FCP 的内容:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">duration</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">entryType</span>: <span class="string">&quot;paint&quot;</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;first-contentful-paint&quot;</span>,</span><br><span class="line">    <span class="attr">startTime</span>: <span class="number">459</span>, <span class="comment">// fcp 时间</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中 startTime 就是我们要的绘制时间。<br><a name="WzCiM"></a></p>
+<h3 id="LCP"><a href="#LCP" class="headerlink" title="LCP"></a>LCP</h3><p>LCP(largest-contentful-paint)，从页面加载开始到最大文本块或图像元素在屏幕上完成渲染的时间。LCP 指标会根据页面<a href="https://link.juejin.cn/?target=https://w3c.github.io/hr-time/%23timeorigin-attribute">首次开始加载</a>的时间点来报告可视区域内可见的最大<a href="https://link.juejin.cn/?target=https://web.dev/lcp/%23what-elements-are-considered">图像或文本块</a>完成渲染的相对时间。<br />一个良好的 LCP 分数应该控制在 2.5 秒以内。<br /><img src="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142085-b3464e1c-3470-4c48-a587-2fd3b2cb32ad.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142085-b3464e1c-3470-4c48-a587-2fd3b2cb32ad.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br />测量代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">entryHandler</span> = (<span class="params">list</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (observer) &#123;</span><br><span class="line">    observer.<span class="title function_">disconnect</span>();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> entry <span class="keyword">of</span> list.<span class="title function_">getEntries</span>()) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(entry);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> <span class="title class_">PerformanceObserver</span>(entryHandler);</span><br><span class="line">observer.<span class="title function_">observe</span>(&#123; <span class="attr">type</span>: <span class="string">&quot;largest-contentful-paint&quot;</span>, <span class="attr">buffered</span>: <span class="literal">true</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>通过以上代码可以得到 LCP 的内容:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">duration</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">element</span>: p,</span><br><span class="line">    <span class="attr">entryType</span>: <span class="string">&quot;largest-contentful-paint&quot;</span>,</span><br><span class="line">    <span class="attr">id</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">loadTime</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">renderTime</span>: <span class="number">1021.299</span>,</span><br><span class="line">    <span class="attr">size</span>: <span class="number">37932</span>,</span><br><span class="line">    <span class="attr">startTime</span>: <span class="number">1021.299</span>,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中 startTime 就是我们要的绘制时间。element 是指 LCP 绘制的 DOM 元素。<br />FCP 和 LCP 的区别是：FCP 只要任意内容绘制完成就触发，LCP 是最大内容渲染完成时触发。<br /><img src="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142459-f307ad02-d85c-4b68-8501-616e8cffdbd6.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142459-f307ad02-d85c-4b68-8501-616e8cffdbd6.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br />LCP 考察的元素类型为：</p>
+<ul>
+<li><img>元素</li>
+<li>内嵌在<svg>元素内的<image>元素</li>
+<li><video>元素（使用封面图像）</li>
+<li>通过<a href="https://link.juejin.cn/?target=https://developer.mozilla.org/docs/Web/CSS/url()">url()</a>函数（而非使用<a href="https://link.juejin.cn/?target=https://developer.mozilla.org/docs/Web/CSS/CSS_Images/Using_CSS_gradients">CSS 渐变</a>）加载的带有背景图像的元素</li>
+<li>包含文本节点或其他行内级文本元素子元素的<a href="https://link.juejin.cn/?target=https://developer.mozilla.org/docs/Web/HTML/Block-level_elements">块级元素</a>。<br><a name="Ry3ft"></a></li>
+</ul>
+<h3 id="CLS"><a href="#CLS" class="headerlink" title="CLS"></a>CLS</h3><p>CLS(layout-shift)，从页面加载开始和其<a href="https://link.juejin.cn/?target=https://developers.google.com/web/updates/2018/07/page-lifecycle-api">生命周期状态</a>变为隐藏期间发生的所有意外布局偏移的累积分数。<br />布局偏移分数的计算方式如下：<br />布局偏移分数 &#x3D; 影响分数 * 距离分数 复制代码<br /><a href="https://link.juejin.cn/?target=https://github.com/WICG/layout-instability%23Impact-Fraction">影响分数</a>测量<em>不稳定元素</em>对两帧之间的可视区域产生的影响。<br /><em>距离分数</em>指的是任何<em>不稳定元素</em>在一帧中位移的最大距离（水平或垂直）除以可视区域的最大尺寸维度（宽度或高度，以较大者为准）。<br /><strong>CLS 就是把所有布局偏移分数加起来的总和</strong>。<br />当一个 DOM 在两个渲染帧之间产生了位移，就会触发 CLS（如图所示）。<br /><img src="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142442-f33631d8-9cb2-4659-a0d0-70657c9ed6cb.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142442-f33631d8-9cb2-4659-a0d0-70657c9ed6cb.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif">。<br />CLS 一共有三种计算方式：</p>
+<ol>
+<li>累加</li>
+<li>取所有会话窗口的平均数</li>
+<li>取所有会话窗口中的最大值<br><a name="bDCYd"></a></li>
+</ol>
+<h4 id="累加"><a href="#累加" class="headerlink" title="累加"></a>累加</h4><p>也就是把从页面加载开始的所有布局偏移分数加在一起。但是这种计算方式对生命周期长的页面不友好，页面存留时间越长，CLS 分数越高。<br><a name="Drzqw"></a></p>
+<h4 id="取所有会话窗口的平均数"><a href="#取所有会话窗口的平均数" class="headerlink" title="取所有会话窗口的平均数"></a>取所有会话窗口的平均数</h4><p>这种计算方式不是按单个布局偏移为单位，而是以会话窗口为单位。将所有会话窗口的值相加再取平均值。但是这种计算方式也有缺点。<br /><img src="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142820-23905bf9-6492-4566-83a5-0e49c0bfd429.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142820-23905bf9-6492-4566-83a5-0e49c0bfd429.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br />从上图可以看出来，第一个会话窗口产生了比较大的 CLS 分数，第二个会话窗口产生了比较小的 CLS 分数。如果取它们的平均值来当做 CLS 分数，则根本看不出来页面的运行状况。原来页面是早期偏移多，后期偏移少，现在的平均值无法反映出这种情况。<br><a name="VYSn4"></a></p>
+<h4 id="取所有会话窗口中的最大值"><a href="#取所有会话窗口中的最大值" class="headerlink" title="取所有会话窗口中的最大值"></a>取所有会话窗口中的最大值</h4><p>这种方式是目前最优的计算方式，每次只取所有会话窗口的最大值，用来反映页面布局偏移的最差情况。详情请看 <a href="https://link.juejin.cn/?target=https://web.dev/evolving-cls/">Evolving the CLS metric</a>。<br />下面是第三种计算方式的测量代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> sessionValue = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> sessionEntries = [];</span><br><span class="line"><span class="keyword">const</span> cls = &#123;</span><br><span class="line">  <span class="attr">subType</span>: <span class="string">&quot;layout-shift&quot;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;layout-shift&quot;</span>,</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&quot;performance&quot;</span>,</span><br><span class="line">  <span class="attr">pageURL</span>: <span class="title function_">getPageURL</span>(),</span><br><span class="line">  <span class="attr">value</span>: <span class="number">0</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">entryHandler</span> = (<span class="params">list</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> entry <span class="keyword">of</span> list.<span class="title function_">getEntries</span>()) &#123;</span><br><span class="line">    <span class="comment">// Only count layout shifts without recent user input.</span></span><br><span class="line">    <span class="keyword">if</span> (!entry.<span class="property">hadRecentInput</span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> firstSessionEntry = sessionEntries[<span class="number">0</span>];</span><br><span class="line">      <span class="keyword">const</span> lastSessionEntry = sessionEntries[sessionEntries.<span class="property">length</span> - <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">      <span class="comment">// If the entry occurred less than 1 second after the previous entry and</span></span><br><span class="line">      <span class="comment">// less than 5 seconds after the first entry in the session, include the</span></span><br><span class="line">      <span class="comment">// entry in the current session. Otherwise, start a new session.</span></span><br><span class="line">      <span class="keyword">if</span> (</span><br><span class="line">        sessionValue &amp;&amp;</span><br><span class="line">        entry.<span class="property">startTime</span> - lastSessionEntry.<span class="property">startTime</span> &lt; <span class="number">1000</span> &amp;&amp;</span><br><span class="line">        entry.<span class="property">startTime</span> - firstSessionEntry.<span class="property">startTime</span> &lt; <span class="number">5000</span></span><br><span class="line">      ) &#123;</span><br><span class="line">        sessionValue += entry.<span class="property">value</span>;</span><br><span class="line">        sessionEntries.<span class="title function_">push</span>(<span class="title function_">formatCLSEntry</span>(entry));</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        sessionValue = entry.<span class="property">value</span>;</span><br><span class="line">        sessionEntries = [<span class="title function_">formatCLSEntry</span>(entry)];</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// If the current session value is larger than the current CLS value,</span></span><br><span class="line">      <span class="comment">// update CLS and the entries contributing to it.</span></span><br><span class="line">      <span class="keyword">if</span> (sessionValue &gt; cls.<span class="property">value</span>) &#123;</span><br><span class="line">        cls.<span class="property">value</span> = sessionValue;</span><br><span class="line">        cls.<span class="property">entries</span> = sessionEntries;</span><br><span class="line">        cls.<span class="property">startTime</span> = performance.<span class="title function_">now</span>();</span><br><span class="line">        <span class="title function_">lazyReportCache</span>(<span class="title function_">deepCopy</span>(cls));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> <span class="title class_">PerformanceObserver</span>(entryHandler);</span><br><span class="line">observer.<span class="title function_">observe</span>(&#123; <span class="attr">type</span>: <span class="string">&quot;layout-shift&quot;</span>, <span class="attr">buffered</span>: <span class="literal">true</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>在看完上面的文字描述后，再看代码就好理解了。一次布局偏移的测量内容如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">duration</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">entryType</span>: <span class="string">&quot;layout-shift&quot;</span>,</span><br><span class="line">  <span class="attr">hadRecentInput</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">lastInputTime</span>: <span class="number">0</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">sources</span>: (<span class="number">2</span>) [<span class="title class_">LayoutShiftAttribution</span>, <span class="title class_">LayoutShiftAttribution</span>],</span><br><span class="line">  <span class="attr">startTime</span>: <span class="number">1176.199999999255</span>,</span><br><span class="line">  <span class="attr">value</span>: <span class="number">0.000005752046026677329</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码中的 value 字段就是布局偏移分数。<br><a name="EYXuD"></a></p>
+<h3 id="DOMContentLoaded、load-事件"><a href="#DOMContentLoaded、load-事件" class="headerlink" title="DOMContentLoaded、load 事件"></a>DOMContentLoaded、load 事件</h3><p>当纯 HTML 被完全加载以及解析时，DOMContentLoaded 事件会被触发，不用等待 css、img、iframe 加载完。<br />当整个页面及所有依赖资源如样式表和图片都已完成加载时，将触发 load 事件。<br />虽然这两个性能指标比较旧了，但是它们仍然能反映页面的一些情况。对于它们进行监听仍然是必要的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; lazyReportCache &#125; <span class="keyword">from</span> <span class="string">&quot;../utils/report&quot;</span>;</span><br><span class="line"></span><br><span class="line">[<span class="string">&quot;load&quot;</span>, <span class="string">&quot;DOMContentLoaded&quot;</span>].<span class="title function_">forEach</span>(<span class="function">(<span class="params">type</span>) =&gt;</span> <span class="title function_">onEvent</span>(type));</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">onEvent</span>(<span class="params">type</span>) &#123;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">callback</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">lazyReportCache</span>(&#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="string">&quot;performance&quot;</span>,</span><br><span class="line">      <span class="attr">subType</span>: type.<span class="title function_">toLocaleLowerCase</span>(),</span><br><span class="line">      <span class="attr">startTime</span>: performance.<span class="title function_">now</span>(),</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">removeEventListener</span>(type, callback, <span class="literal">true</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(type, callback, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="VvDWN"></a></p>
+<h3 id="首屏渲染时间"><a href="#首屏渲染时间" class="headerlink" title="首屏渲染时间"></a>首屏渲染时间</h3><p>大多数情况下，首屏渲染时间可以通过 load 事件获取。除了一些特殊情况，例如异步加载的图片和 DOM。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span>&#123;<span class="string">&quot; &quot;</span>&#125;</span><br><span class="line">  &#123;</span><br><span class="line">    (<span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">innerHTML</span> = <span class="string">`</span></span><br><span class="line"><span class="string">            &lt;div&gt;</span></span><br><span class="line"><span class="string">                &lt;!-- 省略一堆代码... --&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;</span></span><br><span class="line"><span class="string">        `</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  , <span class="number">3000</span>)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>像这种情况就无法通过 load 事件获取首屏渲染时间了。这时我们需要通过 <a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver/MutationObserver">MutationObserver</a> 来获取首屏渲染时间。MutationObserver 在监听的 DOM 元素属性发生变化时会触发事件。<br />首屏渲染时间计算过程：</p>
+<ol>
+<li>利用 MutationObserver 监听 document 对象，每当 DOM 元素属性发生变更时，触发事件。</li>
+<li>判断该 DOM 元素是否在首屏内，如果在，则在 requestAnimationFrame() 回调函数中调用 performance.now() 获取当前时间，作为它的绘制时间。</li>
+<li>将最后一个 DOM 元素的绘制时间和首屏中所有加载的图片时间作对比，将最大值作为首屏渲染时间。<br><a name="T368a"></a></li>
+</ol>
+<h4 id="监听-DOM"><a href="#监听-DOM" class="headerlink" title="监听 DOM"></a>监听 DOM</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> next = <span class="variable language_">window</span>.<span class="property">requestAnimationFrame</span> ? requestAnimationFrame : <span class="built_in">setTimeout</span>;</span><br><span class="line"><span class="keyword">const</span> ignoreDOMList = [<span class="string">&quot;STYLE&quot;</span>, <span class="string">&quot;SCRIPT&quot;</span>, <span class="string">&quot;LINK&quot;</span>];</span><br><span class="line"></span><br><span class="line">observer = <span class="keyword">new</span> <span class="title class_">MutationObserver</span>(<span class="function">(<span class="params">mutationList</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> entry = &#123;</span><br><span class="line">    <span class="attr">children</span>: [],</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> mutation <span class="keyword">of</span> mutationList) &#123;</span><br><span class="line">    <span class="keyword">if</span> (mutation.<span class="property">addedNodes</span>.<span class="property">length</span> &amp;&amp; <span class="title function_">isInScreen</span>(mutation.<span class="property">target</span>)) &#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (entry.<span class="property">children</span>.<span class="property">length</span>) &#123;</span><br><span class="line">    entries.<span class="title function_">push</span>(entry);</span><br><span class="line">    <span class="title function_">next</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      entry.<span class="property">startTime</span> = performance.<span class="title function_">now</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">observer.<span class="title function_">observe</span>(<span class="variable language_">document</span>, &#123;</span><br><span class="line">  <span class="attr">childList</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">subtree</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码就是监听 DOM 变化的代码，同时需要过滤掉 style、script、link 等标签。<br><a name="qltvI"></a></p>
+<h4 id="判断是否在首屏"><a href="#判断是否在首屏" class="headerlink" title="判断是否在首屏"></a>判断是否在首屏</h4><p>一个页面的内容可能非常多，但用户最多只能看见一屏幕的内容。所以在统计首屏渲染时间的时候，需要限定范围，把渲染内容限定在当前屏幕内。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> viewportWidth = <span class="variable language_">window</span>.<span class="property">innerWidth</span>;</span><br><span class="line"><span class="keyword">const</span> viewportHeight = <span class="variable language_">window</span>.<span class="property">innerHeight</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// dom 对象是否在屏幕内</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">isInScreen</span>(<span class="params">dom</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> rectInfo = dom.<span class="title function_">getBoundingClientRect</span>();</span><br><span class="line">  <span class="keyword">if</span> (rectInfo.<span class="property">left</span> &lt; viewportWidth &amp;&amp; rectInfo.<span class="property">top</span> &lt; viewportHeight) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="BhkqV"></a></p>
+<h4 id="使用-requestAnimationFrame-获取-DOM-绘制时间"><a href="#使用-requestAnimationFrame-获取-DOM-绘制时间" class="headerlink" title="使用 requestAnimationFrame() 获取 DOM 绘制时间"></a>使用 requestAnimationFrame() 获取 DOM 绘制时间</h4><p>当 DOM 变更触发 MutationObserver 事件时，只是代表 DOM 内容可以被读取到，并不代表该 DOM 被绘制到了屏幕上。<br /><img src="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142882-a5994025-f4e1-4ff1-99d7-480026f8fd54.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217142882-a5994025-f4e1-4ff1-99d7-480026f8fd54.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"> 在浏览器绘制成功后再获取当前时间作为 DOM 绘制时间。<br><a name="tIcjw"></a></p>
+<h4 id="和首屏内的所有图片加载时间作对比"><a href="#和首屏内的所有图片加载时间作对比" class="headerlink" title="和首屏内的所有图片加载时间作对比"></a>和首屏内的所有图片加载时间作对比</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getRenderTime</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> startTime = <span class="number">0</span>;</span><br><span class="line">  entries.<span class="title function_">forEach</span>(<span class="function">(<span class="params">entry</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (entry.<span class="property">startTime</span> &gt; startTime) &#123;</span><br><span class="line">      startTime = entry.<span class="property">startTime</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 需要和当前页面所有加载图片的时间做对比，取最大值</span></span><br><span class="line">  <span class="comment">// 图片请求时间要小于 startTime，响应结束时间要大于 startTime</span></span><br><span class="line">  performance.<span class="title function_">getEntriesByType</span>(<span class="string">&quot;resource&quot;</span>).<span class="title function_">forEach</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">      item.<span class="property">initiatorType</span> === <span class="string">&quot;img&quot;</span> &amp;&amp;</span><br><span class="line">      item.<span class="property">fetchStart</span> &lt; startTime &amp;&amp;</span><br><span class="line">      item.<span class="property">responseEnd</span> &gt; startTime</span><br><span class="line">    ) &#123;</span><br><span class="line">      startTime = item.<span class="property">responseEnd</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> startTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="j7Uxx"></a></p>
+<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><p>现在的代码还没优化完，主要有两点注意事项：</p>
+<ol>
+<li>什么时候上报渲染时间？</li>
+<li>如果兼容异步添加 DOM 的情况？</li>
+</ol>
+<p>第一点，必须要在 DOM 不再变化后再上报渲染时间，一般 load 事件触发后，DOM 就不再变化了。所以我们可以在这个时间点进行上报。<br />第二点，可以在 LCP 事件触发后再进行上报。不管是同步还是异步加载的 DOM，它都需要进行绘制，所以可以监听 LCP 事件，在该事件触发后才允许进行上报。<br />将以上两点方案结合在一起，就有了以下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> isOnLoaded = <span class="literal">false</span>;</span><br><span class="line"><span class="title function_">executeAfterLoad</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  isOnLoaded = <span class="literal">true</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> timer;</span><br><span class="line"><span class="keyword">let</span> observer;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">checkDOMChange</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="built_in">clearTimeout</span>(timer);</span><br><span class="line">  timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 等 load、lcp 事件触发后并且 DOM 树不再变化时，计算首屏渲染时间</span></span><br><span class="line">    <span class="keyword">if</span> (isOnLoaded &amp;&amp; <span class="title function_">isLCPDone</span>()) &#123;</span><br><span class="line">      observer &amp;&amp; observer.<span class="title function_">disconnect</span>();</span><br><span class="line">      <span class="title function_">lazyReportCache</span>(&#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;performance&quot;</span>,</span><br><span class="line">        <span class="attr">subType</span>: <span class="string">&quot;first-screen-paint&quot;</span>,</span><br><span class="line">        <span class="attr">startTime</span>: <span class="title function_">getRenderTime</span>(),</span><br><span class="line">        <span class="attr">pageURL</span>: <span class="title function_">getPageURL</span>(),</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      entries = <span class="literal">null</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="title function_">checkDOMChange</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, <span class="number">500</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>checkDOMChange() 代码每次在触发 MutationObserver 事件时进行调用，需要用防抖函数进行处理。<br><a name="Jmuep"></a></p>
+<h3 id="接口请求耗时"><a href="#接口请求耗时" class="headerlink" title="接口请求耗时"></a>接口请求耗时</h3><p>接口请求耗时需要对 XMLHttpRequest 和 fetch 进行监听。<br /><strong>监听 XMLHttpRequest</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">originalProto.<span class="property">open</span> = <span class="keyword">function</span> <span class="title function_">newOpen</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">url</span> = args[<span class="number">1</span>];</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">method</span> = args[<span class="number">0</span>];</span><br><span class="line">  originalOpen.<span class="title function_">apply</span>(<span class="variable language_">this</span>, args);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">originalProto.<span class="property">send</span> = <span class="keyword">function</span> <span class="title function_">newSend</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">startTime</span> = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">onLoadend</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">endTime</span> = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">duration</span> = <span class="variable language_">this</span>.<span class="property">endTime</span> - <span class="variable language_">this</span>.<span class="property">startTime</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> &#123; status, duration, startTime, endTime, url, method &#125; = <span class="variable language_">this</span>;</span><br><span class="line">    <span class="keyword">const</span> reportData = &#123;</span><br><span class="line">      status,</span><br><span class="line">      duration,</span><br><span class="line">      startTime,</span><br><span class="line">      endTime,</span><br><span class="line">      url,</span><br><span class="line">      <span class="attr">method</span>: (method || <span class="string">&quot;GET&quot;</span>).<span class="title function_">toUpperCase</span>(),</span><br><span class="line">      <span class="attr">success</span>: status &gt;= <span class="number">200</span> &amp;&amp; status &lt; <span class="number">300</span>,</span><br><span class="line">      <span class="attr">subType</span>: <span class="string">&quot;xhr&quot;</span>,</span><br><span class="line">      <span class="attr">type</span>: <span class="string">&quot;performance&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">lazyReportCache</span>(reportData);</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">removeEventListener</span>(<span class="string">&quot;loadend&quot;</span>, onLoadend, <span class="literal">true</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;loadend&quot;</span>, onLoadend, <span class="literal">true</span>);</span><br><span class="line">  originalSend.<span class="title function_">apply</span>(<span class="variable language_">this</span>, args);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>如何判断 XML 请求是否成功？可以根据他的状态码是否在 200~299 之间。如果在，那就是成功，否则失败。<br /><strong>监听 fetch</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> originalFetch = <span class="variable language_">window</span>.<span class="property">fetch</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">overwriteFetch</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">fetch</span> = <span class="keyword">function</span> <span class="title function_">newFetch</span>(<span class="params">url, config</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> startTime = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span><br><span class="line">    <span class="keyword">const</span> reportData = &#123;</span><br><span class="line">      startTime,</span><br><span class="line">      url,</span><br><span class="line">      <span class="attr">method</span>: (config?.<span class="property">method</span> || <span class="string">&quot;GET&quot;</span>).<span class="title function_">toUpperCase</span>(),</span><br><span class="line">      <span class="attr">subType</span>: <span class="string">&quot;fetch&quot;</span>,</span><br><span class="line">      <span class="attr">type</span>: <span class="string">&quot;performance&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">originalFetch</span>(url, config)</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        reportData.<span class="property">endTime</span> = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span><br><span class="line">        reportData.<span class="property">duration</span> = reportData.<span class="property">endTime</span> - reportData.<span class="property">startTime</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> data = res.<span class="title function_">clone</span>();</span><br><span class="line">        reportData.<span class="property">status</span> = data.<span class="property">status</span>;</span><br><span class="line">        reportData.<span class="property">success</span> = data.<span class="property">ok</span>;</span><br><span class="line"></span><br><span class="line">        <span class="title function_">lazyReportCache</span>(reportData);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">        reportData.<span class="property">endTime</span> = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span><br><span class="line">        reportData.<span class="property">duration</span> = reportData.<span class="property">endTime</span> - reportData.<span class="property">startTime</span>;</span><br><span class="line">        reportData.<span class="property">status</span> = <span class="number">0</span>;</span><br><span class="line">        reportData.<span class="property">success</span> = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="title function_">lazyReportCache</span>(reportData);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">throw</span> err;</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于 fetch，可以根据返回数据中的的 ok 字段判断请求是否成功，如果为 true 则请求成功，否则失败。<br /><strong>注意</strong>，监听到的接口请求时间和 chrome devtool 上检测到的时间可能不一样。这是因为 chrome devtool 上检测到的是 HTTP 请求发送和接口整个过程的时间。但是 xhr 和 fetch 是异步请求，接口请求成功后需要调用回调函数。事件触发时会把回调函数放到消息队列，然后浏览器再处理，这中间也有一个等待过程。<br><a name="xa2up"></a></p>
+<h3 id="资源加载时间、缓存命中率"><a href="#资源加载时间、缓存命中率" class="headerlink" title="资源加载时间、缓存命中率"></a>资源加载时间、缓存命中率</h3><p>通过 PerformanceObserver 可以监听 resource 和 navigation 事件，如果浏览器不支持 PerformanceObserver，还可以通过 performance.getEntriesByType(entryType) 来进行降级处理。<br />当 resource 事件触发时，可以获取到对应的资源列表，每个资源对象包含以下一些字段：<br /><img src="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217143086-bdfdb068-a7a4-4fdf-9fc7-a0bd65ab3d2d.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217143086-bdfdb068-a7a4-4fdf-9fc7-a0bd65ab3d2d.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"><br />从这些字段中我们可以提取到一些有用的信息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">name</span>: entry.<span class="property">name</span>, <span class="comment">// 资源名称</span></span><br><span class="line">    <span class="attr">subType</span>: entryType,</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;performance&#x27;</span>,</span><br><span class="line">    <span class="attr">sourceType</span>: entry.<span class="property">initiatorType</span>, <span class="comment">// 资源类型</span></span><br><span class="line">    <span class="attr">duration</span>: entry.<span class="property">duration</span>, <span class="comment">// 资源加载耗时</span></span><br><span class="line">    <span class="attr">dns</span>: entry.<span class="property">domainLookupEnd</span> - entry.<span class="property">domainLookupStart</span>, <span class="comment">// DNS 耗时</span></span><br><span class="line">    <span class="attr">tcp</span>: entry.<span class="property">connectEnd</span> - entry.<span class="property">connectStart</span>, <span class="comment">// 建立 tcp 连接耗时</span></span><br><span class="line">    <span class="attr">redirect</span>: entry.<span class="property">redirectEnd</span> - entry.<span class="property">redirectStart</span>, <span class="comment">// 重定向耗时</span></span><br><span class="line">    <span class="attr">ttfb</span>: entry.<span class="property">responseStart</span>, <span class="comment">// 首字节时间</span></span><br><span class="line">    <span class="attr">protocol</span>: entry.<span class="property">nextHopProtocol</span>, <span class="comment">// 请求协议</span></span><br><span class="line">    <span class="attr">responseBodySize</span>: entry.<span class="property">encodedBodySize</span>, <span class="comment">// 响应内容大小</span></span><br><span class="line">    <span class="attr">responseHeaderSize</span>: entry.<span class="property">transferSize</span> - entry.<span class="property">encodedBodySize</span>, <span class="comment">// 响应头部大小</span></span><br><span class="line">    <span class="attr">resourceSize</span>: entry.<span class="property">decodedBodySize</span>, <span class="comment">// 资源解压后的大小</span></span><br><span class="line">    <span class="attr">isCache</span>: <span class="title function_">isCache</span>(entry), <span class="comment">// 是否命中缓存</span></span><br><span class="line">    <span class="attr">startTime</span>: performance.<span class="title function_">now</span>(),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>判断该资源是否命中缓存</strong><br />在这些资源对象中有一个 transferSize 字段，它表示获取资源的大小，包括响应头字段和响应数据的大小。如果这个值为 0，说明是从缓存中直接读取的（强制缓存）。如果这个值不为 0，但是 encodedBodySize 字段为 0，说明它走的是协商缓存（encodedBodySize 表示请求响应数据 body 的大小）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isCache</span>(<span class="params">entry</span>) &#123;</span><br><span class="line">  <span class="comment">// 直接从缓存读取或 304</span></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    entry.<span class="property">transferSize</span> === <span class="number">0</span> ||</span><br><span class="line">    (entry.<span class="property">transferSize</span> !== <span class="number">0</span> &amp;&amp; entry.<span class="property">encodedBodySize</span> === <span class="number">0</span>)</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不符合以上条件的，说明未命中缓存。然后将所有命中缓存的数据&#x2F;总数据就能得出缓存命中率。<br><a name="NuS1s"></a></p>
+<h3 id="浏览器往返缓存-BFC（back-x2F-forward-cache）"><a href="#浏览器往返缓存-BFC（back-x2F-forward-cache）" class="headerlink" title="浏览器往返缓存 BFC（back&#x2F;forward cache）"></a>浏览器往返缓存 BFC（back&#x2F;forward cache）</h3><p>bfcache 是一种内存缓存，它会将整个页面保存在内存中。当用户返回时可以马上看到整个页面，而不用再次刷新。据该文章 <a href="https://link.juejin.cn/?target=https://web.dev/bfcache/">bfcache</a> 介绍，firfox 和 safari 一直支持 bfc，chrome 只有在高版本的移动端浏览器支持。但我试了一下，只有 safari 浏览器支持，可能我的 firfox 版本不对。<br />但是 bfc 也是有缺点的，当用户返回并从 bfc 中恢复页面时，原来页面的代码不会再次执行。为此，浏览器提供了一个 pageshow 事件，可以把需要再次执行的代码放在里面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;pageshow&quot;</span>, <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="comment">// 如果该属性为 true，表示是从 bfc 中恢复的页面</span></span><br><span class="line">  <span class="keyword">if</span> (event.<span class="property">persisted</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This page was restored from the bfcache.&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;This page was loaded normally.&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>从 bfc 中恢复的页面，我们也需要收集他们的 FP、FCP、LCP 等各种时间。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">onBFCacheRestore</span>(<span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">requestAnimationFrame</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    [<span class="string">&quot;first-paint&quot;</span>, <span class="string">&quot;first-contentful-paint&quot;</span>].<span class="title function_">forEach</span>(<span class="function">(<span class="params">type</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">lazyReportCache</span>(&#123;</span><br><span class="line">        <span class="attr">startTime</span>: performance.<span class="title function_">now</span>() - event.<span class="property">timeStamp</span>,</span><br><span class="line">        <span class="attr">name</span>: type,</span><br><span class="line">        <span class="attr">subType</span>: type,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;performance&quot;</span>,</span><br><span class="line">        <span class="attr">pageURL</span>: <span class="title function_">getPageURL</span>(),</span><br><span class="line">        <span class="attr">bfc</span>: <span class="literal">true</span>,</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码很好理解，在 pageshow 事件触发后，用当前时间减去事件触发时间，这个时间差值就是性能指标的绘制时间。<strong>注意</strong>，从 bfc 中恢复的页面的这些性能指标，值一般都很小，一般在 10 ms 左右。所以要给它们加个标识字段 bfc: true。这样在做性能统计时可以对它们进行忽略。<br><a name="Pmo8q"></a></p>
+<h3 id="FPS"><a href="#FPS" class="headerlink" title="FPS"></a>FPS</h3><p>利用 requestAnimationFrame() 我们可以计算当前页面的 FPS。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> next = <span class="variable language_">window</span>.<span class="property">requestAnimationFrame</span></span><br><span class="line">  ? requestAnimationFrame</span><br><span class="line">  : <span class="function">(<span class="params">callback</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(callback, <span class="number">1000</span> / <span class="number">60</span>);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> frames = [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">fps</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> frame = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">let</span> lastSecond = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">calculateFPS</span>(<span class="params"></span>) &#123;</span><br><span class="line">    frame++;</span><br><span class="line">    <span class="keyword">const</span> now = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span><br><span class="line">    <span class="keyword">if</span> (lastSecond + <span class="number">1000</span> &lt;= now) &#123;</span><br><span class="line">      <span class="comment">// 由于 now - lastSecond 的单位是毫秒，所以 frame 要 * 1000</span></span><br><span class="line">      <span class="keyword">const</span> fps = <span class="title class_">Math</span>.<span class="title function_">round</span>((frame * <span class="number">1000</span>) / (now - lastSecond));</span><br><span class="line">      frames.<span class="title function_">push</span>(fps);</span><br><span class="line"></span><br><span class="line">      frame = <span class="number">0</span>;</span><br><span class="line">      lastSecond = now;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 避免上报太快，缓存一定数量再上报</span></span><br><span class="line">    <span class="keyword">if</span> (frames.<span class="property">length</span> &gt;= <span class="number">60</span>) &#123;</span><br><span class="line">      <span class="title function_">report</span>(</span><br><span class="line">        <span class="title function_">deepCopy</span>(&#123;</span><br><span class="line">          frames,</span><br><span class="line">          <span class="attr">type</span>: <span class="string">&quot;performace&quot;</span>,</span><br><span class="line">          <span class="attr">subType</span>: <span class="string">&quot;fps&quot;</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line">      frames.<span class="property">length</span> = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">next</span>(calculateFPS);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">calculateFPS</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码逻辑如下：</p>
+<ol>
+<li>先记录一个初始时间，然后每次触发 requestAnimationFrame() 时，就将帧数加 1。过去一秒后用帧数&#x2F;流逝的时间就能得到当前帧率。</li>
+</ol>
+<p>当连续三个低于 20 的 FPS 出现时，我们可以断定页面出现了卡顿，详情请看 <a href="https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/39292837">如何监控网页的卡顿</a>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">isBlocking</span>(<span class="params">fpsList, below = <span class="number">20</span>, last = <span class="number">3</span></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; fpsList.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (fpsList[i] &amp;&amp; fpsList[i] &lt; below) &#123;</span><br><span class="line">      count++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      count = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (count &gt;= last) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="jUyEi"></a></p>
+<h3 id="Vue-路由变更渲染时间"><a href="#Vue-路由变更渲染时间" class="headerlink" title="Vue 路由变更渲染时间"></a>Vue 路由变更渲染时间</h3><p>首屏渲染时间我们已经知道如何计算了，但是如何计算 SPA 应用的页面路由切换导致的页面渲染时间呢？本文用 Vue 作为示例，讲一下我的思路。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">isBlocking</span>(<span class="params">fpsList, below = <span class="number">20</span>, last = <span class="number">3</span></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; fpsList.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (fpsList[i] &amp;&amp; fpsList[i] &lt; below) &#123;</span><br><span class="line">      count++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      count = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (count &gt;= last) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码逻辑如下：</p>
+<ol>
+<li>监听路由钩子，在路由切换时会触发 router.beforeEach() 钩子，在该钩子的回调函数里将当前时间记为渲染开始时间。</li>
+<li>利用 Vue.mixin() 对所有组件的 mounted() 注入一个函数。每个函数都执行一个防抖函数。</li>
+<li>当最后一个组件的 mounted() 触发时，就代表该路由下的所有组件已经挂载完毕。可以在 this.$nextTick() 回调函数中获取渲染时间。</li>
+</ol>
+<p>同时，还要考虑到一个情况。不切换路由时，也会有变更组件的情况，这时不应该在这些组件的 mounted() 里进行渲染时间计算。所以需要添加一个 needCalculateRenderTime 字段，当切换路由时将它设为 true，代表可以计算渲染时间了。<br><a name="LvkSc"></a></p>
+<h2 id="错误数据采集"><a href="#错误数据采集" class="headerlink" title="错误数据采集"></a>错误数据采集</h2><p><a name="tdu3q"></a></p>
+<h3 id="资源加载错误"><a href="#资源加载错误" class="headerlink" title="资源加载错误"></a>资源加载错误</h3><p>使用 addEventListener() 监听 error 事件，可以捕获到资源加载失败错误。<br />&#x2F;&#x2F; 捕获资源加载失败错误 js css img… window.addEventListener(‘error’, e &#x3D;&gt; { const target &#x3D; e.target if (!target) return if (target.src || target.href) { const url &#x3D; target.src || target.href lazyReportCache({ url, type: ‘error’, subType: ‘resource’, startTime: e.timeStamp, html: target.outerHTML, resourceType: target.tagName, paths: e.path.map(item &#x3D;&gt; item.tagName).filter(Boolean), pageURL: getPageURL(), }) } }, true) 复制代码<br><a name="yfrCH"></a></p>
+<h3 id="js-错误"><a href="#js-错误" class="headerlink" title="js 错误"></a>js 错误</h3><p>使用 window.onerror 可以监听 js 错误。<br />&#x2F;&#x2F; 监听 js 错误 window.onerror &#x3D; (msg, url, line, column, error) &#x3D;&gt; { lazyReportCache({ msg, line, column, error: error.stack, subType: ‘js’, pageURL: url, type: ‘error’, startTime: performance.now(), }) } 复制代码<br><a name="YQnRt"></a></p>
+<h3 id="promise-错误"><a href="#promise-错误" class="headerlink" title="promise 错误"></a>promise 错误</h3><p>使用 addEventListener() 监听 unhandledrejection 事件，可以捕获到未处理的 promise 错误。<br />&#x2F;&#x2F; 监听 promise 错误 缺点是获取不到列数据 window.addEventListener(‘unhandledrejection’, e &#x3D;&gt; { lazyReportCache({ reason: e.reason?.stack, subType: ‘promise’, type: ‘error’, startTime: e.timeStamp, pageURL: getPageURL(), }) }) 复制代码<br><a name="AlrmF"></a></p>
+<h3 id="sourcemap"><a href="#sourcemap" class="headerlink" title="sourcemap"></a>sourcemap</h3><p>一般生产环境的代码都是经过压缩的，并且生产环境不会把 sourcemap 文件上传。所以生产环境上的代码报错信息是很难读的。因此，我们可以利用 <a href="https://link.juejin.cn/?target=https://github.com/mozilla/source-map">source-map</a> 来对这些压缩过的代码报错信息进行还原。<br />当代码报错时，我们可以获取到对应的文件名、行数、列数:<br />{ line: 1, column: 17, file: ‘https:&#x2F;<a target="_blank" rel="noopener" href="http://www.xxx.com/bundlejs">www.xxx.com/bundlejs</a>‘, } 复制代码<br />然后调用下面的代码进行还原：<br />async function parse(error) { const mapObj &#x3D; JSON.parse(getMapFileContent(error.url)) const consumer &#x3D; await new sourceMap.SourceMapConsumer(mapObj) &#x2F;&#x2F; 将 webpack:&#x2F;&#x2F;source-map-demo&#x2F;.&#x2F;src&#x2F;index.js 文件中的 .&#x2F; 去掉 const sources &#x3D; mapObj.sources.map(item &#x3D;&gt; format(item)) &#x2F;&#x2F; 根据压缩后的报错信息得出未压缩前的报错行列数和源码文件 const originalInfo &#x3D; consumer.originalPositionFor({ line: error.line, column: error.column }) &#x2F;&#x2F; sourcesContent 中包含了各个文件的未压缩前的源码，根据文件名找出对应的源码 const originalFileContent &#x3D; mapObj.sourcesContent[sources.indexOf(originalInfo.source)] return { file: originalInfo.source, content: originalFileContent, line: originalInfo.line, column: originalInfo.column, msg: error.msg, error: error.error } } function format(item) { return item.replace(&#x2F;(./)*&#x2F;g, ‘’) } function getMapFileContent(url) { return fs.readFileSync(path.resolve(__dirname, <code>./maps/$&#123;url.split(&#39;/&#39;).pop()&#125;.map</code>), ‘utf-8’) } 复制代码<br />每次项目打包时，如果开启了 sourcemap，那么每一个 js 文件都会有一个对应的 map 文件。<br />bundle.js bundle.js.map 复制代码<br />这时 js 文件放在静态服务器上供用户访问，map 文件存储在服务器，用于还原错误信息。source-map 库可以根据压缩过的代码报错信息还原出未压缩前的代码报错信息。例如压缩后报错位置为 1 行 47 列，还原后真正的位置可能为 4 行 10 列。除了位置信息，还可以获取到源码原文。<br /><img src="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217143143-8d961072-2087-4a38-b8d0-c1462785f5f0.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/png/300943/1675217143143-8d961072-2087-4a38-b8d0-c1462785f5f0.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"> 来做这个事，有兴趣可以看看。<br><a name="mMKsQ"></a></p>
+<h3 id="Vue-错误"><a href="#Vue-错误" class="headerlink" title="Vue 错误"></a>Vue 错误</h3><p>利用 window.onerror 是捕获不到 Vue 错误的，它需要使用 Vue 提供的 API 进行监听。<br />Vue.config.errorHandler &#x3D; (err, vm, info) &#x3D;&gt; { &#x2F;&#x2F; 将报错信息打印到控制台 console.error(err) lazyReportCache({ info, error: err.stack, subType: ‘vue’, type: ‘error’, startTime: performance.now(), pageURL: getPageURL(), }) } 复制代码<br><a name="DdVpm"></a></p>
+<h2 id="行为数据采集"><a href="#行为数据采集" class="headerlink" title="行为数据采集"></a>行为数据采集</h2><p><a name="znw8q"></a></p>
+<h3 id="PV、UV"><a href="#PV、UV" class="headerlink" title="PV、UV"></a>PV、UV</h3><p>PV(page view) 是页面浏览量，UV(Unique visitor)用户访问量。PV 只要访问一次页面就算一次，UV 同一天内多次访问只算一次。<br />对于前端来说，只要每次进入页面上报一次 PV 就行，UV 的统计放在服务端来做，主要是分析上报的数据来统计得出 UV。<br />export default function pv() { lazyReportCache({ type: ‘behavior’, subType: ‘pv’, startTime: performance.now(), pageURL: getPageURL(), referrer: document.referrer, uuid: getUUID(), }) } 复制代码<br><a name="XrC5N"></a></p>
+<h3 id="页面停留时长"><a href="#页面停留时长" class="headerlink" title="页面停留时长"></a>页面停留时长</h3><p>用户进入页面记录一个初始时间，用户离开页面时用当前时间减去初始时间，就是用户停留时长。这个计算逻辑可以放在 beforeunload 事件里做。<br />export default function pageAccessDuration() { onBeforeunload(() &#x3D;&gt; { report({ type: ‘behavior’, subType: ‘page-access-duration’, startTime: performance.now(), pageURL: getPageURL(), uuid: getUUID(), }, true) }) } 复制代码<br><a name="VASmF"></a></p>
+<h3 id="页面访问深度"><a href="#页面访问深度" class="headerlink" title="页面访问深度"></a>页面访问深度</h3><p>记录页面访问深度是很有用的，例如不同的活动页面 a 和 b。a 平均访问深度只有 50%，b 平均访问深度有 80%，说明 b 更受用户喜欢，根据这一点可以有针对性的修改 a 活动页面。<br />除此之外还可以利用访问深度以及停留时长来鉴别电商刷单。例如有人进来页面后一下就把页面拉到底部然后等待一段时间后购买，有人是慢慢的往下滚动页面，最后再购买。虽然他们在页面的停留时间一样，但明显第一个人更像是刷单的。<br />页面访问深度计算过程稍微复杂一点：</p>
+<ol>
+<li>用户进入页面时，记录当前时间、scrollTop 值、页面可视高度、页面总高度。</li>
+<li>用户滚动页面的那一刻，会触发 scroll 事件，在回调函数中用第一点得到的数据算出页面访问深度和停留时长。</li>
+<li>当用户滚动页面到某一点时，停下继续观看页面。这时记录当前时间、scrollTop 值、页面可视高度、页面总高度。</li>
+<li>重复第二点…</li>
+</ol>
+<p>具体代码请看：<br />let timer let startTime &#x3D; 0 let hasReport &#x3D; false let pageHeight &#x3D; 0 let scrollTop &#x3D; 0 let viewportHeight &#x3D; 0 export default function pageAccessHeight() { window.addEventListener(‘scroll’, onScroll) onBeforeunload(() &#x3D;&gt; { const now &#x3D; performance.now() report({ startTime: now, duration: now - startTime, type: ‘behavior’, subType: ‘page-access-height’, pageURL: getPageURL(), value: toPercent((scrollTop + viewportHeight) &#x2F; pageHeight), uuid: getUUID(), }, true) }) &#x2F;&#x2F; 页面加载完成后初始化记录当前访问高度、时间 executeAfterLoad(() &#x3D;&gt; { startTime &#x3D; performance.now() pageHeight &#x3D; document.documentElement.scrollHeight || document.body.scrollHeight scrollTop &#x3D; document.documentElement.scrollTop || document.body.scrollTop viewportHeight &#x3D; window.innerHeight }) } function onScroll() { clearTimeout(timer) const now &#x3D; performance.now() if (!hasReport) { hasReport &#x3D; true lazyReportCache({ startTime: now, duration: now - startTime, type: ‘behavior’, subType: ‘page-access-height’, pageURL: getPageURL(), value: toPercent((scrollTop + viewportHeight) &#x2F; pageHeight), uuid: getUUID(), }) } timer &#x3D; setTimeout(() &#x3D;&gt; { hasReport &#x3D; false startTime &#x3D; now pageHeight &#x3D; document.documentElement.scrollHeight || document.body.scrollHeight scrollTop &#x3D; document.documentElement.scrollTop || document.body.scrollTop viewportHeight &#x3D; window.innerHeight }, 500) } function toPercent(val) { if (val &gt;&#x3D; 1) return ‘100%’ return (val * 100).toFixed(2) + ‘%’ } 复制代码<br><a name="Y4y4I"></a></p>
+<h3 id="用户点击"><a href="#用户点击" class="headerlink" title="用户点击"></a>用户点击</h3><p>利用 addEventListener() 监听 mousedown、touchstart 事件，我们可以收集用户每一次点击区域的大小，点击坐标在整个页面中的具体位置，点击元素的内容等信息。<br />export default function onClick() { [‘mousedown’, ‘touchstart’].forEach(eventType &#x3D;&gt; { let timer window.addEventListener(eventType, event &#x3D;&gt; { clearTimeout(timer) timer &#x3D; setTimeout(() &#x3D;&gt; { const target &#x3D; event.target const { top, left } &#x3D; target.getBoundingClientRect() lazyReportCache({ top, left, eventType, pageHeight: document.documentElement.scrollHeight || document.body.scrollHeight, scrollTop: document.documentElement.scrollTop || document.body.scrollTop, type: ‘behavior’, subType: ‘click’, target: target.tagName, paths: event.path?.map(item &#x3D;&gt; item.tagName).filter(Boolean), startTime: event.timeStamp, pageURL: getPageURL(), outerHTML: target.outerHTML, innerHTML: target.innerHTML, width: target.offsetWidth, height: target.offsetHeight, viewport: { width: window.innerWidth, height: window.innerHeight, }, uuid: getUUID(), }) }, 500) }) }) } 复制代码<br><a name="DSIXl"></a></p>
+<h3 id="页面跳转"><a href="#页面跳转" class="headerlink" title="页面跳转"></a>页面跳转</h3><p>利用 addEventListener() 监听 popstate、hashchange 页面跳转事件。需要注意的是调用 history.pushState()或 history.replaceState()不会触发 popstate 事件。只有在做出浏览器动作时，才会触发该事件，如用户点击浏览器的回退按钮（或者在 Javascript 代码中调用 history.back()或者 history.forward()方法）。同理，hashchange 也一样。<br />export default function pageChange() { let from &#x3D; ‘’ window.addEventListener(‘popstate’, () &#x3D;&gt; { const to &#x3D; getPageURL() lazyReportCache({ from, to, type: ‘behavior’, subType: ‘popstate’, startTime: performance.now(), uuid: getUUID(), }) from &#x3D; to }, true) let oldURL &#x3D; ‘’ window.addEventListener(‘hashchange’, event &#x3D;&gt; { const newURL &#x3D; event.newURL lazyReportCache({ from: oldURL, to: newURL, type: ‘behavior’, subType: ‘hashchange’, startTime: performance.now(), uuid: getUUID(), }) oldURL &#x3D; newURL }, true) } 复制代码<br><a name="wGJ7S"></a></p>
+<h3 id="Vue-路由变更"><a href="#Vue-路由变更" class="headerlink" title="Vue 路由变更"></a>Vue 路由变更</h3><p>Vue 可以利用 router.beforeEach 钩子进行路由变更的监听。<br />export default function onVueRouter(router) { router.beforeEach((to, from, next) &#x3D;&gt; { &#x2F;&#x2F; 首次加载页面不用统计 if (!from.name) { return next() } const data &#x3D; { params: to.params, query: to.query, } lazyReportCache({ data, name: to.name || to.path, type: ‘behavior’, subType: [‘vue-router-change’, ‘pv’], startTime: performance.now(), from: from.fullPath, to: to.fullPath, uuid: getUUID(), }) next() }) } 复制代码<br><a name="FETNa"></a></p>
+<h2 id="数据上报"><a href="#数据上报" class="headerlink" title="数据上报"></a>数据上报</h2><p><a name="oHjKH"></a></p>
+<h3 id="上报方法"><a href="#上报方法" class="headerlink" title="上报方法"></a>上报方法</h3><p>数据上报可以使用以下几种方式：</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/sendBeacon">sendBeacon</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a></li>
+<li>image</li>
+</ul>
+<p>我写的简易 SDK 采用的是第一、第二种方式相结合的方式进行上报。利用 sendBeacon 来进行上报的优势非常明显。<br />使用 <strong>sendBeacon()</strong> 方法会使用户代理在有机会时异步地向服务器发送数据，同时不会延迟页面的卸载或影响下一导航的载入性能。这就解决了提交分析数据时的所有的问题：数据可靠，传输异步并且不会影响下一页面的加载。<br />在不支持 sendBeacon 的浏览器下我们可以使用 XMLHttpRequest 来进行上报。一个 HTTP 请求包含发送和接收两个步骤。其实对于上报来说，我们只要确保能发出去就可以了。也就是发送成功了就行，接不接收响应无所谓。为此，我做了个实验，在 beforeunload 用 XMLHttpRequest 传送了 30kb 的数据（一般的待上报数据很少会有这么大），换了不同的浏览器，都可以成功发出去。当然，这和硬件性能、网络状态也是有关联的。<br><a name="WGbpV"></a></p>
+<h3 id="上报时机"><a href="#上报时机" class="headerlink" title="上报时机"></a>上报时机</h3><p>上报时机有三种：</p>
+<ol>
+<li>采用 requestIdleCallback&#x2F;setTimeout 延时上报。</li>
+<li>在 beforeunload 回调函数里上报。</li>
+<li>缓存上报数据，达到一定数量后再上报。</li>
+</ol>
+<p>建议将三种方式结合一起上报：</p>
+<ol>
+<li>先缓存上报数据，缓存到一定数量后，利用 requestIdleCallback&#x2F;setTimeout 延时上报。</li>
+<li>在页面离开时统一将未上报的数据进行上报。<br><a name="WgsFZ"></a></li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>仅看理论知识是比较难以理解的，为此我结合本文所讲的技术要点写了一个简单的<a href="https://link.juejin.cn/?target=https://github.com/woai3c/monitor-demo">监控 SDK</a>，可以用它来写一些简单的 DEMO，帮助加深理解。再结合本文一起阅读，效果更好。<br><a name="fQRej"></a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a name="QE32N"></a></p>
+<h3 id="性能监控"><a href="#性能监控" class="headerlink" title="性能监控"></a>性能监控</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/Performance_API">Performance API</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/PerformanceResourceTiming">PerformanceResourceTiming</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API">Using_the_Resource_Timing_API</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/PerformanceTiming">PerformanceTiming</a></li>
+<li><a href="https://link.juejin.cn/?target=https://web.dev/metrics/">Metrics</a></li>
+<li><a href="https://link.juejin.cn/?target=https://web.dev/evolving-cls/">evolving-cls</a></li>
+<li><a href="https://link.juejin.cn/?target=https://web.dev/custom-metrics/">custom-metrics</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/GoogleChrome/web-vitals">web-vitals</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/PerformanceObserver">PerformanceObserver</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/API/Element_timing_API">Element_timing_API</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEventTiming">PerformanceEventTiming</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Timing-Allow-Origin">Timing-Allow-Origin</a></li>
+<li><a href="https://link.juejin.cn/?target=https://web.dev/bfcache/">bfcache</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver">MutationObserver</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a></li>
+<li><a href="https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/39292837">如何监控网页的卡顿</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/sendBeacon">sendBeacon</a><br><a name="Xmp2u"></a></li>
+</ul>
+<h3 id="错误监控"><a href="#错误监控" class="headerlink" title="错误监控"></a>错误监控</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/joeyguo/noerror">noerror</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mozilla/source-map">source-map</a><br><a name="MLtN4"></a></li>
+</ul>
+<h3 id="行为监控"><a href="#行为监控" class="headerlink" title="行为监控"></a>行为监控</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/Window/popstate_event">popstate</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/API/Window/hashchange_event">hashchange</a></li>
+</ul>
+
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E5%89%8D%E7%AB%AF/" class="">
+              前端
+            </a>
+          
+            <a href="/tags/%E7%9B%91%E6%8E%A7/" class="">
+              监控
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>会飞的蜗</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2023/06/28/frontend/monitor/qian-duan-jian-kong-sdk-de-yi-xie-ji-zhu-yao-dian-yuan-li-fen-xi/" target="_blank" title="前端监控 SDK 的一些技术要点原理分析">https://ywzzy.github.io/2023/06/28/frontend/monitor/qian-duan-jian-kong-sdk-de-yi-xie-ji-zhu-yao-dian-yuan-li-fen-xi/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/o5/wallhaven-o525z9.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/o5/wallhaven-o525z9.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+    </div>
+    <a href="/2023/06/28/frontend/monitor/sentry-sourcemap/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">sentry - sourceMap</div>
+      </div>
+      
+      <!-- <div class="content">
+        
+
+
+一、 基于 sentry-cli 上传
+第一步：安装 sentry-cli12# 记得全局安装，这样方便点npm 
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/d6/wallhaven-d6w5lj.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/d6/wallhaven-d6w5lj.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
+    </div>
+    <a href="/2023/06/28/frontend/monitor/docker-ru-men-yi-wen-jiu-gou-liao/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">docker入门一文就够了</div>
+      </div>
+      <!-- <div class="content">
+        
+
+
+个人学习 docker 整理的一些资料和 demo，后续会根据新用到的功能不定期更新，有问题欢迎留言
+
+
+背景do
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+      <div id="appDonate" class="post-donate">
+  <div id="donate_board" class="donate_bar center" ref="donate">
+    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
+  </div>
+  <transition name="fade">
+    <div 
+      class="donate-box-mask"
+      v-cloak 
+      v-show="visible"
+      @click="cancelDialogDrawer()"
+    >
+    </div>
+  </transition>
+  <transition name="bounce">
+    <div class="donate-box" v-cloak v-show="visible">
+      <div class="donate-box_close">
+        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
+      </div>
+      <div class="donate-box_title">
+        <h4>
+          你的赏识是我前进的动力
+        </h4>
+      </div>
+      <div class="donate-box_tab">
+        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
+          支付宝
+        </div>
+        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
+          微信
+        </div>
+      </div>
+      <div class="donate-box_img">
+        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
+          <img src="https://img1.imgtp.com/2023/06/27/DIVWMZWR.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2023/06/27/DIVWMZWR.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="支付宝打赏" />
+        </div> 
+        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
+          <img src="https://img1.imgtp.com/2023/06/27/OeOtQHzU.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2023/06/27/OeOtQHzU.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="微信打赏" />
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDonate',
+    data: {
+      visible: false,
+      tabActive: 'Alipay',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        // function getScroll() {
+        //   return {
+        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+        //   };
+        // }
+        this.top = $(document).scrollTop() // or getScroll().top
+        // console.log('aa', $('.main-content'));
+        body.style.cssText = 'overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+      changeTabActive(name) {
+        this.tabActive = name;
+      }
+    },
+    created() {}
+  })
+</script>
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://avatars.githubusercontent.com/u/48836340?v=4'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>会飞的蜗</h2>
+        
+        
+          <p>热爱生活，热爱code</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">会飞的蜗</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/mailto:1738348915@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/YWzzy"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1738348915"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+      <div class="widget testWidget" id="testWidget" style="order: -1;background: #fff">
+        <header>
+          
+            <a style="color: #d63130" target="_blank" rel="noopener" href='http://baidu.com'><i class="fab fa-weibo fa-fw" aria-hidden="true"></i><span class='name'>微博热搜</span></a>
+          
+        </header>
+        <div class="content">
+           <div id="myWeibo">
+<!-- 如果不要滚动，则去掉 vue-seamless-scroll标签就行了，这个插件使用cdn向左向右滚动好像有问题 -->
+<vue-seamless-scroll :data="content" :class-option="classOption" class="warp" > <div class="weibo-container" v-for="(item, index) in content" :key="index"> <div class="left"> <div class="order" :class="{ red: index<=2 }">{{index + 1}}</div> <div class="name"><a :href="item.url" target="_blank">{{item.name}}</a></div> </div> <div class="hot">{{item.hot}}</div> </div> </vue-seamless-scroll> </div>
+<script defer src="/weibo/index.js"></script> <link href="/weibo/index.css" rel="stylesheet"> 
+        </div>
+    </div>
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86"><span class="toc-text">性能数据采集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FP"><span class="toc-text">FP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FCP"><span class="toc-text">FCP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LCP"><span class="toc-text">LCP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CLS"><span class="toc-text">CLS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%AF%E5%8A%A0"><span class="toc-text">累加</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%96%E6%89%80%E6%9C%89%E4%BC%9A%E8%AF%9D%E7%AA%97%E5%8F%A3%E7%9A%84%E5%B9%B3%E5%9D%87%E6%95%B0"><span class="toc-text">取所有会话窗口的平均数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%96%E6%89%80%E6%9C%89%E4%BC%9A%E8%AF%9D%E7%AA%97%E5%8F%A3%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="toc-text">取所有会话窗口中的最大值</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DOMContentLoaded%E3%80%81load-%E4%BA%8B%E4%BB%B6"><span class="toc-text">DOMContentLoaded、load 事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A6%96%E5%B1%8F%E6%B8%B2%E6%9F%93%E6%97%B6%E9%97%B4"><span class="toc-text">首屏渲染时间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%91%E5%90%AC-DOM"><span class="toc-text">监听 DOM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%9C%A8%E9%A6%96%E5%B1%8F"><span class="toc-text">判断是否在首屏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-requestAnimationFrame-%E8%8E%B7%E5%8F%96-DOM-%E7%BB%98%E5%88%B6%E6%97%B6%E9%97%B4"><span class="toc-text">使用 requestAnimationFrame() 获取 DOM 绘制时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%92%8C%E9%A6%96%E5%B1%8F%E5%86%85%E7%9A%84%E6%89%80%E6%9C%89%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E6%97%B6%E9%97%B4%E4%BD%9C%E5%AF%B9%E6%AF%94"><span class="toc-text">和首屏内的所有图片加载时间作对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96"><span class="toc-text">优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82%E8%80%97%E6%97%B6"><span class="toc-text">接口请求耗时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E6%97%B6%E9%97%B4%E3%80%81%E7%BC%93%E5%AD%98%E5%91%BD%E4%B8%AD%E7%8E%87"><span class="toc-text">资源加载时间、缓存命中率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BE%80%E8%BF%94%E7%BC%93%E5%AD%98-BFC%EF%BC%88back-x2F-forward-cache%EF%BC%89"><span class="toc-text">浏览器往返缓存 BFC（back&#x2F;forward cache）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FPS"><span class="toc-text">FPS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-%E8%B7%AF%E7%94%B1%E5%8F%98%E6%9B%B4%E6%B8%B2%E6%9F%93%E6%97%B6%E9%97%B4"><span class="toc-text">Vue 路由变更渲染时间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86"><span class="toc-text">错误数据采集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E9%94%99%E8%AF%AF"><span class="toc-text">资源加载错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js-%E9%94%99%E8%AF%AF"><span class="toc-text">js 错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#promise-%E9%94%99%E8%AF%AF"><span class="toc-text">promise 错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sourcemap"><span class="toc-text">sourcemap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-%E9%94%99%E8%AF%AF"><span class="toc-text">Vue 错误</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86"><span class="toc-text">行为数据采集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PV%E3%80%81UV"><span class="toc-text">PV、UV</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%81%9C%E7%95%99%E6%97%B6%E9%95%BF"><span class="toc-text">页面停留时长</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E8%AE%BF%E9%97%AE%E6%B7%B1%E5%BA%A6"><span class="toc-text">页面访问深度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%82%B9%E5%87%BB"><span class="toc-text">用户点击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC"><span class="toc-text">页面跳转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-%E8%B7%AF%E7%94%B1%E5%8F%98%E6%9B%B4"><span class="toc-text">Vue 路由变更</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%8A%E6%8A%A5"><span class="toc-text">数据上报</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E6%8A%A5%E6%96%B9%E6%B3%95"><span class="toc-text">上报方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E6%8A%A5%E6%97%B6%E6%9C%BA"><span class="toc-text">上报时机</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">参考资料</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7"><span class="toc-text">性能监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E7%9B%91%E6%8E%A7"><span class="toc-text">错误监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E7%9B%91%E6%8E%A7"><span class="toc-text">行为监控</span></a></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/06/28/frontend/monitor/sentry-qian-duan-yi-chang-jian-kong/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/gp/wallhaven-gp9117.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/gp/wallhaven-gp9117.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-28</span>
+                
+              </div>
+              <a class="post-title" href="/2023/06/28/frontend/monitor/sentry-qian-duan-yi-chang-jian-kong/">Sentry前端异常监控</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/06/28/frontend/monitor/sentry-qing-li-shu-ju/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/kx/wallhaven-kxkjrq.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/kx/wallhaven-kxkjrq.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-28</span>
+                
+              </div>
+              <a class="post-title" href="/2023/06/28/frontend/monitor/sentry-qing-li-shu-ju/">sentry - 清理数据</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/06/28/frontend/monitor/sentry-sourcemap/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/o5/wallhaven-o525z9.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/o5/wallhaven-o525z9.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-28</span>
+                
+              </div>
+              <a class="post-title" href="/2023/06/28/frontend/monitor/sentry-sourcemap/">sentry - sourceMap</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/06/28/frontend/monitor/qian-duan-jian-kong-sdk-de-yi-xie-ji-zhu-yao-dian-yuan-li-fen-xi/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/we/wallhaven-weljr7.png" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/we/wallhaven-weljr7.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-28</span>
+                
+              </div>
+              <a class="post-title" href="/2023/06/28/frontend/monitor/qian-duan-jian-kong-sdk-de-yi-xie-ji-zhu-yao-dian-yuan-li-fen-xi/">前端监控 SDK 的一些技术要点原理分析</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/06/28/frontend/monitor/docker-ru-men-yi-wen-jiu-gou-liao/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/d6/wallhaven-d6w5lj.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/d6/wallhaven-d6w5lj.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-28</span>
+                
+              </div>
+              <a class="post-title" href="/2023/06/28/frontend/monitor/docker-ru-men-yi-wen-jiu-gou-liao/">docker入门一文就够了</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgb(0, 4, 6, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="mailto:1738348915@qq.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a target="_blank" rel="noopener" href="https://github.com/YWzzy" class="social">
+                  
+                    <i class="fas fa-github" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+              
+                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1738348915" class="social">
+                  
+                    <i class="fas fa-qq" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2023 <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">zhangzhiyong</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a></p>
+
+          </div>
+        
+      
+        
+          
+            <!-- 不蒜子统计 -->
+            <!-- 不蒜子统计 -->
+<span id="busuanzi_container_site_pv">
+      <i class="fas fa-eye" aria-hidden="true"></i>Total visits：<span id="busuanzi_value_site_pv"></span> times
+</span>
+<span class="post-meta-divider">|</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+      <i class="fas fa-users" aria-hidden="true"></i>Number of visitors：<span id="busuanzi_value_site_uv"></span> people
+</span>
+
+          
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><p><a target="_blank" rel="noopener" href="http://baidu.com/">Hello World</a></p>
+</div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+      <link rel="stylesheet" href="/js/aplayer/APlayer@1.10.1.min.css">
+<style>
+.aplayer .aplayer-lrc p {
+  
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px !important;
+}
+
+.aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  font-size: 15px;
+  color: 3cd589;
+}
+
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+  left: -66px !important;
+}
+
+.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+  left: 0px !important;
+}
+
+
+</style>
+<meting-js  
+  class=""
+  server="tencent"
+  type="playlist"
+  id="8937451602"
+  fixed='true'
+  autoplay='false'
+  theme='3cd589'
+  loop='all'
+  order='random'
+  preload='auto'
+  volume='0.7'
+  list-folded='true'
+>
+</meting-js>
+
+<!-- <style>
+  #aplayer {
+    position: fixed;
+    left: 0;
+    bottom: 300px;
+  }
+</style> -->
+<script src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script>
+    
+
+    <!-- 图片放大 -->
+    
+      <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h2, h3, h4',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 20,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', 'YWzzy/utterance_repo')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
+    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script src="/js/cursor/explosion.min.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>
