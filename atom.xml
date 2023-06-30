@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2023-06-30T02:57:25.549Z</updated>
+  <updated>2023-06-30T02:57:32.737Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端书籍</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/</id>
+    <published>2023-06-30T02:07:25.000Z</published>
+    <updated>2023-06-30T02:57:32.737Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="书籍" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E4%B9%A6%E7%B1%8D/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="书籍" scheme="https://ywzzy.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>国外前端博主</title>
@@ -47,37 +78,6 @@
     <category term="blog" scheme="https://ywzzy.github.io/tags/blog/"/>
     
     <category term="国外" scheme="https://ywzzy.github.io/tags/%E5%9B%BD%E5%A4%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端书籍</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T02:57:32.737Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="书籍" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E4%B9%A6%E7%B1%8D/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="书籍" scheme="https://ywzzy.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
     
   </entry>
   
@@ -115,39 +115,6 @@
   </entry>
   
   <entry>
-    <title>Node.js项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T02:56:39.271Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;strong&gt;网易云音乐 API&lt;/strong&gt;&lt;br /&gt;一个基于 Node.js 的网易云音乐 API</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Node.js" scheme="https://ywzzy.github.io/tags/Node-js/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Canvas 项目</title>
     <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/canvas-xiang-mu/"/>
     <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/canvas-xiang-mu/</id>
@@ -177,6 +144,39 @@
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
     <category term="Canvas" scheme="https://ywzzy.github.io/tags/Canvas/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js项目</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/</id>
+    <published>2023-06-30T02:07:25.000Z</published>
+    <updated>2023-06-30T02:56:39.271Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;strong&gt;网易云音乐 API&lt;/strong&gt;&lt;br /&gt;一个基于 Node.js 的网易云音乐 API</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Node.js" scheme="https://ywzzy.github.io/tags/Node-js/"/>
     
   </entry>
   
@@ -215,39 +215,6 @@
   </entry>
   
   <entry>
-    <title>vue3.0项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue3.0-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue3.0-xiang-mu/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T02:56:55.303Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;strong&gt;PPTist&lt;/strong&gt;&lt;br /&gt;PPTist 是一个基于 Vue3.x + TypeScript + Pinia + Ant Design Vue +</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="vue3" scheme="https://ywzzy.github.io/tags/vue3/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Vue项目</title>
     <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/"/>
     <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/</id>
@@ -281,11 +248,11 @@
   </entry>
   
   <entry>
-    <title>前端框架源码解析项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/qian-duan-kuang-jia-yuan-ma-jie-xi-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/qian-duan-kuang-jia-yuan-ma-jie-xi-xiang-mu/</id>
+    <title>vue3.0项目</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue3.0-xiang-mu/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue3.0-xiang-mu/</id>
     <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T02:55:51.375Z</updated>
+    <updated>2023-06-30T02:56:55.303Z</updated>
     
     
       
@@ -294,7 +261,7 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-&lt;p&gt;为什么要阅读源码？阅读优秀的代码的目的是让我们能够写出优秀的代码，更好的理解框架的工作方式。下面就来分享 5 个 Vue 源码解析开源项目、5 个 React</summary>
+&lt;p&gt;&lt;strong&gt;PPTist&lt;/strong&gt;&lt;br /&gt;PPTist 是一个基于 Vue3.x + TypeScript + Pinia + Ant Design Vue +</summary>
         
       
     
@@ -309,7 +276,7 @@
     
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
-    <category term="源码解析" scheme="https://ywzzy.github.io/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
+    <category term="vue3" scheme="https://ywzzy.github.io/tags/vue3/"/>
     
   </entry>
   
@@ -343,6 +310,39 @@
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
     <category term="低代码" scheme="https://ywzzy.github.io/tags/%E4%BD%8E%E4%BB%A3%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端框架源码解析项目</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/qian-duan-kuang-jia-yuan-ma-jie-xi-xiang-mu/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/qian-duan-kuang-jia-yuan-ma-jie-xi-xiang-mu/</id>
+    <published>2023-06-30T02:07:25.000Z</published>
+    <updated>2023-06-30T02:55:51.375Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;为什么要阅读源码？阅读优秀的代码的目的是让我们能够写出优秀的代码，更好的理解框架的工作方式。下面就来分享 5 个 Vue 源码解析开源项目、5 个 React</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="源码解析" scheme="https://ywzzy.github.io/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
     
   </entry>
   
@@ -644,11 +644,11 @@
   </entry>
   
   <entry>
-    <title>HTTPS 证书伪造</title>
-    <link href="https://ywzzy.github.io/2023/06/29/frontend/security/https-zheng-shu-wei-zao/"/>
-    <id>https://ywzzy.github.io/2023/06/29/frontend/security/https-zheng-shu-wei-zao/</id>
+    <title>OS命令注入</title>
+    <link href="https://ywzzy.github.io/2023/06/29/frontend/security/os-ming-ling-zhu-ru/"/>
+    <id>https://ywzzy.github.io/2023/06/29/frontend/security/os-ming-ling-zhu-ru/</id>
     <published>2023-06-29T05:19:58.000Z</published>
-    <updated>2023-06-29T06:52:10.260Z</updated>
+    <updated>2023-06-29T06:52:23.201Z</updated>
     
     
       
@@ -657,7 +657,8 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-&lt;p&gt;&lt;code&gt;HTTPS&lt;/code&gt;  协议的安全依赖于它的证书机制，如果攻击者申请到了一张和你的网站一摸一样的证书，那你网站的安全机制也就不复存在了。本文来聊一聊，如何预防</summary>
+&lt;p&gt;&lt;a name=&quot;TCl7Y&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;什么是操作系统命令注入？&quot;&gt;&lt;a href=&quot;#什么是操作系统命令注入？&quot;</summary>
         
       
     
