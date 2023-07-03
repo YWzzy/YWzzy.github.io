@@ -90,7 +90,7 @@
     <link href="https://ywzzy.github.io/2023/07/02/frontend/collection/skill/google-sou-suo-ji-qiao/"/>
     <id>https://ywzzy.github.io/2023/07/02/frontend/collection/skill/google-sou-suo-ji-qiao/</id>
     <published>2023-07-02T02:07:25.000Z</published>
-    <updated>2023-07-03T07:06:25.865Z</updated>
+    <updated>2023-07-03T07:17:23.094Z</updated>
     
     
       
@@ -191,41 +191,6 @@
   </entry>
   
   <entry>
-    <title>Devtools 实用功能（2）</title>
-    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/"/>
-    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/</id>
-    <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T07:06:23.454Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;Chrome DevTools 是前端开发人员最常用的工具之一，今天我们就来看 5 个 Chrome DevTools</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="技巧" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%8A%80%E5%B7%A7/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
-    
-    <category term="技巧" scheme="https://ywzzy.github.io/tags/%E6%8A%80%E5%B7%A7/"/>
-    
-    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
-    
-  </entry>
-  
-  <entry>
     <title>DevTools 调试技巧（2）</title>
     <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/"/>
     <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/</id>
@@ -299,11 +264,11 @@
   </entry>
   
   <entry>
-    <title>前端书籍</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T03:24:40.927Z</updated>
+    <title>Devtools 实用功能（2）</title>
+    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/"/>
+    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/</id>
+    <published>2023-07-01T02:07:25.000Z</published>
+    <updated>2023-07-03T07:06:23.454Z</updated>
     
     
       
@@ -312,7 +277,7 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-&lt;p&gt;&lt;img</summary>
+&lt;p&gt;Chrome DevTools 是前端开发人员最常用的工具之一，今天我们就来看 5 个 Chrome DevTools</summary>
         
       
     
@@ -320,12 +285,16 @@
     
     <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="书籍" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E4%B9%A6%E7%B1%8D/"/>
+    <category term="技巧" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%8A%80%E5%B7%A7/"/>
     
     
     <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="书籍" scheme="https://ywzzy.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
+    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
+    
+    <category term="技巧" scheme="https://ywzzy.github.io/tags/%E6%8A%80%E5%B7%A7/"/>
+    
+    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
     
   </entry>
   
@@ -360,6 +329,37 @@
     <category term="blog" scheme="https://ywzzy.github.io/tags/blog/"/>
     
     <category term="国外" scheme="https://ywzzy.github.io/tags/%E5%9B%BD%E5%A4%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端书籍</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/</id>
+    <published>2023-06-30T02:07:25.000Z</published>
+    <updated>2023-06-30T03:24:40.927Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="书籍" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E4%B9%A6%E7%B1%8D/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="书籍" scheme="https://ywzzy.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
     
   </entry>
   
@@ -430,6 +430,39 @@
   </entry>
   
   <entry>
+    <title>Node.js项目</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/</id>
+    <published>2023-06-30T02:07:25.000Z</published>
+    <updated>2023-06-30T03:24:05.033Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;strong&gt;网易云音乐 API&lt;/strong&gt;&lt;br /&gt;一个基于 Node.js 的网易云音乐 API</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Node.js" scheme="https://ywzzy.github.io/tags/Node-js/"/>
+    
+  </entry>
+  
+  <entry>
     <title>TypeScript资源</title>
     <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/typescript-zi-yuan/"/>
     <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/typescript-zi-yuan/</id>
@@ -464,39 +497,6 @@
   </entry>
   
   <entry>
-    <title>Node.js项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T03:24:05.033Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;strong&gt;网易云音乐 API&lt;/strong&gt;&lt;br /&gt;一个基于 Node.js 的网易云音乐 API</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Node.js" scheme="https://ywzzy.github.io/tags/Node-js/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Vue项目</title>
     <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/"/>
     <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/</id>
@@ -523,9 +523,9 @@
     
     <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
     <category term="Vue" scheme="https://ywzzy.github.io/tags/Vue/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
   </entry>
   
@@ -596,39 +596,6 @@
   </entry>
   
   <entry>
-    <title>前端高仿项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/qian-duan-gao-fang-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/qian-duan-gao-fang-xiang-mu/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T03:23:11.034Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;strong&gt;1. 高仿 QQ 音乐（Vue）&lt;/strong&gt;&lt;br /&gt;一个使用 Vue3+TS 开发的音乐播放器，界面模仿 QQ 音乐 Mac</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="高仿" scheme="https://ywzzy.github.io/tags/%E9%AB%98%E4%BB%BF/"/>
-    
-  </entry>
-  
-  <entry>
     <title>前端框架源码解析项目</title>
     <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/qian-duan-kuang-jia-yuan-ma-jie-xi-xiang-mu/"/>
     <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/qian-duan-kuang-jia-yuan-ma-jie-xi-xiang-mu/</id>
@@ -662,11 +629,11 @@
   </entry>
   
   <entry>
-    <title>数据可视化大屏项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/shu-ju-ke-shi-hua-da-ping-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/shu-ju-ke-shi-hua-da-ping-xiang-mu/</id>
+    <title>前端高仿项目</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/qian-duan-gao-fang-xiang-mu/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/qian-duan-gao-fang-xiang-mu/</id>
     <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T03:23:39.807Z</updated>
+    <updated>2023-06-30T03:23:11.034Z</updated>
     
     
       
@@ -675,7 +642,7 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-&lt;p&gt;&lt;strong&gt;DataV&lt;/strong&gt;&lt;br /&gt;DataV 是一个基于 Vue 的数据可视化组件库，Vue 数据可视化组件库（类似阿里 DataV，大屏数据展示），提供</summary>
+&lt;p&gt;&lt;strong&gt;1. 高仿 QQ 音乐（Vue）&lt;/strong&gt;&lt;br /&gt;一个使用 Vue3+TS 开发的音乐播放器，界面模仿 QQ 音乐 Mac</summary>
         
       
     
@@ -690,7 +657,40 @@
     
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
-    <category term="可视化大屏" scheme="https://ywzzy.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%A4%A7%E5%B1%8F/"/>
+    <category term="高仿" scheme="https://ywzzy.github.io/tags/%E9%AB%98%E4%BB%BF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信小程序项目</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/wei-xin-xiao-cheng-xu-xiang-mu/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/wei-xin-xiao-cheng-xu-xiang-mu/</id>
+    <published>2023-06-30T02:07:25.000Z</published>
+    <updated>2023-06-30T03:23:47.199Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;strong&gt;wechat-app-mall&lt;/strong&gt;&lt;br /&gt; wechat-app-mall 是一个微信小程序商城、微信小程序微店。其具有以下功能：&lt;br</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="微信小程序" scheme="https://ywzzy.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
   </entry>
   
