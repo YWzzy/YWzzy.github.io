@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>会飞的蜗</title>
+  <title>飞翔的蜗</title>
   
   <subtitle>一蓑烟雨任平生</subtitle>
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2023-07-03T07:53:27.155Z</updated>
+  <updated>2023-07-03T08:43:34.145Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
-    <name>会飞的蜗</name>
+    <name>飞翔的蜗</name>
     
   </author>
   
@@ -21,7 +21,7 @@
     <link href="https://ywzzy.github.io/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/"/>
     <id>https://ywzzy.github.io/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/</id>
     <published>2023-07-03T02:07:25.000Z</published>
-    <updated>2023-07-03T07:53:27.155Z</updated>
+    <updated>2023-07-03T08:43:34.145Z</updated>
     
     
       
@@ -55,7 +55,7 @@
     <link href="https://ywzzy.github.io/2023/07/03/frontend/collection/skill/npm-shi-yong-ji-qiao/"/>
     <id>https://ywzzy.github.io/2023/07/03/frontend/collection/skill/npm-shi-yong-ji-qiao/</id>
     <published>2023-07-03T02:07:25.000Z</published>
-    <updated>2023-07-03T07:53:10.903Z</updated>
+    <updated>2023-07-03T08:42:58.598Z</updated>
     
     
       
@@ -90,7 +90,7 @@
     <link href="https://ywzzy.github.io/2023/07/02/frontend/collection/skill/google-sou-suo-ji-qiao/"/>
     <id>https://ywzzy.github.io/2023/07/02/frontend/collection/skill/google-sou-suo-ji-qiao/</id>
     <published>2023-07-02T02:07:25.000Z</published>
-    <updated>2023-07-03T07:52:54.829Z</updated>
+    <updated>2023-07-03T08:42:40.802Z</updated>
     
     
       
@@ -124,7 +124,7 @@
     <link href="https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/"/>
     <id>https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/</id>
     <published>2023-07-02T02:07:25.000Z</published>
-    <updated>2023-07-03T07:53:26.691Z</updated>
+    <updated>2023-07-03T08:42:51.620Z</updated>
     
     
       
@@ -153,11 +153,51 @@
   </entry>
   
   <entry>
+    <title>DevTools 调试技巧（1）</title>
+    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-1/"/>
+    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-1/</id>
+    <published>2023-07-01T02:07:25.000Z</published>
+    <updated>2023-07-03T08:42:10.164Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+
+&lt;br /&gt;
+&lt;a name=&quot;i2JYR&quot;&gt;&lt;/a&gt;
+## 1. Chrome DevTools功能简介
+
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/skill/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
+    
+    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
+    
+    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>DevTools 调试技巧（2）</title>
     <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/"/>
     <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/</id>
     <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T07:52:18.483Z</updated>
+    <updated>2023-07-03T08:42:17.288Z</updated>
     
     
       
@@ -194,7 +234,7 @@
     <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-1/"/>
     <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-1/</id>
     <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T07:52:29.823Z</updated>
+    <updated>2023-07-03T08:42:24.912Z</updated>
     
     
       
@@ -230,7 +270,7 @@
     <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/"/>
     <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/</id>
     <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T07:52:34.349Z</updated>
+    <updated>2023-07-03T08:42:31.866Z</updated>
     
     
       
@@ -257,77 +297,6 @@
     <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
     
     <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DevTools 调试技巧（1）</title>
-    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-1/"/>
-    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-1/</id>
-    <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T07:52:13.584Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-
-&lt;br /&gt;
-&lt;a name=&quot;i2JYR&quot;&gt;&lt;/a&gt;
-## 1. Chrome DevTools功能简介
-
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/skill/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
-    
-    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端书籍</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T03:24:40.927Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="书籍" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E4%B9%A6%E7%B1%8D/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="书籍" scheme="https://ywzzy.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
     
   </entry>
   
@@ -366,6 +335,37 @@
   </entry>
   
   <entry>
+    <title>前端书籍</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/</id>
+    <published>2023-06-30T02:07:25.000Z</published>
+    <updated>2023-06-30T03:24:40.927Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="书籍" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E4%B9%A6%E7%B1%8D/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="书籍" scheme="https://ywzzy.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Awesome</title>
     <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/awesome/"/>
     <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/awesome/</id>
@@ -395,6 +395,39 @@
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
     <category term="Awesome" scheme="https://ywzzy.github.io/tags/Awesome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js项目</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/</id>
+    <published>2023-06-30T02:07:25.000Z</published>
+    <updated>2023-06-30T03:24:05.033Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;strong&gt;网易云音乐 API&lt;/strong&gt;&lt;br /&gt;一个基于 Node.js 的网易云音乐 API</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Node.js" scheme="https://ywzzy.github.io/tags/Node-js/"/>
     
   </entry>
   
@@ -432,11 +465,11 @@
   </entry>
   
   <entry>
-    <title>Node.js项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/</id>
+    <title>vue3.0项目</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue3.0-xiang-mu/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue3.0-xiang-mu/</id>
     <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T03:24:05.033Z</updated>
+    <updated>2023-06-30T03:24:18.690Z</updated>
     
     
       
@@ -445,7 +478,7 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-&lt;p&gt;&lt;strong&gt;网易云音乐 API&lt;/strong&gt;&lt;br /&gt;一个基于 Node.js 的网易云音乐 API</summary>
+&lt;p&gt;&lt;strong&gt;PPTist&lt;/strong&gt;&lt;br /&gt;PPTist 是一个基于 Vue3.x + TypeScript + Pinia + Ant Design Vue +</summary>
         
       
     
@@ -460,7 +493,7 @@
     
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
-    <category term="Node.js" scheme="https://ywzzy.github.io/tags/Node-js/"/>
+    <category term="vue3" scheme="https://ywzzy.github.io/tags/vue3/"/>
     
   </entry>
   
@@ -525,42 +558,9 @@
     
     <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
     <category term="Vue" scheme="https://ywzzy.github.io/tags/Vue/"/>
     
-  </entry>
-  
-  <entry>
-    <title>vue3.0项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue3.0-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue3.0-xiang-mu/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T03:24:18.690Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;strong&gt;PPTist&lt;/strong&gt;&lt;br /&gt;PPTist 是一个基于 Vue3.x + TypeScript + Pinia + Ant Design Vue +</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="vue3" scheme="https://ywzzy.github.io/tags/vue3/"/>
     
   </entry>
   
