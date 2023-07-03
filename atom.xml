@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2023-07-03T07:31:55.643Z</updated>
+  <updated>2023-07-03T07:31:59.626Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VS Code 快捷方式</title>
+    <link href="https://ywzzy.github.io/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/"/>
+    <id>https://ywzzy.github.io/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/</id>
+    <published>2023-07-03T02:07:25.000Z</published>
+    <updated>2023-07-03T07:31:59.626Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;Visual Studio Code 是目前最流行、最常用的代码编辑器之一，它是开源的并且可以免费使用。它还提供对多种语言和框架的支持。&lt;/p&gt;
+&lt;p&gt;注意，这些 Visual</summary>
+        
+      
+    
+    
+    
+    <category term="快捷键" scheme="https://ywzzy.github.io/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    
+    <category term="skill" scheme="https://ywzzy.github.io/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/skill/"/>
+    
+    
+    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
+    
+    <category term="IDE" scheme="https://ywzzy.github.io/tags/IDE/"/>
+    
+    <category term="快捷键" scheme="https://ywzzy.github.io/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>npm 使用技巧</title>
@@ -48,40 +82,6 @@
     <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
     
     <category term="npm" scheme="https://ywzzy.github.io/tags/npm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VS Code 快捷方式</title>
-    <link href="https://ywzzy.github.io/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/"/>
-    <id>https://ywzzy.github.io/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/</id>
-    <published>2023-07-03T02:07:25.000Z</published>
-    <updated>2023-07-03T07:31:59.626Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;Visual Studio Code 是目前最流行、最常用的代码编辑器之一，它是开源的并且可以免费使用。它还提供对多种语言和框架的支持。&lt;/p&gt;
-&lt;p&gt;注意，这些 Visual</summary>
-        
-      
-    
-    
-    
-    <category term="快捷键" scheme="https://ywzzy.github.io/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/skill/"/>
-    
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="IDE" scheme="https://ywzzy.github.io/tags/IDE/"/>
-    
-    <category term="快捷键" scheme="https://ywzzy.github.io/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     
   </entry>
   
@@ -151,78 +151,6 @@
   </entry>
   
   <entry>
-    <title>DevTools 调试技巧（2）</title>
-    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/"/>
-    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/</id>
-    <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T07:31:39.334Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-
-&lt;p&gt;&lt;a name=&quot;VvoRH&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-选择和检查-DOM-元素&quot;&gt;&lt;a href=&quot;#1-选择和检查-DOM-元素&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/skill/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Devtools 实用功能（2）</title>
-    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/"/>
-    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/</id>
-    <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T07:31:46.466Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;Chrome DevTools 是前端开发人员最常用的工具之一，今天我们就来看 5 个 Chrome DevTools</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/skill/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
-    
-  </entry>
-  
-  <entry>
     <title>DevTools 调试技巧（1）</title>
     <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-1/"/>
     <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-1/</id>
@@ -278,6 +206,78 @@
 
 &lt;p&gt;&lt;a name=&quot;h4blQ&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;1-保留日志&quot;&gt;&lt;a href=&quot;#1-保留日志&quot; class=&quot;headerlink&quot; title=&quot;1.</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="skill" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/skill/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
+    
+    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
+    
+    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DevTools 调试技巧（2）</title>
+    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/"/>
+    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/</id>
+    <published>2023-07-01T02:07:25.000Z</published>
+    <updated>2023-07-03T07:31:39.334Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+
+&lt;p&gt;&lt;a name=&quot;VvoRH&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-选择和检查-DOM-元素&quot;&gt;&lt;a href=&quot;#1-选择和检查-DOM-元素&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="skill" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/skill/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
+    
+    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
+    
+    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Devtools 实用功能（2）</title>
+    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/"/>
+    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/</id>
+    <published>2023-07-01T02:07:25.000Z</published>
+    <updated>2023-07-03T07:31:46.466Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;Chrome DevTools 是前端开发人员最常用的工具之一，今天我们就来看 5 个 Chrome DevTools</summary>
         
       
     
@@ -430,40 +430,6 @@
   </entry>
   
   <entry>
-    <title>TypeScript资源</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/typescript-zi-yuan/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/typescript-zi-yuan/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-07-03T02:01:21.518Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;strong&gt;1. TypeScript 官方文档&lt;/strong&gt;&lt;br /&gt;TypeScript 官方文档，提供了中文版本。&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="TypeScript" scheme="https://ywzzy.github.io/tags/TypeScript/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Node.js项目</title>
     <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/"/>
     <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/</id>
@@ -497,11 +463,11 @@
   </entry>
   
   <entry>
-    <title>Vue项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/</id>
+    <title>TypeScript资源</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/typescript-zi-yuan/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/typescript-zi-yuan/</id>
     <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T03:24:25.770Z</updated>
+    <updated>2023-07-03T02:01:21.518Z</updated>
     
     
       
@@ -510,7 +476,8 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-&lt;p&gt;&lt;strong&gt;概览：&lt;/strong&gt;&lt;br /&gt;1. &lt;strong&gt;Marktext：&lt;/strong&gt;笔记应用&lt;br /&gt;2.</summary>
+&lt;p&gt;&lt;strong&gt;1. TypeScript 官方文档&lt;/strong&gt;&lt;br /&gt;TypeScript 官方文档，提供了中文版本。&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
         
       
     
@@ -525,7 +492,7 @@
     
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
-    <category term="Vue" scheme="https://ywzzy.github.io/tags/Vue/"/>
+    <category term="TypeScript" scheme="https://ywzzy.github.io/tags/TypeScript/"/>
     
   </entry>
   
@@ -592,6 +559,39 @@
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
     <category term="低代码" scheme="https://ywzzy.github.io/tags/%E4%BD%8E%E4%BB%A3%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue项目</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/</id>
+    <published>2023-06-30T02:07:25.000Z</published>
+    <updated>2023-06-30T03:24:25.770Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;strong&gt;概览：&lt;/strong&gt;&lt;br /&gt;1. &lt;strong&gt;Marktext：&lt;/strong&gt;笔记应用&lt;br /&gt;2.</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Vue" scheme="https://ywzzy.github.io/tags/Vue/"/>
     
   </entry>
   
