@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2023-07-03T07:31:59.626Z</updated>
+  <updated>2023-07-03T07:53:27.155Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://ywzzy.github.io/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/"/>
     <id>https://ywzzy.github.io/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/</id>
     <published>2023-07-03T02:07:25.000Z</published>
-    <updated>2023-07-03T07:31:59.626Z</updated>
+    <updated>2023-07-03T07:53:27.155Z</updated>
     
     
       
@@ -37,9 +37,9 @@
     
     
     
-    <category term="快捷键" scheme="https://ywzzy.github.io/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
     
-    <category term="skill" scheme="https://ywzzy.github.io/categories/%E5%BF%AB%E6%8D%B7%E9%94%AE/skill/"/>
+    <category term="快捷键" scheme="https://ywzzy.github.io/categories/skill/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     
     
     <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
@@ -55,7 +55,7 @@
     <link href="https://ywzzy.github.io/2023/07/03/frontend/collection/skill/npm-shi-yong-ji-qiao/"/>
     <id>https://ywzzy.github.io/2023/07/03/frontend/collection/skill/npm-shi-yong-ji-qiao/</id>
     <published>2023-07-03T02:07:25.000Z</published>
-    <updated>2023-07-03T07:31:55.643Z</updated>
+    <updated>2023-07-03T07:53:10.903Z</updated>
     
     
       
@@ -72,9 +72,9 @@
     
     
     
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
     
-    <category term="skill" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/skill/"/>
+    <category term="前端" scheme="https://ywzzy.github.io/categories/skill/%E5%89%8D%E7%AB%AF/"/>
     
     
     <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
@@ -90,7 +90,7 @@
     <link href="https://ywzzy.github.io/2023/07/02/frontend/collection/skill/google-sou-suo-ji-qiao/"/>
     <id>https://ywzzy.github.io/2023/07/02/frontend/collection/skill/google-sou-suo-ji-qiao/</id>
     <published>2023-07-02T02:07:25.000Z</published>
-    <updated>2023-07-03T07:31:49.245Z</updated>
+    <updated>2023-07-03T07:52:54.829Z</updated>
     
     
       
@@ -106,10 +106,12 @@
     
     
     
-    <category term="Google" scheme="https://ywzzy.github.io/categories/Google/"/>
+    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
     
-    <category term="skill" scheme="https://ywzzy.github.io/categories/Google/skill/"/>
+    <category term="浏览器" scheme="https://ywzzy.github.io/categories/skill/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     
+    
+    <category term="浏览器" scheme="https://ywzzy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     
     <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
     
@@ -122,7 +124,7 @@
     <link href="https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/"/>
     <id>https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/</id>
     <published>2023-07-02T02:07:25.000Z</published>
-    <updated>2023-07-03T07:31:53.181Z</updated>
+    <updated>2023-07-03T07:53:26.691Z</updated>
     
     
       
@@ -137,9 +139,9 @@
     
     
     
-    <category term="服务器" scheme="https://ywzzy.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
     
-    <category term="skill" scheme="https://ywzzy.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/skill/"/>
+    <category term="服务器" scheme="https://ywzzy.github.io/categories/skill/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
     
     <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
@@ -151,11 +153,119 @@
   </entry>
   
   <entry>
+    <title>DevTools 调试技巧（2）</title>
+    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/"/>
+    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/</id>
+    <published>2023-07-01T02:07:25.000Z</published>
+    <updated>2023-07-03T07:52:18.483Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+
+&lt;p&gt;&lt;a name=&quot;VvoRH&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-选择和检查-DOM-元素&quot;&gt;&lt;a href=&quot;#1-选择和检查-DOM-元素&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/skill/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
+    
+    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
+    
+    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Devtools 实用功能（1）</title>
+    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-1/"/>
+    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-1/</id>
+    <published>2023-07-01T02:07:25.000Z</published>
+    <updated>2023-07-03T07:52:29.823Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;a name=&quot;h4blQ&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-保留日志&quot;&gt;&lt;a href=&quot;#1-保留日志&quot; class=&quot;headerlink&quot; title=&quot;1.</summary>
+        
+      
+    
+    
+    
+    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/skill/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
+    
+    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
+    
+    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Devtools 实用功能（2）</title>
+    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/"/>
+    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/</id>
+    <published>2023-07-01T02:07:25.000Z</published>
+    <updated>2023-07-03T07:52:34.349Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;Chrome DevTools 是前端开发人员最常用的工具之一，今天我们就来看 5 个 Chrome DevTools</summary>
+        
+      
+    
+    
+    
+    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/skill/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
+    
+    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
+    
+    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>DevTools 调试技巧（1）</title>
     <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-1/"/>
     <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-1/</id>
     <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T07:31:35.802Z</updated>
+    <updated>2023-07-03T07:52:13.584Z</updated>
     
     
       
@@ -175,126 +285,18 @@
     
     
     
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
     
-    <category term="skill" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/skill/"/>
+    <category term="前端" scheme="https://ywzzy.github.io/categories/skill/%E5%89%8D%E7%AB%AF/"/>
     
     
     <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
     
     <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
     
     <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Devtools 实用功能（1）</title>
-    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-1/"/>
-    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-1/</id>
-    <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T07:31:41.774Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;a name=&quot;h4blQ&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-保留日志&quot;&gt;&lt;a href=&quot;#1-保留日志&quot; class=&quot;headerlink&quot; title=&quot;1.</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/skill/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
     <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DevTools 调试技巧（2）</title>
-    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/"/>
-    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/</id>
-    <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T07:31:39.334Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-
-&lt;p&gt;&lt;a name=&quot;VvoRH&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-选择和检查-DOM-元素&quot;&gt;&lt;a href=&quot;#1-选择和检查-DOM-元素&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/skill/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Devtools 实用功能（2）</title>
-    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/"/>
-    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/</id>
-    <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T07:31:46.466Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;Chrome DevTools 是前端开发人员最常用的工具之一，今天我们就来看 5 个 Chrome DevTools</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/skill/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
     
   </entry>
   
@@ -497,6 +499,39 @@
   </entry>
   
   <entry>
+    <title>Vue项目</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/</id>
+    <published>2023-06-30T02:07:25.000Z</published>
+    <updated>2023-06-30T03:24:25.770Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;strong&gt;概览：&lt;/strong&gt;&lt;br /&gt;1. &lt;strong&gt;Marktext：&lt;/strong&gt;笔记应用&lt;br /&gt;2.</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="Vue" scheme="https://ywzzy.github.io/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
     <title>vue3.0项目</title>
     <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue3.0-xiang-mu/"/>
     <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue3.0-xiang-mu/</id>
@@ -559,39 +594,6 @@
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
     <category term="低代码" scheme="https://ywzzy.github.io/tags/%E4%BD%8E%E4%BB%A3%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T03:24:25.770Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;strong&gt;概览：&lt;/strong&gt;&lt;br /&gt;1. &lt;strong&gt;Marktext：&lt;/strong&gt;笔记应用&lt;br /&gt;2.</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Vue" scheme="https://ywzzy.github.io/tags/Vue/"/>
     
   </entry>
   
@@ -662,11 +664,11 @@
   </entry>
   
   <entry>
-    <title>微信小程序项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/wei-xin-xiao-cheng-xu-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/wei-xin-xiao-cheng-xu-xiang-mu/</id>
+    <title>数据可视化大屏项目</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/shu-ju-ke-shi-hua-da-ping-xiang-mu/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/shu-ju-ke-shi-hua-da-ping-xiang-mu/</id>
     <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T03:23:47.199Z</updated>
+    <updated>2023-06-30T03:23:39.807Z</updated>
     
     
       
@@ -675,7 +677,7 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-&lt;p&gt;&lt;strong&gt;wechat-app-mall&lt;/strong&gt;&lt;br /&gt; wechat-app-mall 是一个微信小程序商城、微信小程序微店。其具有以下功能：&lt;br</summary>
+&lt;p&gt;&lt;strong&gt;DataV&lt;/strong&gt;&lt;br /&gt;DataV 是一个基于 Vue 的数据可视化组件库，Vue 数据可视化组件库（类似阿里 DataV，大屏数据展示），提供</summary>
         
       
     
@@ -690,7 +692,7 @@
     
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
-    <category term="微信小程序" scheme="https://ywzzy.github.io/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <category term="可视化大屏" scheme="https://ywzzy.github.io/tags/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%A4%A7%E5%B1%8F/"/>
     
   </entry>
   
