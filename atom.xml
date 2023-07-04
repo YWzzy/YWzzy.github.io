@@ -50,7 +50,7 @@
     <link href="https://ywzzy.github.io/2023/07/04/frontend/html/ni-bu-zhi-dao-de-html/"/>
     <id>https://ywzzy.github.io/2023/07/04/frontend/html/ni-bu-zhi-dao-de-html/</id>
     <published>2023-07-04T04:12:49.000Z</published>
-    <updated>2023-07-04T06:53:53.673Z</updated>
+    <updated>2023-07-04T07:04:09.262Z</updated>
     
     
       
@@ -144,6 +144,39 @@
   </entry>
   
   <entry>
+    <title>Linux 命令</title>
+    <link href="https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/"/>
+    <id>https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/</id>
+    <published>2023-07-02T02:07:25.000Z</published>
+    <updated>2023-07-03T08:42:51.620Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;Linux 命令是在命令行上运行的程序。命令行是接受文本行并将其处理成计算机指令的界面。任何图形用户界面 (GUI) 都是命令行程序的抽象。通过 GUI</summary>
+        
+      
+    
+    
+    
+    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
+    
+    <category term="服务器" scheme="https://ywzzy.github.io/categories/skill/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    
+    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
+    
+    <category term="服务器" scheme="https://ywzzy.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="Linux" scheme="https://ywzzy.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Google 搜索技巧</title>
     <link href="https://ywzzy.github.io/2023/07/02/frontend/collection/skill/google-sou-suo-ji-qiao/"/>
     <id>https://ywzzy.github.io/2023/07/02/frontend/collection/skill/google-sou-suo-ji-qiao/</id>
@@ -178,39 +211,6 @@
   </entry>
   
   <entry>
-    <title>Linux 命令</title>
-    <link href="https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/"/>
-    <id>https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/</id>
-    <published>2023-07-02T02:07:25.000Z</published>
-    <updated>2023-07-03T08:42:51.620Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;Linux 命令是在命令行上运行的程序。命令行是接受文本行并将其处理成计算机指令的界面。任何图形用户界面 (GUI) 都是命令行程序的抽象。通过 GUI</summary>
-        
-      
-    
-    
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
-    
-    <category term="服务器" scheme="https://ywzzy.github.io/categories/skill/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="服务器" scheme="https://ywzzy.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    <category term="Linux" scheme="https://ywzzy.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title>DevTools 调试技巧（1）</title>
     <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-1/"/>
     <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-1/</id>
@@ -230,43 +230,6 @@
 ## 1. Chrome DevTools功能简介
 
 &lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/skill/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DevTools 调试技巧（2）</title>
-    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/"/>
-    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/</id>
-    <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T08:42:17.288Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-
-&lt;p&gt;&lt;a name=&quot;VvoRH&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-选择和检查-DOM-元素&quot;&gt;&lt;a href=&quot;#1-选择和检查-DOM-元素&quot;</summary>
         
       
     
@@ -338,6 +301,43 @@
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
 &lt;p&gt;Chrome DevTools 是前端开发人员最常用的工具之一，今天我们就来看 5 个 Chrome DevTools</summary>
+        
+      
+    
+    
+    
+    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/skill/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
+    
+    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
+    
+    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DevTools 调试技巧（2）</title>
+    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/"/>
+    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/</id>
+    <published>2023-07-01T02:07:25.000Z</published>
+    <updated>2023-07-03T08:42:17.288Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+
+&lt;p&gt;&lt;a name=&quot;VvoRH&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-选择和检查-DOM-元素&quot;&gt;&lt;a href=&quot;#1-选择和检查-DOM-元素&quot;</summary>
         
       
     
