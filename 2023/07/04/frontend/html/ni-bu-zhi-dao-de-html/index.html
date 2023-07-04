@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>HTML 属性 | 飞翔的蜗</title>
+  <title>你不知道的HTML | 飞翔的蜗</title>
 
   <link rel="icon" type="image/gif" href="https://64.media.tumblr.com/a67a7238cd2833d859a7ea4cfa4fb8a4/0e0717e3c39dfac5-0c/s500x750/94ba555d15a68a38482896903d15494df88ff9b1.gif">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -573,21 +573,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://w.wallhaven.cc/full/d6/wallhaven-d6e1do.jpg')">
+  background-position: center center;position: relative;background-image:url('https://w.wallhaven.cc/full/x6/wallhaven-x6jm5o.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        HTML 属性
+        你不知道的HTML
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2021-09-19 |
+          <i class="fas fa-calendar"></i> Published in：2023-07-04 |
         </span>
       
 
@@ -626,61 +626,97 @@
       <div class="post-content">
         <meta name="referrer" content="no-referrer" />
 
-<h2 id="1-inputmode"><a href="#1-inputmode" class="headerlink" title="1. inputmode"></a>1. inputmode</h2><p><code>inputmode</code>全局属性是一个枚举属性，它提供了用户在编辑元素或其内容时可能输入的数据类型的提示。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;text&quot;</span> inputmode=<span class="string">&quot;tel&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="1-input-标签：输入验证"><a href="#1-input-标签：输入验证" class="headerlink" title="1. input 标签：输入验证"></a>1. input 标签：输入验证</h2><p>我们通常会使用 JavaScript 来校验表单，比如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">validateForm</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> inputText = <span class="variable language_">document</span>.<span class="property">forms</span>[<span class="string">&quot;form-name&quot;</span>][<span class="string">&quot;input-name&quot;</span>].<span class="property">value</span>;</span><br><span class="line">  <span class="keyword">if</span> (!inputText) &#123;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><br />该属性可以取以下值：<br />● <strong>none：</strong>不使用虚拟键盘，这个时候页面需要使用自定义的键盘代替<br />● <strong>text：</strong>默认值，会显示标准输入键盘<br />● <strong>decimal：</strong>小数表示键盘，除了数字之外可能会有小数点 . 或者千分符逗号 ,。<br />● <strong>numeric：</strong>显示 0-9 的数字键盘。<br />● <strong>tel：</strong>手机数字键盘，会有星号 * 或者井号 # 键。<br />● <strong>search：</strong>提交按钮会显示 ‘search’ 或者 ‘搜索’。<br />● <strong>email：</strong>键盘上会有 @ 符号键。<br />● <strong>url：</strong>键盘上会有斜杠 &#x2F; 符号键。</p>
-<p>当我们将 <code>inputmode</code> 属性设置为 <code>tel</code> 时，调起的虚拟键盘如下</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661098813232-0e91a0f4-ac85-4010-8289-a57ea5bc6575.png?x-oss-process=image/resize,w_351,limit_0" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661098813232-0e91a0f4-ac85-4010-8289-a57ea5bc6575.png?x-oss-process=image/resize,w_351,limit_0" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
-<p>**2. multiple<br><code>multiple</code>属性可设置或返回是否可有多个选项被选中。该属性可以用于 <code>input</code> 或 <code>select</code> 标签。</p>
-<p>在 input 标签中，当指定类型为 <code>file</code> 或 <code>email</code> 时，可以设置 <code>multiple</code> 多选选项。<br />● 当类型为 <code>email</code> 时，输入值为逗号分隔的邮件列表，会从里表中的每个邮件地址中删除所有空格。<br />● 当类型为 <code>file</code> 时，用户可以选择多个文件。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;file&quot;</span> name=<span class="string">&quot;img&quot;</span> multiple&gt;</span><br></pre></td></tr></table></figure>
+<p><br />以上是使用原生 JavaScript 实现的，现在很多项目都是使用 React、Vue 等框架来实现，表单校验可能稍微简单一些，这里不在多说，不是重点~</p>
+<p>下面来看看 HTML 提供的原生检验方式：</p>
+<p>| <strong>验证内容</strong></p>
+<p>| <strong>使用说明</strong></p>
+<p>| <strong>示例</strong></p>
+<p>|      |<br>| —- | —————- |<br>| 必填 | 强制必须输入内容 |</p>
+<p>| <input required="true"></p>
+<p>|<br>| 正则</p>
+<p>| 按照正则表达式规则校验</p>
+<p>| <input pattern="^1\\d{10}$"></p>
+<p>|<br>| 类型</p>
+<p>| 强制输入内容类型</p>
+<p>| <input type="number"><br /><input type="email"></p>
+<p>|<br>| 大小</p>
+<p>| 限制输入数字大小</p>
+<p>| <input type="number" min="0"><br /><input type="number" max="5"></p>
+<p>|<br>| 输入间隔</p>
+<p>| 规定输入数字的间隔</p>
+<p>| <input type="number" step="1" ></p>
+<p>|</p>
+<p>**2. meta 标签：自动刷新&#x2F;跳转<br>假设要实现一个类似 PPT 自动播放的效果，你可能会想到使用 JavaScript 定时器控制页面跳转来实现。但其实有更加简洁的实现方法，比如通过 meta 标签来实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">&quot;Refresh&quot;</span> content=<span class="string">&quot;5; URL=page2.html&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
 
-<p><br />在 <code>select</code> 标签中，当设置了 <code>multiple</code> 属性时，同时可以通过 <code>size</code> 属性来指定可选项的个数：</p>
-<h2 id="3-自定义有序列表的属性"><a href="#3-自定义有序列表的属性" class="headerlink" title="3. 自定义有序列表的属性"></a>3. 自定义有序列表的属性</h2><p>在 <code>&lt;ol&gt;</code> 元素可以用于指定有序列表。我们可以通过一些属性来指定列表中的编号行为：</p>
-<h2 id="（1）reversed"><a href="#（1）reversed" class="headerlink" title="（1）reversed"></a>（1）reversed</h2><p>以相反的顺序对项目进行编号（从高到低）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol reversed&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>浔阳江头夜送客，枫叶荻花秋瑟瑟。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>主人下马客在船，举酒欲饮无管弦。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>醉不成欢惨将别，别时茫茫江浸月。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>忽闻水上琵琶声，主人忘归客不发。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>寻声暗问弹者谁？琵琶声停欲语迟。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>移船相近邀相见，添酒回灯重开宴。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>千呼万唤始出来，犹抱琵琶半遮面。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+<p><br />上面的代码会在 5s 之后自动跳转到同域下的 page2.html 页面。要实现 PPT 自动播放的功能，只需要在每个页面的 meta 标签内设置好下一个页面的地址即可。</p>
+<p>另一种场景，比如每隔一分钟就需要刷新页面的大屏幕监控，也可以通过 meta 标签来实现，只需去掉后面的 URL 即可：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">&quot;Refresh&quot;</span> content=<span class="string">&quot;60&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661095651889-4eb1ee87-e4f3-4ca0-bd69-7c2275708d74.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661095651889-4eb1ee87-e4f3-4ca0-bd69-7c2275708d74.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
-<p>这里只有编号会发生变化，并不会影响内容的顺序。</p>
-<h2 id="（2）start"><a href="#（2）start" class="headerlink" title="（2）start"></a>（2）start</h2><p>定义从哪个数字开始：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol start=<span class="string">&quot;10&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>浔阳江头夜送客，枫叶荻花秋瑟瑟。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>主人下马客在船，举酒欲饮无管弦。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>醉不成欢惨将别，别时茫茫江浸月。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>忽闻水上琵琶声，主人忘归客不发。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>寻声暗问弹者谁？琵琶声停欲语迟。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>移船相近邀相见，添酒回灯重开宴。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>千呼万唤始出来，犹抱琵琶半遮面。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看到，这样做又方便又快捷，那为什么这种用法比较少见呢？</p>
+<p>一方面是因为不少人对 meta 标签用法缺乏深入了解，另一方面也是因为在使用它的时候，刷新和跳转操作是不可取消的，所以对刷新时间间隔或者需要手动取消的，还是推荐使用 JavaScript 定时器来实现。但是，如果只是想实现页面的定时刷新或跳转（比如某些页面缺乏访问权限，在 x 秒后跳回首页这样的场景）建议可以实践下 meta 标签的用法。</p>
+<h2 id="3-title-标签：消息提醒"><a href="#3-title-标签：消息提醒" class="headerlink" title="3. title 标签：消息提醒"></a>3. title 标签：消息提醒</h2><p>消息提醒功能实现比较困难，HTML5 标准发布之前，浏览器没有开放图标闪烁、弹出系统消息之类的接口，只能借助一些 Hack 的手段，比如修改 title 标签来达到类似的效果（HTML5 下可使用 Web Notifications API 弹出系统消息）。</p>
+<p>下面代码中，通过定时修改 title 标签内容，模拟了类似消息提醒的闪烁效果：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">‘<span class="keyword">let</span> msgNum = <span class="number">1</span> <span class="comment">// 消息条数</span></span><br><span class="line"><span class="keyword">let</span> cnt = <span class="number">0</span> <span class="comment">// 计数器</span></span><br><span class="line"><span class="keyword">const</span> inerval = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  cnt = (cnt + <span class="number">1</span>) % <span class="number">2</span></span><br><span class="line">  <span class="keyword">if</span>(msgNum===<span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// 通过DOM修改title</span></span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">title</span> += <span class="string">`聊天页面`</span></span><br><span class="line">    <span class="built_in">clearInterval</span>(interval)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> prefix = cnt % <span class="number">2</span> ? <span class="string">`新消息(<span class="subst">$&#123;msgNum&#125;</span>)`</span> : <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">`<span class="subst">$&#123;prefix&#125;</span>聊天页面`</span></span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661095811647-50bc51ba-7cf6-497b-b3d6-148bd3a187cf.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661095811647-50bc51ba-7cf6-497b-b3d6-148bd3a187cf.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
-<p>**（3）type<br>用于定义是使用数字、字母还是罗马数字。<code>type</code> 属性接受表示编号类型的五个单字符值（a、A、i、I、1）之一。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol type=<span class="string">&quot;i&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>浔阳江头夜送客，枫叶荻花秋瑟瑟。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>主人下马客在船，举酒欲饮无管弦。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>醉不成欢惨将别，别时茫茫江浸月。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>忽闻水上琵琶声，主人忘归客不发。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>寻声暗问弹者谁？琵琶声停欲语迟。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>移船相近邀相见，添酒回灯重开宴。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>千呼万唤始出来，犹抱琵琶半遮面。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+<p>实现效果如下图所示，可以看到标签名称上有提示文字在闪烁。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/gif/1500604/1613308840781-c83b34c6-d7f4-4a25-b995-c9f8b51561d1.gif" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/gif/1500604/1613308840781-c83b34c6-d7f4-4a25-b995-c9f8b51561d1.gif" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p>通过模拟消息闪烁，可以让用户在浏览其他页面的时候，及时得知服务端返回的消息。</p>
+<p>定时修改 title 标签内容，除了用来实现闪烁效果之外，还可以制作其他动画效果，比如文字滚动，但需要注意浏览器会对 title 标签文本进行去空格操作。</p>
+<p>动态修改 title 标签的用途不仅在于消息提醒，还可以将一些关键信息显示到标签上（比如下载时的进度、当前操作步骤），从而提升用户体验。</p>
+<h2 id="4-script-标签：调整加载顺序提升渲染速度"><a href="#4-script-标签：调整加载顺序提升渲染速度" class="headerlink" title="4. script 标签：调整加载顺序提升渲染速度"></a>4. script 标签：调整加载顺序提升渲染速度</h2><p>由于浏览器的底层运行机制，渲染引擎在解析 HTML 时，若遇到 script 标签引用文件，则会暂停解析过程，同时通知网络线程加载文件，文件加载后会切换至 JavaScript 引擎来执行对应代码，代码执行完成之后切换至渲染引擎继续渲染页面。</p>
+<p>在这一过程中可以看到，页面渲染过程中包含了请求文件以及执行文件的时间，但页面的首次渲染可能并不依赖这些文件，这些请求和执行文件的动作反而延长了用户看到页面的时间，从而降低了用户体验。</p>
+<p>为了减少这些时间损耗，可以借助 script 标签的 3 个属性来实现。<br />●<strong>async 属性：</strong>立即请求文件，但不阻塞渲染引擎，而是文件加载完毕后阻塞渲染引擎并立即执行文件内容。<br />●<strong>defer 属性：</strong>立即请求文件，但不阻塞渲染引擎，等到解析完 HTML 之后再执行文件内容。<br />●<strong>HTML5 标准 type 属性：</strong>对应值为“module”。让浏览器按照 ECMA Script 6 标准将文件当作模块进行解析，默认阻塞效果同 defer，也可以配合 async 在请求完成后立即执行。</p>
+<p>具体效果可以参看下图：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1613309543297-171b78d3-916a-4a06-a451-a8a83204db1f.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1613309543297-171b78d3-916a-4a06-a451-a8a83204db1f.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p>其中，绿色的线表示执行解析 HTML ，蓝色的线表示请求文件，红色的线表示执行文件。</p>
+<p>从图中可以得知，采用 3 种属性都能减少请求文件引起的阻塞时间，只有 defer 属性以及 type&#x3D;”module” 情况下能保证渲染引擎的优先执行，从而减少执行文件内容消耗的时间，让用户更快地看见页面（即使这些页面内容可能并没有完全地显示）。</p>
+<p>注意，当渲染引擎解析 HTML 遇到 script 标签引入文件时，会立即进行一次渲染。所以这也就是为什么构建工具会把编译好的引用 JavaScript 代码的 script 标签放入到 body 标签底部，因为当渲染引擎执行到 body 底部时会先将已解析的内容渲染出来，然后再去请求相应的 JavaScript 文件。如果是内联脚本（即不通过 src 属性引用外部脚本文件直接在 HTML 编写 JavaScript 代码的形式），渲染引擎则不会渲染。</p>
+<h2 id="5-link-标签：通过预处理提升渲染速度"><a href="#5-link-标签：通过预处理提升渲染速度" class="headerlink" title="5. link 标签：通过预处理提升渲染速度"></a>5. link 标签：通过预处理提升渲染速度</h2><p>在对大型单页应用进行性能优化时，也许会用到按需懒加载的方式，来加载对应的模块，但如果能合理利用 link 标签的 rel 属性值来进行预加载，就能进一步提升渲染速度。<br />●<strong>dns-prefetch</strong>：当 link 标签的 rel 属性值为“dns-prefetch”时，浏览器会对某个域名预先进行 DNS 解析并缓存。这样，当浏览器在请求同域名资源的时候，能省去从域名查询 IP 的过程，从而减少时间损耗。下图是淘宝网设置的 DNS 预解析。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1613309842478-af0ddc54-4a48-4fd6-a432-6bf1dcd85753.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1613309842478-af0ddc54-4a48-4fd6-a432-6bf1dcd85753.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p>●<strong>preconnect</strong>：让浏览器在一个 HTTP 请求正式发给服务器前预先执行一些操作，这包括 DNS 解析、TLS 协商、TCP 握手，通过消除往返延迟来为用户节省时间。<br />●<strong>prefetch&#x2F;preload：</strong>两个值都是让浏览器预先下载并缓存某个资源，但不同的是，prefetch 可能会在浏览器忙时被忽略，而 preload 则是一定会被预先下载。<br />●<strong>prerender：</strong>浏览器不仅会加载资源，还会解析执行页面，进行预渲染。</p>
+<p>这几个属性值恰好反映了浏览器获取资源文件的过程，下面是流程图：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1613310019182-bfacee7c-7bfc-44c9-a79b-2ed431905f7d.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1613310019182-bfacee7c-7bfc-44c9-a79b-2ed431905f7d.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p>**6. link 标签：减少重复<br>有时候为了用户访问方便或者出于历史原因，对于同一个页面会有多个网址，又或者存在某些重定向页面，比如：<br />● <a target="_blank" rel="noopener" href="https://baidu.com/a.html">https://baidu.com/a.html</a><br />● <a target="_blank" rel="noopener" href="https://baidu.com/detail?id=%22abcd">https://baidu.com/detail?id=&quot;abcd</a>“</p>
+<p>那么在这些页面中可以这样设置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=<span class="string">&quot;https://baidu.com/a.html&quot;</span> rel=<span class="string">&quot;canonical&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661096009033-11498323-cf15-4a5a-8893-6b1347ec9aaf.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661096009033-11498323-cf15-4a5a-8893-6b1347ec9aaf.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
-<p>**（4）value<br>用于在特定列表项上指定自定义数字：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>浔阳江头夜送客，枫叶荻花秋瑟瑟。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>主人下马客在船，举酒欲饮无管弦。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>醉不成欢惨将别，别时茫茫江浸月。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">value</span>=<span class="string">&quot;10&quot;</span>&gt;</span>忽闻水上琵琶声，主人忘归客不发。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>寻声暗问弹者谁？琵琶声停欲语迟。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>移船相近邀相见，添酒回灯重开宴。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>千呼万唤始出来，犹抱琵琶半遮面。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+<p>这样可以让搜索引擎避免花费时间抓取重复网页。不过需要注意的是，它还有个限制条件，那就是指向的网站不允许跨域。</p>
+<p>当然，要合并网址还有其他的方式，比如使用站点地图，或者在 HTTP 请求响应头部添加 rel&#x3D;”canonical”。</p>
+<h2 id="7-pre-标签：预格式化文本"><a href="#7-pre-标签：预格式化文本" class="headerlink" title="7. pre 标签：预格式化文本"></a>7. pre 标签：预格式化文本</h2><p>pre 元素可定义预格式化的文本。被包围在 pre 元素中的文本通常会保留空格和换行符。被 pre 标签包裹的文本会呈现为等宽字体。pre 标签的一个常见应用就是用来展示源代码。</p>
+<p>pre 标签放入以下内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;pre&gt;</span><br><span class="line">  &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot;</span><br><span class="line">  src=&amp;quot;loadxmldoc.<span class="property">js</span>&amp;quot;&amp;gt; &amp;lt;<span class="regexp">/script&amp;gt; &amp;lt;/</span>head&amp;gt; &amp;lt;body&amp;gt;</span><br><span class="line">  &amp;lt;<span class="regexp">/body&amp;gt; &amp;lt;/</span>html&amp;gt;</span><br><span class="line">&lt;/pre&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661096131707-c8eb0bc0-8552-4f14-8f91-933598f634b7.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661096131707-c8eb0bc0-8552-4f14-8f91-933598f634b7.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
-<p>**4. decoding<br><code>&lt;img&gt;</code> 标签的 <code>decoding</code> 属性用于告诉浏览器使用何种方式解析图像数据。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="string">&quot;/images/example.png&quot;</span> alt=<span class="string">&quot;Example&quot;</span> decoding=<span class="string">&quot;async&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><br />最终显示效果如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;loadxmldoc.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
-<p><br />该属性可以取以下三个值：<br />●<strong>sync</strong>: 同步解码图像，保证与其他内容一起显示。<br />●<strong>async</strong>: 异步解码图像，加快显示其他内容。<br />●<strong>auto</strong>: 默认模式，表示不偏好解码模式。由浏览器决定哪种方式更适合用户。</p>
-<p>此属性类似于在<code>&lt;script&gt;</code>上使用 <code>async</code> 属性。 加载图像所需的时间不会改变，但其“解码”的方式由解码属性决定。<code>decoding</code> 属性可以控制是否允许浏览器尝试异步加载图像。异步加载对 <img> 元素很有用，对屏幕外的图像对象可能会更有用。</p>
-<h2 id="5-loading"><a href="#5-loading" class="headerlink" title="5. loading"></a>5. loading</h2><p>loading 属性不仅可以用在 <code>&lt;img&gt;</code> 元素上，也可以用在 <code>&lt;iframe&gt;</code> 元素上，用于触发<code>&lt;iframe&gt;</code>网页的懒加载：<br />该属性可以取以下三个值：<br />●<code>auto</code>：浏览器的默认行为，与不使用 loading 属性效果相同。<br />●<code>lazy</code>：懒加载，即将滚动进入视口时开始加载。<br />●<code>eager</code>：立即加载资源 ，无论在页面上的位置如何。</p>
-<p>需要注意，如果<code>&lt;iframe&gt;</code>是隐藏的，则<code>loading</code>属性无效，将会立即加载。</p>
-<h2 id="6-form"><a href="#6-form" class="headerlink" title="6. form"></a>6. form</h2><p>在大多数情况下，我们会将表单输入和控件嵌套在 <code>&lt;form&gt;</code> 元素中。 当然，我们也可以将表单输入放在任何位置，并将其与所属的 <code>&lt;form&gt;</code> 元素相关联。只需要使用 <code>form</code> 属性来指定其所属的<code>form</code>表单即可：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form id=<span class="string">&quot;myForm&quot;</span> action=<span class="string">&quot;&quot;</span>&gt;</span><br><span class="line">  &lt;input id=&quot;name&quot;&gt;</span><br><span class="line">  &lt;button type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;input type=&quot;email&quot; form=&quot;myForm&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="8-figure-标签：标记图片"><a href="#8-figure-标签：标记图片" class="headerlink" title="8. figure 标签：标记图片"></a>8. figure 标签：标记图片</h2><p><code>&lt;figure&gt;</code>标签可以用于标记图片，其可以包含一个<code>&lt;figcaption&gt;</code>元素，用来描述图片：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://t7.baidu.com/it/u=2604797219,1573897854&amp;fm=193&amp;f=GIF&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;Swat Kats&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width:500px&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>风景图<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
-<p><br />可以看到，表单外部的电子邮件<code>&lt;input&gt;</code> 的 <code>form</code> 属性设置为 <code>myForm</code>，该属性与表单的 <code>id</code> 相同。 可以使用此属性和表单的 <code>id</code> 将表单控件（包括提交按钮）与任何表单相关联。</p>
-<h2 id="7-imagesizes-和-imagesrcset"><a href="#7-imagesizes-和-imagesrcset" class="headerlink" title="7. imagesizes 和 imagesrcset"></a>7. imagesizes 和 imagesrcset</h2><p><code>imagesizes</code> 和 <code>imagesrcset</code>属性用来预加载响应式图像，可以与 <code>rel=preload</code> 以及 <code>&lt;link&gt;</code> 元素一起定义，如下所示：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">&quot;preload&quot;</span></span><br><span class="line">      <span class="keyword">as</span>=<span class="string">&quot;image&quot;</span></span><br><span class="line">      imagesrcset=<span class="string">&quot;images/example-480.png 480w,</span></span><br><span class="line"><span class="string">                   images/example-800.png 800w,</span></span><br><span class="line"><span class="string">                   images/example.png 2000w&quot;</span></span><br><span class="line">      imagesizes=<span class="string">&quot;(max-width: 600px) 480px,</span></span><br><span class="line"><span class="string">                  (max-width: 1000px) 800px,</span></span><br><span class="line"><span class="string">                  1000px&quot;</span></span><br><span class="line">      src=<span class="string">&quot;images/example.png&quot;</span></span><br><span class="line">      alt=<span class="string">&quot;Example Image&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1638803996296-15301331-fd73-4f75-9fcd-0ee2e7b63146.png?x-oss-process=image/resize,w_570,limit_0" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1638803996296-15301331-fd73-4f75-9fcd-0ee2e7b63146.png?x-oss-process=image/resize,w_570,limit_0" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p>**9. picture 标签：响应式图像<br><code>picture</code>标签可以根据屏幕匹配的不同尺寸显示不同图片，如果没有匹配到或浏览器不支持 <code>picture</code> 属性则使用 img 元素：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;picture&gt;</span><br><span class="line">   &lt;source media=&quot;(min-width: 968px)&quot; srcset=&quot;large_img.jpg&quot;&gt;</span><br><span class="line">   &lt;source media=&quot;(min-width: 360px)&quot; srcset=&quot;small_img.jpg&quot;&gt;</span><br><span class="line">   &lt;img src=&quot;default_img.jpg&quot; alt=&quot;avatar&quot;&gt;</span><br><span class="line">&lt;/picture&gt;</span><br></pre></td></tr></table></figure>
 
-<p><br />这里使用 <code>rel=preload</code> 会通知浏览器希望指定的资源优先加载，因此它们不会被脚本和样式表之类的东西阻塞。 as 属性指定所请求内容的类型。</p>
-<p>可以使用 <code>href</code> 属性以及 <code>preload</code> 和 <code>as</code> 来预加载常规图像。 还可以使用 <code>imagesrcset</code> 和 <code>imagesizes</code> 属性来预加载正确的图像，具体取决于视口的大小或在 <code>imagesizes</code> 属性中指定的其他媒体功能。</p>
-<h2 id="8-enterkeyhint"><a href="#8-enterkeyhint" class="headerlink" title="8. enterkeyhint"></a>8. enterkeyhint</h2><p>当我们在手机键盘上按下回车键<code>（enter）</code>时，在不同的场景下可能执行的操作有所不同，比如换行、发送消息、执行搜索、确认等等。这些操作可以通过 <code>enterkeyhint</code> 属性来实现。</p>
-<p><code>enterkeyhint</code> 属性是一个全局属性，可应用于将 <code>contenteditable</code> 设置为 <code>true</code> 的表单控件或元素。 它的用法如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input enterkeyhint=<span class="string">&quot;values&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><br />该标签一般用于响应式元素，可以让图片资源的调整更加灵活。如果浏览器不支持该属性也会显示<img> 元素的的图片。</p>
+<h2 id="10-oncontextmenu-属性：禁用右键"><a href="#10-oncontextmenu-属性：禁用右键" class="headerlink" title="10. oncontextmenu 属性：禁用右键"></a>10. oncontextmenu 属性：禁用右键</h2><p>当我们给某个元素设置<code>oncontextmenu</code>属性时，就会禁用右键点击。如果给 body 元素设置这个属性，整个页面就会被禁用右键点击：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;p oncontextmenu=<span class="string">&quot;return false&quot;</span>&gt;<span class="title class_">Hello</span>&lt;/p&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span> <span class="attr">oncontextmenu</span>=<span class="string">&quot;return false&quot;</span>&gt;</span>....<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
-<p><br />它的属性值有以下情况：<br />●<strong>done：</strong>完成并关闭输入法编辑器。<br />●<strong>enter：</strong>换行。<br />●<strong>go：</strong>输入完并继续下一个表单。<br />●<strong>search：</strong>输入后搜索内容。<br />●<strong>send：</strong>发送消息。<br />●<strong>next：</strong>将把用户带到下一个接受文本的字段。<br />●<strong>previous：</strong>将用户带到将接受文本的上一个字段。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Next</span>：&lt;input type=<span class="string">&quot;text&quot;</span> enterkeyhint=<span class="string">&quot;next&quot;</span>&gt;</span><br><span class="line"><span class="title class_">Done</span>: &lt;input type=&quot;text&quot; enterkeyhint=&quot;done&quot;&gt;</span><br><span class="line">  Go: &lt;input type=&quot;text&quot; enterkeyhint=&quot;go&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>** 11. input 标签：颜色选择器<br>input 标签是支持很多类型的元素，我们可以使将 input 定义成一个颜色选择器：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;color&quot;</span> id=<span class="string">&quot;color-picker&quot;</span>  name=<span class="string">&quot;color-picker&quot;</span> value=<span class="string">&quot;#e66465&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
 
-<p><br />在手机键盘中进行输入时，可以看到键盘的 enter 键显示不同的操作：</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661094693758-28388fe3-5bdf-48ed-ad15-894335b898d2.png?x-oss-process=image/resize,w_352,limit_0" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661094693758-28388fe3-5bdf-48ed-ad15-894335b898d2.png?x-oss-process=image/resize,w_352,limit_0" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661094714387-5abacd5a-d353-452e-9068-67746fa8bf2a.png?x-oss-process=image/resize,w_352,limit_0" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/1500604/1661094714387-5abacd5a-d353-452e-9068-67746fa8bf2a.png?x-oss-process=image/resize,w_352,limit_0" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p>可以通过 value 给颜色选择器设置初始值，也可以通过 value 属性获取颜色选择器的颜色。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1638806448244-3862e780-cc84-412e-b342-81a368ba95ac.png?x-oss-process=image/resize,w_258,limit_0" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1638806448244-3862e780-cc84-412e-b342-81a368ba95ac.png?x-oss-process=image/resize,w_258,limit_0" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p>**12. base 标签：在新标签页打开<br>我们可以将 base 元素的 target 属性设置为_black，这样当用户单击链接时，它始终会在新选项卡中打开。如果想避免用户无意中离开某个页面，这样做会很有用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">   <span class="language-xml"><span class="tag">&lt;<span class="name">base</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.baidu.com/&quot;</span>&gt;</span>百度一下<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>**13. placeholder 样式<br>可以使用 placeholder 属性设置占位符文本：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;text&quot;</span> placeholder=<span class="string">&quot;你的名字&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以使用::placeholder CSS 选择器更改占位符文本的样式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  <span class="attr">color</span>: #<span class="number">210065</span>;</span><br><span class="line">  <span class="attr">opacity</span>: <span class="number">0.7</span>;</span><br><span class="line">  font-<span class="attr">size</span>: 16px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       </div>
       <div class="post-tags-categories">
@@ -702,7 +738,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2021/09/19/frontend/html/html-shu-xing/" target="_blank" title="HTML 属性">https://ywzzy.github.io/2021/09/19/frontend/html/html-shu-xing/</a>
+    <a href="/2023/07/04/frontend/html/ni-bu-zhi-dao-de-html/" target="_blank" title="你不知道的HTML">https://ywzzy.github.io/2023/07/04/frontend/html/ni-bu-zhi-dao-de-html/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -724,27 +760,18 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/qz/wallhaven-qzgopq.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/qz/wallhaven-qzgopq.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/d6/wallhaven-d6e1do.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/d6/wallhaven-d6e1do.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
     </div>
-    <a href="/2021/10/07/frontend/a-li-qian-duan-kai-fa-gui-fan/" class="post-nav-link">
+    <a href="/2023/07/04/frontend/html/html-shu-xing/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">阿里前端开发规范</div>
+        <div class="title-text">HTML 属性</div>
       </div>
       
       <!-- <div class="content">
         
 
-
-目录
-
-声明
-前端代码规范
-前端 JS 项目开发规范
-一、编程规约
-(一)命名规范
-1.1.1 项目命名
-1.1.
+1. inputmodeinputmode全局属性是一个枚举属性，它提供了用户在编辑元素或其内容时可能输入的数据类型
       </div> -->
     </a>
   </div>
@@ -755,18 +782,19 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/x6/wallhaven-x6jm5o.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/x6/wallhaven-x6jm5o.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/1p/wallhaven-1prpz1.png" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/1p/wallhaven-1prpz1.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
     </div>
-    <a href="/2021/09/19/frontend/html/ni-bu-zhi-dao-de-html/" class="post-nav-link">
+    <a href="/2023/07/03/frontend/collection/skill/npm-shi-yong-ji-qiao/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">你不知道的HTML</div>
+        <div class="title-text">npm 使用技巧</div>
       </div>
       <!-- <div class="content">
         
 
-1. input 标签：输入验证我们通常会使用 JavaScript 来校验表单，比如：
-123456functio
+今天总结了 npm 常用的一些命令分享给大家，希望对你有所帮助！
+
+1. npm 基本概念npm 全称为 Node 
       </div> -->
     </a>
   </div>
@@ -994,7 +1022,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-inputmode"><span class="toc-text">1. inputmode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-text">3. 自定义有序列表的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%881%EF%BC%89reversed"><span class="toc-text">（1）reversed</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%882%EF%BC%89start"><span class="toc-text">（2）start</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-loading"><span class="toc-text">5. loading</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-form"><span class="toc-text">6. form</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-imagesizes-%E5%92%8C-imagesrcset"><span class="toc-text">7. imagesizes 和 imagesrcset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-enterkeyhint"><span class="toc-text">8. enterkeyhint</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-input-%E6%A0%87%E7%AD%BE%EF%BC%9A%E8%BE%93%E5%85%A5%E9%AA%8C%E8%AF%81"><span class="toc-text">1. input 标签：输入验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-title-%E6%A0%87%E7%AD%BE%EF%BC%9A%E6%B6%88%E6%81%AF%E6%8F%90%E9%86%92"><span class="toc-text">3. title 标签：消息提醒</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-script-%E6%A0%87%E7%AD%BE%EF%BC%9A%E8%B0%83%E6%95%B4%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F%E6%8F%90%E5%8D%87%E6%B8%B2%E6%9F%93%E9%80%9F%E5%BA%A6"><span class="toc-text">4. script 标签：调整加载顺序提升渲染速度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-link-%E6%A0%87%E7%AD%BE%EF%BC%9A%E9%80%9A%E8%BF%87%E9%A2%84%E5%A4%84%E7%90%86%E6%8F%90%E5%8D%87%E6%B8%B2%E6%9F%93%E9%80%9F%E5%BA%A6"><span class="toc-text">5. link 标签：通过预处理提升渲染速度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-pre-%E6%A0%87%E7%AD%BE%EF%BC%9A%E9%A2%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%96%87%E6%9C%AC"><span class="toc-text">7. pre 标签：预格式化文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-figure-%E6%A0%87%E7%AD%BE%EF%BC%9A%E6%A0%87%E8%AE%B0%E5%9B%BE%E7%89%87"><span class="toc-text">8. figure 标签：标记图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-oncontextmenu-%E5%B1%9E%E6%80%A7%EF%BC%9A%E7%A6%81%E7%94%A8%E5%8F%B3%E9%94%AE"><span class="toc-text">10. oncontextmenu 属性：禁用右键</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
@@ -1027,18 +1055,39 @@
             
 
             <div class="post-img-box">
-              <a href="/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/" class="post-img " style="background-size: cover; 
+              <a href="/2023/07/04/frontend/html/html-shu-xing/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/x6/wallhaven-x6j3mo.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/x6/wallhaven-x6j3mo.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/d6/wallhaven-d6e1do.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/d6/wallhaven-d6e1do.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">07-03</span>
+                  <span class="post-date">07-04</span>
                 
               </div>
-              <a class="post-title" href="/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/">VS Code 快捷方式</a>
+              <a class="post-title" href="/2023/07/04/frontend/html/html-shu-xing/">HTML 属性</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2023/07/04/frontend/html/ni-bu-zhi-dao-de-html/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/x6/wallhaven-x6jm5o.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/x6/wallhaven-x6jm5o.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">07-04</span>
+                
+              </div>
+              <a class="post-title" href="/2023/07/04/frontend/html/ni-bu-zhi-dao-de-html/">你不知道的HTML</a>
             </div>
           </div>
         
@@ -1069,18 +1118,18 @@
             
 
             <div class="post-img-box">
-              <a href="/2023/07/02/frontend/collection/skill/google-sou-suo-ji-qiao/" class="post-img " style="background-size: cover; 
+              <a href="/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/vq/wallhaven-vq5mw8.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/vq/wallhaven-vq5mw8.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/x6/wallhaven-x6j3mo.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/x6/wallhaven-x6j3mo.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
               <div>
                 
-                  <span class="post-date">07-02</span>
+                  <span class="post-date">07-03</span>
                 
               </div>
-              <a class="post-title" href="/2023/07/02/frontend/collection/skill/google-sou-suo-ji-qiao/">Google 搜索技巧</a>
+              <a class="post-title" href="/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/">VS Code 快捷方式</a>
             </div>
           </div>
         
@@ -1102,27 +1151,6 @@
                 
               </div>
               <a class="post-title" href="/2023/07/02/frontend/collection/skill/linux-ming-ling/">Linux 命令</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-1/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/2y/wallhaven-2y9xjm.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/2y/wallhaven-2y9xjm.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">07-01</span>
-                
-              </div>
-              <a class="post-title" href="/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-1/">DevTools 调试技巧（1）</a>
             </div>
           </div>
         
