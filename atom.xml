@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2023-07-14T08:54:23.388Z</updated>
+  <updated>2023-07-24T06:28:59.356Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React 组件实践</title>
+    <link href="https://ywzzy.github.io/2023/07/20/frontend/react/react-zu-jian-shi-jian/"/>
+    <id>https://ywzzy.github.io/2023/07/20/frontend/react/react-zu-jian-shi-jian/</id>
+    <published>2023-07-20T07:12:49.000Z</published>
+    <updated>2023-07-24T06:28:59.356Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;a name=&quot;XOEwi&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-定义组件接口&quot;&gt;&lt;a href=&quot;#1-定义组件接口&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
+    
+    
+    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
+    
+  </entry>
   
   <entry>
     <title>React Router</title>
@@ -90,36 +120,6 @@
 
 &lt;p&gt;&lt;a name=&quot;lh2Em&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;一、开发前的准备&quot;&gt;&lt;a href=&quot;#一、开发前的准备&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
-    
-    
-    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React 组件实践</title>
-    <link href="https://ywzzy.github.io/2023/07/09/frontend/react/react-zu-jian-shi-jian/"/>
-    <id>https://ywzzy.github.io/2023/07/09/frontend/react/react-zu-jian-shi-jian/</id>
-    <published>2023-07-09T07:12:49.000Z</published>
-    <updated>2023-07-24T06:27:37.505Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;a name=&quot;XOEwi&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-定义组件接口&quot;&gt;&lt;a href=&quot;#1-定义组件接口&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -369,11 +369,11 @@
   </entry>
   
   <entry>
-    <title>Devtools 实用功能（1）</title>
-    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-1/"/>
-    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-1/</id>
+    <title>DevTools 调试技巧（2）</title>
+    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/"/>
+    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/</id>
     <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T08:42:24.912Z</updated>
+    <updated>2023-07-03T08:42:17.288Z</updated>
     
     
       
@@ -382,8 +382,9 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-&lt;p&gt;&lt;a name=&quot;h4blQ&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-保留日志&quot;&gt;&lt;a href=&quot;#1-保留日志&quot; class=&quot;headerlink&quot; title=&quot;1.</summary>
+
+&lt;p&gt;&lt;a name=&quot;VvoRH&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-选择和检查-DOM-元素&quot;&gt;&lt;a href=&quot;#1-选择和检查-DOM-元素&quot;</summary>
         
       
     
@@ -405,11 +406,11 @@
   </entry>
   
   <entry>
-    <title>DevTools 调试技巧（2）</title>
-    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/"/>
-    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/</id>
+    <title>Devtools 实用功能（1）</title>
+    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-1/"/>
+    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-1/</id>
     <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T08:42:17.288Z</updated>
+    <updated>2023-07-03T08:42:24.912Z</updated>
     
     
       
@@ -418,9 +419,8 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-
-&lt;p&gt;&lt;a name=&quot;VvoRH&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-选择和检查-DOM-元素&quot;&gt;&lt;a href=&quot;#1-选择和检查-DOM-元素&quot;</summary>
+&lt;p&gt;&lt;a name=&quot;h4blQ&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-保留日志&quot;&gt;&lt;a href=&quot;#1-保留日志&quot; class=&quot;headerlink&quot; title=&quot;1.</summary>
         
       
     
@@ -608,6 +608,39 @@
   </entry>
   
   <entry>
+    <title>TypeScript资源</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/typescript-zi-yuan/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/typescript-zi-yuan/</id>
+    <published>2023-06-30T02:07:25.000Z</published>
+    <updated>2023-07-04T01:42:19.762Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;h2 id=&quot;1-TypeScript-官方文档&quot;&gt;&lt;a href=&quot;#1-TypeScript-官方文档&quot; class=&quot;headerlink&quot; title=&quot;1.</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+    <category term="TypeScript" scheme="https://ywzzy.github.io/tags/TypeScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Node.js项目</title>
     <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/"/>
     <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/</id>
@@ -637,41 +670,6 @@
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
     <category term="Node.js" scheme="https://ywzzy.github.io/tags/Node-js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-07-04T01:42:39.448Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;**概览：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Marktext：&lt;/strong&gt;笔记应用&lt;br /&gt;2.</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="Vue" scheme="https://ywzzy.github.io/tags/Vue/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
   </entry>
   
