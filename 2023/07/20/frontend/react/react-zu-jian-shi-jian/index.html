@@ -649,20 +649,6 @@
 <p><a name="O3g5J"></a></p>
 <h3 id="（3）按照数据边界来分割组件"><a href="#（3）按照数据边界来分割组件" class="headerlink" title="（3）按照数据边界来分割组件"></a>（3）按照数据边界来分割组件</h3><p>现在，来看一下这样的组件划分是否符合“<strong>按照数据边界划分</strong>”的原则：<br />● 渲染 <code>MajorClock</code>，需要的是当前展示的时间，在点击“启动”按钮之后，这个时间是不断增长的。<br />● 渲染 <code>ControlButtons</code>，两个按钮显示什么内容，完全由当前是否是“启动”的激活状态决定。此外，Buttons 是秒表中唯一有用户输入的组件，对于按钮的按键会改变秒表的状态。<br />● 计次时间 <code>SplitTimes</code>，需要渲染多个时间，可以想象，需要有一个数组来记录所有计次时间。</p>
 <p>总结一下所有需要的数据和对应标识符，以及影响的组件：</p>
-<p>| <strong>数据</strong></p>
-<p>| <strong>标识符</strong></p>
-<p>| <strong>影响的组件</strong></p>
-<p>| |<br>| |</p>
-<p>| 当前时间</p>
-<p>| timeElapsed</p>
-<p>| MajorClock</p>
-<p>|<br>| 是否启动</p>
-<p>| activated</p>
-<p>| MajorClock, ControlButtons</p>
-<p>|<br>| 计次时间</p>
-<p>| splits</p>
-<p>| SplitTimes</p>
-<p>|</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2023/png/300943/1690176091382-dfe50bb8-1314-4276-9a3f-9d7411fe1c42.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2023/png/300943/1690176091382-dfe50bb8-1314-4276-9a3f-9d7411fe1c42.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="image.png"><br />从表格可以看出，每个数据影响的组件都不多，唯一影响两个组件的数据是 <code>activated</code>，这个 <code>activated</code> 基本上就是一个布尔值，数据量很小，影响两个组件问题也不大。这样的组件划分是符合以数据为边界原则的。</p>
 <p><a name="YtXCG"></a></p>
 <h3 id="（4）state-的位置"><a href="#（4）state-的位置" class="headerlink" title="（4）state 的位置"></a>（4）state 的位置</h3><p>接下来，需要确定 <code>state</code> 的存储位置。当秒表处于启动状态，<code>MajorClock</code> 会不断更新时间，似乎让 <code>MajorClock</code> 来存储时间相关的 <code>state</code> 很合理，但是仔细考虑一下，就会发现这样并不合适。</p>
@@ -889,6 +875,27 @@
 <div class="post-nav">
 
 
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/dp/wallhaven-dp19wl.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/dp/wallhaven-dp19wl.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+    </div>
+    <a href="/2023/07/25/frontend/react/react-sheng-ming-zhou-qi/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">React生命周期</div>
+      </div>
+      
+      <!-- <div class="content">
+        
+
+
+1. React 生命周期概览React 会把状态的变更更新到 UI，状态的变更过程必然会经历组件的生命周期。所谓
+      </div> -->
+    </a>
+  </div>
 
 
 
@@ -1167,6 +1174,27 @@ React Router 是 React 生态系统中最受欢迎的第三方库之一，近一
             
 
             <div class="post-img-box">
+              <a href="/2023/07/25/frontend/react/react-sheng-ming-zhou-qi/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/dp/wallhaven-dp19wl.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/dp/wallhaven-dp19wl.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">07-25</span>
+                
+              </div>
+              <a class="post-title" href="/2023/07/25/frontend/react/react-sheng-ming-zhou-qi/">React生命周期</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
               <a href="/2023/07/20/frontend/react/react-zu-jian-shi-jian/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/dp/wallhaven-dp19wl.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/dp/wallhaven-dp19wl.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
@@ -1209,6 +1237,27 @@ React Router 是 React 生态系统中最受欢迎的第三方库之一，近一
             
 
             <div class="post-img-box">
+              <a href="/2023/07/14/frontend/react/react-zu-jian-hua-kai-fa/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/3l/wallhaven-3l5dmd.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/3l/wallhaven-3l5dmd.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">07-14</span>
+                
+              </div>
+              <a class="post-title" href="/2023/07/14/frontend/react/react-zu-jian-hua-kai-fa/">React 组件化开发</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
               <a href="/2023/07/13/frontend/engineering/package.json/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/3l/wallhaven-3lr59v.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/3l/wallhaven-3lr59v.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
@@ -1221,48 +1270,6 @@ React Router 是 React 生态系统中最受欢迎的第三方库之一，近一
                 
               </div>
               <a class="post-title" href="/2023/07/13/frontend/engineering/package.json/">package.json</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/07/09/frontend/react/react-ji-chu-ru-men/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/jx/wallhaven-jxvyv5.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/jx/wallhaven-jxvyv5.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">07-09</span>
-                
-              </div>
-              <a class="post-title" href="/2023/07/09/frontend/react/react-ji-chu-ru-men/">React 基础入门</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/07/04/frontend/html/html-shu-xing/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/d6/wallhaven-d6e1do.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/d6/wallhaven-d6e1do.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">07-04</span>
-                
-              </div>
-              <a class="post-title" href="/2023/07/04/frontend/html/html-shu-xing/">HTML 属性</a>
             </div>
           </div>
         

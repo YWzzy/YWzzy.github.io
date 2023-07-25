@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2023-07-24T06:28:59.356Z</updated>
+  <updated>2023-07-25T07:19:37.879Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>React生命周期</title>
+    <link href="https://ywzzy.github.io/2023/07/25/frontend/react/react-sheng-ming-zhou-qi/"/>
+    <id>https://ywzzy.github.io/2023/07/25/frontend/react/react-sheng-ming-zhou-qi/</id>
+    <published>2023-07-25T07:12:49.000Z</published>
+    <updated>2023-07-25T07:19:37.879Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;a name=&quot;nGNYI&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-React-生命周期概览&quot;&gt;&lt;a href=&quot;#1-React-生命周期概览&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
+    
+    
+    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
     <title>React 组件实践</title>
     <link href="https://ywzzy.github.io/2023/07/20/frontend/react/react-zu-jian-shi-jian/"/>
     <id>https://ywzzy.github.io/2023/07/20/frontend/react/react-zu-jian-shi-jian/</id>
     <published>2023-07-20T07:12:49.000Z</published>
-    <updated>2023-07-24T06:28:59.356Z</updated>
+    <updated>2023-07-25T07:18:06.153Z</updated>
     
     
       
@@ -61,6 +91,36 @@
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
 &lt;p&gt;React Router 是 React 生态系统中最受欢迎的第三方库之一，近一半的 React 项目中使用了 React Router，下面就来看看如何在 React</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
+    
+    
+    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React 组件化开发</title>
+    <link href="https://ywzzy.github.io/2023/07/14/frontend/react/react-zu-jian-hua-kai-fa/"/>
+    <id>https://ywzzy.github.io/2023/07/14/frontend/react/react-zu-jian-hua-kai-fa/</id>
+    <published>2023-07-14T07:12:49.000Z</published>
+    <updated>2023-07-25T07:20:48.323Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;a name=&quot;hWu9S&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;一、什么是组件化&quot;&gt;&lt;a href=&quot;#一、什么是组件化&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -604,72 +664,6 @@
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
     <category term="Canvas" scheme="https://ywzzy.github.io/tags/Canvas/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TypeScript资源</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/typescript-zi-yuan/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/typescript-zi-yuan/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-07-04T01:42:19.762Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;h2 id=&quot;1-TypeScript-官方文档&quot;&gt;&lt;a href=&quot;#1-TypeScript-官方文档&quot; class=&quot;headerlink&quot; title=&quot;1.</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="TypeScript" scheme="https://ywzzy.github.io/tags/TypeScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Node.js项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/node.js-xiang-mu/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-07-04T01:36:07.386Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;h2 id=&quot;网易云音乐&quot;&gt;&lt;a href=&quot;#网易云音乐&quot; class=&quot;headerlink&quot; title=&quot;网易云音乐&quot;&gt;&lt;/a&gt;网易云音乐&lt;/h2&gt;&lt;p&gt;API 一个基于</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Node.js" scheme="https://ywzzy.github.io/tags/Node-js/"/>
     
   </entry>
   
