@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2023-07-25T07:19:37.879Z</updated>
+  <updated>2023-07-26T02:56:14.246Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>React组件通信</title>
+    <link href="https://ywzzy.github.io/2023/07/26/frontend/react/react-zu-jian-tong-xin/"/>
+    <id>https://ywzzy.github.io/2023/07/26/frontend/react/react-zu-jian-tong-xin/</id>
+    <published>2023-07-26T07:12:49.000Z</published>
+    <updated>2023-07-26T02:56:14.246Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
+    
+    
+    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
     <title>React生命周期</title>
     <link href="https://ywzzy.github.io/2023/07/25/frontend/react/react-sheng-ming-zhou-qi/"/>
     <id>https://ywzzy.github.io/2023/07/25/frontend/react/react-sheng-ming-zhou-qi/</id>
     <published>2023-07-25T07:12:49.000Z</published>
-    <updated>2023-07-25T07:19:37.879Z</updated>
+    <updated>2023-07-26T02:56:23.469Z</updated>
     
     
       
@@ -537,37 +564,6 @@
   </entry>
   
   <entry>
-    <title>前端书籍</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T03:24:40.927Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="书籍" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E4%B9%A6%E7%B1%8D/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="书籍" scheme="https://ywzzy.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
-    
-  </entry>
-  
-  <entry>
     <title>国外前端博主</title>
     <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/guo-wai-qian-duan-bo-zhu/"/>
     <id>https://ywzzy.github.io/2023/06/30/frontend/collection/guo-wai-qian-duan-bo-zhu/</id>
@@ -602,6 +598,37 @@
   </entry>
   
   <entry>
+    <title>前端书籍</title>
+    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/"/>
+    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/</id>
+    <published>2023-06-30T02:07:25.000Z</published>
+    <updated>2023-06-30T03:24:40.927Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="书籍" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E4%B9%A6%E7%B1%8D/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="书籍" scheme="https://ywzzy.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Awesome</title>
     <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/awesome/"/>
     <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/awesome/</id>
@@ -631,39 +658,6 @@
     <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
     
     <category term="Awesome" scheme="https://ywzzy.github.io/tags/Awesome/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Canvas 项目</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/projects/canvas-xiang-mu/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/projects/canvas-xiang-mu/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-07-04T01:23:05.541Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;在 Web 开发中，Canvas 是一个强大的绘图工具，可以实现各种有趣的交互效果和动态图形。本文将盘点 10 个基于 Canvas</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="项目" scheme="https://ywzzy.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
-    
-    <category term="Canvas" scheme="https://ywzzy.github.io/tags/Canvas/"/>
     
   </entry>
   
