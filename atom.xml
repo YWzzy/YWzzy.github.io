@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2023-07-27T05:33:30.329Z</updated>
+  <updated>2023-07-28T07:29:02.747Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React 渲染流程</title>
+    <link href="https://ywzzy.github.io/2023/07/28/frontend/react/react-xuan-ran-liu-cheng/"/>
+    <id>https://ywzzy.github.io/2023/07/28/frontend/react/react-xuan-ran-liu-cheng/</id>
+    <published>2023-07-28T07:12:49.000Z</published>
+    <updated>2023-07-28T07:29:02.747Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;a name=&quot;WjTXE&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-React-渲染流程&quot;&gt;&lt;a href=&quot;#1-React-渲染流程&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
+    
+    
+    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
+    
+  </entry>
   
   <entry>
     <title>React 组件设计模式</title>
@@ -619,37 +649,6 @@
     <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
     
     <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端书籍</title>
-    <link href="https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/"/>
-    <id>https://ywzzy.github.io/2023/06/30/frontend/collection/qian-duan-shu-ji/</id>
-    <published>2023-06-30T02:07:25.000Z</published>
-    <updated>2023-06-30T03:24:40.927Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="书籍" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E4%B9%A6%E7%B1%8D/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="书籍" scheme="https://ywzzy.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
     
   </entry>
   
