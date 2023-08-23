@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2023-08-15T06:42:47.047Z</updated>
+  <updated>2023-08-23T09:00:44.590Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React 组件代码结构如何组织？</title>
+    <link href="https://ywzzy.github.io/2023/08/23/frontend/react/react-zu-jian-dai-ma-jie-gou-ru-he-zu-zhi/"/>
+    <id>https://ywzzy.github.io/2023/08/23/frontend/react/react-zu-jian-dai-ma-jie-gou-ru-he-zu-zhi/</id>
+    <published>2023-08-23T09:00:49.000Z</published>
+    <updated>2023-08-23T09:00:44.590Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;a name=&quot;MZPZO&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-导入依赖项&quot;&gt;&lt;a href=&quot;#1-导入依赖项&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
+    
+    
+    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
+    
+  </entry>
   
   <entry>
     <title>React常见错误，如何避免？</title>
@@ -590,41 +620,6 @@
 
 &lt;p&gt;&lt;a name=&quot;VvoRH&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;1-选择和检查-DOM-元素&quot;&gt;&lt;a href=&quot;#1-选择和检查-DOM-元素&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/skill/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Devtools 实用功能（2）</title>
-    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/"/>
-    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/</id>
-    <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-13T01:27:58.270Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;Chrome DevTools 是前端开发人员最常用的工具之一，今天我们就来看 5 个 Chrome DevTools 中实用的实验性功能，开启这些隐藏功能，让你的</summary>
         
       
     
