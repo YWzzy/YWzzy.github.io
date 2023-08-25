@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>bizhi | 飞翔的蜗</title>
+  <title>React Hooks 使用时要避免的6个错误 | 飞翔的蜗</title>
 
   <link rel="icon" type="image/gif" href="https://64.media.tumblr.com/a67a7238cd2833d859a7ea4cfa4fb8a4/0e0717e3c39dfac5-0c/s500x750/94ba555d15a68a38482896903d15494df88ff9b1.gif">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -573,17 +573,40 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://w.wallhaven.cc/full/5g/wallhaven-5gk8p1.jpg')">
+  background-position: center center;position: relative;background-image:url('https://w.wallhaven.cc/full/x6/wallhaven-x6jvod.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        bizhi
+        React Hooks 使用时要避免的6个错误
       </span>
     </div>
     
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2023-08-25 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-detail-header_category">
+              前端
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/React/" class="post-detail-header_category">
+              React
+            </a>
+          
+        </span>
+      
+
+      
     
   </div>
   
@@ -601,10 +624,101 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <div class="getJsonPhoto-api" api="../../myJson/photo.json" isRegular=""></div>
+        <meta name="referrer" content="no-referrer" />
+
+<p>今天来看看在使用 React hooks 时的一些坑，以及如何避开这些坑。</p>
+<p><strong>问题概览：</strong></p>
+<ol>
+<li>不要改变 hooks 的调用顺序；</li>
+<li>不要使用旧的状态；</li>
+<li>不要创建旧的闭包；</li>
+<li>不要忘记清理副作用；</li>
+<li>不要在不需要重新渲染时使用 useState；</li>
+<li>不要缺少 useEffect 依赖。</li>
+</ol>
+<p><a name="XNSpj"></a></p>
+<h2 id="1-不要改变-hooks-的调用顺序"><a href="#1-不要改变-hooks-的调用顺序" class="headerlink" title="1. 不要改变 hooks 的调用顺序 "></a>1. 不要改变 hooks 的调用顺序 <br /><br /></h2><p>下面先来看一个例子：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">FetchGame</span> = (<span class="params">&#123; id &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (!id) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;请选择一个游戏&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> [game, setGame] = <span class="title function_">useState</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="attr">description</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">fetchGame</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">`/api/game/<span class="subst">$&#123;id&#125;</span>`</span>);</span><br><span class="line">      <span class="keyword">const</span> fetchedGame = <span class="keyword">await</span> response.<span class="title function_">json</span>();</span><br><span class="line">      <span class="title function_">setGame</span>(fetchedGame);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="title function_">fetchGame</span>();</span><br><span class="line">  &#125;, [id]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Name: &#123;game.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Description: &#123;game.description&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />这个组件接收一个参数 id，在<code>useEffect</code>中会使用这个 id 作为参数去请求游戏的信息。并将获取的数据保存在状态变量 game 中。</p>
+<p>当组件执行时，会获取导数据并更新状态。但是这个组件有一个警告：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1637767909352-ca985d29-e8e5-4b28-a1be-7af2a168f6ff.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1637767909352-ca985d29-e8e5-4b28-a1be-7af2a168f6ff.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p>这里是告诉我们，钩子的执行是不正确的。因为当 id 为空时，组件会提示，并直接退出。如果 id 存在，就会调用<code>useState</code>和<code>useEffect</code>这两个 hook。这样有条件的执行钩子时就可能会导致意外并且难以调试的错误。实际上，React hooks 内部的工作方式要求组件在渲染时，总是以相同的顺序来调用 hook。</p>
+<p>这也就是 React 官方文档中所说的：<strong>不要在循环，条件或嵌套函数中调用 Hook， 确保总是在你的 React 函数的最顶层以及任何 return 之前调用他们。</strong></p>
+<p>解决这个问题最直接的办法就是按照官方文档所说的，<strong>确保总是在你的 React 函数的最顶层以及任何 return 之前调用他们：</strong></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">FetchGame</span> = (<span class="params">&#123; id &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [game, setGame] = <span class="title function_">useState</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="attr">description</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">fetchGame</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">`/api/game/<span class="subst">$&#123;id&#125;</span>`</span>);</span><br><span class="line">      <span class="keyword">const</span> fetchedGame = <span class="keyword">await</span> response.<span class="title function_">json</span>();</span><br><span class="line">      <span class="title function_">setGame</span>(fetchedGame);</span><br><span class="line">    &#125;;</span><br><span class="line">    id &amp;&amp; <span class="title function_">fetchGame</span>();</span><br><span class="line">  &#125;, [id]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!id) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;请选择一个游戏&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Name: &#123;game.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Description: &#123;game.description&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样，无论传入的 id 是否为空，useState 和 useEffect 总会以相同的顺序来调用，这样就不会出错啦~</p>
+<p>React 官方文档中的 Hook 规则：<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/hooks-rules.html">《Hook 规则》</a>，可以使用插件<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/eslint-plugin-react-hooks">eslint-plugin-react-hooks</a>来帮助我们检查这些规则。</p>
+<p><a name="UtmpH"></a></p>
+<h2 id="2-不要使用旧的状态"><a href="#2-不要使用旧的状态" class="headerlink" title="2. 不要使用旧的状态"></a>2. 不要使用旧的状态</h2><p>先来看一个计数器的例子：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Increaser</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> increase = <span class="title function_">useCallback</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">setCount</span>(count + <span class="number">1</span>);</span><br><span class="line">  &#125;, [count]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">increase</span>();</span><br><span class="line">    <span class="title function_">increase</span>();</span><br><span class="line">    <span class="title function_">increase</span>();</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Counter: &#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />这里的<code>handleClick</code>方法会在点击按钮后执行三次增加状态变量 count 的操作。那么点击一次是否会增加 3 呢？事实并非如此。点击按钮之后，count 只会增加 1。问题就在于，当我们点击按钮时，相当于下面的操作：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="title function_">setCount</span>(count + <span class="number">1</span>);</span><br><span class="line">  <span class="title function_">setCount</span>(count + <span class="number">1</span>);</span><br><span class="line">  <span class="title function_">setCount</span>(count + <span class="number">1</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><br />当第一次调用<code>setCount(count + 1)</code>时是没有问题的，它会将<code>count</code>更新为 1。接下来第 2、3 次调用<code>setCount</code>时，<code>count</code>还是使用了旧的状态（<code>count</code>为 0），所以也会计算出<code>count</code>为 1。发生这种情况的原因就是状态变量会在下一次渲染才更新。</p>
+<p>解决这个问题的办法就是，<strong>使用函数的方式来更新状态：</strong></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Increaser</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> increase = <span class="title function_">useCallback</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">setCount</span>(<span class="function"><span class="params">count</span> =&gt;</span> count + <span class="number">1</span>);</span><br><span class="line">  &#125;, [count]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">increase</span>();</span><br><span class="line">    <span class="title function_">increase</span>();</span><br><span class="line">    <span class="title function_">increase</span>();</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Counter: &#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />这样改完之后，React 就能拿到最新的值，当点击按钮时，就会每次增加 3。所以需要记住：<strong>如果要使用当前状态来计算下一个状态，就要使用函数的式方式来更新状态：</strong></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">setValue</span>(<span class="function"><span class="params">prevValue</span> =&gt;</span> prevValue + someResult)</span><br></pre></td></tr></table></figure>
+
+<p><a name="rEJ8M"></a></p>
+<h2 id="3-不要创建旧的闭包"><a href="#3-不要创建旧的闭包" class="headerlink" title="3. 不要创建旧的闭包"></a>3. 不要创建旧的闭包</h2><p>众所周知，React Hooks 是依赖闭包实现的。当使用接收一个回调作为参数的钩子时，比如：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(callback, deps)</span><br><span class="line"><span class="title function_">useCallback</span>(callback, deps)</span><br></pre></td></tr></table></figure>
+
+<p><br />此时，我们就可能会创建一个旧的闭包，该闭包会捕获过时的状态或者 prop 变量。这么说可能有些抽象，下面来看一个例子，这个例子中，useEffect 每 2 秒会打印一次 count 的值：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">WatchCount</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setInterval</span>(<span class="keyword">function</span> <span class="title function_">log</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Count: <span class="subst">$&#123;count&#125;</span>`</span>);</span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; <span class="title function_">setCount</span>(<span class="function"><span class="params">count</span> =&gt;</span> count + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Count: &#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><br />最终的输出的结果如下：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1637770327315-7ccc9144-6324-4058-b88b-b32154d9f9f9.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1637770327315-7ccc9144-6324-4058-b88b-b32154d9f9f9.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p>可以看到，每次打印的 count 值都是 0，和实际的 count 值并不一样。为什么会这样呢？</p>
+<p>在第一次渲染时应该没啥问题，闭包 log 会将 count 打印出 0。从第二次开始，每次当点击按钮时，count 会增加 1，但是<code>setInterval</code>仍然调用的是从初次渲染中捕获的 count 为 0 的旧的 log 闭包。log 方法就是一个旧的闭包，因为它捕获的是一个过时的状态变量 count。</p>
+<p>这里的解决方案就是，当 count 发生变化时，就重置定时器：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">WatchCount</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> id = <span class="built_in">setInterval</span>(<span class="keyword">function</span> <span class="title function_">log</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Count: <span class="subst">$&#123;count&#125;</span>`</span>);</span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearInterval</span>(id);</span><br><span class="line">  &#125;, [count]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; <span class="title function_">setCount</span>(<span class="function"><span class="params">count</span> =&gt;</span> count + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Count: &#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />这样，当状态变量 count 发生变化时，就会更新闭包。为了防止闭包捕获到旧值，就要确保在提供给 hook 的回调中使用的 prop 或者 state 都被指定为依赖性。<br><a name="KZEeQ"></a></p>
+<h2 id="4-不要忘记清理副作用"><a href="#4-不要忘记清理副作用" class="headerlink" title="4. 不要忘记清理副作用"></a><br />4. 不要忘记清理副作用</h2><p>有很多副作用，比如<code>fetch</code>请求、<code>setTimeout</code>等都是异步的，如果不需要这些副作用或者组件在卸载时，不要忘记清理这些副作用。下面来看一个计数器的例子：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">DelayedIncreaser</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> [increase, setShouldIncrease] = <span class="title function_">useState</span>(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (increase) &#123;</span><br><span class="line">      <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">setCount</span>(<span class="function"><span class="params">count</span> =&gt;</span> count + <span class="number">1</span>)</span><br><span class="line">      &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [increase]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setShouldIncrease(true)&#125;&gt;</span></span><br><span class="line"><span class="language-xml">        +</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>Count: &#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">MyApp</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [show, setShow] = <span class="title function_">useState</span>(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;show ? <span class="tag">&lt;<span class="name">DelayedIncreaser</span> /&gt;</span> : null&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setShow(false)&#125;&gt;卸载<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />这个组件很简单，就是在点击按钮时，状态变量 count 每秒会增加 1。当我们点击+按钮时，它会和我们预期的一样。但是当我们点击“卸载”按钮时，控制台就会出现警告：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1637771848266-87ad26c0-31a4-4b45-90f4-6f06fc8862d0.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1637771848266-87ad26c0-31a4-4b45-90f4-6f06fc8862d0.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p>修复这个问题只需要使用 useEffect 来清理定时器即可：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (increase) &#123;</span><br><span class="line">      <span class="keyword">const</span> id = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">setCount</span>(<span class="function"><span class="params">count</span> =&gt;</span> count + <span class="number">1</span>)</span><br><span class="line">      &#125;, <span class="number">1000</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearInterval</span>(id);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, [increase]);</span><br></pre></td></tr></table></figure>
+
+<p><br />当我们编写一些副作用时，我们需要知道这个副作用是否需要清除。</p>
+<p><a name="dSjDO"></a></p>
+<h2 id="5-不要在不需要重新渲染时使用-useState"><a href="#5-不要在不需要重新渲染时使用-useState" class="headerlink" title="5. 不要在不需要重新渲染时使用 useState"></a>5. 不要在不需要重新渲染时使用 useState</h2><p>在 React hooks 中，我们可以使用<code>useState</code> hook 来进行状态的管理。虽然使用起来比较简单，但是如果使用不恰当，就可能会出现意想不到的问题。来看下面的例子：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Counter</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [counter, setCounter] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">onClickCounter</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setCounter</span>(<span class="function"><span class="params">counter</span> =&gt;</span> counter + <span class="number">1</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">onClickCounterRequest</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">apiCall</span>(counter);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;onClickCounter&#125;</span>&gt;</span>Counter<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;onClickCounterRequest&#125;</span>&gt;</span>Counter Request<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />在上面的组件中，有两个按钮，第一个按钮会触发计数器加一，第二个按钮会根据当前的计数器状态发送一个请求。可以看到，状态变量<code>counter</code>并没有在渲染阶段使用。所以，每次点击第一个按钮时，都会有不需要的重新渲染。</p>
+<p>因此，当遇到这种需要在组件中使用一个变量在渲染中保持其状态，并且不会触发重新渲染时，那么<code>useRef</code>会是一个更好的选择，下面来对上面的例子使用 useRef 进行改编：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Counter</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> counter = <span class="title function_">useRef</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">onClickCounter</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    counter.<span class="property">current</span>++;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">onClickCounterRequest</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">apiCall</span>(counter.<span class="property">current</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;onClickCounter&#125;</span>&gt;</span>Counter<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;onClickCounterRequest&#125;</span>&gt;</span>Counter Request<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="E8IPf"></a></p>
+<h2 id="6-不要缺少-useEffect-依赖"><a href="#6-不要缺少-useEffect-依赖" class="headerlink" title="6. 不要缺少 useEffect 依赖"></a>6. 不要缺少 useEffect 依赖</h2><p><code>useEffect</code>是 React Hooks 中最常用的 Hook 之一。默认情况下，它总是在每次重新渲染时运行。但这样就可能会导致不必要的渲染。我们可以通过给 useEffect 设置依赖数组来避免这些不必要的渲染。</p>
+<p>来看下面的例子：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Counter</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">showCount</span> = (<span class="params">count</span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Count&quot;</span>, count);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">showCount</span>(count);</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Counter: &#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />这个组件可能没有什么实际的意义，只是打印了 count 的值。这时就会有一个警告：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1637776033827-502840e4-5379-4735-8537-9e4f2a213896.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1637776033827-502840e4-5379-4735-8537-9e4f2a213896.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p>这里是说，useEffect 缺少一个 count 依赖，这样是不安全的。我们需要包含一个依赖项或者移除依赖数组。否则 useEffect 中的代码可能会使用旧的值。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Counter</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">showCount</span> = (<span class="params">count</span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Count&quot;</span>, count);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">showCount</span>(count);</span><br><span class="line">  &#125;, [count]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Counter: &#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果 useEffect 中没有用到状态变量 count，那么依赖项为空也会是安全的：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">showCount</span>(<span class="number">996</span>);</span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
 
       </div>
       <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/React/" class="">
+              React
+            </a>
+          
+        </div>
         
       </div>
       
@@ -615,7 +729,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/gallery/bizhi/index.html" target="_blank" title="bizhi">https://ywzzy.github.io/gallery/bizhi/index.html</a>
+    <a href="/2023/08/25/frontend/react/react-hooks-shi-yong-shi-yao-bi-mian-de-6-ge-cuo-wu/" target="_blank" title="React Hooks 使用时要避免的6个错误">https://ywzzy.github.io/2023/08/25/frontend/react/react-hooks-shi-yong-shi-yao-bi-mian-de-6-ge-cuo-wu/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -634,6 +748,26 @@
 
 
 
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/rr/wallhaven-rrjdlw.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/rr/wallhaven-rrjdlw.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
+    </div>
+    <a href="/2023/08/23/frontend/react/react-zu-jian-dai-ma-jie-gou-ru-he-zu-zhi/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">React 组件代码结构如何组织？</div>
+      </div>
+      <!-- <div class="content">
+        
+
+
+1. 导入依赖项我们需要在组件文件顶部导入组件所需的依赖项，通常是使用 import 来进行导入。对于不同类别的依
+      </div> -->
+    </a>
+  </div>
 
 </div>
 
@@ -846,173 +980,29 @@
   <div class="layout_sticky">    
     
       
-        
-    <section class="widget side_category">
-      
+<section class="widget side_toc">
+  
   <header>
     
-      <a style="color: " href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
     
   </header>
 
 
-      <div class='content'>
-        <ul class="entry navigation">
-          
-            <li><a class="flat-box"
-              title="/categories/skill/" href="/categories/skill/"
-              id="categoriesskill"
-              ><div class='name'>skill</div><div class='badge'>(8)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/skill/%E5%89%8D%E7%AB%AF/" href="/categories/skill/%E5%89%8D%E7%AB%AF/"
-              id="categoriesskillE5898DE7ABAF"
-              ><div class='name'>前端</div><div class='badge'>(5)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/skill/%E5%BF%AB%E6%8D%B7%E9%94%AE/" href="/categories/skill/%E5%BF%AB%E6%8D%B7%E9%94%AE/"
-              id="categoriesskillE5BFABE68DB7E994AE"
-              ><div class='name'>快捷键</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/skill/%E6%9C%8D%E5%8A%A1%E5%99%A8/" href="/categories/skill/%E6%9C%8D%E5%8A%A1%E5%99%A8/"
-              id="categoriesskillE69C8DE58AA1E599A8"
-              ><div class='name'>服务器</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/skill/%E6%B5%8F%E8%A7%88%E5%99%A8/" href="/categories/skill/%E6%B5%8F%E8%A7%88%E5%99%A8/"
-              id="categoriesskillE6B58FE8A788E599A8"
-              ><div class='name'>浏览器</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box"
-              title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
-              id="categoriesE5898DE7ABAF"
-              ><div class='name'>前端</div><div class='badge'>(88)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/React/" href="/categories/%E5%89%8D%E7%AB%AF/React/"
-              id="categoriesE5898DE7ABAFReact"
-              ><div class='name'>React</div><div class='badge'>(12)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/blog/" href="/categories/%E5%89%8D%E7%AB%AF/blog/"
-              id="categoriesE5898DE7ABAFblog"
-              ><div class='name'>blog</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/css/" href="/categories/%E5%89%8D%E7%AB%AF/css/"
-              id="categoriesE5898DE7ABAFcss"
-              ><div class='name'>css</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/docker/" href="/categories/%E5%89%8D%E7%AB%AF/docker/"
-              id="categoriesE5898DE7ABAFdocker"
-              ><div class='name'>docker</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/html/" href="/categories/%E5%89%8D%E7%AB%AF/html/"
-              id="categoriesE5898DE7ABAFhtml"
-              ><div class='name'>html</div><div class='badge'>(3)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/js/" href="/categories/%E5%89%8D%E7%AB%AF/js/"
-              id="categoriesE5898DE7ABAFjs"
-              ><div class='name'>js</div><div class='badge'>(2)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E4%B9%A6%E7%B1%8D/" href="/categories/%E5%89%8D%E7%AB%AF/%E4%B9%A6%E7%B1%8D/"
-              id="categoriesE5898DE7ABAFE4B9A6E7B18D"
-              ><div class='name'>书籍</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" href="/categories/%E5%89%8D%E7%AB%AF/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"
-              id="categoriesE5898DE7ABAFE5B08FE7A88BE5BA8F"
-              ><div class='name'>小程序</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" href="/categories/%E5%89%8D%E7%AB%AF/%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"
-              id="categoriesE5898DE7ABAFE5B08FE7A88BE5BA8FE8A7A3E586B3E696B9E6A188"
-              ><div class='name'>解决方案</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/" href="/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/"
-              id="categoriesE5898DE7ABAFE5B7A5E7A88BE58C96"
-              ><div class='name'>工程化</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E6%94%B6%E8%97%8F/" href="/categories/%E5%89%8D%E7%AB%AF/%E6%94%B6%E8%97%8F/"
-              id="categoriesE5898DE7ABAFE694B6E8978F"
-              ><div class='name'>收藏</div><div class='badge'>(7)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/" href="/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/"
-              id="categoriesE5898DE7ABAFE6B58FE8A788E599A8"
-              ><div class='name'>浏览器</div><div class='badge'>(6)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/%E8%B0%83%E8%AF%95/" href="/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/%E8%B0%83%E8%AF%95/"
-              id="categoriesE5898DE7ABAFE6B58FE8A788E599A8E8B083E8AF95"
-              ><div class='name'>调试</div><div class='badge'>(4)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E7%9B%91%E6%8E%A7/" href="/categories/%E5%89%8D%E7%AB%AF/%E7%9B%91%E6%8E%A7/"
-              id="categoriesE5898DE7ABAFE79B91E68EA7"
-              ><div class='name'>监控</div><div class='badge'>(6)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" href="/categories/%E5%89%8D%E7%AB%AF/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"
-              id="categoriesE5898DE7ABAFE7BD91E7BB9CE5AE89E585A8"
-              ><div class='name'>网络安全</div><div class='badge'>(17)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E8%A7%84%E8%8C%83/" href="/categories/%E5%89%8D%E7%AB%AF/%E8%A7%84%E8%8C%83/"
-              id="categoriesE5898DE7ABAFE8A784E88C83"
-              ><div class='name'>规范</div><div class='badge'>(1)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/" href="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/"
-              id="categoriesE5898DE7ABAFE99DA2E8AF95"
-              ><div class='name'>面试</div><div class='badge'>(13)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/" href="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/"
-              id="categoriesE5898DE7ABAFE99DA2E8AF95E6B58FE8A788E599A8"
-              ><div class='name'>浏览器</div><div class='badge'>(7)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" href="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"
-              id="categoriesE5898DE7ABAFE99DA2E8AF95E6B58FE8A788E599A8E8A7A3E586B3E696B9E6A188"
-              ><div class='name'>解决方案</div><div class='badge'>(2)</div></a></li>
-          
-            <li><a class="flat-box child"
-              title="/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/" href="/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/"
-              id="categoriesE5898DE7ABAFE9A1B9E79BAE"
-              ><div class='name'>项目</div><div class='badge'>(14)</div></a></li>
-          
-        </ul>
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%8D%E8%A6%81%E6%94%B9%E5%8F%98-hooks-%E7%9A%84%E8%B0%83%E7%94%A8%E9%A1%BA%E5%BA%8F"><span class="toc-text">1. 不要改变 hooks 的调用顺序 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8%E6%97%A7%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-text">2. 不要使用旧的状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%8D%E8%A6%81%E5%88%9B%E5%BB%BA%E6%97%A7%E7%9A%84%E9%97%AD%E5%8C%85"><span class="toc-text">3. 不要创建旧的闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%B8%8D%E8%A6%81%E5%BF%98%E8%AE%B0%E6%B8%85%E7%90%86%E5%89%AF%E4%BD%9C%E7%94%A8"><span class="toc-text">4. 不要忘记清理副作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%B8%8D%E8%A6%81%E5%9C%A8%E4%B8%8D%E9%9C%80%E8%A6%81%E9%87%8D%E6%96%B0%E6%B8%B2%E6%9F%93%E6%97%B6%E4%BD%BF%E7%94%A8-useState"><span class="toc-text">5. 不要在不需要重新渲染时使用 useState</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%B8%8D%E8%A6%81%E7%BC%BA%E5%B0%91-useEffect-%E4%BE%9D%E8%B5%96"><span class="toc-text">6. 不要缺少 useEffect 依赖</span></a></li></ol> -->
+        <div class="toc"></div>
       </div>
-    </section>
-  
-  
-      
-      
-        
-<section class="widget side_tagcloud">
-    
-  <header>
-    
-      <a style="color: " href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-    <a href="/tags/Awesome/" style="font-size: 14px; color: #999">Awesome</a> <a href="/tags/Canvas/" style="font-size: 14px; color: #999">Canvas</a> <a href="/tags/DevTools/" style="font-size: 16.31px; color: #898989">DevTools</a> <a href="/tags/Google/" style="font-size: 14px; color: #999">Google</a> <a href="/tags/Https/" style="font-size: 14px; color: #999">Https</a> <a href="/tags/IDE/" style="font-size: 14px; color: #999">IDE</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/Node-js/" style="font-size: 14px; color: #999">Node.js</a> <a href="/tags/Promise/" style="font-size: 14px; color: #999">Promise</a> <a href="/tags/React/" style="font-size: 20.92px; color: #6a6a6a">React</a> <a href="/tags/TypeScript/" style="font-size: 14px; color: #999">TypeScript</a> <a href="/tags/Vue/" style="font-size: 14.77px; color: #949494">Vue</a> <a href="/tags/blog/" style="font-size: 14px; color: #999">blog</a> <a href="/tags/css/" style="font-size: 14px; color: #999">css</a> <a href="/tags/docker/" style="font-size: 14px; color: #999">docker</a> <a href="/tags/es6/" style="font-size: 15.54px; color: #8f8f8f">es6</a> <a href="/tags/html/" style="font-size: 15.54px; color: #8f8f8f">html</a> <a href="/tags/js/" style="font-size: 19.38px; color: #747474">js</a> <a href="/tags/npm/" style="font-size: 14px; color: #999">npm</a> <a href="/tags/sentry/" style="font-size: 16.31px; color: #898989">sentry</a> <a href="/tags/skill/" style="font-size: 19.38px; color: #747474">skill</a> <a href="/tags/vue3/" style="font-size: 14px; color: #999">vue3</a> <a href="/tags/%E4%B9%A6%E7%B1%8D/" style="font-size: 14px; color: #999">书籍</a> <a href="/tags/%E4%BD%8E%E4%BB%A3%E7%A0%81/" style="font-size: 14px; color: #999">低代码</a> <a href="/tags/%E5%85%BC%E5%AE%B9/" style="font-size: 15.54px; color: #8f8f8f">兼容</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 24px; color: #555">前端</a> <a href="/tags/%E5%8A%A8%E7%94%BB/" style="font-size: 14px; color: #999">动画</a> <a href="/tags/%E5%8E%9F%E7%90%86/" style="font-size: 20.15px; color: #6f6f6f">原理</a> <a href="/tags/%E5%8F%AF%E8%A7%86%E5%8C%96%E5%A4%A7%E5%B1%8F/" style="font-size: 14px; color: #999">可视化大屏</a> <a href="/tags/%E5%9B%BD%E5%A4%96/" style="font-size: 14px; color: #999">国外</a> <a href="/tags/%E5%9B%BE%E6%A0%87/" style="font-size: 14px; color: #999">图标</a> <a href="/tags/%E5%9F%BA%E5%BB%BA/" style="font-size: 14px; color: #999">基建</a> <a href="/tags/%E5%A4%A7%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" style="font-size: 14px; color: #999">大文件上传</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 14px; color: #999">小程序</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" style="font-size: 14px; color: #999">工程化</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 14px; color: #999">微信小程序</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 14px; color: #999">快捷键</a> <a href="/tags/%E6%80%A7%E8%83%BD/" style="font-size: 14px; color: #999">性能</a> <a href="/tags/%E6%89%8B%E5%86%99/" style="font-size: 15.54px; color: #8f8f8f">手写</a> <a href="/tags/%E6%8B%96%E6%8B%BD%E6%8E%92%E5%BA%8F/" style="font-size: 14px; color: #999">拖拽排序</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 17.85px; color: #7f7f7f">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" style="font-size: 14px; color: #999">数据处理</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" style="font-size: 14px; color: #999">数据结构与算法</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/" style="font-size: 14px; color: #999">文件处理</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 14px; color: #999">服务器</a> <a href="/tags/%E6%A1%8C%E9%9D%A2/" style="font-size: 14px; color: #999">桌面</a> <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" style="font-size: 21.69px; color: #656565">浏览器</a> <a href="/tags/%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" style="font-size: 14px; color: #999">源码解析</a> <a href="/tags/%E7%83%AD%E9%97%A8/" style="font-size: 14px; color: #999">热门</a> <a href="/tags/%E7%8A%B6%E6%80%81%E7%A0%81/" style="font-size: 14px; color: #999">状态码</a> <a href="/tags/%E7%9B%91%E6%8E%A7/" style="font-size: 17.08px; color: #848484">监控</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 23.23px; color: #5a5a5a">网络安全</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 14px; color: #999">规范</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" style="font-size: 14px; color: #999">解决方案</a> <a href="/tags/%E8%B0%83%E8%AF%95/" style="font-size: 18.62px; color: #7a7a7a">调试</a> <a href="/tags/%E8%B7%A8%E5%9F%9F/" style="font-size: 14px; color: #999">跨域</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 22.46px; color: #5f5f5f">面试</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 21.69px; color: #656565">项目</a> <a href="/tags/%E9%AB%98%E4%BB%BF/" style="font-size: 14px; color: #999">高仿</a>
     </div>
+  </div>
 </section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
 
-  
-      
       
   <section class="widget side_recent_post">
     
@@ -1137,155 +1127,6 @@
       </div>
     </div>
   </section>
-
-      
-  <section class="widget side_archives">
-    
-    <header><a style="color: red" href='/archives/'><i class="fas fa-archive fa-fw" aria-hidden="true"></i><span class='name'>归档</span></a></header><div class="content"><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">August 2023</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">July 2023</span><span class="card-archive-list-count">20</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">June 2023</span><span class="card-archive-list-count">41</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">April 2023</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">December 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">November 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">October 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">August 2022</span><span class="card-archive-list-count">2</span></a></li></ul></div>
-  </section>
-
-      <section class="widget side_webinfo">
-  
-  <header>
-    
-      <i style="color: " class="fas fa-chart-line fa-fw" aria-hidden="true"></i><span class='name' style="color: ">站点信息</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="webinfo">
-      
-        <div class="webinfo-item">
-          <div>文章数目：</div>
-          <div>96 篇</div>
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>已运行时间：</div>
-          <div id="webinfo-runtime-count" publish_date="03/24/2020 21:34:09"></div>
-        </div>
-        <script>
-          var BirthDay = new Date(new Date('2019/03/21'));
-          var today = new Date();
-          var timeold = (today.getTime() - BirthDay.getTime());
-          var daysold = Math.floor(timeold / (24 * 60 * 60 * 1000));
-          document.getElementById('webinfo-runtime-count').innerHTML = daysold + ' 天';
-        </script>
-      
-
-
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>本站总访问量：</div>
-          
-          <div><span id="busuanzi_value_site_pv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 次</div>
-          
-        </div>
-      
-
-      
-        <div class="webinfo-item">
-          <div>最后活动时间：</div>
-          
-            <div id="last-update" style="display: none;">Fri Aug 25 2023 11:03:42 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2023-08-25 日</div>
-          
-        </div>
-        
-        <script>
-          function timeago(dateTimeStamp) {
-              var minute = 1000 * 60; //把分，时，天，周，半个月，一个月用毫秒表示
-              var hour = minute * 60;
-              var day = hour * 24;
-              var week = day * 7;
-              var month = day * 30;
-              var now = new Date().getTime(); //获取当前时间毫秒
-              var diffValue = now - dateTimeStamp; //时间差
-              if (diffValue < 0) {
-                  return;
-              }
-              var minC = diffValue / minute; //计算时间差的分，时，天，周，月
-              var hourC = diffValue / hour;
-              var dayC = diffValue / day;
-              var weekC = diffValue / week;
-              var monthC = diffValue / month;
-              if (monthC >= 1 && monthC <= 3) {
-                  result = " " + parseInt(monthC) + " 月前"
-              } else if (weekC >= 1 && weekC <= 3) {
-                  result = " " + parseInt(weekC) + " 周前"
-              } else if (dayC >= 1 && dayC <= 6) {
-                  result = " " + parseInt(dayC) + " 天前"
-              } else if (hourC >= 1 && hourC <= 23) {
-                  result = " " + parseInt(hourC) + " 小时前"
-              } else if (minC >= 1 && minC <= 59) {
-                  result = " " + parseInt(minC) + " 分钟前"
-              } else if (diffValue >= 0 && diffValue <= minute) {
-                  result = "刚刚"
-              } else {
-                  var datetime = new Date();
-                  datetime.setTime(dateTimeStamp);
-                  var Nyear = datetime.getFullYear();
-                  var Nmonth = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
-                  var Ndate = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
-                  var Nhour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
-                  var Nminute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
-                  var Nsecond = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
-                  result = Nyear + "-" + Nmonth + "-" + Ndate
-              }
-              return result;
-          }
-          var lastUpDate = document.getElementById('last-update').innerHTML;
-          try {
-            document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
-          } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2023-08-25 日';
-          }
-        </script>
-        
-      
-    </div>
-  </div>
-</section>
-      
-  
-    <div class="widget historyToday" id="historyToday" style="order: -1;background: #fff">
-      <header>
-        
-          <a style="color: #d63130" target="_blank" rel="noopener" href='http://baidu.com'><i class="fas fa-calendar-week fa-fw" aria-hidden="true"></i><span class='name'>历史上的今天</span></a>
-        
-      </header>
-      <div class="content">
-         <div id="myHistorySwiper" @mouseenter="stopAutoPlay()" @mouseleave="startAutoPlay()"> <swiper class="myhistoryswiper" ref="myhistoryswiper" style="height:80px;" :options="swiperOption"> <swiper-slide v-for="(item, index) in content" :key="index"> {{item}} </swiper-slide> </swiper> </div> <script defer src="/historyToday/index.js"></script> 
-      </div>
-  </div>
-  
-    <div class="widget testLove" id="testLove" style="order: -1;background: #fff">
-      <header>
-        
-          <a style="color: #d63130" target="_blank" rel="noopener" href='http://baidu.com'><i class="fas fa-heart fa-fw" aria-hidden="true"></i><span class='name'>恋爱墙</span></a>
-        
-      </header>
-      <div class="content">
-        
-<div style="text-align: center;"> <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" style="width: 50px;height: 50px;vertical-align: -20px;border-radius: 50%;margin-right: 5px;margin-bottom: 5px;-webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);border: 2px solid #fff;" /> <svg viewbox="0 0 1024 1024" style="margin-left: 5px;margin-right: 5px;" version="1.0" width="15" height="15" class="my-face"> <path d="M863.597631 513.574282l-271.33965-140.213484L729.783667 81.926656c3.583731-7.87141 7.167462-15.742819 7.167462-25.214109C736.887134 25.226908 708.345275 0.012799 672.635953 0.012799a63.611229 63.611229 0 0 0-39.293053 12.607055c-1.791866 1.59988-3.519736 3.19976-5.311602 3.19976L147.87531 418.925381a55.547834 55.547834 0 0 0-19.646527 47.356448c1.791866 17.278704 14.27093 33.021523 32.125591 42.492813l271.33965 141.749369L292.504463 945.221908c-12.479064 25.214109-1.791866 53.563983 23.166262 69.306802 10.751194 6.335525 23.230258 9.47129 35.709322 9.47129 16.062795 0 32.125591-4.735645 44.604655-15.742819l480.091993-403.297753a55.547834 55.547834 0 0 0 19.646526-47.228458 61.243407 61.243407 0 0 0-32.12559-44.156688z" fill="#515151" /> </svg> <img src="https://sns-avatar-qc.xhscdn.com/avatar/641425609e2ef0a4db21841f.jpg" class="lazyload placeholder" data-srcset="https://sns-avatar-qc.xhscdn.com/avatar/641425609e2ef0a4db21841f.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" style="width: 50px;height: 50px;vertical-align: -20px;border-radius: 50%;margin-left: 5px;margin-bottom: 5px;-webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);box-shadow: 1px 1px 1px rgba(0,0,0,.1), 1px 1px 1px rgba(0,0,0,0.1), 1px 1px 1px rgba(0,0,0,0.1);border: 2px solid #fff;" /><br /> <span id="htmer_time"></span> </div>
-<script defer data-pjax src="/love/index.js"></script> 
-      </div>
-  </div>
-  
 
     
   </div>

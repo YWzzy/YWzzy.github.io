@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2023-08-23T09:00:44.590Z</updated>
+  <updated>2023-08-25T03:03:19.540Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React Hooks 使用时要避免的6个错误</title>
+    <link href="https://ywzzy.github.io/2023/08/25/frontend/react/react-hooks-shi-yong-shi-yao-bi-mian-de-6-ge-cuo-wu/"/>
+    <id>https://ywzzy.github.io/2023/08/25/frontend/react/react-hooks-shi-yong-shi-yao-bi-mian-de-6-ge-cuo-wu/</id>
+    <published>2023-08-25T03:03:49.000Z</published>
+    <updated>2023-08-25T03:03:19.540Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;今天来看看在使用 React hooks 时的一些坑，以及如何避开这些坑。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问题概览：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不要改变</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
+    
+    
+    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
+    
+  </entry>
   
   <entry>
     <title>React 组件代码结构如何组织？</title>
@@ -583,43 +615,6 @@
 ## 1. Chrome DevTools功能简介&lt;br /&gt;&lt;br /&gt;
 
 &lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/skill/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="调试" scheme="https://ywzzy.github.io/tags/%E8%B0%83%E8%AF%95/"/>
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="DevTools" scheme="https://ywzzy.github.io/tags/DevTools/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DevTools 调试技巧（2）</title>
-    <link href="https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/"/>
-    <id>https://ywzzy.github.io/2023/07/01/frontend/collection/skill/devtools-diao-shi-ji-qiao-2/</id>
-    <published>2023-07-01T02:07:25.000Z</published>
-    <updated>2023-07-03T08:42:17.288Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-
-&lt;p&gt;&lt;a name=&quot;VvoRH&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-选择和检查-DOM-元素&quot;&gt;&lt;a href=&quot;#1-选择和检查-DOM-元素&quot;</summary>
         
       
     
