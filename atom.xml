@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2023-09-01T01:57:17.262Z</updated>
+  <updated>2023-09-01T02:21:19.734Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>优势谈判</title>
+    <link href="https://ywzzy.github.io/2023/09/01/mind/you-shi-tan-pan/"/>
+    <id>https://ywzzy.github.io/2023/09/01/mind/you-shi-tan-pan/</id>
+    <published>2023-09-01T02:42:49.000Z</published>
+    <updated>2023-09-01T02:21:19.734Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="思维" scheme="https://ywzzy.github.io/categories/%E6%80%9D%E7%BB%B4/"/>
+    
+    <category term="mind" scheme="https://ywzzy.github.io/categories/%E6%80%9D%E7%BB%B4/mind/"/>
+    
+    
+    <category term="mind" scheme="https://ywzzy.github.io/tags/mind/"/>
+    
+  </entry>
   
   <entry>
     <title>向上管理的艺术</title>
@@ -588,39 +615,6 @@
     <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
     
     <category term="Google" scheme="https://ywzzy.github.io/tags/Google/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 命令</title>
-    <link href="https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/"/>
-    <id>https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/</id>
-    <published>2023-07-02T02:07:25.000Z</published>
-    <updated>2023-07-03T08:42:51.620Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;Linux 命令是在命令行上运行的程序。命令行是接受文本行并将其处理成计算机指令的界面。任何图形用户界面 (GUI) 都是命令行程序的抽象。通过 GUI</summary>
-        
-      
-    
-    
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
-    
-    <category term="服务器" scheme="https://ywzzy.github.io/categories/skill/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="服务器" scheme="https://ywzzy.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    <category term="Linux" scheme="https://ywzzy.github.io/tags/Linux/"/>
     
   </entry>
   
