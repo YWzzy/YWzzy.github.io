@@ -585,11 +585,11 @@
   </entry>
   
   <entry>
-    <title>Google 搜索技巧</title>
-    <link href="https://ywzzy.github.io/2023/07/02/frontend/collection/skill/google-sou-suo-ji-qiao/"/>
-    <id>https://ywzzy.github.io/2023/07/02/frontend/collection/skill/google-sou-suo-ji-qiao/</id>
+    <title>Linux 命令</title>
+    <link href="https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/"/>
+    <id>https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/</id>
     <published>2023-07-02T02:07:25.000Z</published>
-    <updated>2023-07-03T08:42:40.802Z</updated>
+    <updated>2023-07-03T08:42:51.620Z</updated>
     
     
       
@@ -598,8 +598,7 @@
         
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
-&lt;p&gt;作为一个程序员，日常工作离不开搜索引擎。那如何使用搜索引擎进行高效、精准的搜索就是一门学问了，今天来看看一些使用谷歌搜索的技巧！&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
+&lt;p&gt;Linux 命令是在命令行上运行的程序。命令行是接受文本行并将其处理成计算机指令的界面。任何图形用户界面 (GUI) 都是命令行程序的抽象。通过 GUI</summary>
         
       
     
@@ -607,14 +606,14 @@
     
     <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
     
-    <category term="浏览器" scheme="https://ywzzy.github.io/categories/skill/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    <category term="服务器" scheme="https://ywzzy.github.io/categories/skill/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
     
-    
-    <category term="浏览器" scheme="https://ywzzy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     
     <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
     
-    <category term="Google" scheme="https://ywzzy.github.io/tags/Google/"/>
+    <category term="服务器" scheme="https://ywzzy.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+    <category term="Linux" scheme="https://ywzzy.github.io/tags/Linux/"/>
     
   </entry>
   
