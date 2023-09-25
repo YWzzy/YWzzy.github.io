@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2023-09-01T02:21:19.734Z</updated>
+  <updated>2023-09-25T02:01:34.994Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端学习路线</title>
+    <link href="https://ywzzy.github.io/2023/09/25/frontend/collection/qian-duan-xue-xi-lu-xian/"/>
+    <id>https://ywzzy.github.io/2023/09/25/frontend/collection/qian-duan-xue-xi-lu-xian/</id>
+    <published>2023-09-25T03:18:25.000Z</published>
+    <updated>2023-09-25T02:01:34.994Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>优势谈判</title>
@@ -581,39 +603,6 @@
     <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
     
     <category term="npm" scheme="https://ywzzy.github.io/tags/npm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 命令</title>
-    <link href="https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/"/>
-    <id>https://ywzzy.github.io/2023/07/02/frontend/collection/skill/linux-ming-ling/</id>
-    <published>2023-07-02T02:07:25.000Z</published>
-    <updated>2023-07-03T08:42:51.620Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;Linux 命令是在命令行上运行的程序。命令行是接受文本行并将其处理成计算机指令的界面。任何图形用户界面 (GUI) 都是命令行程序的抽象。通过 GUI</summary>
-        
-      
-    
-    
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
-    
-    <category term="服务器" scheme="https://ywzzy.github.io/categories/skill/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="服务器" scheme="https://ywzzy.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
-    
-    <category term="Linux" scheme="https://ywzzy.github.io/tags/Linux/"/>
     
   </entry>
   
