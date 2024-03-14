@@ -573,7 +573,7 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://w.wallhaven.cc/full/yx/wallhaven-yxgdek.jpg')">
+  background-position: center center;position: relative;background-image:url('https://ossk.cc/file/cedb78a8189edadc6b762.png')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
@@ -798,7 +798,7 @@
 <p><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1599616952605-b7b99bd3-bb18-4210-a9a7-fccc901e9247.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1599616952605-b7b99bd3-bb18-4210-a9a7-fccc901e9247.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="image.png"></p>
 <p>图 2：主线程解析 HTML 并构建 DOM 树</p>
 <p><a name="f8b53b9a"></a></p>
-<h3 id="JavaScript-阻塞解析"><a href="#JavaScript-阻塞解析" class="headerlink" title="JavaScript 阻塞解析"></a>JavaScript 阻塞解析</h3><p>当 HTML 解析器遇到 <code>&lt;script&gt;</code> 标记时，会暂停解析 HTML 文档，开始加载、解析并执行 JavaScript 代码。为什么？因为JavaScript 可以使用诸如 <code>document.write()</code> 的方法来改写文档，这会改变整个 DOM 结构（HTML 规范里的 <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/parsing.html#overview-of-the-parsing-model">overview of the parsing model</a> 中有一张不错的图片）。这就是 HTML 解析器必须等待 JavaScript 运行后再继续解析 HTML 文档原因。如果你对 JavaScript 执行中发生的事情感到好奇，可以看看 <a target="_blank" rel="noopener" href="https://mathiasbynens.be/notes/shapes-ics">V8 团队就此发表的演讲和博客文章</a>。</p>
+<h3 id="JavaScript-阻塞解析"><a href="#JavaScript-阻塞解析" class="headerlink" title="JavaScript 阻塞解析"></a>JavaScript 阻塞解析</h3><p>当 HTML 解析器遇到 <code>&lt;script&gt;</code> 标记时，会暂停解析 HTML 文档，开始加载、解析并执行 JavaScript 代码。为什么？因为 JavaScript 可以使用诸如 <code>document.write()</code> 的方法来改写文档，这会改变整个 DOM 结构（HTML 规范里的 <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/parsing.html#overview-of-the-parsing-model">overview of the parsing model</a> 中有一张不错的图片）。这就是 HTML 解析器必须等待 JavaScript 运行后再继续解析 HTML 文档原因。如果你对 JavaScript 执行中发生的事情感到好奇，可以看看 <a target="_blank" rel="noopener" href="https://mathiasbynens.be/notes/shapes-ics">V8 团队就此发表的演讲和博客文章</a>。</p>
 <p><a name="c202620e"></a></p>
 <h2 id="提示浏览器如何加载资源"><a href="#提示浏览器如何加载资源" class="headerlink" title="提示浏览器如何加载资源"></a>提示浏览器如何加载资源</h2><p>Web 开发者可以通过多种方式向浏览器发送提示，以便很好地加载资源。如果你的 JavaScript 不使用 <code>document.write()</code>，你可以在 <code>&lt;script&gt;</code> 标签添加 <code>[async](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-async)</code> 或 <code>[defer](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-defer)</code> 属性，这样浏览器会异步加载运行 JavaScript 代码，而不阻塞解析。如果合适，你也可以使用 <a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/primers/modules">JavaScript 模块</a>。可以使用 <code>&lt;link rel=&quot;preload&quot;&gt;</code> 告知浏览器当前导航肯定需要该资源，并且你希望尽快下载。有关详细信息请参阅 <a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/performance/resource-prioritization">Resource Prioritization – Getting the Browser to Help You</a>。</p>
 <p><a name="89480b0f"></a></p>
@@ -859,7 +859,7 @@
 <p><a name="df1192c3"></a></p>
 <h3 id="主线程的光栅化和合成"><a href="#主线程的光栅化和合成" class="headerlink" title="主线程的光栅化和合成"></a>主线程的光栅化和合成</h3><p>一旦创建了图层树并确定了绘制顺序，主线程就会将该信息提交给合成线程。接着，合成线程会光栅化每个图层。一个图层可能会跟整个页面一样大，因此合成线程将它们分块后发送到光栅线程。光栅线程光栅化每个小块后会将它们存储在显存中。</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1599617205653-985b211a-9023-4b91-8f6e-818351f26d57.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1599617205653-985b211a-9023-4b91-8f6e-818351f26d57.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="image.png"></p>
-<p>图17：光栅线程创建分块的位图并发送到 GPU</p>
+<p>图 17：光栅线程创建分块的位图并发送到 GPU</p>
 <p>合成线程会给不同的光栅线程设置优先级，以便视窗（或附近）内的画面可以先被光栅化。图层还具有多个不同分辨率的块，可以处理放大操作等动作。</p>
 <p>一旦块被光栅化，合成线程会收集这些块的信息（称为<strong>绘制四边形</strong>）创建<strong>合成帧</strong>。</p>
 <p>绘制四边形</p>
@@ -890,7 +890,7 @@
 <p>图 3：非立即可滚动区输入描述示意图</p>
 <p><a name="4e7abbc5"></a></p>
 <h3 id="设置事件处理器时须注意"><a href="#设置事件处理器时须注意" class="headerlink" title="设置事件处理器时须注意"></a>设置事件处理器时须注意</h3><p>web 开发中常用的事件处理模式是事件代理。因为事件会冒泡，所以你可以在最顶层的元素中添加一个事件处理器，用来代理事件目标产生的任务。下面这样的代码，你可能见过，或许也写过。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">document.body.addEventListener(&#x27;touchstart&#x27;, </span><br><span class="line">event =&gt; &#123;</span><br><span class="line">    if (event.target === area) &#123;</span><br><span class="line">        event.preventDefault();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">document.body.addEventListener(&#x27;touchstart&#x27;,</span><br><span class="line">event =&gt; &#123;</span><br><span class="line">    if (event.target === area) &#123;</span><br><span class="line">        event.preventDefault();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>这样只需添加一个事件处理器，即可监听所有元素，的确十分省事。然而，如果站在浏览器的角度去考量，这等于把整个页面都标记成了“非立即可滚动区”，意味着即便你设计的应用本不必理会页面上一些区域的输入行为，合成线程也必须在每次输入事件产生后与主线程通信并等待返回。如此则得不偿失，使原本能保障页面滚动流畅的合成器没了用武之地。</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1599617652730-c7bc2e88-1e9d-4752-a4a0-88268a4c3729.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1599617652730-c7bc2e88-1e9d-4752-a4a0-88268a4c3729.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="image.png"></p>
@@ -903,10 +903,10 @@
 <p>图 5：部分区域仅可水平方向滚动的网页</p>
 <p>设想一下这种情形：页面上有一个盒子，你要将其滚动方向限制为水平滚动。</p>
 <p>为目标事件设置 <code>passive:true</code> 选项可让页面滚动平滑，但在你使用 <code>preventDefault</code> 以限制滚动方向时，垂直方向滚动可能已经触发。使用 <code>event.cancelable</code> 方法可以检查并阻止这种情况发生。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">document.body.addEventListener(&#x27;pointermove&#x27;, event =&gt; &#123;</span><br><span class="line">    if (event.cancelable) &#123;</span><br><span class="line">        event.preventDefault(); // 阻止默认的滚动行为</span><br><span class="line">        /*</span><br><span class="line">        *  这里设置程序执行任务</span><br><span class="line">        */</span><br><span class="line">    &#125; </span><br><span class="line">&#125;, &#123;passive:: true&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">document.body.addEventListener(&#x27;pointermove&#x27;, event =&gt; &#123;</span><br><span class="line">    if (event.cancelable) &#123;</span><br><span class="line">        event.preventDefault(); // 阻止默认的滚动行为</span><br><span class="line">        /*</span><br><span class="line">        *  这里设置程序执行任务</span><br><span class="line">        */</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, &#123;passive:: true&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>或者，你也可以应用 <code>touch-action</code> 这类 CSS 规则，完全地将事件处理器屏蔽掉。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#area &#123; </span><br><span class="line">  touch-action: pan-x; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#area &#123;</span><br><span class="line">  touch-action: pan-x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><a name="063d68e2"></a></p>
 <h2 id="定位事件目标"><a href="#定位事件目标" class="headerlink" title="定位事件目标"></a>定位事件目标</h2><p><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1599617668976-70fe0d91-6607-4a0a-a71d-bb2231465a3d.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1599617668976-70fe0d91-6607-4a0a-a71d-bb2231465a3d.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="image.png"></p>
@@ -941,16 +941,16 @@
 <p><a name="8JBIM"></a></p>
 <h1 id="文章出处"><a href="#文章出处" class="headerlink" title="文章出处"></a>文章出处</h1><blockquote>
 <ul>
-<li>原文地址1：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part1">Inside look at modern web browser (part 1)</a></li>
-<li>原文地址2：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part2">Inside look at modern web browser (part 2)</a></li>
-<li>原文地址3：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part3">Inside look at modern web browser (part 3)</a></li>
-<li>原文地址4：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part4">Inside look at modern web browser (part 4)</a></li>
+<li>原文地址 1：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part1">Inside look at modern web browser (part 1)</a></li>
+<li>原文地址 2：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part2">Inside look at modern web browser (part 2)</a></li>
+<li>原文地址 3：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part3">Inside look at modern web browser (part 3)</a></li>
+<li>原文地址 4：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part4">Inside look at modern web browser (part 4)</a></li>
 <li>原文作者：<a target="_blank" rel="noopener" href="https://developers.google.com/web/resources/contributors/kosamari">Mariko Kosaka</a></li>
 <li>译文出自：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner">掘金翻译计划</a></li>
-<li>本文永久链接1：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-look-at-modern-web-browser-part1.md">https://github.com/xitu/gold-miner/blob/master/TODO1/inside-look-at-modern-web-browser-part1.md</a> （译者：<a target="_blank" rel="noopener" href="https://github.com/Colafornia">Colafornia</a>，校对者：<a target="_blank" rel="noopener" href="https://github.com/CoderMing">CoderMing</a> <a target="_blank" rel="noopener" href="https://github.com/sakila1012">sakila1012</a>，2020.07.18）</li>
-<li>本文永久链接2：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part2.md">https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part2.md</a> （译者：<a target="_blank" rel="noopener" href="https://github.com/CoolRice">CoolRice</a>，校对者：<a target="_blank" rel="noopener" href="https://github.com/ThomasWhyne">ThomasWhyne</a>, <a target="_blank" rel="noopener" href="https://github.com/tian-li">tian-li</a>）</li>
-<li>本文永久链接3：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part3.md">https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part3.md</a> （译者：<a target="_blank" rel="noopener" href="https://github.com/ssshooter">ssshooter</a>，校对者：<a target="_blank" rel="noopener" href="https://github.com/ThomasWhyne">ThomasWhyne</a>, <a target="_blank" rel="noopener" href="https://github.com/CoolRice">CoolRice</a>）</li>
-<li>本文永久链接4：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part4.md">https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part4.md</a>（译者：<a target="_blank" rel="noopener" href="https://github.com/ThomasWhyne">ThomasWhyne</a>，校对者：<a target="_blank" rel="noopener" href="https://github.com/llp0574">llp0574</a> <a target="_blank" rel="noopener" href="https://github.com/CoolRice">CoolRice</a>，2020.07.11）</li>
+<li>本文永久链接 1：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-look-at-modern-web-browser-part1.md">https://github.com/xitu/gold-miner/blob/master/TODO1/inside-look-at-modern-web-browser-part1.md</a> （译者：<a target="_blank" rel="noopener" href="https://github.com/Colafornia">Colafornia</a>，校对者：<a target="_blank" rel="noopener" href="https://github.com/CoderMing">CoderMing</a> <a target="_blank" rel="noopener" href="https://github.com/sakila1012">sakila1012</a>，2020.07.18）</li>
+<li>本文永久链接 2：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part2.md">https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part2.md</a> （译者：<a target="_blank" rel="noopener" href="https://github.com/CoolRice">CoolRice</a>，校对者：<a target="_blank" rel="noopener" href="https://github.com/ThomasWhyne">ThomasWhyne</a>, <a target="_blank" rel="noopener" href="https://github.com/tian-li">tian-li</a>）</li>
+<li>本文永久链接 3：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part3.md">https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part3.md</a> （译者：<a target="_blank" rel="noopener" href="https://github.com/ssshooter">ssshooter</a>，校对者：<a target="_blank" rel="noopener" href="https://github.com/ThomasWhyne">ThomasWhyne</a>, <a target="_blank" rel="noopener" href="https://github.com/CoolRice">CoolRice</a>）</li>
+<li>本文永久链接 4：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part4.md">https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part4.md</a>（译者：<a target="_blank" rel="noopener" href="https://github.com/ThomasWhyne">ThomasWhyne</a>，校对者：<a target="_blank" rel="noopener" href="https://github.com/llp0574">llp0574</a> <a target="_blank" rel="noopener" href="https://github.com/CoolRice">CoolRice</a>，2020.07.11）</li>
 </ul>
 </blockquote>
 
@@ -1004,7 +1004,7 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/zy/wallhaven-zyo2ew.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/zy/wallhaven-zyo2ew.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
     </div>
     <a href="/2021/03/17/frontend/interview/promise-a-gui-fan/" class="post-nav-link">
       <div class="title">
@@ -1027,7 +1027,7 @@ Promise A+ 规范Promise
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/2y/wallhaven-2y9vlm.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/2y/wallhaven-2y9vlm.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
     </div>
     <a href="/2020/11/11/frontend/browser/debug/chrome-diao-shi-ji-qiao/" class="post-nav-link">
       <div class="title">
@@ -1299,9 +1299,30 @@ Promise A+ 规范Promise
             
 
             <div class="post-img-box">
+              <a href="/2024/03/14/stable-diffusion/sd-hui-tu-ru-men/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">03-14</span>
+                
+              </div>
+              <a class="post-title" href="/2024/03/14/stable-diffusion/sd-hui-tu-ru-men/">SD 绘图入门</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
               <a href="/2023/09/25/frontend/collection/qian-duan-xue-xi-lu-xian/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/5g/wallhaven-5gk8p1.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/5g/wallhaven-5gk8p1.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1322,7 +1343,7 @@ Promise A+ 规范Promise
             <div class="post-img-box">
               <a href="/2023/09/01/mind/you-shi-tan-pan/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/d6/wallhaven-d6o77l.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/d6/wallhaven-d6o77l.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1343,7 +1364,7 @@ Promise A+ 规范Promise
             <div class="post-img-box">
               <a href="/2023/09/01/mind/xiang-shang-guan-li-de-yi-zhu/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/x6/wallhaven-x6jvod.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/x6/wallhaven-x6jvod.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1364,7 +1385,7 @@ Promise A+ 规范Promise
             <div class="post-img-box">
               <a href="/2023/08/25/frontend/react/react-hooks-shi-yong-shi-yao-bi-mian-de-6-ge-cuo-wu/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/x6/wallhaven-x6jvod.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/x6/wallhaven-x6jvod.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1374,27 +1395,6 @@ Promise A+ 规范Promise
                 
               </div>
               <a class="post-title" href="/2023/08/25/frontend/react/react-hooks-shi-yong-shi-yao-bi-mian-de-6-ge-cuo-wu/">React Hooks 使用时要避免的6个错误</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/08/23/frontend/react/react-zu-jian-dai-ma-jie-gou-ru-he-zu-zhi/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/rr/wallhaven-rrjdlw.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/rr/wallhaven-rrjdlw.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">08-23</span>
-                
-              </div>
-              <a class="post-title" href="/2023/08/23/frontend/react/react-zu-jian-dai-ma-jie-gou-ru-he-zu-zhi/">React 组件代码结构如何组织？</a>
             </div>
           </div>
         

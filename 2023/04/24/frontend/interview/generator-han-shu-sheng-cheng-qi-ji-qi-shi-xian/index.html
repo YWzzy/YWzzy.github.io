@@ -573,7 +573,7 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://w.wallhaven.cc/full/d6/wallhaven-d6e1pg.jpg')">
+  background-position: center center;position: relative;background-image:url('https://ossk.cc/file/cedb78a8189edadc6b762.png')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
@@ -636,12 +636,12 @@
 <li>yield 关键字会停止函数执行并将 yield 后的值返回作为本次调用 next 函数的 value 进行返回。</li>
 <li>同时，如果本次调用<code>g.next()</code>导致生成器函数执行完毕，那么此时 done 会变成 true 表示该函数执行完毕，反之则为 false 。<br><a name="De3nx"></a></li>
 </ul>
-<h1 id="进阶语法"><a href="#进阶语法" class="headerlink" title="进阶语法"></a>进阶语法</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">gen</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a, <span class="string">&#x27;this is a&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> b = <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(b, <span class="string">&#x27;this is b&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> c = <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(c, <span class="string">&#x27;this is c&#x27;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;res&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> g = <span class="title function_">gen</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>()); <span class="comment">// 打印 &#123; value: 1, done: false &#125; </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>(<span class="string">&#x27;param-a&#x27;</span>)); <span class="comment">// 打印 param-a this is a &#123; value: 2, done: false &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>(<span class="string">&#x27;param-b&#x27;</span>)); <span class="comment">// 打印 param-b this is b &#123; value: 3, done: false &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>(<span class="string">&#x27;param-c&#x27;</span>)); <span class="comment">// 打印 param-c this is c &#123; value: &#x27;res&#x27;, done: true &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>()); <span class="comment">// 打印 &#123; value: undefined, done: true &#125;</span></span><br></pre></td></tr></table></figure>
+<h1 id="进阶语法"><a href="#进阶语法" class="headerlink" title="进阶语法"></a>进阶语法</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>* <span class="title function_">gen</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a, <span class="string">&#x27;this is a&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> b = <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(b, <span class="string">&#x27;this is b&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> c = <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(c, <span class="string">&#x27;this is c&#x27;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;res&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> g = <span class="title function_">gen</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>()); <span class="comment">// 打印 &#123; value: 1, done: false &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>(<span class="string">&#x27;param-a&#x27;</span>)); <span class="comment">// 打印 param-a this is a &#123; value: 2, done: false &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>(<span class="string">&#x27;param-b&#x27;</span>)); <span class="comment">// 打印 param-b this is b &#123; value: 3, done: false &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>(<span class="string">&#x27;param-c&#x27;</span>)); <span class="comment">// 打印 param-c this is c &#123; value: &#x27;res&#x27;, done: true &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>()); <span class="comment">// 打印 &#123; value: undefined, done: true &#125;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>定义一个生成器函数，并创建一个生成器对象。</li>
 <li>第一次调用 <code>g.next()</code>方法时，函数执行到 <code>yield 1</code>并中断函数执行，由于代码中断，<code>a</code>的赋值语句并没有被执行。</li>
-<li>第二次调用<code>g.next()</code>方法时，next接受传参传入一个字符串<code>param-a</code>，函数执行时从上一次中断的地方开始继续执行，也就是执行 <code>a</code>的赋值语句，从打印结果来看，<code>a</code>被赋值为字符<code>param-a</code>。</li>
+<li>第二次调用<code>g.next()</code>方法时，next 接受传参传入一个字符串<code>param-a</code>，函数执行时从上一次中断的地方开始继续执行，也就是执行 <code>a</code>的赋值语句，从打印结果来看，<code>a</code>被赋值为字符<code>param-a</code>。</li>
 <li>第三次调用<code>g.next()</code>方法并传入字符串<code>param-b</code>时，结果同样是变量<code>b</code>被赋值为<code>param-b</code>。</li>
 <li>第四次调用<code>g.next()</code>方法与第二第三次的区别是，<code>return</code>语句作为返回值语句取代了<code>yield</code>语句，所以执行结果是<code>&#123; value: &#39;res&#39;, done: true &#125;</code>。</li>
 <li>第五次调用<code>g.next()</code>，由于生成器函数已经执行完毕，所以打印<code>&#123; value: undefined, done: true &#125;</code>。</li>
@@ -707,20 +707,20 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/3l/wallhaven-3l5pgv.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/3l/wallhaven-3l5pgv.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
     </div>
-    <a href="/2023/06/28/frontend/monitor/xing-neng-jian-kong-yi-chang-jian-kong/" class="post-nav-link">
+    <a href="/2023/06/28/frontend/monitor/ping-tai-jie-ru-sentry-zi-tuo-guan-xiang-mu/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">性能监控、异常监控</div>
+        <div class="title-text">平台接入sentry自托管项目</div>
       </div>
       
       <!-- <div class="content">
         
 
 
-性能监控
-HTTP一个是 http 的方面，在后端 log 日志，流入 kafka，然后在 kafka 消费数据，
+一、安装 docker
+1.Windows Docker 安装https://www.runoob.com/doc
       </div> -->
     </a>
   </div>
@@ -731,7 +731,7 @@ HTTP一个是 http 的方面，在后端 log 日志，流入 kafka，然后在 k
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://w.wallhaven.cc/full/kx/wallhaven-kxkjk6.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/kx/wallhaven-kxkjk6.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
     </div>
     <a href="/2022/12/12/frontend/browser/cdn/" class="post-nav-link">
       <div class="title">
@@ -742,7 +742,7 @@ HTTP一个是 http 的方面，在后端 log 日志，流入 kafka，然后在 k
         
 
 
-CDN是什么内容分发网络（Content delivery network或Content distributio
+CDN 是什么内容分发网络（Content delivery network 或 Content distribu
       </div> -->
     </a>
   </div>
@@ -1003,9 +1003,30 @@ CDN是什么内容分发网络（Content delivery network或Content distributio
             
 
             <div class="post-img-box">
+              <a href="/2024/03/14/stable-diffusion/sd-hui-tu-ru-men/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">03-14</span>
+                
+              </div>
+              <a class="post-title" href="/2024/03/14/stable-diffusion/sd-hui-tu-ru-men/">SD 绘图入门</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
               <a href="/2023/09/25/frontend/collection/qian-duan-xue-xi-lu-xian/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/5g/wallhaven-5gk8p1.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/5g/wallhaven-5gk8p1.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1026,7 +1047,7 @@ CDN是什么内容分发网络（Content delivery network或Content distributio
             <div class="post-img-box">
               <a href="/2023/09/01/mind/you-shi-tan-pan/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/d6/wallhaven-d6o77l.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/d6/wallhaven-d6o77l.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1047,7 +1068,7 @@ CDN是什么内容分发网络（Content delivery network或Content distributio
             <div class="post-img-box">
               <a href="/2023/09/01/mind/xiang-shang-guan-li-de-yi-zhu/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/x6/wallhaven-x6jvod.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/x6/wallhaven-x6jvod.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1068,7 +1089,7 @@ CDN是什么内容分发网络（Content delivery network或Content distributio
             <div class="post-img-box">
               <a href="/2023/08/25/frontend/react/react-hooks-shi-yong-shi-yao-bi-mian-de-6-ge-cuo-wu/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/x6/wallhaven-x6jvod.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/x6/wallhaven-x6jvod.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1078,27 +1099,6 @@ CDN是什么内容分发网络（Content delivery network或Content distributio
                 
               </div>
               <a class="post-title" href="/2023/08/25/frontend/react/react-hooks-shi-yong-shi-yao-bi-mian-de-6-ge-cuo-wu/">React Hooks 使用时要避免的6个错误</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2023/08/23/frontend/react/react-zu-jian-dai-ma-jie-gou-ru-he-zu-zhi/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://w.wallhaven.cc/full/rr/wallhaven-rrjdlw.jpg" class="lazyload placeholder" data-srcset="https://w.wallhaven.cc/full/rr/wallhaven-rrjdlw.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">08-23</span>
-                
-              </div>
-              <a class="post-title" href="/2023/08/23/frontend/react/react-zu-jian-dai-ma-jie-gou-ru-he-zu-zhi/">React 组件代码结构如何组织？</a>
             </div>
           </div>
         
