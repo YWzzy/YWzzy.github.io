@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2024-03-14T07:02:53.345Z</updated>
+  <updated>2024-03-28T06:06:26.123Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>InternLM 第1课 笔记</title>
+    <link href="https://ywzzy.github.io/2024/03/28/internlm/internlm-di-1-ke-bi-ji/"/>
+    <id>https://ywzzy.github.io/2024/03/28/internlm/internlm-di-1-ke-bi-ji/</id>
+    <published>2024-03-28T05:19:58.000Z</published>
+    <updated>2024-03-28T06:06:26.123Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;311a46cf&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;课程笔记&quot;&gt;&lt;a href=&quot;#课程笔记&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="InternLM" scheme="https://ywzzy.github.io/categories/InternLM/"/>
+    
+    
+    <category term="教程" scheme="https://ywzzy.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+    <category term="InternLM" scheme="https://ywzzy.github.io/tags/InternLM/"/>
+    
+  </entry>
   
   <entry>
     <title>SD 绘图入门</title>
@@ -564,40 +592,6 @@
     
     
     <category term="html" scheme="https://ywzzy.github.io/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VS Code 快捷方式</title>
-    <link href="https://ywzzy.github.io/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/"/>
-    <id>https://ywzzy.github.io/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/</id>
-    <published>2023-07-03T02:07:25.000Z</published>
-    <updated>2024-03-14T07:00:55.289Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;Visual Studio Code 是目前最流行、最常用的代码编辑器之一，它是开源的并且可以免费使用。它还提供对多种语言和框架的支持。&lt;/p&gt;
-&lt;p&gt;注意，这些 Visual</summary>
-        
-      
-    
-    
-    
-    <category term="skill" scheme="https://ywzzy.github.io/categories/skill/"/>
-    
-    <category term="快捷键" scheme="https://ywzzy.github.io/categories/skill/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-    
-    
-    <category term="skill" scheme="https://ywzzy.github.io/tags/skill/"/>
-    
-    <category term="IDE" scheme="https://ywzzy.github.io/tags/IDE/"/>
-    
-    <category term="快捷键" scheme="https://ywzzy.github.io/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     
   </entry>
   
