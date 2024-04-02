@@ -19,6 +19,21 @@
   <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
   
   
+    <script>
+        var themeModelId = '5';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script defer src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
   
   
 <link rel="stylesheet" href="/css/animate.min.css">
@@ -701,18 +716,16 @@
       background-position: center center;">
       <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
     </div>
-    <a href="/2023/06/30/frontend/collection/guo-wai-qian-duan-bo-zhu/" class="post-nav-link">
+    <a href="/2023/07/01/frontend/collection/skill/devtools-shi-yong-gong-neng-2/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">国外前端博主</div>
+        <div class="title-text">Devtools 实用功能（2）</div>
       </div>
       
       <!-- <div class="content">
         
 
-
-Ahmad Shadeed，主要分享 CSS 相关文章：https://ishadeed.com/
-Iskande
+Chrome DevTools 是前端开发人员最常用的工具之一，今天我们就来看 5 个 Chrome DevTool
       </div> -->
     </a>
   </div>
@@ -725,15 +738,17 @@ Iskande
       background-position: center center;">
       <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
     </div>
-    <a href="/2023/06/30/frontend/collection/projects/awesome/" class="post-nav-link">
+    <a href="/2023/06/30/frontend/collection/guo-wai-qian-duan-bo-zhu/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">Awesome</div>
+        <div class="title-text">国外前端博主</div>
       </div>
       <!-- <div class="content">
         
 
-GitHub 上的 Awesome 系列是一个汇总了优秀工具和资源的大集合。下面就来分享 Awesome 系列中关于
+
+Ahmad Shadeed，主要分享 CSS 相关文章：https://ishadeed.com/
+Iskande
       </div> -->
     </a>
   </div>
@@ -744,89 +759,6 @@ GitHub 上的 Awesome 系列是一个汇总了优秀工具和资源的大集合�
     
 
     <!-- 打赏 -->
-    
-      <div id="appDonate" class="post-donate">
-  <div id="donate_board" class="donate_bar center" ref="donate">
-    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
-  </div>
-  <transition name="fade">
-    <div 
-      class="donate-box-mask"
-      v-cloak 
-      v-show="visible"
-      @click="cancelDialogDrawer()"
-    >
-    </div>
-  </transition>
-  <transition name="bounce">
-    <div class="donate-box" v-cloak v-show="visible">
-      <div class="donate-box_close">
-        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
-      </div>
-      <div class="donate-box_title">
-        <h4>
-          你的赏识是我前进的动力
-        </h4>
-      </div>
-      <div class="donate-box_tab">
-        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
-          支付宝
-        </div>
-        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
-          微信
-        </div>
-      </div>
-      <div class="donate-box_img">
-        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
-          <img src="https://img1.imgtp.com/2023/06/27/DIVWMZWR.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2023/06/27/DIVWMZWR.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="支付宝打赏" />
-        </div> 
-        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
-          <img src="https://img1.imgtp.com/2023/06/27/OeOtQHzU.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2023/06/27/OeOtQHzU.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="微信打赏" />
-        </div>
-      </div>
-    </div>
-  </transition>
-</div>
-
-<script>
-  var body = document.body || document.documentElement || window;
-  var vm = new Vue({
-    el: '#appDonate',
-    data: {
-      visible: false,
-      tabActive: 'Alipay',
-      top: 0,
-    },
-    computed: {
-    },
-    mounted() {
-    },
-    methods: {
-      showDialogDrawer() {
-        this.visible = true;
-        // 防止页面滚动，只能让弹框滚动
-        // function getScroll() {
-        //   return {
-        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
-        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
-        //   };
-        // }
-        this.top = $(document).scrollTop() // or getScroll().top
-        // console.log('aa', $('.main-content'));
-        body.style.cssText = 'overflow: hidden;';
-      },
-      cancelDialogDrawer() {
-        this.visible = false;
-        body.removeAttribute('style');
-        $(document).scrollTop(this.top)
-      },
-      changeTabActive(name) {
-        this.tabActive = name;
-      }
-    },
-    created() {}
-  })
-</script>
     
 
     <!-- 分享 -->
@@ -1563,10 +1495,10 @@ GitHub 上的 Awesome 系列是一个汇总了优秀工具和资源的大集合�
 </style>
 <meting-js  
   class=""
-  server="tencent"
+  server="netease"
   type="playlist"
-  id="8937451602"
-  fixed='false'
+  id="8860915156"
+  fixed='true'
   autoplay='false'
   theme='3cd589'
   loop='all'
@@ -2054,9 +1986,7 @@ GitHub 上的 Awesome 系列是一个汇总了优秀工具和资源的大集合�
 <!-- 爱心点击 -->
 
   
-    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
-    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-    <script src="/js/cursor/explosion.min.js"></script>
+    <script src="/js/cursor/fireworks.js"></script>
   
 
 

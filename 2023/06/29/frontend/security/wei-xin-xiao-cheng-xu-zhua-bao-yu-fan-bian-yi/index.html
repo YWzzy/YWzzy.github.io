@@ -19,6 +19,21 @@
   <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
   
   
+    <script>
+        var themeModelId = '5';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script defer src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
   
   
 <link rel="stylesheet" href="/css/animate.min.css">
@@ -712,21 +727,19 @@
       background-position: center center;">
       <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
     </div>
-    <a href="/2023/06/29/frontend/security/e-yi-liu-liang-te-zheng-fen-xi/" class="post-nav-link">
+    <a href="/2023/06/29/frontend/security/tong-yuan-ce-lue/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">恶意流量特征分析</div>
+        <div class="title-text">同源策略</div>
       </div>
       
       <!-- <div class="content">
         
 
 
-分析工具：Wireshark,在线解密网站
-
-蚁剑的流量特征
-UA：antSword&#x2F;v2.1
-请求数据
+同源策略
+定义不同源的页面之间，不准互相访问数据。这是浏览器故意设置的一个功能限制。
+源window.origin
       </div> -->
     </a>
   </div>
@@ -739,17 +752,15 @@ UA：antSword&#x2F;v2.1
       background-position: center center;">
       <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
     </div>
-    <a href="/2023/06/29/frontend/security/wen-jian-shang-chuan-lou-dong/" class="post-nav-link">
+    <a href="/2023/06/29/frontend/security/mi-ma-chong-zhi-lou-dong/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">文件上传漏洞</div>
+        <div class="title-text">密码重置漏洞</div>
       </div>
       <!-- <div class="content">
         
 
-
-文件上传漏洞
-简介文件上传漏洞是指用户上传了一个可执行的脚本文件，并通过此脚本文件获得了执行服务器端命令（webs
+密码重置逻辑一码多用（验证码未绑定手机号）验证码回显前端修改密码未确认用户身份验证码不失效本地验证的绕过修改接收的手
       </div> -->
     </a>
   </div>
@@ -760,89 +771,6 @@ UA：antSword&#x2F;v2.1
     
 
     <!-- 打赏 -->
-    
-      <div id="appDonate" class="post-donate">
-  <div id="donate_board" class="donate_bar center" ref="donate">
-    <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏" @click="showDialogDrawer()"></a>
-  </div>
-  <transition name="fade">
-    <div 
-      class="donate-box-mask"
-      v-cloak 
-      v-show="visible"
-      @click="cancelDialogDrawer()"
-    >
-    </div>
-  </transition>
-  <transition name="bounce">
-    <div class="donate-box" v-cloak v-show="visible">
-      <div class="donate-box_close">
-        <i class="fas fa-times" aria-hidden="true" @click="cancelDialogDrawer" pointer></i>
-      </div>
-      <div class="donate-box_title">
-        <h4>
-          你的赏识是我前进的动力
-        </h4>
-      </div>
-      <div class="donate-box_tab">
-        <div class="Alipay" pointer :class="{'active': tabActive === 'Alipay'}" @click="changeTabActive('Alipay')">
-          支付宝
-        </div>
-        <div class="WeChatpay" pointer :class="{'active': tabActive === 'WeChatpay'}" @click="changeTabActive('WeChatpay')">
-          微信
-        </div>
-      </div>
-      <div class="donate-box_img">
-        <div class="AlipayImg" v-show="tabActive === 'Alipay'">
-          <img src="https://img1.imgtp.com/2023/06/27/DIVWMZWR.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2023/06/27/DIVWMZWR.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="支付宝打赏" />
-        </div> 
-        <div class="WeChatpayImg" v-show="tabActive === 'WeChatpay'">
-          <img src="https://img1.imgtp.com/2023/06/27/OeOtQHzU.png" class="lazyload placeholder" data-srcset="https://img1.imgtp.com/2023/06/27/OeOtQHzU.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="微信打赏" />
-        </div>
-      </div>
-    </div>
-  </transition>
-</div>
-
-<script>
-  var body = document.body || document.documentElement || window;
-  var vm = new Vue({
-    el: '#appDonate',
-    data: {
-      visible: false,
-      tabActive: 'Alipay',
-      top: 0,
-    },
-    computed: {
-    },
-    mounted() {
-    },
-    methods: {
-      showDialogDrawer() {
-        this.visible = true;
-        // 防止页面滚动，只能让弹框滚动
-        // function getScroll() {
-        //   return {
-        //     left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
-        //     top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
-        //   };
-        // }
-        this.top = $(document).scrollTop() // or getScroll().top
-        // console.log('aa', $('.main-content'));
-        body.style.cssText = 'overflow: hidden;';
-      },
-      cancelDialogDrawer() {
-        this.visible = false;
-        body.removeAttribute('style');
-        $(document).scrollTop(this.top)
-      },
-      changeTabActive(name) {
-        this.tabActive = name;
-      }
-    },
-    created() {}
-  })
-</script>
     
 
     <!-- 分享 -->
@@ -1579,10 +1507,10 @@ UA：antSword&#x2F;v2.1
 </style>
 <meting-js  
   class=""
-  server="tencent"
+  server="netease"
   type="playlist"
-  id="8937451602"
-  fixed='false'
+  id="8860915156"
+  fixed='true'
   autoplay='false'
   theme='3cd589'
   loop='all'
@@ -2070,9 +1998,7 @@ UA：antSword&#x2F;v2.1
 <!-- 爱心点击 -->
 
   
-    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
-    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-    <script src="/js/cursor/explosion.min.js"></script>
+    <script src="/js/cursor/fireworks.js"></script>
   
 
 

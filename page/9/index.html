@@ -19,6 +19,21 @@
   <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
   
   
+    <script>
+        var themeModelId = '5';
+        if (themeModelId) {
+            localStorage.setItem('modelId', themeModelId);
+        }
+    </script>
+    
+    <script defer src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
+    <script>
+        var live2dOpen = eval('true') || false;
+        if (!live2dOpen) {
+            localStorage.setItem('waifu-display', 1609323474481);
+        }
+    </script>
+  
   
   
 <link rel="stylesheet" href="/css/animate.min.css">
@@ -580,12 +595,12 @@
     
       
         <swiper-slide>
-          <div class="item swiper-lazy" data-background="https://ossk.cc/file/cedb78a8189edadc6b762.png" style="background-size: 300000px; 
+          <div class="item swiper-lazy" data-background="https://ossk.cc/file/15a15b10293a2707ca197.jpg" style="background-size: 300000px; 
             background-position: left center;" style="position: relative;">
             <div class="swiper-bgmask" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;"></div>
               <div class="flag">
                 
-                <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="https://ossk.cc/file/cedb78a8189edadc6b762.png" style="height: 100%; background-size: cover; 
+                <div class="img-mask swiper-lazy swiper-default-bgImg" data-background="https://ossk.cc/file/15a15b10293a2707ca197.jpg" style="height: 100%; background-size: cover; 
                   background-position: center center;">
                   <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>   
                 </div>
@@ -593,15 +608,15 @@
                   <div class="flag-text-content">
                     <div class="title ani animated" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.2s" swiper-animate-delay="0.1s">飞翔的蜗</div>
                     
-                        <div class="excerpt ani animated" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.2s" swiper-animate-delay="0.1s"></div>
+                      <div  class="ani animated default-excerpt" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.2s" swiper-animate-delay="0.1s">
+                        <vue-typed-js :strings="defaultDesc" :loop="defaultDescTypedLoop" :type-speed="100" :back-speed="50">
+                          <h1 class="typing"></h1>
+                        </vue-typed-js>
+                      </div>
                       
                   </div>
                   <div style="display: flex;" class="flag-text-btns">
                     
-                      <div class="ani animated" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.2s" swiper-animate-delay="0.1s"><a target="_blank" rel="noopener" href="https://nav.xybin.top/" class="read-more swiper-btn-color" style="display: inline-block; z-index:1;">标签集合</a></div>
-                    
-                    
-                      <div class="ani animated" style="margin-left: 10px;" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.2s" swiper-animate-delay="0.1s"><a target="_blank" rel="noopener" href="https://nav.xybin.top/" class="read-more swiper-btn-color2" style="display: inline-block; z-index:1;border: 1px solid white;">测试</a></div>
                     
                   </div>
                 </div>
@@ -1905,7 +1920,7 @@ Animate.cssanimate.css 是一个使用 CSS3</div>
   var loop = JSON.parse('true') ? false : JSON.parse('true');
   var effect = 'slide';
   var swiperLength = parseInt(document.querySelector(".swiper-length").innerText);
-  var defaultDesc = '';
+  var defaultDesc = '滴滴滴，哒哒哒，滴答滴答';
   defaultDesc = defaultDesc.split(',');
   var defaultDescTypedLoop = JSON.parse('true');
   var vm = new Vue({
@@ -3539,7 +3554,7 @@ Perfor
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Tue Apr 02 2024 14:30:44 GMT+0800 (中国标准时间)</div>
+            <div id="last-update" style="display: none;">Tue Apr 02 2024 14:48:55 GMT+0800 (中国标准时间)</div>
             <div id="last-update-show">2024-04-02 日</div>
           
         </div>
@@ -3620,6 +3635,16 @@ Perfor
 </div>
 <!-- 花瓣和雪花飘落 -->
 <!-- 雪花和花瓣特效 -->
+
+  
+    <script type="text/javascript">
+      //只在桌面版网页启用特效
+      var windowWidth = $(window).width();
+      if (windowWidth > 768) {
+        loadScript('/js/falling/snow.js');
+      }
+    </script>
+  
 
 
 
@@ -3946,10 +3971,10 @@ Perfor
 </style>
 <meting-js  
   class=""
-  server="tencent"
+  server="netease"
   type="playlist"
-  id="8937451602"
-  fixed='false'
+  id="8860915156"
+  fixed='true'
   autoplay='false'
   theme='3cd589'
   loop='all'
@@ -4437,9 +4462,7 @@ Perfor
 <!-- 爱心点击 -->
 
   
-    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 999; pointer-events: none;" ></canvas>
-    <script src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
-    <script src="/js/cursor/explosion.min.js"></script>
+    <script src="/js/cursor/fireworks.js"></script>
   
 
 
