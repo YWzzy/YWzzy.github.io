@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2024-03-28T06:06:26.123Z</updated>
+  <updated>2024-04-02T06:00:17.144Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,89 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Rollup 打包原理与插件</title>
+    <link href="https://ywzzy.github.io/2024/04/01/frontend/engineering/rollup-da-bao-yuan-li-yu-cha-jian/"/>
+    <id>https://ywzzy.github.io/2024/04/01/frontend/engineering/rollup-da-bao-yuan-li-yu-cha-jian/</id>
+    <published>2024-04-01T07:12:49.000Z</published>
+    <updated>2024-04-02T06:00:17.144Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;zENZK&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;插件机制&quot;&gt;&lt;a href=&quot;#插件机制&quot; class=&quot;headerlink&quot; title=&quot;插件机制&quot;&gt;&lt;/a&gt;插件机制&lt;/h2&gt;&lt;p&gt;仅仅使用 Rollup</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vite双引擎架构</title>
+    <link href="https://ywzzy.github.io/2024/03/31/frontend/engineering/vite-shuang-yin-qing-jia-gou/"/>
+    <id>https://ywzzy.github.io/2024/03/31/frontend/engineering/vite-shuang-yin-qing-jia-gou/</id>
+    <published>2024-03-31T07:12:49.000Z</published>
+    <updated>2024-04-02T05:59:31.115Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这篇文章我们会将目光集中到 Vite 本身的架构上，一起聊聊它是如何站在巨人的肩膀上实现出来的。&lt;br /&gt;所谓的巨人，指的就是 Vite 底层所深度使用的两个构建引擎：**Esbuild **和 &lt;strong&gt;Rollup&lt;/strong&gt;&lt;br&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vite 配置</title>
+    <link href="https://ywzzy.github.io/2024/03/29/frontend/engineering/vite-pei-zhi/"/>
+    <id>https://ywzzy.github.io/2024/03/29/frontend/engineering/vite-pei-zhi/</id>
+    <published>2024-03-29T07:12:49.000Z</published>
+    <updated>2024-04-02T06:00:05.062Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;TOzj4&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;no-bundle-的理念&quot;&gt;&lt;a href=&quot;#no-bundle-的理念&quot; class=&quot;headerlink&quot; title=&quot;no-bundle 的理念&quot;&gt;&lt;/a&gt;no-bundle</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>InternLM 第1课 笔记</title>
@@ -504,94 +587,6 @@
     
     
     <category term="工程化" scheme="https://ywzzy.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React 基础入门</title>
-    <link href="https://ywzzy.github.io/2023/07/09/frontend/react/react-ji-chu-ru-men/"/>
-    <id>https://ywzzy.github.io/2023/07/09/frontend/react/react-ji-chu-ru-men/</id>
-    <published>2023-07-09T07:12:49.000Z</published>
-    <updated>2024-03-14T07:00:53.028Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;a name=&quot;lh2Em&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;一、开发前的准备&quot;&gt;&lt;a href=&quot;#一、开发前的准备&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
-    
-    
-    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML 属性</title>
-    <link href="https://ywzzy.github.io/2023/07/04/frontend/html/html-shu-xing/"/>
-    <id>https://ywzzy.github.io/2023/07/04/frontend/html/html-shu-xing/</id>
-    <published>2023-07-04T04:12:49.000Z</published>
-    <updated>2024-03-14T07:00:53.059Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;h2 id=&quot;1-inputmode&quot;&gt;&lt;a href=&quot;#1-inputmode&quot; class=&quot;headerlink&quot; title=&quot;1. inputmode&quot;&gt;&lt;/a&gt;1.</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="html" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/html/"/>
-    
-    
-    <category term="html" scheme="https://ywzzy.github.io/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>你不知道的HTML</title>
-    <link href="https://ywzzy.github.io/2023/07/04/frontend/html/ni-bu-zhi-dao-de-html/"/>
-    <id>https://ywzzy.github.io/2023/07/04/frontend/html/ni-bu-zhi-dao-de-html/</id>
-    <published>2023-07-04T04:12:49.000Z</published>
-    <updated>2024-03-14T07:00:53.380Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;h2 id=&quot;1-input-标签：输入验证&quot;&gt;&lt;a href=&quot;#1-input-标签：输入验证&quot; class=&quot;headerlink&quot; title=&quot;1. input</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="html" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/html/"/>
-    
-    
-    <category term="html" scheme="https://ywzzy.github.io/tags/html/"/>
     
   </entry>
   
