@@ -214,7 +214,7 @@
   </transition>
   <div class="drawer-box" :class="{'active': visible}">
     <div class="drawer-box-head bg-color">
-      <img class="drawer-box-head_logo lazyload placeholder" src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="logo">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
       <h3 class="drawer-box-head_title">飞翔的蜗</h3>
       <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
     </div>
@@ -365,7 +365,7 @@
     <div class="blog-title" id="author-avatar">
       
         <div class="avatar">
-          <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="logo">
+          <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
         </div>
       
       <a href="/" class="logo">飞翔的蜗</a>
@@ -622,7 +622,7 @@
 <h2 id="CDN-的原理"><a href="#CDN-的原理" class="headerlink" title="CDN 的原理"></a>CDN 的原理</h2><blockquote>
 <p>CDN 做了两件事，一是让用户访问最近的节点，二是从缓存或者源站获取资源</p>
 </blockquote>
-<p>CDN 有个源站的概念，源站就是提供内容的站点(网站的真实服务器), 从源站取内容的过程叫做<strong>回源</strong>。<br />每次访问的具体流程如图（以最普通的 CDN 为例）<br /><a target="_blank" rel="noopener" href="https://cloud.githubusercontent.com/assets/5894477/22008791/4edc00b0-dcb9-11e6-9663-ed19a3fa3182.png"><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1589513075507-93ef051e-6bae-40f5-9efc-1c714ba3feb8.png#height=490&id=w8AZT&originHeight=490&originWidth=539&originalType=binary&ratio=1&rotation=0&showTitle=false&size=0&status=done&style=none&title=&width=539" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1589513075507-93ef051e-6bae-40f5-9efc-1c714ba3feb8.png#height=490&id=w8AZT&originHeight=490&originWidth=539&originalType=binary&ratio=1&rotation=0&showTitle=false&size=0&status=done&style=none&title=&width=539" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></a></p>
+<p>CDN 有个源站的概念，源站就是提供内容的站点(网站的真实服务器), 从源站取内容的过程叫做<strong>回源</strong>。<br />每次访问的具体流程如图（以最普通的 CDN 为例）<br /><a target="_blank" rel="noopener" href="https://cloud.githubusercontent.com/assets/5894477/22008791/4edc00b0-dcb9-11e6-9663-ed19a3fa3182.png"><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1589513075507-93ef051e-6bae-40f5-9efc-1c714ba3feb8.png#height=490&id=w8AZT&originHeight=490&originWidth=539&originalType=binary&ratio=1&rotation=0&showTitle=false&size=0&status=done&style=none&title=&width=539" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1589513075507-93ef051e-6bae-40f5-9efc-1c714ba3feb8.png#height=490&id=w8AZT&originHeight=490&originWidth=539&originalType=binary&ratio=1&rotation=0&showTitle=false&size=0&status=done&style=none&title=&width=539" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></a></p>
 <p>具体举个例子：<br />用户在首次访问 <a target="_blank" rel="noopener" href="https://assets-cdn.github.com/pinned-octocat.svg">https://assets-cdn.github.com/pinned-octocat.svg</a> , 假设不委托 local DNS 服务器递归查询，会经历以下几个过程</p>
 <ol>
 <li>浏览器检查本地有没有这个东东的有效缓存，有则使用缓存，没有有效缓存则进行对<code>assets-cdn.github.com</code>的 DNS 查询，获得一个 CNAME 记录, <code>igithub.map.fastly.net</code>,值得注意的是，多个加速域名可以解析到同一个 CNAME，CDN 回源和缓存的时候考虑到了 hostname，👍；</li>
@@ -636,7 +636,7 @@
 <p><a name="1Isay"></a></p>
 <h3 id="文件更新的原理"><a href="#文件更新的原理" class="headerlink" title="文件更新的原理"></a>文件更新的原理</h3><p>用户访问使用了 CDN 技术的文件后，在多个环节都可能会产生缓存，比如用户的浏览器中、CDN 的边缘节点等。浏览器端的缓存一般通过过期时间来自动更新；而对于 CDN 节点上缓存的更新，一般是通过源站更新后，手动触发 CDN 的缓存删除操作。</p>
 <p><a name="oLpLA"></a></p>
-<h2 id="使用-CDN-用-CDN-托管静态资源"><a href="#使用-CDN-用-CDN-托管静态资源" class="headerlink" title="使用 CDN (用 CDN 托管静态资源)"></a>使用 CDN (用 CDN 托管静态资源)</h2><p>（使用 CDN，抛开无用的 cookie）<br />要知道，浏览器第一次打开页面的时候，浏览器缓存是起不了作任何用的；使用 CDN，效果就很明显。<br /><strong>CDN 缓存，也叫网关缓存、反向代理缓存</strong>。浏览器先向 CDN 网关发起 WEB 请求，网关服务器后面对应着一台或多台负载均衡源服务器，会根据它们的负载请求，动态地请求转发到合适的源服务器上。<br />通过在现有的 Internet 中增加一层新的 CACHE(缓存)层，将网站的内容发布到最接近用户的网络”边缘“的节点，使用户可以就近取得所需的内容，提高用户访问网站的响应速度。<br />cdn 从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等原因，提高用户访问网站的响应速度。<strong>CDN 网络是在用户和服务器之间增加 Cache 层，主要是通过接管 DNS 实现,将用户的请求引导到 Cache 上获得源服务器的数据</strong>。<br />使用了 CDN 缓存后的网站的访问过程变为：<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1589513234285-3996bc7e-36f9-4082-ba78-86916438d850.png#height=384&id=pht4z&originHeight=384&originWidth=680&originalType=binary&ratio=1&rotation=0&showTitle=false&size=143841&status=done&style=none&title=&width=680" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1589513234285-3996bc7e-36f9-4082-ba78-86916438d850.png#height=384&id=pht4z&originHeight=384&originWidth=680&originalType=binary&ratio=1&rotation=0&showTitle=false&size=143841&status=done&style=none&title=&width=680" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="image.png"></p>
+<h2 id="使用-CDN-用-CDN-托管静态资源"><a href="#使用-CDN-用-CDN-托管静态资源" class="headerlink" title="使用 CDN (用 CDN 托管静态资源)"></a>使用 CDN (用 CDN 托管静态资源)</h2><p>（使用 CDN，抛开无用的 cookie）<br />要知道，浏览器第一次打开页面的时候，浏览器缓存是起不了作任何用的；使用 CDN，效果就很明显。<br /><strong>CDN 缓存，也叫网关缓存、反向代理缓存</strong>。浏览器先向 CDN 网关发起 WEB 请求，网关服务器后面对应着一台或多台负载均衡源服务器，会根据它们的负载请求，动态地请求转发到合适的源服务器上。<br />通过在现有的 Internet 中增加一层新的 CACHE(缓存)层，将网站的内容发布到最接近用户的网络”边缘“的节点，使用户可以就近取得所需的内容，提高用户访问网站的响应速度。<br />cdn 从技术上全面解决由于网络带宽小、用户访问量大、网点分布不均等原因，提高用户访问网站的响应速度。<strong>CDN 网络是在用户和服务器之间增加 Cache 层，主要是通过接管 DNS 实现,将用户的请求引导到 Cache 上获得源服务器的数据</strong>。<br />使用了 CDN 缓存后的网站的访问过程变为：<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/164572/1589513234285-3996bc7e-36f9-4082-ba78-86916438d850.png#height=384&id=pht4z&originHeight=384&originWidth=680&originalType=binary&ratio=1&rotation=0&showTitle=false&size=143841&status=done&style=none&title=&width=680" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/164572/1589513234285-3996bc7e-36f9-4082-ba78-86916438d850.png#height=384&id=pht4z&originHeight=384&originWidth=680&originalType=binary&ratio=1&rotation=0&showTitle=false&size=143841&status=done&style=none&title=&width=680" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
 <ol>
 <li>用户输入访问的域名,操作系统向 LocalDns 查询域名的 ip 地址;</li>
 <li>LocalDns 向 ROOT DNS 查询域名的授权服务器(这里假设 LocalDns 缓存过期);</li>
@@ -695,7 +695,7 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/38a3f75e4e4d24c76cfb2.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/38a3f75e4e4d24c76cfb2.png" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/38a3f75e4e4d24c76cfb2.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/38a3f75e4e4d24c76cfb2.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
     </div>
     <a href="/2023/04/24/frontend/interview/generator-han-shu-sheng-cheng-qi-ji-qi-shi-xian/" class="post-nav-link">
       <div class="title">
@@ -717,7 +717,7 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
     </div>
     <a href="/2022/12/04/frontend/collection/wheel/shu-ju-chu-li/" class="post-nav-link">
       <div class="title">
@@ -895,7 +895,7 @@
             <div class="post-img-box">
               <a href="/2024/04/01/frontend/engineering/rollup-da-bao-yuan-li-yu-cha-jian/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -916,7 +916,7 @@
             <div class="post-img-box">
               <a href="/2024/03/31/frontend/engineering/vite-shuang-yin-qing-jia-gou/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/ba66c09ebc475b1c43906.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/ba66c09ebc475b1c43906.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/ba66c09ebc475b1c43906.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/ba66c09ebc475b1c43906.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -937,7 +937,7 @@
             <div class="post-img-box">
               <a href="/2024/03/29/frontend/engineering/vite-pei-zhi/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -958,7 +958,7 @@
             <div class="post-img-box">
               <a href="/2024/03/28/internlm/internlm-di-1-ke-bi-ji/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -979,7 +979,7 @@
             <div class="post-img-box">
               <a href="/2024/03/14/stable-diffusion/sd-hui-tu-ru-men/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">

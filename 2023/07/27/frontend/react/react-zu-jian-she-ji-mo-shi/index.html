@@ -214,7 +214,7 @@
   </transition>
   <div class="drawer-box" :class="{'active': visible}">
     <div class="drawer-box-head bg-color">
-      <img class="drawer-box-head_logo lazyload placeholder" src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="logo">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
       <h3 class="drawer-box-head_title">飞翔的蜗</h3>
       <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
     </div>
@@ -365,7 +365,7 @@
     <div class="blog-title" id="author-avatar">
       
         <div class="avatar">
-          <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="logo">
+          <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
         </div>
       
       <a href="/" class="logo">飞翔的蜗</a>
@@ -625,7 +625,7 @@
 <p><br />可以看到，<code>RandomJoke</code> 的 <code>render</code> 函数只做一件事，就是渲染 <code>Joke</code>，并把 <code>this.state</code> 中的值作为 <code>props</code> 传进去。有状态组件的 <code>render</code> 函数一般都很简单，因为渲染不是他们的业务，它们的主业是获取数据。</p>
 <p><code>RandomJoke</code> 获取数据的方法是在 <code>componentDidMount</code> 函数中调用一个 API，这个 API 随即返回一个英文笑话。当 <code>RandomJoke</code> 被第一次渲染的时候，它的 <code>state</code> 中的 <code>joke</code> 值为 <code>null</code>，所以它传给 <code>Joke</code> 的 <code>value</code> 也是 <code>null</code>，这时候，<code>Joke</code> 会渲染一 “loading…”。在第一次渲染完毕的时候，<code>componentDidMount</code> 被调用，一个 API 请求发出去，拿到一个随机笑话，更新 <code>state</code> 中的值。因为对一个组件 <code>state</code> 的更新会引发一个新的渲染过程，所以 <code>RandomJoke</code> 的 <code>render</code> 再一次被调用，所以 <code>Joke</code> 也会再一次被渲染，笑话也就出现了。</p>
 <p>最终类似这样：</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612605034257-fb934d59-70ea-49e9-ab16-817a7e67c7af.png?x-oss-process=image/resize,w_1170,limit_0" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612605034257-fb934d59-70ea-49e9-ab16-817a7e67c7af.png?x-oss-process=image/resize,w_1170,limit_0" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612605034257-fb934d59-70ea-49e9-ab16-817a7e67c7af.png?x-oss-process=image/resize,w_1170,limit_0" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612605034257-fb934d59-70ea-49e9-ab16-817a7e67c7af.png?x-oss-process=image/resize,w_1170,limit_0" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
 <p>应用这种方法之后，如果要优化界面，只需要去修改无状态组件 <code>Joke</code>，如果想改进数据管理和获取，只需要去修改有状态组件 <code>RandomJoke</code>。如此一来，维护工作就简单多了，甚至可以把两个组件分配各两个不同的开发者去维护开发。如果应用 <code>Redux</code> 或 <code>Mobx</code>，也会应用到这种模式。</p>
 <p><a name="CZh2E"></a></p>
 <h3 id="（3）PureComponent"><a href="#（3）PureComponent" class="headerlink" title="（3）PureComponent"></a>（3）PureComponent</h3><p>因为无状态组件没有自己的状态，所以，可以像上面的 <code>Joke</code> 一样实现为函数形式，其实可以进一步改进，利用 <code>PureComponent</code> 来提高无状态组件的性能。函数形式的 React 组件，好处是不需要管理 <code>state</code>，占用资源少，但是，函数形式的组件无法利用 <code>shouldComponentUpdate</code>。</p>
@@ -749,7 +749,7 @@
 <p><br />所以，当需要重用 React 组件的逻辑时，首先看这个功能是否可以抽象为一个简单的组件；如果行不通的话，考虑是否可以应用 render props 模式；再不行的话，才考虑应用高阶组件模式。</p>
 <p><a name="whtTy"></a></p>
 <h2 id="4-提供者模式"><a href="#4-提供者模式" class="headerlink" title="4. 提供者模式"></a>4. 提供者模式</h2><p>在 React 中，props 是组件之间通讯的主要手段，但是有一种场景单纯靠 props 来通信是不恰当的，那就是两个组件之间间隔着多层其他组件，下面是一个组件树示例图：</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612606526643-c8006ca8-54b6-409a-9244-e1d38f29df25.png?x-oss-process=image/resize,w_1170,limit_0" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612606526643-c8006ca8-54b6-409a-9244-e1d38f29df25.png?x-oss-process=image/resize,w_1170,limit_0" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612606526643-c8006ca8-54b6-409a-9244-e1d38f29df25.png?x-oss-process=image/resize,w_1170,limit_0" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612606526643-c8006ca8-54b6-409a-9244-e1d38f29df25.png?x-oss-process=image/resize,w_1170,limit_0" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
 <p>在上图中，组件 A 需要传递信息给组件 X，如果通过 props 的话，那么从顶部的组件 A 开始，要把 props 传递给组件 B，然后组件 B 传递给组件 D，最后组件 D 再传递给组件 X。其实组件 B 和组件 D 完全用不上这些 props，但是又被迫传递这些 props，这明显不合理，要知道组件树的结构会变化的，将来如果组件 B 和组件 D 之间再插入一层新的组件，这个组件也需要传递这个 props，这就麻烦无比。</p>
 <p>可见，对于跨级的信息传递，需要一个更好的方法。在 React 中，解决这个问题应用的就是“提供者模式”。</p>
 <p><a name="SLj4S"></a></p>
@@ -785,7 +785,7 @@
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">ThemeProvider</span> value=&#123;&#123;<span class="attr">mainColor</span>: <span class="string">&#x27;green&#x27;</span>, <span class="attr">textColor</span>: <span class="string">&#x27;red&#x27;</span>&#125;&#125; &gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Page</span> /&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">ThemeProvider</span>&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">ThemeProvider</span> <span class="attr">value</span>=<span class="string">&#123;&#123;mainColor:</span> &#x27;<span class="attr">green</span>&#x27;, <span class="attr">textColor:</span> &#x27;<span class="attr">red</span>&#x27;&#125;&#125; &gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Page</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">ThemeProvider</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p><br />最后，看到的效果如下：</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612606526649-8735e68e-627a-44b9-8312-120deb97b070.png?x-oss-process=image/resize,w_950,limit_0" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612606526649-8735e68e-627a-44b9-8312-120deb97b070.png?x-oss-process=image/resize,w_950,limit_0" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612606526649-8735e68e-627a-44b9-8312-120deb97b070.png?x-oss-process=image/resize,w_950,limit_0" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612606526649-8735e68e-627a-44b9-8312-120deb97b070.png?x-oss-process=image/resize,w_950,limit_0" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
 <p>当需要改变一个样式主题的时候，改变传给 ThemeProvider 的 value 值就搞定了。</p>
 <p><a name="vRG9H"></a></p>
 <h3 id="（4）React-v16-3-0-之后的提供者模式"><a href="#（4）React-v16-3-0-之后的提供者模式" class="headerlink" title="（4）React v16.3.0 之后的提供者模式"></a>（4）React v16.3.0 之后的提供者模式</h3><p>在 React v16.3.0，新的 Context API 出来了，这套 API 毫不掩饰自己就是“提供者模式”的实现，命名上就带 “Provider” 和 “Consumer”。</p>
@@ -834,7 +834,7 @@
 
 <p>在 render 函数中用到了 React 中不常用的两个 API：<br />● <code>React.Children.map</code>：遍历 <code>children</code> 中所有的元素，因为 <code>children</code> 可能是一个数组。<br />● <code>React.cloneElement</code>：复制某个元素。这个函数第一个参数就是被复制的元素，第二个参数可以增加新产生元素的 props，利用这个机会把 <code>active</code> 和 <code>onClick</code> 添加了进去。</p>
 <p>这两个 API 双剑合璧，就能实现不通过表面的 props 传递，完成两个组件的“组合”。最终的效果如下：</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612607366110-6ad49d50-789c-49a9-bba9-3434e7697946.png?x-oss-process=image/resize,w_390,limit_0" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612607366110-6ad49d50-789c-49a9-bba9-3434e7697946.png?x-oss-process=image/resize,w_390,limit_0" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612607366110-6ad49d50-789c-49a9-bba9-3434e7697946.png?x-oss-process=image/resize,w_390,limit_0" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/1500604/1612607366110-6ad49d50-789c-49a9-bba9-3434e7697946.png?x-oss-process=image/resize,w_390,limit_0" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
 <p>点击任何一个 <code>TabItem</code>，其样式就会立刻改变。而维护哪个 <code>TabItem</code> 是当前选中的状态，则是 Tabs 的责任。<br><a name="ERgrG"></a></p>
 <h3 id="（2）实际应用"><a href="#（2）实际应用" class="headerlink" title="（2）实际应用"></a><br />（2）实际应用</h3><p>从上面的代码可以看出，对于组合组件这种实现方式，<code>TabItem</code> 非常简化；<code>Tabs</code> 稍微麻烦了一点，但是好处就是把复杂度都封装起来了，从使用者角度，连 props 都看不见。</p>
 <p>所以，应用组合组件的往往是共享组件库，把一些常用的功能封装在组件里，让应用层直接用就行。在 antd 和 bootstrap 这样的共享库中，都使用了组合组件这种模式。</p>
@@ -882,7 +882,7 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/8d11a3c74cc33943b2f36.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/8d11a3c74cc33943b2f36.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/8d11a3c74cc33943b2f36.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/8d11a3c74cc33943b2f36.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
     </div>
     <a href="/2023/07/28/frontend/react/react-xuan-ran-liu-cheng/" class="post-nav-link">
       <div class="title">
@@ -907,7 +907,7 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/84e31c3a1d909e33b3d07.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/84e31c3a1d909e33b3d07.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/84e31c3a1d909e33b3d07.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/84e31c3a1d909e33b3d07.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
     </div>
     <a href="/2023/07/27/frontend/react/react-chun-han-shu-zu-jian/" class="post-nav-link">
       <div class="title">
@@ -1085,7 +1085,7 @@
             <div class="post-img-box">
               <a href="/2024/04/01/frontend/engineering/rollup-da-bao-yuan-li-yu-cha-jian/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1106,7 +1106,7 @@
             <div class="post-img-box">
               <a href="/2024/03/31/frontend/engineering/vite-shuang-yin-qing-jia-gou/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/ba66c09ebc475b1c43906.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/ba66c09ebc475b1c43906.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/ba66c09ebc475b1c43906.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/ba66c09ebc475b1c43906.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1127,7 +1127,7 @@
             <div class="post-img-box">
               <a href="/2024/03/29/frontend/engineering/vite-pei-zhi/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1148,7 +1148,7 @@
             <div class="post-img-box">
               <a href="/2024/03/28/internlm/internlm-di-1-ke-bi-ji/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
@@ -1169,7 +1169,7 @@
             <div class="post-img-box">
               <a href="/2024/03/14/stable-diffusion/sd-hui-tu-ru-men/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" srcset="https://maiwoqiche-1251117131.cos.ap-shanghai.myqcloud.com/internationalStation/loading.gif" alt="">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
               </a>
             </div>
             <div class="post-date-title">
