@@ -19,21 +19,6 @@
   <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
   
   
-    <script>
-        var themeModelId = '5';
-        if (themeModelId) {
-            localStorage.setItem('modelId', themeModelId);
-        }
-    </script>
-    
-    <script defer src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
-    <script>
-        var live2dOpen = eval('true') || false;
-        if (!live2dOpen) {
-            localStorage.setItem('waifu-display', 1609323474481);
-        }
-    </script>
-  
   
   
 <link rel="stylesheet" href="/css/animate.min.css">
@@ -96,10 +81,26 @@
   <!-- 页面预加载动画 -->
 
   
-    <div class="preloader_2" id="loader">
-  <div class="loader"></div>
+    <div class="preloader-1" id="loader">
+  <div  aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+    <div class="wheel"></div>
+    <div class="hamster">
+      <div class="hamster__body">
+        <div class="hamster__head">
+          <div class="hamster__ear"></div>
+          <div class="hamster__eye"></div>
+          <div class="hamster__nose"></div>
+        </div>
+        <div class="hamster__limb hamster__limb--fr"></div>
+        <div class="hamster__limb hamster__limb--fl"></div>
+        <div class="hamster__limb hamster__limb--br"></div>
+        <div class="hamster__limb hamster__limb--bl"></div>
+        <div class="hamster__tail"></div>
+      </div>
+    </div>
+    <div class="spoke"></div>
+  </div>
 </div>
-
   
 <script>
   var endLoading = function () {
@@ -1340,14 +1341,6 @@ Marktext：笔记应用2. YesPlayMusic：第三方网易云播放器3. PicGo：�
                 </a>
               
             
-              
-                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1738348915" class="social">
-                  
-                    <i class="fas fa-qq" aria-hidden="true"></i>
-                  
-                </a>
-              
-            
           </div>
         
       
@@ -1964,8 +1957,8 @@ Marktext：笔记应用2. YesPlayMusic：第三方网易云播放器3. PicGo：�
 <!-- 鼠标点击特效 -->
 <!-- 爱心点击 -->
 
-  
-    <script src="/js/cursor/fireworks.js"></script>
+   
+    <script src="/js/cursor/clicklove.js"></script> 
   
 
 

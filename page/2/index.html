@@ -19,21 +19,6 @@
   <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
   
   
-    <script>
-        var themeModelId = '5';
-        if (themeModelId) {
-            localStorage.setItem('modelId', themeModelId);
-        }
-    </script>
-    
-    <script defer src="https://cdn.jsdelivr.net/gh/yuang01/live2d-widget@latest/autoload.js"></script>
-    <script>
-        var live2dOpen = eval('true') || false;
-        if (!live2dOpen) {
-            localStorage.setItem('waifu-display', 1609323474481);
-        }
-    </script>
-  
   
   
 <link rel="stylesheet" href="/css/animate.min.css">
@@ -96,10 +81,26 @@
   <!-- 页面预加载动画 -->
 
   
-    <div class="preloader_2" id="loader">
-  <div class="loader"></div>
+    <div class="preloader-1" id="loader">
+  <div  aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+    <div class="wheel"></div>
+    <div class="hamster">
+      <div class="hamster__body">
+        <div class="hamster__head">
+          <div class="hamster__ear"></div>
+          <div class="hamster__eye"></div>
+          <div class="hamster__nose"></div>
+        </div>
+        <div class="hamster__limb hamster__limb--fr"></div>
+        <div class="hamster__limb hamster__limb--fl"></div>
+        <div class="hamster__limb hamster__limb--br"></div>
+        <div class="hamster__limb hamster__limb--bl"></div>
+        <div class="hamster__tail"></div>
+      </div>
+    </div>
+    <div class="spoke"></div>
+  </div>
 </div>
-
   
 <script>
   var endLoading = function () {
@@ -3481,13 +3482,6 @@ React Router 是 React 生态系统中最受欢迎的第三方库之一，近一
       
 
       
-        <div class="webinfo-item">
-          <div>本站访客数：</div>
-          
-          <div><span id="busuanzi_value_site_uv"><i class="fas fa-fan fa-spin fa-fw" aria-hidden="true"></i></span> 人</div>
-          
-        </div>
-      
 
       
 
@@ -3495,8 +3489,8 @@ React Router 是 React 生态系统中最受欢迎的第三方库之一，近一
         <div class="webinfo-item">
           <div>最后活动时间：</div>
           
-            <div id="last-update" style="display: none;">Tue Apr 02 2024 15:33:01 GMT+0800 (中国标准时间)</div>
-            <div id="last-update-show">2024-04-02 日</div>
+            <div id="last-update" style="display: none;">Wed Apr 03 2024 14:42:40 GMT+0800 (中国标准时间)</div>
+            <div id="last-update-show">2024-04-03 日</div>
           
         </div>
         
@@ -3546,7 +3540,7 @@ React Router 是 React 生态系统中最受欢迎的第三方库之一，近一
           try {
             document.getElementById('last-update-show').innerHTML = timeago(new Date(lastUpDate));
           } catch (error) {
-            document.getElementById('last-update-show').innerHTML = '2024-04-02 日';
+            document.getElementById('last-update-show').innerHTML = '2024-04-03 日';
           }
         </script>
         
@@ -3582,7 +3576,7 @@ React Router 是 React 生态系统中最受欢迎的第三方库之一，近一
       //只在桌面版网页启用特效
       var windowWidth = $(window).width();
       if (windowWidth > 768) {
-        loadScript('/js/falling/snow.js');
+        loadScript('/js/falling/sakura.js');
       }
     </script>
   
@@ -3774,14 +3768,6 @@ React Router 是 React 生态系统中最受欢迎的第三方库之一，近一
                 <a target="_blank" rel="noopener" href="https://github.com/YWzzy" class="social">
                   
                     <i class="fas fa-github" aria-hidden="true"></i>
-                  
-                </a>
-              
-            
-              
-                <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1738348915" class="social">
-                  
-                    <i class="fas fa-qq" aria-hidden="true"></i>
                   
                 </a>
               
@@ -4402,8 +4388,8 @@ React Router 是 React 生态系统中最受欢迎的第三方库之一，近一
 <!-- 鼠标点击特效 -->
 <!-- 爱心点击 -->
 
-  
-    <script src="/js/cursor/fireworks.js"></script>
+   
+    <script src="/js/cursor/clicklove.js"></script> 
   
 
 
