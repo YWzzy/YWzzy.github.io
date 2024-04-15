@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2024-04-02T06:43:24.043Z</updated>
+  <updated>2024-04-15T06:38:32.679Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>构建工具对比与模块化规范</title>
+    <link href="https://ywzzy.github.io/2024/04/15/frontend/engineering/gou-jian-gong-ju-dui-bi-yu-mo-kuai-hua-gui-fan/"/>
+    <id>https://ywzzy.github.io/2024/04/15/frontend/engineering/gou-jian-gong-ju-dui-bi-yu-mo-kuai-hua-gui-fan/</id>
+    <published>2024-04-15T06:38:49.000Z</published>
+    <updated>2024-04-15T06:38:32.679Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;JSA1R&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前端工程的痛点&quot;&gt;&lt;a href=&quot;#前端工程的痛点&quot; class=&quot;headerlink&quot; title=&quot;前端工程的痛点&quot;&gt;&lt;/a&gt;前端工程的痛点&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vercel部署跨域问题</title>
+    <link href="https://ywzzy.github.io/2024/04/12/frontend/engineering/vercel-bu-shu-kua-yu-wen-ti/"/>
+    <id>https://ywzzy.github.io/2024/04/12/frontend/engineering/vercel-bu-shu-kua-yu-wen-ti/</id>
+    <published>2024-04-12T02:31:49.000Z</published>
+    <updated>2024-04-15T06:37:56.684Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;cPXwp&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;next-js-本地开发环境跨域&quot;&gt;&lt;a href=&quot;#next-js-本地开发环境跨域&quot; class=&quot;headerlink&quot; title=&quot;next.js 本地开发环境跨域&quot;&gt;&lt;/a&gt;next.js</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>Rollup 打包原理与插件</title>
@@ -528,65 +584,6 @@
     
     
     <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React 组件化开发</title>
-    <link href="https://ywzzy.github.io/2023/07/14/frontend/react/react-zu-jian-hua-kai-fa/"/>
-    <id>https://ywzzy.github.io/2023/07/14/frontend/react/react-zu-jian-hua-kai-fa/</id>
-    <published>2023-07-14T07:12:49.000Z</published>
-    <updated>2024-04-02T07:32:36.120Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;a name=&quot;hWu9S&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;一、什么是组件化&quot;&gt;&lt;a href=&quot;#一、什么是组件化&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
-    
-    
-    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>package.json</title>
-    <link href="https://ywzzy.github.io/2023/07/13/frontend/engineering/package.json/"/>
-    <id>https://ywzzy.github.io/2023/07/13/frontend/engineering/package.json/</id>
-    <published>2023-07-13T07:12:49.000Z</published>
-    <updated>2024-04-02T06:23:55.437Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;在每个前端项目中，都有 package.json 文件，它是项目的配置文件，常见的配置有配置项目启动、打包命令，声明依赖包等。package.json 文件是一个 JSON</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="工程化" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-    
-    <category term="工程化" scheme="https://ywzzy.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
     
   </entry>
   
