@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2024-04-15T06:38:32.679Z</updated>
+  <updated>2024-04-17T02:52:07.752Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>qiankun 微前端落地实践</title>
+    <link href="https://ywzzy.github.io/2024/04/17/solution/qiankun-wei-qian-duan-luo-di-shi-jian/"/>
+    <id>https://ywzzy.github.io/2024/04/17/solution/qiankun-wei-qian-duan-luo-di-shi-jian/</id>
+    <published>2024-04-17T01:56:28.000Z</published>
+    <updated>2024-04-17T02:52:07.752Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;rd6LP&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;近些年,前端发展火热, 百家争鸣,</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="微前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="解决方案" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%BE%AE%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="微前端" scheme="https://ywzzy.github.io/tags/%E5%BE%AE%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>构建工具对比与模块化规范</title>
@@ -544,35 +574,6 @@
 
 &lt;p&gt;&lt;a name=&quot;XOEwi&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;1-定义组件接口&quot;&gt;&lt;a href=&quot;#1-定义组件接口&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
-    
-    
-    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React Router</title>
-    <link href="https://ywzzy.github.io/2023/07/14/frontend/react/react-router/"/>
-    <id>https://ywzzy.github.io/2023/07/14/frontend/react/react-router/</id>
-    <published>2023-07-14T07:12:49.000Z</published>
-    <updated>2024-04-02T07:32:36.040Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;React Router 是 React 生态系统中最受欢迎的第三方库之一，近一半的 React 项目中使用了 React Router，下面就来看看如何在 React</summary>
         
       
     
