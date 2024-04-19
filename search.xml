@@ -703,20 +703,18 @@
       
       <categories>
           
-          <category> 快捷键 </category>
-          
-          <category> skill </category>
+          <category> 技巧 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> skill </tag>
-            
             <tag> IDE </tag>
             
             <tag> 快捷键 </tag>
+            
+            <tag> 技巧 </tag>
             
         </tags>
       
@@ -734,9 +732,7 @@
       
       <categories>
           
-          <category> 前端 </category>
-          
-          <category> skill </category>
+          <category> 技巧 </category>
           
       </categories>
       
@@ -745,9 +741,9 @@
             
             <tag> 前端 </tag>
             
-            <tag> skill </tag>
-            
             <tag> npm </tag>
+            
+            <tag> 技巧 </tag>
             
         </tags>
       
@@ -765,9 +761,7 @@
       
       <categories>
           
-          <category> 前端 </category>
-          
-          <category> skill </category>
+          <category> 技巧 </category>
           
       </categories>
       
@@ -776,9 +770,9 @@
             
             <tag> 浏览器 </tag>
             
-            <tag> skill </tag>
-            
             <tag> Google </tag>
+            
+            <tag> 技巧 </tag>
             
         </tags>
       
@@ -796,20 +790,18 @@
       
       <categories>
           
-          <category> skill </category>
-          
-          <category> 服务器 </category>
+          <category> 技巧 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> skill </tag>
-            
             <tag> 服务器 </tag>
             
             <tag> Linux </tag>
+            
+            <tag> 技巧 </tag>
             
         </tags>
       
@@ -827,9 +819,7 @@
       
       <categories>
           
-          <category> 前端 </category>
-          
-          <category> skill </category>
+          <category> 技巧 </category>
           
       </categories>
       
@@ -840,9 +830,9 @@
             
             <tag> 调试 </tag>
             
-            <tag> skill </tag>
-            
             <tag> DevTools </tag>
+            
+            <tag> 技巧 </tag>
             
         </tags>
       
@@ -860,9 +850,7 @@
       
       <categories>
           
-          <category> 前端 </category>
-          
-          <category> skill </category>
+          <category> 技巧 </category>
           
       </categories>
       
@@ -873,9 +861,9 @@
             
             <tag> 调试 </tag>
             
-            <tag> skill </tag>
-            
             <tag> DevTools </tag>
+            
+            <tag> 技巧 </tag>
             
         </tags>
       
@@ -893,9 +881,7 @@
       
       <categories>
           
-          <category> 前端 </category>
-          
-          <category> skill </category>
+          <category> 技巧 </category>
           
       </categories>
       
@@ -906,9 +892,9 @@
             
             <tag> 调试 </tag>
             
-            <tag> skill </tag>
-            
             <tag> DevTools </tag>
+            
+            <tag> 技巧 </tag>
             
         </tags>
       
@@ -926,9 +912,7 @@
       
       <categories>
           
-          <category> 前端 </category>
-          
-          <category> skill </category>
+          <category> 技巧 </category>
           
       </categories>
       
@@ -939,9 +923,9 @@
             
             <tag> 调试 </tag>
             
-            <tag> skill </tag>
-            
             <tag> DevTools </tag>
+            
+            <tag> 技巧 </tag>
             
         </tags>
       
@@ -2306,9 +2290,7 @@
       
       <categories>
           
-          <category> 前端 </category>
-          
-          <category> skill </category>
+          <category> 技巧 </category>
           
       </categories>
       
@@ -2317,7 +2299,7 @@
             
             <tag> js </tag>
             
-            <tag> skill </tag>
+            <tag> 技巧 </tag>
             
         </tags>
       
