@@ -610,7 +610,7 @@
 <h2 id="HTTP-与-HTTPS"><a href="#HTTP-与-HTTPS" class="headerlink" title="HTTP 与 HTTPS"></a>HTTP 与 HTTPS</h2><p><a name="HTTP"></a></p>
 <h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><p>HTTP，全称 HyperText Transfer Protocol，中文名称超文本传输协议，传统的 web 站点都是建立在 HTTP 协议基础上进行通信的，我们访问某些站点时，首先通过该协议传输生成网页的基础文件如.html、.css、.js 等等，除此以外，还可以传输图片等其他格式文件。而这一切又需要建立在网络的基础上。通常使用的网络（包括互联网）是在 TCP&#x2F;IP 协议族的基础上运作的，而 HTTP 属于 TCP&#x2F;IP 协议族内部的一个子集。</p>
 <p><a name="09cc1306"></a></p>
-<h3 id="TCP-x2F-IP"><a href="#TCP-x2F-IP" class="headerlink" title="TCP&#x2F;IP"></a>TCP&#x2F;IP</h3><p>简单回顾一下计算机基础知识，何为 TCP&#x2F;IP 协议族。计算机与网络设备进行相互通信，首先双方要基于同一种方法。比如，如何探测到通信目标、由哪一边先发起通信、使用哪种语言进行通信、怎样结束通信等规则都需要事先确定。不同的硬件、操作系统之间的通信，所有的这一切都需要一种规则。而我们就把这种规则称为协议（protocol）。<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913619382-d9f3edf6-be59-4df3-9aa1-e1f303fb8f8e.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913619382-d9f3edf6-be59-4df3-9aa1-e1f303fb8f8e.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="TCP、IP是互联网相关的各类协议族的总称.png"></p>
+<h3 id="TCP-x2F-IP"><a href="#TCP-x2F-IP" class="headerlink" title="TCP&#x2F;IP"></a>TCP&#x2F;IP</h3><p>简单回顾一下计算机基础知识，何为 TCP&#x2F;IP 协议族。计算机与网络设备进行相互通信，首先双方要基于同一种方法。比如，如何探测到通信目标、由哪一边先发起通信、使用哪种语言进行通信、怎样结束通信等规则都需要事先确定。不同的硬件、操作系统之间的通信，所有的这一切都需要一种规则。而我们就把这种规则称为协议（protocol）。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913619382-d9f3edf6-be59-4df3-9aa1-e1f303fb8f8e.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913619382-d9f3edf6-be59-4df3-9aa1-e1f303fb8f8e.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="TCP、IP是互联网相关的各类协议族的总称.png"></p>
 <p><a name="57d03375"></a></p>
 <h4 id="图-1-TCP-x2F-IP-是互联网相关的各类协议族的总称"><a href="#图-1-TCP-x2F-IP-是互联网相关的各类协议族的总称" class="headerlink" title="图 1.TCP&#x2F;IP 是互联网相关的各类协议族的总称"></a>图 1.TCP&#x2F;IP 是互联网相关的各类协议族的总称</h4><p>协议中存在各式各样的内容。从电缆的规格到 IP 地址的选定方法、寻找异地用户的方法、双方建立通信的顺序，以及 Web 页面显示需要处理的步骤，等等。像这样把与互联网相关联的协议集合起来总称为 TCP&#x2F;IP。</p>
 <p>TCP&#x2F;IP 协议族里重要的一点就是分层，从上到下分为应用层、传输层、网络层、链路层。各层的作用如下：</p>
@@ -620,7 +620,7 @@
 <li><strong>网络层</strong>   网络层用来处理在网络上流动的数据包。数据包是网络传输的最小数据单位。该层规定了通过怎样的路径（所谓的传输路线）到达对方计算机，并把数据包传送给对方。与对方计算机之间通过多台计算机或网络设备进行传输时，网络层所起的作用就是在众多的选项内选择一条传输路线。</li>
 <li><strong>链路层</strong>   用来处理连接网络的硬件部分。包括控制操作系统、硬件的设备驱动、NIC（NetworkInterface Card，网络适配器，即网卡），及光纤等物理可见部分（还包括连接器等一切传输媒介）。硬件上的范畴均在链路层的作用范围之内。</li>
 </ul>
-<p><strong>TCP&#x2F;IP 通讯传输流动：</strong><br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913637128-63907609-4648-4880-95c7-42d7bdea44e8.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913637128-63907609-4648-4880-95c7-42d7bdea44e8.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="TCP、IP通讯传输流动.png"></p>
+<p><strong>TCP&#x2F;IP 通讯传输流动：</strong><br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913637128-63907609-4648-4880-95c7-42d7bdea44e8.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913637128-63907609-4648-4880-95c7-42d7bdea44e8.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="TCP、IP通讯传输流动.png"></p>
 <p><a name="756f6553"></a></p>
 <h4 id="图-2-TCP-x2F-IP-通讯传输流动"><a href="#图-2-TCP-x2F-IP-通讯传输流动" class="headerlink" title="图 2.TCP&#x2F;IP 通讯传输流动"></a>图 2.TCP&#x2F;IP 通讯传输流动</h4><p>无论时从服务器发起通讯还是从客户端发起通讯都必须遵循以上的数据流动原则：假如从客户端发起通讯，数据则从应用层-&gt;传输层-&gt;网络层-&gt;链路层-&gt;链路层-&gt;网络层-&gt;传输层-&gt;应用层这样传输，并且每向下经过一层便会封装包裹该层的首部信息，每向上一层消去该层的首部信息，层层校验防止出错。</p>
 <p><a name="80d34954"></a></p>
@@ -631,22 +631,22 @@
 <li>无法证明报文的完整性，所以有可能已遭篡改。在报文的传输过程中，必须经过物理介质传输（量子通信除外），就无法避免被外界篡改的可能。由于 HTTP 协议无法证明通信的报文完整性，因此，在请求或响应送出之后直到对方接收之前的这段时间内，即使请求或响应的内容遭到篡改，也没有办法获悉。虽然有部分办法能够确定报文完整性的方，但事实上不完全可靠，其中常用的是 MD5 和 SHA-1 等散列值校验的方法，以及用来确认文件的数字签名方法，但是有谁又能保证 MD5、SHA-1 计算得到的散列值不被中途篡改呢。</li>
 </ul>
 <p><a name="a56c601e"></a></p>
-<h3 id="HTTP-加密-认证-完整性保护-x3D-HTTPS"><a href="#HTTP-加密-认证-完整性保护-x3D-HTTPS" class="headerlink" title="HTTP+加密+认证+完整性保护&#x3D;HTTPS"></a>HTTP+加密+认证+完整性保护&#x3D;HTTPS</h3><p>为了统一解决上述这些问题，需要在 HTTP 上再加入加密处理和认证等机制。人们把添加了加密及认证机制的 HTTP 称为 HTTPS（HTTP Secure）。HTTPS 并非是新的协议，而是身披 SSL 外壳的 HTTP，只是把 HTTP 通信接口部分用 SSL（Secure Socket Layer）和 TLS（Transport Layer Security，TSL 是以 SSL 为原型开发的协议，有时会统一称该协议为 SSL。）协议代替而已。所以从层级间通信来说，就由 HTTP 直接和 TCP 通信演变为 HTTP 直接与 SSL 通信，再由 SSL 与 TCP 通信而已。<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913653007-d5eaca4c-a35e-4c7c-bf3a-7648829e7326.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913653007-d5eaca4c-a35e-4c7c-bf3a-7648829e7326.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="HTTP与HTTPS.png"></p>
+<h3 id="HTTP-加密-认证-完整性保护-x3D-HTTPS"><a href="#HTTP-加密-认证-完整性保护-x3D-HTTPS" class="headerlink" title="HTTP+加密+认证+完整性保护&#x3D;HTTPS"></a>HTTP+加密+认证+完整性保护&#x3D;HTTPS</h3><p>为了统一解决上述这些问题，需要在 HTTP 上再加入加密处理和认证等机制。人们把添加了加密及认证机制的 HTTP 称为 HTTPS（HTTP Secure）。HTTPS 并非是新的协议，而是身披 SSL 外壳的 HTTP，只是把 HTTP 通信接口部分用 SSL（Secure Socket Layer）和 TLS（Transport Layer Security，TSL 是以 SSL 为原型开发的协议，有时会统一称该协议为 SSL。）协议代替而已。所以从层级间通信来说，就由 HTTP 直接和 TCP 通信演变为 HTTP 直接与 SSL 通信，再由 SSL 与 TCP 通信而已。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913653007-d5eaca4c-a35e-4c7c-bf3a-7648829e7326.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913653007-d5eaca4c-a35e-4c7c-bf3a-7648829e7326.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="HTTP与HTTPS.png"></p>
 <p><a name="9379c769"></a></p>
 <h4 id="图-3-HTTP-与-HTTPS"><a href="#图-3-HTTP-与-HTTPS" class="headerlink" title="图 3.HTTP 与 HTTPS"></a>图 3.HTTP 与 HTTPS</h4><p>加入了 SSL 协议之后，HTTP 就有了加密、认证和完整性保护这些功能。SSL 协议是独立的协议，不仅 HTTP 可以使用，其他运行在应用层的 FTP、SMTP 和 Telnet 等协议均可配合 SSL 协议使用。</p>
 <p>SSL 协议采用一种叫做公开密钥加密的加密处理方式。近代的加密方法中加密算法是公开的，而密钥却是保密的。通过这种方式得以保持加密方法的安全性。加密和解密都会用到密钥。没有密钥就无法对密码解密，反过来说，任何人只要持有密钥就能解密了。如果密钥被攻击者获得，那加密也就失去了意义。</p>
-<p>通常密钥的形式有两种，对称密钥和非对称密钥。对称密钥又称为共享密钥，是指加密和解密都公用一把密钥的加密方式。既然是共用密钥，那么就必须由一方生成，共享给另一方，共享就不可避免的要在网络上传输，在网络上传输就无法保证密钥不会被窃取，无法保证密钥不被窃取就相当于无法保证加密的完全安全性。而非对称密钥就很好的解决了这个问题，非对称密钥又称为公开密钥加密，由一把公开密钥和私有密钥组成，公开密钥可以随意公开，任何人都可以获得。使用公开密钥加密的方式，发送密文的发送方使用接收方的公开密钥进行加密，接收方接收到密文后，使用私有密钥进行解锁。这样一来，就可以避免私有密钥的网络传输，不被窃取。单独靠公开密钥和密文解密是非常难，解密过程就是在对离散对数进行求值，这并非轻而易举就能办到。<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913667245-6028a187-cb89-4a6d-8782-4cea5b4e764b.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913667245-6028a187-cb89-4a6d-8782-4cea5b4e764b.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="非对称加密.png"></p>
+<p>通常密钥的形式有两种，对称密钥和非对称密钥。对称密钥又称为共享密钥，是指加密和解密都公用一把密钥的加密方式。既然是共用密钥，那么就必须由一方生成，共享给另一方，共享就不可避免的要在网络上传输，在网络上传输就无法保证密钥不会被窃取，无法保证密钥不被窃取就相当于无法保证加密的完全安全性。而非对称密钥就很好的解决了这个问题，非对称密钥又称为公开密钥加密，由一把公开密钥和私有密钥组成，公开密钥可以随意公开，任何人都可以获得。使用公开密钥加密的方式，发送密文的发送方使用接收方的公开密钥进行加密，接收方接收到密文后，使用私有密钥进行解锁。这样一来，就可以避免私有密钥的网络传输，不被窃取。单独靠公开密钥和密文解密是非常难，解密过程就是在对离散对数进行求值，这并非轻而易举就能办到。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913667245-6028a187-cb89-4a6d-8782-4cea5b4e764b.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913667245-6028a187-cb89-4a6d-8782-4cea5b4e764b.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="非对称加密.png"></p>
 <p><a name="5ce9182e"></a></p>
-<h4 id="图-4-非对称加密"><a href="#图-4-非对称加密" class="headerlink" title="图 4.非对称加密"></a>图 4.非对称加密</h4><p>HTTPS 采用混合加密方式，先是通过公开密钥加密的方式交换共享加密的密钥，把密钥安全地共享给对方。之后的通信就通过共享加密进行密文通信，这样做优势在于能充分发挥两种加密方式的优点：公开加密没有传输层面被窃取的可能、共享加密消耗的资源比公开加密要低。<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913673981-fcf5197c-2a3f-41d1-8fa3-228904260293.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913673981-fcf5197c-2a3f-41d1-8fa3-228904260293.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="混合加密机制.png"></p>
+<h4 id="图-4-非对称加密"><a href="#图-4-非对称加密" class="headerlink" title="图 4.非对称加密"></a>图 4.非对称加密</h4><p>HTTPS 采用混合加密方式，先是通过公开密钥加密的方式交换共享加密的密钥，把密钥安全地共享给对方。之后的通信就通过共享加密进行密文通信，这样做优势在于能充分发挥两种加密方式的优点：公开加密没有传输层面被窃取的可能、共享加密消耗的资源比公开加密要低。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913673981-fcf5197c-2a3f-41d1-8fa3-228904260293.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913673981-fcf5197c-2a3f-41d1-8fa3-228904260293.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="混合加密机制.png"></p>
 <p><a name="fc765a78"></a></p>
 <h4 id="图-5-混合加密机制"><a href="#图-5-混合加密机制" class="headerlink" title="图 5.混合加密机制"></a>图 5.混合加密机制</h4><p><a name="282ad907"></a></p>
-<h3 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h3><p>虽然共享加密方式的安全性得到了保证，但是如何保证公开加密的安全性？怎么保证接收到的公开加密公有密钥是货真价实的密钥，不被掉包呢？为了解决这个问题，人们提出了数字证书这一概念。在使用 HTTPS 协议前，服务器运营人员先向数字证书认证机构（CA,Certificate Authority）和其相关机关申请公开密钥证书，认证机构在接收到申请并判明申请者身份后，会对已申请的公开密钥做数字签名，然后分配这个已签名的公开密钥，并将该公开密钥放入公钥证书后绑定在一起发送给申请者，申请者即运营人员将其布置进服务器中。当有人访问该服务器时，服务器首先把公钥证书以公开加密方式发送至客户端，客户端接收到公钥证书后使用与之绑定的公钥密钥，对证书上的数字签名进行验证，一旦验证通过即说明该证书是准确、安全和值得信赖的。但是怎么把证书安全地转交给运营人员又成了一个问题，因此多数浏览器厂商在开发浏览器时，会首先把常用认证机构的公有密钥预先植入，这样申请者申请证书时安全性便得到保证。<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913693699-bb1394dd-baad-41a5-a7be-09edf25bad97.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913693699-bb1394dd-baad-41a5-a7be-09edf25bad97.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="公钥证书认证及其使用.png"></p>
+<h3 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h3><p>虽然共享加密方式的安全性得到了保证，但是如何保证公开加密的安全性？怎么保证接收到的公开加密公有密钥是货真价实的密钥，不被掉包呢？为了解决这个问题，人们提出了数字证书这一概念。在使用 HTTPS 协议前，服务器运营人员先向数字证书认证机构（CA,Certificate Authority）和其相关机关申请公开密钥证书，认证机构在接收到申请并判明申请者身份后，会对已申请的公开密钥做数字签名，然后分配这个已签名的公开密钥，并将该公开密钥放入公钥证书后绑定在一起发送给申请者，申请者即运营人员将其布置进服务器中。当有人访问该服务器时，服务器首先把公钥证书以公开加密方式发送至客户端，客户端接收到公钥证书后使用与之绑定的公钥密钥，对证书上的数字签名进行验证，一旦验证通过即说明该证书是准确、安全和值得信赖的。但是怎么把证书安全地转交给运营人员又成了一个问题，因此多数浏览器厂商在开发浏览器时，会首先把常用认证机构的公有密钥预先植入，这样申请者申请证书时安全性便得到保证。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913693699-bb1394dd-baad-41a5-a7be-09edf25bad97.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913693699-bb1394dd-baad-41a5-a7be-09edf25bad97.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="公钥证书认证及其使用.png"></p>
 <p><a name="7ed23d7a"></a></p>
 <h4 id="图-6-公钥证书认证及其使用"><a href="#图-6-公钥证书认证及其使用" class="headerlink" title="图 6.公钥证书认证及其使用"></a>图 6.公钥证书认证及其使用</h4><p>证书除了能判明服务器是否安全，还能用来确认运行服务器背后的公司是否是合法合规、真实存在的。拥有这个特性的证书就是 EV SSL 证书（Extended Validation SSLCertificate）。EV SSL 证书是基于国际标准的认证指导方针颁发的证书。其严格规定了对运营组织是否真实的确认方针，因此，通过认证的 Web 网站能够获得更高的认可度。持有该证书的 WEB 网站一般在地址栏有一些显眼的标志，例如地址栏是绿色的或者有个锁头一样的标志。</p>
 <p>不但服务器能拥有数字证书，客户端同样能，其获取方式与服务器证书如出一辙。但是，客户端证书的获取需要支付一定的费用，所以一般情况下比较少用。</p>
 <p>除了上述具有公信力的认证证书，还有一种自签名证书，这种证书通常有自由认证机构颁发，不过在互联网上无法使用，不具备公信力。如果你想自由生成证书，则 OpenSSL 这套开源程序能够帮助你。</p>
 <p><a name="b54827a2"></a></p>
-<h3 id="HTTPS-的通讯机制"><a href="#HTTPS-的通讯机制" class="headerlink" title="HTTPS 的通讯机制"></a>HTTPS 的通讯机制</h3><p><img src="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913704418-20dda70b-5049-4b15-a23d-32d627206119.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913704418-20dda70b-5049-4b15-a23d-32d627206119.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="HTTPS的安全通信机制.png"></p>
+<h3 id="HTTPS-的通讯机制"><a href="#HTTPS-的通讯机制" class="headerlink" title="HTTPS 的通讯机制"></a>HTTPS 的通讯机制</h3><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913704418-20dda70b-5049-4b15-a23d-32d627206119.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913704418-20dda70b-5049-4b15-a23d-32d627206119.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="HTTPS的安全通信机制.png"></p>
 <p><a name="20e729e5"></a></p>
 <h4 id="图-7-HTTPS-的安全通信机制"><a href="#图-7-HTTPS-的安全通信机制" class="headerlink" title="图 7.HTTPS 的安全通信机制"></a>图 7.HTTPS 的安全通信机制</h4><p>步骤 1： 客户端通过发送 Client Hello 报文开始 SSL 通信。报文中包含客户端支持的 SSL 的指定版本、加密组件（Cipher Suite）列表（所使用的加密算法及密钥长度等）。</p>
 <p>步骤 2： 服务器可进行 SSL 通信时，会以 Server Hello 报文作为应答。和客户端一样，在报文中包含 SSL 版本以及加密组件。服务器的加密组件内容是从接收到的客户端加密组件内筛选出来的。</p>
@@ -709,19 +709,18 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/ba66c09ebc475b1c43906.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/ba66c09ebc475b1c43906.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/daa2ff73fd15360eb0c13.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/daa2ff73fd15360eb0c13.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
     </div>
-    <a href="/2023/06/29/frontend/security/md5-jia-mi-cun-chu/" class="post-nav-link">
+    <a href="/2023/06/29/frontend/security/xss-gong-ji/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">md5 加密存储</div>
+        <div class="title-text">XSS攻击</div>
       </div>
       
       <!-- <div class="content">
         
 
-
-使用 md5 加密存储不安全怎么解决md5 是一种常见的非对称加密算法，一般通过加密后的 md5 值获取到原始的字
+一、XSS (Cross-Site Scripting)，跨站脚本攻击，因为缩写和 CSS 重叠，所以只能叫 XSS
       </div> -->
     </a>
   </div>
@@ -732,17 +731,18 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/ba66c09ebc475b1c43906.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/ba66c09ebc475b1c43906.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
     </div>
-    <a href="/2023/06/29/frontend/security/mi-ma-chong-zhi-lou-dong/" class="post-nav-link">
+    <a href="/2023/06/29/frontend/security/md5-jia-mi-cun-chu/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">密码重置漏洞</div>
+        <div class="title-text">md5 加密存储</div>
       </div>
       <!-- <div class="content">
         
 
-密码重置逻辑一码多用（验证码未绑定手机号）验证码回显前端修改密码未确认用户身份验证码不失效本地验证的绕过修改接收的手
+
+使用 md5 加密存储不安全怎么解决md5 是一种常见的非对称加密算法，一般通过加密后的 md5 值获取到原始的字
       </div> -->
     </a>
   </div>

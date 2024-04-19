@@ -629,11 +629,11 @@
 <p>安装成功后 打开 docker 执行 docker compose up -d 指令 （第一次执行时间较久）</p>
 <p>执行成功后 即可访问 <a target="_blank" rel="noopener" href="http://127.0.0.1:9000/">http://127.0.0.1:9000/</a></p>
 <p>访问 <a target="_blank" rel="noopener" href="http://127.0.0.1:9000/">http://127.0.0.1:9000/</a> 如果出现这样的登录页面，表明 Sentry 部署完成</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953875614-835762d0-e508-463d-968f-b4649a8d9564.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953875614-835762d0-e508-463d-968f-b4649a8d9564.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953875614-835762d0-e508-463d-968f-b4649a8d9564.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953875614-835762d0-e508-463d-968f-b4649a8d9564.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
 <p><a name="decc689c"></a></p>
-<h2 id="四、vue-项目-sentry-端配置"><a href="#四、vue-项目-sentry-端配置" class="headerlink" title="四、vue 项目 sentry 端配置"></a>四、vue 项目 sentry 端配置</h2><p>Sentry 部署完成之后，需要创建一个项目，这个项目就是对应你的 web 项目，我的项目是 vue 写的，对应语言选择 vue 即可，旁边的 team 表示访问权限组<br /><img src="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953946869-fcbc0328-7c74-4830-acea-19f939428116.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953946869-fcbc0328-7c74-4830-acea-19f939428116.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<h2 id="四、vue-项目-sentry-端配置"><a href="#四、vue-项目-sentry-端配置" class="headerlink" title="四、vue 项目 sentry 端配置"></a>四、vue 项目 sentry 端配置</h2><p>Sentry 部署完成之后，需要创建一个项目，这个项目就是对应你的 web 项目，我的项目是 vue 写的，对应语言选择 vue 即可，旁边的 team 表示访问权限组<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953946869-fcbc0328-7c74-4830-acea-19f939428116.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953946869-fcbc0328-7c74-4830-acea-19f939428116.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
 <p>获取 API Auth Tokens，这个 token 是将来 vue 项目上报程序异常信息到 Sentry 的通信凭证</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953972812-fdcaa307-d450-41be-9c6c-d94f60e7b43a.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953972812-fdcaa307-d450-41be-9c6c-d94f60e7b43a.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953972812-fdcaa307-d450-41be-9c6c-d94f60e7b43a.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953972812-fdcaa307-d450-41be-9c6c-d94f60e7b43a.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
 <p><a name="32072f83"></a></p>
 <h2 id="五、本地项目接入-sentry"><a href="#五、本地项目接入-sentry" class="headerlink" title="五、本地项目接入 sentry"></a>五、本地项目接入 sentry</h2><ul>
 <li><code>@sentry/vue</code> (Sentry’s Vue SDK)</li>
@@ -648,7 +648,7 @@
 <h3 id="Vue3"><a href="#Vue3" class="headerlink" title="Vue3"></a>Vue3</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createApp &#125; from &quot;vue&quot;;</span><br><span class="line">import &#123; createRouter &#125; from &quot;vue-router&quot;;</span><br><span class="line">import * as Sentry from &quot;@sentry/vue&quot;;</span><br><span class="line">import &#123; BrowserTracing &#125; from &quot;@sentry/tracing&quot;;</span><br><span class="line"></span><br><span class="line">const app = createApp(&#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;);</span><br><span class="line">const router = createRouter(&#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">Sentry.init(&#123;</span><br><span class="line">  app,</span><br><span class="line">  dsn: &quot;https://b1fe70b553f84880bad94839a0acd387@o1280003.ingest.sentry.io/6487277&quot;,</span><br><span class="line">  integrations: [</span><br><span class="line">    new BrowserTracing(&#123;</span><br><span class="line">      routingInstrumentation: Sentry.vueRouterInstrumentation(router),</span><br><span class="line">      tracingOrigins: [&quot;localhost&quot;, &quot;my-site-url.com&quot;, /^\//],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  // Set tracesSampleRate to 1.0 to capture 100%</span><br><span class="line">  // of transactions for performance monitoring.</span><br><span class="line">  // We recommend adjusting this value in production</span><br><span class="line">  tracesSampleRate: 1.0,</span><br><span class="line">  logErrors: true</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.use(router);</span><br><span class="line">app.mount(&quot;#app&quot;);</span><br></pre></td></tr></table></figure>
 
 <p>此时，本地项目执行报错后，sentry 后台即可捕获到错误信息。</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953995787-d8bc55b3-f62a-4d22-b6a1-43c9a346b104.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953995787-d8bc55b3-f62a-4d22-b6a1-43c9a346b104.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953995787-d8bc55b3-f62a-4d22-b6a1-43c9a346b104.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659953995787-d8bc55b3-f62a-4d22-b6a1-43c9a346b104.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
 <p><a name="5f9cbc59"></a></p>
 <h2 id="六、上传-sourceMap"><a href="#六、上传-sourceMap" class="headerlink" title="六、上传 sourceMap"></a>六、上传 sourceMap</h2><p>到目前为止，vue 项目 sentry 配置已经完成，可以收集错误信息了，在 sentry web 端也能看到详细错误信息，但是 vue 项目经过打包之后，代码是经过压缩的，根据错误信息你是无法定位到源代码究竟是哪一行有问题，因此还需要上传 sourcemap 文件，就是将 vue 项目构建之后的源代码上传到 sentry 服务端，所以我们开始进行 sourceMap 上传</p>
 <p><a name="961c56a0"></a></p>
@@ -656,28 +656,28 @@
 <p><a name="62414183"></a></p>
 <h5 id="执行步骤"><a href="#执行步骤" class="headerlink" title="执行步骤"></a>执行步骤</h5><ol>
 <li>从您的 [Account] &gt; API keys 创建一个新的身份验证令牌（步骤四已经创建）</li>
-<li>确认您在“Scopes”下选择了 project:write<br /><img src="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954031419-c39c8ca4-7f66-40d9-a378-18700f13d35b.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954031419-c39c8ca4-7f66-40d9-a378-18700f13d35b.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></li>
+<li>确认您在“Scopes”下选择了 project:write<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954031419-c39c8ca4-7f66-40d9-a378-18700f13d35b.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954031419-c39c8ca4-7f66-40d9-a378-18700f13d35b.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></li>
 </ol>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954040082-28f4b6bf-006d-4c08-bada-83ff28da8a82.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954040082-28f4b6bf-006d-4c08-bada-83ff28da8a82.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954040082-28f4b6bf-006d-4c08-bada-83ff28da8a82.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954040082-28f4b6bf-006d-4c08-bada-83ff28da8a82.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
 <ol start="3">
 <li>使用 npm 安装 @sentry&#x2F;webpack-plugin</li>
 <li>Using npm:</li>
 </ol>
 <p><code>$ npm install @sentry/webpack-plugin --save-dev</code><br /> b. Using yarn: <br /><code>$ yarn add @sentry/webpack-plugin --dev</code></p>
 <ol start="4">
-<li>项目下创建 .sentryclirc 文件<br /><img src="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954235826-68a152b9-e94a-49e5-93dd-aaf205764dfa.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954235826-68a152b9-e94a-49e5-93dd-aaf205764dfa.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></li>
+<li>项目下创建 .sentryclirc 文件<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954235826-68a152b9-e94a-49e5-93dd-aaf205764dfa.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954235826-68a152b9-e94a-49e5-93dd-aaf205764dfa.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></li>
 <li>配置.sentryclirc 文件</li>
 <li>更新 vue.config.js 文件配置</li>
 <li>更新 sentry.init() 配置</li>
 </ol>
 <p><a name="f1040079"></a></p>
-<h4 id="配置-sentryclirc-文件"><a href="#配置-sentryclirc-文件" class="headerlink" title="配置.sentryclirc 文件"></a>配置.sentryclirc 文件</h4><p><img src="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954250222-98067c79-07ed-4cbd-8c49-28b309511b07.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954250222-98067c79-07ed-4cbd-8c49-28b309511b07.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<h4 id="配置-sentryclirc-文件"><a href="#配置-sentryclirc-文件" class="headerlink" title="配置.sentryclirc 文件"></a>配置.sentryclirc 文件</h4><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954250222-98067c79-07ed-4cbd-8c49-28b309511b07.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954250222-98067c79-07ed-4cbd-8c49-28b309511b07.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
 <p>含义解释：</p>
 <ul>
 <li>url：上传的服务器根目录，我这边目前本地搭建，指向本地，等安慕希这边运维搭建好服务之后，即指向搭建好的服务器上。</li>
-<li>org：这个可不是瞎写的，还记得注册的时候填的组织吗？不记得？没关系，看下图：<br /><img src="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954264879-d3133951-4c27-4bac-808e-c98ac72c6d7f.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954264879-d3133951-4c27-4bac-808e-c98ac72c6d7f.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></li>
+<li>org：这个可不是瞎写的，还记得注册的时候填的组织吗？不记得？没关系，看下图：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954264879-d3133951-4c27-4bac-808e-c98ac72c6d7f.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954264879-d3133951-4c27-4bac-808e-c98ac72c6d7f.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></li>
 <li>project: 看上图，就是你的项目名字。</li>
-<li>token: 这个需要生成， 点击下图右上角的 Creat New Token：<br /><img src="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954285928-9ab2d3c7-9469-4ebb-86aa-0ada7ffc979f.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954285928-9ab2d3c7-9469-4ebb-86aa-0ada7ffc979f.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></li>
+<li>token: 这个需要生成， 点击下图右上角的 Creat New Token：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954285928-9ab2d3c7-9469-4ebb-86aa-0ada7ffc979f.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954285928-9ab2d3c7-9469-4ebb-86aa-0ada7ffc979f.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></li>
 </ul>
 <p><a name="5ed85804"></a></p>
 <h4 id="更新-vue-config-js-配置"><a href="#更新-vue-config-js-配置" class="headerlink" title="更新 vue.config.js 配置"></a>更新 vue.config.js 配置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const SentryCliPlugin = require(&quot;@sentry/webpack-plugin&quot;);</span><br><span class="line"></span><br><span class="line"> plugins: [</span><br><span class="line">    new SentryCliPlugin(&#123;</span><br><span class="line">    	authToken: process.env.token,</span><br><span class="line">      org: process.env.org,</span><br><span class="line">      project: process.env.project,</span><br><span class="line">      include: &#x27;./dist&#x27;, // 作用的文件夹</span><br><span class="line">      release: &#x27;sentry0.0.2&#x27;, // 一致的版本号</span><br><span class="line">      configFile: &#x27;.sentryclirc&#x27;,</span><br><span class="line">      ignoreFile: &#x27;.sentrycliignore&#x27;,</span><br><span class="line">      ignore: [&#x27;node_modules&#x27;, &#x27;vue.config.js&#x27;],</span><br><span class="line">      urlPrefix: &#x27;~/static/js&#x27;</span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
@@ -687,13 +687,13 @@
 
 <p><a name="54c0d7aa"></a></p>
 <h2 id="七、定位源代码"><a href="#七、定位源代码" class="headerlink" title="七、定位源代码"></a>七、定位源代码</h2><p><a name="793d0ab0"></a></p>
-<h3 id="1-查看发布的版本-从对应版本进入项目"><a href="#1-查看发布的版本-从对应版本进入项目" class="headerlink" title="1.查看发布的版本,从对应版本进入项目"></a>1.查看发布的版本,从对应版本进入项目</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954301486-5fc27989-05b3-4ba6-b539-308171485a45.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954301486-5fc27989-05b3-4ba6-b539-308171485a45.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<h3 id="1-查看发布的版本-从对应版本进入项目"><a href="#1-查看发布的版本-从对应版本进入项目" class="headerlink" title="1.查看发布的版本,从对应版本进入项目"></a>1.查看发布的版本,从对应版本进入项目</h3><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954301486-5fc27989-05b3-4ba6-b539-308171485a45.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954301486-5fc27989-05b3-4ba6-b539-308171485a45.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
 <p><a name="9cd52ed2"></a></p>
 <h3 id="2-查看错误日志"><a href="#2-查看错误日志" class="headerlink" title="2.查看错误日志"></a>2.查看错误日志</h3><p>随便找一个错误日志<br />没有错误,可以在构建前手动创建一个错误看看效果</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954311670-5bc7c92f-36df-43c7-b65c-2aa47380840c.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954311670-5bc7c92f-36df-43c7-b65c-2aa47380840c.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954311670-5bc7c92f-36df-43c7-b65c-2aa47380840c.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954311670-5bc7c92f-36df-43c7-b65c-2aa47380840c.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
 <p><a name="880cd20a"></a></p>
 <h3 id="3-切换配置-查看源码信息"><a href="#3-切换配置-查看源码信息" class="headerlink" title="3.切换配置,查看源码信息"></a>3.切换配置,查看源码信息</h3><p>上传<code>sourceMap</code>前只有 <code>Full</code>和<code>Raw</code>两个选项,而且错误日志不是很明确,不能定位到发生错误的地方<br /><code>sourceMap</code>上传并生效后,如图可以切换<code>Original</code>等选项,切换后可以看到报错的代码内容</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954321763-b6d6dd9e-2ea3-4f39-bd9e-c23387468f3a.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954321763-b6d6dd9e-2ea3-4f39-bd9e-c23387468f3a.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954321763-b6d6dd9e-2ea3-4f39-bd9e-c23387468f3a.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/25400311/1659954321763-b6d6dd9e-2ea3-4f39-bd9e-c23387468f3a.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
 <p><a name="Tips"></a></p>
 <h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><p>在上传<code>sourceMap</code>的时候会遇到几个坑</p>
 <ol>
@@ -759,22 +759,18 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/dd05d73b907b6aea88574.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/dd05d73b907b6aea88574.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/98259d50c665eba7afd40.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/98259d50c665eba7afd40.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
     </div>
-    <a href="/2023/06/28/frontend/monitor/docker-ru-men-yi-wen-jiu-gou-liao/" class="post-nav-link">
+    <a href="/2023/06/28/frontend/monitor/qian-duan-jian-kong-sdk-de-yi-xie-ji-zhu-yao-dian-yuan-li-fen-xi/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">docker入门一文就够了</div>
+        <div class="title-text">前端监控 SDK 的一些技术要点原理分析</div>
       </div>
       
       <!-- <div class="content">
         
 
-
-个人学习 docker 整理的一些资料和 demo，后续会根据新用到的功能不定期更新，有问题欢迎留言
-
-
-背景do
+一个完整的前端监控平台包括三个部分：数据采集与上报、数据整理和存储、数据展示。本文要讲的就是其中的第一个环节——数据
       </div> -->
     </a>
   </div>
@@ -785,17 +781,19 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/98259d50c665eba7afd40.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/98259d50c665eba7afd40.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/475815b42a04ce4406df8.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/475815b42a04ce4406df8.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
     </div>
-    <a href="/2023/06/28/frontend/monitor/qian-duan-jian-kong-sdk-de-yi-xie-ji-zhu-yao-dian-yuan-li-fen-xi/" class="post-nav-link">
+    <a href="/2023/06/28/frontend/monitor/xing-neng-jian-kong-yi-chang-jian-kong/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">前端监控 SDK 的一些技术要点原理分析</div>
+        <div class="title-text">性能监控、异常监控</div>
       </div>
       <!-- <div class="content">
         
 
-一个完整的前端监控平台包括三个部分：数据采集与上报、数据整理和存储、数据展示。本文要讲的就是其中的第一个环节——数据
+
+性能监控
+HTTP一个是 http 的方面，在后端 log 日志，流入 kafka，然后在 kafka 消费数据，
       </div> -->
     </a>
   </div>

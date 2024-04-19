@@ -650,7 +650,7 @@
 <p>上面这段代码允许用户手动输入一个连接并生成 a 标签在页面中，也就是允许用户修改 dom 内容，那么只要像这样写入 input 元素的值，就成功执行了攻击：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot; onclick=alert(&#x27;注入攻击&#x27;)</span><br></pre></td></tr></table></figure>
 
-<p>首先写入一个<code>&quot;</code>结束掉<code>href=&quot;</code>，然后绑定一个 onclick 事件，当用户点击生成的 a 标签连接时，就出发了 alert 函数，如果时恶意代码，那就是成功执行了攻击。<br /><img src="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913102168-ce3a3569-6a9b-48f6-88c1-dfdc5989a158.png#height=409&id=K8i9Z&originHeight=409&originWidth=955&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19566&status=done&style=none&title=&width=955" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913102168-ce3a3569-6a9b-48f6-88c1-dfdc5989a158.png#height=409&id=K8i9Z&originHeight=409&originWidth=955&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19566&status=done&style=none&title=&width=955" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="图1.png"></p>
+<p>首先写入一个<code>&quot;</code>结束掉<code>href=&quot;</code>，然后绑定一个 onclick 事件，当用户点击生成的 a 标签连接时，就出发了 alert 函数，如果时恶意代码，那就是成功执行了攻击。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913102168-ce3a3569-6a9b-48f6-88c1-dfdc5989a158.png#height=409&id=K8i9Z&originHeight=409&originWidth=955&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19566&status=done&style=none&title=&width=955" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/1787397/1594913102168-ce3a3569-6a9b-48f6-88c1-dfdc5989a158.png#height=409&id=K8i9Z&originHeight=409&originWidth=955&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19566&status=done&style=none&title=&width=955" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="图1.png"></p>
 <p><a name="40c519b5"></a></p>
 <h4 id="图-1-基于-DOM-的-XSS"><a href="#图-1-基于-DOM-的-XSS" class="headerlink" title="图 1.基于 DOM 的 XSS"></a>图 1.基于 DOM 的 XSS</h4><p><a name="687bef9f"></a></p>
 <h3 id="XSS-的一些防范"><a href="#XSS-的一些防范" class="headerlink" title="XSS 的一些防范"></a>XSS 的一些防范</h3><p>XSS 的防御是复杂的。流行的浏览器都内置了一些对抗 XSS 的措施，比如 Firefox 的 CSP、Noscript 扩展，IE 8 内置的 XSS Filter 等。而对于网站来说，也应该寻找优秀的解决方案，保护用户不被 XSS 攻击。</p>
@@ -720,23 +720,20 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/98259d50c665eba7afd40.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/98259d50c665eba7afd40.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/daa2ff73fd15360eb0c13.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/daa2ff73fd15360eb0c13.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
     </div>
-    <a href="/2023/06/29/frontend/security/e-yi-liu-liang-te-zheng-fen-xi/" class="post-nav-link">
+    <a href="/2023/06/29/frontend/security/wen-jian-shang-chuan-lou-dong/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">恶意流量特征分析</div>
+        <div class="title-text">文件上传漏洞</div>
       </div>
       
       <!-- <div class="content">
         
 
 
-分析工具：Wireshark,在线解密网站
-
-蚁剑的流量特征
-UA：antSword&#x2F;v2.1
-请求数据
+文件上传漏洞
+简介文件上传漏洞是指用户上传了一个可执行的脚本文件，并通过此脚本文件获得了执行服务器端命令（webs
       </div> -->
     </a>
   </div>
@@ -747,19 +744,19 @@ UA：antSword&#x2F;v2.1
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/daa2ff73fd15360eb0c13.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/daa2ff73fd15360eb0c13.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
     </div>
-    <a href="/2023/06/29/frontend/security/wen-jian-shang-chuan-lou-dong/" class="post-nav-link">
+    <a href="/2023/06/29/frontend/security/shu-ru-fa/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">文件上传漏洞</div>
+        <div class="title-text">输入法</div>
       </div>
       <!-- <div class="content">
         
 
 
-文件上传漏洞
-简介文件上传漏洞是指用户上传了一个可执行的脚本文件，并通过此脚本文件获得了执行服务器端命令（webs
+场景 1输入法一定是安全的吗？在之前也曾曝出不少输入法搜集用户信息获取照片权限，通讯录权限，等。
+试想一下当你使用
       </div> -->
     </a>
   </div>
