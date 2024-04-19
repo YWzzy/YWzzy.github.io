@@ -646,7 +646,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set init.<span class="property">author</span>.<span class="property">name</span> <span class="variable constant_">YOUR_NAME</span></span><br><span class="line">npm config set init.<span class="property">author</span>.<span class="property">email</span> <span class="variable constant_">YOUR_EMAIL</span></span><br></pre></td></tr></table></figure>
 
 <p><br />当执行以上命令之后，之后再执行 npm init 命令时，package.json 的作者姓名和邮箱都会初始化为我们设定的值。<br><a name="KHxSO"></a></p>
-<h2 id="3-快速了解-package"><a href="#3-快速了解-package" class="headerlink" title="3. 快速了解 package"></a><br />3. 快速了解 package</h2><p>当要使用一个包时，如果想要了解它是如何使用的，可以使用以下命令来打开这个包的主页，它会自动启动浏览器并打开这个页面，这里以 React 为例：</p>
+<h2 id="3-快速了解-package"><a href="#3-快速了解-package" class="headerlink" title="3. 快速了解 package"></a>3. 快速了解 package</h2><p>当要使用一个包时，如果想要了解它是如何使用的，可以使用以下命令来打开这个包的主页，它会自动启动浏览器并打开这个页面，这里以 React 为例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm home react</span><br></pre></td></tr></table></figure>
 
 <p><br />如果想要查看这个包现存的 issue，或者公开的 roadmap，可以执行以下命令：</p>
@@ -665,7 +665,7 @@
 
 <p><br />执行结果如下：</p>
 <p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2021/png/1500604/1636565484926-0ced2347-9d30-44be-b9f9-894e76df52e6.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2021/png/1500604/1636565484926-0ced2347-9d30-44be-b9f9-894e76df52e6.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="c0jZ5"></a></p>
-<h2 id="4-安装依赖"><a href="#4-安装依赖" class="headerlink" title="4. 安装依赖"></a><br />4. 安装依赖</h2><p>可以使用 npm install 命令来安装需要的包，如果想把这个包自动添加到 package.json 中，可以执行以下命令，这里以安装 React 为例：</p>
+<h2 id="4-安装依赖"><a href="#4-安装依赖" class="headerlink" title="4. 安装依赖"></a>4. 安装依赖</h2><p>可以使用 npm install 命令来安装需要的包，如果想把这个包自动添加到 package.json 中，可以执行以下命令，这里以安装 React 为例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react --save</span><br></pre></td></tr></table></figure>
 
 <p><br />如果想要安装不同版本的包，可以这样：</p>
@@ -714,7 +714,7 @@
 <p>想要找到一个合适的依赖包可能并不是一件容易的事。这时，可以使用网站<a target="_blank" rel="noopener" href="https://npms.io/">https://npms.io/</a>，这里将各个包的质量、受欢迎度、可维护性等指标做了量化。这些指标包括：是否使用了过时的依赖包、是否有代码检查配置、是否经过测试以及最近的版本是何时发布的等。</p>
 <p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2021/png/1500604/1636566463569-7805283f-b440-4349-87e8-a05446107896.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2021/png/1500604/1636566463569-7805283f-b440-4349-87e8-a05446107896.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
 <p>不过，更直接方法可能就是去搜索引擎看别人的推荐了~<br><a name="orD0G"></a></p>
-<h2 id="7-更新、卸载依赖"><a href="#7-更新、卸载依赖" class="headerlink" title="7. 更新、卸载依赖"></a><br />7. 更新、卸载依赖</h2><p>npm 为我们提供了更新依赖版本的命令：</p>
+<h2 id="7-更新、卸载依赖"><a href="#7-更新、卸载依赖" class="headerlink" title="7. 更新、卸载依赖"></a>7. 更新、卸载依赖</h2><p>npm 为我们提供了更新依赖版本的命令：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update [package name]</span><br></pre></td></tr></table></figure>
 
 <p><br />如果想要更新全局安装的模块，需要添加参数 -global：</p>
@@ -741,7 +741,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 展示包的信息</span></span><br><span class="line">npm view &lt;package-name&gt;</span><br><span class="line">npm v &lt;package-name&gt;</span><br><span class="line"><span class="comment">// 展示最新版本</span></span><br><span class="line">npm v &lt;package-name&gt; version</span><br><span class="line"><span class="comment">// 展示所有版本</span></span><br><span class="line">npm v &lt;package-name&gt; versions</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2021/png/1500604/1636640851742-5c850cb2-c268-48e4-b46b-eb2d6d130fd4.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2021/png/1500604/1636640851742-5c850cb2-c268-48e4-b46b-eb2d6d130fd4.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="R3r3e"></a></p>
-<h2 id="9-执行脚本"><a href="#9-执行脚本" class="headerlink" title="9. 执行脚本"></a><br />9. 执行脚本<br /><br /></h2><p>npm 不仅可以用于管理模块，还可以用于执行脚本。在 package.json 文件中有一个 scripts 字段，可以用于定义脚本命令，功 npm 使用。我们除了可以在 package.json 文件中查看有哪些命令，也可以使用以下命令来查看所有脚本命令：</p>
+<h2 id="9-执行脚本"><a href="#9-执行脚本" class="headerlink" title="9. 执行脚本"></a>9. 执行脚本<br /><br /></h2><p>npm 不仅可以用于管理模块，还可以用于执行脚本。在 package.json 文件中有一个 scripts 字段，可以用于定义脚本命令，功 npm 使用。我们除了可以在 package.json 文件中查看有哪些命令，也可以使用以下命令来查看所有脚本命令：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run</span><br></pre></td></tr></table></figure>
 
 <p><br />我的项目中执行该命令之后的结果如下：</p>
@@ -753,11 +753,11 @@
 <p><a name="ueCwC"></a></p>
 <h2 id="10-安装可靠的依赖"><a href="#10-安装可靠的依赖" class="headerlink" title="10. 安装可靠的依赖"></a>10. 安装可靠的依赖<br /><br /></h2><p>可以使用 npm ci 命令来清理、安装依赖项。它通常用于 CI&#x2F;CD 等自动化环境，使用它可以获得可靠的依赖。<br />当执行该命令时，它会先删除本地的 node_modules 文件，因此它不需要去校验已下载文件版本与控制版本的关系，也不用校验是否存在最新版本的库，所以下载的速度相比 npm install 会更快。之后它会按照 package-lock.json 文件来安装确切版本的依赖项。并且不会将这个版本写入 package.json 或者 package-lock.json 文件。</p>
 <p>使用该命令时，需要注意：<br />● 项目必需有 package-lock.json 或 npm-shrinkwrap.json 文件，如果没有，该命令将不起作用；<br />● npm ci 是 npm v6 中引入了的新命令，所以使用该命令时需要确保 npm 版本要&gt;&#x3D;5.7；<br />● npm ci 不能用来安装单个依赖，只能用来安装整个项目的依赖；<br />● npm ci 会安装 dependencies 和 devDependencies；<br />● 整个安装过程不会更新 package.json 或 package-lock.json 文件，整个安装过程是锁死的；<br />● 当 package-lock.json 中的依赖和 package.json 中不一致时，npm ci 会退出但不会修改 package-lock.json 文件。<br><a name="P2IFT"></a></p>
-<h2 id="11-删除重复的包"><a href="#11-删除重复的包" class="headerlink" title="11. 删除重复的包"></a><br />11. 删除重复的包<br /><br /></h2><p>我们可以通过运行 npm dedupe 命令来删除重复的依赖项。该命令通过删除重复包并在多个依赖包之间共享公共依赖项来简化整体的结构。它会产生一个扁平的、去重的树。</p>
+<h2 id="11-删除重复的包"><a href="#11-删除重复的包" class="headerlink" title="11. 删除重复的包"></a>11. 删除重复的包<br /><br /></h2><p>我们可以通过运行 npm dedupe 命令来删除重复的依赖项。该命令通过删除重复包并在多个依赖包之间共享公共依赖项来简化整体的结构。它会产生一个扁平的、去重的树。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm dedupe</span><br><span class="line">npm ddp</span><br></pre></td></tr></table></figure>
 
 <p><a name="Fazhl"></a></p>
-<h2 id="12-扫描漏洞"><a href="#12-扫描漏洞" class="headerlink" title="12. 扫描漏洞"></a><br />12. 扫描漏洞<br /><br /></h2><p>可以运行 npm audit 命令来扫描项目，来查找所有依赖项中存在的漏洞：</p>
+<h2 id="12-扫描漏洞"><a href="#12-扫描漏洞" class="headerlink" title="12. 扫描漏洞"></a>12. 扫描漏洞<br /><br /></h2><p>可以运行 npm audit 命令来扫描项目，来查找所有依赖项中存在的漏洞：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm audit</span><br></pre></td></tr></table></figure>
 
 <p><br />来看我的项目扫描结果：</p>

@@ -629,17 +629,17 @@
 </table>
 <p>| 【示例】跨站攻击示意图<br />上图中攻击者利用了 Web 中用户身份验证的一个漏洞：简单的身份验证只能保证请求发自某个用户的浏览器，却不能保证请求本身是用户自愿发出的。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/355497/1603782372134-38ab73be-93f2-43c9-b895-acc20261e50a.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/355497/1603782372134-38ab73be-93f2-43c9-b895-acc20261e50a.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br>| ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————- |</p>
 <p><a name="kOKhj"></a></p>
-<h1 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a><br />防御措施</h1><p>一、防范 CSRF 攻击可以遵循以下几种规则：<br />●Get 请求不对数据进行修改<br />● 不让第三方网站访问到用户 Cookie<br />● 阻止第三方网站请求接口<br />● 请求时附带验证信息，比如验证码或者 Token<br />二、防御措施<br />● 检查 referer 字段<br />● 同步表单校验：表单中带有服务器生成的 token，提交时要带上<br />● 双重 cookie 校验<br><a name="Xb02V"></a></p>
-<h2 id="SameSite"><a href="#SameSite" class="headerlink" title="SameSite"></a><br />SameSite</h2><p><br />一、可以对 Cookie 设置 SameSite 属性。<br />见 Cookie, document.cookie#SameSite：<a target="_blank" rel="noopener" href="https://www.yuque.com/tqpuuk/yrrefz/ns4z0t">https://www.yuque.com/tqpuuk/yrrefz/ns4z0t</a></p>
+<h1 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a>防御措施</h1><p>一、防范 CSRF 攻击可以遵循以下几种规则：<br />●Get 请求不对数据进行修改<br />● 不让第三方网站访问到用户 Cookie<br />● 阻止第三方网站请求接口<br />● 请求时附带验证信息，比如验证码或者 Token<br />二、防御措施<br />● 检查 referer 字段<br />● 同步表单校验：表单中带有服务器生成的 token，提交时要带上<br />● 双重 cookie 校验<br><a name="Xb02V"></a></p>
+<h2 id="SameSite"><a href="#SameSite" class="headerlink" title="SameSite"></a>SameSite</h2><p><br />一、可以对 Cookie 设置 SameSite 属性。<br />见 Cookie, document.cookie#SameSite：<a target="_blank" rel="noopener" href="https://www.yuque.com/tqpuuk/yrrefz/ns4z0t">https://www.yuque.com/tqpuuk/yrrefz/ns4z0t</a></p>
 <p><a name="KvPt8"></a></p>
-<h2 id="Referer-Check"><a href="#Referer-Check" class="headerlink" title="Referer Check"></a><br />Referer Check</h2><p><br />一、HTTP Referer 是 header 的一部分，当浏览器向 web 服务器发送请求时，一般会带上 Referer 信息告诉服务器是从哪个页面链接过来的，服务器借此可以获得一些信息用于处理。</p>
+<h2 id="Referer-Check"><a href="#Referer-Check" class="headerlink" title="Referer Check"></a>Referer Check</h2><p><br />一、HTTP Referer 是 header 的一部分，当浏览器向 web 服务器发送请求时，一般会带上 Referer 信息告诉服务器是从哪个页面链接过来的，服务器借此可以获得一些信息用于处理。</p>
 <p>二、可以通过检查请求的来源来防御 CSRF 攻击。</p>
 <p>三、正常请求的 referer 具有一定规律，如在提交表单的 referer 必定是在该页面发起的请求。所以通过检查 http 包头 referer 的值是不是这个页面，来判断是不是 CSRF 攻击。</p>
 <p>四、在某些情况下如从 https 跳转到 http，浏览器处于安全考虑，不会发送 referer，服务器就无法进行 check 了。若与该网站同域的其他网站有 XSS 漏洞，那么攻击者可以在其他网站注入恶意脚本，受害者进入了此类同域的网址，也会遭受攻击。<br />1、出于以上原因，无法完全依赖 Referer Check 作为防御 CSRF 的主要手段。<br />2、但是可以通过 Referer Check 来监控 CSRF 攻击的发生。</p>
 <p>五、优点<br />1、简单易行，仅需要在关键访问处增加一步校验。</p>
 <p>六、局限性<br />1、其完全依赖浏览器发送正确的 Referer 字段。虽然 HTTP 协议对此字段的内容有明确的规定，但并无法保证来访的浏览器的具体实现，亦无法保证浏览器没有安全漏洞影响到此字段。并且也存在攻击者攻击某些浏览器，篡改其 Referer 字段的可能。</p>
 <p><a name="N2SNL"></a></p>
-<h2 id="Anti-CSRF-Token（用得最多）"><a href="#Anti-CSRF-Token（用得最多）" class="headerlink" title="Anti CSRF Token（用得最多）"></a><br />Anti CSRF Token（用得最多）</h2><p><br />一、目前比较完善的解决方案是加入 Anti-CSRF-Token。<br />1、即发送请求时在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务器建立一个拦截器来验证这个 token。<br />2、服务器读取浏览器当前域 cookie 中这个 token 值，会进行校验该请求当中的 token 和 cookie 当中的 token 值是否都存在且相等，才认为这是合法的请求。否则认为这次请求是违法的，拒绝该次服务。</p>
+<h2 id="Anti-CSRF-Token（用得最多）"><a href="#Anti-CSRF-Token（用得最多）" class="headerlink" title="Anti CSRF Token（用得最多）"></a>Anti CSRF Token（用得最多）</h2><p><br />一、目前比较完善的解决方案是加入 Anti-CSRF-Token。<br />1、即发送请求时在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务器建立一个拦截器来验证这个 token。<br />2、服务器读取浏览器当前域 cookie 中这个 token 值，会进行校验该请求当中的 token 和 cookie 当中的 token 值是否都存在且相等，才认为这是合法的请求。否则认为这次请求是违法的，拒绝该次服务。</p>
 <p>二、这种方法相比 Referer 检查要安全很多，token 可以在用户登陆后产生并放于 session 或 cookie 中，然后在每次请求时服务器把 token 从 session 或 cookie 中拿出，与本次请求中的 token 进行比对。</p>
 <p>三、由于 token 的存在，攻击者无法再构造出一个完整的 URL 实施 CSRF 攻击。但在处理多个页面共存问题时，当某个页面消耗掉 token 后，其他页面的表单保存的还是被消耗掉的那个 token，其他页面的表单提交时会出现 token 错误。</p>
 <p>| 【示例】】在同步渲染页面时，在表单请求中增加一个_csrf 的查询参数，这样当用户在提交这个表单的时候就会将 CSRF token 提交上来&#96;&#96;&#96;javascript</p>
@@ -653,9 +653,9 @@
 | --- |
 
 <p><br />四、token 仅仅是预防 csrf 用的。如果攻击者使用 xss 获取到 token，那么该方案就会失效。这样的攻击可以称为 xsrf<br><a name="qHAL1"></a></p>
-<h2 id="双重-cookie-校验"><a href="#双重-cookie-校验" class="headerlink" title="双重 cookie 校验"></a><br /><br />双重 cookie 校验</h2><p><br />一、一重是浏览器自动附加的 cookie，另一重就是在页面代码中通过其他手段（自定义请求头、请求体、URL 查询参数）传递的 cookie。<br />二、攻击者发起 CSRF 攻击时，请求中只会包含浏览器附加的 cookie 请求头，把这种只有一重 cookie 的请求拦掉就实现了防御。</p>
+<h2 id="双重-cookie-校验"><a href="#双重-cookie-校验" class="headerlink" title="双重 cookie 校验"></a><br />双重 cookie 校验</h2><p><br />一、一重是浏览器自动附加的 cookie，另一重就是在页面代码中通过其他手段（自定义请求头、请求体、URL 查询参数）传递的 cookie。<br />二、攻击者发起 CSRF 攻击时，请求中只会包含浏览器附加的 cookie 请求头，把这种只有一重 cookie 的请求拦掉就实现了防御。</p>
 <p><a name="WFElw"></a></p>
-<h2 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a><br />验证码</h2><p><br />一、应用程序和用户进行交互过程中，特别是账户交易这种核心步骤，强制用户输入验证码，才能完成最终请求。在通常情况下，验证码够很好地遏制 CSRF 攻击。<br />二、但增加验证码降低了用户的体验，网站不能给所有的操作都加上验证码。所以只能将验证码作为一种辅助手段，在关键业务点设置验证码。</p>
+<h2 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h2><p><br />一、应用程序和用户进行交互过程中，特别是账户交易这种核心步骤，强制用户输入验证码，才能完成最终请求。在通常情况下，验证码够很好地遏制 CSRF 攻击。<br />二、但增加验证码降低了用户的体验，网站不能给所有的操作都加上验证码。所以只能将验证码作为一种辅助手段，在关键业务点设置验证码。</p>
 
       </div>
       <div class="post-tags-categories">
