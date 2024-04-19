@@ -617,15 +617,9 @@
 
 <p>一、Cross-site request forgery&#x2F;ˈfɔːrdʒəri&#x2F;，跨站请求伪造，通常缩写为 CSRF 或 XSRF，它利用用户已登录的身份，在用户毫不知情的情况下，以用户的名义完成非法操作。</p>
 <p><a name="CI4BY"></a></p>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>一、下面先介绍一下 CSRF 攻击的原理：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/355497/1646902169133-e388543f-dcdf-4086-bb78-adbd478f7264.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_12,text_QGFTdW5jYXQ=,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/355497/1646902169133-e388543f-dcdf-4086-bb78-adbd478f7264.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_12,text_QGFTdW5jYXQ=,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>一、下面先介绍一下 CSRF 攻击的原理：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/355497/1646902169133-e388543f-dcdf-4086-bb78-adbd478f7264.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/355497/1646902169133-e388543f-dcdf-4086-bb78-adbd478f7264.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
 <p>二、完成 CSRF 攻击必须要有三个条件：<br />● 用户已经登录了站点 A，并在本地记录了 cookie<br />● 在用户没有登出站点 A 的情况下（也就是 cookie 生效的情况下），访问了恶意攻击者提供的引诱危险站点 B (B 站点要求访问站点 A)。<br />● 站点 A 没有做任何 CSRF 防御</p>
-<table>
-<thead>
-<tr>
-<th>【示例】当我们登入转账页面后，突然眼前一亮惊现”XXX 隐私照片，不看后悔一辈子”的链接，耐不住内心躁动，立马点击了该危险的网站（页面代码如下图所示），但当这页面一加载，便会执行 submitForm 这个方法来提交转账请求，从而将 10 块转给黑客。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/355497/1646902188333-5a3f40d6-da3d-4274-9676-69a65f2f9438.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_16,text_QGFTdW5jYXQ=,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10/resize,w_548,limit_0" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/355497/1646902188333-5a3f40d6-da3d-4274-9676-69a65f2f9438.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_16,text_QGFTdW5jYXQ=,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10/resize,w_548,limit_0" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></th>
-</tr>
-</thead>
-</table>
+<p>| 【示例】当我们登入转账页面后，突然眼前一亮惊现”XXX 隐私照片，不看后悔一辈子”的链接，耐不住内心躁动，立马点击了该危险的网站（页面代码如下图所示），但当这页面一加载，便会执行 submitForm 这个方法来提交转账请求，从而将 10 块转给黑客。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/355497/1646902188333-5a3f40d6-da3d-4274-9676-69a65f2f9438.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/355497/1646902188333-5a3f40d6-da3d-4274-9676-69a65f2f9438.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br>| ———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————- |</p>
 <table>
 <thead>
 <tr>
@@ -633,13 +627,7 @@
 </tr>
 </thead>
 </table>
-<table>
-<thead>
-<tr>
-<th>【示例】跨站攻击示意图<br />上图中攻击者利用了 Web 中用户身份验证的一个漏洞：简单的身份验证只能保证请求发自某个用户的浏览器，却不能保证请求本身是用户自愿发出的。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/355497/1603782372134-38ab73be-93f2-43c9-b895-acc20261e50a.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_31,text_QGFTdW5jYXQ=,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10/resize,w_750,limit_0" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/355497/1603782372134-38ab73be-93f2-43c9-b895-acc20261e50a.png?x-oss-process=image/watermark,type_d3F5LW1pY3JvaGVp,size_31,text_QGFTdW5jYXQ=,color_FFFFFF,shadow_50,t_80,g_se,x_10,y_10/resize,w_750,limit_0" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></th>
-</tr>
-</thead>
-</table>
+<p>| 【示例】跨站攻击示意图<br />上图中攻击者利用了 Web 中用户身份验证的一个漏洞：简单的身份验证只能保证请求发自某个用户的浏览器，却不能保证请求本身是用户自愿发出的。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/355497/1603782372134-38ab73be-93f2-43c9-b895-acc20261e50a.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2020/png/355497/1603782372134-38ab73be-93f2-43c9-b895-acc20261e50a.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br>| ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————- |</p>
 <p><a name="kOKhj"></a></p>
 <h1 id="防御措施"><a href="#防御措施" class="headerlink" title="防御措施"></a><br />防御措施</h1><p>一、防范 CSRF 攻击可以遵循以下几种规则：<br />●Get 请求不对数据进行修改<br />● 不让第三方网站访问到用户 Cookie<br />● 阻止第三方网站请求接口<br />● 请求时附带验证信息，比如验证码或者 Token<br />二、防御措施<br />● 检查 referer 字段<br />● 同步表单校验：表单中带有服务器生成的 token，提交时要带上<br />● 双重 cookie 校验<br><a name="Xb02V"></a></p>
 <h2 id="SameSite"><a href="#SameSite" class="headerlink" title="SameSite"></a><br />SameSite</h2><p><br />一、可以对 Cookie 设置 SameSite 属性。<br />见 Cookie, document.cookie#SameSite：<a target="_blank" rel="noopener" href="https://www.yuque.com/tqpuuk/yrrefz/ns4z0t">https://www.yuque.com/tqpuuk/yrrefz/ns4z0t</a></p>
