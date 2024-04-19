@@ -611,7 +611,7 @@
         <p><a name="rd6LP"></a></p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>近些年,前端发展火热, 百家争鸣, 各种技术层出不穷,如今的前端已经不再像以前一样就是简单的写页面、调样式、处理 DOM 等，现在的前端工作内容越来越复杂，技术点也越来越丰富。<br /> 当前，基于 Vue、React、Angular 的单页应用开发模式已经成为业界主流, 基本上成为近几年前端项目必备技术, 其前端生态也逐渐完善, 我们可以利用这些技术与生态快速构建一个新的应用, 这也大大缩短了项目的研发周期.<br />但是随着公司业务的不断发展，前端业务越来越复杂，SPA 模式势必会导致项目文件越来越多, 构建速度越来越慢, 代码和业务逻辑也越来越难以维护,应用开始变得庞大臃肿，逐渐成为一个巨石应用<br /> 面对一个庞大,具有悠久历史的项目, 在日常开发、上线时都需要花费不少的时间来构建项目，这样的现象对开发人员的开发效率和体验都造成了极不好的影响, 因此解决巨石问题, 迫在眉睫, 势在必行.<br />因此我们需要选择一个合适的方案，能不影响现有项目的继续迭代, 能兼容新的的技术栈，能支持老项目的增量升级, 新技术的加入不影响线上的稳定运行, <br /> 如果有这样一个应用, 每个独立模块都有一个独立仓库，独立开发、独立部署、独立访问、独立维护，还可以根据团队的特点自主选择适合自己的技术栈，这样就能够解决我们所面临的问题, 还能极大的提升开发人员的效率和体验.</p>
 <p><a name="spGjg"></a></p>
-<h1 id="业务背景"><a href="#业务背景" class="headerlink" title="业务背景"></a>业务背景<br /><br /></h1><p>运营平台是我们内部使用的一套管理系统, 并一直跟随业务保持着两周一个版本的迭代工作, 后期的需求也很多.<br />因历史原因框架选型采用 Angular8.x 开发，并且累计超过 10+ 位开发者参与业务开发，是一个页面数量多、逻辑关系混乱、注释信息不够完整、技术规范不统一、代码量的庞大，构建、部署的低效等问题的“巨石应用”。<br /> 考虑到组件复用以及降低维护成本，在想怎么可以做到及时止损，,控制住项目指数级的野蛮生长,并把 Vue 技术运用到项目中同时使用。<br />因此统一技术栈、工程拆分、规范化开发提上了工作日程，并期望各工程原有访问地址维持不变，使用户感知不到变化。</p>
+<h1 id="业务背景"><a href="#业务背景" class="headerlink" title="业务背景"></a>业务背景</h1><p>运营平台是我们内部使用的一套管理系统, 并一直跟随业务保持着两周一个版本的迭代工作, 后期的需求也很多.<br />因历史原因框架选型采用 Angular8.x 开发，并且累计超过 10+ 位开发者参与业务开发，是一个页面数量多、逻辑关系混乱、注释信息不够完整、技术规范不统一、代码量的庞大，构建、部署的低效等问题的“巨石应用”。<br /> 考虑到组件复用以及降低维护成本，在想怎么可以做到及时止损，,控制住项目指数级的野蛮生长,并把 Vue 技术运用到项目中同时使用。<br />因此统一技术栈、工程拆分、规范化开发提上了工作日程，并期望各工程原有访问地址维持不变，使用户感知不到变化。</p>
 <p>系统是采用传统的布局结构，头部导航展示一级菜单, 左侧展示一级菜单下的二级菜单, 所有页面内容都呈现在中间白色区域。</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2022/png/26114887/1644561314817-174daa95-b701-4ab6-9f3b-2e11432ca8dd.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/26114887/1644561314817-174daa95-b701-4ab6-9f3b-2e11432ca8dd.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
 <p>项目文件统计<br /><img src="https://cdn.nlark.com/yuque/0/2022/png/26114887/1644561343766-a045a48e-a746-4518-9014-ed0038f4eedb.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/26114887/1644561343766-a045a48e-a746-4518-9014-ed0038f4eedb.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
@@ -646,10 +646,10 @@
 <li>增加监控体系,能有效收集到线上遗留异常问题</li>
 <li>清晰梳理各模块业务,提高团队成员对项目、业务等的认识<br><a name="BnJ1X"></a></li>
 </ol>
-<h1 id="方案对比"><a href="#方案对比" class="headerlink" title="方案对比"></a><br /><br />方案对比<br /><br /></h1><p><img src="https://cdn.nlark.com/yuque/0/2022/png/26114887/1644561400773-cb4d0279-e19d-4e86-add6-560d04fb8ccf.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/26114887/1644561400773-cb4d0279-e19d-4e86-add6-560d04fb8ccf.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="y3qlC"></a></p>
-<h1 id="qiankun-介绍"><a href="#qiankun-介绍" class="headerlink" title="qiankun 介绍"></a><br />qiankun 介绍</h1><p><br />_ qiankun 是一个基于 <em><a target="_blank" rel="noopener" href="https://github.com/CanopyTax/single-spa">single-spa</a></em> 的_<a target="_blank" rel="noopener" href="https://micro-frontends.org/">微前端</a><em>实现库，旨在帮助大家能更简单、无痛的构建一个生产可用微前端架构系统。</em><br />_ qiankun 孵化自蚂蚁金融科技基于微前端架构的云产品统一接入平台，在经过一批线上应用的充分检验及打磨后，我们将其微前端内核抽取出来并开源，希望能同时帮助社区有类似需求的系统更方便的构建自己的微前端系统，同时也希望通过社区的帮助将 qiankun 打磨的更加成熟完善。_<br />_ 目前 qiankun 已在蚂蚁内部服务了超过 200+ 线上应用，在易用性及完备性上，绝对是值得信赖的。 ——摘自 qiankun 官网介绍_</p>
+<h1 id="方案对比"><a href="#方案对比" class="headerlink" title="方案对比"></a>方案对比</h1><p><img src="https://cdn.nlark.com/yuque/0/2022/png/26114887/1644561400773-cb4d0279-e19d-4e86-add6-560d04fb8ccf.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/26114887/1644561400773-cb4d0279-e19d-4e86-add6-560d04fb8ccf.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="y3qlC"></a></p>
+<h1 id="qiankun-介绍"><a href="#qiankun-介绍" class="headerlink" title="qiankun 介绍"></a>qiankun 介绍</h1><p>qiankun 是一个基于 <em><a target="_blank" rel="noopener" href="https://github.com/CanopyTax/single-spa">single-spa</a></em> 的*<a target="_blank" rel="noopener" href="https://micro-frontends.org/">微前端</a>*实现库，旨在帮助大家能更简单、无痛的构建一个生产可用微前端架构系统。_<br />_ qiankun 孵化自蚂蚁金融科技基于微前端架构的云产品统一接入平台，在经过一批线上应用的充分检验及打磨后，我们将其微前端内核抽取出来并开源，希望能同时帮助社区有类似需求的系统更方便的构建自己的微前端系统，同时也希望通过社区的帮助将 qiankun 打磨的更加成熟完善。_<br />_ 目前 qiankun 已在蚂蚁内部服务了超过 200+ 线上应用，在易用性及完备性上，绝对是值得信赖的。 ——摘自 qiankun 官网介绍_</p>
 <p><a name="XfsS8"></a></p>
-<h1 id="Single-SPA-的简要介绍"><a href="#Single-SPA-的简要介绍" class="headerlink" title="Single-SPA 的简要介绍"></a><br /><strong>Single-SPA 的简要介绍</strong></h1><p><br /> 2018 年 Single-SPA 诞生了，single-spa 是一个用于前端微服务化的 JavaScript 前端解决方案（本身没有处理样式隔离，js 执行隔离）实现了路由劫持和应用加载；目前已经发展到 5.x 版本.官网:<a target="_blank" rel="noopener" href="https://single-spa.js.org/">https://single-spa.js.org/</a></p>
+<h1 id="Single-SPA-的简要介绍"><a href="#Single-SPA-的简要介绍" class="headerlink" title="Single-SPA 的简要介绍"></a><strong>Single-SPA 的简要介绍</strong></h1><p>2018 年 Single-SPA 诞生了，single-spa 是一个用于前端微服务化的 JavaScript 前端解决方案（本身没有处理样式隔离，js 执行隔离）实现了路由劫持和应用加载；目前已经发展到 5.x 版本.官网:<a target="_blank" rel="noopener" href="https://single-spa.js.org/">https://single-spa.js.org/</a></p>
 <p><a name="jtC3y"></a></p>
 <h1 id="qiankun-的简要介绍"><a href="#qiankun-的简要介绍" class="headerlink" title="qiankun 的简要介绍"></a><strong>qiankun 的简要介绍</strong></h1><blockquote>
 <pre><code>很多人可能会好奇 qiankun 这个名字是怎么来的。实际上源自于这句话：**小世界有大乾坤。我们希望在微前端这个小世界**里面，通过 qiankun 这个框架鼓捣一个**大乾坤**。&lt;br /&gt; 方涣 –– 蚂蚁金服体验技术部前端工程师
@@ -733,7 +733,7 @@
 </ol>
 <p>app2: <br /><code>&quot;serve:single-spa&quot;: &quot;ng s --project app2 --disable-host-check --port 8082 --live-reload false&quot;</code></p>
 <p><a name="lGhPC"></a></p>
-<h2 id="接入-Angular-子应用-app3-Angular13"><a href="#接入-Angular-子应用-app3-Angular13" class="headerlink" title="接入 Angular 子应用 app3(Angular13)"></a><br />接入 Angular 子应用 app3(Angular13)</h2><ol>
+<h2 id="接入-Angular-子应用-app3-Angular13"><a href="#接入-Angular-子应用-app3-Angular13" class="headerlink" title="接入 Angular 子应用 app3(Angular13)"></a>接入 Angular 子应用 app3(Angular13)</h2><ol>
 <li><p>创建子应用 app3, Angular 子应用, app3 采用了最新版 Angular13,<br /><code>ng new app3</code></p>
 </li>
 <li><p>配置微应用<br /><code>app3\src\main.ts</code></p>
@@ -741,7 +741,7 @@
 <li><p>添加启动命令<br /><code>&quot;serve:single-spa&quot;: &quot;ng s --project app3 --disable-host-check --port 8083 --live-reload false&quot;</code><br><a name="VgdXH"></a></p>
 </li>
 </ol>
-<h2 id="接入-React-子应用-app4-React17-craco"><a href="#接入-React-子应用-app4-React17-craco" class="headerlink" title="接入 React 子应用 app4(React17 craco)"></a><br /><br />接入 React 子应用 app4(React17 craco)</h2><ol>
+<h2 id="接入-React-子应用-app4-React17-craco"><a href="#接入-React-子应用-app4-React17-craco" class="headerlink" title="接入 React 子应用 app4(React17 craco)"></a>接入 React 子应用 app4(React17 craco)</h2><ol>
 <li>创建子应用 app4,React 子应用</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app app4 --template typescript</span><br></pre></td></tr></table></figure>
@@ -845,7 +845,7 @@
 <h2 id="架构演变"><a href="#架构演变" class="headerlink" title="架构演变"></a>架构演变</h2><p>通过本次实践,不禁联想到近些年的前端架构演变, 从 web1.0 到今天的 mvvm 与微服务化, 带来了太多的改变.<br />简单整理下架构相关的演变历程.</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2022/png/26114887/1644561554249-53dcbe8e-0612-487e-8b1c-6e61d3043de9.png" class="lazyload placeholder" data-srcset="https://cdn.nlark.com/yuque/0/2022/png/26114887/1644561554249-53dcbe8e-0612-487e-8b1c-6e61d3043de9.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
 <p><a name="NuD0l"></a></p>
-<h2 id="项目中遇到的问题"><a href="#项目中遇到的问题" class="headerlink" title="项目中遇到的问题"></a><br />项目中遇到的问题</h2><ol>
+<h2 id="项目中遇到的问题"><a href="#项目中遇到的问题" class="headerlink" title="项目中遇到的问题"></a>项目中遇到的问题</h2><ol>
 <li>加载子应用失败</li>
 </ol>
 <p>这类问题在刚刚接入微服务进行调试时是经常遇到的，其原因也有很多，官网也给出了一部分可能出现原因。首先我么要确主应用正确的注册了相关子应用，并设置了需要挂在的 DOM 节点，同时也要保证接入的子应用导出了符合规范的生命周期钩子，在满足了这些基本的条件之后仍然加载失败，我们就需要根据具体的报错信息进行定位。可能的涉及原因：<br />a. 本地服务器没有设置 CORS 导致 JS 资源无法加载<br /> b. 子应用自身存在语法错误，我们可以先单独运行子应用来排除此类问题<br /> c. 如果使用了二级路由进行挂在，可能存在二级路由规则设置问题</p>
@@ -1634,12 +1634,16 @@
 <style>
 .aplayer .aplayer-lrc p {
   
+  display: none;
+  
   font-size: 12px;
   font-weight: 700;
   line-height: 16px !important;
 }
 
 .aplayer .aplayer-lrc p.aplayer-lrc-current {
+  
+  display: none;
   
   font-size: 15px;
   color: 3cd589;
