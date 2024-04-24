@@ -1017,7 +1017,7 @@ GitHub 上的 Awesome 系列是一个汇总了优秀工具和资源的大集合�
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
 
 <script>
-  var headerEl = 'h2, h3, h4',  //headers 
+  var headerEl = 'h1, h2, h3, h4, h5',  //headers 
     content = '.post-detail',//文章容器
     idArr = {};  //标题数组以确定是否增加索引id
   //add #id
@@ -1037,7 +1037,7 @@ GitHub 上的 Awesome 系列是一个汇总了优秀工具和资源的大集合�
     fixedSidebarOffset: 'auto',
     activeLinkClass: 'is-active-link',
     orderedList: true,
-    collapseDepth: 20,
+    collapseDepth: 0,
     // onClick: function (e) {},
   }
   if ($('.toc').length > 0) {

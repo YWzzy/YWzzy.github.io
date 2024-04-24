@@ -1561,7 +1561,7 @@ React Router 是 React 生态系统中最受欢迎的第三方库之一，近一
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
 
 <script>
-  var headerEl = 'h2, h3, h4',  //headers 
+  var headerEl = 'h1, h2, h3, h4, h5',  //headers 
     content = '.post-detail',//文章容器
     idArr = {};  //标题数组以确定是否增加索引id
   //add #id
@@ -1581,7 +1581,7 @@ React Router 是 React 生态系统中最受欢迎的第三方库之一，近一
     fixedSidebarOffset: 'auto',
     activeLinkClass: 'is-active-link',
     orderedList: true,
-    collapseDepth: 20,
+    collapseDepth: 0,
     // onClick: function (e) {},
   }
   if ($('.toc').length > 0) {

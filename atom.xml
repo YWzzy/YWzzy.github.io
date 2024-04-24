@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2024-04-19T06:53:46.239Z</updated>
+  <updated>2024-04-24T06:12:41.142Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何衡量一个网页的性能</title>
+    <link href="https://ywzzy.github.io/2024/04/24/frontend/monitor/ru-he-heng-liang-yi-ge-wang-ye-de-xing-neng/"/>
+    <id>https://ywzzy.github.io/2024/04/24/frontend/monitor/ru-he-heng-liang-yi-ge-wang-ye-de-xing-neng/</id>
+    <published>2024-04-24T05:32:52.000Z</published>
+    <updated>2024-04-24T06:12:41.142Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;fFtQ7&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="监控" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E7%9B%91%E6%8E%A7/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="监控" scheme="https://ywzzy.github.io/tags/%E7%9B%91%E6%8E%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>规则引擎在前端的应用</title>
@@ -544,36 +574,6 @@
 
 &lt;p&gt;&lt;a name=&quot;nGNYI&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;1-React-生命周期概览&quot;&gt;&lt;a href=&quot;#1-React-生命周期概览&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
-    
-    
-    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React 组件实践</title>
-    <link href="https://ywzzy.github.io/2023/07/20/frontend/react/react-zu-jian-shi-jian/"/>
-    <id>https://ywzzy.github.io/2023/07/20/frontend/react/react-zu-jian-shi-jian/</id>
-    <published>2023-07-20T07:12:49.000Z</published>
-    <updated>2024-04-19T07:23:50.453Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;a name=&quot;XOEwi&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-定义组件接口&quot;&gt;&lt;a href=&quot;#1-定义组件接口&quot; class=&quot;headerlink&quot;</summary>
         
       
     
