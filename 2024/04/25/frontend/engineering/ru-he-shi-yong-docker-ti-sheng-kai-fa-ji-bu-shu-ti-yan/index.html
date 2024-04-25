@@ -20,7 +20,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Vue项目 | 梨逍遥</title>
+  <title>如何使用 Docker 提升开发及部署体验 | 梨逍遥</title>
 
   <link rel="icon" type="image/gif" href="https://64.media.tumblr.com/a67a7238cd2833d859a7ea4cfa4fb8a4/0e0717e3c39dfac5-0c/s500x750/94ba555d15a68a38482896903d15494df88ff9b1.gif">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -562,21 +562,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://ossk.cc/file/529a649b2d3c6a8ed7f66.jpg')">
+  background-position: center center;position: relative;background-image:url('https://ossk.cc/file/475815b42a04ce4406df8.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        Vue项目
+        如何使用 Docker 提升开发及部署体验
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2023-06-30 |
+          <i class="fas fa-calendar"></i> Published in：2024-04-25 |
         </span>
       
 
@@ -588,8 +588,8 @@
               前端
             </a>
           
-            <a href="/categories/%E5%89%8D%E7%AB%AF/%E9%A1%B9%E7%9B%AE/" class="post-detail-header_category">
-              项目
+            <a href="/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="post-detail-header_category">
+              工程化
             </a>
           
         </span>
@@ -613,38 +613,157 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <meta name="referrer" content="no-referrer" />
-
-<p>**概览：</p>
+        <p><a name="CshLW"></a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>某些项目在进行私有化部署的时候遇到了一些问题：</p>
 <ol>
-<li><strong>Marktext：</strong>笔记应用<br />2. <strong>YesPlayMusic：</strong>第三方网易云播放器<br />3. <strong>PicGo：</strong>图片上传应用<br />4 . <strong>PPTist：</strong>在线 PPT 应用<br />5. <strong>vue2-elm：</strong>仿饿了么<br />6. <strong>vue-element-admin：</strong>后台管理系统<br />7. <strong>Cider：</strong>Apple Music 播放器<br />8. <strong>newbee-mall-vue3-app：</strong>商城及后台管理系统</li>
+<li>内网隔离环境，一些 npm 包需要先下载到 u 盘再拷贝到对应的机器上进行安装，安装起来很麻烦。</li>
+<li>测试环境下，代码和机器配置调试好了，部署到线上机器的时候却出现了问题。</li>
+<li>线上机器迁移的时候，又需要在新的机器上进行机器配置了调试，等于又把之前要做的事情重来一遍。</li>
+<li>在有部署文档的情况下交给其他人去给不同的用户部署的时候，自己还需要一直盯着，不然出问题了其他人也不一定能解决。比如说在这个机器上有些依赖装不上等问题。自己深陷其中，无法自拔。</li>
 </ol>
-<p><a name="JjHko"></a></p>
-<h2 id="1-Marktext"><a href="#1-Marktext" class="headerlink" title="1. Marktext"></a>1. Marktext</h2><p>Marktext 是一个简单而优雅的开源 Markdown 编辑器，专注于速度和可用性，适用于 Linux、macOS 和 Windows。其支持实时预览、Markdown 扩展、输出 HTML 和 PDF 文件，主题切换、多种编辑模式、直接从剪贴板粘贴图像等功能。</p>
-<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655046933104-008a03e3-1e74-4e74-af7e-e527f7f4c4df.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655046933104-008a03e3-1e74-4e74-af7e-e527f7f4c4df.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="IXJID"></a></p>
-<h2 id="2-YesPlayMusic"><a href="#2-YesPlayMusic" class="headerlink" title="2. YesPlayMusic"></a>2. YesPlayMusic</h2><p>YesPlayMusic 是一个高颜值的第三方网易云播放器，使用 Vue.js 全家桶开发。可以使用网易云账号登录（扫码&#x2F;手机&#x2F;邮箱登录），支持 MV 播放、歌词显示、每日推荐歌曲、每日自动签到、Light&#x2F;Dark Mode 自动切换、Touch Bar、音乐云盘、定义快捷键和全局快捷键等功能。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655047151049-eaaea59f-a749-4215-a392-5a289dffda12.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655047151049-eaaea59f-a749-4215-a392-5a289dffda12.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="sEWFq"></a></p>
-<h2 id="3-PicGo"><a href="#3-PicGo" class="headerlink" title="3. PicGo"></a>3. PicGo</h2><p>PicGo 是一个用于快速上传图片并获取图片 URL 链接的工具，支持多种图床、拖拽图片上传、图片预览、上传图片后自动复制链接到剪切板、自定义复制到表格的链接格式、支持快捷键、支持通过发送 HTTP 请求调用 PicGo 上传等功能。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655047478503-81bd384b-af15-460b-b8ad-b08d308cbc56.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655047478503-81bd384b-af15-460b-b8ad-b08d308cbc56.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="qC0p3"></a></p>
-<h2 id="4-PPTist"><a href="#4-PPTist" class="headerlink" title="4. PPTist"></a>4. PPTist</h2><p>PPTist 是一个基于 Vue3.x + TypeScript 的在线演示文稿（幻灯片）应用，还原了大部分 Office PowerPoint 常用功能，支持 文字、图片、形状、线条、图表、表格、视频、音频、公式 几种最常用的元素类型，每一种元素都拥有高度可编辑能力，同时支持丰富的快捷键和右键菜单，支持导出本地 PPTX 文件，支持移动端基础编辑和预览，支持 PWA。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655049422986-298118aa-73ca-468c-9d6f-c60ce56c6192.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655049422986-298118aa-73ca-468c-9d6f-c60ce56c6192.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="jHShP"></a></p>
-<h2 id="5-vue2-elm"><a href="#5-vue2-elm" class="headerlink" title="5. vue2-elm"></a>5. vue2-elm</h2><p>vue2-elm 是一个基于 vue2 + vuex 构建一个具有 45 个页面的仿饿了么的大型单页面应用，涉及注册、登录、商品展示、购物车、下单等，是一个完整的流程。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655046524754-904daab9-fb3c-4b6b-b43b-36b2a113575a.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655046524754-904daab9-fb3c-4b6b-b43b-36b2a113575a.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="ELpnp"></a></p>
-<h2 id="6-vue-element-admin"><a href="#6-vue-element-admin" class="headerlink" title="6. vue-element-admin"></a>6. vue-element-admin</h2><p>vue-element-admin 是一个后台前端解决方案，它基于 vue 和 element-ui 实现。它使用了最新的前端技术栈，内置了 i18n 国际化解决方案，动态路由，权限验证，提炼了典型的业务模型，提供了丰富的功能组件。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655046875319-243ad987-72d0-4f78-a678-dcbda8af87db.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655046875319-243ad987-72d0-4f78-a678-dcbda8af87db.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="yJiLM"></a></p>
-<h2 id="7-Cider"><a href="#7-Cider" class="headerlink" title="7. Cider"></a>7. Cider</h2><p>Cider 是一个基于 Electron 和 Vue.js 的全新跨平台 Apple Music 体验，从头开始编写，同时兼顾性能和视觉效果。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655048457027-5b03b7d1-6310-49c3-a904-67349051dcf8.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655048457027-5b03b7d1-6310-49c3-a904-67349051dcf8.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="JWA2G"></a></p>
-<h2 id="8-newbee-mall-vue3-app"><a href="#8-newbee-mall-vue3-app" class="headerlink" title="8. newbee-mall-vue3-app"></a>8. newbee-mall-vue3-app</h2><p>newbee-mall 项目是集电商，包括 newbee-mall 商城系统及 newbee-mall-admin 后台管理系统，基于 Spring Boot 2.X 和商城 Vue 3 以及相关技术栈开发。前台系统包含首页门户、商品分类新品上线、首页轮播、商品推荐、商品搜索、商品、购物车、订单结算、订单展示流程、订单管理、会员中心、帮助中心等模块。后台管理系统包含数据面板、播图管理、商品管理、订单管理、会员管理、分类管理、设置等模块。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655049066118-27c85460-d3d9-4960-b0a8-41226df7d9f1.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1655049066118-27c85460-d3d9-4960-b0a8-41226df7d9f1.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p><br />那么面对这些问题，有没有办法可以解决呢？<br />答案是：使用 Docker 容器部署。</p>
+<p><a name="Uiq1R"></a></p>
+<h1 id="什么是-Docker"><a href="#什么是-Docker" class="headerlink" title="什么是 Docker?"></a>什么是 Docker?</h1><p>Docker 容器技术是一种轻量级的虚拟化解决方案，它通过将应用程序及其依赖项打包在一个独立的容器中，实现了应用程序的跨平台部署。Docker 容器技术具有以下特点：</p>
+<ol>
+<li>轻量级：Docker 容器技术无需额外的虚拟化层，因此具有较低的资源开销。</li>
+<li>可移植性：Docker 容器可以将应用程序及其依赖项打包在一起，实现跨平台的部署。</li>
+<li>隔离性：Docker 容器之间相互隔离，保证了应用程序的安全性和稳定性。</li>
+<li>版本控制：Docker 容器可以使用版本控制系统进行管理，便于追踪和回滚。</li>
+</ol>
+<p><a name="pI8xI"></a></p>
+<h1 id="使用-Docker-有什么好处？"><a href="#使用-Docker-有什么好处？" class="headerlink" title="使用 Docker 有什么好处？"></a>使用 Docker 有什么好处？</h1><p>在有 Docker 的环境中，可以将你的镜像放到其中运行，只需要简单的几行命令，你的项目就可以跑起来了。而且可以保证同个镜像的内置环境是一样的，避免了类似测试环境可以到线上环境就不行的情况。<br><a name="e85zJ"></a></p>
+<h2 id="一、传统的项目私有化部署方式"><a href="#一、传统的项目私有化部署方式" class="headerlink" title="一、传统的项目私有化部署方式"></a>一、传统的项目私有化部署方式</h2><p><a name="J2l8x"></a></p>
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><ul>
+<li>服务器</li>
+<li>nignx 配置</li>
+<li>build&#x3D;&gt; 产物，放入指定文件夹</li>
+<li>启动 node 服务<br><a name="dCebk"></a></li>
+</ul>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
+<li>服务器</li>
+<li>nignx 配置</li>
+<li>build&#x3D;&gt; 产物，放入指定文件夹<br><a name="leF5Q"></a></li>
+</ul>
+<h3 id="问题点"><a href="#问题点" class="headerlink" title="问题点"></a>问题点</h3><ol>
+<li>部署的人需要对前端有一定的了解</li>
+<li>裸机，局域网，部署的耗时都比较长</li>
+<li>迁移的时候容易出错</li>
+<li>需要进行新的私有化部署时还得重来一次</li>
+</ol>
+<p><a name="WEQPU"></a></p>
+<h2 id="二、使用-Docker-容器部署"><a href="#二、使用-Docker-容器部署" class="headerlink" title="二、使用 Docker 容器部署"></a>二、使用 Docker 容器部署</h2><ol>
+<li>提供产物从数量上来看变少，只用提供镜像即可。</li>
+<li>迁移方便部署人不需要关心镜像内部逻辑，前端人员可以解放出来。</li>
+<li>降低出错率。</li>
+</ol>
+<p><a name="V3Dzn"></a></p>
+<h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><p>这里简要地介绍一些概念，不会太深入，有需要的同学可以自行研究。</p>
+<p><a name="EhwVU"></a></p>
+<h2 id="一、镜像"><a href="#一、镜像" class="headerlink" title="一、镜像"></a>一、镜像</h2><p>Docker 镜像（Image），就相当于是一个 root 文件系统。比如官方镜像 ubuntu:16.04 就包含了完整的一套 Ubuntu16.04 最小系统的 root 文件系统。启动一个容器，需要先有一个镜像。</p>
+<p><a name="Wcb0d"></a></p>
+<h2 id="二、容器"><a href="#二、容器" class="headerlink" title="二、容器"></a>二、容器</h2><p>镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。<br />容器正常启动之后，就相当于你的项目跑起来了。</p>
+<p><a name="WVgvx"></a></p>
+<h2 id="三、镜像仓库"><a href="#三、镜像仓库" class="headerlink" title="三、镜像仓库"></a>三、镜像仓库</h2><p>仓库（Repository）：仓库可看成一个代码控制中心，用来保存镜像。类似 npm 包仓库一样，你可以从上面下载其他人上传的镜像，或者上传自己的镜像供其他人使用。</p>
+<p><a name="NMVcd"></a></p>
+<h1 id="如何使用-Docker-容器来部署项目呢？"><a href="#如何使用-Docker-容器来部署项目呢？" class="headerlink" title="如何使用 Docker 容器来部署项目呢？"></a>如何使用 Docker 容器来部署项目呢？</h1><p><a name="xYmJU"></a></p>
+<h2 id="一、制作镜像"><a href="#一、制作镜像" class="headerlink" title="一、制作镜像"></a>一、制作镜像</h2><p>Dockerfile 是一个文本文件，其内包含了一条条的 指令（Instruction），每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。<br />一个很简单的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">FROM node:lts-alpine AS builder</span><br><span class="line">WORKDIR /home/node/app</span><br><span class="line">COPY front .</span><br><span class="line">COPY .yarnrc .</span><br><span class="line">RUN yarn --registry=https://registry.npm.taobao.org &amp;&amp; yarn build</span><br><span class="line"></span><br><span class="line">FROM nginx:stable-alpine</span><br><span class="line">WORKDIR /usr/share/nginx/html</span><br><span class="line">COPY --from=builder /home/node/app/dist .</span><br><span class="line">COPY front/nginx.conf /etc/nginx/conf.d/default.conf</span><br><span class="line">COPY front/ssl /etc/nginx/ssl</span><br><span class="line">EXPOSE 80 443</span><br></pre></td></tr></table></figure>
+
+<p><a name="UkyBo"></a></p>
+<h3 id="FROM-指定基础镜像"><a href="#FROM-指定基础镜像" class="headerlink" title="FROM 指定基础镜像"></a>FROM 指定基础镜像</h3><p>所谓定制镜像，那一定是以一个镜像为基础，在其上进行定制。就比如说我们的项目依赖于 node 环境，那么我们可以基于一个 node 镜像，再进行修改，基础镜像是必须指定的。而 FROM 就是指定基础镜像，因此一个 Dockerfile 中 FROM 是必备的指令，并且必须是第一条指令。<br><a name="CnHWT"></a></p>
+<h3 id="RUN-执行命令"><a href="#RUN-执行命令" class="headerlink" title="RUN 执行命令"></a>RUN 执行命令</h3><p>RUN 指令是用来执行命令行命令的。由于命令行的强大能力，RUN 指令在定制镜像时是最常用的指令之一，其格式有两种：</p>
+<ul>
+<li>shell 格式：RUN &lt;命令&gt;，就像直接在命令行中输入的命令一样。刚才写的 Dockerfile 中的 RUN 指令就是这种格式</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN echo &#x27;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&#x27; &gt; /usr/share/nginx/html/index.html</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>exec 格式：RUN [“可执行文件”, “参数 1”, “参数 2”]，这更像是函数调用中的格式。<br />就比如说我们需要去复制文件，安装依赖等。<br><a name="WcRVm"></a></li>
+</ul>
+<h3 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h3><p>在 Dockerfile 文件所在目录执行：$ docker build -t nginx:v3 .<br />这里我们使用了 docker build 命令进行镜像构建。其格式为：<br />构建完成之后，咱们就可以通过镜像来启动容器了，也就是把咱们的项目跑起来。</p>
+<p><a name="dCNum"></a></p>
+<h2 id="二、Docker-容器之间的互连"><a href="#二、Docker-容器之间的互连" class="headerlink" title="二、Docker 容器之间的互连"></a>二、Docker 容器之间的互连</h2><p>容器启动起来之后，咱们发现访问前端容器里的页面，接口请求 404 了。无法正确访问到服务端的容器上。这是为什么呢？因为每个容器是相互隔离的，容器内部的网络环境也是独立的，所以容器 test1 通过 127.0.0.1+端口号是无法直接访问到容器 test2 里的。这时候该怎么办呢？可以使用自定义的 Docker 网络来连接多个容器</p>
+<p>随着 Docker 网络的完善，强烈建议大家将容器加入自定义的 Docker 网络来连接多个容器，而不是使用–link 参数。<br><a name="syf7r"></a></p>
+<h3 id="新建网络"><a href="#新建网络" class="headerlink" title="新建网络"></a>新建网络</h3><p>下面先创建一个新的 Docker 网络。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker network create -d bridge my-net</span><br></pre></td></tr></table></figure>
+
+<p>-d 参数指定 Docker 网络类型，有 bridge overlay。其中 overlay 网络类型用于 Swarm mode。<br><a name="nDJxj"></a></p>
+<h3 id="连接容器"><a href="#连接容器" class="headerlink" title="连接容器"></a>连接容器</h3><p>运行一个容器并连接到新建的 my-net 网络</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it --rm --name busybox1 --network my-net busybox sh</span><br></pre></td></tr></table></figure>
+
+<p>打开新的终端，再运行一个容器并加入到 my-net 网络</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it --rm --name busybox2 --network my-net busybox sh</span><br></pre></td></tr></table></figure>
+
+<p>再打开一个新的终端查看容器信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ docker container ls</span><br><span class="line"></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">b47060aca56b        busybox             &quot;sh&quot;                11 minutes ago      Up 11 minutes                           busybox2</span><br><span class="line">8720575823ec        busybox             &quot;sh&quot;                16 minutes ago      Up 16 minutes                           busybox1</span><br></pre></td></tr></table></figure>
+
+<p>下面通过 ping 来证明 busybox1 容器和 busybox2 容器建立了互联关系。在 busybox1 容器输入以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ # ping busybox2</span><br><span class="line">PING busybox2 (172.19.0.3): 56 data bytes</span><br><span class="line">64 bytes from 172.19.0.3: seq=0 ttl=64 time=0.072 ms</span><br><span class="line">64 bytes from 172.19.0.3: seq=1 ttl=64 time=0.118 ms</span><br></pre></td></tr></table></figure>
+
+<p>用 ping 来测试连接 busybox2 容器，它会解析成 172.19.0.3。同理在 busybox2 容器执行 ping busybox1，也会成功连接到。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ # ping busybox1</span><br><span class="line">PING busybox1 (172.19.0.2): 56 data bytes</span><br><span class="line">64 bytes from 172.19.0.2: seq=0 ttl=64 time=0.064 ms</span><br><span class="line">64 bytes from 172.19.0.2: seq=1 ttl=64 time=0.143 ms</span><br></pre></td></tr></table></figure>
+
+<p>这样，busybox1 容器和 busybox2 容器建立了互联关系。<br><a name="Pe8Yl"></a></p>
+<h2 id="三、导出镜像"><a href="#三、导出镜像" class="headerlink" title="三、导出镜像"></a>三、导出镜像</h2><p>通过 使用自定义 Docker 网络，咱们可以实现 Docker 容器之间的互联了。<br />咱们在自己的机器上调通之后，怎么在其他的机器上进行部署呢？</p>
+<ol>
+<li>如果在公司内部有私有的 Docker 镜像仓库，我们可以把构建好的镜像上传至私有仓库，然后再从测试&#x2F;线上的机器拉取对应的镜像即可，启动容器即可。</li>
+<li>在没有私有的 Docker 镜像仓库的情况下，可以将咱们的镜像进行导出，导出之后再拷贝到目标的机器上进行导入，然后启动容器。</li>
+</ol>
+<p><a name="ArHby"></a></p>
+<h3 id="如何导出镜像"><a href="#如何导出镜像" class="headerlink" title="如何导出镜像"></a>如何导出镜像</h3><p>一、docker save 是用来将一个或多个 image 打包保存的工具。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save -o images.tar postgres:9.6  mongo:3.4</span><br></pre></td></tr></table></figure>
+
+<p>二、docker export 是用来将 container 的文件系统进行打包的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker export  -o postgres-export.tar postgres</span><br></pre></td></tr></table></figure>
+
+<p>两者之间有什么区别呢：</p>
+<ul>
+<li>docker save 保存的是镜像（image），docker export 保存的是容器（container）；</li>
+<li>docker load 用来载入镜像包，docker import 用来载入容器包，但两者都会恢复为镜像；*docker load 不能对载入的镜像重命名，而 docker import 可以为镜像指定新名称。</li>
+</ul>
+<p>docker save 的应用场景是，如果你的应用是使用 docker-compose.yml 编排的多个镜像组合，但你要部署的客户服务器并不能连外网。这时，你可以使用 docker save 将用到的镜像打个包，然后拷贝到客户服务器上使用 docker load 载入。</p>
+<p>docker export 的应用场景主要用来制作基础镜像，比如你从一个 ubuntu 镜像启动一个容器，然后安装一些软件和进行一些设置后，使用 docker export 保存为一个基础镜像。然后，把这个镜像分发给其他人使用，比如作为基础的开发环境。</p>
+<p><a name="zxt8H"></a></p>
+<h2 id="四、导入镜像"><a href="#四、导入镜像" class="headerlink" title="四、导入镜像"></a>四、导入镜像</h2><p><br />一、使用 docker import 命令则可将这个镜像文件导入进来（跟 docker export 配对使用）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker import /path/to/latest.tar</span><br></pre></td></tr></table></figure>
+
+<p>二、使用 docker load 命令则可将这个镜像文件载入进来（跟 docker save 配对使用）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i /path/to/fedora-latest.tar</span><br></pre></td></tr></table></figure>
+
+<p><a name="HkiDg"></a></p>
+<h2 id="五、启动容器"><a href="#五、启动容器" class="headerlink" title="五、启动容器"></a>五、启动容器</h2><p><br />假设我们已经导入了服务端镜像 my-server 以及前端镜像 my-front，我们该如何启动呢？<br />首先我们需要先创建一个网络，让容器具备互联的基础：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create -d bridge my-net</span><br></pre></td></tr></table></figure>
+
+<p>然后，分别启动一下我们的服务端和前端容器。</p>
+<ul>
+<li>服务端启动：docker run -d -p 8360:8360 –network my-net –network-alias myserver my-server</li>
+<li>web 端启动 docker run -d -p 8080:80 –network my-net –network-alias myfront my-front</li>
+</ul>
+<p><a name="b7zIB"></a></p>
+<h1 id="真实场景下的部署体验感觉"><a href="#真实场景下的部署体验感觉" class="headerlink" title="真实场景下的部署体验感觉"></a>真实场景下的部署体验感觉</h1><p><a name="SYXBI"></a></p>
+<h2 id="一、传统模式下的部署"><a href="#一、传统模式下的部署" class="headerlink" title="一、传统模式下的部署"></a>一、传统模式下的部署</h2><p><br />传统的部署模式下，我们需要挨个去安装各种各样的环境：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/png/1548284/1710208051388-a874e66d-3e92-4cd8-9bb6-8d09ffe531d0.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/png/1548284/1710208051388-a874e66d-3e92-4cd8-9bb6-8d09ffe531d0.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>安装完成之后，再拷贝相关的代码以及配置文件到目标的机器上：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/png/1548284/1710208051397-3c63fdec-f495-4013-bf5f-5be5ae48a2e8.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/png/1548284/1710208051397-3c63fdec-f495-4013-bf5f-5be5ae48a2e8.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p><a name="hOJtA"></a></p>
+<h2 id="二、使用-Docker-改造之后的部署"><a href="#二、使用-Docker-改造之后的部署" class="headerlink" title="二、使用 Docker 改造之后的部署"></a>二、使用 Docker 改造之后的部署</h2><ol>
+<li>安装 docker 环境</li>
+<li>创建 docker 网络：<code>sudo docker network create -d bridge my-net</code></li>
+<li>上传镜像文件（my-front.tar、my-server.tar）至服务器</li>
+<li>导入镜像：<code>sudo docker load -i my-front.tar</code>、<code>sudo docker load -i my-server.tar</code></li>
+<li>启动服务端容器：<code>docker run -d -p 8360:8360 --network wenjuan-net --network-alias myserver my-server</code></li>
+<li>启动系统前端容器：<code>sudo docker run -d -p 8080:80 --network my-net --network-alias myfront my-front</code></li>
+</ol>
+<p>在传统的模式下我们完成部署以及调试可能需要一天甚至更多的时间（不熟悉项目的情况下）。使用 Docker 容器部署之后，参照给定的文档，大概 10 分钟左右就可以完成部署了。我们再也不用担心测试环境和线上环境配置统一的问题了，只要使用的是同一个环境，那么它们的环境配置都是一样的。而且交给其他人去进行部署，也不用咱们时刻盯着了，只需几行简单的命令，项目就可以正常跑起来了。</p>
+<p><a name="QiHVS"></a></p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>通过 Docker 来进行私有化部署，可以大大缩减了部署的时间以及人力投入。在其他场景应用中，使用 Docker 容器部署也可以提高项目的开发效率以及项目的可维护性，比如：一些处于维护状态的老旧项目，经过无数代的流转连文档都没有了。一般都是能不动就不动，但是突然某一天需要进行项目的迁移，那可就头大了（想想看，你花费了很大的力气觉得已经迁移好了，却发现在哪个犄角旮旯里少了一个配置文件，这得有多崩溃）。如果说是通过 Docker 进行部署的，迁移的时候，基本上使用镜像进行重新部署以及配置好环境变量就可以了。</p>
+<p>这都是 Docker 的一些比较基本的使用方式，Docker 还有很多进阶的使用方式，如 docker-compose.yml 编排之类的，还需要去进行更深入的探索</p>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/%E5%89%8D%E7%AB%AF/" class="">
-              前端
-            </a>
-          
-            <a href="/tags/%E9%A1%B9%E7%9B%AE/" class="">
-              项目
-            </a>
-          
-            <a href="/tags/Vue/" class="">
-              Vue
+            <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="">
+              工程化
             </a>
           
         </div>
@@ -658,7 +777,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2023/06/30/frontend/collection/projects/vue-xiang-mu/" target="_blank" title="Vue项目">https://ywzzy.github.io/2023/06/30/frontend/collection/projects/vue-xiang-mu/</a>
+    <a href="/2024/04/25/frontend/engineering/ru-he-shi-yong-docker-ti-sheng-kai-fa-ji-bu-shu-ti-yan/" target="_blank" title="如何使用 Docker 提升开发及部署体验">https://ywzzy.github.io/2024/04/25/frontend/engineering/ru-he-shi-yong-docker-ti-sheng-kai-fa-ji-bu-shu-ti-yan/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -676,44 +795,22 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
-    </div>
-    <a href="/2023/06/30/frontend/collection/projects/shu-ju-ke-shi-hua-da-ping-xiang-mu/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">数据可视化大屏项目</div>
-      </div>
-      
-      <!-- <div class="content">
-        
-
-DataVDataV 是一个基于 Vue 的数据可视化组件库，Vue 数据可视化组件库（类似阿里 DataV，大屏数
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/94bb766b0200c27da109d.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/94bb766b0200c27da109d.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/6c9d9969e1b55a81a762c.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/6c9d9969e1b55a81a762c.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
     </div>
-    <a href="/2023/06/30/frontend/collection/projects/kua-ping-tai-zhuo-mian-xiang-mu/" class="post-nav-link">
+    <a href="/2024/04/24/frontend/monitor/ru-he-heng-liang-yi-ge-wang-ye-de-xing-neng/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">跨平台桌面项目</div>
+        <div class="title-text">如何衡量一个网页的性能</div>
       </div>
       <!-- <div class="content">
         
-
-全文概览：
-windows95：Electron 中的 Windows 95；2. drawio-desktop：基
+背景拥有一个良好用户体验的网页对于前端开发同学来说是一件必须做，持续做的一件事情，其中首屏的渲染尤为重要，因为用户与网
       </div> -->
     </a>
   </div>
@@ -844,7 +941,7 @@ windows95：Electron 中的 Windows 95；2. drawio-desktop：基
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Marktext"><span class="toc-text">1. Marktext</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-YesPlayMusic"><span class="toc-text">2. YesPlayMusic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-PicGo"><span class="toc-text">3. PicGo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-PPTist"><span class="toc-text">4. PPTist</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-vue2-elm"><span class="toc-text">5. vue2-elm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-vue-element-admin"><span class="toc-text">6. vue-element-admin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Cider"><span class="toc-text">7. Cider</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-newbee-mall-vue3-app"><span class="toc-text">8. newbee-mall-vue3-app</span></a></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Docker"><span class="toc-text">什么是 Docker?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Docker-%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84%EF%BC%9F"><span class="toc-text">使用 Docker 有什么好处？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BC%A0%E7%BB%9F%E7%9A%84%E9%A1%B9%E7%9B%AE%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F"><span class="toc-text">一、传统的项目私有化部署方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-text">服务端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF"><span class="toc-text">前端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E7%82%B9"><span class="toc-text">问题点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-Docker-%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2"><span class="toc-text">二、使用 Docker 容器部署</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-text">基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%95%9C%E5%83%8F"><span class="toc-text">一、镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%B9%E5%99%A8"><span class="toc-text">二、容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93"><span class="toc-text">三、镜像仓库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-Docker-%E5%AE%B9%E5%99%A8%E6%9D%A5%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%91%A2%EF%BC%9F"><span class="toc-text">如何使用 Docker 容器来部署项目呢？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%B6%E4%BD%9C%E9%95%9C%E5%83%8F"><span class="toc-text">一、制作镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FROM-%E6%8C%87%E5%AE%9A%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F"><span class="toc-text">FROM 指定基础镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RUN-%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">RUN 执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="toc-text">构建镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Docker-%E5%AE%B9%E5%99%A8%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%92%E8%BF%9E"><span class="toc-text">二、Docker 容器之间的互连</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E7%BD%91%E7%BB%9C"><span class="toc-text">新建网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%AE%B9%E5%99%A8"><span class="toc-text">连接容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AF%BC%E5%87%BA%E9%95%9C%E5%83%8F"><span class="toc-text">三、导出镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AF%BC%E5%87%BA%E9%95%9C%E5%83%8F"><span class="toc-text">如何导出镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AF%BC%E5%85%A5%E9%95%9C%E5%83%8F"><span class="toc-text">四、导入镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8"><span class="toc-text">五、启动容器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9C%9F%E5%AE%9E%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%93%E9%AA%8C%E6%84%9F%E8%A7%89"><span class="toc-text">真实场景下的部署体验感觉</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BC%A0%E7%BB%9F%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E9%83%A8%E7%BD%B2"><span class="toc-text">一、传统模式下的部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-Docker-%E6%94%B9%E9%80%A0%E4%B9%8B%E5%90%8E%E7%9A%84%E9%83%A8%E7%BD%B2"><span class="toc-text">二、使用 Docker 改造之后的部署</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-text">结语</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
