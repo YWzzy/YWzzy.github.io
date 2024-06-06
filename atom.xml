@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2024-06-06T02:16:32.149Z</updated>
+  <updated>2024-06-06T02:48:31.895Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>21 个让 React 项目更整洁的最佳实践</title>
+    <link href="https://ywzzy.github.io/2024/06/06/frontend/react/21-ge-rang-react-xiang-mu-geng-zheng-ji-de-zui-jia-shi-jian/"/>
+    <id>https://ywzzy.github.io/2024/06/06/frontend/react/21-ge-rang-react-xiang-mu-geng-zheng-ji-de-zui-jia-shi-jian/</id>
+    <published>2024-06-06T02:48:21.000Z</published>
+    <updated>2024-06-06T02:48:31.895Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文转载自：&lt;a href=&quot;https://mp.weixin.qq.com/s/xvAJtv1RyOq7rBwaq_tm0Q&quot;&gt;https://mp.weixin.qq.com/s/xvAJtv1RyOq7rBwaq_tm0Q&lt;/a&gt;&lt;br&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
+    
+    
+    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
+    
+  </entry>
   
   <entry>
     <title>如何使用 Docker 提升开发及部署体验</title>
@@ -545,33 +572,6 @@
 
 &lt;p&gt;&lt;a name=&quot;YdgqM&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;1-纯函数&quot;&gt;&lt;a href=&quot;#1-纯函数&quot; class=&quot;headerlink&quot; title=&quot;1.</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
-    
-    
-    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React组件通信</title>
-    <link href="https://ywzzy.github.io/2023/07/26/frontend/react/react-zu-jian-tong-xin/"/>
-    <id>https://ywzzy.github.io/2023/07/26/frontend/react/react-zu-jian-tong-xin/</id>
-    <published>2023-07-26T07:12:49.000Z</published>
-    <updated>2024-04-19T07:23:51.283Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;</summary>
         
       
     
