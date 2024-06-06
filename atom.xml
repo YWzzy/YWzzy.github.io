@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2024-06-06T02:48:31.895Z</updated>
+  <updated>2024-06-06T03:20:07.974Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用 big.js 解决 js 小数精度问题</title>
+    <link href="https://ywzzy.github.io/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/"/>
+    <id>https://ywzzy.github.io/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/</id>
+    <published>2024-06-08T05:19:58.000Z</published>
+    <updated>2024-06-06T03:20:07.974Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;JT07H&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;一、背景&quot;&gt;&lt;a href=&quot;#一、背景&quot; class=&quot;headerlink&quot; title=&quot;一、背景&quot;&gt;&lt;/a&gt;一、背景&lt;/h2&gt;&lt;p&gt;当涉及到浮点数计算时，js 中的精度丢失问题, 是由于使用</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="解决方案" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="解决方案" scheme="https://ywzzy.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>21 个让 React 项目更整洁的最佳实践</title>
@@ -542,36 +572,6 @@
     <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
 
 &lt;p&gt;在 React 设计模式中，最重要、也是最为大家所津津乐道的几个模式分别是：&lt;br /&gt;● 有状态组件与无状态组件&lt;br /&gt;● 高阶组件（HOC）&lt;br /&gt;● Render</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
-    
-    
-    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React 纯函数组件</title>
-    <link href="https://ywzzy.github.io/2023/07/27/frontend/react/react-chun-han-shu-zu-jian/"/>
-    <id>https://ywzzy.github.io/2023/07/27/frontend/react/react-chun-han-shu-zu-jian/</id>
-    <published>2023-07-27T02:12:49.000Z</published>
-    <updated>2024-04-19T07:23:51.594Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;a name=&quot;YdgqM&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-纯函数&quot;&gt;&lt;a href=&quot;#1-纯函数&quot; class=&quot;headerlink&quot; title=&quot;1.</summary>
         
       
     
