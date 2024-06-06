@@ -20,7 +20,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>VS Code 快捷方式 | 梨逍遥</title>
+  <title>如何使用 Docker 提升开发及部署体验 | 梨逍遥</title>
 
   <link rel="icon" type="image/gif" href="https://64.media.tumblr.com/a67a7238cd2833d859a7ea4cfa4fb8a4/0e0717e3c39dfac5-0c/s500x750/94ba555d15a68a38482896903d15494df88ff9b1.gif">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -562,21 +562,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://ossk.cc/file/7ce62090187ed773bbce0.jpg')">
+  background-position: center center;position: relative;background-image:url('https://ossk.cc/file/475815b42a04ce4406df8.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        VS Code 快捷方式
+        如何使用 Docker 提升开发及部署体验
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2023-07-03 |
+          <i class="fas fa-calendar"></i> Published in：2024-05-12 |
         </span>
       
 
@@ -584,8 +584,12 @@
         <span class="post-detail-header_categories">
           <i class="iconfont iconbookmark1"></i> category：
           
-            <a href="/categories/%E6%8A%80%E5%B7%A7/" class="post-detail-header_category">
-              技巧
+            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-detail-header_category">
+              前端
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="post-detail-header_category">
+              工程化
             </a>
           
         </span>
@@ -609,126 +613,157 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <meta name="referrer" content="no-referrer" />
+        <p><a name="CshLW"></a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>某些项目在进行私有化部署的时候遇到了一些问题：</p>
+<ol>
+<li>内网隔离环境，一些 npm 包需要先下载到 u 盘再拷贝到对应的机器上进行安装，安装起来很麻烦。</li>
+<li>测试环境下，代码和机器配置调试好了，部署到线上机器的时候却出现了问题。</li>
+<li>线上机器迁移的时候，又需要在新的机器上进行机器配置了调试，等于又把之前要做的事情重来一遍。</li>
+<li>在有部署文档的情况下交给其他人去给不同的用户部署的时候，自己还需要一直盯着，不然出问题了其他人也不一定能解决。比如说在这个机器上有些依赖装不上等问题。自己深陷其中，无法自拔。</li>
+</ol>
+<p><br />那么面对这些问题，有没有办法可以解决呢？<br />答案是：使用 Docker 容器部署。</p>
+<p><a name="Uiq1R"></a></p>
+<h1 id="什么是-Docker"><a href="#什么是-Docker" class="headerlink" title="什么是 Docker?"></a>什么是 Docker?</h1><p>Docker 容器技术是一种轻量级的虚拟化解决方案，它通过将应用程序及其依赖项打包在一个独立的容器中，实现了应用程序的跨平台部署。Docker 容器技术具有以下特点：</p>
+<ol>
+<li>轻量级：Docker 容器技术无需额外的虚拟化层，因此具有较低的资源开销。</li>
+<li>可移植性：Docker 容器可以将应用程序及其依赖项打包在一起，实现跨平台的部署。</li>
+<li>隔离性：Docker 容器之间相互隔离，保证了应用程序的安全性和稳定性。</li>
+<li>版本控制：Docker 容器可以使用版本控制系统进行管理，便于追踪和回滚。</li>
+</ol>
+<p><a name="pI8xI"></a></p>
+<h1 id="使用-Docker-有什么好处？"><a href="#使用-Docker-有什么好处？" class="headerlink" title="使用 Docker 有什么好处？"></a>使用 Docker 有什么好处？</h1><p>在有 Docker 的环境中，可以将你的镜像放到其中运行，只需要简单的几行命令，你的项目就可以跑起来了。而且可以保证同个镜像的内置环境是一样的，避免了类似测试环境可以到线上环境就不行的情况。<br><a name="e85zJ"></a></p>
+<h2 id="一、传统的项目私有化部署方式"><a href="#一、传统的项目私有化部署方式" class="headerlink" title="一、传统的项目私有化部署方式"></a>一、传统的项目私有化部署方式</h2><p><a name="J2l8x"></a></p>
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><ul>
+<li>服务器</li>
+<li>nignx 配置</li>
+<li>build&#x3D;&gt; 产物，放入指定文件夹</li>
+<li>启动 node 服务<br><a name="dCebk"></a></li>
+</ul>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><ul>
+<li>服务器</li>
+<li>nignx 配置</li>
+<li>build&#x3D;&gt; 产物，放入指定文件夹<br><a name="leF5Q"></a></li>
+</ul>
+<h3 id="问题点"><a href="#问题点" class="headerlink" title="问题点"></a>问题点</h3><ol>
+<li>部署的人需要对前端有一定的了解</li>
+<li>裸机，局域网，部署的耗时都比较长</li>
+<li>迁移的时候容易出错</li>
+<li>需要进行新的私有化部署时还得重来一次</li>
+</ol>
+<p><a name="WEQPU"></a></p>
+<h2 id="二、使用-Docker-容器部署"><a href="#二、使用-Docker-容器部署" class="headerlink" title="二、使用 Docker 容器部署"></a>二、使用 Docker 容器部署</h2><ol>
+<li>提供产物从数量上来看变少，只用提供镜像即可。</li>
+<li>迁移方便部署人不需要关心镜像内部逻辑，前端人员可以解放出来。</li>
+<li>降低出错率。</li>
+</ol>
+<p><a name="V3Dzn"></a></p>
+<h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><p>这里简要地介绍一些概念，不会太深入，有需要的同学可以自行研究。</p>
+<p><a name="EhwVU"></a></p>
+<h2 id="一、镜像"><a href="#一、镜像" class="headerlink" title="一、镜像"></a>一、镜像</h2><p>Docker 镜像（Image），就相当于是一个 root 文件系统。比如官方镜像 ubuntu:16.04 就包含了完整的一套 Ubuntu16.04 最小系统的 root 文件系统。启动一个容器，需要先有一个镜像。</p>
+<p><a name="Wcb0d"></a></p>
+<h2 id="二、容器"><a href="#二、容器" class="headerlink" title="二、容器"></a>二、容器</h2><p>镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。<br />容器正常启动之后，就相当于你的项目跑起来了。</p>
+<p><a name="WVgvx"></a></p>
+<h2 id="三、镜像仓库"><a href="#三、镜像仓库" class="headerlink" title="三、镜像仓库"></a>三、镜像仓库</h2><p>仓库（Repository）：仓库可看成一个代码控制中心，用来保存镜像。类似 npm 包仓库一样，你可以从上面下载其他人上传的镜像，或者上传自己的镜像供其他人使用。</p>
+<p><a name="NMVcd"></a></p>
+<h1 id="如何使用-Docker-容器来部署项目呢？"><a href="#如何使用-Docker-容器来部署项目呢？" class="headerlink" title="如何使用 Docker 容器来部署项目呢？"></a>如何使用 Docker 容器来部署项目呢？</h1><p><a name="xYmJU"></a></p>
+<h2 id="一、制作镜像"><a href="#一、制作镜像" class="headerlink" title="一、制作镜像"></a>一、制作镜像</h2><p>Dockerfile 是一个文本文件，其内包含了一条条的 指令（Instruction），每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。<br />一个很简单的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">FROM node:lts-alpine AS builder</span><br><span class="line">WORKDIR /home/node/app</span><br><span class="line">COPY front .</span><br><span class="line">COPY .yarnrc .</span><br><span class="line">RUN yarn --registry=https://registry.npm.taobao.org &amp;&amp; yarn build</span><br><span class="line"></span><br><span class="line">FROM nginx:stable-alpine</span><br><span class="line">WORKDIR /usr/share/nginx/html</span><br><span class="line">COPY --from=builder /home/node/app/dist .</span><br><span class="line">COPY front/nginx.conf /etc/nginx/conf.d/default.conf</span><br><span class="line">COPY front/ssl /etc/nginx/ssl</span><br><span class="line">EXPOSE 80 443</span><br></pre></td></tr></table></figure>
 
-<p>Visual Studio Code 是目前最流行、最常用的代码编辑器之一，它是开源的并且可以免费使用。它还提供对多种语言和框架的支持。</p>
-<p>注意，这些 Visual Studio Code 快捷方式取自于 VS Code 官方文档。如果某些快捷方式不起作用，可能是由于编辑器或文件格式中的快捷方式发生了变化，或者安装的扩展影响了该快捷方式。</p>
-<p><a name="KwLyN"></a></p>
-<h1 id="一、快捷导航"><a href="#一、快捷导航" class="headerlink" title="一、快捷导航"></a>一、快捷导航<br /><br /></h1><p><a name="NmgAY"></a></p>
-<h2 id="1-搜索文件"><a href="#1-搜索文件" class="headerlink" title="1. 搜索文件"></a>1. 搜索文件</h2><p>当需要搜索特定的文件，当项目很大时，就会耗费大量时间。即使已经知道文件在哪，使用这个快捷键也会很方便，可以轻松打开项目中的文件。<br />●<strong>Windows&#x2F;Linux:</strong> ctrl + P<br />●<strong>macOS:</strong> command + P</p>
-<p><a name="PHL1Z"></a></p>
-<h2 id="2-打开设置"><a href="#2-打开设置" class="headerlink" title="2. 打开设置"></a>2. 打开设置</h2><p>Visual Studio Code 有许多功能和设置，可以根据需要进行更改。此快捷键可以在必要时轻松地打开设置。<br />●<strong>Windows&#x2F;Linux</strong>:ctrl+,<br />●<strong>macOS</strong>: command + ,</p>
-<p><a name="KeI6S"></a></p>
-<h2 id="3-切换侧边栏"><a href="#3-切换侧边栏" class="headerlink" title="3. 切换侧边栏"></a>3. 切换侧边栏</h2><p>很多时候，我们需要更多空间来放置需要处理的文件。因此，此快捷键可以方便地在显示或隐藏侧边栏。<br />●<strong>Windows&#x2F;Linux</strong>:ctrl+B<br />●<strong>macOS</strong>: command + B</p>
-<p><a name="HHeDq"></a></p>
-<h2 id="4-导航选项卡"><a href="#4-导航选项卡" class="headerlink" title="4. 导航选项卡"></a>4. 导航选项卡</h2><p>当打开了许多选项卡并且需要在它们之间进行切换时，就可以使用这个快捷键，它会显示选项卡列表并在它们之间导航，我们可以选择要打开的选项卡。<br />●<strong>Windows&#x2F;Linux</strong>:ctrl+shift+tab<br />●<strong>macOS</strong>: control + shift + tab</p>
-<p><a name="fecjz"></a></p>
-<h2 id="5-导航选项卡组"><a href="#5-导航选项卡组" class="headerlink" title="5. 导航选项卡组"></a>5. 导航选项卡组</h2><p>Visual Studio Code 提供了创建选项卡组功能。选项卡组允许我们将选项卡分组，每个选项卡组会占屏幕的一部分。使用该快捷键可以在不同的选项卡组进行切换。如果在快捷方式中选择的选项卡组大于当前打开的组数，此快捷键就会创建一个新组。<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + 1 或 2 或 3<br />●<strong>macOS</strong>：command + 1 或 2 或 3</p>
-<p><a name="zGQkT"></a></p>
-<h2 id="6-打开终端"><a href="#6-打开终端" class="headerlink" title="6. 打开终端"></a>6. 打开终端</h2><p>在开发过程中，会经常使用终端。Visual Studio Code 允许我们在编辑器内打开终端窗口。这样就无需在编辑器和终端之间切换了，让我们可以专注于编辑器和代码。<br />●<strong>Windows&#x2F;Linux</strong>:ctrl+J<br />●<strong>macOS</strong>: command + J</p>
-<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643796979320-219205b2-8304-4828-9912-b0ab5312bcb2.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643796979320-219205b2-8304-4828-9912-b0ab5312bcb2.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
-<p><a name="bvbSQ"></a></p>
-<h2 id="7-打开命令面板"><a href="#7-打开命令面板" class="headerlink" title="7. 打开命令面板"></a>7. 打开命令面板</h2><p>我们可以在 Visual Studio Code 中执行许多命令。使用这个快捷键可以轻松打开命令面板。命令面板允许搜索可以使用的命令并执行它们。<br />●<strong>Windows&#x2F;Linux</strong>:ctrl+shift+P<br />●<strong>macOS</strong>: command + shift + P</p>
-<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643797013465-83a1b897-08a9-443c-8aa0-3463d22ea94f.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643797013465-83a1b897-08a9-443c-8aa0-3463d22ea94f.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
-<p><a name="tHIzO"></a></p>
-<h1 id="二、快捷选择"><a href="#二、快捷选择" class="headerlink" title="二、快捷选择"></a>二、快捷选择<br /><br /></h1><p>在开发过程中，经常需要在代码中进行选择，包括复制、剪切等操作。与其使用鼠标进行操作，不如使用键盘进行操作可以节省时间。这些快捷键专注于快速做出选择。</p>
-<p><a name="o1MsL"></a></p>
-<h2 id="1-选择当前行"><a href="#1-选择当前行" class="headerlink" title="1. 选择当前行"></a>1. 选择当前行</h2><p>可以使用这个快捷键来快速选择光标所在行的整行代码。<br />●<strong>Windows&#x2F;Linux</strong>:ctrl+L<br />●<strong>macOS</strong>: command + L</p>
-<p><a name="zt7TE"></a></p>
-<h2 id="2-当前选择"><a href="#2-当前选择" class="headerlink" title="2. 当前选择"></a>2. 当前选择</h2><p>使用此快捷键只需选中一次要查找的文本，就可以在文件中选中所有这个文本，这样就可以同时编辑这些文本了。<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + shift + L<br />●<strong>macOS</strong> : command + shift + L</p>
-<p><a name="N2awm"></a></p>
-<h2 id="3-当前单词"><a href="#3-当前单词" class="headerlink" title="3. 当前单词"></a>3. 当前单词</h2><p>此快捷键会执行与上面快捷键相同的操作，但无需选择任何内容。当光标放在一个词上时，按此快捷键就可以选择这个单词在当前文件中的所有的位置。<br />●<strong>Windows&#x2F;Linux</strong>:ctrl+F2<br />●<strong>macOS</strong>: command + F2 + fn</p>
-<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643798234089-47cc9d7e-a64f-45ba-b879-d3daa75f0480.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643798234089-47cc9d7e-a64f-45ba-b879-d3daa75f0480.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
-<p><a name="YJb2E"></a></p>
-<h2 id="4-选择直到单词的结尾"><a href="#4-选择直到单词的结尾" class="headerlink" title="4. 选择直到单词的结尾"></a>4. 选择直到单词的结尾</h2><p>选择代码的某部分时，可以移动和扩展此快捷方式的选择。可以使用右箭头或左箭头朝想要的方向前进。<br />●<strong>Windows&#x2F;Linux</strong> : shift + alt + → 或 ←<br />●<strong>macOS</strong> : shift + option + → 或 ←</p>
-<p><a name="mgcFX"></a></p>
-<h2 id="5-通过拖动鼠标选择多行代码"><a href="#5-通过拖动鼠标选择多行代码" class="headerlink" title="5. 通过拖动鼠标选择多行代码"></a>5. 通过拖动鼠标选择多行代码</h2><p>将光标拖过代码就会从头到尾选择每一行。但是也可以使用此快捷来选择部分代码行，但只能选择拖动的多行代码。<br />●<strong>Windows&#x2F;Linux</strong> : shift + alt + 拖动光标<br />●<strong>macOS</strong> : shift + option + 拖动光标</p>
-<p><a name="yeyY4"></a></p>
-<h2 id="6-使用箭头键选择多行代码"><a href="#6-使用箭头键选择多行代码" class="headerlink" title="6. 使用箭头键选择多行代码"></a>6. 使用箭头键选择多行代码</h2><p>使用该快捷键也可以执行上述操作，但无需使用鼠标，而是使用键盘上的箭头键。<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + shift + alt + → 或 ← 或 ↓ 或 ↑<br />●<strong>macOS</strong> : command + shift + option + → 或 ← 或 ↓ 或 ↑</p>
-<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643800279713-09959e79-a423-4d3b-bea1-47e7c8b58c98.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643800279713-09959e79-a423-4d3b-bea1-47e7c8b58c98.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="zOhP2"></a></p>
-<h1 id="三、快捷查找"><a href="#三、快捷查找" class="headerlink" title="三、快捷查找"></a>三、快捷查找<br /><br /></h1><p>所有编辑器都具有查找功能，以便可以在当前文件或多个文件中查找某些单词，例如函数或变量名称、短语或代码块等。下面就来看看查找功能相关的快捷键。</p>
-<p><a name="zb5oU"></a></p>
-<h2 id="1-结果导航"><a href="#1-结果导航" class="headerlink" title="1. 结果导航"></a>1. 结果导航</h2><p>可以使用此快捷键在文件中的查找结果之间进行移动。<br />●<strong>Windows&#x2F;Linux</strong>：F3<br />●<strong>macOS</strong>：F3 + fn</p>
-<p><a name="hFq6f"></a></p>
-<h2 id="2-选择多个结果"><a href="#2-选择多个结果" class="headerlink" title="2. 选择多个结果"></a>2. 选择多个结果</h2><p>如果想要修改多个搜索结果，就可以使用此快捷键在文件中选择查找结果中的多个内容，每次按下此键后都会选择一个结果，然后就会按搜索结果的顺序进行选中。<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + D<br />●<strong>macOS</strong> : command + D</p>
-<p><a name="lcbi3"></a></p>
-<h2 id="3-选择所有结果"><a href="#3-选择所有结果" class="headerlink" title="3. 选择所有结果"></a>3. 选择所有结果</h2><p>如果想使用查找功能对所有查找结果进行修改，则此快捷键就可以选择所有查找结果。<br />●<strong>Windows&#x2F;Linux</strong>:alt+enter<br />●<strong>macOS</strong>: option + enter</p>
-<p><a name="u6uqC"></a></p>
-<h1 id="四、代码导航"><a href="#四、代码导航" class="headerlink" title="四、代码导航"></a>四、代码导航<br /><br /></h1><p>随着文件或项目变得复杂，找到代码的某些部分就变得越来越困难。手动查找错误或转到某一行代码可能比较困难。下面这些快捷键就可以省去很多麻烦，让我们将更多时间投入到真正想做的事情上。</p>
-<p><a name="d9Tw2"></a></p>
-<h2 id="1-跳转指定行"><a href="#1-跳转指定行" class="headerlink" title="1. 跳转指定行"></a>1. 跳转指定行</h2><p>当遇到指定一行代码导致编译或运行时错误时，就可以使用该快捷键跳转到这一行代码，只需按下这个快捷键，输入代码行数，按下回车即可跳转到这行代码。当一个文件中代码特别多时，这个快捷键就非常有用。<br />●<strong>Windows&#x2F;Linux</strong>:ctrl+G<br />●<strong>macOS</strong>: control + G</p>
-<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643802227790-1d79f8aa-3758-4528-8e8d-ac66cc28592c.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643802227790-1d79f8aa-3758-4528-8e8d-ac66cc28592c.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
-<p><a name="LOr6R"></a></p>
-<h2 id="2-转到匹配的括号"><a href="#2-转到匹配的括号" class="headerlink" title="2. 转到匹配的括号"></a>2. 转到匹配的括号</h2><p>我们可能会需要查找匹配代码块的右括号。当文件很长时，就很困难了。使用此快捷键可以轻松找到当前块的右匹配括号。在 HTML 标签中，它可以移动到当前标签的末尾。<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + shift + &lt;br &#x2F;&gt;●<strong>macOS</strong> : command + shift + \</p>
-<p><a name="TQVcD"></a></p>
-<h2 id="3-折叠-x2F-展开代码块"><a href="#3-折叠-x2F-展开代码块" class="headerlink" title="3. 折叠&#x2F;展开代码块"></a>3. 折叠&#x2F;展开代码块</h2><p>在包含大量代码的文件时，我们可以折叠（隐藏）当前不关注的某个代码块，以便可以专注于其他内容。此快捷键就是用来折叠或展开代码块的。单击代码块中的任意位置，然后按以下键即可。<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + shift + [或]<br />●<strong>macOS</strong> : command + option + [或]</p>
-<p><a name="QY3Ks"></a></p>
-<h2 id="4-折叠-x2F-展开代码块和子代码块"><a href="#4-折叠-x2F-展开代码块和子代码块" class="headerlink" title="4. 折叠&#x2F;展开代码块和子代码块"></a>4. 折叠&#x2F;展开代码块和子代码块</h2><p>如果代码块包含子代码块怎么办？使用上面的命令将会折叠父代码块，但当父代码块展开时，子代码块将保持不变。如果需要折叠和展开一个代码块及其子代码块，可以使用此快捷键来完成。<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + K + [或]<br />●<strong>macOS</strong> : command + K + [或]</p>
-<p><a name="SJKQZ"></a></p>
-<h2 id="5-导航到错误和警告处"><a href="#5-导航到错误和警告处" class="headerlink" title="5. 导航到错误和警告处"></a>5. 导航到错误和警告处</h2><p>在代码中查找出现错误和警告的代码至关重要。此快捷键省去了滚动以找到确切问题的麻烦。它可以直接转到下一个错误或警告处。<br />●<strong>Windows&#x2F;Linux</strong>：F8<br />●<strong>macOS</strong>：F8 + fn</p>
-<p><a name="P5oU3"></a></p>
-<h1 id="五、移动光标"><a href="#五、移动光标" class="headerlink" title="五、移动光标"></a>五、移动光标<br /><br /></h1><p>在很多情况下，可能需要有多个光标，每个光标位于文件中的不同位置。这些快捷键有助于更轻松地使用多个光标进行移动。</p>
-<p><a name="fwnXo"></a></p>
-<h2 id="1-特定位置插入额外光标"><a href="#1-特定位置插入额外光标" class="headerlink" title="1. 特定位置插入额外光标"></a>1. 特定位置插入额外光标</h2><p>此键盘快捷键可以在文件中任何位置插入一个额外的光标。<br />●<strong>Windows&#x2F;Linux</strong> : alt + 鼠标点击位置<br />●<strong>macOS</strong>：option + 鼠标点击位置</p>
-<p><a name="dgeOZ"></a></p>
-<h2 id="2-上方或下方插入额外光标"><a href="#2-上方或下方插入额外光标" class="headerlink" title="2. 上方或下方插入额外光标"></a>2. 上方或下方插入额外光标</h2><p>插入光标的第二种方法是将其插入在当前光标位置的上方或下方。<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + alt +↓ 或 ↑<br />●<strong>macOS</strong> : command + option +↓ 或 ↑</p>
-<p><a name="cSgdv"></a></p>
-<h2 id="3-撤销光标插入"><a href="#3-撤销光标插入" class="headerlink" title="3. 撤销光标插入"></a>3. 撤销光标插入</h2><p>如果错误地插入了光标，或者不再需要在该位置插入光标怎么办？此快捷键可以撤消上次插入的光标。当插入多个光标时，这个快键键将非常有用，因为它可以将其他光标保持在原位并删除最后插入的光标。<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + U<br />●<strong>macOS</strong> : command + U</p>
-<p><a name="o6TFS"></a></p>
-<h2 id="4-在选中代码的末尾插入光标"><a href="#4-在选中代码的末尾插入光标" class="headerlink" title="4. 在选中代码的末尾插入光标"></a>4. 在选中代码的末尾插入光标</h2><p>使用该快捷键可以在选中代码的每一行的最后插入光标。<br />●<strong>Windows&#x2F;Linux</strong> : shift + alt + I<br />●<strong>macOS</strong> : shift + option + I</p>
-<p><a name="ojnxK"></a></p>
-<h1 id="六、快捷编码"><a href="#六、快捷编码" class="headerlink" title="六、快捷编码"></a>六、快捷编码<br /><br /></h1><p><a name="eWoAa"></a></p>
-<h2 id="1-移动代码行或代码块"><a href="#1-移动代码行或代码块" class="headerlink" title="1. 移动代码行或代码块"></a>1. 移动代码行或代码块</h2><p>很多时候需要将一条行或多行代码从一个位置移动到另一个位置。此快捷键并不是复制或剪切并将代码粘贴到另一个位置，而是提供了一种更快的解决方案，只需将光标放在该代码行上。如果想移动多行代码，只需先选中需要移动的代码，再使用该快捷键即可。<br />●<strong>Windows&#x2F;Linux</strong> : alt +↓ 或 ↑<br />●<strong>macOS</strong>：option +↓ 或 ↑</p>
-<p><a name="It0Uv"></a></p>
-<h2 id="2-复制代码行或代码块"><a href="#2-复制代码行或代码块" class="headerlink" title="2. 复制代码行或代码块"></a>2. 复制代码行或代码块</h2><p>如果需要复制一行或多行代码并将其粘贴到下方或上方怎么办？这个快捷键不必实际复制和粘贴这些代码，而是根据使用箭头选择的方向在其下方或上方复制该行。如果想复制多行代码，只需先选中需要复制的代码，再使用该快捷键即可。<br />●<strong>Windows&#x2F;Linux</strong> : shift + alt +↓ 或 ↑<br />●<strong>macOS</strong> : shift + option +↓ 或 ↑</p>
-<p><a name="ru6vh"></a></p>
-<h2 id="3-代码缩进"><a href="#3-代码缩进" class="headerlink" title="3. 代码缩进"></a>3. 代码缩进</h2><p>当将代码从一个位置复制到另一个位置时，或者更改代码时，很多时候代码会出现错误的缩进。这个快捷键就可以根据需要缩进代码，也可以选择多行代码将它们一起移动。<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + [或]<br />●<strong>macOS</strong>：command + [或]</p>
-<p><a name="EvfVS"></a></p>
-<h2 id="4-切换代码注释"><a href="#4-切换代码注释" class="headerlink" title="4. 切换代码注释"></a>4. 切换代码注释</h2><p>使用该快捷键可以注释或取消注释光标所在行代码。如果想要注释或取消注释多行代码，只需要先选中多行代码即可。<br />●<strong>Windows&#x2F;Linux</strong>:ctrl+&#x2F;<br />●<strong>macOS</strong>: command + &#x2F;</p>
-<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643806091174-21cf7743-175e-472a-824d-74f9c88ac2d5.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643806091174-21cf7743-175e-472a-824d-74f9c88ac2d5.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
-<p><a name="qcLPq"></a></p>
-<h2 id="5-切换代码块注释"><a href="#5-切换代码块注释" class="headerlink" title="5. 切换代码块注释"></a>5. 切换代码块注释</h2><p>与上面的快捷键不同，下面的快捷键会将选中的多行代码注释为单个注释。<br />●<strong>Windows&#x2F;Linux</strong> : shift + alt + A<br />●<strong>macOS</strong> : shift + option + A</p>
-<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643806130754-9f6aad1b-0272-4b6f-9c7d-a977bbd82011.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643806130754-9f6aad1b-0272-4b6f-9c7d-a977bbd82011.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
-<p><a name="OzXqi"></a></p>
-<h2 id="6-代码格式"><a href="#6-代码格式" class="headerlink" title="6. 代码格式"></a>6. 代码格式</h2><p>出于可读性的原因，保持代码指定的格式非常重要。Visual Studio Code 提供了两个用于代码格式化的快捷命令。</p>
-<p>下面快捷键可以格式化整个文件中的代码：<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + shift + F<br />●<strong>macOS</strong> : option + shift + F</p>
-<p>下面快捷键可以格式化已选中的代码：<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + K，然后 ctr l+ F<br />●<strong>macOS</strong> : command + K，然后 command + F</p>
-<p><a name="jh30T"></a></p>
-<h2 id="7-快速修复错误"><a href="#7-快速修复错误" class="headerlink" title="7. 快速修复错误"></a>7. 快速修复错误</h2><p>在很多情况下，如果出现一个常见或简单的错误，Visual Studio Code 可以直接修复它——例如缺少分号。如果快速修复可以使用，则此该快捷键可以快速修复错误或警告。<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + .<br />●<strong>macOS</strong> : command + .</p>
-<p><a name="ByQ7f"></a></p>
-<h2 id="8-重命名"><a href="#8-重命名" class="headerlink" title="8. 重命名"></a>8. 重命名</h2><p>如果手动重命名多次使用的变量、函数或类就很容易出错。此快捷键提供了一种重命名任何符号的安全方法。<br />●<strong>Windows&#x2F;Linux</strong>：F2<br />●<strong>macOS</strong>：F2 + fn</p>
-<p><a name="Fb9wf"></a></p>
-<h2 id="9-删除空白"><a href="#9-删除空白" class="headerlink" title="9. 删除空白"></a>9. 删除空白</h2><p>可以使用以下快捷键来删除多余的空行：<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + K + X<br />●<strong>macOS</strong> : command + K + X</p>
-<p>注意：需要一直按着 ctrl 或 command 键，然后先按 K 键，再按 X 键。</p>
-<p><a name="Gk1Yv"></a></p>
-<h2 id="10-更改编程语言"><a href="#10-更改编程语言" class="headerlink" title="10. 更改编程语言"></a>10. 更改编程语言</h2><p>默认情况下，Visual Studio Code 会检测正在处理的文件所用的编程语言。通常，它是通过检查文件的扩展名来完成的。但是，如果不支持文件的扩展名，就可能无法正确检测语言。因此，当需要更改文件的编程语言，可以使用此快捷键。<br />●<strong>Windows&#x2F;Linux</strong> : ctrl + K, 然后按 M<br />●<strong>macOS</strong> : command + K，然后按 M</p>
-<p><a name="TsFha"></a></p>
-<h1 id="七、更好的编码"><a href="#七、更好的编码" class="headerlink" title="七、更好的编码"></a>七、更好的编码<br /><br /></h1><p><a name="gj0Wq"></a></p>
-<h2 id="1-转到定义"><a href="#1-转到定义" class="headerlink" title="1. 转到定义"></a>1. 转到定义</h2><p>很多时候，我们需要了解正在使用的代码的定义是怎样的。比如调用一个函数时，想知道这个函数是如何定义的，就可以使用这个快捷键。<br />●<strong>Windows&#x2F;Linux</strong>：F12<br />●<strong>macOS</strong>：F12 + fn</p>
-<p><a name="GLMyE"></a></p>
-<h2 id="2-查看定义"><a href="#2-查看定义" class="headerlink" title="2. 查看定义"></a>2. 查看定义</h2><p>此快捷键可以在检查定义的地方打开定义。这样可以更轻松地查看定义，而无需切换到另一个文件或代码行。<br />●<strong>Windows&#x2F;Linux</strong> : alt + F12<br />●<strong>macOS</strong> : option + F12 + fn</p>
-<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643808122089-e8c9c0f1-f296-454c-b9bb-e54100f7dbb0.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643808122089-e8c9c0f1-f296-454c-b9bb-e54100f7dbb0.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
-<p><a name="KMN3k"></a></p>
-<h2 id="3-切换建议"><a href="#3-切换建议" class="headerlink" title="3. 切换建议"></a>3. 切换建议</h2><p>在编写代码时，VS Code 或者一些扩展会展示代码建议。此快捷键可以快速切换代码建议以查看或隐藏它们。<br />●<strong>Windows&#x2F;Linux</strong>: ctrl + I<br />●<strong>macOS</strong> : command + I</p>
-<p>VS Code 是目前最好用的代码编辑器之一。它提供了许多开箱即用的功能以及丰富的第三方扩展，在 VS Code 中使用快捷键可以使开发更加轻松，让我们可以专注于在更短的时间编写高质量的代码。本文介绍了一些实用的 Visual Studio Code 快捷键，希望能帮助你提高开发效率！</p>
-<p>最后，附上在 Windows、Linux、macOS 系统中 VS Code 的快捷键：</p>
-<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643809703950-9bf2abee-6e0d-448b-bcc2-d83b483c0361.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/1500604/1643809703950-9bf2abee-6e0d-448b-bcc2-d83b483c0361.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p><a name="UkyBo"></a></p>
+<h3 id="FROM-指定基础镜像"><a href="#FROM-指定基础镜像" class="headerlink" title="FROM 指定基础镜像"></a>FROM 指定基础镜像</h3><p>所谓定制镜像，那一定是以一个镜像为基础，在其上进行定制。就比如说我们的项目依赖于 node 环境，那么我们可以基于一个 node 镜像，再进行修改，基础镜像是必须指定的。而 FROM 就是指定基础镜像，因此一个 Dockerfile 中 FROM 是必备的指令，并且必须是第一条指令。<br><a name="CnHWT"></a></p>
+<h3 id="RUN-执行命令"><a href="#RUN-执行命令" class="headerlink" title="RUN 执行命令"></a>RUN 执行命令</h3><p>RUN 指令是用来执行命令行命令的。由于命令行的强大能力，RUN 指令在定制镜像时是最常用的指令之一，其格式有两种：</p>
+<ul>
+<li>shell 格式：RUN &lt;命令&gt;，就像直接在命令行中输入的命令一样。刚才写的 Dockerfile 中的 RUN 指令就是这种格式</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN echo &#x27;&lt;h1&gt;Hello, Docker!&lt;/h1&gt;&#x27; &gt; /usr/share/nginx/html/index.html</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>exec 格式：RUN [“可执行文件”, “参数 1”, “参数 2”]，这更像是函数调用中的格式。<br />就比如说我们需要去复制文件，安装依赖等。<br><a name="WcRVm"></a></li>
+</ul>
+<h3 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h3><p>在 Dockerfile 文件所在目录执行：$ docker build -t nginx:v3 .<br />这里我们使用了 docker build 命令进行镜像构建。其格式为：<br />构建完成之后，咱们就可以通过镜像来启动容器了，也就是把咱们的项目跑起来。</p>
+<p><a name="dCNum"></a></p>
+<h2 id="二、Docker-容器之间的互连"><a href="#二、Docker-容器之间的互连" class="headerlink" title="二、Docker 容器之间的互连"></a>二、Docker 容器之间的互连</h2><p>容器启动起来之后，咱们发现访问前端容器里的页面，接口请求 404 了。无法正确访问到服务端的容器上。这是为什么呢？因为每个容器是相互隔离的，容器内部的网络环境也是独立的，所以容器 test1 通过 127.0.0.1+端口号是无法直接访问到容器 test2 里的。这时候该怎么办呢？可以使用自定义的 Docker 网络来连接多个容器</p>
+<p>随着 Docker 网络的完善，强烈建议大家将容器加入自定义的 Docker 网络来连接多个容器，而不是使用–link 参数。<br><a name="syf7r"></a></p>
+<h3 id="新建网络"><a href="#新建网络" class="headerlink" title="新建网络"></a>新建网络</h3><p>下面先创建一个新的 Docker 网络。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker network create -d bridge my-net</span><br></pre></td></tr></table></figure>
+
+<p>-d 参数指定 Docker 网络类型，有 bridge overlay。其中 overlay 网络类型用于 Swarm mode。<br><a name="nDJxj"></a></p>
+<h3 id="连接容器"><a href="#连接容器" class="headerlink" title="连接容器"></a>连接容器</h3><p>运行一个容器并连接到新建的 my-net 网络</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it --rm --name busybox1 --network my-net busybox sh</span><br></pre></td></tr></table></figure>
+
+<p>打开新的终端，再运行一个容器并加入到 my-net 网络</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -it --rm --name busybox2 --network my-net busybox sh</span><br></pre></td></tr></table></figure>
+
+<p>再打开一个新的终端查看容器信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ docker container ls</span><br><span class="line"></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES</span><br><span class="line">b47060aca56b        busybox             &quot;sh&quot;                11 minutes ago      Up 11 minutes                           busybox2</span><br><span class="line">8720575823ec        busybox             &quot;sh&quot;                16 minutes ago      Up 16 minutes                           busybox1</span><br></pre></td></tr></table></figure>
+
+<p>下面通过 ping 来证明 busybox1 容器和 busybox2 容器建立了互联关系。在 busybox1 容器输入以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ # ping busybox2</span><br><span class="line">PING busybox2 (172.19.0.3): 56 data bytes</span><br><span class="line">64 bytes from 172.19.0.3: seq=0 ttl=64 time=0.072 ms</span><br><span class="line">64 bytes from 172.19.0.3: seq=1 ttl=64 time=0.118 ms</span><br></pre></td></tr></table></figure>
+
+<p>用 ping 来测试连接 busybox2 容器，它会解析成 172.19.0.3。同理在 busybox2 容器执行 ping busybox1，也会成功连接到。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/ # ping busybox1</span><br><span class="line">PING busybox1 (172.19.0.2): 56 data bytes</span><br><span class="line">64 bytes from 172.19.0.2: seq=0 ttl=64 time=0.064 ms</span><br><span class="line">64 bytes from 172.19.0.2: seq=1 ttl=64 time=0.143 ms</span><br></pre></td></tr></table></figure>
+
+<p>这样，busybox1 容器和 busybox2 容器建立了互联关系。<br><a name="Pe8Yl"></a></p>
+<h2 id="三、导出镜像"><a href="#三、导出镜像" class="headerlink" title="三、导出镜像"></a>三、导出镜像</h2><p>通过 使用自定义 Docker 网络，咱们可以实现 Docker 容器之间的互联了。<br />咱们在自己的机器上调通之后，怎么在其他的机器上进行部署呢？</p>
+<ol>
+<li>如果在公司内部有私有的 Docker 镜像仓库，我们可以把构建好的镜像上传至私有仓库，然后再从测试&#x2F;线上的机器拉取对应的镜像即可，启动容器即可。</li>
+<li>在没有私有的 Docker 镜像仓库的情况下，可以将咱们的镜像进行导出，导出之后再拷贝到目标的机器上进行导入，然后启动容器。</li>
+</ol>
+<p><a name="ArHby"></a></p>
+<h3 id="如何导出镜像"><a href="#如何导出镜像" class="headerlink" title="如何导出镜像"></a>如何导出镜像</h3><p>一、docker save 是用来将一个或多个 image 打包保存的工具。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save -o images.tar postgres:9.6  mongo:3.4</span><br></pre></td></tr></table></figure>
+
+<p>二、docker export 是用来将 container 的文件系统进行打包的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker export  -o postgres-export.tar postgres</span><br></pre></td></tr></table></figure>
+
+<p>两者之间有什么区别呢：</p>
+<ul>
+<li>docker save 保存的是镜像（image），docker export 保存的是容器（container）；</li>
+<li>docker load 用来载入镜像包，docker import 用来载入容器包，但两者都会恢复为镜像；*docker load 不能对载入的镜像重命名，而 docker import 可以为镜像指定新名称。</li>
+</ul>
+<p>docker save 的应用场景是，如果你的应用是使用 docker-compose.yml 编排的多个镜像组合，但你要部署的客户服务器并不能连外网。这时，你可以使用 docker save 将用到的镜像打个包，然后拷贝到客户服务器上使用 docker load 载入。</p>
+<p>docker export 的应用场景主要用来制作基础镜像，比如你从一个 ubuntu 镜像启动一个容器，然后安装一些软件和进行一些设置后，使用 docker export 保存为一个基础镜像。然后，把这个镜像分发给其他人使用，比如作为基础的开发环境。</p>
+<p><a name="zxt8H"></a></p>
+<h2 id="四、导入镜像"><a href="#四、导入镜像" class="headerlink" title="四、导入镜像"></a>四、导入镜像</h2><p><br />一、使用 docker import 命令则可将这个镜像文件导入进来（跟 docker export 配对使用）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker import /path/to/latest.tar</span><br></pre></td></tr></table></figure>
+
+<p>二、使用 docker load 命令则可将这个镜像文件载入进来（跟 docker save 配对使用）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i /path/to/fedora-latest.tar</span><br></pre></td></tr></table></figure>
+
+<p><a name="HkiDg"></a></p>
+<h2 id="五、启动容器"><a href="#五、启动容器" class="headerlink" title="五、启动容器"></a>五、启动容器</h2><p><br />假设我们已经导入了服务端镜像 my-server 以及前端镜像 my-front，我们该如何启动呢？<br />首先我们需要先创建一个网络，让容器具备互联的基础：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create -d bridge my-net</span><br></pre></td></tr></table></figure>
+
+<p>然后，分别启动一下我们的服务端和前端容器。</p>
+<ul>
+<li>服务端启动：docker run -d -p 8360:8360 –network my-net –network-alias myserver my-server</li>
+<li>web 端启动 docker run -d -p 8080:80 –network my-net –network-alias myfront my-front</li>
+</ul>
+<p><a name="b7zIB"></a></p>
+<h1 id="真实场景下的部署体验感觉"><a href="#真实场景下的部署体验感觉" class="headerlink" title="真实场景下的部署体验感觉"></a>真实场景下的部署体验感觉</h1><p><a name="SYXBI"></a></p>
+<h2 id="一、传统模式下的部署"><a href="#一、传统模式下的部署" class="headerlink" title="一、传统模式下的部署"></a>一、传统模式下的部署</h2><p><br />传统的部署模式下，我们需要挨个去安装各种各样的环境：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/png/1548284/1710208051388-a874e66d-3e92-4cd8-9bb6-8d09ffe531d0.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/png/1548284/1710208051388-a874e66d-3e92-4cd8-9bb6-8d09ffe531d0.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>安装完成之后，再拷贝相关的代码以及配置文件到目标的机器上：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/png/1548284/1710208051397-3c63fdec-f495-4013-bf5f-5be5ae48a2e8.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/png/1548284/1710208051397-3c63fdec-f495-4013-bf5f-5be5ae48a2e8.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p><a name="hOJtA"></a></p>
+<h2 id="二、使用-Docker-改造之后的部署"><a href="#二、使用-Docker-改造之后的部署" class="headerlink" title="二、使用 Docker 改造之后的部署"></a>二、使用 Docker 改造之后的部署</h2><ol>
+<li>安装 docker 环境</li>
+<li>创建 docker 网络：<code>sudo docker network create -d bridge my-net</code></li>
+<li>上传镜像文件（my-front.tar、my-server.tar）至服务器</li>
+<li>导入镜像：<code>sudo docker load -i my-front.tar</code>、<code>sudo docker load -i my-server.tar</code></li>
+<li>启动服务端容器：<code>docker run -d -p 8360:8360 --network wenjuan-net --network-alias myserver my-server</code></li>
+<li>启动系统前端容器：<code>sudo docker run -d -p 8080:80 --network my-net --network-alias myfront my-front</code></li>
+</ol>
+<p>在传统的模式下我们完成部署以及调试可能需要一天甚至更多的时间（不熟悉项目的情况下）。使用 Docker 容器部署之后，参照给定的文档，大概 10 分钟左右就可以完成部署了。我们再也不用担心测试环境和线上环境配置统一的问题了，只要使用的是同一个环境，那么它们的环境配置都是一样的。而且交给其他人去进行部署，也不用咱们时刻盯着了，只需几行简单的命令，项目就可以正常跑起来了。</p>
+<p><a name="QiHVS"></a></p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>通过 Docker 来进行私有化部署，可以大大缩减了部署的时间以及人力投入。在其他场景应用中，使用 Docker 容器部署也可以提高项目的开发效率以及项目的可维护性，比如：一些处于维护状态的老旧项目，经过无数代的流转连文档都没有了。一般都是能不动就不动，但是突然某一天需要进行项目的迁移，那可就头大了（想想看，你花费了很大的力气觉得已经迁移好了，却发现在哪个犄角旮旯里少了一个配置文件，这得有多崩溃）。如果说是通过 Docker 进行部署的，迁移的时候，基本上使用镜像进行重新部署以及配置好环境变量就可以了。</p>
+<p>这都是 Docker 的一些比较基本的使用方式，Docker 还有很多进阶的使用方式，如 docker-compose.yml 编排之类的，还需要去进行更深入的探索</p>
 
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/IDE/" class="">
-              IDE
-            </a>
-          
-            <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="">
-              快捷键
-            </a>
-          
-            <a href="/tags/%E6%8A%80%E5%B7%A7/" class="">
-              技巧
+            <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="">
+              工程化
             </a>
           
         </div>
@@ -742,7 +777,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/" target="_blank" title="VS Code 快捷方式">https://ywzzy.github.io/2023/07/03/frontend/collection/skill/vs-code-kuai-jie-fang-shi/</a>
+    <a href="/2024/05/12/frontend/engineering/ru-he-shi-yong-docker-ti-sheng-kai-fa-ji-bu-shu-ti-yan/" target="_blank" title="如何使用 Docker 提升开发及部署体验">https://ywzzy.github.io/2024/05/12/frontend/engineering/ru-he-shi-yong-docker-ti-sheng-kai-fa-ji-bu-shu-ti-yan/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -760,46 +795,22 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/529a649b2d3c6a8ed7f66.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/529a649b2d3c6a8ed7f66.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
-    </div>
-    <a href="/2023/07/04/frontend/html/ni-bu-zhi-dao-de-html/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">你不知道的HTML</div>
-      </div>
-      
-      <!-- <div class="content">
-        
-
-1. input 标签：输入验证我们通常会使用 JavaScript 来校验表单，比如：
-123456functio
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/aac96982e8064d5433e4a.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/aac96982e8064d5433e4a.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/6c9d9969e1b55a81a762c.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/6c9d9969e1b55a81a762c.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
     </div>
-    <a href="/2023/07/03/frontend/collection/skill/npm-shi-yong-ji-qiao/" class="post-nav-link">
+    <a href="/2024/04/24/frontend/monitor/ru-he-heng-liang-yi-ge-wang-ye-de-xing-neng/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">npm 使用技巧</div>
+        <div class="title-text">如何衡量一个网页的性能</div>
       </div>
       <!-- <div class="content">
         
-
-今天总结了 npm 常用的一些命令分享给大家，希望对你有所帮助！
-
-1. npm 基本概念npm 全称为 Node 
+背景拥有一个良好用户体验的网页对于前端开发同学来说是一件必须做，持续做的一件事情，其中首屏的渲染尤为重要，因为用户与网
       </div> -->
     </a>
   </div>
@@ -930,7 +941,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BF%AB%E6%8D%B7%E5%AF%BC%E8%88%AA"><span class="toc-text">一、快捷导航</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%90%9C%E7%B4%A2%E6%96%87%E4%BB%B6"><span class="toc-text">1. 搜索文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%89%93%E5%BC%80%E8%AE%BE%E7%BD%AE"><span class="toc-text">2. 打开设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%87%E6%8D%A2%E4%BE%A7%E8%BE%B9%E6%A0%8F"><span class="toc-text">3. 切换侧边栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AF%BC%E8%88%AA%E9%80%89%E9%A1%B9%E5%8D%A1"><span class="toc-text">4. 导航选项卡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AF%BC%E8%88%AA%E9%80%89%E9%A1%B9%E5%8D%A1%E7%BB%84"><span class="toc-text">5. 导航选项卡组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%89%93%E5%BC%80%E7%BB%88%E7%AB%AF"><span class="toc-text">6. 打开终端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%89%93%E5%BC%80%E5%91%BD%E4%BB%A4%E9%9D%A2%E6%9D%BF"><span class="toc-text">7. 打开命令面板</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%BF%AB%E6%8D%B7%E9%80%89%E6%8B%A9"><span class="toc-text">二、快捷选择</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%80%89%E6%8B%A9%E5%BD%93%E5%89%8D%E8%A1%8C"><span class="toc-text">1. 选择当前行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BD%93%E5%89%8D%E9%80%89%E6%8B%A9"><span class="toc-text">2. 当前选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%BD%93%E5%89%8D%E5%8D%95%E8%AF%8D"><span class="toc-text">3. 当前单词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%80%89%E6%8B%A9%E7%9B%B4%E5%88%B0%E5%8D%95%E8%AF%8D%E7%9A%84%E7%BB%93%E5%B0%BE"><span class="toc-text">4. 选择直到单词的结尾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%80%9A%E8%BF%87%E6%8B%96%E5%8A%A8%E9%BC%A0%E6%A0%87%E9%80%89%E6%8B%A9%E5%A4%9A%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="toc-text">5. 通过拖动鼠标选择多行代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E9%94%AE%E9%80%89%E6%8B%A9%E5%A4%9A%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="toc-text">6. 使用箭头键选择多行代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%BF%AB%E6%8D%B7%E6%9F%A5%E6%89%BE"><span class="toc-text">三、快捷查找</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BB%93%E6%9E%9C%E5%AF%BC%E8%88%AA"><span class="toc-text">1. 结果导航</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%80%89%E6%8B%A9%E5%A4%9A%E4%B8%AA%E7%BB%93%E6%9E%9C"><span class="toc-text">2. 选择多个结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%80%89%E6%8B%A9%E6%89%80%E6%9C%89%E7%BB%93%E6%9E%9C"><span class="toc-text">3. 选择所有结果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BB%A3%E7%A0%81%E5%AF%BC%E8%88%AA"><span class="toc-text">四、代码导航</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%B7%B3%E8%BD%AC%E6%8C%87%E5%AE%9A%E8%A1%8C"><span class="toc-text">1. 跳转指定行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BD%AC%E5%88%B0%E5%8C%B9%E9%85%8D%E7%9A%84%E6%8B%AC%E5%8F%B7"><span class="toc-text">2. 转到匹配的括号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%8A%98%E5%8F%A0-x2F-%E5%B1%95%E5%BC%80%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-text">3. 折叠&#x2F;展开代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%8A%98%E5%8F%A0-x2F-%E5%B1%95%E5%BC%80%E4%BB%A3%E7%A0%81%E5%9D%97%E5%92%8C%E5%AD%90%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-text">4. 折叠&#x2F;展开代码块和子代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AF%BC%E8%88%AA%E5%88%B0%E9%94%99%E8%AF%AF%E5%92%8C%E8%AD%A6%E5%91%8A%E5%A4%84"><span class="toc-text">5. 导航到错误和警告处</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87"><span class="toc-text">五、移动光标</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%89%B9%E5%AE%9A%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%85%A5%E9%A2%9D%E5%A4%96%E5%85%89%E6%A0%87"><span class="toc-text">1. 特定位置插入额外光标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%8A%E6%96%B9%E6%88%96%E4%B8%8B%E6%96%B9%E6%8F%92%E5%85%A5%E9%A2%9D%E5%A4%96%E5%85%89%E6%A0%87"><span class="toc-text">2. 上方或下方插入额外光标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%92%A4%E9%94%80%E5%85%89%E6%A0%87%E6%8F%92%E5%85%A5"><span class="toc-text">3. 撤销光标插入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%9C%A8%E9%80%89%E4%B8%AD%E4%BB%A3%E7%A0%81%E7%9A%84%E6%9C%AB%E5%B0%BE%E6%8F%92%E5%85%A5%E5%85%89%E6%A0%87"><span class="toc-text">4. 在选中代码的末尾插入光标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%BF%AB%E6%8D%B7%E7%BC%96%E7%A0%81"><span class="toc-text">六、快捷编码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%A7%BB%E5%8A%A8%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%88%96%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-text">1. 移动代码行或代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A4%8D%E5%88%B6%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%88%96%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-text">2. 复制代码行或代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BB%A3%E7%A0%81%E7%BC%A9%E8%BF%9B"><span class="toc-text">3. 代码缩进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%87%E6%8D%A2%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A"><span class="toc-text">4. 切换代码注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%88%87%E6%8D%A2%E4%BB%A3%E7%A0%81%E5%9D%97%E6%B3%A8%E9%87%8A"><span class="toc-text">5. 切换代码块注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F"><span class="toc-text">6. 代码格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%BF%AB%E9%80%9F%E4%BF%AE%E5%A4%8D%E9%94%99%E8%AF%AF"><span class="toc-text">7. 快速修复错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E9%87%8D%E5%91%BD%E5%90%8D"><span class="toc-text">8. 重命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%88%A0%E9%99%A4%E7%A9%BA%E7%99%BD"><span class="toc-text">9. 删除空白</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E6%9B%B4%E6%94%B9%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80"><span class="toc-text">10. 更改编程语言</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%9B%B4%E5%A5%BD%E7%9A%84%E7%BC%96%E7%A0%81"><span class="toc-text">七、更好的编码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%BD%AC%E5%88%B0%E5%AE%9A%E4%B9%89"><span class="toc-text">1. 转到定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9F%A5%E7%9C%8B%E5%AE%9A%E4%B9%89"><span class="toc-text">2. 查看定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%87%E6%8D%A2%E5%BB%BA%E8%AE%AE"><span class="toc-text">3. 切换建议</span></a></li></ol></li></ol> -->
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Docker"><span class="toc-text">什么是 Docker?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Docker-%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84%EF%BC%9F"><span class="toc-text">使用 Docker 有什么好处？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BC%A0%E7%BB%9F%E7%9A%84%E9%A1%B9%E7%9B%AE%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F"><span class="toc-text">一、传统的项目私有化部署方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-text">服务端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF"><span class="toc-text">前端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E7%82%B9"><span class="toc-text">问题点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-Docker-%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2"><span class="toc-text">二、使用 Docker 容器部署</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-text">基础概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%95%9C%E5%83%8F"><span class="toc-text">一、镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%B9%E5%99%A8"><span class="toc-text">二、容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93"><span class="toc-text">三、镜像仓库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-Docker-%E5%AE%B9%E5%99%A8%E6%9D%A5%E9%83%A8%E7%BD%B2%E9%A1%B9%E7%9B%AE%E5%91%A2%EF%BC%9F"><span class="toc-text">如何使用 Docker 容器来部署项目呢？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%B6%E4%BD%9C%E9%95%9C%E5%83%8F"><span class="toc-text">一、制作镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FROM-%E6%8C%87%E5%AE%9A%E5%9F%BA%E7%A1%80%E9%95%9C%E5%83%8F"><span class="toc-text">FROM 指定基础镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RUN-%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-text">RUN 执行命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="toc-text">构建镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Docker-%E5%AE%B9%E5%99%A8%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%92%E8%BF%9E"><span class="toc-text">二、Docker 容器之间的互连</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E7%BD%91%E7%BB%9C"><span class="toc-text">新建网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%AE%B9%E5%99%A8"><span class="toc-text">连接容器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AF%BC%E5%87%BA%E9%95%9C%E5%83%8F"><span class="toc-text">三、导出镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AF%BC%E5%87%BA%E9%95%9C%E5%83%8F"><span class="toc-text">如何导出镜像</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%AF%BC%E5%85%A5%E9%95%9C%E5%83%8F"><span class="toc-text">四、导入镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8"><span class="toc-text">五、启动容器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9C%9F%E5%AE%9E%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E9%83%A8%E7%BD%B2%E4%BD%93%E9%AA%8C%E6%84%9F%E8%A7%89"><span class="toc-text">真实场景下的部署体验感觉</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BC%A0%E7%BB%9F%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E9%83%A8%E7%BD%B2"><span class="toc-text">一、传统模式下的部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8-Docker-%E6%94%B9%E9%80%A0%E4%B9%8B%E5%90%8E%E7%9A%84%E9%83%A8%E7%BD%B2"><span class="toc-text">二、使用 Docker 改造之后的部署</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-text">结语</span></a></li></ol> -->
         <div class="toc"></div>
       </div>
     </div>
