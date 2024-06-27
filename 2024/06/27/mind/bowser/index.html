@@ -614,14 +614,54 @@
     <article class="post post-detail">
       <div class="post-content">
         <blockquote class="pullquote mindmap mindmap-md"><ul>
-<li><a target="_blank" rel="noopener" href="https://hunterx.xyz/use-mindmap-in-hexo.html">在 Hexo 中使用思维导图</a><ul>
-<li>前言</li>
-<li>操作指南<ul>
-<li>准备需要的文件</li>
-<li>为主题添加 CSS&#x2F;JS 文件</li>
+<li><a target="_blank" rel="noopener" href="https://hunterx.xyz/use-mindmap-in-hexo.html">浏览器</a><ul>
+<li>浏览器渲染原理<ul>
+<li>渲染引擎<ul>
+<li>解析 HTML：将 HTML 转换为 DOM 树（Document Object Model）。</li>
+<li>解析 CSS：将 CSS 转换为样式规则，并应用到 DOM 树。</li>
+<li>构建渲染树：根据 DOM 树和样式规则生成渲染树。</li>
+<li>布局（Layout）：计算每个元素的大小和位置。</li>
+<li>绘制（Painting）：将渲染树中的每个元素绘制到屏幕上。</li>
 </ul>
 </li>
-<li>使用方法</li>
+<li>渲染过程<ul>
+<li>首先解析收到的文档，根据文档定义构建一棵 DOM 树，DOM 树是由 DOM 元素及属性节点组成的。</li>
+<li>然后对 CSS 进行解析，生成 CSSOM 规则树。</li>
+<li>根据 DOM 树和 CSSOM 规则树构建渲染树。渲染树的节点被称为渲染对象，渲染对象和 DOM 元素相对应，但这种对应关系不是一对一的，不可见的 DOM 元素不会被插入渲染树。</li>
+<li>当渲染对象被创建并添加到树中，它们并没有位置和大小，所以当浏览器生成渲染树以后，就会根据渲染树来进行布局（也可以叫做回流）。这一阶段浏览器要做的事情是要弄清楚各个节点在页面中的确切位置和大小。</li>
+<li>布局阶段结束后是绘制阶段，遍历渲染树并调用渲染对象的 paint 方法将它们的内容显示在屏幕上，绘制使用 UI 基础组件。</li>
+<li>注意：这个过程是逐步完成的，为了更好的用户体验，渲染引擎会尽可能早的将内容呈现到屏幕上，并不会等到所有的 html 都解析完成之后再去构建和布局 render 树。它是解析完一部分内容就显示一部分内容，同时，可能还在通过网络下载其余内容。</li>
+</ul>
+</li>
+<li>渲染优化</li>
+<li>回流和重绘</li>
+</ul>
+</li>
+<li>浏览器缓存<ul>
+<li>缓存过程</li>
+<li>缓存位置</li>
+<li>缓存类型</li>
+<li>浏览器刷新</li>
+</ul>
+</li>
+<li>浏览器存储<ul>
+<li>cookie</li>
+<li>localstorage</li>
+<li>sessionstorage</li>
+<li>indexDB</li>
+</ul>
+</li>
+<li>同源与跨域<ul>
+<li>同源策略</li>
+<li>跨域方式</li>
+<li>正向代理和反向代理的区别</li>
+</ul>
+</li>
+<li>XSS 和 CSRF<ul>
+<li>XSS</li>
+<li>CSRF</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
