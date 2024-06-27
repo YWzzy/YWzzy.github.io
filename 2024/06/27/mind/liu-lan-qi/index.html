@@ -614,7 +614,8 @@
     <article class="post post-detail">
       <div class="post-content">
         <blockquote class="pullquote mindmap mindmap-md"><ul>
-<li><a target="_blank" rel="noopener" href="https://www.yuque.com/yuanwei-xe0wv/eieg5a/gy7us10gaq3iobtf">浏览器</a><ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.yuque.com/yuanwei-xe0wv/eieg5a/gy7us10gaq3iobtf">浏览器</a></p>
+<ul>
 <li>浏览器渲染原理<ul>
 <li>渲染引擎<ul>
 <li>解析 HTML：将 HTML 转换为 DOM 树（Document Object Model）。</li>
@@ -713,9 +714,6 @@
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li>浏览器缓存<ul>
 <li>缓存过程<ul>
 <li>检查缓存<ul>
 <li>当用户在浏览器中输入网址或点击链接访问一个网页时，浏览器首先会检查该网页的缓存情况。它会根据请求的资源的 URL，查找是否存在对应的缓存。</li>
@@ -799,41 +797,6 @@
 <li>在缓存过期后，必须向原服务器验证资源的有效性</li>
 </ul>
 </li>
-</ul>
-</li>
-<li>协商缓存<ul>
-<li>使用协商缓存策略时，会先向服务器发送一个请求，如果资源没有发生修改，则返回一个 304 状态，让浏览器使用本地的缓存副本。如果资源发生了修改，则返回修改后的资源。</li>
-<li>协商缓存也可以通过两种方式来设置，分别是 http 头信息中的 Etag 和 Last-Modified 属性。</li>
-<li>命中协商缓存的条件<ul>
-<li>cache-control 的 max-age 过期了，没有设置 no-store</li>
-<li>Last-Modified<ul>
-<li>服务器通过在响应头中添加 Last-Modified 属性来指出资源最后一次修改的时间，当浏览器下一次发起请求时，会在请求头中添加一个 If-Modified-Since 的属性，属性值为上一次资源返回时的 Last-Modified 的值。当请求发送到服务器后服务器会通过这个属性来和资源的最后一次的修改时间来进行比较，以此来判断资源是否做了修改。如果资源没有修改，那么返回 304 状态，让客户端使用本地的缓存。如果资源已经被修改了，则返回修改后的资源。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>缺点：Last-Modified 标注的最后修改时间只能精确到秒级，如果某些文件在 1 秒钟以内，被修改多次的话，那么文件已将改变了但是 Last-Modified 却没有改变，这样会造成缓存命中的不准确。</li>
-<li>Etag<ul>
-<li>服务器在返回资源的时候，在头信息中添加了 Etag 属性，这个属性是资源生成的唯一标识符，当资源发生改变的时候，这个值也会发生改变。在下一次资源请求时，浏览器会在请求头中添加一个 If-None-Match 属性，这个属性的值就是上次返回的资源的 Etag 的值。服务接收到请求后会根据这个值来和资源当前的 Etag 的值来进行比较，以此来判断资源是否发生改变，是否需要返回资源。通过这种方式，比 Last-Modified 的方式更加精确。</li>
-<li>Etag 优先级更高</li>
-<li>使用协商缓存的时候，服务器需要考虑负载平衡的问题，因此多个服务器上资源的 Last-Modified 应该保持一致，因为每个服务器上 Etag 的值都不一样，因此在考虑负载平衡时，最好不要设置 Etag 属性。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>浏览器刷新<ul>
-<li>点击刷新按钮或者按 F5<ul>
-<li>浏览器直接对本地的缓存文件过期，但是会带上 If-Modifed-Since，If-None-Match，这就意味着服务器会对文件检查新鲜度，返回结果可能是 304，也有可能是 200。</li>
-</ul>
-</li>
-<li>用户按 Ctrl+F5（强制刷新）<ul>
-<li>浏览器不仅会对本地文件过期，而且不会带上 If-Modifed-Since，If-None-Match，相当于之前从来没有请求过，返回结果是 200。</li>
-</ul>
-</li>
-<li>地址栏回车<ul>
-<li>浏览器发起请求，按照正常流程，本地检查是否过期，然后服务器检查新鲜度，最后返回内容。</li>
 </ul>
 </li>
 </ul>
