@@ -20,7 +20,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Chrome调试技巧 | 梨逍遥</title>
+  <title>category: 前端 | 梨逍遥</title>
 
   <link rel="icon" type="image/gif" href="https://64.media.tumblr.com/a67a7238cd2833d859a7ea4cfa4fb8a4/0e0717e3c39dfac5-0c/s500x750/94ba555d15a68a38482896903d15494df88ff9b1.gif">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -549,678 +549,127 @@
 </header>
         <!-- 内容区域 -->
         
- <!-- prismjs 代码高亮 -->
- 
 
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"></div>
+<div class="bg-light-floor-categoryDetail" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -3;"></div>
 
-<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
-
-
-  <!-- 文章详情页顶部图片和标题 -->
-
-
-
-
-<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('https://ossk.cc/file/cedb78a8189edadc6b762.png')">
-  <div class="post-detail-header-mask"></div>
-  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
-  
-  <div class="post-detail-header_info-box">
-    <div class="title-box">
-      <span class="title">
-        Chrome调试技巧
-      </span>
-    </div>
-    
-    
-      
-        <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2020-11-11 |
-        </span>
-      
-
-      
-        <span class="post-detail-header_categories">
-          <i class="iconfont iconbookmark1"></i> category：
-          
-            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-detail-header_category">
-              前端
-            </a>
-          
-            <a href="/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="post-detail-header_category">
-              浏览器
-            </a>
-          
-            <a href="/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/%E8%B0%83%E8%AF%95/" class="post-detail-header_category">
-              调试
-            </a>
-          
-        </span>
-      
-
-      
-    
+<div class="category-header"  style="background-image:url('https://ossk.cc/file/0e1fd818725f6af673ec3.jpg')">
+  <div class="category-header-title">
+    category
   </div>
-  
-  
-    <script src="/js/bubble/bubble.js"></script>
-  
-</div>
-
-
-
-
-
-<div class="post-detail-content post-row" 
-  style="padding-top: 0px;">
-  <div class="main-content">
-    <article class="post post-detail">
-      <div class="post-content">
-        <meta name="referrer" content="no-referrer" />
-
-<p><a name="54bcvn"></a></p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在前端开发过程中，我们通过浏览器的页面来查看我们代码编写的成果。然而浏览器的功能非常强大，它不只是能展示我们编写的页面，还能够帮助我们定位开发过程中遇到的问题，提升我们的开发效率。有些时候我们甚至还可以通过浏览器的调试工具来查看一些网站酷炫效果的实现方式。下面我们以 Chrome 浏览器为例，来介绍一些常用的调试技巧。</p>
-<p><a name="l229zq"></a></p>
-<h3 id="1-Chrome-开发者工具"><a href="#1-Chrome-开发者工具" class="headerlink" title="1. Chrome 开发者工具"></a>1. Chrome 开发者工具</h3><p>首先我们打开 Chrome 的开发者工具（又称控制台），打开方式有以下几种：</p>
-<ol>
-<li>点击浏览器右上角竖排的“三个点”，选择“更多工具”，再选择“开发者工具”打开</li>
-<li>单机鼠标右键，点击“查看”选项打开</li>
-<li>通过按快捷键 Ctrl + shift + I 快速打开</li>
-</ol>
-<p>通过以上任意一种方式打开开发者工具后，我们能够看到这样的界面。</p>
-<p>开发者工具界面</p>
-<p>开发者工具界面的信息量比较大，不过不用担心，我们一点点来看。工具栏上前几个 tab 是我们最常用的调试模块。</p>
-<ul>
-<li>Element 用于查看和编辑 DOM 节点和节点相对应的 CSS 样式。</li>
-<li>Console 用于打印运行时抛出的信息，我们可以通过它查看异常信息或主动抛出信息进行调试。</li>
-<li>Sources 用于查看资源信息，我们编写和运行的代码都可以在这里找到。我们可以通过在这里设置断点来达到调试的目的。</li>
-<li>Network 用于查看请求信息，这里可以看到所有的页面资源请求，包括网络请求、图片资源、HTML、CSS、JS 等。可以根据需求筛选请求项，一般多用于网络请求的查看和分析。</li>
-<li>Performance 用于查看页面加载的性能情况，包括页面渲染时间、JS 执行时间等</li>
-<li>Application 用于查看 cookie、localStorage 等信息</li>
-</ul>
-<p>以上是 Chrome 开发者工具的主要功能模块，虽然内容略多，但是正因为有了这些信息，浏览器的调试功能才会如此强大。现在记不住这些模块也没关系，接下来我们将通过使用这些调试工具，来加深对它们的理解，并看看它们能为我们的开发带来怎样的帮助。</p>
-<p><a name="i8b1dy"></a></p>
-<h3 id="2-DOM-调试"><a href="#2-DOM-调试" class="headerlink" title="2. DOM 调试"></a>2. DOM 调试</h3><p><a name="3wv6ln"></a></p>
-<h4 id="2-1-查看-DOM"><a href="#2-1-查看-DOM" class="headerlink" title="2.1 查看 DOM"></a>2.1 查看 DOM</h4><p>在浏览器中，如果我们想要了解一个页面的 DOM 结构，我们可以通过开发者工具中的 Element 模块进行查看。我们首先编写一段 HTML</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM调试<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是一个表格<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>第一列<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>第二列<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">th</span>&gt;</span>第三列<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">td</span>&gt;</span>11<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">td</span>&gt;</span>22<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">td</span>&gt;</span>33<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>保存这段 HTML 后在浏览器打开，并开启控制台。我们将工具栏选中到 Element ，会看到这样的信息</p>
-<p>查看 DOM 元素</p>
-<p>你会发现这里展示的 DOM 结构就是我们写的 HTML ，浏览器不仅将我们的 HTML 渲染成页面，还将它的 DOM 显示在控制台中方便我们调试。</p>
-<p>用鼠标在控制台里选中不同的 DOM 节点，会发现页面中有蓝色区块会随着鼠标选中 DOM 节点的变化而调整，实际上 <strong>蓝色区块就是当前 DOM 节点对应渲染的页面部分</strong> 。</p>
-<p><a name="xqf4th"></a></p>
-<h4 id="2-2-定位-DOM"><a href="#2-2-定位-DOM" class="headerlink" title="2.2 定位 DOM"></a>2.2 定位 DOM</h4><p>当一个页面结构比较复杂，层级较深的时候，我们通过移动鼠标在 DOM 节点中寻找需要查看的节点就会变得比较麻烦。要点开它的外层节点并一级一级找下去，这样的查找方式费时费力，因此浏览器控制台提供了一个方便定位 DOM 的功能。</p>
-<p>依然是上面那个例子，如果我们需要去找到 table 中的第一行第二列的那个单元格，怎样操作比较迅速？这里我们通过点击控制台左上角的一个定位按钮来进行快速选中。打开控制台，点击定位按钮，点击后该按钮会变成蓝色，标志我们当前正处于定位模式（定位模式下鼠标无法触发页面交互，如按钮事件等）。</p>
-<p>定位按钮</p>
-<p>接下来我们在页面上点击我们想要查看的元素，点击页面上 table 中第一行第二列的单元格（显示 2 的那个）。点击后我们发现控制台的 Element 直接将那个 <td> 节点高亮定位了。</p>
-<p>高亮定位</p>
-<p>这样我们就迅速的定位了我们想要查看的 DOM 节点，此时定位按钮从蓝色变为灰色，标志着定位完成，退出定位模式。快速定位的功能在复杂结构的页面中尤为实用，我们可以在开发过程中充分利用起来。</p>
-<p><a name="40cwdw"></a></p>
-<h4 id="2-3-操作-DOM"><a href="#2-3-操作-DOM" class="headerlink" title="2.3 操作 DOM"></a>2.3 操作 DOM</h4><p>完成了 DOM 的定位，接下来我们可以对 DOM 元素做一些操作。对当前选中的 DOM 元素点击右键可以看到一系列的操作选项。</p>
-<p>DOM 操作选项</p>
-<p>点击 Edit as HTML 来对当前的 DOM 节点做改写和添加，例如这里我们对 <p> 标签做编辑，在后面添加另一个 <p> 标签。</p>
-<p>编辑 p 标签</p>
-<p>完成后点击旁边未被选中到元素即可保存编辑，并在浏览器页面上同步生效。此时可以发现页面上已经出现了我们刚刚添加的节点了。</p>
-<p>编辑后生效</p>
-<p>如果你想撤销上一次 DOM 变更，按 ctrl + Z 即可，重做则按 ctrl + shift + Z。</p>
-<p>其他的一些 DOM 操作也都很直观，比如可以点击 Add attribute 给选中节点添加属性；Delete element 会删除选中节点等等。操作很简单，这里就不一一演示，读者可以自己尝试一下。</p>
-<p><a name="otkqal"></a></p>
-<h3 id="3-CSS-调试"><a href="#3-CSS-调试" class="headerlink" title="3. CSS 调试"></a>3. CSS 调试</h3><p>除了对 DOM 的操作，我们还能够方便得对 CSS 进行调试。不知大家在查看 DOM 的时候有没有关注到界面上还有这么一块区域？</p>
-<p>CSS 调试区域</p>
-<p>这里就是 CSS 的地盘。我们可以在这里看到选中的 DOM 节点上已添加的样式，可以对里面对值进行修改，或是添加其他 CSS 样式。这里我们给 <p> 标签添加一个 color 样式。</p>
-<p>添加文字颜色样式</p>
-<p>先用 DOM 调试的技巧选中这段文字，再对它添加完 color:red ，这时我们发现页面上的文字变成了红色，与此同时控制台对 DOM 节点树中也对这个节点动态得添加了一个 style 属性，于是我们完成了样式添加。这就是浏览器调试 CSS 样式的便捷之处 —— 简单且直观。甚至于接下来如果我想改变一下文字的颜色，只需要在样式栏里点击一下 color 属性，就可以进行变更了，所见即所得。</p>
-<p>改变文字颜色</p>
-<p>我们再注意到样式栏的顶部，有一些 :hover 的图标，点开来看，发现这里可以设置 DOM 的交互状态。假设勾选一个 :focus 复选框，当前选中的 DOM 节点便被模拟了获取焦点的样式特性。</p>
-<p>模拟 DOM 交互状态</p>
-<p>最后我们再看一下右侧部分，上面有个矩形，它就是我们在 CSS 部分中学习过的“盒子模型”。通过将鼠标在盒子模型上移动，页面上会显示出相对应的 DOM 节点，通过它我们能够更好得了解页面上的布局结构。选中 Computed ，下方显示出一系列的样式，这些样式就是节点经过浏览器计算后渲染在页面上的最终样式，如果某一个节点受到多个地方的样式影响，我们就可以在这里看到它最终的样式属性（与页面上的渲染效果相对应）。</p>
-<p>盒子模型与最终样式</p>
-<p><a name="yu8prs"></a></p>
-<h3 id="4-JS-调试"><a href="#4-JS-调试" class="headerlink" title="4. JS 调试"></a>4. JS 调试</h3><p>本节内容将简单介绍如何使用浏览器对 JS 进行调试，由于很多时候我们所说的浏览器调试都是指 JS 调试，因此这部分有很多调试的方法和技巧。具体的调试技巧将在下一章节详细介绍，本节只做一个熟悉的过程。</p>
-<p>JS 的调试主要关注的区域是 Console 和 Sources 模块，前文说过 Console 模块是用于打印运行时抛出的信息，我们可以通过它查看异常信息或主动抛出信息进行调试。 Sources 用于查看资源信息，我们编写和运行的代码都可以在这里找到。我们可以通过在这里设置断点来达到调试的目的。那么接下来我们分别对这两个模块加以认识。</p>
-<p>首先点击进入 Console 模块，会看到一个可输入的控制台界面。在这里我们可以输入一些简单的 JS 指令，按回车键执行。</p>
-<p>Console 控制台</p>
-<p>通过简单的尝试可以看到，在这里我们可以能够执行 JS 脚本，并且直观得看到输出结果。这意味着当我们希望看到 JS 代码运行时的数据状态时，我们可以利用这个工具来给我们展现。那么如何在 JS 中使用 Console 控制台呢？其实很简单，只要在你希望查看的数据处加上一行代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(希望查看的数据);</span><br></pre></td></tr></table></figure>
-
-<p>即可在 Console 控制台中查看数据。有了它我们不需要等到 JS 代码执行完毕才能看是否符合预期，在执行过程中我们就可以很方便得查看动态数据并打印记录在控制台中，这对我们的编程有很大的帮助。</p>
-<p>接下来我们来看 Sources 模块。我们可以任意访问一个在线网站，然后打开控制台，点击  Sources 会看到一些代码。这些代码就是当前这个页面所引用的资源，包括 JS 文件，样式文件等等，由于线上运行的代码通常是经过混淆和压缩的,可能难以定位和阅读。我们在文件底部可以看到一个花括号 {} ,点击这个花括号我们能将压缩了的文件格式化成正常的语法缩进。</p>
-<p>Sources 界面</p>
-<p>我们注意到代码的左侧是一列数字，标记着当前的代码处于第几行。这列数字是可以点击的，当点击某个数后，数字被标记成蓝色，此时标记着我们在这一行代码处设置了断点，当程序运行到这段代码处时会停止运行并保留运行现场。我们可以查看当下运行时的数据和方法的执行情况，实际上这就是我们所谓的“断点调试”，下一章节会详细演示。</p>
-<p>这里我们关注到当程序运行到断点处时，页面上会出现一个条形的操作栏显示 paused in debugger ，右边紧跟着两个按钮。第一个三角形的按钮表示 “跳过断点” ，点击它之后脚本会继续往下执行，直到完成运行或是进入到下一个设置的断点。另一个弧形的按钮表示 “单步调试” ，代码会进入到断点的下一行，我们可以查看下一行代码的运行情况。由于此时仍然是断点状态我们可以重复点击 “单步调试” 的按钮达到逐步运行的调试效果。</p>
-<p>断点调试操作界面</p>
-<p>最后再介绍一些 Sources 模块下实用的快捷键，选中控制台的 Sources 之后按下 ctrl + P ，能够搜索当前页面引用的资源。通过它我们可以迅速找到希望调试的 JS 文件。当我们选中某个文件之后，可以使用快捷键 ctrl + F 进行文件内容检索，方便快速定位代码片段和查看变量使用。</p>
-<p>常用快捷键操作</p>
-<p><a name="q2h3lz"></a></p>
-<h3 id="5-网络请求调试"><a href="#5-网络请求调试" class="headerlink" title="5. 网络请求调试"></a>5. 网络请求调试</h3><p>接下来我们再来看看网络请求的调试。在网页开发中网络请求是的数据的来源渠道，加载一个页面所需的 HTML 、 CSS 、JS 以及图片等资源都是通过网络请求获取的。数据的获取直接影响着页面内容的展示，如此重要的环节浏览器自然也对其做了监控。我们可以通过 Network 模块来对网络请求进行分析和调试。</p>
-<p>任意打开一个在线网址如 <a target="_blank" rel="noopener" href="https://github.com/">https://github.com</a> ，进入控制台并点击 Network ，我们能够看到很多资源请求。</p>
-<p>Network 工具栏</p>
-<p>工具栏上有很多分类：XHR、JS、CSS、Img、Media、Font、Doc、WS、Manifest 等，这些是请求资源的分类。默认是展示全部 All ，点击到其中某一项则能够将请求列表过滤为只有该类型。如点击 JS 则下面的请求列表全部为 JS 资源，点击 XHR 则过滤为向后端发送的异步请求。</p>
-<p>大部分时候我们用到最多的分类是 XHR ，它能够帮助我们调试异步请求。从我们发送请求到我们接收响应数据的过程中，大量细节都记录在控制台中。我们可以点击一个具体的异步请求进行查看</p>
-<p>异步请求调试</p>
-<p>首先看到 Header 这一栏，里面包含了很多信息，这些信息分成 4 个模块： General 、 Response Headers 、 Request Headers 和 Query String Parameters。</p>
-<ul>
-<li>General 里面记录的是请求的基本信息，包括请求地址（Request URL）、请求类型（Request Method）、请求发送状态（Status Code）等</li>
-<li>Response Headers 是响应头，里面记录了返回数据的类型（Content-Type）,浏览器数据的压缩格式(Content-Encoding),服务器的类型(Server),当前时间(Date)等</li>
-<li>Request Headers 是请求头，里面记录了本次请求的客户机支持的数据类型（Accept），缓存控制（Cache-Control），Cookie，访问的主机名（Host），处理完这次请求后的连接方式（Connection）等</li>
-<li>Query String Parameters 是异步请求的参数，如果是 get 请求，则参数为加在 url 后面的一串查询参数，如果是 post 请求，则参数为 body 体里的 json 对象。</li>
-</ul>
-<p>然后我们切到 Preview 这里我们看到的内容是异步请求返回的数据，数据格式是 JSON 对象。很多时候我们就是通过查看这里的数据来进行异步请求的数据查看和问题排查。当我们调用了一个后端提供的接口，我们第一时间就该来到这里查看后端返回了怎样的数据，我们才能继续利用这些数据进行后续的操作。</p>
-<p>查看请求返回数据</p>
-<p>接下来我们再看 Response ，里面的内容是也是异步请求返回数据，不过它跟 preview 的区别在于 preview 中的数据是以  JSON 对象的形式返回的，而在 Response 中是以 JSON 字符串的形式返回。</p>
-<p>JSON 字符串形式的返回数据</p>
-<p>最后的 Timing 一栏中，展示了本次异步请求的时间开销。在哪个环节消耗了多少时间在这一栏里都能很明确得展示出来，因此当一个异步请求的等待时间较长时，我们不妨可以到这里来看看是在哪个环节能够进行优化。</p>
-<p>请求耗时分布</p>
-<p>怎么样？一个异步请求的发送过程是不是在浏览器中记录得非常详细了？正是因为有了这样强大的功能，Chrome 浏览器才会成为众多前端开发人员钟爱的调试利器。</p>
-<p><a name="sv5glk"></a></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>本章节介绍了 Chrome 浏览器的基本调试场景和调试方法，并分别对 DOM 调试，CSS 调试，JS 调试和网络请求的调试做了展示。当然， Chrome 浏览器的调试功能并不仅限于此，还有很多模块值得大家去探索。浏览器是前端开发用于展示的平台，更是我们提升效率的利器，大家一定要多多尝试，将它充分利用起来。</p>
-<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
-      </div>
-      <div class="post-tags-categories">
-        
-        <div class="tags">
-          
-            <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="">
-              浏览器
-            </a>
-          
-            <a href="/tags/%E8%B0%83%E8%AF%95/" class="">
-              调试
-            </a>
-          
-        </div>
-        
-      </div>
-      
-        <div class="copyright">
-  <ul class="post-copyright">
-    <li class="post-copyright-author">
-    <strong>author:  </strong>梨逍遥</a>
-    </li>
-    <li class="post-copyright-link">
-    <strong>link:  </strong>
-    <a href="/2020/11/11/frontend/browser/debug/chrome-diao-shi-ji-qiao/" target="_blank" title="Chrome调试技巧">https://ywzzy.github.io/2020/11/11/frontend/browser/debug/chrome-diao-shi-ji-qiao/</a>
-    </li>
-    <li class="post-copyright-license">
-      <strong>Copyright notice:   </strong>
-      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
-      reprint policy. If reproduced, please indicate source!
-    </li>
-  </ul>
-<div>
-      
-    </article>
-    <!-- 上一篇文章和下一篇文章 -->
+  <div class="category-header-desc">
     
-      <!-- 文章详情页的上一页和下一页 -->
-<div class="post-nav">
-
-
-
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/daa2ff73fd15360eb0c13.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/daa2ff73fd15360eb0c13.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
-    </div>
-    <a href="/2021/03/16/frontend/browser/xian-dai-liu-lan-qi-nei-bu-jie-mi/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">现代浏览器内部揭秘</div>
-      </div>
-      
-      <!-- <div class="content">
-        
-
-
-第一部分从高级视角对浏览器架构与多进程架构的优点进行阐述。我们也对 Chrome 中与多进程架构密切相关的服务化与
-      </div> -->
-    </a>
-  </div>
-
-
-
-  
-  <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/c8f2d45e028921083fa52.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
-    </div>
-    <a href="/2020/10/07/frontend/interview/fa-bu-ding-yue-subscribe/" class="post-nav-link">
-      <div class="title">
-        Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">发布订阅subscribe</div>
-      </div>
-      <!-- <div class="content">
-        
-
-定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知。
-1234567891
-      </div> -->
-    </a>
-  </div>
-
-</div>
-
-    
-    
-
-    <!-- 打赏 -->
-    
-
-    <!-- 分享 -->
-    
-      <!-- https://github.com/overtrue/share.js -->
-<!-- 文章详情页的分享 -->
-<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-
-<script src="/js/shareJs/social-share.min.js"></script>
-</script>
-
-<style>
-  .social-share {
-    margin: 20px 0;
+      <span class="title" id="category-header-desc"></span>
+      <script>
+  function typedFn() {
+    const el = '#category-header-desc';
+    const type = 'categoryDetail';
+    let desc = '终不似，少年游'
+    var typed = new Typed(el, {
+      strings: [desc],
+      startDelay: 100,
+      typeSpeed: 100,
+      loop: true,
+      backSpeed: 50,
+      showCursor: true
+    });
   }
-</style>
-
-
-    
-    
-    <!-- 评论 -->
-    <!-- 评论 -->
-
-  <div id="myComment">
-    
-      <div id="gitment-container"></div>
-
-    
+  typedFn();
+</script>
+      
   </div>
+  <div class="mask-box"></div>
+</div>
 
-<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
 
-
+<div class="category">
+  <div class="category-name">
+    <div class="name" style="background-color: #FEF9E7;">前端 category</div>
   </div>
+  <!-- 每一篇文章卡片 -->
+  <!-- hash算法 -->
 
-  <!-- 目录 -->
-  <aside id='l_side'>
+<section class="posts">
   
     
-      <section class="widget side_blogger">
-  <div class='content'>
-    
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img src='https://avatars.githubusercontent.com/u/48836340?v=4'/>
+    <article class="post reveal" style="flex-direction: row-reverse;   ">
+      <div class="post-main">
+        <div class="post-info">
+          <div class="post-time">
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            <span class="post-time">2019-02-24</span>
+          </div>
+          <div class="post-title">
+            <a class="post-title-link" href="/2019/02/24/frontend/interview/es6-xin-te-xing/">ES6新特性</a>
+          </div>
+          <div class="post-meta">
+            <div class="post-tags">
+              <!-- 文章详情页的标签 -->
+
+    <i class="iconfont icontag"></i>
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/" rel="tag">es6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/" rel="tag">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+
+            </div>
+            <div class="post-categories">
+              <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a> <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/">面试</a>
+</div>
+
+
+            </div>
+          </div>
+          <div class="post-img-mobile">
+            <a href="/2019/02/24/frontend/interview/es6-xin-te-xing/" style="background-size: cover; 
+              background-position: center center;">
+              <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/6c9d9969e1b55a81a762c.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/6c9d9969e1b55a81a762c.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+            </a>
+          </div>
+          <div class="post-content">
+            
+
+
+展开运算符和剩余运算符
+展开运算符**展开语法,**可以在函数调用&#x2F;数组构造时, 将数组表达式或者 string 在语法层面展开；还可以在构造字面量对象时, 将对象表达式按 key-value 的方式展开。(字面量一般指 [
+          </div>
+        </div>
+        <div class="post-more">
+          <a href="/2019/02/24/frontend/interview/es6-xin-te-xing/">
+            <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
+          </a>
+        </div>
+      </div>
+      <div class="post-img">
+        <a href="/2019/02/24/frontend/interview/es6-xin-te-xing/" style="background-size: cover; 
+          background-position: center center;">
+          <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/6c9d9969e1b55a81a762c.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/6c9d9969e1b55a81a762c.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
         </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>梨逍遥</h2>
-        
-        
-          <p>一个码农</p>
-
-        
-        
-          <p><span id="jinrishici-sentence">梨逍遥</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
       </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/mailto:1738348915@qq.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/YWzzy"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1738348915"
-              class="social fab fa-qq flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
+    </article>
+  
 </section>
-
-    
-  
-  
-  
-    
-  
-
-  <div class="layout_sticky">    
-    
-      
-<section class="widget side_toc">
-  
-  <header>
-    
-      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
-    
-  </header>
-
-
-  <div class='content'>
-    <div class="toc-main">
-      <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Chrome-%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7"><span class="toc-text">1. Chrome 开发者工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-DOM-%E8%B0%83%E8%AF%95"><span class="toc-text">2. DOM 调试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E6%9F%A5%E7%9C%8B-DOM"><span class="toc-text">2.1 查看 DOM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E5%AE%9A%E4%BD%8D-DOM"><span class="toc-text">2.2 定位 DOM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E6%93%8D%E4%BD%9C-DOM"><span class="toc-text">2.3 操作 DOM</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-CSS-%E8%B0%83%E8%AF%95"><span class="toc-text">3. CSS 调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-JS-%E8%B0%83%E8%AF%95"><span class="toc-text">4. JS 调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E8%B0%83%E8%AF%95"><span class="toc-text">5. 网络请求调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol> -->
-        <div class="toc"></div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- 手机端目录按钮 -->
-<div id="toc-mobile-btn">
-  <i class="fas fa-list-ul" aria-hidden="true"></i>
 </div>
-
-      
-  <section class="widget side_recent_post">
+<div class="w-70">
+  
+  <!-- <nav class="page-nav">
+    <a class="extend prev" rel="prev" href="/categories/%E5%89%8D%E7%AB%AF/page/10/">Prev</a><a class="page-number" href="/categories/%E5%89%8D%E7%AB%AF/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/%E5%89%8D%E7%AB%AF/page/9/">9</a><a class="page-number" href="/categories/%E5%89%8D%E7%AB%AF/page/10/">10</a><span class="page-number current">11</span>
+  </nav> -->
+  <div class="page-nav">
     
-  <header>
+      <a href="/categories/%E5%89%8D%E7%AB%AF/page/10/"
+         class="page-nav-pre">
+         <i class="fas fa-angle-left"></i><span class="ml-5">Prev</span>
+      </a>
     
-      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      
-      <!-- hash算法 -->
-      
-      <div class="aside-list">
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/8d11a3c74cc33943b2f36.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/8d11a3c74cc33943b2f36.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">06-27</span>
-                
-              </div>
-              <a class="post-title" href="/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/">前端知识体系</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2024/06/27/mind/liu-lan-qi/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">06-27</span>
-                
-              </div>
-              <a class="post-title" href="/2024/06/27/mind/liu-lan-qi/">浏览器</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/6c9d9969e1b55a81a762c.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/6c9d9969e1b55a81a762c.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">06-08</span>
-                
-              </div>
-              <a class="post-title" href="/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/">使用 big.js 解决 js 小数精度问题</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2024/06/06/frontend/react/21-ge-rang-react-xiang-mu-geng-zheng-ji-de-zui-jia-shi-jian/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/84e31c3a1d909e33b3d07.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/84e31c3a1d909e33b3d07.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">06-06</span>
-                
-              </div>
-              <a class="post-title" href="/2024/06/06/frontend/react/21-ge-rang-react-xiang-mu-geng-zheng-ji-de-zui-jia-shi-jian/">21 个让 React 项目更整洁的最佳实践</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2024/05/22/compatible/yin-cang-yi-dong-duan-gun-dong-tiao-de-ji-chong-fang-an/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/7ce62090187ed773bbce0.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/7ce62090187ed773bbce0.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">05-22</span>
-                
-              </div>
-              <a class="post-title" href="/2024/05/22/compatible/yin-cang-yi-dong-duan-gun-dong-tiao-de-ji-chong-fang-an/">隐藏移动端滚动条的几种方案</a>
-            </div>
-          </div>
-        
-      </div>
+    <div class="page-info">
+        <div class="page-info-text">11 / 11</div>
     </div>
-  </section>
-
     
   </div>
-</aside>
 
-  <!-- 图片放大 Wrap images with fancybox support -->
-  <script src="/js/wrapImage.js"></script>
 </div>
-
-<!-- 文章详情页背景图 -->
-<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
-	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
-	<transition-group tag="ul" :name="names">
-		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
-			<img :src="image" class="bg-swiper-img no-lazy">
-		</li>
-	</transition-group>
-</div>
-<script>
-	var vm = new Vue({
-		el: '#appBgSwiper',
-		data: {
-			names: '' || 'fade' || 'fade', // translate-fade fade
-			mark: 0,
-			img: [],
-			bgColor: '',
-			time: null
-		},
-		methods: {   //添加方法
-			change(i, m) {
-				if (i > m) {
-					// this.names = 'fade';
-				} else if (i < m) {
-					// this.names = 'fade';
-				} else {
-					return;
-				}
-				this.mark = i;
-			},
-			prev() {
-				// this.names = 'fade';
-				this.mark--;
-				if (this.mark === -1) {
-					this.mark = 3;
-					return
-				}
-			},
-			next() {
-				// this.names = 'fade';
-				this.mark++;
-				if (this.mark === this.img.length) {
-					this.mark = 0;
-					return
-				}
-			},
-			autoPlay() {
-				// this.names = 'fade';
-				this.mark++;
-				if (this.mark === this.img.length) {
-					this.mark = 0;
-					return
-				}
-			},
-			play() {
-				let bgImgDelay = '' || '180000'
-				let delay = parseInt(bgImgDelay) || 180000;
-				this.time = setInterval(this.autoPlay, delay);
-			},
-			enter() {
-				clearInterval(this.time);
-			},
-			leave() {
-				this.play();
-			}
-		},
-		created() {
-			this.play()
-		},
-		beforeDestroy() {
-			clearInterval(this.time);
-		},
-		mounted() {
-			let prop = '' || '';
-			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
-			if (isImg) {
-				let img = prop.split(',');
-				let configRoot = '/'
-				let arrImg = [];
-				img.forEach(el => {
-					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
-					var objExp = new RegExp(Expression);
-
-					if (objExp.test(el)) {
-						// http or https
-						arrImg.push(el);
-					} else {
-						// 非http or https开头
-						// 本地文件
-						let firstStr = el.charAt(0);
-						if (firstStr == '/') {
-							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
-						}
-						el = configRoot + el;
-						arrImg.push(el);
-					}
-				})
-				this.img = arrImg;
-			} else {
-				this.bgColor = prop;
-			}
-		}
-	})
-</script>
-
-<style>
-	.bg-swiper-box {
-		position: absolute;
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
-
-	.bg-swiper-img {
-		object-fit: cover;
-		width: 100%;
-		height: 100%;
-	}
-</style>
-
-
-
-
-  <script>
-  function loadMermaid() {
-    if (document.getElementsByClassName('mermaid').length) {
-      if (window.mermaidJsLoad) mermaid.init()
-      else {
-        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
-          window.mermaidJsLoad = true
-          mermaid.initialize({
-            theme: 'default',
-          })
-          if ('true') {
-            mermaid.init();
-          }
-        })
-      }
-    }
-  };
-  document.addEventListener("DOMContentLoaded", function () {
-    loadMermaid();
-  })
-
-  document.addEventListener('pjax:complete', function () {
-    loadMermaid();
-  })
-  
-</script>
-
 
       </main>
     </div>

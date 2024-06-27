@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2024-06-27T05:41:20.476Z</updated>
+  <updated>2024-06-27T07:31:30.272Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端知识体系</title>
+    <link href="https://ywzzy.github.io/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/"/>
+    <id>https://ywzzy.github.io/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/</id>
+    <published>2024-06-27T07:42:49.000Z</published>
+    <updated>2024-06-27T07:31:30.272Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;iframe src=&quot;https://mm.edrawsoft.cn/app/editor/jaZLyVRfZFVlVKstNWXhVukwDfvmc1CL?share=1&amp;page=8889934692&quot; width=&quot;100%&quot; height=&quot;800px&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="思维导图" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
+    
+    
+    <category term="思维导图" scheme="https://ywzzy.github.io/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>浏览器</title>
@@ -539,35 +566,6 @@
 
 &lt;p&gt;&lt;a name=&quot;MZPZO&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;1-导入依赖项&quot;&gt;&lt;a href=&quot;#1-导入依赖项&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
-    
-    
-    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React常见错误，如何避免？</title>
-    <link href="https://ywzzy.github.io/2023/08/15/frontend/react/react-chang-jian-cuo-wu-ru-he-bi-mian/"/>
-    <id>https://ywzzy.github.io/2023/08/15/frontend/react/react-chang-jian-cuo-wu-ru-he-bi-mian/</id>
-    <published>2023-08-15T06:42:49.000Z</published>
-    <updated>2024-04-19T07:23:51.335Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;下面来分享在 React 开发中常见的一些错误，以及如何避免这些错误。理解这些问题背后的细节，防止犯下类似的错误。&lt;br&gt;&lt;a</summary>
         
       
     
