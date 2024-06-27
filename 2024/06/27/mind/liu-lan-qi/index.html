@@ -588,8 +588,8 @@
               前端
             </a>
           
-            <a href="/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="post-detail-header_category">
-              浏览器
+            <a href="/categories/%E5%89%8D%E7%AB%AF/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/" class="post-detail-header_category">
+              思维导图
             </a>
           
         </span>
@@ -613,314 +613,194 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h1><h2 id="浏览器渲染原理"><a href="#浏览器渲染原理" class="headerlink" title="浏览器渲染原理"></a>浏览器渲染原理</h2><h3 id="渲染引擎"><a href="#渲染引擎" class="headerlink" title="渲染引擎"></a>渲染引擎</h3><ul>
-<li><p>解析 HTML：将 HTML 转换为 DOM 树（Document Object Model）。</p>
-</li>
-<li><p>解析 CSS：将 CSS 转换为样式规则，并应用到 DOM 树。</p>
-</li>
-<li><p>构建渲染树：根据 DOM 树和样式规则生成渲染树。</p>
-</li>
-<li><p>布局（Layout）：计算每个元素的大小和位置。</p>
-</li>
-<li><p>绘制（Painting）：将渲染树中的每个元素绘制到屏幕上。</p>
-</li>
+        <blockquote class="pullquote mindmap mindmap-md"><ul>
+<li><a target="_blank" rel="noopener" href="https://www.yuque.com/yuanwei-xe0wv/eieg5a/gy7us10gaq3iobtf">浏览器</a><ul>
+<li>浏览器渲染原理<ul>
+<li>渲染引擎<ul>
+<li>解析 HTML：将 HTML 转换为 DOM 树（Document Object Model）。</li>
+<li>解析 CSS：将 CSS 转换为样式规则，并应用到 DOM 树。</li>
+<li>构建渲染树：根据 DOM 树和样式规则生成渲染树。</li>
+<li>布局（Layout）：计算每个元素的大小和位置。</li>
+<li>绘制（Painting）：将渲染树中的每个元素绘制到屏幕上。</li>
 </ul>
-<h3 id="渲染过程"><a href="#渲染过程" class="headerlink" title="渲染过程"></a>渲染过程</h3><ul>
-<li><p>首先解析收到的文档，根据文档定义构建一棵 DOM 树，DOM 树是由 DOM 元素及属性节点组成的。</p>
 </li>
-<li><p>然后对 CSS 进行解析，生成 CSSOM 规则树。</p>
-</li>
-<li><p>根据 DOM 树和 CSSOM 规则树构建渲染树。渲染树的节点被称为渲染对象，渲染对象和 DOM 元素相对应，但这种对应关系不是一对一的，不可见的 DOM 元素不会被插入渲染树。</p>
-</li>
-<li><p>当渲染对象被创建并添加到树中，它们并没有位置和大小，所以当浏览器生成渲染树以后，就会根据渲染树来进行布局（也可以叫做回流）。这一阶段浏览器要做的事情是要弄清楚各个节点在页面中的确切位置和大小。</p>
-</li>
-<li><p>布局阶段结束后是绘制阶段，遍历渲染树并调用渲染对象的 paint 方法将它们的内容显示在屏幕上，绘制使用 UI 基础组件。</p>
-</li>
-<li><p>注意：这个过程是逐步完成的，为了更好的用户体验，渲染引擎会尽可能早的将内容呈现到屏幕上，并不会等到所有的 html 都解析完成之后再去构建和布局 render 树。它是解析完一部分内容就显示一部分内容，同时，可能还在通过网络下载其余内容。</p>
-</li>
+<li>渲染过程<ul>
+<li>首先解析收到的文档，根据文档定义构建一棵 DOM 树，DOM 树是由 DOM 元素及属性节点组成的。</li>
+<li>然后对 CSS 进行解析，生成 CSSOM 规则树。</li>
+<li>根据 DOM 树和 CSSOM 规则树构建渲染树。渲染树的节点被称为渲染对象，渲染对象和 DOM 元素相对应，但这种对应关系不是一对一的，不可见的 DOM 元素不会被插入渲染树。</li>
+<li>当渲染对象被创建并添加到树中，它们并没有位置和大小，所以当浏览器生成渲染树以后，就会根据渲染树来进行布局（也可以叫做回流）。这一阶段浏览器要做的事情是要弄清楚各个节点在页面中的确切位置和大小。</li>
+<li>布局阶段结束后是绘制阶段，遍历渲染树并调用渲染对象的 paint 方法将它们的内容显示在屏幕上，绘制使用 UI 基础组件。</li>
+<li>注意：这个过程是逐步完成的，为了更好的用户体验，渲染引擎会尽可能早的将内容呈现到屏幕上，并不会等到所有的 html 都解析完成之后再去构建和布局 render 树。它是解析完一部分内容就显示一部分内容，同时，可能还在通过网络下载其余内容。</li>
 </ul>
-<h3 id="渲染优化"><a href="#渲染优化" class="headerlink" title="渲染优化"></a>渲染优化</h3><ul>
-<li><p>网络加载优化</p>
-<ul>
-<li><p>资源合并和压缩，减少 HTTP 请求次数和文件大小</p>
 </li>
-<li><p>利用浏览器缓存，包括 HTTP 缓存、资源预加载等</p>
-</li>
-<li><p>使用 CDN 加速资源加载</p>
-<ul>
+<li>渲染优化<ul>
+<li>网络加载优化</li>
+<li>资源合并和压缩，减少 HTTP 请求次数和文件大小</li>
+<li>利用浏览器缓存，包括 HTTP 缓存、资源预加载等</li>
+<li>使用 CDN 加速资源加载<ul>
 <li>CDN 可以通过地理位置优化、负载均衡、缓存优化、连接复用以及抗攻击能力等多种方式，加速静态资源的加载，提升网站的性能和用户体验</li>
 </ul>
 </li>
+<li>HTML 解析优化</li>
+<li>减少 DOM 元素数量，避免嵌套过审的结构</li>
+<li>使用语义化标签，帮助浏览器更快理解文档结构</li>
+<li>尽量将 script 标签放在 body 最后，或者用 async 或者 defer 的方式引入 script<ul>
+<li>async：下载 JS 是异步，下载完成会立即执行，会阻塞渲染</li>
+<li>defer：下载是异步的，会等 DOM 树构建完毕，并且在 DOMContentLoaded 事件触发之前执行</li>
 </ul>
 </li>
-<li><p>HTML 解析优化</p>
-<ul>
-<li><p>减少 DOM 元素数量，避免嵌套过审的结构</p>
-</li>
-<li><p>使用语义化标签，帮助浏览器更快理解文档结构</p>
-</li>
-<li><p>尽量将 script 标签放在 body 最后，或者用 async 或者 defer 的方式引入 script</p>
-<ul>
-<li><p>async：下载 JS 是异步，下载完成会立即执行，会阻塞渲染</p>
-</li>
-<li><p>defer：下载是异步的，会等 DOM 树构建完毕，并且在 DOMContentLoaded 事件触发之前执行</p>
-</li>
+<li>CSS 渲染优化</li>
+<li>避免使用过多的样式规则和选择器，减少 CSS 文件大小</li>
+<li>使用简单的 CSS 动画而不是 JS 动画，以利用浏览器的硬件加速功能</li>
+<li>布局(回流&#x2F;重排)、绘制(重绘)优化</li>
+<li>避免频繁操作样式，最好一次性修改多个样式</li>
+<li>尽量减少不必要的元素重绘，例如使用 transform 属性而不是修改 top 和 left 属性来移动元素</li>
+<li>使用 CSS3 动画或变换来减少重绘和回流<ul>
+<li>GPU 加速：大部分浏览器使用 GPU 加速 CSS3 动画。GPU 通常能够处理图形任务更快，因此将动画委托给 GPU 处理可以提高动画的性能，减少 CPU 的负载。相比之下，JavaScript 动画通常由 CPU 处理，性能可能不如 GPU 加速的 CSS3 动画。</li>
+<li>硬件加速的转换和动画：CSS3 动画可以应用于 CSS 属性，如 transform 和 opacity，这些属性可以通过硬件加速进行处理，而不需要触发重绘或回流。例如，使用 transform 属性进行动画时，浏览器可以在 GPU 上执行动画转换，而不会影响文档流，从而减少了重绘和回流。</li>
+<li>优化的动画循环：浏览器能够优化 CSS3 动画的执行方式。例如，浏览器可以根据屏幕刷新率进行动画绘制，以确保动画流畅且不会引起撕裂或闪烁。</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>CSS 渲染优化</p>
-<ul>
-<li><p>避免使用过多的样式规则和选择器，减少 CSS 文件大小</p>
-</li>
-<li><p>使用简单的 CSS 动画而不是 JS 动画，以利用浏览器的硬件加速功能</p>
-</li>
-</ul>
-</li>
-<li><p>布局(回流&#x2F;重排)、绘制(重绘)优化</p>
-<ul>
-<li><p>避免频繁操作样式，最好一次性修改多个样式</p>
-</li>
-<li><p>尽量减少不必要的元素重绘，例如使用 transform 属性而不是修改 top 和 left 属性来移动元素</p>
-</li>
-<li><p>使用 CSS3 动画或变换来减少重绘和回流</p>
-<ul>
-<li><p>GPU 加速：大部分浏览器使用 GPU 加速 CSS3 动画。GPU 通常能够处理图形任务更快，因此将动画委托给 GPU 处理可以提高动画的性能，减少 CPU 的负载。相比之下，JavaScript 动画通常由 CPU 处理，性能可能不如 GPU 加速的 CSS3 动画。</p>
-</li>
-<li><p>硬件加速的转换和动画：CSS3 动画可以应用于 CSS 属性，如 transform 和 opacity，这些属性可以通过硬件加速进行处理，而不需要触发重绘或回流。例如，使用 transform 属性进行动画时，浏览器可以在 GPU 上执行动画转换，而不会影响文档流，从而减少了重绘和回流。</p>
-</li>
-<li><p>优化的动画循环：浏览器能够优化 CSS3 动画的执行方式。例如，浏览器可以根据屏幕刷新率进行动画绘制，以确保动画流畅且不会引起撕裂或闪烁。</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>合成优化</p>
-<ul>
-<li><p>利用 GPU 加速，将合成和绘制操作委托给 GPU</p>
-<ul>
+<li>合成优化</li>
+<li>利用 GPU 加速，将合成和绘制操作委托给 GPU<ul>
 <li>怎么实现：利用 CSS3 属性、3D 变换、will-change 属性以及避免触发重绘和回流等方法，可以有效地利用 GPU 加速，将合成和绘制操作委托给 GPU，从而提高页面的性能和流畅度</li>
 </ul>
 </li>
-<li><p>使用 CSS 属性 will-change 来提示浏览器元素将要被修改，以便浏览器在后台优化渲染。</p>
+<li>使用 CSS 属性 will-change 来提示浏览器元素将要被修改，以便浏览器在后台优化渲染。</li>
+</ul>
 </li>
+<li>回流和重绘<ul>
+<li>回流</li>
+<li>渲染树中部分或全部元素的尺寸、结构或者属性发生变化时，浏览器全部或部分重新渲染文档的过程，就是回流</li>
+<li>导致回流的操作<ul>
+<li>页面首次渲染</li>
+<li>浏览器窗口大小变化</li>
+<li>页面内容、字体大小、激活伪类</li>
+<li>查询元素的宽高</li>
+<li>添加或删除可见 DOM 元素</li>
+</ul>
+</li>
+<li>重绘</li>
+<li>样式变化，但是不影响元素在文档流中的位置时，浏览器就会对元素进行重绘</li>
+<li>color、background、border-radius、visibility、opaticy</li>
+<li>如何避免</li>
+<li>操作 DOM 时，尽量在低层级的 DOM 节点进行操作</li>
+<li>不要频繁操作元素的样式，对于静态页面，可以修改类名，而不是样式。</li>
+<li>不要使用 table 布局， 一个小的改动可能会使整个 table 进行重新布局</li>
+<li>使用 absolute 或者 fixed，使元素脱离文档流，这样他们发生变化就不会影响其他元素</li>
+<li>避免频繁操作 DOM，可以创建一个文档片段 documentFragment，在它上面应用所有 DOM 操作，最后再把它添加到文档中</li>
+<li>DOM 离线化：将元素先设置 display: none，操作结束后再把它显示出来。因为在 display 属性为 none 的元素上进行的 DOM 操作不会引发回流和重绘。</li>
+<li>将 DOM 的多个读操作（或者写操作）放在一起，而不是读写操作穿插着写。这得益于浏览器的渲染队列机制。</li>
+<li>渲染 Flush 队列</li>
+<li>浏览器针对页面的回流与重绘，进行了自身的优化，就是渲染队列。</li>
+<li>浏览器会将所有的回流、重绘的操作放在一个队列中，当队列中的操作到了一定的数量或者到了一定的时间间隔，浏览器就会对队列进行批处理。这样就会让多次的回流、重绘变成一次回流重绘。</li>
+<li>上面，将多个读操作（或者写操作）放在一起，就会等所有的读操作进入队列之后执行，这样，原本应该是触发多次回流，变成了只触发一次回流。</li>
 </ul>
 </li>
 </ul>
-<h3 id="回流和重绘"><a href="#回流和重绘" class="headerlink" title="回流和重绘"></a>回流和重绘</h3><ul>
-<li><p>回流</p>
-<ul>
-<li><p>渲染树中部分或全部元素的尺寸、结构或者属性发生变化时，浏览器全部或部分重新渲染文档的过程，就是回流</p>
 </li>
-<li><p>导致回流的操作</p>
-<ul>
-<li><p>页面首次渲染</p>
-</li>
-<li><p>浏览器窗口大小变化</p>
-</li>
-<li><p>页面内容、字体大小、激活伪类</p>
-</li>
-<li><p>查询元素的宽高</p>
-</li>
-<li><p>添加或删除可见 DOM 元素</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>重绘</p>
-<ul>
-<li><p>样式变化，但是不影响元素在文档流中的位置时，浏览器就会对元素进行重绘</p>
-</li>
-<li><p>color、background、border-radius、visibility、opaticy</p>
-</li>
-</ul>
-</li>
-<li><p>如何避免</p>
-<ul>
-<li><p>操作 DOM 时，尽量在低层级的 DOM 节点进行操作</p>
-</li>
-<li><p>不要频繁操作元素的样式，对于静态页面，可以修改类名，而不是样式。</p>
-</li>
-<li><p>不要使用 table 布局， 一个小的改动可能会使整个 table 进行重新布局</p>
-</li>
-<li><p>使用 absolute 或者 fixed，使元素脱离文档流，这样他们发生变化就不会影响其他元素</p>
-</li>
-<li><p>避免频繁操作 DOM，可以创建一个文档片段 documentFragment，在它上面应用所有 DOM 操作，最后再把它添加到文档中</p>
-</li>
-<li><p>DOM 离线化：将元素先设置 display: none，操作结束后再把它显示出来。因为在 display 属性为 none 的元素上进行的 DOM 操作不会引发回流和重绘。</p>
-</li>
-<li><p>将 DOM 的多个读操作（或者写操作）放在一起，而不是读写操作穿插着写。这得益于浏览器的渲染队列机制。</p>
-</li>
-</ul>
-</li>
-<li><p>渲染 Flush 队列</p>
-<ul>
-<li><p>浏览器针对页面的回流与重绘，进行了自身的优化，就是渲染队列。</p>
-</li>
-<li><p>浏览器会将所有的回流、重绘的操作放在一个队列中，当队列中的操作到了一定的数量或者到了一定的时间间隔，浏览器就会对队列进行批处理。这样就会让多次的回流、重绘变成一次回流重绘。</p>
-</li>
-<li><p>上面，将多个读操作（或者写操作）放在一起，就会等所有的读操作进入队列之后执行，这样，原本应该是触发多次回流，变成了只触发一次回流。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h2><h3 id="缓存过程"><a href="#缓存过程" class="headerlink" title="缓存过程"></a>缓存过程</h3><ul>
-<li><p>检查缓存</p>
-<ul>
+<li>浏览器缓存<ul>
+<li>缓存过程<ul>
+<li>检查缓存</li>
 <li>当用户在浏览器中输入网址或点击链接访问一个网页时，浏览器首先会检查该网页的缓存情况。它会根据请求的资源的 URL，查找是否存在对应的缓存。</li>
-</ul>
-</li>
-<li><p>缓存命中</p>
-<ul>
+<li>缓存命中</li>
 <li>如果检查到请求的资源已经存在于缓存中，并且缓存有效（未过期），则浏览器会直接从缓存中加载资源，而不发送请求到服务器。</li>
-</ul>
-</li>
-<li><p>缓存未命中</p>
-<ul>
+<li>缓存未命中</li>
 <li>如果请求的资源不在缓存中，或者缓存已经失效，浏览器会发送请求到服务器请求资源。同时，请求中会包含一些头部信息，如 If-Modified-Since、If-None-Match 等，用于与服务器进行缓存验证。</li>
-</ul>
-</li>
-<li><p>服务器响应</p>
-<ul>
+<li>服务器响应</li>
 <li>服务器收到浏览器发送的请求后，会根据请求头部中的信息判断资源是否发生了变化。如果资源未发生变化，服务器会返回 304 Not Modified 状态码，并且响应中不包含实际的资源内容，浏览器将继续使用缓存中的资源。如果资源已经发生变化，服务器会返回新的资源内容和相应的缓存控制头部信息。</li>
-</ul>
-</li>
-<li><p>更新缓存</p>
-<ul>
+<li>更新缓存</li>
 <li>如果服务器返回的资源是新的或已经修改过的，浏览器会根据服务器返回的缓存控制信息更新缓存。这可能包括更新缓存的有效期，或者根据新的内容生成新的缓存标识符（如 ETag）。</li>
+<li>资源加载</li>
 </ul>
 </li>
-<li><p>资源加载</p>
-</li>
-</ul>
-<h3 id="缓存位置"><a href="#缓存位置" class="headerlink" title="缓存位置"></a>缓存位置</h3><ul>
-<li><p>资源缓存的位置一共有 3 种，按优先级从高到低分别是</p>
-</li>
+<li>缓存位置<ul>
+<li>资源缓存的位置一共有 3 种，按优先级从高到低分别是</li>
 <li><ol>
 <li>Service Worker</li>
 </ol>
-<ul>
-<li>Service Worker 运行在 JavaScript 主线程之外，虽然由于脱离了浏览器窗体无法直接访问 DOM，但是它可以完成离线缓存、消息推送、网络代理等功能。(PWA 离线应用)</li>
-</ul>
 </li>
+<li>Service Worker 运行在 JavaScript 主线程之外，虽然由于脱离了浏览器窗体无法直接访问 DOM，但是它可以完成离线缓存、消息推送、网络代理等功能。(PWA 离线应用)</li>
 <li><ol start="2">
 <li>Memory Cache</li>
 </ol>
-<ul>
-<li>Memory Cache 就是内存缓存，它的效率最快，但是内存缓存虽然读取高效，可是缓存持续性很短，会随着进程的释放而释放。一旦我们关闭 Tab 页面，内存中的缓存也就被释放了。</li>
-</ul>
 </li>
+<li>Memory Cache 就是内存缓存，它的效率最快，但是内存缓存虽然读取高效，可是缓存持续性很短，会随着进程的释放而释放。一旦我们关闭 Tab 页面，内存中的缓存也就被释放了。</li>
 <li><ol start="3">
 <li>Disk Cache</li>
 </ol>
-<ul>
+</li>
 <li>Disk Cache 也就是存储在硬盘中的缓存，读取速度慢点，但是什么都能存储到磁盘中，比之 Memory Cache 胜在容量和存储时效性上。</li>
 </ul>
 </li>
-</ul>
-<h3 id="缓存类型"><a href="#缓存类型" class="headerlink" title="缓存类型"></a>缓存类型</h3><ul>
-<li><p>强缓存</p>
-<ul>
-<li><p>强缓存策略可以通过两种方式来设置，分别是 http 头信息中的 Expires 属性和 Cache-Control 属性。</p>
-</li>
-<li><p>Expires (http1.0)</p>
-<ul>
+<li>缓存类型<ul>
+<li>强缓存</li>
+<li>强缓存策略可以通过两种方式来设置，分别是 http 头信息中的 Expires 属性和 Cache-Control 属性。</li>
+<li>Expires (http1.0)<ul>
 <li>服务器通过在响应头中添加 Expires 属性，来指定资源的过期时间。这个时间是一个绝对时间，它是服务器的时间，因此可能存在这样的问题，就是客户端的时间和服务器端的时间不一致，或者用户可以对客户端时间进行修改的情况，这样就可能会影响缓存命中的结果。</li>
 </ul>
 </li>
-<li><p>Cache-Control (http1.1)</p>
-<ul>
-<li><p>Cache-Control: max-age&#x3D;3600</p>
-<ul>
+<li>Cache-Control (http1.1)<ul>
+<li>Cache-Control: max-age&#x3D;3600<ul>
 <li>可以通过 max-age 设置一个相对的过期时间</li>
 </ul>
 </li>
-<li><p>Cache-Control: public</p>
-<ul>
+<li>Cache-Control: public<ul>
 <li>表示响应可以被任何缓存区缓存（如浏览器、CDN）</li>
 </ul>
 </li>
-<li><p>Cache-Control: private</p>
-<ul>
-<li>表示响应只能被单个用户的缓存（如浏览器）缓存，不能被共享缓存（如 CDN）缓存</li>
+<li>Cache-Control: private</li>
+<li>表示响应只能被单个用户的缓存（如浏览器）缓存，不能被共享缓存（如 CDN）缓存<ul>
+<li>Cache-Control: no-cache</li>
 </ul>
 </li>
-<li><p>Cache-Control: no-cache</p>
-<ul>
-<li>强制要求缓存服务器在使用缓存副本前先与原服务器验证其有效性</li>
+<li>强制要求缓存服务器在使用缓存副本前先与原服务器验证其有效性<ul>
+<li>Cache-Control: no-store</li>
 </ul>
 </li>
-<li><p>Cache-Control: no-store</p>
-<ul>
-<li>禁止缓存任何响应内容，每次请求都要从服务器获取资源</li>
+<li>禁止缓存任何响应内容，每次请求都要从服务器获取资源<ul>
+<li>Cache-Control: must-revalidate</li>
 </ul>
 </li>
-<li><p>Cache-Control: must-revalidate</p>
-<ul>
 <li>在缓存过期后，必须向原服务器验证资源的有效性</li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>协商缓存</p>
-<ul>
-<li><p>使用协商缓存策略时，会先向服务器发送一个请求，如果资源没有发生修改，则返回一个 304 状态，让浏览器使用本地的缓存副本。如果资源发生了修改，则返回修改后的资源。</p>
-</li>
-<li><p>协商缓存也可以通过两种方式来设置，分别是 http 头信息中的 Etag 和 Last-Modified 属性。</p>
-</li>
-<li><p>命中协商缓存的条件</p>
-<ul>
+<li>协商缓存</li>
+<li>使用协商缓存策略时，会先向服务器发送一个请求，如果资源没有发生修改，则返回一个 304 状态，让浏览器使用本地的缓存副本。如果资源发生了修改，则返回修改后的资源。</li>
+<li>协商缓存也可以通过两种方式来设置，分别是 http 头信息中的 Etag 和 Last-Modified 属性。</li>
+<li>命中协商缓存的条件<ul>
 <li>cache-control 的 max-age 过期了，没有设置 no-store</li>
 </ul>
 </li>
-<li><p>Last-Modified</p>
-<ul>
-<li><p>服务器通过在响应头中添加 Last-Modified 属性来指出资源最后一次修改的时间，当浏览器下一次发起请求时，会在请求头中添加一个 If-Modified-Since 的属性，属性值为上一次资源返回时的 Last-Modified 的值。当请求发送到服务器后服务器会通过这个属性来和资源的最后一次的修改时间来进行比较，以此来判断资源是否做了修改。如果资源没有修改，那么返回 304 状态，让客户端使用本地的缓存。如果资源已经被修改了，则返回修改后的资源。</p>
-</li>
-<li><p>缺点：Last-Modified 标注的最后修改时间只能精确到秒级，如果某些文件在 1 秒钟以内，被修改多次的话，那么文件已将改变了但是 Last-Modified 却没有改变，这样会造成缓存命中的不准确。</p>
-</li>
+<li>Last-Modified<ul>
+<li>服务器通过在响应头中添加 Last-Modified 属性来指出资源最后一次修改的时间，当浏览器下一次发起请求时，会在请求头中添加一个 If-Modified-Since 的属性，属性值为上一次资源返回时的 Last-Modified 的值。当请求发送到服务器后服务器会通过这个属性来和资源的最后一次的修改时间来进行比较，以此来判断资源是否做了修改。如果资源没有修改，那么返回 304 状态，让客户端使用本地的缓存。如果资源已经被修改了，则返回修改后的资源。</li>
+<li>缺点：Last-Modified 标注的最后修改时间只能精确到秒级，如果某些文件在 1 秒钟以内，被修改多次的话，那么文件已将改变了但是 Last-Modified 却没有改变，这样会造成缓存命中的不准确。</li>
 </ul>
 </li>
-<li><p>Etag</p>
-<ul>
-<li><p>服务器在返回资源的时候，在头信息中添加了 Etag 属性，这个属性是资源生成的唯一标识符，当资源发生改变的时候，这个值也会发生改变。在下一次资源请求时，浏览器会在请求头中添加一个 If-None-Match 属性，这个属性的值就是上次返回的资源的 Etag 的值。服务接收到请求后会根据这个值来和资源当前的 Etag 的值来进行比较，以此来判断资源是否发生改变，是否需要返回资源。通过这种方式，比 Last-Modified 的方式更加精确。</p>
-</li>
-<li><p>Etag 优先级更高</p>
-</li>
-<li><p>使用协商缓存的时候，服务器需要考虑负载平衡的问题，因此多个服务器上资源的 Last-Modified 应该保持一致，因为每个服务器上 Etag 的值都不一样，因此在考虑负载平衡时，最好不要设置 Etag 属性。</p>
-</li>
+<li>Etag<ul>
+<li>服务器在返回资源的时候，在头信息中添加了 Etag 属性，这个属性是资源生成的唯一标识符，当资源发生改变的时候，这个值也会发生改变。在下一次资源请求时，浏览器会在请求头中添加一个 If-None-Match 属性，这个属性的值就是上次返回的资源的 Etag 的值。服务接收到请求后会根据这个值来和资源当前的 Etag 的值来进行比较，以此来判断资源是否发生改变，是否需要返回资源。通过这种方式，比 Last-Modified 的方式更加精确。</li>
+<li>Etag 优先级更高</li>
+<li>使用协商缓存的时候，服务器需要考虑负载平衡的问题，因此多个服务器上资源的 Last-Modified 应该保持一致，因为每个服务器上 Etag 的值都不一样，因此在考虑负载平衡时，最好不要设置 Etag 属性。</li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<h3 id="浏览器刷新"><a href="#浏览器刷新" class="headerlink" title="浏览器刷新"></a>浏览器刷新</h3><ul>
-<li><p>点击刷新按钮或者按 F5</p>
-<ul>
+<li>浏览器刷新<ul>
+<li>点击刷新按钮或者按 F5</li>
 <li>浏览器直接对本地的缓存文件过期，但是会带上 If-Modifed-Since，If-None-Match，这就意味着服务器会对文件检查新鲜度，返回结果可能是 304，也有可能是 200。</li>
-</ul>
-</li>
-<li><p>用户按 Ctrl+F5（强制刷新）</p>
-<ul>
+<li>用户按 Ctrl+F5（强制刷新）</li>
 <li>浏览器不仅会对本地文件过期，而且不会带上 If-Modifed-Since，If-None-Match，相当于之前从来没有请求过，返回结果是 200。</li>
-</ul>
-</li>
-<li><p>地址栏回车</p>
-<ul>
+<li>地址栏回车</li>
 <li>浏览器发起请求，按照正常流程，本地检查是否过期，然后服务器检查新鲜度，最后返回内容。</li>
 </ul>
 </li>
 </ul>
-<h2 id="浏览器存储"><a href="#浏览器存储" class="headerlink" title="浏览器存储"></a>浏览器存储</h2><h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><ul>
-<li><p>特点</p>
-<ul>
-<li><p>无法跨域</p>
-<ul>
-<li><p>如何实现跨域名共享</p>
-<ul>
+</li>
+<li>浏览器存储<ul>
+<li>cookie<ul>
+<li>特点</li>
+<li>无法跨域<ul>
+<li>如何实现跨域名共享</li>
 <li><ol>
 <li>使用 Nginx 反向代理</li>
 </ol>
@@ -931,167 +811,107 @@
 </li>
 </ul>
 </li>
+<li>每个域名下 Cookie 的数量不能超过 20 个，每个 Cookie 的大小不能超过 4kb</li>
+<li>有安全问题，如果 Cookie 被拦截了，那就可获得 session 的所有信息</li>
+<li>cookie 会随 HTTP 请求一起发送</li>
+<li>一般由服务端设置，客户端存储</li>
+<li>使用场景<ul>
+<li>最常见的使用场景就是 Cookie 和 session 结合使用，我们将 sessionId 存储到 Cookie 中，每次发请求都会携带这个 sessionId，这样服务端就知道是谁发起的请求，从而响应相应的信息。</li>
+<li>可以用来统计页面的点击次数</li>
 </ul>
 </li>
-<li><p>每个域名下 Cookie 的数量不能超过 20 个，每个 Cookie 的大小不能超过 4kb</p>
-</li>
-<li><p>有安全问题，如果 Cookie 被拦截了，那就可获得 session 的所有信息</p>
-</li>
-<li><p>cookie 会随 HTTP 请求一起发送</p>
-</li>
-<li><p>一般由服务端设置，客户端存储</p>
-</li>
-</ul>
-</li>
-<li><p>使用场景</p>
-<ul>
-<li><p>最常见的使用场景就是 Cookie 和 session 结合使用，我们将 sessionId 存储到 Cookie 中，每次发请求都会携带这个 sessionId，这样服务端就知道是谁发起的请求，从而响应相应的信息。</p>
-</li>
-<li><p>可以用来统计页面的点击次数</p>
-</li>
-</ul>
-</li>
-<li><p>字段</p>
-<ul>
-<li><p>服务器端可以使用 Set-Cookie 的响应头部来配置 cookie 信息。一条 cookie 包括了 5 个属性值 expires、domain、path、secure、HttpOnly。</p>
-</li>
-<li><p>其中 expires 指定了 cookie 失效的时间，domain 是域名、path 是路径，domain 和 path 一起限制了 cookie 能够被哪些 url 访问。</p>
-</li>
-<li><p>secure 规定了 cookie 只能在确保安全的情况下传输，HttpOnly 规定了这个 cookie 只能被服务器访问，不能使用 js 脚本访问。</p>
-</li>
+<li>字段<ul>
+<li>服务器端可以使用 Set-Cookie 的响应头部来配置 cookie 信息。一条 cookie 包括了 5 个属性值 expires、domain、path、secure、HttpOnly。</li>
+<li>其中 expires 指定了 cookie 失效的时间，domain 是域名、path 是路径，domain 和 path 一起限制了 cookie 能够被哪些 url 访问。</li>
+<li>secure 规定了 cookie 只能在确保安全的情况下传输，HttpOnly 规定了这个 cookie 只能被服务器访问，不能使用 js 脚本访问。</li>
 </ul>
 </li>
 </ul>
-<h3 id="localstorage"><a href="#localstorage" class="headerlink" title="localstorage"></a>localstorage</h3><ul>
-<li><p>特点</p>
-<ul>
-<li><p>存储大小为 5MB</p>
 </li>
-<li><p>LocalStorage 是持久储存，并不会随着页面的关闭而消失，除非主动清理，不然会永久存在</p>
-</li>
-<li><p>仅储存在本地，不像 Cookie 那样每次 HTTP 请求都会被携带</p>
-</li>
-<li><p>如果浏览器设置为隐私模式，那我们将无法读取到 LocalStorage</p>
-</li>
-<li><p>受同源策略的限制</p>
-</li>
-</ul>
-</li>
-<li><p>使用场景</p>
-<ul>
-<li><p>换肤</p>
-</li>
-<li><p>登录 token</p>
-</li>
+<li>localstorage<ul>
+<li>特点<ul>
+<li>存储大小为 5MB</li>
+<li>LocalStorage 是持久储存，并不会随着页面的关闭而消失，除非主动清理，不然会永久存在</li>
+<li>仅储存在本地，不像 Cookie 那样每次 HTTP 请求都会被携带</li>
+<li>如果浏览器设置为隐私模式，那我们将无法读取到 LocalStorage</li>
+<li>受同源策略的限制</li>
+<li>使用场景</li>
+<li>换肤</li>
+<li>登录 token</li>
 </ul>
 </li>
 </ul>
-<h3 id="sessionstorage"><a href="#sessionstorage" class="headerlink" title="sessionstorage"></a>sessionstorage</h3><ul>
+</li>
+<li>sessionstorage<ul>
 <li>SessionStorage 代表一次会话中保存的数据。只有在同一浏览器的同一窗口下才能够共享，关闭窗口则数据清空</li>
 </ul>
-<h3 id="indexDB"><a href="#indexDB" class="headerlink" title="indexDB"></a>indexDB</h3><ul>
-<li><p>是被正式纳⼊ HTML5 标准的数据库储存⽅案，它是 NoSQL 数据库，⽤键值对进⾏储存，可以进⾏快速读取操作，适合 web 场景</p>
 </li>
-<li><p>特点</p>
-<ul>
-<li><p>键值对储存</p>
-</li>
-<li><p>异步</p>
-</li>
-<li><p>支持事务</p>
-</li>
-<li><p>同源限制</p>
-</li>
-<li><p>储存空间大：不少于 250MB，甚至没有上限</p>
-</li>
-<li><p>支持二进制储存</p>
+<li>indexDB<ul>
+<li>是被正式纳⼊ HTML5 标准的数据库储存⽅案，它是 NoSQL 数据库，⽤键值对进⾏储存，可以进⾏快速读取操作，适合 web 场景</li>
+<li>特点<ul>
+<li>键值对储存</li>
+<li>异步</li>
+<li>支持事务</li>
+<li>同源限制</li>
+<li>储存空间大：不少于 250MB，甚至没有上限</li>
+<li>支持二进制储存</li>
+</ul>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="同源与跨域"><a href="#同源与跨域" class="headerlink" title="同源与跨域"></a>同源与跨域</h2><h3 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h3><ul>
-<li><p>浏览器的安全机制，限制协议、端口号、域名需要一致</p>
 </li>
-<li><p>限制了三个方面</p>
-<ul>
-<li><p>当前域下的 js 脚本不能够访问其他域下的 cookie、localStorage 和 indexDB</p>
-</li>
-<li><p>当前域下的 js 脚本不能够操作访问操作其他域下的 DOM</p>
-</li>
-<li><p>当前域下 ajax 无法发送跨域请求</p>
-</li>
+<li>同源与跨域<ul>
+<li>同源策略<ul>
+<li>浏览器的安全机制，限制协议、端口号、域名需要一致</li>
+<li>限制了三个方面<ul>
+<li>当前域下的 js 脚本不能够访问其他域下的 cookie、localStorage 和 indexDB</li>
+<li>当前域下的 js 脚本不能够操作访问操作其他域下的 DOM</li>
+<li>当前域下 ajax 无法发送跨域请求</li>
 </ul>
 </li>
-<li><p>img 和 script 标签不受同源策略的限制，可以实现跨域</p>
-</li>
+<li>img 和 script 标签不受同源策略的限制，可以实现跨域</li>
 </ul>
-<h3 id="跨域方式"><a href="#跨域方式" class="headerlink" title="跨域方式"></a>跨域方式</h3><ul>
-<li><p>跨域资源共享 CORS</p>
-<ul>
-<li><p>CORS 是通过额外的 HTTP 请求头告诉浏览器是否允许 web 应用访问不通源服务器上的资源：Access-Control-Allow-Origin</p>
 </li>
-<li><p>预检请求</p>
-<ul>
-<li><p>概念</p>
-<ul>
+<li>跨域方式<ul>
+<li>跨域资源共享 CORS</li>
+<li>CORS 是通过额外的 HTTP 请求头告诉浏览器是否允许 web 应用访问不通源服务器上的资源：Access-Control-Allow-Origin</li>
+<li>预检请求<ul>
+<li>概念<ul>
 <li>非简单请求的 CORS 请求会在正式通信之前进行一次 HTTP 查询请求，称为预检请求。</li>
 </ul>
 </li>
-<li><p>作用</p>
-<ul>
+<li>作用<ul>
 <li>浏览器会询问服务器，当前所在的网页是否在服务器允许访问的范围内，以及可以使用哪些 HTTP 请求方式和头信息字段，只有得到肯定的回复，才会进行正式的 HTTP 请求，否则就会报错。</li>
 </ul>
 </li>
-<li><p>简单请求</p>
-<ul>
-<li><p>请求方法：HEAD、GET、POST 三者之一</p>
-</li>
-<li><p>HTTP 的头信息不超出以下几种字段</p>
-<ul>
-<li><p>Accept</p>
-</li>
-<li><p>Accept-Language</p>
-</li>
-<li><p>Content-Language</p>
-</li>
-<li><p>Last-Event-ID</p>
-</li>
-<li><p>Content-Type：只限于三个值 application&#x2F;x-www-form-urlencoded、multipart&#x2F;form-data、text&#x2F;plain</p>
-</li>
+<li>简单请求<ul>
+<li>请求方法：HEAD、GET、POST 三者之一</li>
+<li>HTTP 的头信息不超出以下几种字段<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type：只限于三个值 application&#x2F;x-www-form-urlencoded、multipart&#x2F;form-data、text&#x2F;plain</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>预检请求</p>
-<ul>
-<li><p>方法：OPTIONS</p>
-</li>
-<li><p>头信息必须设置字段</p>
-<ul>
-<li><p>Access-Control-Allow-Origin</p>
-</li>
-<li><p>Access-Control-Request-Method</p>
-</li>
-<li><p>Access-Control-Request-Headers</p>
-</li>
+<li>预检请求</li>
+<li>方法：OPTIONS</li>
+<li>头信息必须设置字段<ul>
+<li>Access-Control-Allow-Origin</li>
+<li>Access-Control-Request-Method</li>
+<li>Access-Control-Request-Headers</li>
 </ul>
 </li>
+<li>减少 OPTIONS 请求次数</li>
+<li>可以后端在请求的返回头部添加：Access-Control-Max-Age：number。它表示预检请求的返回结果可以被缓存多久，单位是秒。</li>
+<li>该字段只对完全一样的 URL 的缓存设置生效，所以设置了缓存时间，在这个时间范围内，再次发送请求就不需要进行预检请求了。</li>
 </ul>
 </li>
-<li><p>减少 OPTIONS 请求次数</p>
-<ul>
-<li><p>可以后端在请求的返回头部添加：Access-Control-Max-Age：number。它表示预检请求的返回结果可以被缓存多久，单位是秒。</p>
-</li>
-<li><p>该字段只对完全一样的 URL 的缓存设置生效，所以设置了缓存时间，在这个时间范围内，再次发送请求就不需要进行预检请求了。</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>CORS 如何传递 cookie</p>
-<ul>
-<li><p>满足三个条件</p>
-<ul>
+<li>CORS 如何传递 cookie<ul>
+<li>满足三个条件<ul>
 <li><ol>
 <li>客户端在请求中设置 withCredentials 为 true</li>
 </ol>
@@ -1108,105 +928,73 @@
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>JSONP</p>
-<ul>
-<li><p>原理</p>
-<ul>
+<li>JSONP</li>
+<li>原理<ul>
 <li>利用<script>标签没有跨域限制，通过<script>标签 src 属性，发送带有 callback 参数的 GET 请求，服务端将接口返回数据拼凑到 callback 函数中，返回给浏览器，浏览器解析执行，从而前端拿到 callback 函数返回的数据。</li>
 </ul>
 </li>
-<li><p>缺点</p>
-<ul>
-<li><p>具有局限性， 仅支持 get 方法</p>
-</li>
-<li><p>不安全，可能遭受 XSS 攻击</p>
-</li>
+<li>缺点<ul>
+<li>具有局限性， 仅支持 get 方法</li>
+<li>不安全，可能遭受 XSS 攻击</li>
 </ul>
 </li>
+<li>postMessage<ul>
+<li>HTML5 提供的一个 API，可以跨域操作 window</li>
 </ul>
 </li>
-<li><p>postMessage</p>
-<ul>
-<li><p>HTML5 提供的一个 API，可以跨域操作 window</p>
-</li>
-<li><p>解决问题</p>
-<ul>
-<li><p>页面和其打开的新窗口的数据传递</p>
-</li>
-<li><p>多窗口之间消息传递</p>
-</li>
-<li><p>页面与嵌套的 iframe 消息传递</p>
-</li>
-<li><p>上面三个场景的跨域数据传递</p>
-</li>
+<li>解决问题<ul>
+<li>页面和其打开的新窗口的数据传递</li>
+<li>多窗口之间消息传递</li>
+<li>页面与嵌套的 iframe 消息传递</li>
+<li>上面三个场景的跨域数据传递</li>
 </ul>
 </li>
-<li><p>用法</p>
-<ul>
-<li><p>postMessage(data,origin)</p>
-</li>
-<li><p>origin：协议+主机+端口号，也可以设置为"*"，表示可以传递给任意窗口，如果要指定和当前窗口同源的话设置为"/"。</p>
-</li>
+<li>用法<ul>
+<li>postMessage(data,origin)</li>
+<li>origin：协议+主机+端口号，也可以设置为"*"，表示可以传递给任意窗口，如果要指定和当前窗口同源的话设置为"/"。</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>Nginx 代理</p>
-<ul>
-<li><p>nginx 配置解决 iconfont 跨域</p>
-<ul>
+<li>Nginx 代理<ul>
+<li>nginx 配置解决 iconfont 跨域<ul>
 <li>location / {add_header Access-Control-Allow-Origin *;}</li>
 </ul>
 </li>
-<li><p>nginx 反向代理接口跨域</p>
-<ul>
-<li><p>实现思路：通过 Nginx 配置一个代理服务器域名与 domain1 相同，端口不同）做跳板机，反向代理访问 domain2 接口，并且可以顺便修改 cookie 中 domain 信息，方便当前域 cookie 写入，实现跨域访问。</p>
-</li>
-<li><p>#proxy 服务器 server {listen 81;server_name <a target="_blank" rel="noopener" href="http://www.domain1.com;location/">www.domain1.com;location</a> / {proxy_pass <a target="_blank" rel="noopener" href="http://www.domain2.com:8080/">http://www.domain2.com:8080</a>; #反向代理 proxy_cookie_domain <a target="_blank" rel="noopener" href="http://www.domain2.com/">www.domain2.com</a> <a target="_blank" rel="noopener" href="http://www.domain1.com/">www.domain1.com</a>; #修改 cookie 里域名 index index.html index.htm;# 当用 webpack-dev-server 等中间件代理接口访问 nignx 时，此时无浏览器参与，故没有同源限制，下面的跨域配置可不启用 add_header Access-Control-Allow-Origin <a target="_blank" rel="noopener" href="http://www.domain1.com/">http://www.domain1.com</a>; #当前端只跨域不带 cookie 时，可为*add_header Access-Control-Allow-Credentials true;}}</p>
-</li>
+<li>nginx 反向代理接口跨域<ul>
+<li>实现思路：通过 Nginx 配置一个代理服务器域名与 domain1 相同，端口不同）做跳板机，反向代理访问 domain2 接口，并且可以顺便修改 cookie 中 domain 信息，方便当前域 cookie 写入，实现跨域访问。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>node 中间件代理</p>
-</li>
-<li><p>Websocket 协议跨域</p>
-</li>
-</ul>
-<h3 id="正向代理和反向代理的区别"><a href="#正向代理和反向代理的区别" class="headerlink" title="正向代理和反向代理的区别"></a>正向代理和反向代理的区别</h3><ul>
-<li><p>正向代理和反向代理的结构是一样的，都是 client-proxy-server 的结构，它们主要的区别就在于中间这个 proxy 是哪一方设置的。</p>
-</li>
-<li><p>在正向代理中，proxy 是 client 设置的，用来隐藏 client</p>
-<ul>
-<li><p>翻墙软件</p>
-</li>
-<li><p>匿名访问</p>
-</li>
+<li>#proxy 服务器 server {listen 81;server_name <a target="_blank" rel="noopener" href="http://www.domain1.com;location/">www.domain1.com;location</a> / {proxy_pass <a target="_blank" rel="noopener" href="http://www.domain2.com:8080/">http://www.domain2.com:8080</a>; #反向代理 proxy_cookie_domain <a target="_blank" rel="noopener" href="http://www.domain2.com/">www.domain2.com</a> <a target="_blank" rel="noopener" href="http://www.domain1.com/">www.domain1.com</a>; #修改 cookie 里域名 index index.html index.htm;# 当用 webpack-dev-server 等中间件代理接口访问 nignx 时，此时无浏览器参与，故没有同源限制，下面的跨域配置可不启用 add_header Access-Control-Allow-Origin <a target="_blank" rel="noopener" href="http://www.domain1.com/">http://www.domain1.com</a>; #当前端只跨域不带 cookie 时，可为*add_header Access-Control-Allow-Credentials true;}}</li>
+<li>node 中间件代理</li>
+<li>Websocket 协议跨域</li>
 </ul>
 </li>
-<li><p>而在反向代理中，proxy 是 server 设置的，用来隐藏 server</p>
-<ul>
-<li><p>CDN</p>
+<li>正向代理和反向代理的区别<ul>
+<li>正向代理和反向代理的结构是一样的，都是 client-proxy-server 的结构，它们主要的区别就在于中间这个 proxy 是哪一方设置的。</li>
+<li>在正向代理中，proxy 是 client 设置的，用来隐藏 client<ul>
+<li>翻墙软件</li>
+<li>匿名访问</li>
+</ul>
 </li>
-<li><p>负载均衡集群</p>
+<li>而在反向代理中，proxy 是 server 设置的，用来隐藏 server<ul>
+<li>CDN</li>
+<li>负载均衡集群</li>
+</ul>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="XSS-和-CSRF"><a href="#XSS-和-CSRF" class="headerlink" title="XSS 和 CSRF"></a>XSS 和 CSRF</h2><h3 id="XSS"><a href="#XSS" class="headerlink" title="XSS"></a>XSS</h3><ul>
-<li><p>跨站点脚本攻击，攻击者注入恶意脚本，并且在用户的浏览器上运行，从而窃取用户信息</p>
 </li>
-<li><p>分类</p>
-<ul>
-<li><p>存储型</p>
-<ul>
+<li>XSS 和 CSRF<ul>
+<li>XSS<ul>
+<li>跨站点脚本攻击，攻击者注入恶意脚本，并且在用户的浏览器上运行，从而窃取用户信息</li>
+<li>分类<ul>
+<li>存储型<ul>
 <li>攻击者通过表单或者评论将恶意脚本提交给服务器，存储到数据库中，用户访问页面时，脚本从服务器传回并执行</li>
 </ul>
 </li>
-<li><p>反射性</p>
-<ul>
+<li>反射性<ul>
 <li><ol>
 <li>攻击者构造出特殊的 URL，包含恶意代码</li>
 </ol>
@@ -1225,403 +1013,37 @@
 </li>
 </ul>
 </li>
-<li><p>DOM 型</p>
-<ul>
+<li>DOM 型<ul>
 <li>用户打开攻击者构造的包含恶意代码的 URL，直接在浏览器端执行</li>
 </ul>
 </li>
+<li>防御</li>
+<li>转义：对于需要插入到 HTML 中的代码，或者需要提交到服务端的用户输入内容做好转义</li>
+<li>CSP：内容安全策略<ul>
+<li>CSP 的本质是建立一个白名单，告诉浏览器哪些外部资源可以加载和执行，从而防止恶意代码的注入攻击。</li>
+<li>通常有两种方式来开启 CSP，一种是设置 HTTP 首部中的 Content-Security-Policy，一种是设置 meta 标签的方式 <meta http-equiv="Content-Security-Policy"></li>
 </ul>
 </li>
-<li><p>防御</p>
-<ul>
-<li><p>转义：对于需要插入到 HTML 中的代码，或者需要提交到服务端的用户输入内容做好转义</p>
-</li>
-<li><p>CSP：内容安全策略</p>
-<ul>
-<li><p>CSP 的本质是建立一个白名单，告诉浏览器哪些外部资源可以加载和执行，从而防止恶意代码的注入攻击。</p>
-</li>
-<li><p>通常有两种方式来开启 CSP，一种是设置 HTTP 首部中的 Content-Security-Policy，一种是设置 meta 标签的方式 <meta http-equiv="Content-Security-Policy"></p>
-</li>
-</ul>
-</li>
-<li><p>对一些敏感信息进行保护，比如 cookie 使用 http-only，使得脚本无法获取。也可以使用验证码，避免脚本伪装成用户执行一些操作。</p>
-</li>
+<li>对一些敏感信息进行保护，比如 cookie 使用 http-only，使得脚本无法获取。也可以使用验证码，避免脚本伪装成用户执行一些操作。</li>
 </ul>
 </li>
 </ul>
-<h3 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h3><ul>
-<li><p>跨站点请求伪造，本质是利用 cookie 会在同源请求中携带发送给服务器的特点，以此来实现用户的冒充</p>
 </li>
-<li><p>攻击方式</p>
-<ul>
-<li><p>GET 类型的 CSRF 攻击，比如在网站中的一个 img 标签里构建一个请求，当用户打开这个网站的时候就会自动发起提交。</p>
-</li>
-<li><p>POST 类型的 CSRF 攻击，比如构建一个表单，然后隐藏它，当用户进入页面时，自动提交这个表单。</p>
-</li>
-<li><p>链接类型的 CSRF 攻击，比如在 a 标签的 href 属性里构建一个请求，然后诱导用户去点击。</p>
-</li>
-</ul>
-</li>
-<li><p>防御</p>
-<ul>
-<li><p>同源检测</p>
-<ul>
-<li><p>服务器根据 http 请求头中 origin 或者 referer 信息来判断请求是否为允许访问的站点，从而对请求进行过滤。</p>
-</li>
-<li><p>这种方式的缺点是有些情况下 referer 可以被伪造，同时还会把搜索引擎的链接也给屏蔽了。</p>
-</li>
-</ul>
-</li>
-<li><p>CSRF Token 进行验证</p>
-<ul>
-<li><p>服务器向用户返回一个随机数 Token ，当网站再次发起请求时，在请求参数中加入服务器端返回的 token ，然后服务器对这个 token 进行验证。</p>
-</li>
-<li><p>缺点就是，我们需要给网站中的所有请求都添加上这个 token</p>
-</li>
-</ul>
-</li>
-<li><p>对 Cookie 进行双重验证</p>
-<ul>
-<li><p>服务器在用户访问网站页面时，向请求域名注入一个 Cookie，内容为随机字符串，然后当用户再次向服务器发送请求的时候，从 cookie 中取出这个字符串，添加到 URL 参数中，然后服务器通过对 cookie 中的数据和参数中的数据进行比较，来进行验证。</p>
-</li>
-<li><p>这种方法的缺点是如果网站存在 XSS 漏洞的，那么这种方式会失效。同时这种方式不能做到子域名的隔离。</p>
-</li>
-</ul>
-</li>
-<li><p>cookie 属性设置为 Samesite</p>
-<ul>
-<li>Samesite 一共有两种模式，一种是严格模式，在严格模式下 cookie 在任何情况下都不可能作为第三方 Cookie 使用，在宽松模式下，cookie 可以被请求是 GET 请求，且会发生页面跳转的请求所使用。</li>
+<li>CSRF</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="requestAnimation-和-requestIdleCallback"><a href="#requestAnimation-和-requestIdleCallback" class="headerlink" title="requestAnimation 和 requestIdleCallback"></a>requestAnimation 和 requestIdleCallback</h2><h3 id="requestAnimationFrame"><a href="#requestAnimationFrame" class="headerlink" title="requestAnimationFrame"></a>requestAnimationFrame</h3><ul>
-<li><p>requestAnimationFrame 用于在下一次浏览器重绘之前调用指定的回调函数，从而使动画更加流畅和高效。它提供了一种高效的方式来执行逐帧动画，确保回调函数在浏览器的刷新间隔内执行</p>
-</li>
-<li><p>优点</p>
-<ul>
-<li><p>节能：在隐藏或不可见的标签页中，浏览器会暂停 requestAnimationFrame 的调用，减少资源消耗。</p>
-</li>
-<li><p>同步刷新率：回调函数在浏览器的刷新间隔内执行，通常是每秒 60 帧（60Hz），确保动画的流畅度。</p>
-</li>
-</ul>
-</li>
-<li><p>使用场景</p>
-<ul>
-<li><p>实现高性能动画，如游戏动画、用户界面交互动画等。</p>
-</li>
-<li><p>在每一帧中更新动画状态。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="requestIdleCallback"><a href="#requestIdleCallback" class="headerlink" title="requestIdleCallback"></a>requestIdleCallback</h3><ul>
-<li><p>requestIdleCallback 用于在浏览器空闲时调用指定的回调函数，使得低优先级的任务（如分析、日志记录等）不会阻塞主线程</p>
-</li>
-<li><p>优点</p>
-<ul>
-<li><p>性能优化：仅在浏览器有空闲时间时执行回调，避免对用户交互和高优先级任务的干扰。</p>
-</li>
-<li><p>任务调度：可以通过提供超时时间，确保任务在指定时间内执行。</p>
-</li>
-</ul>
-</li>
-<li><p>使用场景</p>
-<ul>
-<li><p>执行后台任务，如数据处理、预加载等。</p>
-</li>
-<li><p>执行不会立即影响用户体验的任务。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h2><h3 id="回收机制"><a href="#回收机制" class="headerlink" title="回收机制"></a>回收机制</h3><ul>
-<li><p>标记-清除（Mark-and-Sweep）</p>
-<ul>
-<li><ol>
-<li>标记阶段（Mark Phase）：从根对象（如全局对象）开始，递归地标记所有可以到达的对象。被标记的对象被认为是活的，其他没有被标记的对象被认为是不再需要的（即垃圾）。</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>清除阶段（Sweep Phase）：遍历内存中的对象，回收那些没有被标记的对象。回收的内存可以用于分配新的对象。</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>分代收集（Generational Collection）</p>
-<ul>
-<li><p>新生代（Young Generation）：存储短生命周期的对象。垃圾回收在新生代中频繁发生，因为大多数对象会很快变得不可访问。</p>
-</li>
-<li><p>老年代（Old Generation）：存储长生命周期的对象。从新生代晋升（Promotion）到老年代的对象会经历较少的垃圾回收。</p>
-</li>
-</ul>
-</li>
-<li><p>增量标记（Incremental Marking）</p>
-<ul>
-<li>增量标记是一种优化技术，用于在长时间的标记过程中避免阻塞主线程。它将标记阶段分成多个小步骤，在这些步骤之间允许执行其他任务，减少垃圾回收对应用程序响应性的影响</li>
-</ul>
-</li>
-</ul>
-<h3 id="触发条件"><a href="#触发条件" class="headerlink" title="触发条件"></a>触发条件</h3><ul>
-<li><p>内存使用达到某个阈值</p>
-</li>
-<li><p>分配新对象时没有足够的内存空间</p>
-</li>
-<li><p>显式调用（如调用 window.gc()，在支持手动触发的环境中）</p>
-</li>
-</ul>
-<h3 id="影响垃圾回收性能的因素"><a href="#影响垃圾回收性能的因素" class="headerlink" title="影响垃圾回收性能的因素"></a>影响垃圾回收性能的因素</h3><ul>
-<li><p>对象引用：复杂的对象引用图会增加垃圾回收的开销，特别是当存在大量互相引用的对象时。</p>
-</li>
-<li><p>内存占用：大量占用内存的应用会更频繁地触发垃圾回收，导致性能下降。</p>
-</li>
-<li><p>长生命周期对象：长生命周期对象会增加老年代的负担，可能导致老年代垃圾回收（Full GC）变得更加耗时。</p>
-</li>
-</ul>
-<h3 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h3><ul>
-<li><p>减少全局变量：避免不必要的全局变量和长生命周期对象，减少根对象的数量。</p>
-</li>
-<li><p>避免循环引用：使用弱引用（如 WeakMap 和 WeakSet）管理缓存或事件监听器，防止循环引用导致内存泄漏。</p>
-</li>
-<li><p>分配和释放内存：及时清理不再需要的对象和数据结构，确保它们可以被垃圾回收机制回收。</p>
-</li>
-<li><p>优化数据结构：使用合适的数据结构存储数据，减少不必要的对象创建和销毁。</p>
-</li>
-</ul>
-<h2 id="浏览器组成"><a href="#浏览器组成" class="headerlink" title="浏览器组成"></a>浏览器组成</h2><h3 id="1-用户界面（User-Interface）"><a href="#1-用户界面（User-Interface）" class="headerlink" title="1. 用户界面（User Interface）"></a>1. 用户界面（User Interface）</h3><p>用户界面是用户与浏览器交互的部分，通常包括以下元素：</p>
-<p>地址栏（Address Bar）：用于输入和显示 URL。<br>工具栏（Toolbar）：包括后退、前进、刷新、主页等按钮。<br>书签栏（Bookmarks Bar）：用于访问收藏的网页。<br>标签页（Tabs）：允许用户在单个窗口中打开多个网页。<br>状态栏（Status Bar）：显示页面加载状态、链接地址等信息</p>
-<h3 id="2-浏览器引擎（Browser-Engine）"><a href="#2-浏览器引擎（Browser-Engine）" class="headerlink" title="2. 浏览器引擎（Browser Engine）"></a>2. 浏览器引擎（Browser Engine）</h3><p>浏览器引擎是连接用户界面和渲染引擎的桥梁，负责处理用户输入和输出的请求，并协调各个组件的工作。它决定如何显示网页内容，并处理页面的各项操作。</p>
-<h3 id="3-渲染引擎（Rendering-Engine）"><a href="#3-渲染引擎（Rendering-Engine）" class="headerlink" title="3. 渲染引擎（Rendering Engine）"></a>3. 渲染引擎（Rendering Engine）</h3><p>渲染引擎负责解析和显示网页内容。它主要执行以下任务：</p>
-<p>解析 HTML：将 HTML 转换为 DOM 树（Document Object Model）。<br>解析 CSS：将 CSS 转换为样式规则，并应用到 DOM 树。<br>构建渲染树：根据 DOM 树和样式规则生成渲染树。<br>布局（Layout）：计算每个元素的大小和位置。<br>绘制（Painting）：将渲染树中的每个元素绘制到屏幕上。</p>
-<p>常见的渲染引擎包括：</p>
-<p>Blink：用于 Chrome 和 Edge。<br>WebKit：用于 Safari。<br>Gecko：用于 Firefox。</p>
-<h3 id="4-网络层（Networking）"><a href="#4-网络层（Networking）" class="headerlink" title="4. 网络层（Networking）"></a>4. 网络层（Networking）</h3><p>网络层负责处理所有网络相关的操作，包括发起 HTTP/HTTPS 请求、处理重定向、管理缓存和 Cookie、处理安全证书等。它通过操作系统的网络栈与服务器通信，获取网页资源。</p>
-<h3 id="5-JavaScript-引擎（JavaScript-Engine）"><a href="#5-JavaScript-引擎（JavaScript-Engine）" class="headerlink" title="5. JavaScript 引擎（JavaScript Engine）"></a>5. JavaScript 引擎（JavaScript Engine）</h3><p>JavaScript 引擎负责解析和执行 JavaScript 代码。它将 JavaScript 代码编译为机器码，并在浏览器中运行。常见的 JavaScript 引擎包括：</p>
-<p>V8：用于 Chrome 和 Edge。<br>SpiderMonkey：用于 Firefox。<br>JavaScriptCore（Nitro）：用于 Safari。</p>
-<h3 id="6-数据存储（Data-Storage）"><a href="#6-数据存储（Data-Storage）" class="headerlink" title="6. 数据存储（Data Storage）"></a>6. 数据存储（Data Storage）</h3><p>浏览器提供多种方式存储数据，包括：</p>
-<p>Cookies：用于存储少量的文本数据，通常用于会话管理和用户跟踪。<br>LocalStorage 和 SessionStorage：用于存储较大数据，具有不同的生命周期。<br>IndexedDB：一种更强大的数据库，适合存储大量结构化数据。</p>
-<h3 id="7-UI-后端（UI-Backend）"><a href="#7-UI-后端（UI-Backend）" class="headerlink" title="7. UI 后端（UI Backend）"></a>7. UI 后端（UI Backend）</h3><p>UI 后端用于绘制基本的窗口控件，如对话框、按钮、文本框等。它通过操作系统的 UI 库进行绘制。</p>
-<h3 id="8-数据持久化（Data-Persistence）"><a href="#8-数据持久化（Data-Persistence）" class="headerlink" title="8. 数据持久化（Data Persistence）"></a>8. 数据持久化（Data Persistence）</h3><p>浏览器支持数据持久化，以便在用户关闭浏览器后仍能保留数据。这包括书签、历史记录、缓存和用户设置等。</p>
-<h3 id="9-多进程架构（Multi-process-Architecture）"><a href="#9-多进程架构（Multi-process-Architecture）" class="headerlink" title="9. 多进程架构（Multi-process Architecture）"></a>9. 多进程架构（Multi-process Architecture）</h3><p>现代浏览器通常采用多进程架构，将不同的任务分配到不同的进程中，以提高稳定性和安全性。例如，Chrome 浏览器为每个标签页、插件和渲染引擎分配单独的进程，防止某个标签页崩溃影响整个浏览器。</p>
-<h2 id="事件机制"><a href="#事件机制" class="headerlink" title="事件机制"></a>事件机制</h2><h3 id="1-事件模型"><a href="#1-事件模型" class="headerlink" title="1. 事件模型"></a>1. 事件模型</h3><ul>
-<li><p>DOM 0 级事件模型：最早的事件模型，事件处理函数直接赋值给元素的事件属性，例如 element.onclick = function() { ... }。</p>
-</li>
-<li><p>DOM 2 级事件模型：引入了事件捕获和事件冒泡，允许通过 addEventListener 和 removeEventListener 来添加和移除事件处理函数。</p>
-<ul>
-<li>现代浏览器都支持 DOM 2 级事件模型，并且逐渐淘汰了 DOM 0 级和 IE 事件模型</li>
-</ul>
-</li>
-<li><p>IE 事件模型：微软 Internet Explorer 的事件模型，使用 attachEvent 和 detachEvent 方法。</p>
-</li>
-</ul>
-<h3 id="2-事件传播"><a href="#2-事件传播" class="headerlink" title="2. 事件传播"></a>2. 事件传播</h3><ul>
-<li><p>捕获阶段（Capture Phase）：事件从文档的根节点向目标节点传播。</p>
-</li>
-<li><p>目标阶段（Target Phase）：事件到达目标节点。</p>
-</li>
-<li><p>冒泡阶段（Bubble Phase）：事件从目标节点向文档的根节点反向传播。</p>
-</li>
-</ul>
-<h3 id="3-事件类型"><a href="#3-事件类型" class="headerlink" title="3. 事件类型"></a>3. 事件类型</h3><p>浏览器事件分为多种类型，包括但不限于：</p>
-<p>用户界面事件：如 load、resize、scroll。<br>焦点事件：如 focus、blur。<br>鼠标事件：如 click、dblclick、mousedown、mouseup、mousemove、mouseover、mouseout。<br>键盘事件：如 keydown、keypress、keyup。<br>表单事件：如 submit、reset、change、input。<br>拖放事件：如 dragstart、drag、dragenter、dragover、dragleave、drop、dragend。</p>
-<h3 id="4-事件对象"><a href="#4-事件对象" class="headerlink" title="4. 事件对象"></a>4. 事件对象</h3><p>事件对象 (Event) 是事件处理函数的第一个参数，包含了与事件相关的信息。常见的事件对象属性和方法包括：</p>
-<p>type：事件类型，例如 click。<br>target：事件的目标元素。<br>currentTarget：当前处理事件的元素。<br>eventPhase：事件处于传播的哪个阶段（捕获、目标、冒泡）。<br>bubbles：事件是否冒泡。<br>cancelable：事件是否可取消。<br>defaultPrevented：是否调用了 preventDefault 方法。<br>stopPropagation()：停止事件传播。<br>stopImmediatePropagation()：停止事件传播，并阻止同一事件类型其他事件处理函数的执行。<br>preventDefault()：取消事件的默认行为。</p>
-<h3 id="5-事件委托"><a href="#5-事件委托" class="headerlink" title="5. 事件委托"></a>5. 事件委托</h3><p>事件委托是一种事件处理模式，通过将事件处理函数绑定到一个父元素上来管理多个子元素的事件。它利用事件冒泡机制，减少内存占用和提高性能。例如：<br>document.getElementById('parent').addEventListener('click', function(event) {<br>if (event.target.matches('.child')) {<br>console.log('Child element clicked');<br>}<br>});<br>在这个例子中，父元素 parent 处理所有子元素 child 的点击事件，而不需要为每个子元素单独绑定事件处理函数。</p>
-<h3 id="6-事件流的控制"><a href="#6-事件流的控制" class="headerlink" title="6. 事件流的控制"></a>6. 事件流的控制</h3><p>element.addEventListener('click', function(event) {<br>event.stopPropagation(); // 阻止事件传播<br>event.preventDefault(); // 阻止默认行为<br>});</p>
-<ul>
-<li><p>event.stopPropagation()：阻止事件继续传播到其他元素的事件监听器</p>
-</li>
-<li><p>event.preventDefault()：阻止默认行为，如阻止链接跳转、表单提交等</p>
-</li>
-</ul>
-<h3 id="⭐️-7-事件循环（Event-Loop）"><a href="#⭐️-7-事件循环（Event-Loop）" class="headerlink" title="⭐️ 7. 事件循环（Event Loop）"></a>⭐️ 7. 事件循环（Event Loop）</h3><ul>
-<li><p>JS 是一门单线程的语言，它运行在浏览器的渲染主线程中</p>
-</li>
-<li><p>浏览器是多进程多线程应用</p>
-<ul>
-<li><p>主要进程</p>
-<ul>
-<li><p>浏览器进程</p>
-</li>
-<li><p>网络进程</p>
-</li>
-<li><p>渲染进程</p>
-<p>渲染进程启动后，会开启一个渲染主线程，主线程负责执行 HTML、CSS、JS 代码</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>渲染主线程</p>
-<ul>
-<li><ol>
-<li>渲染主线程会进入一个无限循环</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>循环会检查消息队列中是否有任务存在，有任务就唤醒执行，否则休眠</li>
-</ol>
-<ul>
-<li><p>消息队列</p>
-<ul>
-<li><p>微队列（p0）</p>
-<ul>
-<li><p>微任务</p>
-<ul>
-<li><p>添加任务到微队列</p>
-<ul>
-<li><p>Promise</p>
-<p>// 立即把一个函数添加到微队列<br>Promise.resolve().then(函数)</p>
-</li>
-<li><p>MutationObserver</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>交互队列（p1）</p>
-<ul>
-<li><p>异步任务</p>
-<ul>
-<li><p>比如事件监听</p>
-<p>当某些任务发生时，比如计时器、网络、事件监听，主线程将任务交给其他线程去处理，自身立即结束任务的执行，转而执行后续代码。当其他线程完成时，将事先传递的回调函数包装成任务，加入到消息队列的末尾排队，等待主线程调度执行</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>延时队列（p2）</p>
-<ul>
-<li>比如计时器、网络</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ol start="3">
-<li>其他所有线程（包括其他进程的线程）可以随时向消息队列添加任务</li>
-</ol>
-</li>
-<li><p>渲染流程</p>
-<ul>
-<li><p>HTML 解析</p>
-<p>解析过程中遇到 CSS 解析 CSS，遇到 JS 执行 JS。为了提高解析效率，浏览器在开始解析前，会启动一个预解析的线程，率先下载 HTML 中的外部 CSS 文件和 外部的 JS 文件。</p>
-<p>如果主线程解析到 link 位置，此时外部的 CSS 文件还没有下载解析好，主线程不会等待，继续解析后续的 HTML。这是因为下载和解析 CSS 的工作是在预解析线程中进行的。这就是 CSS 不会阻塞 HTML 解析的根本原因。</p>
-<p>如果主线程解析到 script 位置，会停止解析 HTML，转而等待 JS 文件下载好，并将全局代码解析执行完成后，才能继续解析 HTML。这是因为 JS 代码的执行过程可能会修改当前的 DOM 树，所以 DOM 树的生成必须暂停。这就是 JS 会阻塞 HTML 解析的根本原因。</p>
-<p>第一步完成后，会得到 DOM 树和 CSSOM 树，浏览器的默认样式、内部样式、外部样式、行内样式均会包含在 CSSOM 树中</p>
-</li>
-<li><p>样式计算（Recalculate Style）</p>
-<p>主线程会遍历得到的 DOM 树，依次为树中的每个节点计算出它最终的样式，称之为 Computed Style。</p>
-<p>在这一过程中，很多预设值会变成绝对值，比如 red 会变成 rgb(255,0,0)；相对单位会变成绝对单位，比如 em 会变成 px</p>
-<p>这一步完成后，会得到一棵带有样式的 DOM 树</p>
-</li>
-<li><p>布局（Layout）</p>
-<p>布局完成后会得到布局树。</p>
-<p>布局阶段会依次遍历 DOM 树的每一个节点，计算每个节点的几何信息。例如节点的宽高、相对包含块的位置。</p>
-<p>大部分时候，DOM 树和布局树并非一一对应。</p>
-<p>比如 display:none 的节点没有几何信息，因此不会生成到布局树；又比如使用了伪元素选择器，虽然 DOM 树中不存在这些伪元素节点，但它们拥有几何信息，所以会生成到布局树中。还有匿名行盒、匿名块盒等等都会导致 DOM 树和布局树无法一一对应</p>
-</li>
-<li><p>分层（Layer）</p>
-<p>分层的好处在于，将来某一个层改变后，仅会对该层进行后续处理，从而提升效率。</p>
-<p>滚动条、堆叠上下文、transform、opacity 等样式都会或多或少的影响分层结果，也可以通过 will-change 属性更大程度的影响分层结果</p>
-</li>
-<li><p>绘制（Paint）</p>
-<p>主线程会为每个层单独产生绘制指令集，用于描述这一层的内容该如何画出来。</p>
-<p>完成绘制后，主线程将每个图层的绘制信息提交给合成线程，剩余工作将由合成线程完成。</p>
-<p>合成线程首先对每个图层进行分块，将其划分为更多的小区域。</p>
-<p>它会从线程池中拿取多个线程来完成分块工作</p>
-</li>
-<li><p>分块（Tiling）</p>
-</li>
-<li><p>光栅化（Raster）</p>
-<p>合成线程会将块信息交给 GPU 进程，以极高的速度完成光栅化。</p>
-<p>GPU 进程会开启多个线程来完成光栅化，并且优先处理靠近视口区域的块。</p>
-<p>光栅化的结果，就是一块一块的位图</p>
-</li>
-<li><p>画（Draw）</p>
-<p>合成线程拿到每个层、每个块的位图后，生成一个个「指引（quad）」信息。</p>
-<p>指引会标识出每个位图应该画到屏幕的哪个位置，以及会考虑到旋转、缩放等变形。</p>
-<p>变形发生在合成线程，与渲染主线程无关，这就是 transform 效率高的本质原因。</p>
-<p>合成线程会把 quad 提交给 GPU 进程，由 GPU 进程产生系统调用，提交给 GPU 硬件，完成最终的屏幕成像</p>
-<ul>
-<li>transform 效率高</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>延伸</p>
-<ul>
-<li><p>计时器能做到精确计时吗？</p>
-<p>计算机硬件没有原子钟，无法做到精确计时</p>
-<p>操作系统的计时函数本身就有少量偏差，由于 JS 的计时器最终调用的是操作系统的函数，也就携带了这些偏差</p>
-<p>按照 W3C 的标准，浏览器实现计时器时，如果嵌套层级超过 5 层，则会带有 4 毫秒的最少时间，这样在计时时间少于 4 毫秒时又带来了偏差</p>
-<p>受事件循环的影响，计时器的回调函数只能在主线程空闲时运行，因此又带来了偏差</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="浏览器进程和线程"><a href="#浏览器进程和线程" class="headerlink" title="浏览器进程和线程"></a>浏览器进程和线程</h2><h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><ul>
-<li><p>主进程（Browser Process）</p>
-<p>作用：负责协调浏览器的所有其他进程，管理窗口、标签页、导航等。</p>
-<p>职责：<br>用户界面的显示和管理。<br>浏览器的核心功能，如网络请求、文件访问。<br>子进程的创建和销毁。<br>数据存储（如书签、历史记录等）。</p>
-</li>
-<li><p>子进程</p>
-<ul>
-<li><p>渲染进程（Renderer Process）</p>
-<p>作用：负责渲染网页内容，一个标签页对应一个渲染进程。</p>
-<p>特点：通常是运行在沙箱环境中，以提高安全性，防止恶意代码影响整个系统。</p>
-<p>职责：<br>HTML、CSS 的解析和渲染。<br>JavaScript 的执行。<br>用户事件处理（点击、输入等）。</p>
-</li>
-<li><p>插件进程（Plugin Process）</p>
-<p>作用：用于处理浏览器插件（如 Flash 插件）的执行。</p>
-<p>特点：每个插件都有一个独立的进程，以确保插件崩溃不会影响浏览器的其他部分。</p>
-</li>
-<li><p>GPU 进程（GPU Process）</p>
-<p>作用：处理 3D 渲染和硬件加速。</p>
-<p>职责：<br>加速页面中的 2D 和 3D 绘图。<br>处理 WebGL 和 Canvas 的绘制。</p>
-</li>
-<li><p>网络进程（Network Process）</p>
-<p>作用<br>负责管理网络请求和数据传输。所有的网络请求，包括页面加载、资源获取、XHR、Fetch 请求等，都通过网络进程进行。<br>职责<br>处理 HTTP/HTTPS 请求：发送请求和接收响应。<br>处理缓存：管理浏览器缓存，决定是否使用缓存中的资源。<br>管理 Cookies 和其他存储：负责存取 Cookies、LocalStorage、SessionStorage 等。<br>处理 WebSocket、WebRTC 等实时通信协议。<br>网络安全：执行与网络相关的安全检查和策略。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="关键线程"><a href="#关键线程" class="headerlink" title="关键线程"></a>关键线程</h3><ul>
-<li><p>GUI 渲染线程</p>
-<p>作用：负责渲染浏览器的 UI，包括解析 HTML、CSS、构建 DOM 树、布局和绘制。</p>
-<p>注意：当 JavaScript 代码执行时，GUI 渲染线程会被阻塞，因为 JavaScript 可以修改 DOM 树结构，这样可以防止渲染冲突。</p>
-</li>
-<li><p>JavaScript 引擎线程</p>
-<p>作用：负责执行 JavaScript 代码（如 V8 引擎）。</p>
-<p>特点：JavaScript 是单线程执行的，因此所有的 JavaScript 代码在同一时间只能由一个线程执行。</p>
-</li>
-<li><p>事件触发线程</p>
-<p>作用：负责管理事件循环，当事件发生时（如点击、定时器、网络请求），将事件添加到事件队列中。</p>
-<p>特点：当 JavaScript 引擎线程空闲时，会从事件队列中取出事件执行。</p>
-</li>
-<li><p>定时器线程</p>
-<p>作用：管理 setTimeout 和 setInterval 的回调函数。</p>
-<p>特点：在定时器到期后，将回调函数添加到事件队列中，等待 JavaScript 引擎线程执行。</p>
-</li>
-<li><p>网络线程</p>
-<p>作用：处理网络请求，如 XMLHttpRequest、Fetch API 等。</p>
-<p>特点：在网络请求完成后，将回调函数添加到事件队列中，等待 JavaScript 引擎线程执行。</p>
-</li>
-</ul>
+</blockquote>
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
           
-            <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="">
-              浏览器
+            <a href="/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/" class="">
+              思维导图
             </a>
           
         </div>
@@ -1652,30 +1074,6 @@
 <div class="post-nav">
 
 
-
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
-    </div>
-    <a href="/2024/06/27/mind/bowser/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">浏览器</div>
-      </div>
-      
-      <!-- <div class="content">
-        
-浏览器
-
-浏览器渲染原理
-
-渲染引擎
-解析 HTML：将 HTML 转换为 DOM 树（Document Object
-      </div> -->
-    </a>
-  </div>
 
 
 
@@ -1823,7 +1221,7 @@
   <div class='content'>
     <div class="toc-main">
       <div class="toc-content">
-        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="toc-text">浏览器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86"><span class="toc-text">浏览器渲染原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E"><span class="toc-text">渲染引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B"><span class="toc-text">渲染过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E4%BC%98%E5%8C%96"><span class="toc-text">渲染优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E6%B5%81%E5%92%8C%E9%87%8D%E7%BB%98"><span class="toc-text">回流和重绘</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98"><span class="toc-text">浏览器缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E8%BF%87%E7%A8%8B"><span class="toc-text">缓存过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E4%BD%8D%E7%BD%AE"><span class="toc-text">缓存位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E7%B1%BB%E5%9E%8B"><span class="toc-text">缓存类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%88%B7%E6%96%B0"><span class="toc-text">浏览器刷新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8"><span class="toc-text">浏览器存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie"><span class="toc-text">cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#localstorage"><span class="toc-text">localstorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sessionstorage"><span class="toc-text">sessionstorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#indexDB"><span class="toc-text">indexDB</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8C%E6%BA%90%E4%B8%8E%E8%B7%A8%E5%9F%9F"><span class="toc-text">同源与跨域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5"><span class="toc-text">同源策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%A8%E5%9F%9F%E6%96%B9%E5%BC%8F"><span class="toc-text">跨域方式</span></a></li></ol></li></ol></li></ol> -->
+        <!--  -->
         <div class="toc"></div>
       </div>
     </div>
@@ -1849,27 +1247,6 @@
       <!-- hash算法 -->
       
       <div class="aside-list">
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
-              <a href="/2024/06/27/mind/bowser/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">06-27</span>
-                
-              </div>
-              <a class="post-title" href="/2024/06/27/mind/bowser/">浏览器</a>
-            </div>
-          </div>
         
           <div class="aside-list-item">
             
@@ -1952,6 +1329,27 @@
                 
               </div>
               <a class="post-title" href="/2024/05/22/compatible/yin-cang-yi-dong-duan-gun-dong-tiao-de-ji-chong-fang-an/">隐藏移动端滚动条的几种方案</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/05/12/frontend/engineering/ru-he-shi-yong-docker-ti-sheng-kai-fa-ji-bu-shu-ti-yan/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/475815b42a04ce4406df8.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/475815b42a04ce4406df8.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">05-12</span>
+                
+              </div>
+              <a class="post-title" href="/2024/05/12/frontend/engineering/ru-he-shi-yong-docker-ti-sheng-kai-fa-ji-bu-shu-ti-yan/">如何使用 Docker 提升开发及部署体验</a>
             </div>
           </div>
         
