@@ -652,7 +652,7 @@
 <h3 id="小程序包解密"><a href="#小程序包解密" class="headerlink" title="小程序包解密"></a>小程序包解密</h3><p>下面我们就使用小程序包解密工具对包进行解密，解压小程序包解密工具如下图运行 UnpackMiniApp.exe<br />[<img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/300943/1663639274132-19e71276-1c64-417d-83b9-cecb828cfacb.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/300943/1663639274132-19e71276-1c64-417d-83b9-cecb828cfacb.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"><br />解密成功后输出到 wxpack 文件夹下，文件格式不变。<br><a name="obXaU"></a></p>
 <h3 id="小程序包反编译"><a href="#小程序包反编译" class="headerlink" title="小程序包反编译"></a>小程序包反编译</h3><p>经过解密后的的包格式依然是 **.wxapkg **,下一步我们需要对包进行反编译就可以获取小程序的源代码。<br />我们使用中的 <strong>wxappUnpacker</strong> 脚本对其进行反编译。步骤如下：<br />解压 <strong>wxappunpacker</strong> 进入这个目录后在目录下运行 <strong>cmd</strong> 执行命令<br />node wuWxapkg.js D:\小程序包解密\wxpack\wx8f446acf8c4a85f5.wxapkg ## 其中 D:\小程序包解密\wxpack\wx8f446acf8c4a85f5.wxapkg 为解密后的小程序包路径位置 <br />[<img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/300943/1663639275679-8d1844a2-4302-4fe5-a7b7-06a0bee71005.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/300943/1663639275679-8d1844a2-4302-4fe5-a7b7-06a0bee71005.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"><br><a name="dsKeo"></a></p>
 <h3 id="源码查看"><a href="#源码查看" class="headerlink" title="源码查看"></a>源码查看</h3><p>完成解密和反编后我们已经获取到了小程序包的源码，最后我们可以使用微信小程序开发工具进行编辑开发或查看审阅源码。<br />在我分享的工具包中提供了 win64 版本的微信小程序开发工具安装包，如需不同版本的安装包也可自行到微信开发者官方网页进行下载<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html</a><br />安装完成后我们运行工具使用游客模式登录<br />[<img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/300943/1663639277278-baf61c10-adeb-4270-83a8-0b70da512c2e.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2022/png/300943/1663639277278-baf61c10-adeb-4270-83a8-0b70da512c2e.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"><br />我在前面有提到手机端的微信小程序，实际上手机端和 PC 端的小程序包都是相同格式的只要我们找到手机小程序包缓存位置将包导出到电脑中也可进行反编，在 PC 端进行反编相对于从手机提取小程序包要方便一些。</p>
-
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
       </div>
       <div class="post-tags-categories">
         
@@ -699,18 +699,21 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/98259d50c665eba7afd40.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/98259d50c665eba7afd40.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
     </div>
-    <a href="/2023/06/29/frontend/security/mi-ma-chong-zhi-lou-dong/" class="post-nav-link">
+    <a href="/2023/06/29/frontend/security/tong-yuan-ce-lue/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">密码重置漏洞</div>
+        <div class="title-text">同源策略</div>
       </div>
       
       <!-- <div class="content">
         
 
-密码重置逻辑一码多用（验证码未绑定手机号）验证码回显前端修改密码未确认用户身份验证码不失效本地验证的绕过修改接收的手
+
+同源策略
+定义不同源的页面之间，不准互相访问数据。这是浏览器故意设置的一个功能限制。
+源window.origin
       </div> -->
     </a>
   </div>
@@ -721,22 +724,17 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/98259d50c665eba7afd40.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/98259d50c665eba7afd40.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
     </div>
-    <a href="/2023/06/29/frontend/security/e-yi-liu-liang-te-zheng-fen-xi/" class="post-nav-link">
+    <a href="/2023/06/29/frontend/security/mi-ma-chong-zhi-lou-dong/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">恶意流量特征分析</div>
+        <div class="title-text">密码重置漏洞</div>
       </div>
       <!-- <div class="content">
         
 
-
-分析工具：Wireshark,在线解密网站
-
-蚁剑的流量特征
-UA：antSword&#x2F;v2.1
-请求数据
+密码重置逻辑一码多用（验证码未绑定手机号）验证码回显前端修改密码未确认用户身份验证码不失效本地验证的绕过修改接收的手
       </div> -->
     </a>
   </div>

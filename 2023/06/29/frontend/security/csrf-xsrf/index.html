@@ -656,7 +656,7 @@
 <h2 id="双重-cookie-校验"><a href="#双重-cookie-校验" class="headerlink" title="双重 cookie 校验"></a><br />双重 cookie 校验</h2><p><br />一、一重是浏览器自动附加的 cookie，另一重就是在页面代码中通过其他手段（自定义请求头、请求体、URL 查询参数）传递的 cookie。<br />二、攻击者发起 CSRF 攻击时，请求中只会包含浏览器附加的 cookie 请求头，把这种只有一重 cookie 的请求拦掉就实现了防御。</p>
 <p><a name="WFElw"></a></p>
 <h2 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h2><p><br />一、应用程序和用户进行交互过程中，特别是账户交易这种核心步骤，强制用户输入验证码，才能完成最终请求。在通常情况下，验证码够很好地遏制 CSRF 攻击。<br />二、但增加验证码降低了用户的体验，网站不能给所有的操作都加上验证码。所以只能将验证码作为一种辅助手段，在关键业务点设置验证码。</p>
-
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
       </div>
       <div class="post-tags-categories">
         
@@ -705,18 +705,16 @@
       background-position: center center;">
       <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/529a649b2d3c6a8ed7f66.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/529a649b2d3c6a8ed7f66.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
     </div>
-    <a href="/2023/06/29/frontend/security/ddos-gong-ji/" class="post-nav-link">
+    <a href="/2023/06/29/solution/wei-xin-xiao-cheng-xu-wen-jian-yu-lan/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">DDoS攻击</div>
+        <div class="title-text">微信小程序文件预览</div>
       </div>
       
       <!-- <div class="content">
         
 
-
-DDoS 攻击
-什么是 DDoS 攻击DDoS 全称 Distributed Denial of Service，
+wx.previewMedia 安卓浏览视频第一次点击无反应 无法播放官方文档：https://developers
       </div> -->
     </a>
   </div>
@@ -727,17 +725,19 @@ DDoS 攻击
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/8d11a3c74cc33943b2f36.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/8d11a3c74cc33943b2f36.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/529a649b2d3c6a8ed7f66.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/529a649b2d3c6a8ed7f66.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
     </div>
-    <a href="/2023/06/29/frontend/security/https-zheng-shu-wei-zao/" class="post-nav-link">
+    <a href="/2023/06/29/frontend/security/ddos-gong-ji/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">HTTPS 证书伪造</div>
+        <div class="title-text">DDoS攻击</div>
       </div>
       <!-- <div class="content">
         
 
-HTTPS  协议的安全依赖于它的证书机制，如果攻击者申请到了一张和你的网站一摸一样的证书，那你网站的安全机制也就不
+
+DDoS 攻击
+什么是 DDoS 攻击DDoS 全称 Distributed Denial of Service，
       </div> -->
     </a>
   </div>

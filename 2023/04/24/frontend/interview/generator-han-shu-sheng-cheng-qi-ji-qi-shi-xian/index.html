@@ -641,15 +641,11 @@
 <li>当生成器函数执行完毕时，原本本次调用 next 方法返回的<code>&#123;done:true,value:undefined&#125;</code>由于<code>return</code>语句变为了<code>&#123; done:true,value:&#39;res&#39;&#125;</code>。<br><a name="lmZhu"></a></li>
 </ol>
 <h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">generatorWrap</span> = (<span class="params">fn</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> ctx = &#123;</span><br><span class="line">    <span class="attr">next</span>: <span class="number">0</span>, <span class="comment">// 表示下一次执行生成器函数状态机switch中的下标</span></span><br><span class="line">    <span class="attr">sent</span>: <span class="string">&quot;&quot;</span>, <span class="comment">// 表示next调用时候传入的值 作为上一次yield返回值</span></span><br><span class="line">    <span class="attr">done</span>: <span class="literal">false</span>, <span class="comment">// 是否完成</span></span><br><span class="line">    <span class="comment">// 完成函数</span></span><br><span class="line">    <span class="title function_">stop</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">done</span> = <span class="literal">true</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="title function_">next</span>(<span class="params">param</span>) &#123;</span><br><span class="line">      <span class="comment">// 1. 修改上一次yield返回值为context.sent</span></span><br><span class="line">      ctx.<span class="property">sent</span> = param;</span><br><span class="line">      <span class="comment">// 2.执行函数 获得本次返回值</span></span><br><span class="line">      <span class="keyword">const</span> value = <span class="title function_">fn</span>(ctx);</span><br><span class="line">      <span class="comment">// 3. 返回</span></span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">done</span>: ctx.<span class="property">done</span>,</span><br><span class="line">        value,</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">gen</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> a, b, c;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">generatorWrap</span>(<span class="keyword">function</span> (<span class="params">ctx</span>) &#123;</span><br><span class="line">    <span class="keyword">switch</span> ((ctx.<span class="property">prev</span> = ctx.<span class="property">next</span>)) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        ctx.<span class="property">next</span> = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        a = ctx.<span class="property">sent</span>;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(a, <span class="string">&#x27;this is a&#x27;</span>);</span><br><span class="line">        ctx.<span class="property">next</span> = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        b = ctx.<span class="property">sent</span>;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(b, <span class="string">&#x27;this is b&#x27;</span>);</span><br><span class="line">        ctx.<span class="property">next</span> = <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">        c = ctx.<span class="property">sent</span>;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(c, <span class="string">&#x27;this is c&#x27;</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;end&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> ctx.<span class="title function_">stop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> g = <span class="title function_">gen</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>());</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>(<span class="string">&#x27;param-a&#x27;</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>(<span class="string">&#x27;param-b&#x27;</span>));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(g.<span class="title function_">next</span>(<span class="string">&#x27;param-c&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
       </div>
       <div class="post-tags-categories">
         
         <div class="tags">
-          
-            <a href="/tags/js/" class="">
-              js
-            </a>
           
             <a href="/tags/%E9%9D%A2%E8%AF%95/" class="">
               面试
@@ -657,6 +653,10 @@
           
             <a href="/tags/%E5%8E%9F%E7%90%86/" class="">
               原理
+            </a>
+          
+            <a href="/tags/js/" class="">
+              js
             </a>
           
             <a href="/tags/es6/" class="">
@@ -696,20 +696,20 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/475815b42a04ce4406df8.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/475815b42a04ce4406df8.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/d0b994167a56bc4ca2c2c.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/d0b994167a56bc4ca2c2c.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
     </div>
-    <a href="/2023/06/28/frontend/monitor/xing-neng-jian-kong-yi-chang-jian-kong/" class="post-nav-link">
+    <a href="/2023/06/28/frontend/monitor/ping-tai-jie-ru-sentry-zi-tuo-guan-xiang-mu/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">性能监控、异常监控</div>
+        <div class="title-text">平台接入sentry自托管项目</div>
       </div>
       
       <!-- <div class="content">
         
 
 
-性能监控
-HTTP一个是 http 的方面，在后端 log 日志，流入 kafka，然后在 kafka 消费数据，
+一、安装 docker
+1.Windows Docker 安装https://www.runoob.com/doc
       </div> -->
     </a>
   </div>
