@@ -614,72 +614,14 @@
     <article class="post post-detail">
       <div class="post-content">
         <blockquote class="pullquote mindmap mindmap-md"><ul>
-<li><p><a target="_blank" rel="noopener" href="https://hunterx.xyz/hexo-simple-mindmap-plugin-intro.html">Hexo 的思维导图插件</a></p>
-</li>
-<li><p>网络加载优化</p>
-<ul>
-<li><p>资源合并和压缩，减少 HTTP 请求次数和文件大小</p>
-</li>
-<li><p>利用浏览器缓存，包括 HTTP 缓存、资源预加载等</p>
-</li>
-<li><p>使用 CDN 加速资源加载</p>
-<ul>
-<li>CDN 可以通过地理位置优化、负载均衡、缓存优化、连接复用以及抗攻击能力等多种方式，加速静态资源的加载，提升网站的性能和用户体验</li>
+<li><a target="_blank" rel="noopener" href="https://hunterx.xyz/use-mindmap-in-hexo.html">在 Hexo 中使用思维导图</a><ul>
+<li>前言</li>
+<li>操作指南<ul>
+<li>准备需要的文件</li>
+<li>为主题添加 CSS&#x2F;JS 文件</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>HTML 解析优化</p>
-<ul>
-<li><p>减少 DOM 元素数量，避免嵌套过审的结构</p>
-</li>
-<li><p>使用语义化标签，帮助浏览器更快理解文档结构</p>
-</li>
-<li><p>尽量将 script 标签放在 body 最后，或者用 async 或者 defer 的方式引入 script</p>
-<ul>
-<li><p>async：下载 JS 是异步，下载完成会立即执行，会阻塞渲染</p>
-</li>
-<li><p>defer：下载是异步的，会等 DOM 树构建完毕，并且在 DOMContentLoaded 事件触发之前执行</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>CSS 渲染优化</p>
-<ul>
-<li><p>避免使用过多的样式规则和选择器，减少 CSS 文件大小</p>
-</li>
-<li><p>使用简单的 CSS 动画而不是 JS 动画，以利用浏览器的硬件加速功能</p>
-</li>
-</ul>
-</li>
-<li><p>布局(回流&#x2F;重排)、绘制(重绘)优化</p>
-<ul>
-<li><p>避免频繁操作样式，最好一次性修改多个样式</p>
-</li>
-<li><p>尽量减少不必要的元素重绘，例如使用 transform 属性而不是修改 top 和 left 属性来移动元素</p>
-</li>
-<li><p>使用 CSS3 动画或变换来减少重绘和回流</p>
-<ul>
-<li><p>GPU 加速：大部分浏览器使用 GPU 加速 CSS3 动画。GPU 通常能够处理图形任务更快，因此将动画委托给 GPU 处理可以提高动画的性能，减少 CPU 的负载。相比之下，JavaScript 动画通常由 CPU 处理，性能可能不如 GPU 加速的 CSS3 动画。</p>
-</li>
-<li><p>硬件加速的转换和动画：CSS3 动画可以应用于 CSS 属性，如 transform 和 opacity，这些属性可以通过硬件加速进行处理，而不需要触发重绘或回流。例如，使用 transform 属性进行动画时，浏览器可以在 GPU 上执行动画转换，而不会影响文档流，从而减少了重绘和回流。</p>
-</li>
-<li><p>优化的动画循环：浏览器能够优化 CSS3 动画的执行方式。例如，浏览器可以根据屏幕刷新率进行动画绘制，以确保动画流畅且不会引起撕裂或闪烁。</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>合成优化</p>
-<ul>
-<li><p>利用 GPU 加速，将合成和绘制操作委托给 GPU</p>
-<ul>
-<li>怎么实现：利用 CSS3 属性、3D 变换、will-change 属性以及避免触发重绘和回流等方法，可以有效地利用 GPU 加速，将合成和绘制操作委托给 GPU，从而提高页面的性能和流畅度</li>
-</ul>
-</li>
-<li><p>使用 CSS 属性 will-change 来提示浏览器元素将要被修改，以便浏览器在后台优化渲染。</p>
-</li>
+<li>使用方法</li>
 </ul>
 </li>
 </ul>
@@ -723,41 +665,22 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img" style="background-size: cover; 
-      background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
-    </div>
-    <a href="/2024/06/27/mind/liu-lan-qi/" class="post-nav-link">
-      <div class="title">
-        <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text"></div>
-      </div>
-      
-      <!-- <div class="content">
-        浏览器浏览器渲染原理渲染引擎
-解析 HTML：将 HTML 转换为 DOM 树（Document Object Mode
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/6c9d9969e1b55a81a762c.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/6c9d9969e1b55a81a762c.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
     </div>
-    <a href="/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/" class="post-nav-link">
+    <a href="/2024/06/27/mind/liu-lan-qi/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">使用 big.js 解决 js 小数精度问题</div>
+        <div class="title-text">浏览器</div>
       </div>
       <!-- <div class="content">
-        
-一、背景当涉及到浮点数计算时，js 中的精度丢失问题, 是由于使用 IEEE 754 标准来表示和计算浮点数的方式引起
+        浏览器浏览器渲染原理渲染引擎
+解析 HTML：将 HTML 转换为 DOM 树（Document Object Mode
       </div> -->
     </a>
   </div>
@@ -921,27 +844,6 @@
             
 
             <div class="post-img-box">
-              <a href="/2024/06/27/mind/liu-lan-qi/" class="post-img " style="background-size: cover; 
-                background-position: center center;">
-                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/cedb78a8189edadc6b762.png" class="lazyload placeholder" data-srcset="https://ossk.cc/file/cedb78a8189edadc6b762.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
-              </a>
-            </div>
-            <div class="post-date-title">
-              <div>
-                
-                  <span class="post-date">06-27</span>
-                
-              </div>
-              <a class="post-title" href="/2024/06/27/mind/liu-lan-qi/">no title</a>
-            </div>
-          </div>
-        
-          <div class="aside-list-item">
-            
-            
-            
-
-            <div class="post-img-box">
               <a href="/2024/06/27/mind/bowser/" class="post-img " style="background-size: cover; 
                 background-position: center center;">
                 <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
@@ -954,6 +856,27 @@
                 
               </div>
               <a class="post-title" href="/2024/06/27/mind/bowser/">浏览器</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/27/mind/liu-lan-qi/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/0e1fd818725f6af673ec3.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/27/mind/liu-lan-qi/">浏览器</a>
             </div>
           </div>
         

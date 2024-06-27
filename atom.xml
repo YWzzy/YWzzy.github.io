@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2024-06-27T02:48:03.814Z</updated>
+  <updated>2024-06-27T03:07:34.033Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>浏览器</title>
+    <link href="https://ywzzy.github.io/2024/06/27/mind/bowser/"/>
+    <id>https://ywzzy.github.io/2024/06/27/mind/bowser/</id>
+    <published>2024-06-27T02:42:49.000Z</published>
+    <updated>2024-06-27T03:07:34.033Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote class=&quot;pullquote mindmap mindmap-md&quot;&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://hunterx.xyz/use-mindmap-in-hexo.html&quot;&gt;在 Hexo</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="思维导图" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
+    
+    
+    <category term="思维导图" scheme="https://ywzzy.github.io/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浏览器</title>
     <link href="https://ywzzy.github.io/2024/06/27/mind/liu-lan-qi/"/>
     <id>https://ywzzy.github.io/2024/06/27/mind/liu-lan-qi/</id>
-    <published>2024-06-27T02:50:31.445Z</published>
-    <updated>2024-06-27T02:48:03.814Z</updated>
+    <published>2024-06-27T02:42:49.000Z</published>
+    <updated>2024-06-27T03:08:24.207Z</updated>
     
     
       
@@ -34,34 +62,12 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>浏览器</title>
-    <link href="https://ywzzy.github.io/2024/06/27/mind/bowser/"/>
-    <id>https://ywzzy.github.io/2024/06/27/mind/bowser/</id>
-    <published>2024-06-27T02:42:49.000Z</published>
-    <updated>2024-06-27T03:00:43.976Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote class=&quot;pullquote mindmap mindmap-md&quot;&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://hunterx.xyz/hexo-simple-mindmap-plugin-intro.html&quot;&gt;Hexo</summary>
-        
-      
-    
-    
-    
     <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="思维导图" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
+    <category term="浏览器" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     
     
-    <category term="思维导图" scheme="https://ywzzy.github.io/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
+    <category term="浏览器" scheme="https://ywzzy.github.io/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
     
   </entry>
   
@@ -231,9 +237,9 @@
     <category term="解决方案" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     
     
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
     <category term="解决方案" scheme="https://ywzzy.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
