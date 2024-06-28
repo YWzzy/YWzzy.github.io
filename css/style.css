@@ -408,18 +408,18 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   list-style: none;
 }
 #l_side .side_toc .content .toc-main .toc-content li:before {
-  content: '🗂️';
+  content: '📦';
 }
-#l_side .side_toc .content .toc-main .toc-content li ol li ol li:before {
+#l_side .side_toc .content .toc-main .toc-content li ol li:before {
   content: '🥑';
 }
+#l_side .side_toc .content .toc-main .toc-content li ol li ol li:before {
+  content: '🍋';
+}
 #l_side .side_toc .content .toc-main .toc-content li ol li ol li ol li:before {
-  content: '🌮';
+  content: '🍈';
 }
 #l_side .side_toc .content .toc-main .toc-content li ol li ol li ol li ol li:before {
-  content: '🎂';
-}
-#l_side .side_toc .content .toc-main .toc-content li ol li ol li ol li ol li ol li:before {
   content: '🌽';
 }
 #l_side .side_toc .content .toc-main .toc-content a:hover {
