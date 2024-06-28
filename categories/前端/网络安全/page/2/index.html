@@ -276,41 +276,6 @@
               
             </li>
           
-            <li class="drawer-box-content_item" style="position: relative;">
-              
-                <a href="javascript:;" class="drawer-menu-item-link has-children" @click="openOrCloseMenu(4)">
-                  <span>
-                    
-                      <i class="fas fa-link"></i>
-                    
-                    <span class="name">更多</span>
-                  </span>
-                  <i class="fas fa-chevron-left arrow " :class="{'icon-rotate': isOpen(4)}" aria-hidden="true"></i>
-                </a>
-                <ul class="drawer-sub-menu" v-if="isOpen(4)">
-                  
-                  <li>
-                    <a href="/gallery">
-                      
-                      <i class="fas fa-music" style="margin-top: -20px;"></i>
-                      
-                      <span>图库</span>
-                    </a>
-                  </li>
-                  
-                  <li>
-                    <a href="/about">
-                      
-                      <i class="fas fa-regular fa-person" style="margin-top: -20px;"></i>
-                      
-                      <span>关于我</span>
-                    </a>
-                  </li>
-                  
-                </ul>
-              
-            </li>
-          
         
         
           <li class="drawer-box-content_item">
@@ -424,39 +389,6 @@
                   
                   <span class="name">Categories</span>
                 </a>
-              
-            </li>
-          
-            <li class="menu-item" style="position: relative;">
-              
-                <a href="javascript:;" class="menu-item-link" title="更多">
-                  
-                    <i class="fas fa-link"></i>
-                  
-                  <span class="name">更多</span>
-                  <i class="fas fa-chevron-down arrow" aria-hidden="true"></i>
-                </a>
-                <ul class="sub-menu">
-                  
-                  <li>
-                    <a href="/gallery">
-                      
-                      <i class="fas fa-music" style="margin-top: -20px;"></i>
-                      
-                      <span>图库</span>
-                    </a>
-                  </li>
-                  
-                  <li>
-                    <a href="/about">
-                      
-                      <i class="fas fa-regular fa-person" style="margin-top: -20px;"></i>
-                      
-                      <span>关于我</span>
-                    </a>
-                  </li>
-                  
-                </ul>
               
             </li>
           
@@ -600,7 +532,7 @@
             <span class="post-time">2023-06-29</span>
           </div>
           <div class="post-title">
-            <a class="post-title-link" href="/2023/06/29/frontend/security/mi-ma-chong-zhi-lou-dong/">密码重置漏洞</a>
+            <a class="post-title-link" href="/2023/06/29/frontend/security/tong-yuan-ce-lue/">同源策略</a>
           </div>
           <div class="post-meta">
             <div class="post-tags">
@@ -622,28 +554,31 @@
             </div>
           </div>
           <div class="post-img-mobile">
-            <a href="/2023/06/29/frontend/security/mi-ma-chong-zhi-lou-dong/" style="background-size: cover; 
+            <a href="/2023/06/29/frontend/security/tong-yuan-ce-lue/" style="background-size: cover; 
               background-position: center center;">
-              <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/98259d50c665eba7afd40.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/98259d50c665eba7afd40.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
             </a>
           </div>
           <div class="post-content">
             
 
-密码重置逻辑一码多用（验证码未绑定手机号）验证码回显前端修改密码未确认用户身份验证码不失效本地验证的绕过修改接收的手机或邮箱跳过验证步骤支付逻辑漏洞https://www.jianshu.com/p/8ca02b6de053
-密码重置漏
+
+同源策略
+定义不同源的页面之间，不准互相访问数据。这是浏览器故意设置的一个功能限制。
+源window.origin 或 location.origin 可以得到当前源
+浏览器规定如果 JS 运行在源 A 中，那么就只能获取源 A 的数
           </div>
         </div>
         <div class="post-more">
-          <a href="/2023/06/29/frontend/security/mi-ma-chong-zhi-lou-dong/">
+          <a href="/2023/06/29/frontend/security/tong-yuan-ce-lue/">
             <i class="iconfont iconmore" pointer style="float: right;  " title="阅读更多"></i>
           </a>
         </div>
       </div>
       <div class="post-img">
-        <a href="/2023/06/29/frontend/security/mi-ma-chong-zhi-lou-dong/" style="background-size: cover; 
+        <a href="/2023/06/29/frontend/security/tong-yuan-ce-lue/" style="background-size: cover; 
           background-position: center center;">
-          <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/d2b358d10a7be62d2782a.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+          <img class="lazyload lazyload placeholder" src="https://ossk.cc/file/98259d50c665eba7afd40.jpg" class="lazyload placeholder" data-srcset="https://ossk.cc/file/98259d50c665eba7afd40.jpg" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
         </a>
       </div>
     </article>
