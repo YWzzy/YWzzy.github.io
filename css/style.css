@@ -410,6 +410,18 @@ pre:hover::-webkit-scrollbar-thumb:hover,
 #l_side .side_toc .content .toc-main .toc-content li:before {
   content: '🗂️';
 }
+#l_side .side_toc .content .toc-main .toc-content li ol li ol li:before {
+  content: '🥑';
+}
+#l_side .side_toc .content .toc-main .toc-content li ol li ol li ol li:before {
+  content: '🌮';
+}
+#l_side .side_toc .content .toc-main .toc-content li ol li ol li ol li ol li:before {
+  content: '🎂';
+}
+#l_side .side_toc .content .toc-main .toc-content li ol li ol li ol li ol li ol li:before {
+  content: '🌽';
+}
 #l_side .side_toc .content .toc-main .toc-content a:hover {
   color: #000406;
   transition: all 0.2s;
