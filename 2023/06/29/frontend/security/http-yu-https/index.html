@@ -650,18 +650,20 @@
   <div class="post-nav-prev post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="https://images.pexels.com/photos/3137068/pexels-photo-3137068.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/3137068/pexels-photo-3137068.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+      <img class="lazyload lazyload placeholder" src="https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
     </div>
-    <a href="/2023/06/29/frontend/security/xss-gong-ji/" class="post-nav-link">
+    <a href="/2023/06/29/frontend/security/url-tiao-zhuan-lou-dong/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">XSS攻击</div>
+        <div class="title-text">URL跳转漏洞</div>
       </div>
       
       <!-- <div class="content">
         
 
-一、XSS (Cross-Site Scripting)，跨站脚本攻击，因为缩写和 CSS 重叠，所以只能叫 XSS
+定义：借助未验证的 URL 跳转，将应用程序引导到不安全的第三方区域，从而导致的安全问题。
+
+1.URL 跳转漏洞原
       </div> -->
     </a>
   </div>
@@ -1134,7 +1136,7 @@
       if (isDark) {
         this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
       } else {
-        this.FISH_COLOR = '' || '#EF7EF1';
+        this.FISH_COLOR = '' || 'rgb(0, 4, 6, 0.8)';
       }
     },
     setParameters: function () {
