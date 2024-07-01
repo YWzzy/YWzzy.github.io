@@ -32,10 +32,19 @@ function wrapImageWithFancyBox() {
       var $linkWrapDiv = $imageWrapLink.parent("div");
       if ($imageWrapLink.length < 1) {
         var src = this.getAttribute("data-src") || this.getAttribute("src");
-        // var idx = src.lastIndexOf("?");
-        // if (idx != -1) {
-        //   src = src.substring(0, idx);
-        // }
+
+        // 检查 URL 中是否包含代理关键字
+        var proxyKeywords = ["sogoucdn.com", "cdn.nlark.com"];
+        var isProxyUrl = proxyKeywords.some((keyword) => src.includes(keyword));
+        if (isProxyUrl) {
+          // 如果是代理 URL，则跳过
+          return;
+        }
+
+        var idx = src.lastIndexOf("?");
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
         $imageWrapLink = $image
           .wrap('<a href="' + src + '" class="fancybox"></a>')
           .parent("a");
