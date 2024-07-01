@@ -96,9 +96,6 @@ const getPhotoJson = {
       colums = urls.length;
     }
     for (let i = 0; i < urls.length; i++) {
-      console.log("====================================");
-      console.log(urls[i]);
-      console.log("====================================");
       let path = urls[i].img || urls[i].url || urls[i].imgurl;
       let title = urls[i].alt || urls[i].title;
       imgsHtml =
