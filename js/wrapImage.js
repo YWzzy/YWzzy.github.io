@@ -36,10 +36,12 @@ function wrapImageWithFancyBox() {
         // 检查 URL 中是否包含代理关键字
         var proxyKeywords = ["sogoucdn.com", "cdn.nlark.com"];
         var idx = src.lastIndexOf("?");
+        var startIndex = originalUrl.indexOf("?appid=122&url=") + 15;
         var isProxyUrl = proxyKeywords.some((keyword) => src.includes(keyword));
         if (isProxyUrl) {
-          // 如果是代理 URL，则跳过
-          src = src.substring(0);
+          // 截取需要的部分
+          var result = originalUrl.substring(startIndex);
+          src = result;
         } else {
           if (idx != -1) {
             src = src.substring(0, idx);
