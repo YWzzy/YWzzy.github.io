@@ -23,8 +23,8 @@ function wrapImageWithFancyBox() {
     .not(".link-card img")
     .not(".btns img")
     .not(".gallery-group-img")
-    .not('.getJsonPhoto-api img')
-    .not('.getJsonTalk-api img')
+    .not(".getJsonPhoto-api img")
+    .not(".getJsonTalk-api img")
     .each(function () {
       var $image = $(this);
       var imageCaption = $image.attr("alt");
@@ -32,10 +32,10 @@ function wrapImageWithFancyBox() {
       var $linkWrapDiv = $imageWrapLink.parent("div");
       if ($imageWrapLink.length < 1) {
         var src = this.getAttribute("data-src") || this.getAttribute("src");
-        var idx = src.lastIndexOf("?");
-        if (idx != -1) {
-          src = src.substring(0, idx);
-        }
+        // var idx = src.lastIndexOf("?");
+        // if (idx != -1) {
+        //   src = src.substring(0, idx);
+        // }
         $imageWrapLink = $image
           .wrap('<a href="' + src + '" class="fancybox"></a>')
           .parent("a");
@@ -47,14 +47,14 @@ function wrapImageWithFancyBox() {
       $imageWrapLink.attr("data-fancybox", "images");
       if (imageCaption) {
         $imageWrapLink.attr("data-caption", imageCaption);
-        if (!$linkWrapDiv.hasClass('image-caption')) {
+        if (!$linkWrapDiv.hasClass("image-caption")) {
           $linkWrapDiv.append(
             '<span class="image-caption">' + imageCaption + "</span>"
           );
         }
       }
     });
-  
+
   Fancybox.bind('[data-fancybox="images"]', {
     Toolbar: {
       display: {
