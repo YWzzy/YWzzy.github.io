@@ -36,11 +36,10 @@ function wrapImageWithFancyBox() {
         // 检查 URL 中是否包含代理关键字
         var proxyKeywords = ["sogoucdn.com"];
         var idx = src.lastIndexOf("?");
-        var startIndex = src.indexOf("?appid=122&url=") + 15;
         var isProxyUrl = proxyKeywords.some((keyword) => src.includes(keyword));
         if (isProxyUrl) {
           // 截取需要的部分
-          src = src.substring(startIndex);
+          src = src;
           // return;
         } else {
           if (idx != -1) {
