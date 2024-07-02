@@ -41,7 +41,7 @@ function wrapImageWithFancyBox() {
         if (isProxyUrl) {
           // 截取需要的部分
           src = src.substring(startIndex);
-          return;
+          // return;
         } else {
           if (idx != -1) {
             src = src.substring(0, idx);
