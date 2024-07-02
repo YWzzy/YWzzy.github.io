@@ -40,8 +40,7 @@ function wrapImageWithFancyBox() {
         var isProxyUrl = proxyKeywords.some((keyword) => src.includes(keyword));
         if (isProxyUrl) {
           // 截取需要的部分
-          // src = src.substring(startIndex);
-
+          src = src.substring(startIndex);
           return;
         } else {
           if (idx != -1) {
