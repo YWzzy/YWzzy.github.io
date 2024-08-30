@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2024-06-28T03:19:39.733Z</updated>
+  <updated>2024-08-30T02:50:05.577Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>puppeteer知识汇总</title>
+    <link href="https://ywzzy.github.io/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/"/>
+    <id>https://ywzzy.github.io/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/</id>
+    <published>2024-08-29T11:07:25.000Z</published>
+    <updated>2024-08-30T02:50:05.577Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;h9Dld&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;br /&gt;&lt;/h1&gt;&lt;p&gt;&lt;a name=&quot;uKQNk&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="爬虫" scheme="https://ywzzy.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+    <category term="爬虫" scheme="https://ywzzy.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>前端知识体系</title>
@@ -536,36 +563,6 @@
 &lt;p&gt;&lt;strong&gt;问题概览：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;不要改变</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
-    
-    
-    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React 组件代码结构如何组织？</title>
-    <link href="https://ywzzy.github.io/2023/08/23/frontend/react/react-zu-jian-dai-ma-jie-gou-ru-he-zu-zhi/"/>
-    <id>https://ywzzy.github.io/2023/08/23/frontend/react/react-zu-jian-dai-ma-jie-gou-ru-he-zu-zhi/</id>
-    <published>2023-08-23T09:00:49.000Z</published>
-    <updated>2024-04-19T07:23:51.743Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;a name=&quot;MZPZO&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-导入依赖项&quot;&gt;&lt;a href=&quot;#1-导入依赖项&quot; class=&quot;headerlink&quot;</summary>
         
       
     
