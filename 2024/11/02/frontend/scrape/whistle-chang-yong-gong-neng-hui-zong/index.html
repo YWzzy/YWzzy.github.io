@@ -1,0 +1,2086 @@
+<!--
+ * @Author: yinhan 1738348915@qq.com
+ * @Date: 2023-06-26 13:53:37
+ * @LastEditors: yinhan 1738348915@qq.com
+ * @LastEditTime: 2024-04-19 13:52:55
+ * @FilePath: \zBlog\themes\hexo-theme-bamboo\layout\layout.ejs
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="referrer" content="no-referrer"/>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>whistle常用功能汇总 | 梨逍遥</title>
+
+  <link rel="icon" type="image/png" href="https://s21.ax1x.com/2024/07/01/pkc7yAs.png">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    
+        <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    
+
+    
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="梨逍遥" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
+
+  
+    <div class="preloader-1" id="loader">
+  <div  aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+    <div class="wheel"></div>
+    <div class="hamster">
+      <div class="hamster__body">
+        <div class="hamster__head">
+          <div class="hamster__ear"></div>
+          <div class="hamster__eye"></div>
+          <div class="hamster__nose"></div>
+        </div>
+        <div class="hamster__limb hamster__limb--fr"></div>
+        <div class="hamster__limb hamster__limb--fl"></div>
+        <div class="hamster__limb hamster__limb--br"></div>
+        <div class="hamster__limb hamster__limb--bl"></div>
+        <div class="hamster__tail"></div>
+      </div>
+    </div>
+    <div class="spoke"></div>
+  </div>
+</div>
+  
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+</script>
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
+      <h3 class="drawer-box-head_title">梨逍遥</h3>
+      <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a href="https://ywzzy.github.io/">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">梨逍遥</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="Home">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="Archives">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="Tags">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="Categories">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a href="https://ywzzy.github.io/" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://images.pexels.com/photos/2453551/pexels-photo-2453551.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        whistle常用功能汇总
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2024-11-02 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E8%B0%83%E8%AF%95/" class="post-detail-header_category">
+              调试
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <h2 id="df368884">前言</h2>
+whistle除了抓包外，它还能修改请求与响应、真机调试h5移动端、解决跨域、域名映射等等。
+
+<h2 id="skynN">安装&使用</h2>
+<h3 id="zWnfY">**安装与启动whistle**</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line">npm install -g whistle</span><br><span class="line">w2 start <span class="comment">// 启动whistle</span></span><br><span class="line"></span><br><span class="line">w2 stop <span class="comment">//停止 whistle</span></span><br><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">``</span></span><br><span class="line"></span><br><span class="line">启动之后会在本机启动一台服务器，默认端口是<span class="string">`8899`</span></span><br><span class="line"></span><br><span class="line">![](<span class="attr">https</span>:<span class="comment">//img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&amp;url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536516381-5960fd33-7d8d-49e2-81cc-ba590b71fa24.webp)</span></span><br><span class="line"></span><br><span class="line">在本机打开该地址会进入whistle的控制面板，如下图所示。抓包，修改请求和响应的内容都是在这个控制面板内进行配置的。</span><br><span class="line"></span><br><span class="line">_如果要防止其他人访问配置页面，可以在启动时加上登录用户名和密码_<span class="string">`_-n yourusername -w yourpassword_`</span></span><br><span class="line"></span><br><span class="line">![](<span class="attr">https</span>:<span class="comment">//img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&amp;url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536516397-6acd9997-1971-4c9f-bd26-00967a866485.webp)</span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">id</span>=<span class="string">&quot;qNi8x&quot;</span>&gt;</span>浏览器代理插件<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line">在启动本地启动了whistle之后，要抓包网络的请求并不会经过whistle，这时候我们就需要安装一个插件，让目标网站的请求经过whistle完成抓包等后续的操作。</span><br><span class="line"></span><br><span class="line">官方推荐的插件是[<span class="title class_">SwitchyOmega</span>](<span class="attr">https</span>:<span class="comment">//link.juejin.cn?target=https%3A%2F%2Fchrome.google.com%2Fwebstore%2Fdetail%2Fpadekgcemlokbadohgkifijomclgjgif)，如果你使用的谷歌浏览器需要在应用商店翻墙进行下载。如果不想翻墙可以直接使用自带的edge浏览器，在edge的应用商店下载可以免翻墙。点击获取即可轻松下载。</span></span><br><span class="line"></span><br><span class="line">![](<span class="attr">https</span>:<span class="comment">//img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&amp;url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536516410-a40eb09e-70d1-4baa-9e04-1915efa3cec1.webp)</span></span><br><span class="line"></span><br><span class="line">安装完成之后浏览器的工具栏内就会出现一个圆圈图标。</span><br><span class="line"></span><br><span class="line">![](<span class="attr">https</span>:<span class="comment">//img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&amp;url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536516414-b0e1b7ca-4fbb-4f17-9f7e-7c9cc95b756b.webp)</span></span><br><span class="line"></span><br><span class="line">我们进入选项界面对浏览器代理进行配置，把代理服务器填写whistle启动的端口和地址，然后把switchyOmega的选项改为proxy服务器代理就完成了。</span><br><span class="line"></span><br><span class="line">![](<span class="attr">https</span>:<span class="comment">//img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&amp;url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536516508-5298c05f-4c25-470b-a2a1-d8a45711c7cf.webp)</span></span><br><span class="line"></span><br><span class="line">这时候在浏览器内打开想要抓包的网站就可以抓包了。目前只可以抓http的请求，因为我们还没有进行证书配置，如何配置证书后面会说。</span><br><span class="line"></span><br><span class="line">![](<span class="attr">https</span>:<span class="comment">//img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&amp;url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536516676-cd7b13f4-7a4b-451b-8814-43b81b0d0eaf.webp)</span></span><br><span class="line"></span><br><span class="line">注意如果使用edge下载的插件就只能在edge插件内进行抓包，如果在谷歌打开网站，并不会有抓包的信息。</span><br><span class="line"></span><br><span class="line">&lt;h3 id=<span class="string">&quot;nD1Ke&quot;</span>&gt;配置证书&lt;/h3&gt;</span><br><span class="line">虽然现在在whistle的network内打印出了一些信息，但全部都是http的请求，并没有https的请求，这是因为我们没有配置证书。配置证书方法如下，点击二维码进行证书下载（没错这个二维码是可以点击的，绷住了），随后跟着步骤走就行了。</span><br><span class="line"></span><br><span class="line">安装证书请参考文档: [wproxy.<span class="property">org</span>/whistle/web…](<span class="attr">https</span>:<span class="comment">//link.juejin.cn?target=https%3A%2F%2Fwproxy.org%2Fwhistle%2Fwebui%2Fhttps.html)</span></span><br><span class="line"></span><br><span class="line">配置成功的话https这块会变成一个对勾。</span><br><span class="line"></span><br><span class="line">![](<span class="attr">https</span>:<span class="comment">//img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&amp;url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536516735-dd723690-18e9-435f-b781-a0298b3aa1cd.webp)</span></span><br><span class="line"></span><br><span class="line">配置完证书之后再次刷新页面，就可以看到所有的https请求了，可以清晰的看到请求体和响应体的内容</span><br><span class="line"></span><br><span class="line">![](<span class="attr">https</span>:<span class="comment">//img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&amp;url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536516730-d4ad37ec-0da0-4341-9797-855d3ffa70f6.webp)</span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">id</span>=<span class="string">&quot;Lh5nT&quot;</span>&gt;</span>手机抓包<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line">首先抓包的前提是手机和电脑要处于一个网络下。关闭电脑端的防火墙，然后在手机的wifi设置中，把<span class="title class_">WiFi</span>的代理模式设置为手动代理，主机名和端口号是 电脑的ip地址+whistle的端口号。ip地址可以通过终端的ipconfig查询。</span><br><span class="line"></span><br><span class="line">![](<span class="attr">https</span>:<span class="comment">//img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&amp;url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536516752-1dbd8b07-66af-4344-b231-33572b9995ba.webp)</span></span><br><span class="line"></span><br><span class="line">配置完之后手机发送的请求在whistle的network列表中就能看到了。在手机端访问一下掘金的官网。</span><br><span class="line"></span><br><span class="line">![](<span class="attr">https</span>:<span class="comment">//img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&amp;url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536516807-bb5086bc-4530-4236-a881-e2a44af14070.webp)</span></span><br><span class="line"></span><br><span class="line">在工具栏这块可以通过settings选项对请求进行过滤。可以在whistle中看到手机端访问的列表数据。</span><br><span class="line"></span><br><span class="line">![](<span class="attr">https</span>:<span class="comment">//img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&amp;url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536516997-303f54e5-7f90-4e4d-addb-9914c5289f02.webp)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;c2f538f0&quot;</span>&gt;</span>配置代理<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line">为了让 <span class="title class_">Whistle</span> 能够拦截和处理网络请求，需要将系统或浏览器的代理设置为 <span class="title class_">Whistle</span> 的地址（默认是 <span class="string">`127.0.0.1:8899`</span>）。</span><br><span class="line"></span><br><span class="line">&lt;h3 id=<span class="string">&quot;5e0cfb91&quot;</span>&gt;在系统中配置代理&lt;/h3&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">h4</span> <span class="attr">id</span>=<span class="string">&quot;windows&quot;</span>&gt;</span>Windows<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span></span><br><span class="line"><span class="number">1.</span> 打开“控制面板” -&gt; “网络和 <span class="title class_">Internet</span>” -&gt; “<span class="title class_">Internet</span> 选项”。</span><br><span class="line"><span class="number">2.</span> 选择“连接”选项卡，点击“局域网设置”。</span><br><span class="line"><span class="number">3.</span> 勾选“为 <span class="variable constant_">LAN</span> 使用代理服务器”，并在地址栏中输入 <span class="string">`127.0.0.1`</span>，端口填写 <span class="string">`8899`</span>。</span><br><span class="line"><span class="number">4.</span> 点击“确定”保存设置。</span><br><span class="line"></span><br><span class="line">&lt;h4 id=<span class="string">&quot;macos&quot;</span>&gt;macOS&lt;/h4&gt;</span><br><span class="line"><span class="number">1.</span> 打开“系统偏好设置” -&gt; “网络”。</span><br><span class="line"><span class="number">2.</span> 选择当前使用的网络连接（如 <span class="title class_">Wi</span>-<span class="title class_">Fi</span>），点击“高级”。</span><br><span class="line"><span class="number">3.</span> 选择“代理”选项卡，勾选“<span class="title class_">Web</span> 代理 (<span class="variable constant_">HTTP</span>)”和“安全 <span class="title class_">Web</span> 代理 (<span class="variable constant_">HTTPS</span>)”，并在地址栏中输入 <span class="string">`127.0.0.1`</span>，端口填写 <span class="string">`8899`</span>。</span><br><span class="line"><span class="number">4.</span> 点击“确定”保存设置。</span><br><span class="line"></span><br><span class="line">&lt;h3 id=<span class="string">&quot;d547f22c&quot;</span>&gt;在浏览器中配置代理&lt;/h3&gt;</span><br><span class="line">如果不想全局配置代理，可以在浏览器中单独配置。以 <span class="title class_">Chrome</span> 为例，可以使用 <span class="title class_">SwitchyOmega</span> 插件来管理代理设置。</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 安装 <span class="title class_">SwitchyOmega</span> 插件。</span><br><span class="line"><span class="number">2.</span> 创建一个新的情景模式，命名为“<span class="title class_">Whistle</span>”。</span><br><span class="line"><span class="number">3.</span> 在代理服务器设置中，填写代理地址 <span class="string">`127.0.0.1`</span> 和端口 <span class="string">`8899`</span>。</span><br><span class="line"><span class="number">4.</span> 保存设置并切换到“<span class="title class_">Whistle</span>”情景模式。</span><br><span class="line"></span><br><span class="line">![](<span class="attr">https</span>:<span class="comment">//img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&amp;url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730540665791-607fe312-efde-49fd-a7b3-b53046f9af6c.webp)</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Whistle</span> 和 <span class="title class_">SwitchyOmega</span> 是两种常用的网络代理工具，它们可以结合使用来实现更灵活和高效的网络代理配置。以下是它们如何协同工作的基本原理和步骤：</span><br><span class="line"></span><br><span class="line">&lt;h3 id=<span class="string">&quot;switchyomega&quot;</span>&gt;<span class="title class_">SwitchyOmega</span>&lt;/h3&gt;</span><br><span class="line"><span class="title class_">SwitchyOmega</span> 是一个浏览器扩展（支持 <span class="title class_">Chrome</span> 和 <span class="title class_">Firefox</span>），用于管理和切换代理设置。它可以根据 <span class="variable constant_">URL</span> 模式、时间、地理位置等条件自动切换代理。</span><br><span class="line"></span><br><span class="line">&lt;h3 id=<span class="string">&quot;b3fbd195&quot;</span>&gt;工作原理&lt;/h3&gt;</span><br><span class="line"><span class="number">1.</span> **<span class="title class_">Whistle</span> 作为代理服务器**：</span><br><span class="line">    - 首先，你需要在本地或服务器上运行 <span class="title class_">Whistle</span>。<span class="title class_">Whistle</span> 会监听一个特定的端口（例如 <span class="number">8899</span>），作为代理服务器来接收和处理 <span class="variable constant_">HTTP</span>/<span class="variable constant_">HTTPS</span> 请求。</span><br><span class="line"><span class="number">2.</span> **配置 <span class="title class_">Whistle</span> 规则**：</span><br><span class="line">    - 在 <span class="title class_">Whistle</span> 的配置界面中，你可以定义各种规则来拦截和修改请求。例如，你可以设置规则将特定域名的请求转发到不同的代理服务器，或者修改请求头等。</span><br><span class="line"><span class="number">3.</span> **安装和配置 <span class="title class_">SwitchyOmega</span>**：</span><br><span class="line">    - 在浏览器中安装 <span class="title class_">SwitchyOmega</span> 扩展。</span><br><span class="line">    - 创建一个新的代理情景模式（<span class="title class_">Profile</span>），并将其类型设置为 <span class="variable constant_">HTTP</span> 代理。</span><br><span class="line">    - 将代理服务器地址设置为 <span class="string">`127.0.0.1`</span>，端口设置为 <span class="title class_">Whistle</span> 监听的端口（例如 <span class="number">8899</span>）。</span><br><span class="line"><span class="number">4.</span> **设置自动切换规则**：</span><br><span class="line">    - 在 <span class="title class_">SwitchyOmega</span> 中，你可以定义自动切换规则。例如，你可以设置某些域名或 <span class="variable constant_">URL</span> 模式使用 <span class="title class_">Whistle</span> 代理，而其他请求则直接连接。</span><br><span class="line"></span><br><span class="line">&lt;h3 id=<span class="string">&quot;ddd31907&quot;</span>&gt;示例配置&lt;/h3&gt;</span><br><span class="line">假设 <span class="title class_">Whistle</span> 监听端口为 <span class="number">8899</span>，以下是一个简单的配置示例：</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> **<span class="title class_">Whistle</span> 配置**：</span><br><span class="line">    - 打开 <span class="title class_">Whistle</span> 的配置界面（通常是 <span class="string">`http://127.0.0.1:8899`</span>）。</span><br><span class="line">    - 添加一个规则，例如：</span><br><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">`javascript</span></span><br><span class="line"><span class="string">www.example.com proxy://another-proxy-server:8080</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span><span class="string">`</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">这条规则表示将所有访问 `</span>www.<span class="property">example</span>.<span class="property">com</span><span class="string">` 的请求转发到 `</span>another-proxy-<span class="attr">server</span>:<span class="number">8080</span><span class="string">`。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">2. **SwitchyOmega 配置**：</span></span><br><span class="line"><span class="string">   - 打开 SwitchyOmega 扩展，创建一个新的情景模式，命名为 &quot;Whistle Proxy&quot;。</span></span><br><span class="line"><span class="string">   - 设置代理服务器为 `</span><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">`，端口为 `</span><span class="number">8899</span><span class="string">`。</span></span><br><span class="line"><span class="string">   - 保存配置。</span></span><br><span class="line"><span class="string">3. **自动切换规则**：</span></span><br><span class="line"><span class="string">   - 在 SwitchyOmega 中，创建一个新的自动切换规则。</span></span><br><span class="line"><span class="string">   - 添加一个规则，例如：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line">www.<span class="property">example</span>.<span class="property">com</span> -&gt; <span class="title class_">Whistle</span> <span class="title class_">Proxy</span></span><br></pre></td></tr></table></figure>
+
+<p>这条规则表示当访问 <code>www.example.com</code> 时，使用 “Whistle Proxy” 情景模式。</p>
+<h3 id="25f9c7fa">总结</h3>
+通过上述配置，当你在浏览器中访问 `www.example.com` 时，请求会先通过 SwitchyOmega 转发到 Whistle，Whistle 根据配置的规则处理请求，然后将请求转发到最终的目标服务器。这样，你可以灵活地控制和调试网络请求。
+
+<h2 id="5b8dd657">使用 Whistle 进行调试</h2>
+<h3 id="d72c23b7">配置规则</h3>
+Whistle 通过配置规则来拦截和处理网络请求。在 Whistle 的管理界面中，点击左侧的“Rules”选项卡，可以看到规则配置界面。
+
+<h4 id="b3155ee5">示例规则</h4>
+1. **重定向请求**
+
+<p>将所有对 <code>http://example.com</code> 的请求重定向到 <code>http://test.com</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//example.com http://test.com</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>修改响应内容</strong></li>
+</ol>
+<p>将 <code>http://example.com</code> 的响应内容替换为本地文件 <code>response.txt</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//example.com file://path/to/response.txt</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>拦截并修改请求头</strong></li>
+</ol>
+<p>为所有对 <code>http://example.com</code> 的请求添加一个自定义请求头：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//example.com reqHeaders://&#123; &quot;X-Custom-Header&quot;: &quot;value&quot; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730540665968-d63c0b10-887f-45de-9c66-b1f3635041c8.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730540665968-d63c0b10-887f-45de-9c66-b1f3635041c8.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<h3 id="ea7b3b12">查看请求和响应</h3>
+在 Whistle 的管理界面中，点击左侧的“Network”选项卡，可以查看所有被拦截的请求和响应。点击某个请求，可以查看详细的请求头、响应头和响应内容。
+
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730540665931-208a2881-5068-4e39-9ed9-6522f7db1004.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730540665931-208a2881-5068-4e39-9ed9-6522f7db1004.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<h3 id="7500af07">使用插件</h3>
+Whistle 提供了丰富的插件，可以扩展其功能。在 Whistle 的管理界面中，点击左侧的“Plugins”选项卡，可以查看和管理已安装的插件。常用的插件包括：
+
+<ul>
+<li><strong>whistle.har</strong>：用于导出 HAR 文件，方便分析请求和响应。</li>
+<li><strong>whistle.weinre</strong>：集成 Weinre，方便进行移动端调试。</li>
+</ul>
+<p>可以通过以下命令安装插件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w2 install &lt;plugin-name&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="66d3e599">高级用法</h2>
+<h3 id="8daa2a7d">多环境切换</h3>
+在实际开发中，我们经常需要在不同的环境之间切换，例如开发环境、测试环境和生产环境。Whistle 提供了多环境切换的功能，可以通过配置不同的规则组来实现。
+
+<ol>
+<li>在 Whistle 的管理界面中，点击左侧的“Rules”选项卡。</li>
+<li>创建多个规则组，例如“开发环境”、“测试环境”和“生产环境”。</li>
+<li>在不同的规则组中配置相应的规则。</li>
+<li>通过切换规则组来实现多环境切换。</li>
+</ol>
+<h3 id="e7686354">动态数据注入</h3>
+在调试过程中，有时需要动态地修改请求或响应的数据。Whistle 提供了动态数据注入的功能，可以通过 JavaScript 脚本来实现。
+
+<ol>
+<li>在 Whistle 的管理界面中，点击左侧的“Rules”选项卡。</li>
+<li>配置一个规则，将请求或响应的数据注入到 JavaScript 脚本中：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//example.com js://path/to/script.js</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>在 <code>script.js</code> 中编写 JavaScript 代码，动态修改请求或响应的数据：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  <span class="comment">// 修改请求头</span></span><br><span class="line">  req.<span class="property">headers</span>[<span class="string">&#x27;X-Custom-Header&#x27;</span>] = <span class="string">&#x27;value&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 修改响应内容</span></span><br><span class="line">  res.<span class="property">body</span> = res.<span class="property">body</span>.<span class="title function_">replace</span>(<span class="string">&#x27;old content&#x27;</span>, <span class="string">&#x27;new content&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5771c84f">HTTPS 解密</h3>
+Whistle 支持 HTTPS 解密，可以拦截和查看 HTTPS 请求和响应的内容。为了实现 HTTPS 解密，需要安装 Whistle 的根证书。
+
+<ol>
+<li>在 Whistle 的管理界面中，点击左侧的“HTTPS”选项卡。</li>
+<li>点击“Download Root CA”下载 Whistle 的根证书。</li>
+<li>安装根证书并信任它。</li>
+</ol>
+<h4 id="windows-1">Windows</h4>
+1. 双击下载的根证书文件，打开证书安装向导。
+2. 选择“将所有的证书放入下列存储”，点击“浏览”。
+3. 选择“受信任的根证书颁发机构”，点击“确定”。
+4. 完成证书安装。
+
+<h4 id="macos-1">macOS</h4>
+1. 双击下载的根证书文件，打开“钥匙串访问”。
+2. 将证书拖动到“系统”钥匙串中。
+3. 右键点击证书，选择“显示简介”。
+4. 展开“信任”选项，将“使用此证书时”设置为“始终信任”。
+
+<h3 id="5ccd5982">Mock 数据</h3>
+在前端开发过程中，有时需要模拟后端接口返回的数据。Whistle 提供了 Mock 数据的功能，可以通过配置规则来实现。
+
+<ol>
+<li>在 Whistle 的管理界面中，点击左侧的“Rules”选项卡。</li>
+<li>配置一个规则，将请求重定向到本地的 Mock 数据文件：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//api.example.com/data file://path/to/mock/data.json</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>在 <code>data.json</code> 中编写 Mock 数据：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;status&quot;</span>: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">    <span class="string">&quot;data&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;id&quot;</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;John Doe&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="dfa11501">流量录制与回放</h3>
+Whistle 提供了流量录制与回放的功能，可以记录网络请求和响应，并在需要时回放这些流量，方便进行回归测试。
+
+<ol>
+<li>在 Whistle 的管理界面中，点击左侧的“Network”选项卡。</li>
+<li>点击“Record”按钮开始录制流量。</li>
+<li>完成录制后，点击“Stop”按钮停止录制，并保存录制的流量。</li>
+<li>在需要回放流量时，点击“Replay”按钮选择录制的流量文件进行回放。</li>
+</ol>
+<h2 id="796cab16">常见使用场景</h2>
+<h3 id="f7015e9f">接口调试</h3>
+在开发过程中，我们经常需要调试接口请求。通过 Whistle，可以方便地拦截和修改请求，模拟各种场景。例如，可以模拟接口返回错误，测试前端的错误处理逻辑。
+
+<h3 id="1b070576">抓包分析</h3>
+Whistle 可以用来抓取和分析网络请求，帮助我们了解应用的网络行为。例如，可以分析页面加载过程中发起的所有请求，找出性能瓶颈。
+
+<h3 id="df6ab37d">本地开发</h3>
+在本地开发过程中，可以通过 Whistle 将某些请求重定向到本地服务器，方便调试。例如，可以将对生产环境接口的请求重定向到本地开发环境。
+
+<h2 id="3dbf0c11">应用场景</h2>
+whistle的强大远远不止能够抓包这么简单，它还有很多其他的功能。
+
+<h3 id="cda38e9f">Weinre控制台</h3>
+集成[weinre](https://link.juejin.cn?target=http%3A%2F%2Fpeople.apache.org%2F~pmuellr%2Fweinre%2Fdocs%2Flatest%2F)的功能，用户只需通过简单配置(`pattern weinre://id`)即可使用，具体参见[weinre](https://link.juejin.cn?target=https%3A%2F%2Fwproxy.org%2Fwhistle%2Frules%2Fweinre.html)，更多移动端调试方法可以参考：[利用whistle调试移动端页面](https://link.juejin.cn?target=http%3A%2F%2Fimweb.io%2Ftopic%2F5981a34bf8b6c96352a59401)。
+
+<p>相信有过 h5 开发经历的同学都遇到过这种情况，我电脑 f12 模拟移动端调试的时候非常的完美，但是一到真机上会出现各种奇奇怪怪的问题，而这些问题往往是比较难以定位问题并修复的，因为在真机的 h5 页面上没有控制台，我们无法审查元素。</p>
+<p>但是当你使用了 whistle 你会发现只需要配置一行规则，就可以轻松的调出控制台调试真机的 h5 页面，这就是 Weinre 控制台。具体效果如下图，这里为了方便展示，真机调试就用 pc 端模拟手机代替（真实调试的时候，需要先实现上述的手机抓包，即手机电脑在同一网络下，并且修改手机 wifi 的代理。）。可以看到左侧并不是浏览器自带的控制台，而是 whistle 自带的功能，在视察与修改左侧元素时，我们手机上的内容也会随之改变。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517021-3c641956-b35b-4abd-ab97-9c69e0113fd3.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517021-3c641956-b35b-4abd-ab97-9c69e0113fd3.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>那么如何实现上面的效果呢？</p>
+<p>我们只需要在 Whistle 控制台左侧的 Rules 中添加一条规则即可。</p>
+<p><code>$&#123;监听的网址&#125; weinre://$&#123;实例名称&#125;</code> 这个实例名称是工具栏中 Weinre 下拉框中的名字可以任意起</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//juejin.cn/ weinre://juejin</span></span><br></pre></td></tr></table></figure>
+
+<p>点击工具栏中 Weinre 下面的 juejin 即可跳转到 Weinre 控制台页面，再刷新下监听网址的页面即可审查元素。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517038-019716ce-e076-4c5c-9909-323dc62e2131.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517038-019716ce-e076-4c5c-9909-323dc62e2131.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>借助 Weinre 控制台，我们可以更加容易的解决真机兼容性问题。</p>
+<h3 id="e148e621">篡改响应</h3>
+修改响应体还是很常用的，例如修复bug的时候，如果怀疑是接口返回值有误导致的问题，就可以通过修改响应体，来排查到底是不是后端的问题。
+
+<p>在调试接口的时候，例如后端接口新增了一个返回值，我们需要根据这个返回值进行相应的逻辑处理，这时候我们也可以通过修改响应体的方式 mock 一下新增的字段，只要确保自己 mock 的结果和接口返回的结构一样，就可以提前完成接口联调。</p>
+<p>具体做法：</p>
+<p>前半段是请求地址（支持正则匹配） 后半段是响应体的文件。<code>file://$&#123;路径&#125;</code> 默认找的是 Values 下文件。</p>
+<p><code>Ctrl+右键</code>点击橘色的路径，会自动跳转到 Values 下对应的文件里，如果没有会自动创建非常方便。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517063-a2f3fb83-0cd5-4308-ab21-8da1b2022ce6.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517063-a2f3fb83-0cd5-4308-ab21-8da1b2022ce6.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>mock.json</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517112-33f8f145-1e76-4dfd-bffd-22e108049938.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517112-33f8f145-1e76-4dfd-bffd-22e108049938.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>可以看到 加完配置之后对应接口的响应体就变成了 mock.json 里面的内容。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517298-24cb84f8-1254-488d-be2f-bee19f80c32b.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517298-24cb84f8-1254-488d-be2f-bee19f80c32b.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<h3 id="431bd829">解决跨域</h3>
+解决跨域是篡改响应的一种应用，有的后端接口没有配置CORS，导致前端接口跨域
+
+<p>历史解决：通过 vite 或者 webpack 等工具做一个反向代理</p>
+<p>通过 Whistle 的<code>resHeaders </code>可直接修改跨域接口的响应头，增加 cors 配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/getList/ <span class="attr">resHeaders</span>:<span class="comment">//&#123;cors&#125;</span></span><br><span class="line"></span><br><span class="line"># cors 文件</span><br><span class="line">access-control-allow-<span class="attr">credentials</span>: <span class="literal">true</span> always</span><br><span class="line">access-control-allow-<span class="attr">headers</span>: *</span><br><span class="line">access-control-allow-<span class="attr">methods</span>: <span class="variable constant_">GET</span>, <span class="variable constant_">PUT</span>, <span class="variable constant_">POST</span>, <span class="variable constant_">DELETE</span>, <span class="variable constant_">HEAD</span>, <span class="variable constant_">OPTIONS</span></span><br><span class="line">access-control-allow-<span class="attr">origin</span>: *</span><br><span class="line">access-control-expose-<span class="attr">headers</span>: *</span><br><span class="line">access-control-max-<span class="attr">age</span>: 18000L</span><br><span class="line">content-<span class="attr">type</span>: application/json</span><br><span class="line"><span class="attr">date</span>: <span class="title class_">Fri</span>, <span class="number">02</span> <span class="title class_">Dec</span> <span class="number">2022</span> <span class="number">04</span>:<span class="number">00</span>:<span class="number">28</span> <span class="variable constant_">GMT</span></span><br><span class="line"><span class="attr">server</span>: <span class="number">123123</span></span><br><span class="line"><span class="title class_">Access</span>-<span class="title class_">Control</span>-<span class="title class_">Allow</span>-<span class="title class_">Origin</span>: *</span><br></pre></td></tr></table></figure>
+
+<p>当然功能远不止这些，还可以 篡改 API 响应时间、HTTP 响应状态码等。。。</p>
+<h3 id="2b6767f7">篡改请求</h3>
+可以使用reqMerge修改修改请求体，它会把`merge.json`文件的请求体合并到原本接口的请求体中。
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/savePerson/ <span class="attr">reqMerge</span>:<span class="comment">//&#123;merge.json&#125;</span></span><br><span class="line"></span><br><span class="line"># merge.<span class="property">json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="c75c6ef0">jsPrepend 进行js注入</h3>
+使用jsPrepend可以在目标网址的srcipt中添加任意的js代码。我们这里向页面中注入一个Vconsole移动端调试工具。`${注入到哪个地址} jsPrepend://${注入的js路径}`
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">https</span>:<span class="comment">//juejin.cn/ jsPrepend://https://cdn.jsdelivr.net/npm/eruda@2.4.1/eruda.min.js</span></span><br><span class="line"><span class="attr">https</span>:<span class="comment">//juejin.cn/ jsPrepend://&#123;test.js&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>test.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vConsole = <span class="keyword">new</span> <span class="variable language_">window</span>.<span class="title class_">VConsole</span>();</span><br></pre></td></tr></table></figure>
+
+<p>打开控制台可以发现，我们注入的 js 被添加到了 head 的最顶部。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517383-3d5f1478-1c99-418d-be3f-2b524894e116.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517383-3d5f1478-1c99-418d-be3f-2b524894e116.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>VConsole 成功显示到了页面上</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517333-5b293d4c-2388-4dae-baf6-9c2ab3ed97b2.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=https://cdn.nlark.com/yuque/0/2024/webp/300943/1730536517333-5b293d4c-2388-4dae-baf6-9c2ab3ed97b2.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<h3 id="f11b8308">域名映射</h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 可以一个ip 配置多个域名 并且支持端口号</span><br><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9000</span> ddd.<span class="property">com</span> aaa.<span class="property">com</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="32536950">文档</h2>
+[whistle文档](https://link.juejin.cn?target=https%3A%2F%2Fwproxy.org%2Fwhistle%2Finstall.html)
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/whistle/" class="">
+              whistle
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>梨逍遥</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2024/11/02/frontend/scrape/whistle-chang-yong-gong-neng-hui-zong/" target="_blank" title="whistle常用功能汇总">https://ywzzy.github.io/2024/11/02/frontend/scrape/whistle-chang-yong-gong-neng-hui-zong/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
+    </div>
+    <a href="/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">puppeteer知识汇总</div>
+      </div>
+      <!-- <div class="content">
+        
+
+1. Puppeteer 特点Puppeteer 是一个强大的 Web 爬虫工具,具有以下主要特点:
+
+控制浏览器:
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://avatars.githubusercontent.com/u/48836340?v=4'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>梨逍遥</h2>
+        
+        
+          <p>一个码农</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">梨逍遥</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/mailto:1738348915@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/YWzzy"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1738348915"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#df368884"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#skynN"><span class="toc-text">安装&amp;使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#zWnfY"><span class="toc-text">**安装与启动whistle**</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25f9c7fa"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5b8dd657"><span class="toc-text">使用 Whistle 进行调试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#d72c23b7"><span class="toc-text">配置规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#b3155ee5"><span class="toc-text">示例规则</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ea7b3b12"><span class="toc-text">查看请求和响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7500af07"><span class="toc-text">使用插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#66d3e599"><span class="toc-text">高级用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8daa2a7d"><span class="toc-text">多环境切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e7686354"><span class="toc-text">动态数据注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5771c84f"><span class="toc-text">HTTPS 解密</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#windows-1"><span class="toc-text">Windows</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#macos-1"><span class="toc-text">macOS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5ccd5982"><span class="toc-text">Mock 数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dfa11501"><span class="toc-text">流量录制与回放</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#796cab16"><span class="toc-text">常见使用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#f7015e9f"><span class="toc-text">接口调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1b070576"><span class="toc-text">抓包分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#df6ab37d"><span class="toc-text">本地开发</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3dbf0c11"><span class="toc-text">应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cda38e9f"><span class="toc-text">Weinre控制台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e148e621"><span class="toc-text">篡改响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#431bd829"><span class="toc-text">解决跨域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2b6767f7"><span class="toc-text">篡改请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c75c6ef0"><span class="toc-text">jsPrepend 进行js注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f11b8308"><span class="toc-text">域名映射</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32536950"><span class="toc-text">文档</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/11/02/frontend/scrape/whistle-chang-yong-gong-neng-hui-zong/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/2453551/pexels-photo-2453551.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/2453551/pexels-photo-2453551.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">11-02</span>
+                
+              </div>
+              <a class="post-title" href="/2024/11/02/frontend/scrape/whistle-chang-yong-gong-neng-hui-zong/">whistle常用功能汇总</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">08-29</span>
+                
+              </div>
+              <a class="post-title" href="/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/">puppeteer知识汇总</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/27/mind/liu-lan-qi/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/40896/larch-conifer-cone-branch-tree-40896.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/40896/larch-conifer-cone-branch-tree-40896.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/27/mind/liu-lan-qi/">浏览器</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-08</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/">使用 big.js 解决 js 小数精度问题</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/06/frontend/react/21-ge-rang-react-xiang-mu-geng-zheng-ji-de-zui-jia-shi-jian/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/4792352/pexels-photo-4792352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/4792352/pexels-photo-4792352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-06</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/06/frontend/react/21-ge-rang-react-xiang-mu-geng-zheng-ji-de-zui-jia-shi-jian/">21 个让 React 项目更整洁的最佳实践</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgb(0, 4, 6, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="mailto:1738348915@qq.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2024 <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">zhangzhiyong</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a></p>
+
+          </div>
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><br></div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h1, h2, h3, h4, h5',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 3,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', 'YWzzy/utterance_repo')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

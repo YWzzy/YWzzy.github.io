@@ -6,7 +6,7 @@
   <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
   
   <link href="https://ywzzy.github.io/"/>
-  <updated>2024-09-23T11:04:45.150Z</updated>
+  <updated>2024-11-02T09:55:38.651Z</updated>
   <id>https://ywzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>whistle常用功能汇总</title>
+    <link href="https://ywzzy.github.io/2024/11/02/frontend/scrape/whistle-chang-yong-gong-neng-hui-zong/"/>
+    <id>https://ywzzy.github.io/2024/11/02/frontend/scrape/whistle-chang-yong-gong-neng-hui-zong/</id>
+    <published>2024-11-02T09:52:25.000Z</published>
+    <updated>2024-11-02T09:55:38.651Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;df368884&quot;&gt;前言&lt;/h2&gt;
+whistle除了抓包外，它还能修改请求与响应、真机调试h5移动端、解决跨域、域名映射等等。
+
+&lt;h2 id=&quot;skynN&quot;&gt;安装&amp;使用&lt;/h2&gt;
+&lt;h3</summary>
+        
+      
+    
+    
+    
+    <category term="调试" scheme="https://ywzzy.github.io/categories/%E8%B0%83%E8%AF%95/"/>
+    
+    
+    <category term="whistle" scheme="https://ywzzy.github.io/tags/whistle/"/>
+    
+  </entry>
   
   <entry>
     <title>puppeteer知识汇总</title>
@@ -95,9 +124,9 @@
     <category term="解决方案" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     
     
-    <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
-    
     <category term="解决方案" scheme="https://ywzzy.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
@@ -237,9 +266,9 @@
     <category term="解决方案" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     
     
-    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
     <category term="解决方案" scheme="https://ywzzy.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -248,7 +277,7 @@
     <link href="https://ywzzy.github.io/2024/04/17/solution/qiankun-wei-qian-duan-luo-di-shi-jian/"/>
     <id>https://ywzzy.github.io/2024/04/17/solution/qiankun-wei-qian-duan-luo-di-shi-jian/</id>
     <published>2024-04-17T01:56:28.000Z</published>
-    <updated>2024-09-23T11:04:45.159Z</updated>
+    <updated>2024-10-24T00:22:29.747Z</updated>
     
     
       
@@ -536,36 +565,6 @@
 &lt;p&gt;&lt;strong&gt;问题概览：&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;不要改变</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
-    
-    
-    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React 组件代码结构如何组织？</title>
-    <link href="https://ywzzy.github.io/2023/08/23/frontend/react/react-zu-jian-dai-ma-jie-gou-ru-he-zu-zhi/"/>
-    <id>https://ywzzy.github.io/2023/08/23/frontend/react/react-zu-jian-dai-ma-jie-gou-ru-he-zu-zhi/</id>
-    <published>2023-08-23T09:00:49.000Z</published>
-    <updated>2024-09-23T11:04:45.118Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
-
-&lt;p&gt;&lt;a name=&quot;MZPZO&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-导入依赖项&quot;&gt;&lt;a href=&quot;#1-导入依赖项&quot; class=&quot;headerlink&quot;</summary>
         
       
     
