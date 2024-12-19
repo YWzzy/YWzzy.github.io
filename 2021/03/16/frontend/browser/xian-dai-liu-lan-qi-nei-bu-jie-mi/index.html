@@ -1,0 +1,2263 @@
+<!--
+ * @Author: yinhan 1738348915@qq.com
+ * @Date: 2023-06-26 13:53:37
+ * @LastEditors: yinhan 1738348915@qq.com
+ * @LastEditTime: 2024-04-19 13:52:55
+ * @FilePath: \zBlog\themes\hexo-theme-bamboo\layout\layout.ejs
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="referrer" content="no-referrer"/>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>现代浏览器内部揭秘 | 梨逍遥</title>
+
+  <link rel="icon" type="image/png" href="https://s21.ax1x.com/2024/07/01/pkc7yAs.png">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    
+        <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    
+
+    
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="梨逍遥" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
+
+  
+    <div class="preloader-1" id="loader">
+  <div  aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+    <div class="wheel"></div>
+    <div class="hamster">
+      <div class="hamster__body">
+        <div class="hamster__head">
+          <div class="hamster__ear"></div>
+          <div class="hamster__eye"></div>
+          <div class="hamster__nose"></div>
+        </div>
+        <div class="hamster__limb hamster__limb--fr"></div>
+        <div class="hamster__limb hamster__limb--fl"></div>
+        <div class="hamster__limb hamster__limb--br"></div>
+        <div class="hamster__limb hamster__limb--bl"></div>
+        <div class="hamster__tail"></div>
+      </div>
+    </div>
+    <div class="spoke"></div>
+  </div>
+</div>
+  
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+</script>
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
+      <h3 class="drawer-box-head_title">梨逍遥</h3>
+      <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">梨逍遥</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="Home">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="Archives">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="Tags">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="Categories">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://images.pexels.com/photos/3137068/pexels-photo-3137068.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        现代浏览器内部揭秘
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2021-03-16 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-detail-header_category">
+              前端
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/" class="post-detail-header_category">
+              面试
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/%E9%9D%A2%E8%AF%95/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="post-detail-header_category">
+              浏览器
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <meta name="referrer" content="no-referrer" />
+
+<p><a name="f3a2f325"></a></p>
+<h1 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h1><p>从高级视角对浏览器架构与多进程架构的优点进行阐述。我们也对 Chrome 中与多进程架构密切相关的服务化与站点隔离进行了讲解。<br><a name="5c888d03"></a></p>
+<h2 id="CPU、GPU、内存和多进程体系结构"><a href="#CPU、GPU、内存和多进程体系结构" class="headerlink" title="CPU、GPU、内存和多进程体系结构"></a>CPU、GPU、内存和多进程体系结构</h2><p>这一博客系列由四部分组成，将从高级体系结构到渲染流程的细节来窥探 Chrome 浏览器的内部。如果你曾对浏览器是如何将代码转化为具有功能的网站，或者你并不确定为何建议使用某一技术来提升性能，那么本系列就是为你准备的。</p>
+<p>本文作为此系列的第一部分，将介绍核心计算术语与 Chrome 的多进程体系架构。</p>
+<p><strong>提示：</strong> 如果你已熟悉 CPU&#x2F;GPU，进程&#x2F;线程的相关概念，可以直接跳到<a href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9E%B6%E6%9E%84">浏览器架构</a>部分开始阅读。</p>
+<p><a name="b70385d9"></a></p>
+<h2 id="计算机的核心是-CPU-与-GPU"><a href="#计算机的核心是-CPU-与-GPU" class="headerlink" title="计算机的核心是 CPU 与 GPU"></a>计算机的核心是 CPU 与 GPU</h2><p>为了了解浏览器运行的环境，我们需要了解几个计算机部件以及它们的作用。</p>
+<p><a name="CPU"></a></p>
+<h3 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h3><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615206916-bd6e36d0-2361-45d1-8003-41e113c8a57f.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615206916-bd6e36d0-2361-45d1-8003-41e113c8a57f.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 1：4 个 CPU 核心作为办公人员，坐在办公桌前处理各自的工作</p>
+<p>第一个需要了解的计算机部件是 <strong>中央处理器（Central Processing Unit）</strong>，或简称为 <strong>CPU</strong>。CPU 可以看作是计算机的大脑。一个 CPU 核心如图中的办公人员，可以逐一解决很多不同任务。它可以在解决从数学到艺术一切任务的同时还知道如何响应客户要求。过去 CPU 大多是单芯片的，一个核心就像存在于同芯片的另一个 CPU。随着现代硬件发展，你经常会有不止一个内核，为你的手机和笔记本电脑提供更多的计算能力。</p>
+<p><a name="GPU"></a></p>
+<h3 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h3><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615214916-e56c86c5-73d2-435b-a15d-a4d054a497e9.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615214916-e56c86c5-73d2-435b-a15d-a4d054a497e9.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 2：许多带特定扳手的 GPU 内核意味着它们只能处理有限任务</p>
+<p><strong>图形处理器</strong>（<strong>Graphics Processing Unit</strong>，简称为 <strong>GPU</strong>）是计算机的另一部件。与 CPU 不同，GPU 擅长同时处理跨内核的简单任务。顾名思义，它最初是为解决图形而开发的。这就是为什么在图形环境中“使用 GPU” 或 “GPU 支持”都与快速渲染和顺滑交互有关。近年来随着 GPU 加速计算的普及，仅靠 GPU 一己之力也使得越来越多的计算成为可能。</p>
+<p>当你在电脑或手机上启动应用时，是 CPU 和 GPU 为应用供能。通常情况下应用是通过操作系统提供的机制在 CPU 和 GPU 上运行。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615221906-3c30dd92-c25a-4932-988d-b43103afd2f4.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615221906-3c30dd92-c25a-4932-988d-b43103afd2f4.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 3：三层计算机体系结构。底部是机器硬件，中间是操作系统，顶部是应用程序。</p>
+<p><a name="0db1a238"></a></p>
+<h2 id="在进程和线程上执行程序"><a href="#在进程和线程上执行程序" class="headerlink" title="在进程和线程上执行程序"></a>在进程和线程上执行程序</h2><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615229734-f013746e-2986-422f-a34c-14e878197431.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615229734-f013746e-2986-422f-a34c-14e878197431.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图四：进程作为边界框，线程作为抽象鱼在进程中游动</p>
+<p>在深入学习浏览器架构之前需要了解的另一个理论是进程与线程。进程可以被描述为是一个应用的执行程序。线程存在于进程并执行程序任意部分。</p>
+<p>启动应用时会创建一个进程。程序也许会创建一个或多个线程来帮助它工作，这是可选的。操作系统为进程提供了一个可以使用的“一块”内存，所有应用程序状态都保存在该私有内存空间中。关闭应用程序时，相应的进程也会消失，操作系统会释放内存。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/svg/164572/1599615438699-00069387-aaa0-4594-95fd-1875d9d4b287.svg#height=469&id=fyFkB&originHeight=150&originWidth=273&originalType=binary&ratio=1&rotation=0&showTitle=false&size=252656&status=done&style=none&title=&width=853" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/svg/164572/1599615438699-00069387-aaa0-4594-95fd-1875d9d4b287.svg#height=469&id=fyFkB&originHeight=150&originWidth=273&originalType=binary&ratio=1&rotation=0&showTitle=false&size=252656&status=done&style=none&title=&width=853" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="1..svg"></p>
+<p>图 5 ：进程使用内存空间和存储应用数据的示意图</p>
+<p>进程可以请求操作系统启动另一个进程来执行不同的任务。此时，内存中的不同部分会分给新进程。如果两个进程需要对话，他们可以通过<strong>进程间通信</strong>（<strong>IPC</strong>）来进行。许多应用都是这样设计的，所以如果一个工作进程失去响应，该进程就可以在不停止应用程序不同部分的其他进程运行的情况下重新启动。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/svg/164572/1599615773729-459bc3e3-9d03-4af9-a5d0-5a11276a034f.svg#height=470&id=caSEM&originHeight=150&originWidth=273&originalType=binary&ratio=1&rotation=0&showTitle=false&size=293505&status=done&style=none&title=&width=855" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/svg/164572/1599615773729-459bc3e3-9d03-4af9-a5d0-5a11276a034f.svg#height=470&id=caSEM&originHeight=150&originWidth=273&originalType=binary&ratio=1&rotation=0&showTitle=false&size=293505&status=done&style=none&title=&width=855" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="2.svg"></p>
+<p>图 6：独立进程通过 IPC 通信示意图</p>
+<p><a name="c4f5cabc"></a></p>
+<h2 id="浏览器架构"><a href="#浏览器架构" class="headerlink" title="浏览器架构"></a>浏览器架构</h2><p>那么如何通过进程和线程构建 web 浏览器呢？它可能由一个拥有很多线程的进程，或是一些通过 IPC 通信的不同线程的进程。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615781904-137d5260-8f05-4773-9a44-1e650ac38709.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615781904-137d5260-8f05-4773-9a44-1e650ac38709.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 7：不同浏览器架构的进程&#x2F;线程示意图</p>
+<p>这里需要注意的重要一点是，这些不同的架构是实现细节。关于如何构建 web 浏览器并不存在标准规范。一个浏览器的构建方法可能与另一个迥然不同。</p>
+<p>在本博客系列中，我们使用下图所示的 Chrome 近期架构进行阐述。</p>
+<p>顶部是浏览器进程，它与处理应用其它模块任务的进程进行协调。对于渲染进程来说，创建了多个渲染进程并分配给了每个标签页。直到最近，Chrome 在可能的情况下给每个标签页分配一个进程。而现在它试图给每个站点分配一个进程，包括 iframe（参见<a href="#%E6%AF%8F%E4%B8%AA-iframe-%E7%9A%84%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B--%E7%AB%99%E7%82%B9%E9%9A%94%E7%A6%BB">站点隔离</a>）。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615789037-3b5c5445-dc91-4673-bbbd-55d5f618fc0c.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615789037-3b5c5445-dc91-4673-bbbd-55d5f618fc0c.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 8：Chrome 的多进程架构示意图。渲染进程下显示了多个层，表明 Chrome 为每个标签页运行多个渲染进程。</p>
+<p><a name="51b19fbc"></a></p>
+<h2 id="进程各自控制什么？"><a href="#进程各自控制什么？" class="headerlink" title="进程各自控制什么？"></a>进程各自控制什么？</h2><p>下表展示每个 Chrome 进程与各自控制的内容：</p>
+<table>
+<thead>
+<tr>
+<th>进程</th>
+<th>控制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>浏览器</td>
+<td>控制应用中的 “Chrome” 部分，包括地址栏，书签，回退与前进按钮。以及处理 web 浏览器不可见的特权部分，如网络请求与文件访问。</td>
+</tr>
+<tr>
+<td>渲染</td>
+<td>控制标签页内网站展示。</td>
+</tr>
+<tr>
+<td>插件</td>
+<td>控制站点使用的任意插件，如 Flash。</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>处理独立于其它进程的 GPU 任务。GPU 被分成不同进程，因为 GPU 处理来自多个不同应用的请求并绘制在相同表面。</td>
+</tr>
+</tbody></table>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615796495-74e3b320-3435-410e-af32-f60c66a1b8d2.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615796495-74e3b320-3435-410e-af32-f60c66a1b8d2.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 9：不同进程指向浏览器 UI 的不同部分</p>
+<p>还有更多进程如扩展进程与应用进程。如果你想要了解有多少进程运行在你的 Chrome 浏览器中，可以点击右上角的选项菜单图标，选择更多工具，然后选择任务管理器。然后会打开一个窗口，其中列出了当前正在运行的进程以及它们当前的 CPU&#x2F;内存使用量。</p>
+<p><a name="66ec77ef"></a></p>
+<h2 id="Chrome-多进程架构的优点"><a href="#Chrome-多进程架构的优点" class="headerlink" title="Chrome 多进程架构的优点"></a>Chrome 多进程架构的优点</h2><p>前文中提到了 Chrome 使用多个渲染进程。最简单的情况下，你可以想象每个标签页都有自己的渲染进程。假设你打开了三个标签页，每个标签页都拥有自己独立的渲染进程。如果某个标签页失去响应，你可以关掉这个标签页，此时其它标签页依然运行着，可以正常使用。如果所有标签页都运行在同一进程上，那么当某个失去响应，所有标签页都会失去响应。这样的体验很糟糕。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/svg/164572/1599615825071-23986c0a-3ff0-424c-b4b4-d198b010ea9f.svg#height=572&id=jj7Fj&originHeight=150&originWidth=273&originalType=binary&ratio=1&rotation=0&showTitle=false&size=112568&status=done&style=none&title=&width=1041" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/svg/164572/1599615825071-23986c0a-3ff0-424c-b4b4-d198b010ea9f.svg#height=572&id=jj7Fj&originHeight=150&originWidth=273&originalType=binary&ratio=1&rotation=0&showTitle=false&size=112568&status=done&style=none&title=&width=1041" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="3.svg"></p>
+<p>图 10：如图所示每个标签页上运行的渲染进程</p>
+<p>把浏览器工作分成多个进程的另一好处是安全性与沙箱化。由于操作系统提供了限制进程权限的方法，浏览器就可以用沙箱保护某些特定功能的进程。例如，Chrome 浏览器限制处理任意用户输入的进程(如渲染器进程)对任意文件的访问。</p>
+<p>由于进程有自己的私有内存空间，所以它们通常包含公共基础设施的拷贝(如 V8，它是 Chrome 的 JavaScript 引擎)。这意味着使用了更多的内存，如果它们是同一进程中的线程，就无法共享这些拷贝。为了节省内存，Chrome 对可加速的内存数量进行了限制。具体限制数值依设备可提供的内存与 CPU 能力而定，但是当 Chrome 运行时达到限制时，会开始在同一站点的不同标签页上运行同一进程。</p>
+<p><a name="f48608af"></a></p>
+<h2 id="节省更多内存-——-Chrome-中的服务化"><a href="#节省更多内存-——-Chrome-中的服务化" class="headerlink" title="节省更多内存 —— Chrome 中的服务化"></a>节省更多内存 —— Chrome 中的服务化</h2><p>同样的方法也适用于浏览器进程。Chrome 正在经历架构变革，它转变为将浏览器程序的每一模块作为一个服务来运行，从而可以轻松实现进程的拆解或聚合。</p>
+<p>通常观点是当 Chrome 运行在强力硬件上时，它会将每个服务分解到不同进程中，从而提升稳定性，但是如果 Chrome 运行在资源有限的设备上时，它会将服务聚合到一个进程中从而节省了内存占用。在这一架构变革实现前，类似的整合进程以减少内存使用的方法已经在 Android 类平台上使用。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/svg/164572/1599615881070-8a96f98c-ee7c-4809-b631-c6000a1f2efb.svg#height=547&id=U2F2c&originHeight=150&originWidth=273&originalType=binary&ratio=1&rotation=0&showTitle=false&size=335942&status=done&style=none&title=&width=995" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/svg/164572/1599615881070-8a96f98c-ee7c-4809-b631-c6000a1f2efb.svg#height=547&id=U2F2c&originHeight=150&originWidth=273&originalType=binary&ratio=1&rotation=0&showTitle=false&size=335942&status=done&style=none&title=&width=995" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="4.svg"></p>
+<p>图 11： Chrome 的服务化图，将不同的服务移动到多个进程和单个浏览器进程中</p>
+<p><a name="a6731ad1"></a></p>
+<h2 id="每个-iframe-的渲染进程-——-站点隔离"><a href="#每个-iframe-的渲染进程-——-站点隔离" class="headerlink" title="每个 iframe 的渲染进程 —— 站点隔离"></a>每个 iframe 的渲染进程 —— 站点隔离</h2><p><a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/07/site-isolation">站点隔离</a> 是近期引入到 Chrome 中的一个功能，它为每个 iframe 运行一个单独的渲染进程。我们已经讨论了许久每个标签页的渲染进程，它允许跨站点 iframe 运行在一个单独的渲染进程，在不同站点中共享内存。运行 a.com 与 b.com 在同一渲染进程中看起来还 ok。</p>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">同源策略</a> 是 web 的核心安全模型。同源策略确保站点在未得到其它站点许可的情况下不能获取其数据。安全攻击的一个主要目标就是绕过同源策略。进程隔离是分离站点的最高效的手段。随着 <a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/02/meltdown-spectre">Meltdown and Spectre</a> 的出现，使用进程来分离站点愈发势在必行。Chrome 67 版本后，桌面版 Chrome 都默认开启了站点隔离，每个标签页的 iframe 都有一个单独的渲染进程。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615869857-83aa8ae0-9caa-4c58-b746-5e6ead89bfe3.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599615869857-83aa8ae0-9caa-4c58-b746-5e6ead89bfe3.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 12：站点隔离示意图，多个渲染进程指向站点内的 iframe</p>
+<p>启用站点隔离是多年来工程人员努力的结果。站点隔离并不只是分配不同的渲染进程这么简单。它从根本上改变了 iframe 的通信方式。在一个页面上打开开发者工具，让 iframe 在不同的进程上运行，这意味着开发者工具必须在幕后工作，以使它看起来无缝。即使运行一个简单的 Ctrl + F 来查找页面中的一个单词，也意味着在不同的渲染器进程中进行搜索。你可以看到为什么浏览器工程师把发布站点隔离功能作为一个重要里程碑！</p>
+<p><a name="25f9c7fa"></a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这一部分从高级视角对浏览器架构与多进程架构的优点进行阐述。我们也对 Chrome 中与多进程架构密切相关的服务化与站点隔离进行了讲解。下一部分中，我们将开始深入了解进程与线程中到底发生了什么才能使网站得以呈现。</p>
+<p><a name="QWTre"></a></p>
+<h1 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h1><p>在这一部分中，我们研究了导航过程中发生了什么，以及你的 Web 应用代码（例如响应头和客户端 JavaScript）如何与浏览器交互。了解浏览器通过网络获取数据的步骤，可以更容易地理解为什么开发导航预加载等 API。<br><a name="8ab505b2"></a></p>
+<h2 id="导航时发生了什么"><a href="#导航时发生了什么" class="headerlink" title="导航时发生了什么"></a>导航时发生了什么</h2><p>这是关于 Chrome 内部工作的 4 篇博客系列的第 2 篇。在<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-look-at-modern-web-browser-part1.md">上一篇文章</a>中，我们研究了不同的进程和线程如何处理浏览器的不同部分。在这篇文章中，我们会更深入研究每个进程和线程如何进行通信以展示网站。</p>
+<p>让我们看一个网络浏览的简单用例：你在浏览器中键入 URL，然后浏览器从互联网获取数据并显示一个页面。在这篇文章中，我们将重点放在用户请求站点和浏览器准备渲染页面部分 —— 亦即导航。</p>
+<p><a name="411db4a0"></a></p>
+<h2 id="它以浏览器进程开始"><a href="#它以浏览器进程开始" class="headerlink" title="它以浏览器进程开始"></a>它以浏览器进程开始</h2><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616629080-71613c80-dc9d-4060-ab0c-4881b94a2d82.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616629080-71613c80-dc9d-4060-ab0c-4881b94a2d82.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 1：顶部是浏览器 UI，底部是拥有 UI、网络和存储线程的浏览器进程图</p>
+<p>正如我们在<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part1">第 1 部分：CPU、GPU、内存和多进程架构</a>中所述，tab 外的一切都被浏览器进程处理。浏览器进程有很多线程，例如绘制浏览器按钮和输入栏的 UI 线程、处理网络栈以从因特网获取数据的网络线程、控制文件访问的存储线程等。当你在地址栏中键入 URL 时，你的输入将由浏览器进程的 UI 线程处理。</p>
+<p><a name="ed797f7d"></a></p>
+<h2 id="一个简单导航"><a href="#一个简单导航" class="headerlink" title="一个简单导航"></a>一个简单导航</h2><p><a name="a58a4caa"></a></p>
+<h3 id="第-1-步：处理输入"><a href="#第-1-步：处理输入" class="headerlink" title="第 1 步：处理输入"></a>第 1 步：处理输入</h3><p>当用户开始在地址栏键入时，UI 线程要问的第一件事是 “这是一次搜索查询还是一个 URL 地址？”。在 Chrome 中，地址栏同时也是一个搜索输入栏，所以 UI 线程需要解析和决定把你的请求发送到搜索引擎，或是你要请求的网站。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616639583-201e787d-6b70-475c-ad10-f1c89fcbef26.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616639583-201e787d-6b70-475c-ad10-f1c89fcbef26.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 1：UI 线程询问输入内容是搜索查询还是 URL 地址</p>
+<p><a name="b6e4ae45"></a></p>
+<h3 id="第-2-步：开始导航"><a href="#第-2-步：开始导航" class="headerlink" title="第 2 步：开始导航"></a>第 2 步：开始导航</h3><p>当用户按下 Enter 键时，UI 线程启用网络调取去获取站点内容。加载动画会显示在标签页的一角，网络线程会通过适当的协议，像 DNS 查找和为请求建立 TLS 连接。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616647692-f5f7ac6a-56da-4c97-a0be-0037caaee21a.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616647692-f5f7ac6a-56da-4c97-a0be-0037caaee21a.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 2：UI 线程告诉网络线程要导航到 mysite.com</p>
+<p>在这时，网络线程可能会收到像 HTTP 301 那样的服务器重定向头。这种情况下，网络线程会告诉 UI 线程，服务器正在请求重定向。然后，另一个 URL 请求会被启动。</p>
+<p><a name="3d24bd80"></a></p>
+<h3 id="第-3-步：读取响应"><a href="#第-3-步：读取响应" class="headerlink" title="第 3 步：读取响应"></a>第 3 步：读取响应</h3><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616655237-2b7498c1-ada4-4ce9-a5a6-bc15d0a23d78.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616655237-2b7498c1-ada4-4ce9-a5a6-bc15d0a23d78.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 3：包含 Content-Type 的响应头以及作为实际数据的 payload</p>
+<p>一旦开始收到响应主体（payload），网络线程会在必要时查看数据流的前几个字节。响应报文的 Content-Type 字段会声明数据的类型，但是它有可能会丢失或者错误，所以就有了 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types">MIME 类型嗅探</a>来解决这个问题。这是<a target="_blank" rel="noopener" href="https://cs.chromium.org/chromium/src/net/base/mime_sniffer.cc?sq=package:chromium&dr=CS&l=5">源码</a>中评论的“棘手的问题”。你可以阅读注释看一下不同浏览器是怎么匹配 content-type 和 payload 的。</p>
+<p>如果响应是一个 HTML 文件，那么下一步就会把数据传给渲染进程，但是如果是一个压缩文件或是其他文件，那么意味着它是一个下载请求，因此需要将数据传递给下载管理器。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616663436-4894518e-5d3a-4188-aa23-500219fbf360.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616663436-4894518e-5d3a-4188-aa23-500219fbf360.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 4：网络线程询问一个响应数据是否是从安全网站来的 HTML</p>
+<p>此时也会进行 <a target="_blank" rel="noopener" href="https://safebrowsing.google.com/">SafeBrowsing</a> 检查。如果域名和响应数据似乎匹配到一个已知的恶意网站，那么网络线程会显示一个警告页面。除此之外，还会发生 <a target="_blank" rel="noopener" href="https://www.chromium.org/Home/chromium-security/corb-for-developers"><strong>C</strong>ross <strong>O</strong>rigin <strong>R</strong>ead <strong>B</strong>locking（<strong>CORB</strong>）</a>检查，以确保敏感的跨域数据不被传给渲染进程。</p>
+<p><a name="173d1c10"></a></p>
+<h3 id="第-4-步：查找渲染进程"><a href="#第-4-步：查找渲染进程" class="headerlink" title="第 4 步：查找渲染进程"></a>第 4 步：查找渲染进程</h3><p>一旦所有的检查执行完毕并且网络线程确信浏览器会导航到请求的站点，网络线程会告诉 UI 线程所有的数据准备完毕。UI 线程会寻找渲染进程去开始渲染 web 页面。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616671566-4f5fb6f4-6e70-49d8-815e-123eba318282.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616671566-4f5fb6f4-6e70-49d8-815e-123eba318282.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 5：网络线程告诉 UI 线程去查找渲染进程</p>
+<p>由于网络请求会花费几百毫秒才获取回响应，因此可以应用一个优化措施。当第 2 步 UI 线程正发送一个 URL 请求给网络线程时，它已经知道它们会导航到哪个站点。在网络请求的同时，UI 并行地线程尝试主动寻找或开启一个渲染进程。这样，如果一切按预期进行，渲染进程在网络线程接受到数据时就已经处于待命状态。如果导航跨域重定向，这个待命进程也许不会被用到，这种情况下也许会用到另一个进程。</p>
+<p><a name="100537ff"></a></p>
+<h3 id="第-5-步：提交导航"><a href="#第-5-步：提交导航" class="headerlink" title="第 5 步：提交导航"></a>第 5 步：提交导航</h3><p>现在数据和渲染进程已经就绪，浏览器进程会发送一个 IPC（进程间通信）到渲染进程去提交导航。它也会传递数据流，所以渲染进程可以保持接收 HTML 数据。一旦浏览器进程收到渲染进程已经提交的确认消息，导航完毕并且文档加载解析开始。</p>
+<p>这时，地址栏已经更新，安全指示器和站点设置 UI 会反映新页面的站点信息。此标签页的 session 历史记录会被更新，所以前进&#x2F;后退按钮会走向刚导航过的站点。当你关闭标签页或者窗口，为了优化 tab&#x2F;session 的还原，session 历史被保存在硬盘上。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616678923-54b99257-537d-4270-a328-80990815d56a.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616678923-54b99257-537d-4270-a328-80990815d56a.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 6：浏览器和渲染进程间的 IPC，请求渲染页面。</p>
+<p><a name="7803eae1"></a></p>
+<h3 id="额外的步骤：初始加载完毕"><a href="#额外的步骤：初始加载完毕" class="headerlink" title="额外的步骤：初始加载完毕"></a>额外的步骤：初始加载完毕</h3><p>一旦导航被提交，渲染进程开始加载资源和渲染页面。我们将在下一篇文章中讲解这个阶段发生什么的细节。一旦渲染进程渲染“完毕”。它会发送一个 IPC 返回给浏览器进程（这会在页面所有的 frame 的 <code>onload</code> 事件已经触发和执行完毕后发生）。这时，UI 线程停止标签页上的加载动画。</p>
+<p>我之所以说“结束”，是因为客户端 JavaScript 可以在这时之后仍然加载额外的资源并且渲染新视图。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616687543-a2d03be1-4e28-4723-9d7c-6872a3f1b2db.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616687543-a2d03be1-4e28-4723-9d7c-6872a3f1b2db.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 7：渲染进程发送 IPC 到浏览器进程通知页面“已被加载”</p>
+<p><a name="36edc000"></a></p>
+<h2 id="导航到另一个站点"><a href="#导航到另一个站点" class="headerlink" title="导航到另一个站点"></a>导航到另一个站点</h2><p>简单导航已经完毕！但是用户在地址栏输入另一个 URL 会怎样呢？好吧，浏览器进程会执行相同的步骤来导航到一个不同的站点。但是在它做这个之前，它会检查当前已经渲染的站点是否关心 <code>[beforeunload](https://developer.mozilla.org/en-US/docs/Web/Events/beforeunload)</code> 事件。</p>
+<p><code>beforeunload</code> 可以在你试图导航离开或关闭标签页时创建“离开此站点？”警告。包括你的 JavaScript 代码，所有标签页内的东西都是由渲染进程处理，所以当新的导航请求到来时，浏览器进程必须要跟当前的渲染进程核对。</p>
+<p><strong>注意：</strong> 不要添加无条件的 <code>beforeunload</code> 处理程序。它会产生更多延迟，因为处理程序需要在导航开始之前执行。应仅在需要时添加此事件处理程序，例如如果需要警告用户他们可能会丢失他们在页面上输入的数据。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616695201-b12476a2-7646-4e29-8767-12181fee08bb.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616695201-b12476a2-7646-4e29-8767-12181fee08bb.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 8：浏览器进程向渲染进程发送 IPC 告诉它将要导航到另一个站点</p>
+<p>如果渲染进程已经启动了导航（像用户点击一个链接或者客户端 JavaScript 运行 <code>window.location = &quot;https://newsite.com&quot;</code>），渲染进程会先检查 <code>beforeunload</code> 事件处理程序。然后，它会像浏览器处理启动导航一样执行相同的步骤。唯一不同的是导航请求是由渲染进程发送到浏览器进程的。</p>
+<p>当新导航到的站点不同于当前已渲染的站点时，会调用一个独立的渲染进程来处理新导航，同时保持当前的渲染进程来处理类似 <code>unload</code> 的事件。有关更多信息，请查看<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api#overview_of_page_lifecycle_states_and_events">页面生命周期概览</a>以及如何使用<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/07/page-lifecycle-api">页面生命周期 API</a> 挂钩事件。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616702471-aa906884-5366-4bd6-b6ab-dd048ad7cb2e.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616702471-aa906884-5366-4bd6-b6ab-dd048ad7cb2e.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 9：2 个 IPC（从浏览器进程到新渲染进程）告知渲染页面并告知旧渲染进程卸载</p>
+<p><a name="029568fa"></a></p>
+<h2 id="如果有-Service-Worker"><a href="#如果有-Service-Worker" class="headerlink" title="如果有 Service Worker"></a>如果有 Service Worker</h2><p>最近对导航过程的改变是引入了 <a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/primers/service-workers/">service worker</a>。service worker 是一种在你的应用代码中编写网络代理的方法；允许 Web 开发者更好地控制本地缓存内容以及何时从网络获取新数据。如果将 service worker 设置为从缓存加载页面，则无需从网络请求数据。</p>
+<p>要记住的重要部分是 Service Worker 是在渲染进程中运行的 JavaScript 代码。但是当导航请求进入时，浏览器进程如何知道该站点有 service worker？</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616710231-89d5d6a3-5827-4717-8076-71367fde731b.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616710231-89d5d6a3-5827-4717-8076-71367fde731b.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 10：浏览器进程中的网络线程查找 service worker 作用域</p>
+<p>当注册一个 service worker 时，保持 service worker 的作用域作为一个引用（你可以在这篇文章 <a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle">The Service Worker Lifecycle</a> 中阅读更多关于作用域的知识）。当一个导航发生时，网络线程用已注册的 service worker 作用域来检查域名，如果已经为该 URL 注册了一个 service worker，UI 线程会找一个渲染线程来执行 service worker 的代码。service worker 可能从缓存中加载数据，无需从网络请求数据，或者可以从网络请求新资源。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616718334-55df6bb4-02d3-4095-8f23-e85d12575e97.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616718334-55df6bb4-02d3-4095-8f23-e85d12575e97.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 11：浏览器中的 UI 线程启动渲染进程来处理 service workers；然后，渲染进程中的工作线程从网络请求数据</p>
+<p><a name="8f24f2b0"></a></p>
+<h2 id="导航预加载"><a href="#导航预加载" class="headerlink" title="导航预加载"></a>导航预加载</h2><p>你可以看到，如果 service worker 最终决定从网络请求数据，则浏览器进程和渲染器进程之间的往返可能会导致延迟。<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2017/02/navigation-preload">导航预加载</a>是一种通过与 service worker 启动并行加载资源来加速此过程的机制。它用一个头部来标记这些请求，允许服务器决定为这些请求发送不同的内容；例如，只更新数据而不是完整文档。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616726140-177b3ee3-c297-4992-99e7-4f01fee661f0.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616726140-177b3ee3-c297-4992-99e7-4f01fee661f0.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 12：浏览器进程中的 UI 线程启动渲染进程以在并行启动网络请求的同时处理 service worker</p>
+<p><a name="sZRMf"></a></p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>在这一部分中，我们研究了导航过程中发生了什么，以及你的 Web 应用代码（例如响应头和客户端 JavaScript）如何与浏览器交互。了解浏览器通过网络获取数据的步骤，可以更容易地理解为什么开发导航预加载等 API。在下一部分，我们将深入探讨浏览器如何分析 HTML&#x2F;CSS&#x2F;JavaScript 以渲染页面。</p>
+<p><a name="KOvVu"></a></p>
+<h1 id="第三部分"><a href="#第三部分" class="headerlink" title="第三部分"></a>第三部分</h1><p>研究了渲染管道从解析到合成的整个过程，希望现在你能自主地去了解更多关于网站性能优化的信息。<br><a name="8c6116f2"></a></p>
+<h2 id="渲染进程的内部机制"><a href="#渲染进程的内部机制" class="headerlink" title="渲染进程的内部机制"></a>渲染进程的内部机制</h2><p>这是关于浏览器工作原理博客系列四部分中的第三部分。之前，我们介绍了<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-look-at-modern-web-browser-part1.md">多进程架构</a>和<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part2.md">导航流</a>。在这篇文章中，我们将一探渲染进程的内部机制。</p>
+<p>渲染进程涉及 Web 性能的许多方面。由于渲染进程的流程太复杂，因此本文只进行概述。如果你想深入了解，可以在 <a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/performance/why-performance-matters/">the Performance section of Web Fundamentals</a> 找到相关资源。</p>
+<p><a name="18e79a87"></a></p>
+<h2 id="渲染进程处理网站内容"><a href="#渲染进程处理网站内容" class="headerlink" title="渲染进程处理网站内容"></a>渲染进程处理网站内容</h2><p>渲染进程负责标签页内发生的所有事情。在渲染进程中，主线程处理服务器发送到用户的大部分代码。如果你使用 web worker 或 service worker，部分 JavaScript 将由工作线程处理。合成和光栅线程也在渲染进程内运行，以高效，流畅地呈现页面。</p>
+<p>渲染进程的核心工作是将 HTML、CSS 和 JavaScript 转换为用户可以与之交互的网页。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616941594-ca3421d9-31e1-4abd-92fd-779a23dae629.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616941594-ca3421d9-31e1-4abd-92fd-779a23dae629.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 1：渲染进程内部包含主线程、工作线程、合成线程和光栅线程</p>
+<p><a name="a183a12f"></a></p>
+<h2 id="解析（Parsing）"><a href="#解析（Parsing）" class="headerlink" title="解析（Parsing）"></a>解析（Parsing）</h2><p><a name="f9a2b4e6"></a></p>
+<h3 id="DOM-的构建"><a href="#DOM-的构建" class="headerlink" title="DOM 的构建"></a>DOM 的构建</h3><p>当渲染进程收到导航的提交消息并开始接收 HTML 数据时，主线程开始解析文本字符串（HTML）并将其转换为文档对象模型（<strong>DOM</strong>）。</p>
+<p>DOM 是一个页面在浏览器内部表现，也是 Web 开发人员可以通过 JavaScript 与之交互的数据结构和 API。</p>
+<p>将 HTML 到 DOM 的解析由 <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/">HTML Standard</a> 规定。你可能已经注意到，将 HTML 提供给浏览器这一过程从不会引发错误。像 <code>Hi! &lt;b&gt;I&#39;m &lt;i&gt;Chrome&lt;/b&gt;!&lt;/i&gt;</code> 这样的错误标记，会被理解为 <code>Hi! &lt;b&gt;I&#39;m &lt;i&gt;Chrome&lt;/i&gt;&lt;/b&gt;&lt;i&gt;!&lt;/i&gt;</code>，这是因为 HTML 规范会优雅地处理这些错误。如果你好奇这是如何做到的，可以阅读 <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/parsing.html#an-introduction-to-error-handling-and-strange-cases-in-the-parser">An introduction to error handling and strange cases in the parser</a> 的 HTML 规范部分。</p>
+<p><a name="d50d30c4"></a></p>
+<h3 id="子资源加载"><a href="#子资源加载" class="headerlink" title="子资源加载"></a>子资源加载</h3><p>网站通常使用图像、CSS 和 JavaScript 等外部资源，这些文件需要从网络或缓存加载。在解析构建 DOM 时，主线程<strong>会</strong>按处理顺序逐个请求它们，但为了加快速度，“预加载扫描器（preload scanner）”会同时运行。如果 HTML 文档中有 <code>&lt;img&gt;</code> 或 <code>&lt;link&gt;</code> 之类的内容，则预加载扫描器会查看由 HTML 解析器生成的标记，并在浏览器进程中向网络线程发送请求。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616952605-b7b99bd3-bb18-4210-a9a7-fccc901e9247.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616952605-b7b99bd3-bb18-4210-a9a7-fccc901e9247.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 2：主线程解析 HTML 并构建 DOM 树</p>
+<p><a name="f8b53b9a"></a></p>
+<h3 id="JavaScript-阻塞解析"><a href="#JavaScript-阻塞解析" class="headerlink" title="JavaScript 阻塞解析"></a>JavaScript 阻塞解析</h3><p>当 HTML 解析器遇到 <code>&lt;script&gt;</code> 标记时，会暂停解析 HTML 文档，开始加载、解析并执行 JavaScript 代码。为什么？因为 JavaScript 可以使用诸如 <code>document.write()</code> 的方法来改写文档，这会改变整个 DOM 结构（HTML 规范里的 <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/multipage/parsing.html#overview-of-the-parsing-model">overview of the parsing model</a> 中有一张不错的图片）。这就是 HTML 解析器必须等待 JavaScript 运行后再继续解析 HTML 文档原因。如果你对 JavaScript 执行中发生的事情感到好奇，可以看看 <a target="_blank" rel="noopener" href="https://mathiasbynens.be/notes/shapes-ics">V8 团队就此发表的演讲和博客文章</a>。</p>
+<p><a name="c202620e"></a></p>
+<h2 id="提示浏览器如何加载资源"><a href="#提示浏览器如何加载资源" class="headerlink" title="提示浏览器如何加载资源"></a>提示浏览器如何加载资源</h2><p>Web 开发者可以通过多种方式向浏览器发送提示，以便很好地加载资源。如果你的 JavaScript 不使用 <code>document.write()</code>，你可以在 <code>&lt;script&gt;</code> 标签添加 <code>[async](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-async)</code> 或 <code>[defer](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-defer)</code> 属性，这样浏览器会异步加载运行 JavaScript 代码，而不阻塞解析。如果合适，你也可以使用 <a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/primers/modules">JavaScript 模块</a>。可以使用 <code>&lt;link rel=&quot;preload&quot;&gt;</code> 告知浏览器当前导航肯定需要该资源，并且你希望尽快下载。有关详细信息请参阅 <a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/performance/resource-prioritization">Resource Prioritization – Getting the Browser to Help You</a>。</p>
+<p><a name="89480b0f"></a></p>
+<h2 id="样式计算"><a href="#样式计算" class="headerlink" title="样式计算"></a>样式计算</h2><p>只拥有 DOM 不足以确定页面的外观，因为我们会在 CSS 中设置页面元素的样式。主线程解析 CSS 并确定每个 DOM 节点计算后的样式。这是有关基于 CSS 选择器对每个元素应用何种样式的信息，这可以在 DevTools 的 <code>computed</code> 部分中看到。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616966199-811ab322-812e-4302-a1f8-e191bc2e8e42.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616966199-811ab322-812e-4302-a1f8-e191bc2e8e42.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 3：主线程解析 CSS 以添加计算后样式</p>
+<p>即使你不提供任何 CSS，每个 DOM 节点都具有计算样式。像 <code>&lt;h1&gt;</code> 标签看起来比 <code>&lt;h2&gt;</code> 标签大，每个元素都有 margin，这是因为浏览器具有默认样式表。如果你想知道更多 Chrome 的默认 CSS，<a target="_blank" rel="noopener" href="https://cs.chromium.org/chromium/src/third_party/blink/renderer/core/css/html.css">可以在这里看到源代码</a>。</p>
+<p><a name="5aefca55"></a></p>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>现在，渲染进程知道每个节点的样式和文档的结构，但这不足以渲染页面。想象一下，你正试图通过手机向朋友描述一幅画：“这里有一个大红圈和一个小蓝方块”，这并不能让你的朋友知道这幅画究竟长什么样。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616974801-873a48df-424e-48d5-b663-465acdde0a3b.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616974801-873a48df-424e-48d5-b663-465acdde0a3b.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 4：一个人站在一幅画前，电话线与另一个人相连</p>
+<p>布局是计算元素几何形状的过程。主线程遍历 DOM，计算样式并创建布局树，其中包含 x y 坐标和边界框大小等信息。布局树可能与 DOM 树结构类似，但它仅包含页面上可见内容相关的信息。如果一个元素应用了 <code>display：none</code>，那么该元素不是布局树的一部分（但 <code>visibility：hidden</code> 的元素在布局树中）。类似地，如果应用了如 <code>p::before&#123;content:&quot;Hi!&quot;&#125;</code> 的伪类，则即使它不在 DOM 中，也包含于布局树中。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616983665-27566c02-307e-47de-af21-e1e2b8bea6f8.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599616983665-27566c02-307e-47de-af21-e1e2b8bea6f8.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 5：主线程遍历计算样式后的 DOM 树，以此生成布局树</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/gif/164572/1599617069400-412be90b-f35e-4136-9057-673b42f6b644.gif" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/gif/164572/1599617069400-412be90b-f35e-4136-9057-673b42f6b644.gif" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="3-1.gif"></p>
+<p>图 6：由于换行而移动的盒子布局</p>
+<p>确定页面布局是一项很有挑战性的任务。即使是从上到下的块流这样最简单的页面布局，也必须考虑字体的大小以及换行位置，这些因素会影响段落的大小和形状，进而影响下一个段落的位置。</p>
+<p>CSS 可以使元素浮动到一侧、隐藏溢出的元素、更改书写方向。你可以想象这一阶段的任务之艰巨。Chrome 浏览器有整个工程师团队负责布局。<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Y5Xa4H2wtVA">BlinkOn 会议的一些访谈</a>记录了他们工作的细节，有兴趣可以了解一下，挺有趣的。</p>
+<p><a name="b196b7cf"></a></p>
+<h2 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h2><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617001845-6fe976a9-f8e4-4d52-b9e8-8f0cbf23a41f.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617001845-6fe976a9-f8e4-4d52-b9e8-8f0cbf23a41f.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 7：一个人拿着笔站在画布前，思考着她应该先画圆形还是先画方形</p>
+<p>拥有 DOM、样式和布局仍然不足以渲染页面。假设你正在尝试重现一幅画。你知道元素的大小、形状和位置，但你仍需要判断绘制它们的顺序。</p>
+<p>例如，可以为某些元素设置 <code>z-index</code>，此时按 HTML 中编写的元素的顺序绘制会导致错误的渲染。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617009442-2a9605de-fe23-4173-9d68-7cd9560d1eec.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617009442-2a9605de-fe23-4173-9d68-7cd9560d1eec.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 8：因为没有考虑 z-index，页面元素按 HTML 标记的顺序出现，导致错误的渲染图像</p>
+<p>在绘制步骤中，主线程遍历布局树创建绘制记录。绘制记录是绘图过程的记录，就像是“背景优先，然后是文本，然后是矩形”。如果你使用过 JavaScript 绘制了 <code>&lt;canvas&gt;</code> 元素，那么这个过程对你来说可能很熟悉。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617017546-6e89e4ed-fde3-42eb-a85f-40dceaab9d6e.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617017546-6e89e4ed-fde3-42eb-a85f-40dceaab9d6e.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 9：主线程遍历布局树并生成绘制记录</p>
+<p><a name="2778d675"></a></p>
+<h3 id="更新渲染管道的成本很高"><a href="#更新渲染管道的成本很高" class="headerlink" title="更新渲染管道的成本很高"></a>更新渲染管道的成本很高</h3><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617114971-f2dbbb36-7fab-4d96-8ae9-d697b6d07676.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617114971-f2dbbb36-7fab-4d96-8ae9-d697b6d07676.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 10：DOM + Style、布局和绘制树的生成顺序</p>
+<p>渲染管道中最重要的事情是：每个步骤中，前一个操作的结果用于后一个操作创建新数据。例如，如果布局树中的某些内容发生改变，需要为文档的受影响部分重新生成“绘制”指令。</p>
+<p>如果要为元素设置动画，则浏览器必须在每个帧之间运行这些操作。大多数显示器每秒刷新屏幕 60 次（60 fps），当屏幕每帧都在变化，人眼会觉得动画很流畅。但是，如果动画丢失了中间一些帧，页面看起来就会卡顿（janky）。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617121888-038a6c49-8dd3-46a1-925b-39347a5121e7.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617121888-038a6c49-8dd3-46a1-925b-39347a5121e7.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 11：时间轴上的动画帧</p>
+<p>即使渲染操作能跟上屏幕刷新，这些计算也会在主线程上运行，这意味着当你的应用程序运行 JavaScript 时动画可能会被阻塞。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617129751-f70ab9bb-06b1-4dd8-8e3c-39dfe9b26911.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617129751-f70ab9bb-06b1-4dd8-8e3c-39dfe9b26911.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 12：时间轴上的动画帧，但 JavaScript 阻塞了一帧</p>
+<p>你可以将 JavaScript 操作划分为小块，并使用 <code>requestAnimationFrame()</code> 在每个帧上运行。有关此主题的更多信息，请参阅 <a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/performance/rendering/optimize-javascript-execution">Optimize JavaScript Execution</a>。你也可以<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=X57mh8tKkgE">在 Web Worker 中运行 JavaScript</a> 以避免阻塞主线程。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617137709-2c3a4a12-e63b-4872-abb7-5e92e3396b95.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617137709-2c3a4a12-e63b-4872-abb7-5e92e3396b95.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 13：时间轴上较小的 JavaScript 块与动画帧一起运行</p>
+<p><a name="c29e4097"></a></p>
+<h2 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h2><p><a name="f9dca3c4"></a></p>
+<h3 id="如何绘制一个页面？"><a href="#如何绘制一个页面？" class="headerlink" title="如何绘制一个页面？"></a>如何绘制一个页面？</h3><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617165140-bc377abc-2cc4-4c1c-b61f-7f20b57fe9d3.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617165140-bc377abc-2cc4-4c1c-b61f-7f20b57fe9d3.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 14：简单光栅处理示意动画</p>
+<p>现在浏览器知道文档的结构、每个元素的样式、页面的几何形状和绘制顺序，它是如何绘制页面的？把这些信息转换为屏幕上的像素，我们称为光栅化。</p>
+<p>处理这种情况的一种简单的方法是，先在光栅化视窗内的画面，如果用户滚动页面，则移动光栅框，并光栅化填充缺少的部分。这就是 Chrome 首次发布时处理光栅化的方式。但是，现代浏览器会运行一个更复杂的过程，我们称为合成。</p>
+<p><a name="9d33d874"></a></p>
+<h3 id="什么是合成"><a href="#什么是合成" class="headerlink" title="什么是合成"></a>什么是合成</h3><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/gif/164572/1599617193349-1b1eec0e-9282-43d0-a626-d4250586804c.gif" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/gif/164572/1599617193349-1b1eec0e-9282-43d0-a626-d4250586804c.gif" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="3-5.gif"></p>
+<p>图 15：合成处理示意动画</p>
+<p>合成是一种将页面的各个部分分层，分别光栅化，并在称为合成线程的单独线程中合成为页面的技术。如果发生滚动，由于图层已经光栅化，因此它所要做的只是合成一个新帧。动画也可以以相同的方式（移动图层和合成新帧）实现。</p>
+<p>你可以在 DevTools 使用 <a target="_blank" rel="noopener" href="https://blog.logrocket.com/eliminate-content-repaints-with-the-new-layers-panel-in-chrome-e2c306d4d752?gi=cd6271834cea">Layers 面板</a> 看看你的网站如何被分层。</p>
+<p><a name="a58f1691"></a></p>
+<h3 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h3><p>为了分清哪些元素位于哪些图层，主线程遍历布局树创建图层树（此部分在 DevTools 性能面板中称为“Update Layer Tree”）。如果页面的某些部分应该是单独图层（如滑入式侧面菜单）但没拆分出来，你可以使用 CSS 中的 <code>will-change</code> 属性来提示浏览器。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617197636-f2905a7f-fe09-4b8d-95f1-d20b42e03a6e.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617197636-f2905a7f-fe09-4b8d-95f1-d20b42e03a6e.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 16：主线程遍历布局树生成图层树</p>
+<p>你可能想要为每个元素都分层，但是合成大量的图层可能会比每帧都光栅化页面的刷新方式更慢，因此测量应用程序的渲染性能至关重要。有关这个主题的更多信息，请参阅 <a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/performance/rendering/stick-to-compositor-only-properties-and-manage-layer-count">Stick to Compositor-Only Properties and Manage Layer Count</a>。</p>
+<p><a name="df1192c3"></a></p>
+<h3 id="主线程的光栅化和合成"><a href="#主线程的光栅化和合成" class="headerlink" title="主线程的光栅化和合成"></a>主线程的光栅化和合成</h3><p>一旦创建了图层树并确定了绘制顺序，主线程就会将该信息提交给合成线程。接着，合成线程会光栅化每个图层。一个图层可能会跟整个页面一样大，因此合成线程将它们分块后发送到光栅线程。光栅线程光栅化每个小块后会将它们存储在显存中。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617205653-985b211a-9023-4b91-8f6e-818351f26d57.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617205653-985b211a-9023-4b91-8f6e-818351f26d57.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 17：光栅线程创建分块的位图并发送到 GPU</p>
+<p>合成线程会给不同的光栅线程设置优先级，以便视窗（或附近）内的画面可以先被光栅化。图层还具有多个不同分辨率的块，可以处理放大操作等动作。</p>
+<p>一旦块被光栅化，合成线程会收集这些块的信息（称为<strong>绘制四边形</strong>）创建<strong>合成帧</strong>。</p>
+<p>绘制四边形</p>
+<p>包含诸如图块在内存中的位置，以及合成时绘制图块在页面中的位置等信息。</p>
+<p>合成帧</p>
+<p>一个绘制四边形的集合，代表一个页面的一帧。</p>
+<p>接着，合成帧通过 IPC（进程间通讯）提交给浏览器进程。此时，可以从 UI 线程或其他插件的渲染进程添加另一个合成帧。这些合成器帧被发送到 GPU 然后在屏幕上显示。如果接收到滚动事件，合成线程会创建另一个合成帧发送到 GPU。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617214337-c98717ad-57a9-457c-a936-0926ab93ce12.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617214337-c98717ad-57a9-457c-a936-0926ab93ce12.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 18：合成线程创建合成帧，将其发送到浏览器进程，再接着发送到 GPU</p>
+<p>合成的好处是它可以在不涉及主线程的情况下完成。合成线程不需要等待样式计算或 JavaScript 执行。这就是为什么<a target="_blank" rel="noopener" href="https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/">仅合成动画</a>被认为是流畅性能的最佳选择。如果需要再次计算布局或绘制，则必须涉及主线程。</p>
+<p><a name="eNBNH"></a></p>
+<h2 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h2><p>在这一部分中，我们研究了渲染管道从解析到合成的整个过程，希望现在你能自主地去了解更多关于网站性能优化的信息。<br />在本系列的下一部分也是最后一部分中，我们将更详细地介绍合成线程，看看当用户移动或点击鼠标时会发生什么。</p>
+<p><a name="Yw4q0"></a></p>
+<h1 id="第四部分"><a href="#第四部分" class="headerlink" title="第四部分"></a>第四部分</h1><p><a name="5f05a04d"></a></p>
+<h2 id="用户输入行为与合成器"><a href="#用户输入行为与合成器" class="headerlink" title="用户输入行为与合成器"></a>用户输入行为与合成器</h2><p>内部揭秘系列博客对现代浏览器如何处理代码、显示页面展开探讨。该系列博客共四篇，这是最后一篇。在上篇博客里，我们了解了 <a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part3">渲染进程与合成器</a>。这里我们将一窥当用户输入行为发生时，合成器如何继续保障交互流畅。</p>
+<p><a name="24e93a7e"></a></p>
+<h2 id="浏览器视角下的输入事件"><a href="#浏览器视角下的输入事件" class="headerlink" title="浏览器视角下的输入事件"></a>浏览器视角下的输入事件</h2><p>听到“输入事件”这个字眼，你脑海里闪现的恐怕只是输入文本或点击鼠标。但在浏览器眼中，输入意味着一切用户行为。不单滚动鼠标滑轮是输入事件，触摸屏幕、滑动鼠标同样也是用户输入事件。</p>
+<p>诸如触摸屏幕之类用户手势产生时，浏览器进程会率先将其捕获。然而浏览器进程所掌握的信息仅限于行为发生的区域，因为标签页里的内容都由渲染进程负责处理，所以浏览器进程会将事件类型（如 <code>touchstart</code>）及其坐标发送给渲染进程。渲染进程会寻至事件目标，运行其事件监听器，妥善地处理事件。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617571139-45d3ac9d-6abe-4772-8e68-c68fec9ef28a.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617571139-45d3ac9d-6abe-4772-8e68-c68fec9ef28a.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 1：输入事件由浏览器进程发往渲染进程</p>
+<p><a name="50c136ae"></a></p>
+<h2 id="合成器接收输入事件"><a href="#合成器接收输入事件" class="headerlink" title="合成器接收输入事件"></a>合成器接收输入事件</h2><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617588105-c1fafd40-4006-4e45-9ba7-db24977c7317.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617588105-c1fafd40-4006-4e45-9ba7-db24977c7317.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 2：悬于页面图层的视图窗口</p>
+<p>在上篇文章里，我们探讨了合成器如何通过合成栅格化图层，实现流畅的页面滚动。如果页面上没有添加任何事件监听，合成器线程会创建独立于主线程的新合成帧。但要是页面上添加了事件监听呢？合成器线程又是如何得知事件是否需要处理的？</p>
+<p><a name="7d55be63"></a></p>
+<h2 id="理解非立即可滚动区"><a href="#理解非立即可滚动区" class="headerlink" title="理解非立即可滚动区"></a>理解非立即可滚动区</h2><p>因为运行 JavaScript 脚本是主线程的工作，所以页面合成后，合成线程会将页面里添加了事件监听的区域标记为“非立即可滚动区”。有了这个信息，如果输入事件发生在这一区域，合成线程可以确定应将其发往主线程处理。如输入事件发生在这一区域之外，合成线程则确定无需等待主线程，而继续合成新帧。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617639083-b50d9822-736d-4f27-922a-0bccc18f94d3.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617639083-b50d9822-736d-4f27-922a-0bccc18f94d3.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 3：非立即可滚动区输入描述示意图</p>
+<p><a name="4e7abbc5"></a></p>
+<h3 id="设置事件处理器时须注意"><a href="#设置事件处理器时须注意" class="headerlink" title="设置事件处理器时须注意"></a>设置事件处理器时须注意</h3><p>web 开发中常用的事件处理模式是事件代理。因为事件会冒泡，所以你可以在最顶层的元素中添加一个事件处理器，用来代理事件目标产生的任务。下面这样的代码，你可能见过，或许也写过。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">document.body.addEventListener(&#x27;touchstart&#x27;,</span><br><span class="line">event =&gt; &#123;</span><br><span class="line">    if (event.target === area) &#123;</span><br><span class="line">        event.preventDefault();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这样只需添加一个事件处理器，即可监听所有元素，的确十分省事。然而，如果站在浏览器的角度去考量，这等于把整个页面都标记成了“非立即可滚动区”，意味着即便你设计的应用本不必理会页面上一些区域的输入行为，合成线程也必须在每次输入事件产生后与主线程通信并等待返回。如此则得不偿失，使原本能保障页面滚动流畅的合成器没了用武之地。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617652730-c7bc2e88-1e9d-4752-a4a0-88268a4c3729.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617652730-c7bc2e88-1e9d-4752-a4a0-88268a4c3729.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 4：非立即可滚动区覆盖整个页面下的输入描述示意图</p>
+<p>你可以给事件监听添加一个 <code>[passive:true](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Improving_scrolling_performance_with_passive_listeners)</code> 选项 ，将这种负面效果最小化。这会提示浏览器你想继续在主线程中监听事件，但合成器不必停滞等候，可接着创建新的合成帧。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">document.body.addEventListener(&#x27;touchstart&#x27;, event =&gt; &#123;</span><br><span class="line">    if (event.target === area) &#123;</span><br><span class="line">        event.preventDefault()</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;, &#123;passive: true&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><a name="8309d096"></a></p>
+<h2 id="检查事件是否可撤销"><a href="#检查事件是否可撤销" class="headerlink" title="检查事件是否可撤销"></a>检查事件是否可撤销</h2><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617659981-dab98eae-dba4-4e00-ac04-1b94e4aabf75.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617659981-dab98eae-dba4-4e00-ac04-1b94e4aabf75.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 5：部分区域仅可水平方向滚动的网页</p>
+<p>设想一下这种情形：页面上有一个盒子，你要将其滚动方向限制为水平滚动。</p>
+<p>为目标事件设置 <code>passive:true</code> 选项可让页面滚动平滑，但在你使用 <code>preventDefault</code> 以限制滚动方向时，垂直方向滚动可能已经触发。使用 <code>event.cancelable</code> 方法可以检查并阻止这种情况发生。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">document.body.addEventListener(&#x27;pointermove&#x27;, event =&gt; &#123;</span><br><span class="line">    if (event.cancelable) &#123;</span><br><span class="line">        event.preventDefault(); // 阻止默认的滚动行为</span><br><span class="line">        /*</span><br><span class="line">        *  这里设置程序执行任务</span><br><span class="line">        */</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, &#123;passive:: true&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>或者，你也可以应用 <code>touch-action</code> 这类 CSS 规则，完全地将事件处理器屏蔽掉。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#area &#123;</span><br><span class="line">  touch-action: pan-x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="063d68e2"></a></p>
+<h2 id="定位事件目标"><a href="#定位事件目标" class="headerlink" title="定位事件目标"></a>定位事件目标</h2><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617668976-70fe0d91-6607-4a0a-a71d-bb2231465a3d.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617668976-70fe0d91-6607-4a0a-a71d-bb2231465a3d.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 6：主线程检查绘制记录查询坐标 x、y 处绘制内容</p>
+<p>合成器将输入事件发送至主线程后，首先运行的是命中检测。命中检测会使用渲染进程中产生的绘制记录数据，找出事件发生坐标下的内容。</p>
+<p><a name="d791b565"></a></p>
+<h2 id="降低往主线程发送事件的频率"><a href="#降低往主线程发送事件的频率" class="headerlink" title="降低往主线程发送事件的频率"></a>降低往主线程发送事件的频率</h2><p>之前的文章里，我们探讨了常见显示屏如何以每秒 60 帧的频率刷新，以及我们要怎样与其刷新频率保持步调一致，以营造出流畅的动画效果。而对于用户的输入行为，常见触摸屏设备的事件传输频率为每秒 60~120 次，常见鼠标设备的事件传输频率为每秒 100 次。可见，输入事件有着比显示屏幕更高的保真度。</p>
+<p>如果一连串 <code>touchmove</code> 这样的事件以每秒 120 次的频率发送往主线程，那么可能会触发过量的命中检测及 JavaScript 脚本执行。相形而言，我们的屏幕刷新率则更为低下。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617676154-ac76c52a-fb38-42e3-baea-718f9fb25b52.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617676154-ac76c52a-fb38-42e3-baea-718f9fb25b52.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 7：大量事件涌入合成帧时间轴会造成页面闪烁</p>
+<p>为了降低往主线程中传递过量调用，Chrome 会合并这些连续事件（如：<code>wheel</code>, <code>mousewheel</code>, <code>mousemove</code>, <code>pointermove</code>, <code>touchmove</code> 等），并将其延迟至下一次 <code>requestAnimationFrame</code> 前发送。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617682519-c93cb336-12a1-4698-bdd4-082700a99498.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617682519-c93cb336-12a1-4698-bdd4-082700a99498.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 8：相同的时间轴下事件被合并且延迟发送</p>
+<p>所有独立的事件，如: <code>keydown</code>, <code>keyup</code>, <code>mouseup</code>, <code>mousedown</code>, <code>touchstart</code>, 及  <code>touchend</code> 则会立即发往主线程。</p>
+<p><a name="0cc9abc4"></a></p>
+<h2 id="使用-getCoalescedEvents-获取帧内事件"><a href="#使用-getCoalescedEvents-获取帧内事件" class="headerlink" title="使用 getCoalescedEvents 获取帧内事件"></a>使用 <code>getCoalescedEvents</code> 获取帧内事件</h2><p>事件合并可帮助大多数 web 应用构建良好的用户体验。然而，如果你开发的是一个绘图类应用，需要基于 <code>touchmove</code> 事件的坐标绘制线路，那么在你试图画下一根光滑的线条时，区间内的一些坐标点也可能会因事件合并而丢失。这时，你可以使用目标事件的  <code>getCoalescedEvents</code> 方法获取事件合并后的信息。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617699750-626e95d0-1729-4d8f-8025-b26d06e648aa.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617699750-626e95d0-1729-4d8f-8025-b26d06e648aa.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>图 9：左为流畅的触摸手势路径、右为事件合并后的有限路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&#x27;pointermove&#x27;, event =&gt; &#123;</span><br><span class="line">    const events = event.getCoalescedEvents();</span><br><span class="line">    for (let event of events) &#123;</span><br><span class="line">        const x = event.pageX;</span><br><span class="line">        const y = event.pageY;</span><br><span class="line">        // 使用 x、y 坐标画线</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><a name="fc0952b5"></a></p>
+<h2 id="后续步骤"><a href="#后续步骤" class="headerlink" title="后续步骤"></a>后续步骤</h2><p>本系列文章里，我们探讨了很多关于 web 浏览器内部的工作原理。如果之前你从来没想过：为什么 Devtools 推荐在事件处理器上添加 <code>&#123;passive:true&#125;</code> 选项、为什么有时须在 script 标签里添加 <code>async</code> 属性？那么我希望这一系列文章能帮助你了解，为什么传递这些信息给浏览器能让其提供更为迅捷流畅的 web 体验。</p>
+<p><a name="f5a9afa0"></a></p>
+<h3 id="使用-Lighthouse"><a href="#使用-Lighthouse" class="headerlink" title="使用 Lighthouse"></a>使用 Lighthouse</h3><p>如果你想构建出对浏览器更为友好的代码，却一直毫无头绪，那么不妨先从使用 <a target="_blank" rel="noopener" href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a> 开始。Lighthouse 是个可以帮助你审查网站工具，并且能提供页面性能报告。性能报告会告诉你什么地方处理得当，什么地方有待提升。浏览审查列表也能让你了解浏览器着力关注的重点所在。</p>
+<p><a name="ffa7e0b9"></a></p>
+<h3 id="学习如何评测性能"><a href="#学习如何评测性能" class="headerlink" title="学习如何评测性能"></a>学习如何评测性能</h3><p>对于不同的站点，桎梏其性能之处可能不尽相同，所以专门为你自己的站点定制化一套性能评测方案，并择优选取技术应用，是重中之重。Chrome 的 Devtools 团队就 <a target="_blank" rel="noopener" href="https://developers.google.com/web/tools/chrome-devtools/speed/get-started">如何测试你的站点性能</a> 撰有相关教程可供参阅。</p>
+<p><a name="fcb2f19e"></a></p>
+<h3 id="为你的站点添加-Feature-Policy"><a href="#为你的站点添加-Feature-Policy" class="headerlink" title="为你的站点添加 Feature Policy"></a>为你的站点添加 Feature Policy</h3><p>如果你想进一步采用更多方案，<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/06/feature-policy">Feature Policy</a> 是一个新的 web 平台，可在开发时为你保驾护航。开启 feature policy 可以限制应用行为，并使你远离诸多技术弊端。举个例子，如果你想确保应用不会阻塞解析，那么可以采用同步脚本方案运行应用。开启 <code>sync-script:&#39;none&#39;</code> 后，导致解析阻塞的 JavaScript 脚本会被阻止运行。这就确保了你的代码不会阻塞解析，浏览器也无须考虑暂停运行解析器。</p>
+<p><a name="Rz4Sx"></a></p>
+<h2 id="总结-3"><a href="#总结-3" class="headerlink" title="总结"></a>总结</h2><p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617711586-2fa803a0-4b32-4415-89b4-2343084793e4.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2020/png/164572/1599617711586-2fa803a0-4b32-4415-89b4-2343084793e4.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"></p>
+<p>刚踏上开发之路时，我几乎只关注怎样去写代码、怎样提升自己的生产效率。诚然，这些事情很重要，但与此同时我们也应当思考浏览器会怎么去处理我们书写的代码。现代浏览器一直致力探索如何提供更好的用户体验。书写对浏览器友好的代码，反过来也能提供友好的用户体验。路漫漫其修远兮，希望我们能携手共进，构建出对浏览器更为友好的代码。</p>
+<p><a name="8JBIM"></a></p>
+<h1 id="文章出处"><a href="#文章出处" class="headerlink" title="文章出处"></a>文章出处</h1><blockquote>
+<ul>
+<li>原文地址 1：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part1">Inside look at modern web browser (part 1)</a></li>
+<li>原文地址 2：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part2">Inside look at modern web browser (part 2)</a></li>
+<li>原文地址 3：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part3">Inside look at modern web browser (part 3)</a></li>
+<li>原文地址 4：<a target="_blank" rel="noopener" href="https://developers.google.com/web/updates/2018/09/inside-browser-part4">Inside look at modern web browser (part 4)</a></li>
+<li>原文作者：<a target="_blank" rel="noopener" href="https://developers.google.com/web/resources/contributors/kosamari">Mariko Kosaka</a></li>
+<li>译文出自：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner">掘金翻译计划</a></li>
+<li>本文永久链接 1：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-look-at-modern-web-browser-part1.md">https://github.com/xitu/gold-miner/blob/master/TODO1/inside-look-at-modern-web-browser-part1.md</a> （译者：<a target="_blank" rel="noopener" href="https://github.com/Colafornia">Colafornia</a>，校对者：<a target="_blank" rel="noopener" href="https://github.com/CoderMing">CoderMing</a> <a target="_blank" rel="noopener" href="https://github.com/sakila1012">sakila1012</a>，2020.07.18）</li>
+<li>本文永久链接 2：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part2.md">https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part2.md</a> （译者：<a target="_blank" rel="noopener" href="https://github.com/CoolRice">CoolRice</a>，校对者：<a target="_blank" rel="noopener" href="https://github.com/ThomasWhyne">ThomasWhyne</a>, <a target="_blank" rel="noopener" href="https://github.com/tian-li">tian-li</a>）</li>
+<li>本文永久链接 3：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part3.md">https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part3.md</a> （译者：<a target="_blank" rel="noopener" href="https://github.com/ssshooter">ssshooter</a>，校对者：<a target="_blank" rel="noopener" href="https://github.com/ThomasWhyne">ThomasWhyne</a>, <a target="_blank" rel="noopener" href="https://github.com/CoolRice">CoolRice</a>）</li>
+<li>本文永久链接 4：<a target="_blank" rel="noopener" href="https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part4.md">https://github.com/xitu/gold-miner/blob/master/TODO1/inside-browser-part4.md</a>（译者：<a target="_blank" rel="noopener" href="https://github.com/ThomasWhyne">ThomasWhyne</a>，校对者：<a target="_blank" rel="noopener" href="https://github.com/llp0574">llp0574</a> <a target="_blank" rel="noopener" href="https://github.com/CoolRice">CoolRice</a>，2020.07.11）</li>
+</ul>
+</blockquote>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E9%9D%A2%E8%AF%95/" class="">
+              面试
+            </a>
+          
+            <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" class="">
+              浏览器
+            </a>
+          
+            <a href="/tags/%E5%8E%9F%E7%90%86/" class="">
+              原理
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>梨逍遥</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2021/03/16/frontend/browser/xian-dai-liu-lan-qi-nei-bu-jie-mi/" target="_blank" title="现代浏览器内部揭秘">https://ywzzy.github.io/2021/03/16/frontend/browser/xian-dai-liu-lan-qi-nei-bu-jie-mi/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://images.pexels.com/photos/459301/pexels-photo-459301.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/459301/pexels-photo-459301.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+    </div>
+    <a href="/2021/03/17/frontend/interview/promise-a-gui-fan/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">Promise A+ 规范</div>
+      </div>
+      
+      <!-- <div class="content">
+        
+
+Promise 对象用于表示一个异步操作的最终完成（或失败）及其结果值。
+Promise A+ 规范Promise 
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
+    </div>
+    <a href="/2020/11/11/frontend/browser/debug/chrome-diao-shi-ji-qiao/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">Chrome调试技巧</div>
+      </div>
+      <!-- <div class="content">
+        
+
+
+前言在前端开发过程中，我们通过浏览器的页面来查看我们代码编写的成果。然而浏览器的功能非常强大，它不只是能展示我们编
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://avatars.githubusercontent.com/u/48836340?v=4'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>梨逍遥</h2>
+        
+        
+          <p>一个码农</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">梨逍遥</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/mailto:1738348915@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/YWzzy"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1738348915"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86"><span class="toc-text">第一部分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU%E3%80%81GPU%E3%80%81%E5%86%85%E5%AD%98%E5%92%8C%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-text">CPU、GPU、内存和多进程体系结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E6%A0%B8%E5%BF%83%E6%98%AF-CPU-%E4%B8%8E-GPU"><span class="toc-text">计算机的核心是 CPU 与 GPU</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU"><span class="toc-text">CPU</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GPU"><span class="toc-text">GPU</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E4%B8%8A%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="toc-text">在进程和线程上执行程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9E%B6%E6%9E%84"><span class="toc-text">浏览器架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%90%84%E8%87%AA%E6%8E%A7%E5%88%B6%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">进程各自控制什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chrome-%E5%A4%9A%E8%BF%9B%E7%A8%8B%E6%9E%B6%E6%9E%84%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-text">Chrome 多进程架构的优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%9C%81%E6%9B%B4%E5%A4%9A%E5%86%85%E5%AD%98-%E2%80%94%E2%80%94-Chrome-%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%8C%96"><span class="toc-text">节省更多内存 —— Chrome 中的服务化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%8F%E4%B8%AA-iframe-%E7%9A%84%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B-%E2%80%94%E2%80%94-%E7%AB%99%E7%82%B9%E9%9A%94%E7%A6%BB"><span class="toc-text">每个 iframe 的渲染进程 —— 站点隔离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86"><span class="toc-text">第二部分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E6%97%B6%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-text">导航时发生了什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%83%E4%BB%A5%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BF%9B%E7%A8%8B%E5%BC%80%E5%A7%8B"><span class="toc-text">它以浏览器进程开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%AF%BC%E8%88%AA"><span class="toc-text">一个简单导航</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-1-%E6%AD%A5%EF%BC%9A%E5%A4%84%E7%90%86%E8%BE%93%E5%85%A5"><span class="toc-text">第 1 步：处理输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-2-%E6%AD%A5%EF%BC%9A%E5%BC%80%E5%A7%8B%E5%AF%BC%E8%88%AA"><span class="toc-text">第 2 步：开始导航</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-3-%E6%AD%A5%EF%BC%9A%E8%AF%BB%E5%8F%96%E5%93%8D%E5%BA%94"><span class="toc-text">第 3 步：读取响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-4-%E6%AD%A5%EF%BC%9A%E6%9F%A5%E6%89%BE%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B"><span class="toc-text">第 4 步：查找渲染进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-5-%E6%AD%A5%EF%BC%9A%E6%8F%90%E4%BA%A4%E5%AF%BC%E8%88%AA"><span class="toc-text">第 5 步：提交导航</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%9D%E5%A4%96%E7%9A%84%E6%AD%A5%E9%AA%A4%EF%BC%9A%E5%88%9D%E5%A7%8B%E5%8A%A0%E8%BD%BD%E5%AE%8C%E6%AF%95"><span class="toc-text">额外的步骤：初始加载完毕</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E5%88%B0%E5%8F%A6%E4%B8%80%E4%B8%AA%E7%AB%99%E7%82%B9"><span class="toc-text">导航到另一个站点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E6%9C%89-Service-Worker"><span class="toc-text">如果有 Service Worker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E8%88%AA%E9%A2%84%E5%8A%A0%E8%BD%BD"><span class="toc-text">导航预加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86"><span class="toc-text">第三部分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%86%85%E9%83%A8%E6%9C%BA%E5%88%B6"><span class="toc-text">渲染进程的内部机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E5%A4%84%E7%90%86%E7%BD%91%E7%AB%99%E5%86%85%E5%AE%B9"><span class="toc-text">渲染进程处理网站内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%EF%BC%88Parsing%EF%BC%89"><span class="toc-text">解析（Parsing）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DOM-%E7%9A%84%E6%9E%84%E5%BB%BA"><span class="toc-text">DOM 的构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD"><span class="toc-text">子资源加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript-%E9%98%BB%E5%A1%9E%E8%A7%A3%E6%9E%90"><span class="toc-text">JavaScript 阻塞解析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%E6%B5%8F%E8%A7%88%E5%99%A8%E5%A6%82%E4%BD%95%E5%8A%A0%E8%BD%BD%E8%B5%84%E6%BA%90"><span class="toc-text">提示浏览器如何加载资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B7%E5%BC%8F%E8%AE%A1%E7%AE%97"><span class="toc-text">样式计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%83%E5%B1%80"><span class="toc-text">布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%88%B6"><span class="toc-text">绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%B8%B2%E6%9F%93%E7%AE%A1%E9%81%93%E7%9A%84%E6%88%90%E6%9C%AC%E5%BE%88%E9%AB%98"><span class="toc-text">更新渲染管道的成本很高</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E6%88%90"><span class="toc-text">合成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E7%BB%98%E5%88%B6%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2%EF%BC%9F"><span class="toc-text">如何绘制一个页面？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%90%88%E6%88%90"><span class="toc-text">什么是合成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B1%82"><span class="toc-text">分层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%85%89%E6%A0%85%E5%8C%96%E5%92%8C%E5%90%88%E6%88%90"><span class="toc-text">主线程的光栅化和合成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86"><span class="toc-text">第四部分</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5%E8%A1%8C%E4%B8%BA%E4%B8%8E%E5%90%88%E6%88%90%E5%99%A8"><span class="toc-text">用户输入行为与合成器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%86%E8%A7%92%E4%B8%8B%E7%9A%84%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6"><span class="toc-text">浏览器视角下的输入事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E6%88%90%E5%99%A8%E6%8E%A5%E6%94%B6%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6"><span class="toc-text">合成器接收输入事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%A7%A3%E9%9D%9E%E7%AB%8B%E5%8D%B3%E5%8F%AF%E6%BB%9A%E5%8A%A8%E5%8C%BA"><span class="toc-text">理解非立即可滚动区</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E5%99%A8%E6%97%B6%E9%A1%BB%E6%B3%A8%E6%84%8F"><span class="toc-text">设置事件处理器时须注意</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E4%BA%8B%E4%BB%B6%E6%98%AF%E5%90%A6%E5%8F%AF%E6%92%A4%E9%94%80"><span class="toc-text">检查事件是否可撤销</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E4%BA%8B%E4%BB%B6%E7%9B%AE%E6%A0%87"><span class="toc-text">定位事件目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%8D%E4%BD%8E%E5%BE%80%E4%B8%BB%E7%BA%BF%E7%A8%8B%E5%8F%91%E9%80%81%E4%BA%8B%E4%BB%B6%E7%9A%84%E9%A2%91%E7%8E%87"><span class="toc-text">降低往主线程发送事件的频率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-getCoalescedEvents-%E8%8E%B7%E5%8F%96%E5%B8%A7%E5%86%85%E4%BA%8B%E4%BB%B6"><span class="toc-text">使用 getCoalescedEvents 获取帧内事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E6%AD%A5%E9%AA%A4"><span class="toc-text">后续步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-Lighthouse"><span class="toc-text">使用 Lighthouse</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E8%AF%84%E6%B5%8B%E6%80%A7%E8%83%BD"><span class="toc-text">学习如何评测性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BD%A0%E7%9A%84%E7%AB%99%E7%82%B9%E6%B7%BB%E5%8A%A0-Feature-Policy"><span class="toc-text">为你的站点添加 Feature Policy</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-3"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E5%87%BA%E5%A4%84"><span class="toc-text">文章出处</span></a></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/12/19/frontend/react/wei-shi-me-react-hui-chong-xin-xuan-ran/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-19</span>
+                
+              </div>
+              <a class="post-title" href="/2024/12/19/frontend/react/wei-shi-me-react-hui-chong-xin-xuan-ran/">为什么React会重新渲染</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">08-29</span>
+                
+              </div>
+              <a class="post-title" href="/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/">puppeteer知识汇总</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/292442/pexels-photo-292442.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/292442/pexels-photo-292442.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/">前端知识体系</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/27/mind/liu-lan-qi/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/40896/larch-conifer-cone-branch-tree-40896.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/40896/larch-conifer-cone-branch-tree-40896.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/27/mind/liu-lan-qi/">浏览器</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-08</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/">使用 big.js 解决 js 小数精度问题</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgb(0, 4, 6, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="mailto:1738348915@qq.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2024 <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">zhangzhiyong</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a></p>
+
+          </div>
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><br></div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h1, h2, h3, h4, h5',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 3,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', 'YWzzy/utterance_repo')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

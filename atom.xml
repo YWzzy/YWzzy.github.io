@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>梨逍遥</title>
+  
+  <subtitle>一蓑烟雨任平生</subtitle>
+  <link href="https://ywzzy.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://ywzzy.github.io/"/>
+  <updated>2024-12-19T08:01:35.450Z</updated>
+  <id>https://ywzzy.github.io/</id>
+  
+  <author>
+    <name>梨逍遥</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为什么React会重新渲染</title>
+    <link href="https://ywzzy.github.io/2024/12/19/frontend/react/wei-shi-me-react-hui-chong-xin-xuan-ran/"/>
+    <id>https://ywzzy.github.io/2024/12/19/frontend/react/wei-shi-me-react-hui-chong-xin-xuan-ran/</id>
+    <published>2024-12-19T08:01:49.000Z</published>
+    <updated>2024-12-19T08:01:35.450Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;font style=&quot;color:rgb(55, 71, 91);&quot;&gt;更新（重新渲染）是 React 的重要特性 —— 当用户与应用交互的时候，React 需要重新渲染、更新 UI，以响应用户的输入。但是，React 为什么会重新渲染呢？如果不知道 React</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
+    
+    
+    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>puppeteer知识汇总</title>
+    <link href="https://ywzzy.github.io/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/"/>
+    <id>https://ywzzy.github.io/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/</id>
+    <published>2024-08-29T11:07:25.000Z</published>
+    <updated>2024-12-13T03:01:44.388Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;h9Dld&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;br /&gt;&lt;/h1&gt;&lt;p&gt;&lt;a name=&quot;uKQNk&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="爬虫" scheme="https://ywzzy.github.io/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+    <category term="爬虫" scheme="https://ywzzy.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端知识体系</title>
+    <link href="https://ywzzy.github.io/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/"/>
+    <id>https://ywzzy.github.io/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/</id>
+    <published>2024-06-27T07:42:49.000Z</published>
+    <updated>2024-12-13T03:01:44.395Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;!-- &lt;div class=&quot;tag-plugin post-swiper-container&quot; width=&quot;fill&quot;&gt;&lt;div class=&quot;swiper-wrapper&quot;&gt;&lt;div class=&quot;swiper-slide&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="思维导图" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
+    
+    
+    <category term="思维导图" scheme="https://ywzzy.github.io/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浏览器</title>
+    <link href="https://ywzzy.github.io/2024/06/27/mind/liu-lan-qi/"/>
+    <id>https://ywzzy.github.io/2024/06/27/mind/liu-lan-qi/</id>
+    <published>2024-06-27T02:42:49.000Z</published>
+    <updated>2024-12-13T03:01:44.395Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote class=&quot;pullquote mindmap mindmap-md&quot;&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="思维导图" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
+    
+    
+    <category term="思维导图" scheme="https://ywzzy.github.io/tags/%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 big.js 解决 js 小数精度问题</title>
+    <link href="https://ywzzy.github.io/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/"/>
+    <id>https://ywzzy.github.io/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/</id>
+    <published>2024-06-08T05:19:58.000Z</published>
+    <updated>2024-12-13T03:01:44.396Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;JT07H&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;一、背景&quot;&gt;&lt;a href=&quot;#一、背景&quot; class=&quot;headerlink&quot; title=&quot;一、背景&quot;&gt;&lt;/a&gt;一、背景&lt;/h2&gt;&lt;p&gt;当涉及到浮点数计算时，js 中的精度丢失问题, 是由于使用</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="解决方案" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="解决方案" scheme="https://ywzzy.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    <category term="面试" scheme="https://ywzzy.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>21 个让 React 项目更整洁的最佳实践</title>
+    <link href="https://ywzzy.github.io/2024/06/06/frontend/react/21-ge-rang-react-xiang-mu-geng-zheng-ji-de-zui-jia-shi-jian/"/>
+    <id>https://ywzzy.github.io/2024/06/06/frontend/react/21-ge-rang-react-xiang-mu-geng-zheng-ji-de-zui-jia-shi-jian/</id>
+    <published>2024-06-06T02:48:21.000Z</published>
+    <updated>2024-12-13T03:01:44.361Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文转载自：&lt;a href=&quot;https://mp.weixin.qq.com/s/xvAJtv1RyOq7rBwaq_tm0Q&quot;&gt;https://mp.weixin.qq.com/s/xvAJtv1RyOq7rBwaq_tm0Q&lt;/a&gt;&lt;br&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/React/"/>
+    
+    
+    <category term="React" scheme="https://ywzzy.github.io/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>隐藏移动端滚动条的几种方案</title>
+    <link href="https://ywzzy.github.io/2024/05/22/compatible/yin-cang-yi-dong-duan-gun-dong-tiao-de-ji-chong-fang-an/"/>
+    <id>https://ywzzy.github.io/2024/05/22/compatible/yin-cang-yi-dong-duan-gun-dong-tiao-de-ji-chong-fang-an/</id>
+    <published>2024-05-22T15:18:26.000Z</published>
+    <updated>2024-12-13T03:01:44.360Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在移动端开发中，经常会碰到需要横向滚动的场景，例如这样的&lt;br /&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="兼容" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%85%BC%E5%AE%B9/"/>
+    
+    
+    <category term="兼容" scheme="https://ywzzy.github.io/tags/%E5%85%BC%E5%AE%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何使用 Docker 提升开发及部署体验</title>
+    <link href="https://ywzzy.github.io/2024/05/12/frontend/engineering/ru-he-shi-yong-docker-ti-sheng-kai-fa-ji-bu-shu-ti-yan/"/>
+    <id>https://ywzzy.github.io/2024/05/12/frontend/engineering/ru-he-shi-yong-docker-ti-sheng-kai-fa-ji-bu-shu-ti-yan/</id>
+    <published>2024-05-12T02:06:23.000Z</published>
+    <updated>2024-12-13T03:01:44.383Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;CshLW&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何衡量一个网页的性能</title>
+    <link href="https://ywzzy.github.io/2024/04/24/frontend/monitor/ru-he-heng-liang-yi-ge-wang-ye-de-xing-neng/"/>
+    <id>https://ywzzy.github.io/2024/04/24/frontend/monitor/ru-he-heng-liang-yi-ge-wang-ye-de-xing-neng/</id>
+    <published>2024-04-24T05:32:52.000Z</published>
+    <updated>2024-12-13T03:01:44.387Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;fFtQ7&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="监控" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E7%9B%91%E6%8E%A7/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="监控" scheme="https://ywzzy.github.io/tags/%E7%9B%91%E6%8E%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>规则引擎在前端的应用</title>
+    <link href="https://ywzzy.github.io/2024/04/19/solution/gui-ze-yin-qing-zai-qian-duan-de-ying-yong/"/>
+    <id>https://ywzzy.github.io/2024/04/19/solution/gui-ze-yin-qing-zai-qian-duan-de-ying-yong/</id>
+    <published>2024-04-19T02:48:28.000Z</published>
+    <updated>2024-12-13T03:01:44.397Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;K6e07&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;1-前言&quot;&gt;&lt;a href=&quot;#1-前言&quot; class=&quot;headerlink&quot; title=&quot;1. 前言&quot;&gt;&lt;/a&gt;1.</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="解决方案" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="解决方案" scheme="https://ywzzy.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>qiankun 微前端落地实践</title>
+    <link href="https://ywzzy.github.io/2024/04/17/solution/qiankun-wei-qian-duan-luo-di-shi-jian/"/>
+    <id>https://ywzzy.github.io/2024/04/17/solution/qiankun-wei-qian-duan-luo-di-shi-jian/</id>
+    <published>2024-04-17T01:56:28.000Z</published>
+    <updated>2024-12-13T03:01:44.396Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;rd6LP&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;近些年,前端发展火热, 百家争鸣,</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="解决方案" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="微前端" scheme="https://ywzzy.github.io/tags/%E5%BE%AE%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>构建工具对比与模块化规范</title>
+    <link href="https://ywzzy.github.io/2024/04/15/frontend/engineering/gou-jian-gong-ju-dui-bi-yu-mo-kuai-hua-gui-fan/"/>
+    <id>https://ywzzy.github.io/2024/04/15/frontend/engineering/gou-jian-gong-ju-dui-bi-yu-mo-kuai-hua-gui-fan/</id>
+    <published>2024-04-15T06:38:49.000Z</published>
+    <updated>2024-12-13T03:01:44.383Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;JSA1R&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前端工程的痛点&quot;&gt;&lt;a href=&quot;#前端工程的痛点&quot; class=&quot;headerlink&quot; title=&quot;前端工程的痛点&quot;&gt;&lt;/a&gt;前端工程的痛点&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vercel部署跨域问题</title>
+    <link href="https://ywzzy.github.io/2024/04/12/frontend/engineering/vercel-bu-shu-kua-yu-wen-ti/"/>
+    <id>https://ywzzy.github.io/2024/04/12/frontend/engineering/vercel-bu-shu-kua-yu-wen-ti/</id>
+    <published>2024-04-12T02:31:49.000Z</published>
+    <updated>2024-12-13T03:01:44.382Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;cPXwp&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;next-js-本地开发环境跨域&quot;&gt;&lt;a href=&quot;#next-js-本地开发环境跨域&quot; class=&quot;headerlink&quot; title=&quot;next.js 本地开发环境跨域&quot;&gt;&lt;/a&gt;next.js</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rollup 打包原理与插件</title>
+    <link href="https://ywzzy.github.io/2024/04/01/frontend/engineering/rollup-da-bao-yuan-li-yu-cha-jian/"/>
+    <id>https://ywzzy.github.io/2024/04/01/frontend/engineering/rollup-da-bao-yuan-li-yu-cha-jian/</id>
+    <published>2024-04-01T07:12:49.000Z</published>
+    <updated>2024-12-13T03:01:44.381Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;zENZK&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;插件机制&quot;&gt;&lt;a href=&quot;#插件机制&quot; class=&quot;headerlink&quot; title=&quot;插件机制&quot;&gt;&lt;/a&gt;插件机制&lt;/h2&gt;&lt;p&gt;仅仅使用 Rollup</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vite双引擎架构</title>
+    <link href="https://ywzzy.github.io/2024/03/31/frontend/engineering/vite-shuang-yin-qing-jia-gou/"/>
+    <id>https://ywzzy.github.io/2024/03/31/frontend/engineering/vite-shuang-yin-qing-jia-gou/</id>
+    <published>2024-03-31T07:12:49.000Z</published>
+    <updated>2024-12-13T03:01:44.382Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这篇文章我们会将目光集中到 Vite 本身的架构上，一起聊聊它是如何站在巨人的肩膀上实现出来的。&lt;br /&gt;所谓的巨人，指的就是 Vite 底层所深度使用的两个构建引擎：**Esbuild **和 &lt;strong&gt;Rollup&lt;/strong&gt;&lt;br&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vite 配置</title>
+    <link href="https://ywzzy.github.io/2024/03/29/frontend/engineering/vite-pei-zhi/"/>
+    <id>https://ywzzy.github.io/2024/03/29/frontend/engineering/vite-pei-zhi/</id>
+    <published>2024-03-29T07:12:49.000Z</published>
+    <updated>2024-12-13T03:01:44.381Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a name=&quot;TOzj4&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;no-bundle-的理念&quot;&gt;&lt;a href=&quot;#no-bundle-的理念&quot; class=&quot;headerlink&quot; title=&quot;no-bundle 的理念&quot;&gt;&lt;/a&gt;no-bundle</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="工程化" scheme="https://ywzzy.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SD 绘图入门</title>
+    <link href="https://ywzzy.github.io/2024/03/14/stable-diffusion/sd-hui-tu-ru-men/"/>
+    <id>https://ywzzy.github.io/2024/03/14/stable-diffusion/sd-hui-tu-ru-men/</id>
+    <published>2024-03-14T05:19:58.000Z</published>
+    <updated>2024-12-13T03:01:44.398Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;a name=&quot;oWkcu&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="stable diffusion" scheme="https://ywzzy.github.io/categories/stable-diffusion/"/>
+    
+    
+    <category term="stable diffusion" scheme="https://ywzzy.github.io/tags/stable-diffusion/"/>
+    
+    <category term="教程" scheme="https://ywzzy.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端学习路线</title>
+    <link href="https://ywzzy.github.io/2023/09/25/frontend/collection/qian-duan-xue-xi-lu-xian/"/>
+    <id>https://ywzzy.github.io/2023/09/25/frontend/collection/qian-duan-xue-xi-lu-xian/</id>
+    <published>2023-09-25T03:18:25.000Z</published>
+    <updated>2024-12-13T03:01:44.380Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>优势谈判</title>
+    <link href="https://ywzzy.github.io/2023/09/01/mind/you-shi-tan-pan/"/>
+    <id>https://ywzzy.github.io/2023/09/01/mind/you-shi-tan-pan/</id>
+    <published>2023-09-01T02:42:49.000Z</published>
+    <updated>2024-12-13T03:01:44.395Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="思维" scheme="https://ywzzy.github.io/categories/%E6%80%9D%E7%BB%B4/"/>
+    
+    <category term="mind" scheme="https://ywzzy.github.io/categories/%E6%80%9D%E7%BB%B4/mind/"/>
+    
+    
+    <category term="mind" scheme="https://ywzzy.github.io/tags/mind/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>向上管理的艺术</title>
+    <link href="https://ywzzy.github.io/2023/09/01/mind/xiang-shang-guan-li-de-yi-zhu/"/>
+    <id>https://ywzzy.github.io/2023/09/01/mind/xiang-shang-guan-li-de-yi-zhu/</id>
+    <published>2023-09-01T01:42:49.000Z</published>
+    <updated>2024-12-13T03:01:44.395Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot; /&gt;
+
+&lt;p&gt;&lt;br /&gt;摘要：💼</summary>
+        
+      
+    
+    
+    
+    <category term="思维" scheme="https://ywzzy.github.io/categories/%E6%80%9D%E7%BB%B4/"/>
+    
+    <category term="mind" scheme="https://ywzzy.github.io/categories/%E6%80%9D%E7%BB%B4/mind/"/>
+    
+    
+    <category term="mind" scheme="https://ywzzy.github.io/tags/mind/"/>
+    
+  </entry>
+  
+</feed>

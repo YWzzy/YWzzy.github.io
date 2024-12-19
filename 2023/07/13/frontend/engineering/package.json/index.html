@@ -1,0 +1,2154 @@
+<!--
+ * @Author: yinhan 1738348915@qq.com
+ * @Date: 2023-06-26 13:53:37
+ * @LastEditors: yinhan 1738348915@qq.com
+ * @LastEditTime: 2024-04-19 13:52:55
+ * @FilePath: \zBlog\themes\hexo-theme-bamboo\layout\layout.ejs
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="referrer" content="no-referrer"/>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>package.json | 梨逍遥</title>
+
+  <link rel="icon" type="image/png" href="https://s21.ax1x.com/2024/07/01/pkc7yAs.png">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    
+        <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    
+
+    
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="梨逍遥" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
+
+  
+    <div class="preloader-1" id="loader">
+  <div  aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+    <div class="wheel"></div>
+    <div class="hamster">
+      <div class="hamster__body">
+        <div class="hamster__head">
+          <div class="hamster__ear"></div>
+          <div class="hamster__eye"></div>
+          <div class="hamster__nose"></div>
+        </div>
+        <div class="hamster__limb hamster__limb--fr"></div>
+        <div class="hamster__limb hamster__limb--fl"></div>
+        <div class="hamster__limb hamster__limb--br"></div>
+        <div class="hamster__limb hamster__limb--bl"></div>
+        <div class="hamster__tail"></div>
+      </div>
+    </div>
+    <div class="spoke"></div>
+  </div>
+</div>
+  
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+</script>
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
+      <h3 class="drawer-box-head_title">梨逍遥</h3>
+      <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">梨逍遥</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="Home">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="Archives">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="Tags">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="Categories">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://images.pexels.com/photos/2874752/pexels-photo-2874752.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        package.json
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2023-07-13 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-detail-header_category">
+              前端
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="post-detail-header_category">
+              工程化
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <meta name="referrer" content="no-referrer" />
+
+<p>在每个前端项目中，都有 package.json 文件，它是项目的配置文件，常见的配置有配置项目启动、打包命令，声明依赖包等。package.json 文件是一个 JSON 对象，该对象的每一个成员就是当前项目的一项设置。package.json 作为前端的大管家，到底有哪些配置和我们的日常开发密切相关？下面就来仔细剖析一下这个文件。</p>
+<p>当我们搭建一个新项目时，往往脚手架就帮我们初始化好了一个 package.jaon 配置文件，它位于项目的根目录中。当使用 react 脚手架（create-react-app）初始化一个项目时，其 package.json 文件内容如下：<br />当我们克隆一个新的项目到本地时，需要执行 npm install（yarn install）命令来安装项目所需的依赖文件。当执行该命令时，就会根据 package.json 文件中的配置信息来自动下载所需的模块，也就是配置项目所需的运行和开发环境。</p>
+<p>package.json 常见配置项如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;my-app&quot;</span>,</span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.1.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;private&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;@testing-library/jest-dom&quot;</span>: <span class="string">&quot;^5.14.1&quot;</span>,</span><br><span class="line">      <span class="string">&quot;@testing-library/react&quot;</span>: <span class="string">&quot;^11.2.7&quot;</span>,</span><br><span class="line">      <span class="string">&quot;@testing-library/user-event&quot;</span>: <span class="string">&quot;^12.8.3&quot;</span>,</span><br><span class="line">      <span class="string">&quot;react&quot;</span>: <span class="string">&quot;^17.0.2&quot;</span>,</span><br><span class="line">      <span class="string">&quot;react-dom&quot;</span>: <span class="string">&quot;^17.0.2&quot;</span>,</span><br><span class="line">      <span class="string">&quot;react-scripts&quot;</span>: <span class="string">&quot;4.0.3&quot;</span>,</span><br><span class="line">      <span class="string">&quot;web-vitals&quot;</span>: <span class="string">&quot;^1.1.2&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;start&quot;</span>: <span class="string">&quot;react-scripts start&quot;</span>,</span><br><span class="line">      <span class="string">&quot;build&quot;</span>: <span class="string">&quot;react-scripts build&quot;</span>,</span><br><span class="line">      <span class="string">&quot;test&quot;</span>: <span class="string">&quot;react-scripts test&quot;</span>,</span><br><span class="line">      <span class="string">&quot;eject&quot;</span>: <span class="string">&quot;react-scripts eject&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;eslintConfig&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;extends&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;react-app&quot;</span>,</span><br><span class="line">      <span class="string">&quot;react-app/jest&quot;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;browserslist&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;production&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;&gt;0.2%&quot;</span>,</span><br><span class="line">      <span class="string">&quot;not dead&quot;</span>,</span><br><span class="line">      <span class="string">&quot;not op_mini all&quot;</span></span><br><span class="line">    ],</span><br><span class="line">      <span class="string">&quot;development&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;last 1 chrome version&quot;</span>,</span><br><span class="line">      <span class="string">&quot;last 1 firefox version&quot;</span>,</span><br><span class="line">      <span class="string">&quot;last 1 safari version&quot;</span></span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1635264820723-512b345c-9715-4891-a57a-890e588998f2.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1635264820723-512b345c-9715-4891-a57a-890e588998f2.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="iOBXA"></a></p>
+<h2 id="一、必须属性"><a href="#一、必须属性" class="headerlink" title="一、必须属性"></a>一、必须属性</h2><p>package.json 中最重要的两个字段就是<code>name</code>和<code>version</code>，它们都是必须的，如果没有，就无法正常执行 npm install 命令。npm 规定 package.json 文件是由名称和版本号作为唯一标识符的。</p>
+<p><a name="uUXX6"></a></p>
+<h3 id="1-name"><a href="#1-name" class="headerlink" title="1. name"></a>1. name</h3><p><code>name</code>很容易理解，就是项目的名称，它是一个字符串。在给 name 字段命名时，需要注意以下几点：<br />● 名称的长度必须小于或等于 214 个字符，不能以<code>“.”</code>和<code>“_”</code>开头，不能包含大写字母。（这是因为当软件包在 npm 上发布时，会基于此属性获得自己的 URL，所以不能包含非 URL 安全字符（non-url-safe））；<br />● 名称可以作为参数被传入<code>require(&quot;&quot;)</code>，用来导入模块，所以应当尽可能的简短、语义化；<br />● 名称不能和其他模块的名称重复，可以使用<code>npm view</code>命令查询模块明是否重复，如果重复就会提示 404：</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1635175636076-33595e1a-d8d6-4aa8-ab2f-18f02b30ca4b.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1635175636076-33595e1a-d8d6-4aa8-ab2f-18f02b30ca4b.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>如果 npm 包上有对应的包，则会显示包的详细信息：</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1635175578663-64bf5cb9-4d7c-4114-8d38-19af0f9d1cab.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1635175578663-64bf5cb9-4d7c-4114-8d38-19af0f9d1cab.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>实际上，我们平时开发的很多项目并不会发布在 npm 上，所以这个名称是否标准可能就不是那么重要，它不会影响项目的正常运行。如果需要发布在 npm 上，name 字段一定要符合要求。</p>
+<p><a name="QyItB"></a></p>
+<h3 id="2-version"><a href="#2-version" class="headerlink" title="2. version"></a>2. version</h3><p><code>version</code>字段表示该项目包的版本号，它是一个字符串。在每次项目改动后，即将发布时，都要同步的去更改项目的版本号。版本号的使用规范如下：</p>
+<p>● 版本号的命名遵循语义化版本 2.0.0 规范，格式为：<strong>主版本号.次版本号.修订号</strong>，通常情况下，修改主版本号是做了大的功能性的改动，修改次版本号是新增了新功能，修改修订号就是修复了一些 bug；</p>
+<p>● 如果某个版本的改动较大，并且不稳定，可能如法满足预期的兼容性需求，就需要发布先行版本，先行版本通过会加在版本号的后面，通过“-”号连接以点分隔的标识符和版本编译信息：内部版本（alpha）、公测版本（beta）和候选版本（rc，即 release candiate）。</p>
+<p>可以通过以下命令来查看 npm 包的版本信息，以 react 为例：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查看最新版本</span></span><br><span class="line">npm view react version</span><br><span class="line"><span class="comment">// 查看所有版本</span></span><br><span class="line">npm view react version</span><br></pre></td></tr></table></figure>
+
+<p><br />当执行第二条命令时，结果如下：</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1635177200796-ffd50c7a-0e95-4099-aa57-fa4b1bab7984.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1635177200796-ffd50c7a-0e95-4099-aa57-fa4b1bab7984.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="ErUwX"></a></p>
+<h2 id="二、描述信息"><a href="#二、描述信息" class="headerlink" title="二、描述信息"></a>二、描述信息</h2><p>package.jaon 中有五个和项目包描述信息相关的配置字段，下面就分别来看看这些字段的含义。</p>
+<p><a name="BN4bP"></a></p>
+<h3 id="1-description"><a href="#1-description" class="headerlink" title="1. description"></a>1. description</h3><p><code>description</code>字段用来描述这个项目包，它是一个字符串，可以让其他开发者在 npm 的搜索中发现我们的项目包。</p>
+<p><a name="NAh1A"></a></p>
+<h3 id="2-keywords"><a href="#2-keywords" class="headerlink" title="2. keywords"></a>2. keywords</h3><p><code>keywords</code>字段是一个字符串数组，表示这个项目包的关键词。和 description 一样，都是用来增加项目包的曝光率的。下面是 eslint 包的描述和关键词：</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1635181515396-fe760662-7ac8-4389-ba11-3784b572021a.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1635181515396-fe760662-7ac8-4389-ba11-3784b572021a.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br><a name="SlTxk"></a></p>
+<h3 id="3-author"><a href="#3-author" class="headerlink" title="3. author"></a>3. author</h3><p><code>author</code>顾名思义就是作者，表示该项目包的作者。它有两种形式，一种是字符串格式：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;author&quot;</span>: <span class="string">&quot;CUGGZ &lt;xxxxx@xx.com&gt; (https://juejin.cn/user/3544481220801815)&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>另一种是对象形式：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;author&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span> : <span class="string">&quot;CUGGZ&quot;</span>,</span><br><span class="line">  <span class="string">&quot;email&quot;</span> : <span class="string">&quot;xxxxx@xx.com&quot;</span>,</span><br><span class="line">  <span class="string">&quot;url&quot;</span> : <span class="string">&quot;https://juejin.cn/user/3544481220801815&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="eB9wh"></a></p>
+<h3 id="4-contributors"><a href="#4-contributors" class="headerlink" title="4. contributors"></a>4. contributors</h3><p><code>contributors</code>表示该项目包的贡献者，和 author 不同的是，该字段是一个数组，包含所有的贡献者，它同样有两种写法：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;contributors&quot;</span>: [</span><br><span class="line">  <span class="string">&quot;CUGGZ0 &lt;xxxxx@xx.com&gt; (https://juejin.cn/user/3544481220801815)&quot;</span>,</span><br><span class="line">  <span class="string">&quot;CUGGZ1 &lt;xxxxx@xx.com&gt; (https://juejin.cn/user/3544481220801815)&quot;</span></span><br><span class="line"> ]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;contributors&quot;</span>: [</span><br><span class="line">  &#123;</span><br><span class="line">  	<span class="string">&quot;name&quot;</span> : <span class="string">&quot;CUGGZ0&quot;</span>,</span><br><span class="line">  	<span class="string">&quot;email&quot;</span> : <span class="string">&quot;xxxxx@xx.com&quot;</span>,</span><br><span class="line">  	<span class="string">&quot;url&quot;</span> : <span class="string">&quot;https://juejin.cn/user/3544481220801815&quot;</span></span><br><span class="line">	&#125;,</span><br><span class="line">  &#123;</span><br><span class="line">  	<span class="string">&quot;name&quot;</span> : <span class="string">&quot;CUGGZ1&quot;</span>,</span><br><span class="line">  	<span class="string">&quot;email&quot;</span> : <span class="string">&quot;xxxxx@xx.com&quot;</span>,</span><br><span class="line">  	<span class="string">&quot;url&quot;</span> : <span class="string">&quot;https://juejin.cn/user/3544481220801815&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line"> ]</span><br></pre></td></tr></table></figure>
+
+<p><a name="GB6U6"></a></p>
+<h3 id="5-homepage"><a href="#5-homepage" class="headerlink" title="5. homepage"></a>5. homepage</h3><p><code>homepage</code>就是项目的主页地址了，它是一个字符串。</p>
+<p><a name="kUGUj"></a></p>
+<h3 id="6-repository"><a href="#6-repository" class="headerlink" title="6. repository"></a>6. repository</h3><p><code>repository</code>表示代码的存放仓库地址，通常有两种书写形式。第一种是字符串形式：<br />除此之外，还可以显式地设置版本控制系统，这时就是对象的形式：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;repository&quot;</span>: <span class="string">&quot;https://github.com/facebook/react.git&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="hTJOL"></a></p>
+<h3 id="7-bugs"><a href="#7-bugs" class="headerlink" title="7. bugs"></a>7. bugs</h3><p><code>bugs</code>表示项目提交问题的地址，该字段是一个对象，可以添加一个提交问题的地址和反馈的邮箱：<br />最常见的 bugs 就是 Github 中的 issues 页面，如上就是 react 的 issues 页面地址。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;bugs&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;url&quot;</span> : <span class="string">&quot;https://github.com/facebook/react/issues&quot;</span>,</span><br><span class="line">  <span class="string">&quot;email&quot;</span> : <span class="string">&quot;xxxxx@xx.com&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br />
+<a name="Wyqqm"></a>
+## 三、依赖配置
+
+<p>通常情况下，我们的项目会依赖一个或者多个外部的依赖包，根据依赖包的不同用途，可以将他们配置在下面的五个属性下：<code>dependencies</code>、<code>devDependencies</code>、<code>peerDependencies</code>、<code>bundledDependencies</code>、<code>optionalDependencies</code> 。下面就来看看每个属性的含义。</p>
+<p><a name="KOQYi"></a></p>
+<h3 id="1-dependencies"><a href="#1-dependencies" class="headerlink" title="1. dependencies"></a>1. dependencies</h3><p><code>dependencies</code>字段中声明的是项目的生产环境中所必须的依赖包。当使用 npm 或 yarn 安装 npm 包时，该 npm 包会被自动插入到此配置项中：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install &lt;<span class="variable constant_">PACKAGENAME</span>&gt;</span><br><span class="line">yarn add &lt;<span class="variable constant_">PACKAGENAME</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p><br />当在安装依赖时使用<code>--save</code>参数，也会将新安装的 npm 包写入 dependencies 属性。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save &lt;<span class="variable constant_">PACKAGENAME</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p><br />该字段的值是一个对象，该对象的各个成员，分别由模块名和对应的版本要求组成，表示依赖的模块及其版本范围。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">   <span class="string">&quot;react&quot;</span>: <span class="string">&quot;^17.0.2&quot;</span>,</span><br><span class="line">   <span class="string">&quot;react-dom&quot;</span>: <span class="string">&quot;^17.0.2&quot;</span>,</span><br><span class="line">   <span class="string">&quot;react-scripts&quot;</span>: <span class="string">&quot;4.0.3&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><br />这里每一项配置都是一个键值对（key-value）， key 表示模块名称，value 表示模块的版本号。版本号遵循<strong>主版本号.次版本号.修订号</strong>的格式规定：<br />● <strong>固定版本：</strong>上面的 react-scripts 的版本 4.0.3 就是固定版本，安装时只安装这个指定的版本；<br />● <strong>波浪号：</strong>比如~4.0.3，表示安装 4.0.x 的最新版本（不低于 4.0.3），也就是说安装时不会改变主版本号和<strong>次</strong>版本号；<br />● <strong>插入号：</strong>比如上面 react 的版本^17.0.2，表示安装 17.x.x 的最新版本（不低于 17.0.2），也就是说安装时不会改变主版本号。如果主版本号为 0，那么插入号和波浪号的行为是一致的；<br />● <strong>latest</strong>：安装最新的版本。</p>
+<p>需要注意，不要把测试或者过渡性的依赖放在 dependencies，避免生产环境出现意外的问题。</p>
+<p><a name="vrjhI"></a></p>
+<h3 id="2-devDependencies"><a href="#2-devDependencies" class="headerlink" title="2. devDependencies"></a>2. devDependencies</h3><p><code>devDependencies</code>中声明的是开发阶段需要的依赖包，如 Webpack、Eslint、Babel 等，用于辅助开发。它们不同于 dependencies，因为它们只需安装在开发设备上，而无需在生产环境中运行代码。当打包上线时并不需要这些包，所以可以把这些依赖添加到 devDependencies 中，这些依赖依然会在本地指定 npm install 时被安装和管理，但是不会被安装到生产环境中。</p>
+<p>当使用 npm 或 yarn 安装软件包时，指定以下参数后，新安装的 npm 包会被自动插入到此列表中：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev &lt;<span class="variable constant_">PACKAGENAME</span>&gt;</span><br><span class="line">yarn add --dev &lt;<span class="variable constant_">PACKAGENAME</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;autoprefixer&quot;</span>: <span class="string">&quot;^7.1.2&quot;</span>,</span><br><span class="line">  <span class="string">&quot;babel-core&quot;</span>: <span class="string">&quot;^6.22.1&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="FhQeY"></a></p>
+<h3 id="3-peerDependencies"><a href="#3-peerDependencies" class="headerlink" title="3. peerDependencies"></a>3. peerDependencies</h3><p>有些情况下，我们的项目和所依赖的模块，都会同时依赖另一个模块，但是所依赖的版本不一样。比如，我们的项目依赖 A 模块和 B 模块的 1.0 版，而 A 模块本身又依赖 B 模块的 2.0 版。大多数情况下，这不是问题，B 模块的两个版本可以并存，同时运行。但是，有一种情况，会出现问题，就是这种依赖关系将暴露给用户。</p>
+<p>最典型的场景就是插件，比如 A 模块是 B 模块的插件。用户安装的 B 模块是 1.0 版本，但是 A 插件只能和 2.0 版本的 B 模块一起使用。这时，用户要是将 1.0 版本的 B 的实例传给 A，就会出现问题。因此，需要一种机制，在模板安装的时候提醒用户，如果 A 和 B 一起安装，那么 B 必须是 2.0 模块。</p>
+<p><code>peerDependencies</code>字段就是用来供插件指定其所需要的主工具的版本。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;name&quot;</span>: <span class="string">&quot;chai-as-promised&quot;</span>,</span><br><span class="line"><span class="string">&quot;peerDependencies&quot;</span>: &#123;</span><br><span class="line">   <span class="string">&quot;chai&quot;</span>: <span class="string">&quot;1.x&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />上面代码指定在安装 chai-as-promised 模块时，主程序 chai 必须一起安装，而且 chai 的版本必须是 1.x。如果项目指定的依赖是 chai 的 2.0 版本，就会报错。</p>
+<p>需要注意，从<code>npm 3.0</code>版开始，<code>peerDependencies</code>不再会默认安装了。</p>
+<p><a name="HnaWk"></a></p>
+<h3 id="4-optionalDependencies"><a href="#4-optionalDependencies" class="headerlink" title="4. optionalDependencies"></a>4. optionalDependencies</h3><p>如果需要在找不到包或者安装包失败时，npm 仍然能够继续运行，则可以将该包放在<code>optionalDependencies</code>对象中，<code>optionalDependencies</code>对象中的包会覆盖<code>dependencies</code>中同名的包，所以只需在一个地方进行设置即可。</p>
+<p>需要注意，由于<code>optionalDependencies</code>中的依赖可能并为安装成功，所以一定要做异常处理，否则当获取这个依赖时，如果获取不到就会报错。</p>
+<p><a name="m5rid"></a></p>
+<h3 id="5-bundledDependencies"><a href="#5-bundledDependencies" class="headerlink" title="5. bundledDependencies"></a>5. bundledDependencies</h3><p>上面的几个依赖相关的配置项都是一个对象，而<code>bundledDependencies</code>配置项是一个数组，数组里可以指定一些模块，这些模块将在这个包发布时被一起打包。</p>
+<p>需要注意，这个字段数组中的值必须是在<code>dependencies</code>, <code>devDependencies</code>两个里面声明过的包才行。</p>
+<p><a name="BQhfQ"></a></p>
+<h3 id="6-engines"><a href="#6-engines" class="headerlink" title="6. engines"></a>6. engines</h3><p>当我们维护一些旧项目时，可能对 npm 包的版本或者 Node 版本有特殊要求，如果不满足条件就可能无法将项目跑起来。为了让项目开箱即用，可以在 engines 字段中说明具体的版本号：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;engines&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;node&quot;</span>: <span class="string">&quot;&gt;=8.10.3 &lt;12.13.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;npm&quot;</span>: <span class="string">&quot;&gt;=6.9.0&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />需要注意，<code>engines</code>只是起一个说明的作用，即使用户安装的版本不符合要求，也不影响依赖包的安装。</p>
+<p><a name="bKPyg"></a></p>
+<h2 id="四、脚本配置"><a href="#四、脚本配置" class="headerlink" title="四、脚本配置"></a>四、脚本配置</h2><br />
+<a name="I0LsP"></a>
+### 1. scripts
+`scripts` 是 `package.json`中内置的脚本入口，是key-value键值对配置，key为可运行的命令，可以通过 npm run 来执行命令。除了运行基本的scripts命令，还可以结合`pre`和`post`完成前置和后续操作。先来看一组scripts：
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;dev&quot;</span>: <span class="string">&quot;node index.js&quot;</span>,</span><br><span class="line">  <span class="string">&quot;predev&quot;</span>: <span class="string">&quot;node beforeIndex.js&quot;</span>,</span><br><span class="line">  <span class="string">&quot;postdev&quot;</span>: <span class="string">&quot;node afterIndex.js&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br />这三个js文件中都有一句console：
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;scripts: index.js&quot;</span>)</span><br><span class="line"><span class="comment">// beforeIndex.js</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;scripts: before index.js&quot;</span>)</span><br><span class="line"><span class="comment">// afterIndex.js</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;scripts: after index.js&quot;</span>)</span><br></pre></td></tr></table></figure>
+<br />当我们执行npm run dev命令时，输出结果如下：
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">scripts</span>: before index.<span class="property">js</span></span><br><span class="line"><span class="attr">scripts</span>: index.<span class="property">js</span></span><br><span class="line"><span class="attr">scripts</span>: after index.<span class="property">js</span></span><br></pre></td></tr></table></figure>
+<br />可以看到，三个命令都执行了，执行顺序是`predev→dev→postdev`。如果scripts命令存在一定的先后关系，则可以使用这三个配置项，分别配置执行命令。
+
+<p>通过配置 scripts 属性，可以定义一些常见的操作命令：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;dev&quot;</span>: <span class="string">&quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;</span>,</span><br><span class="line">  <span class="string">&quot;start&quot;</span>: <span class="string">&quot;npm run dev&quot;</span>,</span><br><span class="line">  <span class="string">&quot;unit&quot;</span>: <span class="string">&quot;jest --config test/unit/jest.conf.js --coverage&quot;</span>,</span><br><span class="line">  <span class="string">&quot;test&quot;</span>: <span class="string">&quot;npm run unit&quot;</span>,</span><br><span class="line">  <span class="string">&quot;lint&quot;</span>: <span class="string">&quot;eslint --ext .js,.vue src test/unit&quot;</span>,</span><br><span class="line">  <span class="string">&quot;build&quot;</span>: <span class="string">&quot;node build/build.js&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />这些脚本是命令行应用程序。可以通过调用 <code>npm run XXX</code> 或 <code>yarn XXX</code> 来运行它们，其中 XXX 是命令的名称。 例如：<code>npm run dev</code>。我们可以为命令使用任何的名称，脚本也可以是任何操作。</p>
+<p>使用好该字段可以大大的提升开发效率。</p>
+<p><a name="x4Bs2"></a></p>
+<h3 id="2-config"><a href="#2-config" class="headerlink" title="2. config"></a>2. config</h3><p><code>config</code>字段用来配置 scripts 运行时的配置参数，如下所示：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;config&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;port&quot;</span>: <span class="number">3000</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />如果运行<code>npm run start</code>，则<code>port</code>字段会映射到<code>npm_package_config_port</code>环境变量中：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">env</span>.<span class="property">npm_package_config_port</span>); <span class="comment">// 3000</span></span><br></pre></td></tr></table></figure>
+
+<p><br />用户可以通过<code>npm config set foo:port 3001</code> 命令来重写<code>port</code>的值。</p>
+<p><a name="V8LbR"></a></p>
+<h2 id="五、文件-amp-目录"><a href="#五、文件-amp-目录" class="headerlink" title="五、文件&amp;目录"></a>五、文件&amp;目录</h2><p>下面来看看<code>package.json</code>中和文件以及目录相关的属性。</p>
+<p><a name="kF4au"></a></p>
+<h3 id="1-main"><a href="#1-main" class="headerlink" title="1. main"></a>1. main</h3><p><code>main</code> 字段用来指定加载的入口文件，在 browser 和 Node 环境中都可以使用。如果我们将项目发布为 npm 包，那么当使用 require 导入 npm 包时，返回的就是 main 字段所列出的文件的 module.exports 属性。如果不指定该字段，默认是项目根目录下的 index.js。如果没找到，就会报错。</p>
+<p>该字段的值是一个字符串：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;main&quot;</span>: <span class="string">&quot;./src/index.js&quot;</span>,</span><br></pre></td></tr></table></figure>
+
+<p><a name="TVWuS"></a></p>
+<h3 id="2-browser"><a href="#2-browser" class="headerlink" title="2. browser"></a>2. browser</h3><p><code>browser</code>字段可以定义 npm 包在 browser 环境下的入口文件。如果 npm 包只在 web 端使用，并且严禁在 server 端使用，使用 browser 来定义入口文件。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;browser&quot;</span>: <span class="string">&quot;./src/index.js&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="xc9zp"></a></p>
+<h3 id="3-module"><a href="#3-module" class="headerlink" title="3. module"></a>3. module</h3><p><code>module</code>字段可以定义 npm 包的 ESM 规范的入口文件，browser 环境和 node 环境均可使用。如果 npm 包导出的是 ESM 规范的包，使用 module 来定义入口文件。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;module&quot;</span>: <span class="string">&quot;./src/index.mjs&quot;</span>,</span><br></pre></td></tr></table></figure>
+
+<p>需要注意，_.js 文件是使用 commonJS 规范的语法(require(‘xxx’))，_.mjs 是用 ESM 规范的语法(import ‘xxx’)。</p>
+<p>上面三个的入口入口文件相关的配置是有差别的，特别是在不同的使用场景下。在 Web 环境中，如果使用<code>loader</code>加载 ESM（ES module），那么这三个配置的加载顺序是<code>browser→module→main</code>，如果使用<code>require</code>加载 CommonJS 模块，则加载的顺序为<code>main→module→browser</code>。</p>
+<p><code>Webpack</code>在进行项目构建时，有一个<code>target</code>选项，默认为 Web，即构建 Web 应用。如果需要编译一些同构项目，如 node 项目，则只需将 webpack.config.js 的<code>target</code>选项设置为 node 进行构建即可。如果再 Node 环境中加载 CommonJS 模块，或者 ESM，则只有 main 字段有效。</p>
+<p><a name="Vu6it"></a></p>
+<h3 id="4-bin"><a href="#4-bin" class="headerlink" title="4. bin"></a>4. bin</h3><p><code>bin</code>字段用来指定各个内部命令对应的可执行文件的位置：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;bin&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;someTool&quot;</span>: <span class="string">&quot;./bin/someTool.js&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里，<code>someTool</code> 命令对应的可执行文件为 bin 目录下的 someTool.js，someTool.js 会建立符号链接 node_modules&#x2F;.bin&#x2F;someTool。由于 node_modules&#x2F;.bin&#x2F;目录会在运行时加入系统的 PATH 变量，因此在运行 npm 时，就可以不带路径，直接通过命令来调用这些脚本。因此，下面的写法可以简写：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">scripts</span>: &#123;</span><br><span class="line">  <span class="attr">start</span>: <span class="string">&quot;./node_modules/bin/someTool.js build&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 简写</span></span><br><span class="line"><span class="attr">scripts</span>: &#123;</span><br><span class="line">  <span class="attr">start</span>: <span class="string">&quot;someTool build&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />所有 node_modules&#x2F;.bin&#x2F;目录下的命令，都可以用<code>npm run [命令]</code>的格式运行。</p>
+<p>上面的配置在 package.json 包中国提供了一个映射到本地文件名的 bin 字段，之后 npm 包将链接这个文件到 prefix&#x2F;fix 里面，以便全局引入。或者链接到本地的 node_modules&#x2F;.bin&#x2F;文件中，以便在本项目中使用。</p>
+<p><a name="Fx7sp"></a></p>
+<h3 id="5-files"><a href="#5-files" class="headerlink" title="5. files"></a>5. files</h3><p><code>files</code>配置是一个数组，用来描述当把 npm 包作为依赖包安装时需要说明的文件列表。当 npm 包发布时，<code>files</code>指定的文件会被推送到 npm 服务器中，如果指定的是文件夹，那么该文件夹下面所有的文件都会被提交。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;files&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;LICENSE&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Readme.md&quot;</span>,</span><br><span class="line">    <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;lib/&quot;</span></span><br><span class="line"> ]</span><br></pre></td></tr></table></figure>
+
+<p><br />如果有不想提交的文件，可以在项目根目录中新建一个<code>.npmignore</code>文件，并在其中说明不需要提交的文件，防止垃圾文件推送到 npm 上。这个文件的形式和<code>.gitignore</code>类似。写在这个文件中的文件即便被写在<code>files</code>属性里也会被排除在外。比如可以在该文件中这样写：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node_modules.<span class="property">vscode</span>;</span><br><span class="line"></span><br><span class="line">build.<span class="property">DS_Store</span>;</span><br></pre></td></tr></table></figure>
+
+<p><a name="MGYu9"></a></p>
+<h3 id="6-man"><a href="#6-man" class="headerlink" title="6. man"></a>6. man</h3><p><code>man</code> 命令是 Linux 中的帮助指令，通过该指令可以查看 Linux 中的指令帮助、配置文件帮助和编程帮助等信息。如果 node.js 模块是一个全局的命令行工具，在 package.json 通过 <code>man</code> 属性可以指定 <code>man</code> 命令查找的文档地址：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;man&quot;</span>: [</span><br><span class="line">	<span class="string">&quot;./man/npm-access.1&quot;</span>,</span><br><span class="line">	<span class="string">&quot;./man/npm-audit.1&quot;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p><br /><code>man</code> 字段可以指定一个或多个文件, 当执行<code>man &#123;包名&#125;</code>时, 会展现给用户文档内容。</p>
+<p>需要注意：<br />● man 文件必须以数字结尾，如果经过压缩，还可以使用<code>.gz</code>后缀。这个数字表示文件安装到哪个 man 节中；<br />● 如果 man 文件名称不是以模块名称开头的，安装的时候会加上模块名称前缀。</p>
+<p>对于上面的配置，可以使用以下命令来执行查看文档：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">man npm-access</span><br><span class="line">man npm-audit</span><br></pre></td></tr></table></figure>
+
+<p><a name="iEAAI"></a></p>
+<h3 id="7-directories"><a href="#7-directories" class="headerlink" title="7. directories"></a>7. directories</h3><p><code>directories</code>字段用来规范项目的目录。node.js 模块是基于 CommonJS 模块化规范实现的，需要严格遵循 CommonJS 规范。模块目录下除了必须包含包项目描述文件 package.json 以外，还需要包含以下目录：<br />● <code>bin</code> ：存放可执行二进制文件的目录<br />● <code>lib</code> ：存放 js 代码的目录<br />● <code>doc</code> ：存放文档的目录<br />● <code>test</code> ：存放单元测试用例代码的目录<br />● …</p>
+<p>在实际的项目目录中，我们可能没有按照这个规范进行命名，那么就可以在 directories 字段指定每个目录对应的文件路径：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;directories&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;bin&quot;</span>: <span class="string">&quot;./bin&quot;</span>,</span><br><span class="line">    <span class="string">&quot;lib&quot;</span>: <span class="string">&quot;./lib&quot;</span>,</span><br><span class="line">    <span class="string">&quot;doc&quot;</span>: <span class="string">&quot;./doc&quot;</span>,</span><br><span class="line">    <span class="string">&quot;test&quot;</span> <span class="string">&quot;./test&quot;</span>,</span><br><span class="line">    <span class="string">&quot;man&quot;</span>: <span class="string">&quot;./man&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><br />这个属性实际上没有什么实际的作用，当然不排除未来会有什么比较有意义的用处。</p>
+<p><a name="gvSGr"></a></p>
+<h2 id="六、发布配置"><a href="#六、发布配置" class="headerlink" title="六、发布配置"></a>六、发布配置</h2><p>下面来看看和 npm 项目包发布相关的配置。</p>
+<p><a name="Nrz7b"></a></p>
+<h3 id="1-private"><a href="#1-private" class="headerlink" title="1. private"></a>1. private</h3><p><code>private</code>字段可以防止我们意外地将私有库发布到 npm 服务器。只需要将该字段设置为 true：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;private&quot;</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="l3Qyl"></a></p>
+<h3 id="2-preferGlobal"><a href="#2-preferGlobal" class="headerlink" title="2. preferGlobal"></a>2. preferGlobal</h3><p><code>preferGlobal</code>字段表示当用户不把该模块安装为全局模块时，如果设置为 true 就会显示警告。它并不会真正的防止用户进行局部的安装，只是对用户进行提示，防止产生误</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;preferGlobal&quot;</span>: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>3. publishConfig</strong><br /><code>publishConfig</code>配置会在模块发布时生效，用于设置发布时一些配置项的集合。如果不想模块被默认标记为最新，或者不想发布到公共仓库，可以在这里配置 tag 或仓库地址。更详细的配置可以参考 <a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v7/using-npm/config">npm-config</a>。</p>
+<p>通常情况下，<code>publishConfig</code>会配合<code>private</code>来使用，如果只想让模块发布到特定 npm 仓库，就可以这样来配置：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;private&quot;</span>: <span class="literal">true</span>,</span><br><span class="line"><span class="string">&quot;publishConfig&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;tag&quot;</span>: <span class="string">&quot;1.1.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;registry&quot;</span>: <span class="string">&quot;https://registry.npmjs.org/&quot;</span>,</span><br><span class="line">  <span class="string">&quot;access&quot;</span>: <span class="string">&quot;public&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>4. os</strong><br /><code>os</code>字段可以让我们设置该 npm 包可以在什么操作系统使用，不能在什么操作系统使用。如果我们希望开发的 npm 包只运行在 linux，为了避免出现不必要的异常，建议使用 Windows 系统的用户不要安装它，这时就可以使用 os 配置：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;os&quot;</span>[<span class="string">&quot;linux&quot;</span>]; <span class="comment">// 适用的操作系统</span></span><br><span class="line"><span class="string">&quot;os&quot;</span>[<span class="string">&quot;!win32&quot;</span>]; <span class="comment">// 禁用的操作系统</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>5. cpu</strong><br />该配置和<code>OS</code>配置类似，用<code>CPU</code>可以更准确的限制用户的安装环境：<br />可以看到，黑名单和白名单的区别就是，黑名单在前面加了一个<code>“!”</code>。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;cpu&quot;</span>[(<span class="string">&quot;x64&quot;</span>, <span class="string">&quot;AMD64&quot;</span>)]; <span class="comment">// 适用的cpu</span></span><br><span class="line"><span class="string">&quot;cpu&quot;</span>[(<span class="string">&quot;!arm&quot;</span>, <span class="string">&quot;!mips&quot;</span>)]; <span class="comment">// 禁用的cpu</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>6. license</strong><br /><code>license</code> 字段用于指定软件的开源协议，开源协议表述了其他人获得代码后拥有的权利，可以对代码进行何种操作，何种操作又是被禁止的。常见的协议如下：<br />●<code>MIT</code> ：只要用户在项目副本中包含了版权声明和许可声明，他们就可以拿你的代码做任何想做的事情，你也无需承担任何责任。<br />●<code>Apache</code> ：类似于 MIT ，同时还包含了贡献者向用户提供专利授权相关的条款。<br />●<code>GPL</code> ：修改项目代码的用户再次分发源码或二进制代码时，必须公布他的相关修改。</p>
+<p>可以这样来声明该字段：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;license&quot;</span>: <span class="string">&quot;MIT&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="mGUqg"></a></p>
+<h2 id="七、第三方配置"><a href="#七、第三方配置" class="headerlink" title="七、第三方配置"></a>七、第三方配置</h2><p><br /><code>package.json</code> 文件还可以承载命令特有的配置，例如 Babel、ESLint 等。它们每个都有特有的属性，例如 <code>eslintConfig</code>、<code>babel </code>等。 它们是命令特有的，可以在相应的命令&#x2F;项目文档中找到如何使用它们。下面来看几个常用的第三方配置项。</p>
+<p><a name="LShKn"></a></p>
+<h3 id="1-typings"><a href="#1-typings" class="headerlink" title="1. typings"></a>1. typings</h3><p><code>typings</code>字段用来指定 TypeScript 的入口文件：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;typings&quot;</span>: <span class="string">&quot;types/index.d.ts&quot;</span>,</span><br></pre></td></tr></table></figure>
+
+<p>该字段的作用和<code>main</code>配置相同。</p>
+<p><a name="zZigE"></a></p>
+<h3 id="2-eslintConfig"><a href="#2-eslintConfig" class="headerlink" title="2. eslintConfig"></a>2. eslintConfig</h3><p><code>eslint</code>的配置可以写在单独的配置文件<code>.eslintrc.json</code> 中，也可以写在<code>package.json</code>文件的<code>eslintConfig</code>配置项中。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;eslintConfig&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;root&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="string">&quot;env&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;node&quot;</span>: <span class="literal">true</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">&quot;extends&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;plugin:vue/essential&quot;</span>,</span><br><span class="line">        <span class="string">&quot;eslint:recommended&quot;</span></span><br><span class="line">      ],</span><br><span class="line">      <span class="string">&quot;rules&quot;</span>: &#123;&#125;,</span><br><span class="line">      <span class="string">&quot;parserOptions&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;parser&quot;</span>: <span class="string">&quot;babel-eslint&quot;</span></span><br><span class="line">     &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="bHQ77"></a></p>
+<h3 id="3-babel"><a href="#3-babel" class="headerlink" title="3. babel"></a>3. babel</h3><p><code>babel</code>用来指定 Babel 的编译配置，代码如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;babel&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;presets&quot;</span>: [<span class="string">&quot;@babel/preset-env&quot;</span>],</span><br><span class="line">	<span class="string">&quot;plugins&quot;</span>: [...]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="IYqpc"></a></p>
+<h3 id="4-unpkg"><a href="#4-unpkg" class="headerlink" title="4. unpkg"></a>4. unpkg</h3><p>使用该字段可以让 npm 上所有的文件都开启 <code>cdn</code> 服务，该 CND 服务由 unpkg 提供：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;unpkg&quot;</span>: <span class="string">&quot;dist/vue.js&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="ggWjU"></a></p>
+<h3 id="5-lint-staged"><a href="#5-lint-staged" class="headerlink" title="5. lint-staged"></a>5. lint-staged</h3><p><code>lint-staged</code>是一个在 Git 暂存文件上运行 linters 的工具，配置后每次修改一个文件即可给所有文件执行一次<code>lint</code>检查，通常配合<code>gitHooks</code>一起使用。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;lint-staged&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;*.js&quot;</span>: [</span><br><span class="line">  	<span class="string">&quot;eslint --fix&quot;</span>,</span><br><span class="line">    <span class="string">&quot;git add&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>lint-staged</code>时，每次提交代码只会检查当前改动的文件。</p>
+<p><a name="ZinRI"></a></p>
+<h3 id="6-gitHooks"><a href="#6-gitHooks" class="headerlink" title="6. gitHooks"></a>6. gitHooks</h3><p><code>gitHooks</code>用来定义一个钩子，在提交（commit）之前执行<code>ESlint</code>检查。在执行<code>lint</code>命令后，会自动修复暂存区的文件。修复之后的文件并不会存储在暂存区，所以需要用<code>git add</code>命令将修复后的文件重新加入暂存区。在执行<code>pre-commit</code>命令之后，如果没有错误，就会执行<code>git commit</code>命令：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;gitHooks&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;pre-commit&quot;</span>: <span class="string">&quot;lint-staged&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里就是配合上面的<code>lint-staged</code>来进行代码的检查操作。</p>
+<p><strong>7. browserslist</strong><br /><code>browserslist</code>字段用来告知支持哪些浏览器及版本。Babel、Autoprefixer 和其他工具会用到它，以将所需的 <code>polyfill</code> 和 <code>fallback</code> 添加到目标浏览器。比如最上面的例子中的该字段值：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;browserslist&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;production&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;&gt;0.2%&quot;</span>,</span><br><span class="line">    <span class="string">&quot;not dead&quot;</span>,</span><br><span class="line">    <span class="string">&quot;not op_mini all&quot;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">&quot;development&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;last 1 chrome version&quot;</span>,</span><br><span class="line">    <span class="string">&quot;last 1 firefox version&quot;</span>,</span><br><span class="line">    <span class="string">&quot;last 1 safari version&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里指定了一个对象，里面定义了生产环境和开发环境的浏览器要求。上面的<code>development</code>就是指定开发环境中支持最后一个版本的 chrome、Firefox、safari 浏览器。这个属性是不同的前端工具之间共用目标浏览器和 node 版本的配置工具，被很多前端工具使用，比如<code>Babel</code>、<code>Autoprefixer</code>等</p>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="">
+              工程化
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>梨逍遥</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2023/07/13/frontend/engineering/package.json/" target="_blank" title="package.json">https://ywzzy.github.io/2023/07/13/frontend/engineering/package.json/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://images.pexels.com/photos/3137068/pexels-photo-3137068.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/3137068/pexels-photo-3137068.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+    </div>
+    <a href="/2023/07/14/frontend/react/react-zu-jian-hua-kai-fa/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">React 组件化开发</div>
+      </div>
+      
+      <!-- <div class="content">
+        
+
+
+一、什么是组件化在处理一个复杂的问题时，我们逻辑思维能力是有限的，不太可能一次性搞定所有的内容，那我们就可以对问题
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://images.pexels.com/photos/34950/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/34950/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
+    </div>
+    <a href="/2023/07/09/frontend/react/react-ji-chu-ru-men/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">React 基础入门</div>
+      </div>
+      <!-- <div class="content">
+        
+
+
+一、开发前的准备
+1. 开发环境
+（1）Node.jsNode.js 是一个基于 Chrome V8 引擎的 Ja
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://avatars.githubusercontent.com/u/48836340?v=4'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>梨逍遥</h2>
+        
+        
+          <p>一个码农</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">梨逍遥</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/mailto:1738348915@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/YWzzy"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1738348915"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BF%85%E9%A1%BB%E5%B1%9E%E6%80%A7"><span class="toc-text">一、必须属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-name"><span class="toc-text">1. name</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-version"><span class="toc-text">2. version</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%8F%8F%E8%BF%B0%E4%BF%A1%E6%81%AF"><span class="toc-text">二、描述信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-description"><span class="toc-text">1. description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-keywords"><span class="toc-text">2. keywords</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-author"><span class="toc-text">3. author</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-contributors"><span class="toc-text">4. contributors</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-homepage"><span class="toc-text">5. homepage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-repository"><span class="toc-text">6. repository</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-bugs"><span class="toc-text">7. bugs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-dependencies"><span class="toc-text">1. dependencies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-devDependencies"><span class="toc-text">2. devDependencies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-peerDependencies"><span class="toc-text">3. peerDependencies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-optionalDependencies"><span class="toc-text">4. optionalDependencies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-bundledDependencies"><span class="toc-text">5. bundledDependencies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-engines"><span class="toc-text">6. engines</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="toc-text">四、脚本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-config"><span class="toc-text">2. config</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%96%87%E4%BB%B6-amp-%E7%9B%AE%E5%BD%95"><span class="toc-text">五、文件&amp;目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-main"><span class="toc-text">1. main</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-browser"><span class="toc-text">2. browser</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-module"><span class="toc-text">3. module</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-bin"><span class="toc-text">4. bin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-files"><span class="toc-text">5. files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-man"><span class="toc-text">6. man</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-directories"><span class="toc-text">7. directories</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%8F%91%E5%B8%83%E9%85%8D%E7%BD%AE"><span class="toc-text">六、发布配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-private"><span class="toc-text">1. private</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-preferGlobal"><span class="toc-text">2. preferGlobal</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%AC%AC%E4%B8%89%E6%96%B9%E9%85%8D%E7%BD%AE"><span class="toc-text">七、第三方配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-typings"><span class="toc-text">1. typings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-eslintConfig"><span class="toc-text">2. eslintConfig</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-babel"><span class="toc-text">3. babel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-unpkg"><span class="toc-text">4. unpkg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-lint-staged"><span class="toc-text">5. lint-staged</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-gitHooks"><span class="toc-text">6. gitHooks</span></a></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/12/19/frontend/react/wei-shi-me-react-hui-chong-xin-xuan-ran/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-19</span>
+                
+              </div>
+              <a class="post-title" href="/2024/12/19/frontend/react/wei-shi-me-react-hui-chong-xin-xuan-ran/">为什么React会重新渲染</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">08-29</span>
+                
+              </div>
+              <a class="post-title" href="/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/">puppeteer知识汇总</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/292442/pexels-photo-292442.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/292442/pexels-photo-292442.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/">前端知识体系</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/27/mind/liu-lan-qi/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/40896/larch-conifer-cone-branch-tree-40896.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/40896/larch-conifer-cone-branch-tree-40896.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/27/mind/liu-lan-qi/">浏览器</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-08</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/">使用 big.js 解决 js 小数精度问题</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgb(0, 4, 6, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="mailto:1738348915@qq.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2024 <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">zhangzhiyong</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a></p>
+
+          </div>
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><br></div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h1, h2, h3, h4, h5',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 3,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', 'YWzzy/utterance_repo')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

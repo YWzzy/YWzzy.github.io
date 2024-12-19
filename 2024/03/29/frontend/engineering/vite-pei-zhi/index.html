@@ -1,0 +1,2277 @@
+<!--
+ * @Author: yinhan 1738348915@qq.com
+ * @Date: 2023-06-26 13:53:37
+ * @LastEditors: yinhan 1738348915@qq.com
+ * @LastEditTime: 2024-04-19 13:52:55
+ * @FilePath: \zBlog\themes\hexo-theme-bamboo\layout\layout.ejs
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="referrer" content="no-referrer"/>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>Vite 配置 | 梨逍遥</title>
+
+  <link rel="icon" type="image/png" href="https://s21.ax1x.com/2024/07/01/pkc7yAs.png">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    
+        <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    
+
+    
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="梨逍遥" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
+
+  
+    <div class="preloader-1" id="loader">
+  <div  aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+    <div class="wheel"></div>
+    <div class="hamster">
+      <div class="hamster__body">
+        <div class="hamster__head">
+          <div class="hamster__ear"></div>
+          <div class="hamster__eye"></div>
+          <div class="hamster__nose"></div>
+        </div>
+        <div class="hamster__limb hamster__limb--fr"></div>
+        <div class="hamster__limb hamster__limb--fl"></div>
+        <div class="hamster__limb hamster__limb--br"></div>
+        <div class="hamster__limb hamster__limb--bl"></div>
+        <div class="hamster__tail"></div>
+      </div>
+    </div>
+    <div class="spoke"></div>
+  </div>
+</div>
+  
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+</script>
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
+      <h3 class="drawer-box-head_title">梨逍遥</h3>
+      <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">梨逍遥</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="Home">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="Archives">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="Tags">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="Categories">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://images.pexels.com/photos/46253/mt-fuji-sea-of-clouds-sunrise-46253.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        Vite 配置
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2024-03-29 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-detail-header_category">
+              前端
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="post-detail-header_category">
+              工程化
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <p><a name="TOzj4"></a></p>
+<h2 id="no-bundle-的理念"><a href="#no-bundle-的理念" class="headerlink" title="no-bundle 的理念"></a>no-bundle 的理念</h2><p>通过 Vite 初始化的项目，在项目根目录中有一个 <strong>index.html</strong> 文件，这个文件十分关键。<br />因为 Vite 默认会把项目根目录下的 index.html 作为入口文件。也就是说，当你访问 <a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000</a> 的时候，Vite 的 Dev Server 会自动返回这个 HTML 文件的内容。<br />我们来看看这个 HTML 究竟写了什么：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/svg+xml&quot;</span> <span class="attr">href</span>=<span class="string">&quot;/src/favicon.svg&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Vite App<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;module&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/src/main.ts&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到这个 HTML 文件的内容非常简洁，在 body 标签中除了 id 为 root 的根节点之外，还包含了一个声明了 type&#x3D;”module” 的 script 标签<br />由于现代浏览器原生支持了 ES 模块规范，因此原生的 ES 语法也可以直接放到浏览器中执行，只需要在 script 标签中声明 type&#x3D;”module” 即可。比如上面的 script 标签就声明了 type&#x3D;”module”，同时 src 指向了 &#x2F;src&#x2F;main.ts 文件，<strong>此时相当于请求了 <a target="_blank" rel="noopener" href="http://localhost:3000/src/main.ts">http://localhost:3000/src/main.ts</a> 这个资源</strong>，Vite 的 Dev Server 此时会接受到这个请求，然后读取对应的文件内容，进行一定的中间处理，最后将处理的结果返回给浏览器。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695018928193-bdf92d5c-95cc-4589-a079-33af38f0874b.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695018928193-bdf92d5c-95cc-4589-a079-33af38f0874b.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br />这里我们需要知道的是</p>
+<ol>
+<li><strong>Vite 会将项目的源代码编译成浏览器可以识别的代码</strong></li>
+<li><strong>与此同时，一个 import 语句即代表了一个 HTTP 请求，Vite Dev Server 会根据这些 HTTP 请求读取本地文件，返回浏览器可以解析的代码。当浏览器解析到新的 import 语句，又会发出新的请求，以此类推，直到所有的资源都加载完成。</strong></li>
+</ol>
+<p>现在，你应该知道了 Vite 所倡导的 no-bundle 理念的真正含义：利用浏览器原生 ES 模块的支持，实现开发阶段的 Dev Server，进行模块的按需加载，而不是先整体打包再进行加载。相比 Webpack 这种必须打包再加载的传统构建模式，Vite 在开发阶段省略了繁琐且耗时的打包过程，这也是它为什么快的一个重要原因。</p>
+<p>Vite 当中支持多种配置文件类型，包括 .js、.ts、.mjs 三种后缀的文件，实际项目中一般使用 vite.config.ts 作为配置文件。<br><a name="hT7Ku"></a></p>
+<h2 id="root"><a href="#root" class="headerlink" title="root"></a>root</h2><p>如果页面的入口文件 index.html 并不在项目根目录下，而需要放到 src 目录下，那如何在访问 localhost:3000 的时候让 Vite 自动返回 src 目录下的 index.html 呢？我们可以配置 root</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="comment">// 引入 path 包注意两点:</span></span><br><span class="line"><span class="comment">// 1. 为避免类型报错，你需要通过 `pnpm i @types/node -D` 安装类型</span></span><br><span class="line"><span class="comment">// 2. tsconfig.node.json 中设置 `allowSyntheticDefaultImports: true`，以允许下面的 default 导入方式</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span></span><br><span class="line"><span class="keyword">import</span> react <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="comment">// 手动指定项目根目录位置</span></span><br><span class="line">  <span class="attr">root</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;src&#x27;</span>)</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">react</span>()]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>当手动指定 root 参数之后，Vite 会自动从这个路径下寻找 index.html 文件<br><a name="wz6ll"></a></p>
+<h2 id="生产环境构建"><a href="#生产环境构建" class="headerlink" title="生产环境构建"></a>生产环境构建</h2><p>有人说 Vite 因为其不打包的特性而不能上生产环境，其实这种观点是相当有误的。<br />在开发阶段 Vite 通过 Dev Server 实现了不打包的特性，而<strong>在生产环境中，Vite 依然会基于 Rollup 进行打包，并采取一系列的打包优化手段。</strong><br />从脚手架项目的 package.json 中就可见一斑：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// 开发阶段启动 Vite Dev Server</span></span><br><span class="line">  <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vite&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="comment">// 生产环境打包</span></span><br><span class="line">  <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;tsc &amp;&amp; vite build&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="comment">// 生产环境打包完预览产物</span></span><br><span class="line">  <span class="attr">&quot;preview&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vite preview&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>但可能你会有点疑惑，为什么在 vite build 命令执行之前要先执行 tsc 呢？<br />tsc 作为 TypeScript 的官方编译命令，可以用来编译 TypeScript 代码并进行类型检查，而这里的作用主要是用来做类型检查，我们可以从项目的 tsconfig.json 中注意到这样一个配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// 省略其他配置</span></span><br><span class="line">    <span class="comment">// 1. noEmit 表示只做类型检查，而不会输出产物文件</span></span><br><span class="line">    <span class="comment">// 2. 这行配置与 tsc --noEmit 命令等效</span></span><br><span class="line">    <span class="attr">&quot;noEmit&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>虽然 Vite 提供了开箱即用的 TypeScript 以及 JSX 的编译能力，但实际上底层并没有实现 TypeScript 的类型校验系统，因此需要借助 tsc 来完成类型校验（在 Vue 项目中使用 vue-tsc 这个工具来完成），在打包前提早暴露出类型相关的问题，以保证代码的健壮性。</p>
+<p><a name="W2Quf"></a></p>
+<h2 id="CSS-样式方案"><a href="#CSS-样式方案" class="headerlink" title="CSS 样式方案"></a>CSS 样式方案</h2><p>如果我们不用任何 CSS 工程方案，会出现哪些问题？</p>
+<ol>
+<li><strong>开发体验欠佳</strong>。比如原生 CSS 不支持选择器的嵌套</li>
+<li><strong>样式污染问题</strong>。如果出现同样的类名，很容易造成不同的样式互相覆盖和污染</li>
+<li><strong>浏览器兼容问题</strong>。为了兼容不同的浏览器，我们需要对一些属性（如 transition）加上不同的浏览器前缀，比如 -webkit-、-moz-、-ms-、-o-，意味着开发者要针对同一个样式属性写很多的冗余代码。</li>
+<li><strong>打包后的代码体积问题</strong>。如果不用任何的 CSS 工程化方案，所有的 CSS 代码都将打包到产物中（即使有部分样式并没有在代码中使用），导致产物体积过大。</li>
+</ol>
+<p>针对如上原生 CSS 的痛点，社区中诞生了不少解决方案，常见的有 5 类：</p>
+<ol>
+<li>css 预处理器 Sass&#x2F;Scss、Less 和 Stylus，这些方案各自定义了一套语法，让 CSS 也能使用嵌套规则，甚至能像编程语言一样定义变量、写条件判断和循环语句，大大增强了样式语言的灵活性，解决原生 CSS 的<strong>开发体验问题</strong>。</li>
+<li>CSS 后处理器 PostCSS，用来解析和处理 CSS 代码，可以实现的功能非常丰富，比如将 px 转换为 rem、根据目标浏览器情况自动加上类似于–moz–、-o-的属性前缀等等。</li>
+<li>CSS Modules，能将 CSS 类名处理成哈希值，这样就可以避免同名的情况下<strong>样式污染</strong>的问题。</li>
+<li>CSS in JS 方案</li>
+<li>CSS 原子化框架，如 Tailwind CSS、Windi CSS，通过类名来指定样式，大大简化了样式写法，提高了样式开发的效率，主要解决了原生 CSS <strong>开发体验</strong>的问题。</li>
+</ol>
+<p>Vite 本身对 CSS 各种预处理器语言（Sass&#x2F;Scss、Less 和 Stylus）做了内置支持，也就是说，即使你不经过任何的配置也可以直接使用各种 CSS 预处理器。<br />Vite 底层会调用 CSS 预处理器的官方库进行编译，而 Vite 为了实现按需加载，并没有内置这些工具库，而是让用户根据需要安装。所以我们依然需要安装它们。</p>
+<p>CSS Modules 在 Vite 也是一个开箱即用的能力，Vite 会对后缀带有 .module 的样式文件自动应用 CSS Modules。接下来我们通过一个简单的例子来使用这个功能。</p>
+<p><a name="NL6zm"></a></p>
+<h3 id="自动引入"><a href="#自动引入" class="headerlink" title="自动引入"></a>自动引入</h3><p>每次要使用 $theme-color 属性的时候我们都需要手动引入其所在的 variable.scss 文件，那有没有自动引入的方案呢？</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;../../variable&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: $theme-color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这就需要在 Vite 中进行一些自定义配置了，在配置文件中增加如下的内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; normalizePath &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span>;</span><br><span class="line"><span class="comment">// 如果类型报错，需要安装 @types/node: pnpm i @types/node -D</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局 scss 文件的路径</span></span><br><span class="line"><span class="comment">// 用 normalizePath 解决 window 下的路径问题</span></span><br><span class="line"><span class="keyword">const</span> variablePath = <span class="title function_">normalizePath</span>(path.<span class="title function_">resolve</span>(<span class="string">&#x27;./src/variable.scss&#x27;</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="comment">// css 相关的配置</span></span><br><span class="line">  <span class="attr">css</span>: &#123;</span><br><span class="line">    <span class="attr">preprocessorOptions</span>: &#123;</span><br><span class="line">      <span class="attr">scss</span>: &#123;</span><br><span class="line">        <span class="comment">// additionalData 的内容会在每个 scss 文件的开头自动注入</span></span><br><span class="line">        <span class="attr">additionalData</span>: <span class="string">`@import &quot;<span class="subst">$&#123;variablePath&#125;</span>&quot;;`</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><a name="M2b9R"></a></p>
+<h3 id="PostCSS"><a href="#PostCSS" class="headerlink" title="PostCSS"></a>PostCSS</h3><p>一般可以通过 postcss.config.js 来配置 postcss，不过在 Vite 配置文件中已经提供了 PostCSS 的配置入口，我们可以直接在 Vite 配置文件中进行操作。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts 增加如下的配置</span></span><br><span class="line"><span class="keyword">import</span> autoprefixer <span class="keyword">from</span> <span class="string">&#x27;autoprefixer&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">css</span>: &#123;</span><br><span class="line">    <span class="comment">// 进行 PostCSS 配置</span></span><br><span class="line">    <span class="attr">postcss</span>: &#123;</span><br><span class="line">      <span class="attr">plugins</span>: [</span><br><span class="line">        <span class="title function_">autoprefixer</span>(&#123;</span><br><span class="line">          <span class="comment">// 指定目标浏览器</span></span><br><span class="line">          <span class="attr">overrideBrowserslist</span>: [<span class="string">&#x27;Chrome &gt; 40&#x27;</span>, <span class="string">&#x27;ff &gt; 31&#x27;</span>, <span class="string">&#x27;ie 11&#x27;</span>]</span><br><span class="line">        &#125;)</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="qMoaq"></a></p>
+<h3 id="CSS-原子化框架"><a href="#CSS-原子化框架" class="headerlink" title="CSS 原子化框架"></a>CSS 原子化框架</h3><p>在目前的社区当中，CSS 原子化框架主要包括 Tailwind CSS 和 Windi CSS。<br />Windi CSS 作为前者的替换方案，实现了按需生成 CSS 类名的功能，开发环境下的 CSS 产物体积大大减少，速度上比 Tailwind CSS v2 快 20~100 倍。<br />当然，Tailwind CSS 在 v3 版本也引入 <a href="https://link.juejin.cn/?target=https://v2.tailwindcss.com/docs/just-in-time-mode">JIT(即时编译)</a> 的功能，解决了开发环境下 CSS 产物体积庞大的问题。</p>
+<p>如果要将这两个方案接入到 Vite 中，则需要使用它们自己定义的插件和 postcss 配置。</p>
+<p><a name="CkW40"></a></p>
+<h2 id="Lint-工具链"><a href="#Lint-工具链" class="headerlink" title="Lint 工具链"></a>Lint 工具链</h2><p><a name="gRTFI"></a></p>
+<h3 id="ESLint：JS-x2F-TS-规范工具"><a href="#ESLint：JS-x2F-TS-规范工具" class="headerlink" title="ESLint：JS&#x2F;TS 规范工具"></a>ESLint：JS&#x2F;TS 规范工具</h3><p><a name="Ng12C"></a></p>
+<h3 id="与-Prettier-强强联合"><a href="#与-Prettier-强强联合" class="headerlink" title="与 Prettier 强强联合"></a>与 Prettier 强强联合</h3><p><a name="SUOfc"></a></p>
+<h3 id="在-Vite-中接入-ESLint"><a href="#在-Vite-中接入-ESLint" class="headerlink" title="在 Vite 中接入 ESLint"></a>在 Vite 中接入 ESLint</h3><p>除了安装编辑器插件的方法之外，我们也可以直接通过 Vite 插件的方式在开发阶段进行 ESLint 扫描，以命令行的方式展示出代码中的规范问题，并能够直接定位到原文件。<br />首先我们安装 Vite 中的 ESLint 插件:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm i vite-plugin-eslint -D</span><br></pre></td></tr></table></figure>
+
+<p>然后在 vite.config.ts 中接入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">import</span> viteEslint <span class="keyword">from</span> <span class="string">&#x27;vite-plugin-eslint&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体配置</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="comment">// 省略其它插件</span></span><br><span class="line">    <span class="title function_">viteEslint</span>(),</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在重新启动项目的话， ESLint 的错误就已经能够及时显示到命令行窗口中了<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695021221303-0bebd0a3-0c5f-4782-8176-e009fb2feb9b.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695021221303-0bebd0a3-0c5f-4782-8176-e009fb2feb9b.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<blockquote>
+<p>由于这个插件采用另一个进程来运行 ESLint 的扫描工作，因此不会影响 Vite 项目的启动速度</p>
+</blockquote>
+<p><a name="w5141"></a></p>
+<h3 id="Stylelint：样式规范工具"><a href="#Stylelint：样式规范工具" class="headerlink" title="Stylelint：样式规范工具"></a>Stylelint：样式规范工具</h3><p>Stylelint 主要专注于样式代码的规范检查，内置了 <strong>170 多个 CSS 书写规则</strong>，支持 <strong>CSS 预处理器</strong>（如 Sass、Less），提供<strong>插件化机制</strong>以供开发者扩展规则，已经被 Google、Github 等<strong>大型团队</strong>投入使用。</p>
+<p>与 ESLint 类似，在规范检查方面，Stylelint 已经做的足够专业，而在代码格式化方面，我们仍然需要结合 Prettier 一起来使用。</p>
+<p>首先安装 Stylelint 以及相应的工具套件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm i stylelint stylelint-prettier stylelint-config-prettier stylelint-config-recess-order stylelint-config-standard stylelint-config-standard-scss -D</span><br></pre></td></tr></table></figure>
+
+<p>然后在 Stylelint 的配置文件 .stylelintrc.js 中使用这些工具套件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .stylelintrc.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// 注册 stylelint 的 prettier 插件</span></span><br><span class="line">  <span class="attr">plugins</span>: [<span class="string">&#x27;stylelint-prettier&#x27;</span>],</span><br><span class="line">  <span class="comment">// 继承一系列规则集合</span></span><br><span class="line">  <span class="attr">extends</span>: [</span><br><span class="line">    <span class="comment">// standard 规则集合</span></span><br><span class="line">    <span class="string">&#x27;stylelint-config-standard&#x27;</span>,</span><br><span class="line">    <span class="comment">// standard 规则集合的 scss 版本</span></span><br><span class="line">    <span class="string">&#x27;stylelint-config-standard-scss&#x27;</span>,</span><br><span class="line">    <span class="comment">// 样式属性顺序规则</span></span><br><span class="line">    <span class="string">&#x27;stylelint-config-recess-order&#x27;</span>,</span><br><span class="line">    <span class="comment">// 接入 Prettier 规则</span></span><br><span class="line">    <span class="string">&#x27;stylelint-config-prettier&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;stylelint-prettier/recommended&#x27;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 配置 rules</span></span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="comment">// 开启 Prettier 自动格式化功能</span></span><br><span class="line">    <span class="string">&#x27;prettier/prettier&#x27;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以发现 Stylelint 的配置文件和 ESLint 还是非常相似的，常用的 plugins、extends 和 rules 属性在 ESLint 同样存在，并且与 ESLint 中这三个属性的功能也基本相同。<br />不过需要强调的是在 Stylelint 中 rules 的配置会和 ESLint 有些区别。</p>
+<p>接下来将 Stylelint 集成到项目中，回到 package.json 中，增加如下的 scripts 配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// 整合 lint 命令</span></span><br><span class="line">    <span class="attr">&quot;lint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm run lint:script &amp;&amp; npm run lint:style&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="comment">// stylelint 命令</span></span><br><span class="line">    <span class="attr">&quot;lint:style&quot;</span><span class="punctuation">:</span> <span class="string">&quot;stylelint --fix \&quot;src/**/*.&#123;css,scss&#125;\&quot;&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>当然，你也可以在 VSCode 中安装 Stylelint 插件，这样能够在开发阶段即时感知到代码格式问题，提前进行修复。我们也可以直接在 Vite 中集成 Stylelint。社区中提供了 Stylelint 的 Vite 插件：vite-plugin-stylelint，实现在项目开发阶段提前暴露出样式代码的规范问题。<br><a name="DCDna"></a></p>
+<h3 id="Husky-lint-staged-的-Git-提交工作流"><a href="#Husky-lint-staged-的-Git-提交工作流" class="headerlink" title="Husky + lint-staged 的 Git 提交工作流"></a>Husky + lint-staged 的 Git 提交工作流</h3><p>安装了 ESLint、Prettier 和 Stylelint 的 VSCode 插件或者 Vite 插件后，在开发阶段提前规避掉代码格式的问题，但实际上这也只是将问题提前暴露，并不能保证规范问题能完全被解决，还是可能导致线上的代码出现不符合规范的情况。那么如何来避免这类问题呢？</p>
+<p>我们可以在代码提交的时候进行卡点检查。使用 Husky 拦截 git commit 命令，进行代码格式检查，只有确保通过格式检查才允许正常提交代码。</p>
+<p>如果直接在 Husky 的钩子中执行 npm run lint，这会产生一个额外的问题：Husky 中每次执行 npm run lint 都对仓库中的代码进行全量检查，也就是说，即使某些文件并没有改动，也会走一次 Lint 检查，当项目代码越来越多的时候，提交的过程会越来越慢，影响开发体验。<br />而 lint-staged 就是用来解决上述全量扫描问题的，可以实现只对存入暂存区的文件进行 Lint 检查，大大提高了提交代码的效率。如此一来，我们便实现了提交代码时的增量 Lint 检查。</p>
+<p><a name="BGpYn"></a></p>
+<h3 id="commitlint-检查信息提交规范"><a href="#commitlint-检查信息提交规范" class="headerlink" title="commitlint 检查信息提交规范"></a>commitlint 检查信息提交规范</h3><p><a name="pKHsc"></a></p>
+<h2 id="静态资源处理"><a href="#静态资源处理" class="headerlink" title="静态资源处理"></a>静态资源处理</h2><p>静态资源处理是前端工程经常遇到的问题，在真实的工程中不仅仅包含了动态执行的代码，也不可避免地要引入各种静态资源，如图片、JSON、Worker 文件、Web Assembly 文件等等。</p>
+<p>而静态资源本身并不是标准意义上的模块，因此对它们的处理和普通的代码是需要区别对待的。</p>
+<ul>
+<li>一方面我们需要解决<strong>资源加载</strong>的问题，对 Vite 来说就是如何将静态资源解析并加载为一个 ES 模块的问题；</li>
+<li>另一方面，在<strong>生产环境</strong>下我们还需要考虑静态资源的部署问题、体积问题、网络性能问题，并采取相应的方案来进行优化。</li>
+</ul>
+<p><a name="Lhgyw"></a></p>
+<h3 id="图片加载"><a href="#图片加载" class="headerlink" title="图片加载"></a>图片加载</h3><p>图片是项目中最常用的静态资源之一，本身包括了非常多的格式，诸如 png、jpeg、webp、avif、gif，当然，也包括经常用作图标的 svg 格式。这一部分我们主要讨论的是如何加载图片，也就是说怎么让图片在页面中<strong>正常显示</strong>。</p>
+<p><a name="ea8Fy"></a></p>
+<h3 id="三种加载图片的场景"><a href="#三种加载图片的场景" class="headerlink" title="三种加载图片的场景"></a>三种加载图片的场景</h3><p>在 HTML 或者 JSX 中，通过 img 标签来加载图片，如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;../../assets/a.png&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">img</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在 CSS 中通过 background 属性加载图片，如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">&#x27;../../assets/b.png&#x27;</span>) norepeat;</span><br></pre></td></tr></table></figure>
+
+<p>在 JavaScript 中，通过脚本的方式动态指定图片的 src 属性，如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;hero-img&#x27;</span>).<span class="property">src</span> = <span class="string">&#x27;../../assets/c.png&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="iRxLa"></a></p>
+<h4 id="在-Vite-中使用"><a href="#在-Vite-中使用" class="headerlink" title="在 Vite 中使用"></a>在 Vite 中使用</h4><p>配置别名：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span>;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">resolve</span>: &#123;</span><br><span class="line">    <span class="comment">// 别名配置</span></span><br><span class="line">    <span class="attr">alias</span>: &#123;</span><br><span class="line">      <span class="string">&#x27;@assets&#x27;</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;src/assets&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样 Vite 在遇到 @assets 路径的时候，会自动帮我们定位至根目录下的 src&#x2F;assets 目录。这样使用以上三种方式引入图片该别名路径都能生效</p>
+<blockquote>
+<p>值得注意的是，alias 别名配置不仅在 JavaScript 的 import 语句中生效，在 CSS 代码的 @import 和 url 导入语句中也同样生效。</p>
+</blockquote>
+<p><a name="DKFmV"></a></p>
+<h4 id="SVG-组件方式加载"><a href="#SVG-组件方式加载" class="headerlink" title="SVG 组件方式加载"></a>SVG 组件方式加载</h4><p>我们通常希望能将 svg 当做一个组件来引入，这样我们可以很方便地修改 svg 的各种属性，而且比 img 标签的引入方式更加优雅。<br />SVG 组件加载在不同的前端框架中的实现不太相同，社区中也已经了有了对应的插件支持：</p>
+<ul>
+<li>Vue2 项目中可以使用 <a href="https://link.juejin.cn/?target=https://github.com/pakholeung37/vite-plugin-vue2-svg">vite-plugin-vue2-svg</a> 插件</li>
+<li>Vue3 项目中可以引入 <a href="https://link.juejin.cn/?target=https://github.com/jpkleemans/vite-svg-loader">vite-svg-loader</a></li>
+<li>React 项目使用 <a href="https://link.juejin.cn/?target=https://github.com/pd4d10/vite-plugin-svgr">vite-plugin-svgr</a> 插件</li>
+</ul>
+<p><a name="MOVoV"></a></p>
+<h3 id="JSON-加载"><a href="#JSON-加载" class="headerlink" title="JSON 加载"></a>JSON 加载</h3><p>Vite 中已经内置了对于 JSON 文件的解析，底层使用 @rollup&#x2F;pluginutils 的 dataToEsm 方法将 JSON 对象转换为一个包含各种具名导出的 ES 模块<br />在项目中的使用方式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; version &#125; <span class="keyword">from</span> <span class="string">&#x27;../../../package.json&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>你也可以在配置文件禁用按名导入的方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">json</span>: &#123;</span><br><span class="line">    <span class="attr">stringify</span>: <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样会将 JSON 的内容解析为 <code>export default JSON.parse(&quot;xxx&quot;)</code>，这样会失去按名导出的能力，不过在 JSON 数据量比较大的时候，可以优化解析性能。</p>
+<p><a name="a1b8T"></a></p>
+<h3 id="Web-Worker-脚本"><a href="#Web-Worker-脚本" class="headerlink" title="Web Worker 脚本"></a>Web Worker 脚本</h3><p>Vite 中使用 Web Worker 非常简单<br />我们可以新建 Header&#x2F;example.js 文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">start</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 给主线程传值</span></span><br><span class="line">    <span class="title function_">postMessage</span>(++count);</span><br><span class="line">  &#125;, <span class="number">2000</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">start</span>();</span><br></pre></td></tr></table></figure>
+
+<p>然后在 Header 组件中引入，引入的时候注意加上 ?worker 后缀，告诉 Vite 这是一个 Web Worker 脚本文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Worker</span> <span class="keyword">from</span> <span class="string">&#x27;./example.js?worker&#x27;</span>;</span><br><span class="line"><span class="comment">// 1. 初始化 Worker 实例</span></span><br><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>();</span><br><span class="line"><span class="comment">// 2. 主线程监听 worker 的信息</span></span><br><span class="line">worker.<span class="title function_">addEventListener</span>(<span class="string">&#x27;message&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器的控制面板，你可以看到 Worker 传给主线程的信息已经成功打印：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695022397627-4bd3348e-c7c0-48ef-b789-314f7e8dbd5b.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695022397627-4bd3348e-c7c0-48ef-b789-314f7e8dbd5b.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p><a name="Tj0bK"></a></p>
+<h3 id="Web-Assembly-文件"><a href="#Web-Assembly-文件" class="headerlink" title="Web Assembly 文件"></a>Web Assembly 文件</h3><p>Vite 对于 .wasm 文件也提供了开箱即用的支持</p>
+<p><a name="qyvtw"></a></p>
+<h3 id="其它静态资源"><a href="#其它静态资源" class="headerlink" title="其它静态资源"></a>其它静态资源</h3><p>除了上述的一些资源格式，Vite 也对下面几类格式提供了内置的支持：</p>
+<ul>
+<li>媒体类文件，包括 mp4、webm、ogg、mp3、wav、flac 和 aac</li>
+<li>字体类文件。包括 woff、woff2、eot、ttf 和 otf</li>
+<li>文本类。包括 webmanifest、pdf 和 txt</li>
+</ul>
+<p>也就是说，你可以在 Vite 将这些类型的文件当做一个 ES 模块来导入使用。<br />如果你的项目中还存在其它格式的静态资源，你可以通过 <strong>assetsInclude 配置</strong>让 Vite 来支持加载：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">assetsInclude</span>: [<span class="string">&#x27;.gltf&#x27;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="UZObj"></a></p>
+<h3 id="特殊资源后缀"><a href="#特殊资源后缀" class="headerlink" title="特殊资源后缀"></a>特殊资源后缀</h3><p>Vite 中引入静态资源时，也支持在路径最后加上一些特殊的 query 后缀，例如：</p>
+<ul>
+<li>?url：表示获取资源的路径，这在只想获取文件路径而不是内容的场景将会很有用。</li>
+<li>?raw：表示获取资源的字符串内容，如果你只想拿到资源的原始内容，可以使用这个后缀。</li>
+<li>?inline:：表示资源强制内联，而不是打包成单独的文件。</li>
+</ul>
+<p><a name="Ck8vY"></a></p>
+<h2 id="静态资源的生产环境处理"><a href="#静态资源的生产环境处理" class="headerlink" title="静态资源的生产环境处理"></a>静态资源的生产环境处理</h2><p>在前面的内容中，我们围绕着如何加载静态资源这个问题，在 Vite 中进行具体的编码及配置。<br />但另一方面，在生产环境下，我们又面临着一些新的问题：</p>
+<ul>
+<li>部署域名怎么配置？</li>
+<li>资源打包成单文件还是作为 Base64 格式内联?</li>
+<li>图片太大了怎么压缩？</li>
+<li>svg 请求数量太多了怎么优化？<br><a name="hN2O5"></a></li>
+</ul>
+<h3 id="自定义部署域名"><a href="#自定义部署域名" class="headerlink" title="自定义部署域名"></a>自定义部署域名</h3><p>一般在我们访问线上的站点时，站点里面一些静态资源的地址都包含了相应域名的前缀，如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://sanyuan.cos.ap-beijing.myqcloud.com/logo.png&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>以上面这个地址例子，<a target="_blank" rel="noopener" href="https://sanyuan.cos.ap-beijing.myqcloud.com/">https://sanyuan.cos.ap-beijing.myqcloud.com</a> 是 CDN 地址前缀，&#x2F;logo.png 则是我们开发阶段使用的路径。<br />那么，我们是不是需要在上线前把图片先上传到 CDN，然后将代码中的地址<strong>手动</strong>替换成线上地址呢？那这样就太麻烦了。</p>
+<p>在 Vite 中我们可以有更加自动化的方式来实现地址的替换，只需要在配置文件中指定 base 参数即可：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="comment">// 是否为生产环境，在生产环境一般会注入 NODE_ENV 这个环境变量，见下面的环境变量文件配置</span></span><br><span class="line"><span class="keyword">const</span> isProduction = process.<span class="property">env</span>.<span class="property">NODE_ENV</span> === <span class="string">&#x27;production&#x27;</span>;</span><br><span class="line"><span class="comment">// 填入项目的 CDN 域名地址</span></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">CDN_URL</span> = <span class="string">&#x27;xxxxxx&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 具体配置</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">base</span>: isProduction ? <span class="attr">CDN_URL</span>: <span class="string">&#x27;/&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// .env.development</span></span><br><span class="line"><span class="variable constant_">NODE_ENV</span>=development</span><br><span class="line"></span><br><span class="line"><span class="comment">// .env.production</span></span><br><span class="line"><span class="variable constant_">NODE_ENV</span>=production</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>注意在项目根目录新增的两个环境变量文件 <code>.env.development</code> 和 <code>.env.production</code>，顾名思义，即分别在开发环境和生产环境注入一些环境变量，这里为了区分不同环境我们加上了 NODE_ENV，你也可以根据需要添加别的环境变量。</p>
+<blockquote>
+<p>打包的时候 Vite 会自动将这些环境变量替换为相应的字符串</p>
+</blockquote>
+<p>接着执行 pnpm run build，可以发现产物中的静态资源地址已经自动加上了 CDN 地址前缀了<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695023066167-d632f2b6-4175-4496-88d1-7558fdfd5027.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695023066167-d632f2b6-4175-4496-88d1-7558fdfd5027.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>有时候可能项目中的某些图片需要存放到另外的存储服务，我们同样可以通过定义环境变量的方式来解决这个问题，在项目根目录新增 .env 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 开发环境优先级: .env.development &gt; .env</span><br><span class="line">// 生产环境优先级: .env.production &gt; .env</span><br><span class="line"></span><br><span class="line">// .env 文件</span><br><span class="line">VITE_IMG_BASE_URL=https://my-image-cdn.com</span><br></pre></td></tr></table></figure>
+
+<p>然后进入 src&#x2F;vite-env.d.ts 增加类型声明：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;reference types=&quot;vite/client&quot; /&gt;</span></span><br><span class="line"></span><br><span class="line">interface <span class="title class_">ImportMetaEnv</span> &#123;</span><br><span class="line">  readonly <span class="attr">VITE_APP_TITLE</span>: string;</span><br><span class="line">  <span class="comment">// 自定义的环境变量</span></span><br><span class="line">  readonly <span class="attr">VITE_IMG_BASE_URL</span>: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface <span class="title class_">ImportMeta</span> &#123;</span><br><span class="line">  readonly <span class="attr">env</span>: <span class="title class_">ImportMetaEnv</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>值得注意的是，如果某个环境变量要在 Vite 中通过 import.meta.env 访问，那么它必须以 VITE_ 开头，如 VITE_IMG_BASE_URL</p>
+</blockquote>
+<p>接下来我们在组件中来使用这个环境变量：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">&quot;new URL(&#x27;./logo.png&#x27;, import.meta.env.VITE_IMG_BASE_URL).href&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来在开发环境启动项目或者生产环境打包后可以看到环境变量已经被替换，地址能够正常显示：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695023263042-307d720b-5c4d-4d21-937c-d6e10efbb1f4.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695023263042-307d720b-5c4d-4d21-937c-d6e10efbb1f4.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br />至此，我们就彻底解决了图片资源生产环境域名替换的问题。</p>
+<p><a name="qwjUC"></a></p>
+<h3 id="单文件-or-内联"><a href="#单文件-or-内联" class="headerlink" title="单文件 or 内联"></a>单文件 or 内联</h3><p>在 Vite 中，所有的静态资源都有两种构建方式：</p>
+<ol>
+<li>一种是打包成一个单文件</li>
+<li>另一种是通过 base64 编码的格式内嵌到代码中</li>
+</ol>
+<p>这两种方案到底应该如何来选择呢？</p>
+<p>对于比较小的资源，适合内联到代码中，一方面对代码体积的影响很小，另一方面可以减少不必要的网络请求，优化网络性能。<br />而对于比较大的资源，就推荐单独打包成一个文件，而不是内联了，否则可能导致上 MB 的 base64 字符串内嵌到代码中，导致代码体积瞬间庞大，页面加载性能直线下降。</p>
+<p>Vite 中内置的优化方案是这样的：</p>
+<ol>
+<li>如果静态资源体积 &gt;&#x3D; 4KB，则提取成单独的文件</li>
+<li>如果静态资源体积 &lt; 4KB，则作为 base64 格式的字符串内联</li>
+</ol>
+<p>当然，这个临界值你可以通过 <code>build.assetsInlineLimit</code> 自行配置，如下代码所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">build</span>: &#123;</span><br><span class="line">    <span class="comment">// 8 KB</span></span><br><span class="line">    <span class="attr">assetsInlineLimit</span>: <span class="number">8</span> * <span class="number">1024</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>svg 格式的文件不受这个临时值的影响，始终会打包成单独的文件，因为它和普通格式的图片不一样，需要动态设置一些属性</p>
+</blockquote>
+<p><a name="XZw4F"></a></p>
+<h3 id="图片压缩"><a href="#图片压缩" class="headerlink" title="图片压缩"></a>图片压缩</h3><p>图片资源的体积往往是项目产物体积的大头，如果能尽可能精简图片的体积，那么对项目整体打包产物体积的优化将会是非常明显的。<br />在 JavaScript 领域有一个非常知名的图片压缩库 <a href="https://link.juejin.cn/?target=https://www.npmjs.com/package/imagemin">imagemin</a>，作为一个底层的压缩工具，前端的项目中经常基于它来进行图片压缩，比如 Webpack 中大名鼎鼎的 image-webpack-loader。</p>
+<p>在 Vite 社区当中也已经有了开箱即用的 Vite 插件：vite-plugin-imagemin<br />可以在 Vite 配置文件中引入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//vite.config.ts</span></span><br><span class="line"><span class="keyword">import</span> viteImagemin <span class="keyword">from</span> <span class="string">&#x27;vite-plugin-imagemin&#x27;</span>;</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="comment">// 忽略前面的插件</span></span><br><span class="line">    <span class="title function_">viteImagemin</span>(&#123;</span><br><span class="line">      <span class="comment">// 无损压缩配置，无损压缩下图片质量不会变差</span></span><br><span class="line">      <span class="attr">optipng</span>: &#123;</span><br><span class="line">        <span class="attr">optimizationLevel</span>: <span class="number">7</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="comment">// 有损压缩配置，有损压缩下图片质量可能会变差</span></span><br><span class="line">      <span class="attr">pngquant</span>: &#123;</span><br><span class="line">        <span class="attr">quality</span>: [<span class="number">0.8</span>, <span class="number">0.9</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="comment">// svg 优化</span></span><br><span class="line">      <span class="attr">svgo</span>: &#123;</span><br><span class="line">        <span class="attr">plugins</span>: [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&#x27;removeViewBox&#x27;</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&#x27;removeEmptyAttrs&#x27;</span>,</span><br><span class="line">            <span class="attr">active</span>: <span class="literal">false</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来我们可以尝试执行 pnpm run build 进行打包：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695023535422-2b4d8874-7fcf-409a-bbd1-28e11f7497d1.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695023535422-2b4d8874-7fcf-409a-bbd1-28e11f7497d1.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br />Vite 插件已经自动帮助我们调用 imagemin 进行项目图片的压缩，可以看到<strong>压缩的效果非常明显</strong>，强烈推荐大家在项目中使用。</p>
+<p><a name="IP3Uu"></a></p>
+<h3 id="雪碧图优化"><a href="#雪碧图优化" class="headerlink" title="雪碧图优化"></a>雪碧图优化</h3><p>将所有的 svg 内容都内联到 HTML 中，省去了大量 svg 的网络请求。</p>
+<p><a name="qIxNk"></a></p>
+<h2 id="依赖预构建"><a href="#依赖预构建" class="headerlink" title="依赖预构建"></a>依赖预构建</h2><p>Vite 是一个提倡 no-bundle 的构建工具，相比于传统的 Webpack，能做到开发时的模块按需编译，而不用先打包完再加载。但模块代码其实分为两部分：</p>
+<ol>
+<li>一部分是源代码，也就是业务代码</li>
+<li>另一部分是第三方依赖的代码，即 node_modules 中的代码</li>
+</ol>
+<p>所谓的 no-bundle <strong>只是对于源代码而言</strong>，对于第三方依赖而言，Vite 还是选择 bundle（打包），并且使用速度极快的打包器 Esbuild 来完成这一过程，达到秒级的依赖编译速度。<br />接下来我们将要熟悉 Vite 的<strong>预构建功能</strong>，深入体会各个配置的应用场景和使用姿势，学会在实战中驾驭预构建的能力。</p>
+<p><a name="QBpfo"></a></p>
+<h3 id="为什么需要预构建？"><a href="#为什么需要预构建？" class="headerlink" title="为什么需要预构建？"></a>为什么需要预构建？</h3><p>为什么在开发阶段我们要对第三方依赖进行预构建？如果不进行预构建会怎么样？</p>
+<p>首先 Vite 是基于浏览器原生 ES 模块规范实现的 Dev Server，不论是应用代码，还是第三方依赖的代码，理应符合 ESM 规范才能够正常运行。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/png/34869350/1695203692834-c2281253-2438-4999-baf8-fe8088251271.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/png/34869350/1695203692834-c2281253-2438-4999-baf8-fe8088251271.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="截屏2023-09-20 17.54.45.png"><br />但可惜，我们没有办法控制第三方的打包规范。<br />就目前来看，还有相当多的第三方库仍然没有 ES 版本的产物，比如大名鼎鼎的 react：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// react 入口文件</span></span><br><span class="line"><span class="comment">// 只有 CommonJS 格式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span> === <span class="string">&quot;production&quot;</span>) &#123;</span><br><span class="line">  <span class="variable language_">module</span>.<span class="property">exports</span> = <span class="built_in">require</span>(<span class="string">&quot;./cjs/react.production.min.js&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="variable language_">module</span>.<span class="property">exports</span> = <span class="built_in">require</span>(<span class="string">&quot;./cjs/react.development.js&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种 CommonJS 格式的代码在 Vite 当中无法直接运行，我们需要将它转换成 ESM 格式的产物。</p>
+<p>此外，还有一个比较重要的问题——<strong>请求瀑布流问题</strong>。<br />比如说，知名的 loadsh-es 库本身是有 ES 版本产物的，可以在 Vite 中直接运行。但实际上，它在加载时会发出特别多的请求，导致页面加载的前几秒几都乎处于卡顿状态，拿一个简单的 demo 项目举例，请求情况如下图所示:<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695024832556-711ff524-fa3f-4a7c-9d6c-9e5c852906bf.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695024832556-711ff524-fa3f-4a7c-9d6c-9e5c852906bf.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br />每个 import 都会触发一次新的文件请求，因此在这种依赖层级深、涉及模块数量多的情况下，会触发成百上千个网络请求。<br />巨大的请求量加上 Chrome 对同一个域名下只能同时支持 6 个 HTTP 并发请求的限制，导致页面加载十分缓慢，与 Vite 主导性能优势的初衷背道而驰。</p>
+<p>解决方案就是依赖预构建，在进行<strong>依赖的预构建</strong>之后，lodash-es 这个库的代码被打包成了一个文件，这样请求的数量会骤然减少，页面加载也快了许多。<br />下图是进行预构建之后的请求情况，你可以对照看看：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695024943872-eca8cf8e-b4f9-4917-90e3-5dedb04b78e6.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695024943872-eca8cf8e-b4f9-4917-90e3-5dedb04b78e6.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>总之，依赖预构建主要做了两件事情：</p>
+<ol>
+<li><strong>将其他格式（如 UMD 和 CommonJS）的产物转换为 ESM 格式</strong>，使其在浏览器通过 <script type="module"><script>的方式正常加载。</li>
+<li><strong>打包第三方库的代码，将各个第三方库分散的文件合并到一起，减少 HTTP 请求数量</strong>。从而避免页面加载性能劣化。</li>
+</ol>
+<p>而这两件事情全部由性能优异的 Esbuild（基于 Golang 开发）完成，而不是传统的 Webpack/Rollup，所以也不会有明显的打包性能问题，反而是 Vite 项目启动飞快（秒级启动）的一个<strong>核心原因</strong>。</p>
+<blockquote>
+<p>ps: Vite 1.x 使用了 Rollup 来进行依赖预构建，在 2.x 版本将 Rollup 换成了 Esbuild，编译速度提升了<a href="https://link.juejin.cn/?target=https://esbuild.github.io/">近 100 倍</a></p>
+</blockquote>
+<p><a name="Y41vg"></a></p>
+<h3 id="如何开启预构建？"><a href="#如何开启预构建？" class="headerlink" title="如何开启预构建？"></a>如何开启预构建？</h3><p>在 Vite 中有两种开启预构建的方式，分别是<strong>自动开启</strong>和<strong>手动开启</strong>。<br><a name="o0EPF"></a></p>
+<h4 id="自动开启"><a href="#自动开启" class="headerlink" title="自动开启"></a>自动开启</h4><p>当我们在第一次启动项目的时候，可以在命令行窗口看见如下的信息：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695025151240-3864732f-82f7-47c1-bc63-8bdb4d4696e0.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695025151240-3864732f-82f7-47c1-bc63-8bdb4d4696e0.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br />在浏览器访问页面后，打开 Dev Tools 中的网络调试面板，你可以发现第三方包的引入路径已经被重写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="comment">// 路径被重写，定向到预构建产物文件中</span></span><br><span class="line"><span class="keyword">import</span> __vite__cjsImport0_react <span class="keyword">from</span> <span class="string">&quot;/node_modules/.vite/react.js?v=979739df&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">React</span> = __vite__cjsImport0_react.<span class="property">__esModule</span></span><br><span class="line">  ? __vite__cjsImport0_react.<span class="property">default</span></span><br><span class="line">  : __vite__cjsImport0_react;</span><br></pre></td></tr></table></figure>
+
+<p><a name="O9Rk5"></a></p>
+<h4 id="手动开启"><a href="#手动开启" class="headerlink" title="手动开启"></a>手动开启</h4><p>上面提到了预构建中本地文件系统的产物缓存机制，而少数场景下我们不希望用本地的缓存文件，比如需要调试某个包的预构建结果，我推荐使用下面任意一种方法清除缓存：</p>
+<ol>
+<li>删除 node_modules/.vite 目录</li>
+<li>在 Vite 配置文件中，将 server.force 设为 true（注意，Vite 3.0 中配置项有所更新，你需要将 optimizeDeps.force 设为 true）</li>
+<li>命令行执行 npx vite --force 或者 npx vite optimize<blockquote>
+<p>Vite 项目的启动可以分为两步</p>
+<ol>
+<li>第一步是依赖预构建</li>
+<li>第二步才是 Dev Server 的启动</li>
+</ol>
+<p>npx vite optimize 相比于其它的方案，仅仅完成第一步的功能</p>
+</blockquote>
+</li>
+</ol>
+<p><a name="USigl"></a></p>
+<h3 id="自定义配置详解"><a href="#自定义配置详解" class="headerlink" title="自定义配置详解"></a>自定义配置详解</h3><p>前面说到了如何启动预构建的问题，现在我们来了解怎样通过 Vite 提供的配置项来<strong>定制预构建的过程</strong>。<br />Vite 将预构建相关的配置项都集中在 <strong>optimizeDeps</strong> 属性上，我们来一一拆解这些子配置项背后的含义和应用场景。</p>
+<p><a name="sdgkY"></a></p>
+<h4 id="入口文件：entries"><a href="#入口文件：entries" class="headerlink" title="入口文件：entries"></a>入口文件：entries</h4><p>第一个是参数是 <code>optimizeDeps.entries</code>，通过这个参数你可以自定义预构建的入口文件。</p>
+<p>实际上，在项目第一次启动时，Vite 会默认抓取项目中所有的 HTML 文件（如当前脚手架项目中的 index.html），将 HTML 文件作为应用入口，然后根据入口文件扫描出项目中用到的第三方依赖，最后对这些依赖逐个进行编译。<br />那么，当默认扫描 HTML 文件的行为无法满足需求的时候，比如项目入口需要为 vue 格式文件时，你可以通过 entries 参数来配置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">optimizeDeps</span>: &#123;</span><br><span class="line">    <span class="comment">// 为一个字符串数组</span></span><br><span class="line">    <span class="attr">entries</span>: [<span class="string">&quot;./src/main.vue&quot;</span>];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>entries 配置也支持 <a href="https://link.juejin.cn/?target=https://github.com/mrmlnc/fast-glob">glob 语法</a>，非常灵活：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将所有的 .vue 文件作为扫描入口</span></span><br><span class="line"><span class="attr">entries</span>: [<span class="string">&quot;**/*.vue&quot;</span>];</span><br></pre></td></tr></table></figure>
+
+<p>不光是.vue 文件，Vite 同时还支持各种格式的入口，包括: html、svelte、astro、js、jsx、ts 和 tsx。<br />可以看到，只要可能存在 import 语句的地方，Vite 都可以解析，并通过内置的扫描机制搜集到项目中用到的依赖，通用性很强。</p>
+<p><a name="RwMTi"></a></p>
+<h4 id="添加一些依赖：include"><a href="#添加一些依赖：include" class="headerlink" title="添加一些依赖：include"></a>添加一些依赖：include</h4><p>include 也是一个很常用的配置，它决定了可以强制预构建的依赖项<br />使用方式很简单：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="attr">optimizeDeps</span>: &#123;</span><br><span class="line">  <span class="comment">// 配置为一个字符串数组，将 `lodash-es` 和 `vue`两个包强制进行预构建</span></span><br><span class="line">  <span class="attr">include</span>: [<span class="string">&quot;lodash-es&quot;</span>, <span class="string">&quot;vue&quot;</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它在使用上并不难，真正难的地方在于，如何找到合适它的使用场景。<br />前文中我们提到，Vite 会根据应用入口（entries）自动搜集依赖，然后进行预构建，这是不是说明 Vite 可以百分百准确地搜集到所有的依赖呢？事实上并不是，某些情况下 Vite 默认的扫描行为并不完全可靠，这就需要联合配置 include 来达到完美的预构建效果了。</p>
+<p>接下来，我们好好梳理一下到底有哪些需要配置 include 的场景：<br><a name="PATVa"></a></p>
+<h5 id="场景-1-动态-import"><a href="#场景-1-动态-import" class="headerlink" title="场景 1 - 动态 import"></a>场景 1 - 动态 import</h5><p>在某些动态 import 的场景下，由于 Vite 天然按需加载的特性，经常会导致某些依赖只能在运行时被识别出来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/locales/zh_CN.js</span></span><br><span class="line"><span class="keyword">import</span> objectAssign <span class="keyword">from</span> <span class="string">&quot;object-assign&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(objectAssign);</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.tsx</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">importModule</span> = (<span class="params">m</span>) =&gt; <span class="keyword">import</span>(<span class="string">`./locales/<span class="subst">$&#123;m&#125;</span>.ts`</span>);</span><br><span class="line">importModule(<span class="string">&quot;zh_CN&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，动态 import 的路径只有运行时才能确定，导致无法在预构建阶段被扫描出来。<br />因此，我们在访问项目时控制台会出现下面的日志信息：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695025928681-7f09edaa-95be-47e4-9ecc-27d161fd7ffd.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695025928681-7f09edaa-95be-47e4-9ecc-27d161fd7ffd.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br />这段 log 的意思是：Vite 运行时发现了新的依赖，随之重新进行依赖预构建，并刷新页面。<br />这个过程也叫<strong>二次预构建</strong>。在一些比较复杂的项目中，这个过程会执行很多次，如下面的日志信息所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[vite] new dependencies found: @material-ui/icons/Dehaze, @material-ui/core/Box, @material-ui/core/Checkbox, updating...</span><br><span class="line">[vite] ✨ dependencies updated, reloading page...</span><br><span class="line">[vite] new dependencies found: @material-ui/core/Dialog, @material-ui/core/DialogActions, updating...</span><br><span class="line">[vite] ✨ dependencies updated, reloading page...</span><br><span class="line">[vite] new dependencies found: @material-ui/core/Accordion, @material-ui/core/AccordionSummary, updating...</span><br><span class="line">[vite] ✨ dependencies updated, reloading page...</span><br></pre></td></tr></table></figure>
+
+<p>然而，二次预构建的成本也比较大。<br />我们不仅需要把预构建的流程重新运行一遍，还得重新刷新页面，并且需要重新请求所有的模块。尤其是在大型项目中，这个过程会严重拖慢应用的加载速度！<br />因此，我们要尽力避免运行时的<strong>二次预构建</strong>。具体怎么做呢？就是通过 include 参数提前声明需要按需加载的依赖：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">optimizeDeps</span>: &#123;</span><br><span class="line">    <span class="attr">include</span>: [</span><br><span class="line">      <span class="comment">// 按需加载的依赖都可以声明到这个数组里</span></span><br><span class="line">      <span class="string">&quot;object-assign&quot;</span>,</span><br><span class="line">    ];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="n3p1i"></a></p>
+<h5 id="场景-2-某些包被手动-exclude"><a href="#场景-2-某些包被手动-exclude" class="headerlink" title="场景 2 - 某些包被手动 exclude"></a>场景 2 - 某些包被手动 exclude</h5><p>exclude 是 optimizeDeps 中的另一个配置项，与 include 相对，用于将某些依赖从预构建的过程中排除。<br />不过这个配置并不常用，也不推荐大家使用。<br />如果真遇到了要在预构建中排除某个包的情况，需要注意它所依赖的包是否具有 ESM 格式，如下面这个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">optimizeDeps</span>: &#123;</span><br><span class="line">    <span class="attr">exclude</span>: [<span class="string">&quot;@loadable/component&quot;</span>];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到浏览器控制台会出现如下的报错：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695026098928-8764c932-1041-4cae-9bb0-2b797970a2eb.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695026098928-8764c932-1041-4cae-9bb0-2b797970a2eb.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br />这是为什么呢？因为我们刚刚手动 exclude 的包 @loadable/component 本身具有 ESM 格式的产物，但它的某个依赖 hoist-non-react-statics 的产物并没有提供 ESM 格式，导致运行时加载失败。</p>
+<p>这个时候 include 配置就派上用场了，我们可以强制对 hoist-non-react-statics 这个间接依赖进行预构建：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">optimizeDeps</span>: &#123;</span><br><span class="line">    <span class="attr">include</span>: [</span><br><span class="line">      <span class="comment">// 间接依赖的声明语法，通过`&gt;`分开, 如`a &gt; b`表示 a 中依赖的 b</span></span><br><span class="line">      <span class="string">&quot;@loadable/component &gt; hoist-non-react-statics&quot;</span>,</span><br><span class="line">    ];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 include 参数中，我们将所有不具备 ESM 格式产物包都声明一遍，这样再次启动项目就没有问题了。</p>
+<p><a name="SNFD9"></a></p>
+<h4 id="自定义预构建时的-Esbuild-行为"><a href="#自定义预构建时的-Esbuild-行为" class="headerlink" title="自定义预构建时的 Esbuild 行为"></a>自定义预构建时的 Esbuild 行为</h4><p>Vite 提供了 esbuildOptions 参数来让我们自定义 Esbuild 本身的配置，常用的场景是加入一些 Esbuild 插件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">optimizeDeps</span>: &#123;</span><br><span class="line">    <span class="attr">esbuildOptions</span>: &#123;</span><br><span class="line">       <span class="attr">plugins</span>: [</span><br><span class="line">        <span class="comment">// 加入 Esbuild 插件</span></span><br><span class="line">      ];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个配置主要是处理一些特殊情况，例如某个第三方包本身的代码出现问题了。</p>
+<p>接下来，我们就来讨论一下第三方包出现问题怎么办。</p>
+<p>由于我们无法保证第三方包的代码质量，在某些情况下我们会遇到莫名的第三方库报错。举一个常见的案例：react-virtualized 库。这个库被许多组件库用到，但它的 ESM 格式产物有明显的问题，在 Vite 进行预构建的时候会直接抛出这个错误：<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695026369627-e32f132a-2e5c-4d10-becf-ca9550817b9c.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695026369627-e32f132a-2e5c-4d10-becf-ca9550817b9c.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br />原因是这个库的 ES 产物莫名其妙多出了一行无用的代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// WindowScroller.js 并没有导出这个模块</span></span><br><span class="line"><span class="keyword">import</span> &#123; bpfrpt_proptype_WindowScroller &#125; <span class="keyword">from</span> <span class="string">&quot;../WindowScroller.js&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>其实我们并不需要这行代码，但它却导致 Esbuild 预构建的时候直接报错退出了。<br />那这一类的问题如何解决呢？</p>
+<p><a name="Nd5IY"></a></p>
+<h5 id="修改第三方库代码"><a href="#修改第三方库代码" class="headerlink" title="修改第三方库代码"></a>修改第三方库代码</h5><p>首先，我们能想到的思路是<strong>直接修改第三方库的代码</strong>，不过这会带来团队协作的问题，你的改动需要同步到团队所有成员，比较麻烦。<br />好在，我们可以使用 patch-package 这个库来解决这类问题。一方面，它能记录第三方库代码的改动，另一方面也能将改动同步到团队每个成员。<br />patch-package 官方只支持 npm 和 yarn，而不支持 pnpm，不过社区中已经提供了支持 pnpm 的版本，这里我们来安装一下相应的包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm i @milahu/patch-package -D</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：要改动的包在 package.json 中必须声明确定的版本，不能有 ~ 或 ^ 前缀。</p>
+</blockquote>
+<p>接着，我们进入第三方库的代码中进行修改，先删掉无用的 import 语句，再在命令行输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx patch-package react-virtualized</span><br></pre></td></tr></table></figure>
+
+<p>现在根目录会多出 patches 目录记录第三方包内容的更改，随后我们在 package.json 的 scripts 中增加如下内容：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="comment">// 省略其它 script</span></span><br><span class="line">    <span class="attr">&quot;postinstall&quot;</span><span class="punctuation">:</span> <span class="string">&quot;patch-package&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样一来，每次安装依赖的时候都会通过 postinstall 脚本自动应用 patches 的修改，解决了团队协作的问题。</p>
+<p><a name="D3IE7"></a></p>
+<h5 id="加入-Esbuild-插件"><a href="#加入-Esbuild-插件" class="headerlink" title="加入 Esbuild 插件"></a>加入 Esbuild 插件</h5><p>第二种方式是通过 Esbuild 插件修改指定模块的内容<br />这里给大家展示一下新增的配置内容：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">const</span> esbuildPatchPlugin = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;react-virtualized-patch&quot;</span>,</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params">build</span>) &#123;</span><br><span class="line">    build.<span class="title function_">onLoad</span>(</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">filter</span>:</span><br><span class="line">          <span class="regexp">/react-virtualized\/dist\/es\/WindowScroller\/utils\/onScroll.js$/</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="keyword">async</span> (args) =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> text = <span class="keyword">await</span> fs.<span class="property">promises</span>.<span class="title function_">readFile</span>(args.<span class="property">path</span>, <span class="string">&quot;utf8&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          <span class="attr">contents</span>: text.<span class="title function_">replace</span>(</span><br><span class="line">            <span class="string">&#x27;import &#123; bpfrpt_proptype_WindowScroller &#125; from &quot;../WindowScroller.js&quot;;&#x27;</span>,</span><br><span class="line">            <span class="string">&quot;&quot;</span></span><br><span class="line">          ),</span><br><span class="line">        &#125;;</span><br><span class="line">      &#125;</span><br><span class="line">    );</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插件加入 Vite 预构建配置</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">optimizeDeps</span>: &#123;</span><br><span class="line">    <span class="attr">esbuildOptions</span>: &#123;</span><br><span class="line">      <span class="attr">plugins</span>: [esbuildPatchPlugin];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>关于 Esbuild 插件的实现细节，在之后的章节介绍</p>
+</blockquote>
+<p>所以，每次依赖安装时都会执行该插件修改第三方库的代码。</p>
+<blockquote>
+<p>而在生产环境，则需要写同样的 Rollup 插件解决这个问题。</p>
+</blockquote>
+<p><a name="EN7mu"></a></p>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p><a name="EKlyZ"></a></p>
+<h4 id="文件系统缓存"><a href="#文件系统缓存" class="headerlink" title="文件系统缓存"></a>文件系统缓存</h4><p>Vite 将预构建的依赖项缓存到 <code>node_modules/.vite</code> 中。只有在下面其中一项发生更改时，才需要重新运行预构建（会在源码分析中看到）：</p>
+<ul>
+<li>包管理器的锁文件内容，例如 package-lock.json，yarn.lock，pnpm-lock.yaml，或者 bun.lockb；</li>
+<li>补丁文件夹的修改时间；</li>
+<li>vite.config.js 中的相关字段；</li>
+<li>NODE_ENV 的值。<blockquote>
+<p>如果出于某些原因你想要强制 Vite 重新构建依赖项，你可以在启动开发服务器时指定 --force 选项，或手动删除 node_modules/.vite 缓存目录。</p>
+</blockquote>
+</li>
+</ul>
+<p><a name="q5naN"></a></p>
+<h4 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h4><p>已经预构建的依赖，请求中会使用 HTTP 头 max-age=31536000, immutable 进行强缓存，以提高开发期间页面重新加载的性能。<br /><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695025284334-b13b7e36-300a-402b-83fa-95d13956dc39.webp" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/webp/34869350/1695025284334-b13b7e36-300a-402b-83fa-95d13956dc39.webp" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"><br /><strong>一旦被缓存，这些请求将永远不会再次访问开发服务器。（依赖一般情况下不会变化）</strong></p>
+<blockquote>
+<p>如果重新安装了不同版本的依赖项（这反映在包管理器的 lockfile 中），则会通过附加版本查询自动失效。<br>如果你想通过本地编辑来调试依赖项，您可以：</p>
+<ol>
+<li>通过浏览器开发工具的 Network 选项卡暂时禁用缓存；</li>
+<li>重启 Vite 开发服务器指定 --force 选项，来重新构建依赖项;</li>
+<li>重新载入页面。</li>
+</ol>
+</blockquote>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="">
+              工程化
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>梨逍遥</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2024/03/29/frontend/engineering/vite-pei-zhi/" target="_blank" title="Vite 配置">https://ywzzy.github.io/2024/03/29/frontend/engineering/vite-pei-zhi/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://images.pexels.com/photos/1363876/pexels-photo-1363876.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/1363876/pexels-photo-1363876.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+    </div>
+    <a href="/2024/03/31/frontend/engineering/vite-shuang-yin-qing-jia-gou/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">Vite双引擎架构</div>
+      </div>
+      
+      <!-- <div class="content">
+        这篇文章我们会将目光集中到 Vite 本身的架构上，一起聊聊它是如何站在巨人的肩膀上实现出来的。所谓的巨人，指的就是 V
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://images.pexels.com/photos/46253/mt-fuji-sea-of-clouds-sunrise-46253.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/46253/mt-fuji-sea-of-clouds-sunrise-46253.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
+    </div>
+    <a href="/2024/03/14/stable-diffusion/sd-hui-tu-ru-men/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">SD 绘图入门</div>
+      </div>
+      <!-- <div class="content">
+        
+
+
+
+第 1 课：初识应用与基本出图流程 
+思维导图
+提示词一个女孩，在森林里漫步，阳光洒落在她的身上A girl, 
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://avatars.githubusercontent.com/u/48836340?v=4'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>梨逍遥</h2>
+        
+        
+          <p>一个码农</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">梨逍遥</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/mailto:1738348915@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/YWzzy"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1738348915"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#no-bundle-%E7%9A%84%E7%90%86%E5%BF%B5"><span class="toc-text">no-bundle 的理念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#root"><span class="toc-text">root</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E6%9E%84%E5%BB%BA"><span class="toc-text">生产环境构建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-%E6%A0%B7%E5%BC%8F%E6%96%B9%E6%A1%88"><span class="toc-text">CSS 样式方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%BC%95%E5%85%A5"><span class="toc-text">自动引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PostCSS"><span class="toc-text">PostCSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS-%E5%8E%9F%E5%AD%90%E5%8C%96%E6%A1%86%E6%9E%B6"><span class="toc-text">CSS 原子化框架</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lint-%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="toc-text">Lint 工具链</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ESLint%EF%BC%9AJS-x2F-TS-%E8%A7%84%E8%8C%83%E5%B7%A5%E5%85%B7"><span class="toc-text">ESLint：JS&#x2F;TS 规范工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8E-Prettier-%E5%BC%BA%E5%BC%BA%E8%81%94%E5%90%88"><span class="toc-text">与 Prettier 强强联合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-Vite-%E4%B8%AD%E6%8E%A5%E5%85%A5-ESLint"><span class="toc-text">在 Vite 中接入 ESLint</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stylelint%EF%BC%9A%E6%A0%B7%E5%BC%8F%E8%A7%84%E8%8C%83%E5%B7%A5%E5%85%B7"><span class="toc-text">Stylelint：样式规范工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Husky-lint-staged-%E7%9A%84-Git-%E6%8F%90%E4%BA%A4%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-text">Husky + lint-staged 的 Git 提交工作流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#commitlint-%E6%A3%80%E6%9F%A5%E4%BF%A1%E6%81%AF%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83"><span class="toc-text">commitlint 检查信息提交规范</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%A4%84%E7%90%86"><span class="toc-text">静态资源处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD"><span class="toc-text">图片加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="toc-text">三种加载图片的场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8-Vite-%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="toc-text">在 Vite 中使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SVG-%E7%BB%84%E4%BB%B6%E6%96%B9%E5%BC%8F%E5%8A%A0%E8%BD%BD"><span class="toc-text">SVG 组件方式加载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSON-%E5%8A%A0%E8%BD%BD"><span class="toc-text">JSON 加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-Worker-%E8%84%9A%E6%9C%AC"><span class="toc-text">Web Worker 脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-Assembly-%E6%96%87%E4%BB%B6"><span class="toc-text">Web Assembly 文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90"><span class="toc-text">其它静态资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E8%B5%84%E6%BA%90%E5%90%8E%E7%BC%80"><span class="toc-text">特殊资源后缀</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E7%9A%84%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%A4%84%E7%90%86"><span class="toc-text">静态资源的生产环境处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%83%A8%E7%BD%B2%E5%9F%9F%E5%90%8D"><span class="toc-text">自定义部署域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%96%87%E4%BB%B6-or-%E5%86%85%E8%81%94"><span class="toc-text">单文件 or 内联</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9"><span class="toc-text">图片压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%AA%E7%A2%A7%E5%9B%BE%E4%BC%98%E5%8C%96"><span class="toc-text">雪碧图优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E9%A2%84%E6%9E%84%E5%BB%BA"><span class="toc-text">依赖预构建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%A2%84%E6%9E%84%E5%BB%BA%EF%BC%9F"><span class="toc-text">为什么需要预构建？</span></a></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/12/19/frontend/react/wei-shi-me-react-hui-chong-xin-xuan-ran/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-19</span>
+                
+              </div>
+              <a class="post-title" href="/2024/12/19/frontend/react/wei-shi-me-react-hui-chong-xin-xuan-ran/">为什么React会重新渲染</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">08-29</span>
+                
+              </div>
+              <a class="post-title" href="/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/">puppeteer知识汇总</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/292442/pexels-photo-292442.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/292442/pexels-photo-292442.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/">前端知识体系</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/27/mind/liu-lan-qi/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/40896/larch-conifer-cone-branch-tree-40896.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/40896/larch-conifer-cone-branch-tree-40896.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/27/mind/liu-lan-qi/">浏览器</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-08</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/">使用 big.js 解决 js 小数精度问题</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgb(0, 4, 6, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="mailto:1738348915@qq.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2024 <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">zhangzhiyong</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a></p>
+
+          </div>
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><br></div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h1, h2, h3, h4, h5',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 3,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', 'YWzzy/utterance_repo')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>

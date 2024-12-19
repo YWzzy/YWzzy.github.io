@@ -1,0 +1,2138 @@
+<!--
+ * @Author: yinhan 1738348915@qq.com
+ * @Date: 2023-06-26 13:53:37
+ * @LastEditors: yinhan 1738348915@qq.com
+ * @LastEditTime: 2024-04-19 13:52:55
+ * @FilePath: \zBlog\themes\hexo-theme-bamboo\layout\layout.ejs
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html>
+  <!-- meta/link... -->
+  
+
+
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="referrer" content="no-referrer"/>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <title>React 组件实践 | 梨逍遥</title>
+
+  <link rel="icon" type="image/png" href="https://s21.ax1x.com/2024/07/01/pkc7yAs.png">
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
+  <link href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/js/swiper/swiper@5.4.1.min.css" rel="stylesheet">
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/animate.min.css">
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    
+<link rel="stylesheet" href="/js/shareJs/share.min.css">
+
+  
+  <style>
+        @media (max-width: 992px) {
+            #waifu {
+                display: none;
+            }
+        }
+    </style>
+    <script defer src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+    
+    
+    <!-- 依赖于jquery和vue -->
+    
+        <script src="https://unpkg.com/jquery@3.5.1/dist/jquery.min.js"></script>
+    
+
+    
+        <script src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"></script>
+    
+
+    <!-- import link -->
+    
+        
+            
+        
+            
+        
+    
+    <!-- import script -->
+    
+        
+            
+        
+            
+        
+    
+
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="梨逍遥" type="application/atom+xml">
+</head>
+
+  
+  <!-- 预加载动画 -->
+  <!-- 页面预加载动画 -->
+
+  
+    <div class="preloader-1" id="loader">
+  <div  aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+    <div class="wheel"></div>
+    <div class="hamster">
+      <div class="hamster__body">
+        <div class="hamster__head">
+          <div class="hamster__ear"></div>
+          <div class="hamster__eye"></div>
+          <div class="hamster__nose"></div>
+        </div>
+        <div class="hamster__limb hamster__limb--fr"></div>
+        <div class="hamster__limb hamster__limb--fl"></div>
+        <div class="hamster__limb hamster__limb--br"></div>
+        <div class="hamster__limb hamster__limb--bl"></div>
+        <div class="hamster__tail"></div>
+      </div>
+    </div>
+    <div class="spoke"></div>
+  </div>
+</div>
+  
+<script>
+  var endLoading = function () {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loader').classList.add("loading");
+  }
+  window.addEventListener('DOMContentLoaded',endLoading);
+</script>
+
+  <body>
+    <!-- 判断是否为暗黑风格 -->
+    <!-- 判断是否为黑夜模式 -->
+<script>
+  let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+
+  if (isDark) {
+    $(document.body).addClass('darkModel');
+  }
+</script>
+
+    <!-- 需要在上面加载的js -->
+    <script>
+  function loadScript(src, cb) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+
+  //https://github.com/filamentgroup/loadCSS
+  var loadCSS = function (src) {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  };
+
+</script> 
+
+<!-- 轮播图所需要的js -->
+<script src="/js/swiper/swiper.min.js"></script>
+<script src="/js/swiper/vue-awesome-swiper.js"></script>
+<script src="/js/swiper/swiper.animate1.0.3.min.js"></script>
+
+<script type="text/javascript">
+  Vue.use(window.VueAwesomeSwiper)
+</script>
+
+
+  <script src="/js/vue-typed-js/index.js"></script>
+
+
+<!-- 首页的公告滚动插件的js需要重新加载 -->
+<script src="/js/vue-seamless-scroll/index.js"></script>
+
+<!-- 打字机效果js -->
+<script src="https://unpkg.com/typed.js@2.0.11"></script>
+
+
+    <div id="safearea">
+      <main class="main" id="pjax-container">
+        <!-- 头部导航 -->
+        
+<header class="header  " 
+  id="navHeader"
+  style="position: fixed;
+  left: 0; top: 0; z-index: 10;width: 100%;"
+>
+  <div class="header-content">
+    <div class="bars">
+      <div id="appDrawer" class="sidebar-image">
+  <div class="drawer-box-icon">
+    <i class="fas fa-bars" aria-hidden="true" @click="showDialogDrawer"></i>
+  </div>
+  
+  <transition name="fade">
+    <div class="drawer-box_mask" v-cloak style="display: none;" v-show="visible" @click.self="cancelDialogDrawer">
+    </div>
+  </transition>
+  <div class="drawer-box" :class="{'active': visible}">
+    <div class="drawer-box-head bg-color">
+      <img class="drawer-box-head_logo lazyload placeholder" src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
+      <h3 class="drawer-box-head_title">梨逍遥</h3>
+      <h5 class="drawer-box-head_desc">代码改变世界，程序员创造未来</h5>
+    </div>
+    
+    <div class="drawer-box-content">
+      <ul class="drawer-box-content_menu">
+        
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/archives" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/tags" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="drawer-box-content_item" style="position: relative;">
+              
+                <a href="/categories" class="drawer-menu-item-link">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+        
+        
+          <li class="drawer-box-content_item">
+            <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">
+              <i class="fas fa-github" aria-hidden="true"></i>
+              <span>Github</span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appDrawer',
+    data: {
+      visible: false,
+      top: 0,
+      openArr: [],
+    },
+    computed: {
+    },
+    mounted() {
+    },
+    methods: {
+      isOpen(index) {
+        if (this.openArr.includes(index)) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      openOrCloseMenu(curIndex) {
+        const index = this.openArr.indexOf(curIndex);
+        if (index !== -1) {
+          this.openArr.splice(index, 1);
+        } else {
+          this.openArr.push(curIndex);
+        }
+      },
+      showDialogDrawer() {
+        this.visible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'width: 100%; height: 100%;overflow: hidden;';
+      },
+      cancelDialogDrawer() {
+        this.visible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      }
+    },
+    created() {}
+  })
+</script>
+
+    </div>
+    <div class="blog-title" id="author-avatar">
+      
+        <div class="avatar">
+          <img src="https://avatars.githubusercontent.com/u/48836340?v=4" class="lazyload placeholder" data-srcset="https://avatars.githubusercontent.com/u/48836340?v=4" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="logo">
+        </div>
+      
+      <a href="/" class="logo">梨逍遥</a>
+    </div>
+    <nav class="navbar">
+      <ul class="menu">
+        
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/" class="menu-item-link" title="Home">
+                  
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                  
+                  <span class="name">Home</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/archives" class="menu-item-link" title="Archives">
+                  
+                    <i class="fas fa-archive" aria-hidden="true"></i>
+                  
+                  <span class="name">Archives</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/tags" class="menu-item-link" title="Tags">
+                  
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                  
+                  <span class="name">Tags</span>
+                </a>
+              
+            </li>
+          
+            <li class="menu-item" style="position: relative;">
+              
+                <a href="/categories" class="menu-item-link" title="Categories">
+                  
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  
+                  <span class="name">Categories</span>
+                </a>
+              
+            </li>
+          
+        
+      </ul>
+      
+      
+        <div id="appSearch">
+  <div class="search"  @click="showDialog()"><i class="fas fa-search" aria-hidden="true"></i></div>
+  <transition name="fade">
+    <div class="message-box_wrapper" style="display: none;" v-cloak v-show="dialogVisible" @click.self="cancelDialogVisible()">
+      <div class="message-box animated bounceInDown">
+        <h2>
+          <span>
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="title">Search</span>
+          </span>
+          <i class="fas fa-times close" pointer style="float:right;" aria-hidden="true" @click.self="cancelDialogVisible()"></i>
+        </h2>
+        <form class="site-search-form">
+          <input type="text"
+            placeholder="Please enter keywords"
+            id="local-search-input" 
+            @click="getSearchFile()"
+            class="st-search-input"
+            v-model="searchInput"
+          />
+        </form>
+        <div class="result-wrapper">
+          <div id="local-search-result" class="local-search-result-cls"></div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</div>
+<script src="/js/local_search.js"></script>
+<script>
+  var body = document.body || document.documentElement || window;
+  var vm = new Vue({
+    el: '#appSearch',
+    data: {
+      dialogVisible: false,
+      searchInput: '',
+      top: 0,
+    },
+    computed: {
+    },
+    mounted() {
+      window.addEventListener('pjax:complete', () => {
+        this.cancelDialogVisible();
+      })
+    },
+    methods: {
+      showDialog() {
+        this.dialogVisible = true;
+        // 防止页面滚动，只能让弹框滚动
+        this.top = $(document).scrollTop()
+        body.style.cssText = 'overflow: hidden;';
+      },
+      getSearchFile() {
+        if (!this.searchInput) {
+          getSearchFile("/search.xml");
+        }
+      },
+      cancelDialogVisible() {
+        this.dialogVisible = false;
+        body.removeAttribute('style');
+        $(document).scrollTop(this.top)
+      },
+    },
+    created() {}
+  })
+</script>
+<!-- 解决刷新页面闪烁问题，可以在元素上添加display: none, 或者用vue.extend方法，详情：https://blog.csdn.net/qq_31393401/article/details/81017912 -->
+<!-- 下面是搜索基本写法 -->
+<!-- <script type="text/javascript" id="local.search.active">
+  var inputArea = document.querySelector("#local-search-input");
+  inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+  inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script> -->
+
+      
+
+    </nav>
+  </div>
+  
+    <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan" class="github-corner color-primary" aria-label="View source on GitHub"><svg width="60" height="60" viewBox="0 0 250 250" style="fill:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  
+  
+</header>
+        <!-- 内容区域 -->
+        
+ <!-- prismjs 代码高亮 -->
+ 
+
+
+<div class="bg-dark-floor" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -1;"></div>
+
+
+  <!-- 文章详情页顶部图片和标题 -->
+
+
+
+
+<div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
+  background-position: center center;position: relative;background-image:url('https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load')">
+  <div class="post-detail-header-mask"></div>
+  <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
+  
+  <div class="post-detail-header_info-box">
+    <div class="title-box">
+      <span class="title">
+        React 组件实践
+      </span>
+    </div>
+    
+    
+      
+        <span class="post-detail-header_date">
+          <i class="fas fa-calendar"></i> Published in：2023-07-20 |
+        </span>
+      
+
+      
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-detail-header_category">
+              前端
+            </a>
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF/React/" class="post-detail-header_category">
+              React
+            </a>
+          
+        </span>
+      
+
+      
+    
+  </div>
+  
+  
+    <script src="/js/bubble/bubble.js"></script>
+  
+</div>
+
+
+
+
+
+<div class="post-detail-content post-row" 
+  style="padding-top: 0px;">
+  <div class="main-content">
+    <article class="post post-detail">
+      <div class="post-content">
+        <meta name="referrer" content="no-referrer" />
+
+<p><a name="XOEwi"></a></p>
+<h2 id="1-定义组件接口"><a href="#1-定义组件接口" class="headerlink" title="1. 定义组件接口"></a>1. 定义组件接口</h2><p>React 世界由组件构成，所以，如何设计组件的接口就成了组件设计最重要的事情。</p>
+<p><a name="O43Jx"></a></p>
+<h3 id="（1）设计原则"><a href="#（1）设计原则" class="headerlink" title="（1）设计原则"></a>（1）设计原则</h3><p>React 的组件其实就就是软件设计中的模块，所以其设计原则也遵从通用的组件设计原则，简单说来，就是要减少组件之间的耦合性（Coupling)，让组件的界面简单，这样才能让整体系统易于理解、易于维护。</p>
+<p>在设计 React 组件时，要注意以下原则：<br />1. 保持接口小，props 数量要少；<br />2. 根据数据边界来划分组件，充分利用组合（composition）；<br />3. 把 state 往上层组件提取，让下层组件只需要实现为纯函数。</p>
+<p>下面来看实现一个秒表（下图为 iPhone 上的秒表应用）：</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/jpeg/1500604/1611478184254-27ddf015-c79b-4b10-ae96-424ecba3ab42.jpeg?x-oss-process=image/resize,w_500,limit_0/interlace,1" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/jpeg/1500604/1611478184254-27ddf015-c79b-4b10-ae96-424ecba3ab42.jpeg?x-oss-process=image/resize,w_500,limit_0/interlace,1" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>对于这个秒表，按下右侧“启动”按钮，这个按钮就会变成“停止”，同时上面的数字时钟开始计时；按下“停止”按钮，数字时钟停止计时。左侧还有一个按钮，初始状态显示“复位”，点击该铵钮会清空时钟；开始计时之后，这个左侧按钮会变成“计次”，按一下“计次”，秒表底部就会增加一列时间，记录下按下“计次”这一瞬间的时刻。</p>
+<p>下面来规划一下秒表的 React 组件接口如何设计。<br><a name="QuDEH"></a></p>
+<h3 id="（2）组件的划分"><a href="#（2）组件的划分" class="headerlink" title="（2）组件的划分"></a>（2）组件的划分</h3><p>下面来实现一个 React 组件渲染整个秒表，这个组件叫 <code>StopWatch</code>，目前看来这个组件不需要从外部获得什么输入，本着“props 数量要少”的原则，也不需要管未来会用上什么 <code>props</code>，目前就当 <code>StopWatch</code> 不支持 <code>props</code>。</p>
+<p>此外，这个组件需要记录当前计时，还要记录每一次按下“计次”的时间，所以需要维持状态（<code>state</code>），所以 <code>StopWatch</code> 是一个有状态的组件，不能只是一个纯函数，而是一个继承自 <code>Component</code> 的类。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">StopWatch</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">     <span class="comment">//<span class="doctag">TODO:</span> 返回所有JSX</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 React 组件中，随着逻辑的复杂，JSX 代码越来越多，就需要拆分函数中的内容。在 React 中有一个误区，就是把 <code>render</code> 中的代码分拆到多个 <code>renderXXXX</code> 函数中去，比如下面这样：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">StopWatch</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> majorClock = <span class="variable language_">this</span>.<span class="title function_">renderMajorClock</span>();</span><br><span class="line">    <span class="keyword">const</span> controlButtons = <span class="variable language_">this</span>.<span class="title function_">renderControlButtons</span>();</span><br><span class="line">    <span class="keyword">const</span> splitTimes = <span class="variable language_">this</span>.<span class="title function_">renderSplitTimes</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">       <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          &#123;majorClock&#125;</span></span><br><span class="line"><span class="language-xml">          &#123;controlButtons&#125;</span></span><br><span class="line"><span class="language-xml">          &#123;splitTimes&#125;</span></span><br><span class="line"><span class="language-xml">       <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">renderMajorClock</span>(<span class="params"></span>) &#123;</span><br><span class="line">     <span class="comment">//<span class="doctag">TODO:</span> 返回数字时钟的JSX</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">renderControlButtons</span>(<span class="params"></span>) &#123;</span><br><span class="line">     <span class="comment">//<span class="doctag">TODO:</span> 返回两个按钮的JSX</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">renderSplitTimes</span>(<span class="params"></span>) &#123;</span><br><span class="line">     <span class="comment">//<span class="doctag">TODO:</span> 返回所有计次时间的JSX</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br /> 用上面的方法组织代码，当然比写一个庞大的 <code>render</code> 函数要强，但是这些 <code>renderXXXX</code> 函数访问的是同样的 <code>props</code> 和 <code>state</code>，这样代码依然耦合在了一起。更好的方法是把这些 <code>renderXXXX</code> 重构成各自独立的 React 组件：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">StopWatch</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">       &lt;div&gt;</span><br><span class="line">          &lt;MajorClock&gt;</span><br><span class="line">          &lt;ControlButtons&gt;</span><br><span class="line">          &lt;SplitTimes&gt;</span><br><span class="line">       &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">const MajorClock = (props) =&gt; &#123;</span><br><span class="line">  //TODO: 返回数字时钟的JSX</span><br><span class="line">&#125;;</span><br><span class="line">const ControlButtons = (props) =&gt; &#123;</span><br><span class="line">  //TODO: 返回两个按钮的JSX</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const SplitTimes = (props) =&gt; &#123;</span><br><span class="line">  //TODO: 返回所有计次时间的JSX</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br /> 初始化 <code>MajorClock</code>、<code>ControlButtons</code> 和 <code>SplitTimes</code> 这三个组件，目前，并不知道它们是否应该有自己的 <code>state</code>，但是从简单开始，首先假设它们没有自己的 <code>state</code>，定义为函数形式的无状态组件。</p>
+<p><a name="O3g5J"></a></p>
+<h3 id="（3）按照数据边界来分割组件"><a href="#（3）按照数据边界来分割组件" class="headerlink" title="（3）按照数据边界来分割组件"></a>（3）按照数据边界来分割组件</h3><p>现在，来看一下这样的组件划分是否符合“<strong>按照数据边界划分</strong>”的原则：<br />● 渲染 <code>MajorClock</code>，需要的是当前展示的时间，在点击“启动”按钮之后，这个时间是不断增长的。<br />● 渲染 <code>ControlButtons</code>，两个按钮显示什么内容，完全由当前是否是“启动”的激活状态决定。此外，Buttons 是秒表中唯一有用户输入的组件，对于按钮的按键会改变秒表的状态。<br />● 计次时间 <code>SplitTimes</code>，需要渲染多个时间，可以想象，需要有一个数组来记录所有计次时间。</p>
+<p>总结一下所有需要的数据和对应标识符，以及影响的组件：</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/png/300943/1690176091382-dfe50bb8-1314-4276-9a3f-9d7411fe1c42.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2023/png/300943/1690176091382-dfe50bb8-1314-4276-9a3f-9d7411fe1c42.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="image.png"><br />从表格可以看出，每个数据影响的组件都不多，唯一影响两个组件的数据是 <code>activated</code>，这个 <code>activated</code> 基本上就是一个布尔值，数据量很小，影响两个组件问题也不大。这样的组件划分是符合以数据为边界原则的。</p>
+<p><a name="YtXCG"></a></p>
+<h3 id="（4）state-的位置"><a href="#（4）state-的位置" class="headerlink" title="（4）state 的位置"></a>（4）state 的位置</h3><p>接下来，需要确定 <code>state</code> 的存储位置。当秒表处于启动状态，<code>MajorClock</code> 会不断更新时间，似乎让 <code>MajorClock</code> 来存储时间相关的 <code>state</code> 很合理，但是仔细考虑一下，就会发现这样并不合适。</p>
+<p>设想一下，<code>MajorClock</code> 包含一个 <code>state</code> 记录时间，因为 <code>state</code> 是组件的内部状态，只能通过组件自己来更新，所以要 <code>MajorClock</code> 用一个 <code>setTimeout</code> 或者 <code>setInterval</code> 来持续更新这个 <code>state</code>，可是，另一个组件 <code>ControlButtons</code> 将会决定什么时候暂停 <code>MajorClock</code> 的 <code>state</code> 更新，而且，当用户按下“计次“按钮的时候，<code>MajorClock</code> 还需要一个方法把当前的时间通知给 <code>SplitTimes</code> 组件。这样一个数据传递过程，想一想都觉得很麻烦，明显不合适。</p>
+<p>这时候就需要考虑这样的原则，<strong>尽量把数据状态往上层组件提取</strong>。在秒表这个应用中，上层组件就是 <code>StopWatch</code>，如果让 <code>StopWatch</code> 来存储时间状态，就会简单很多。<code>StopWatch</code> 中利用 <code>setTimeout</code> 或者 <code>setInterval</code> 来更新 <code>state</code>，每一次更新会引发一次重新渲染，在重新渲染的时候，直接把当前时间值传递给 <code>MajorClock</code> 就完事了。</p>
+<p>至于 <code>ControlButtons</code> 对状态的控制，让 <code>StopWatch</code> 传递函数类型 <code>props</code> 给 <code>ControlButtons</code>，当特定按钮时间点击的时候回调这些函数，<code>StopWatch</code> 就知道何时停止更新或者启动 <code>setTimeout</code> 或者 <code>setInterval</code>，因为这一切逻辑都封装在 <code>StopWatch</code> 中，非常直观自然。</p>
+<p>除此之外，还有 <code>SplitTimes</code>，它需要一个数组记录所有计次时间，这些数据也很自然应该放在 <code>StopWatch</code> 中维护，然后通过 <code>props</code> 传递给 <code>SplitTimes</code>，这样 <code>SplitTimes</code> 只单纯做渲染就足够。</p>
+<p><a name="aii5a"></a></p>
+<h3 id="（5）组件-props-的设计"><a href="#（5）组件-props-的设计" class="headerlink" title="（5）组件 props 的设计"></a>（5）组件 props 的设计</h3><p>当确定了组件结构和 <code>state</code> 之后，最后要做的就是设计 <code>props</code>。</p>
+<p>先来看 <code>MajorClock</code>，因为它依赖的数据只有当前时间，所以只需要一个 <code>props</code>。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">MajorClock</span> = (<span class="params">&#123;milliseconds&#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">//<span class="doctag">TODO:</span> 返回数字时钟的JSX</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">MajorClock</span>.<span class="property">propTypes</span> = &#123;</span><br><span class="line">  <span class="attr">milliseconds</span>: <span class="title class_">PropTypes</span>.<span class="property">number</span>.<span class="property">isRequired</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><br />和函数参数的命名一样，<code>props</code>的命名一定力求简洁而且清晰。对于<code>MajorClock</code>，如果把这个<code>props</code>命名为 <code>time</code>，很容易引起歧义，这个 <code>time</code> 的单位是什么？是毫秒？还是秒？还是一个 <code>Date</code> 对象？</p>
+<p>所以，明确传入的 <code>props</code> 是一个代表毫秒的数字，所以命名为 <code>milliseconds</code>。</p>
+<p>然后是 <code>ControlButtons</code>，这个组件需要根据当前是否是“启动”状态显示不同的按钮，所以需要一个 props 来表示是否“启动”，把它命名为 <code>activated</code>。</p>
+<p>此外，<code>StopWatch</code> 还需要传递回调函数给 <code>ControlButtons</code>，所以还需要支持函数类型的 <code>props</code>，分别代表 <code>ControlButtons</code> 可以做的几个动作：<br />● 启动（start）<br />● 停止（pause）<br />● 计次（split）<br />● 复位（reset）</p>
+<p>一般来说，为了让开发者能够一眼认出回调函数类型的 <code>props</code>，这类 <code>props</code> 最好有一个统一的前缀，比如 <code>on</code> 或者 <code>handle</code> 。所以，<code>ControlButtons</code> 的接口就可以是下面这样：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">ControlButtons</span> = (<span class="params">props</span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">//<span class="doctag">TODO:</span> 返回两个按钮的JSX</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">ControlButtons</span>.<span class="property">propTypes</span> = &#123;</span><br><span class="line">  <span class="attr">activated</span>: <span class="title class_">PropTypes</span>.<span class="property">bool</span>,</span><br><span class="line">  <span class="attr">onStart</span>: <span class="title class_">PropTypes</span>.<span class="property">func</span>.<span class="property">isRquired</span>,</span><br><span class="line">  <span class="attr">onPause</span>: <span class="title class_">PropTypes</span>.<span class="property">func</span>.<span class="property">isRquired</span>,</span><br><span class="line">  <span class="attr">onSplit</span>: <span class="title class_">PropTypes</span>.<span class="property">func</span>.<span class="property">isRquired</span>,</span><br><span class="line">  <span class="attr">onReset</span>: <span class="title class_">PropTypes</span>.<span class="property">func</span>.<span class="property">isRquired</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><br />最后是 <code>SplitTimes</code>，它需要接收一个数组类型的 <code>props</code>。<code>PropTypes</code> 也可以支持数组类型的定义：<br />至此，就完成了秒表的组件接口设计。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">SplitTimes</span> = (<span class="params">props</span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">//<span class="doctag">TODO:</span> 返回所有计次时间的JSX</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">SplitTimes</span>.<span class="property">propTypes</span> = &#123;</span><br><span class="line">  <span class="attr">splits</span>: <span class="title class_">PropTypes</span>.<span class="title function_">arrayOf</span>(<span class="title class_">PropTypes</span>.<span class="property">number</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><a name="dIGkL"></a></p>
+<h2 id="2-组件内部实现"><a href="#2-组件内部实现" class="headerlink" title="2. 组件内部实现"></a>2. 组件内部实现</h2><p>下面来具体实现一下秒表应用，目标如下：<br />● 功能正常<br />● 代码整洁<br />● 高性能</p>
+<p><a name="mkh83"></a></p>
+<h3 id="（1）初始化应用框架"><a href="#（1）初始化应用框架" class="headerlink" title="（1）初始化应用框架"></a>（1）初始化应用框架</h3><p>使用 React 提供的 <code>create-react-app</code> 来创建秒表应用。可以使用下面的命令来全局安装：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g create-react-app</span><br></pre></td></tr></table></figure>
+
+<p><br />使用下面的命令来创建应用框架，在这里应用名字叫 <code>basic_stop_watch</code>。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create-react-app basic_stop_watch --use-npm</span><br></pre></td></tr></table></figure>
+
+<p><br />在完成之后，会创建一个 <code>basic_stop_watch</code> 目录，进入这个目录，运行下面给的命令，就可以启动应用：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+<p><a name="t51jf"></a></p>
+<h3 id="（2）构建-StopWatch"><a href="#（2）构建-StopWatch" class="headerlink" title="（2）构建 StopWatch"></a>（2）构建 StopWatch</h3><p>上面已经确定了要用四个组件组合来实现“秒表”，这四个组件分别是 <code>StopWatch</code>、<code>MajorClock</code>、<code>ControlButtons</code> 和 <code>SplitTimes</code>。</p>
+<p>为了达到“代码整洁”的目的，我们让每个组件都有一个独立的文件，然后这个文件用 <code>export default</code> 的方式导出单个组件。</p>
+<p>比如，在 <code>src</code> 目录下为 <code>ControlButtons</code> 创建一个 <code>ControlButtons.js</code> 文件，最初内容像下面这样：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">ControlButtons</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">//<span class="doctag">TODO:</span> 实现ControlButtons</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">ControlButtons</span>;</span><br></pre></td></tr></table></figure>
+
+<p><br />第一行导入 React，因为任何 JSX 都需要 React。最后一行用 <code>export default</code> 的方式导出 <code>ControlButtons</code>，这样，在其他组件中就可以用下面的方式导入：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">ControlButtons</span> <span class="keyword">from</span> <span class="string">&#x27;./ControlButtons&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><br />我们知道，<code>ControlButtons</code> 可以接受的 <code>props</code>，其实现代码如下：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">ControlButtons</span> = (<span class="params">props</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123;activated, onStart, onPause, onReset, onSplit&#125; = props;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &#123;activated ? (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;onSplit&#125;</span>&gt;</span>计次<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;onPause&#125;</span>&gt;</span>停止<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    ) : (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;onReset&#125;</span>&gt;</span>复位<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;onStart&#125;</span>&gt;</span>启动<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )&#125;</span><br><span class="line">  )</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><br />这里用到了 <code>ES6</code> 中的<strong>解构赋值</strong>（Destructuring Assignment）。因为 <code>ControlButtons</code> 是一个函数类型的组件，所以 <code>props</code> 以参数形式传递进来，<code>props</code> 中的属性包含 <code>activated</code> 这样的值，利用大括号，就可以完成对 <code>props</code> 的“解构”，把 <code>props.activated</code> 赋值给同名的变量 <code>activated</code>。</p>
+<p>可以更进一步地把解构赋值提到参数中，这样连 <code>props</code> 的对象都看不见：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">ControlButtons</span> = (<span class="params">&#123;activated, onStart, onPause, onReset, onSplit&#125;</span>) =&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />在 <code>ControlButtons</code> 的实现部分，根据 <code>activated</code> 的值返回不同的 JSX，当 <code>activated</code> 为 <code>true</code> 时，返回的是“计次”和“停止”；当 <code>activated</code> 为 <code>false</code> 时，返回的是“复位”和“启动”，对应分别使用了传入的 <code>on</code> 开头的函数类型 <code>props</code>。</p>
+<p>可以看到，<code>ControlButtons</code> 除了显示内容和分配 <code>props</code>，没有做什么实质的工作。</p>
+<p>接下来实现 <code>MajorClock</code> 组件，根据传入 <code>props</code> 的 <code>milliseconds</code> 来显示数字时钟一样的时分秒。在 <code>MajorClock.js</code> 文件中，我们这样定义 <code>MajorClock</code>：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">MajorClock</span> = (<span class="params">&#123;milliseconds=<span class="number">0</span>&#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;ms2Time(milliseconds)&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><br />在这里还使用了默认值。如果使用 <code>MajorClock</code> 时没有传入 <code>milliseconds</code> 这个 <code>props</code>，那么 <code>milliseconds</code> 的值就是 0。<br />因为把毫秒数转为 <code>HH:mm:ss:mmm</code> 这样的格式和 JSX 没什么关系，所以，不在组件中直接编写，而是放在 <code>ms2Time</code> 函数中，<code>ms2Time</code> 就是 <code>ms-to-Time</code>，代码如下：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> padStart <span class="keyword">from</span> <span class="string">&#x27;lodash/padStart&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">ms2Time</span> = (<span class="params">milliseconds</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> time = milliseconds;</span><br><span class="line">  <span class="keyword">const</span> ms = milliseconds % <span class="number">1000</span>;</span><br><span class="line">  time = (milliseconds - ms) / <span class="number">1000</span>;</span><br><span class="line">  <span class="keyword">const</span> seconds = time % <span class="number">60</span>;</span><br><span class="line">  time = (time - seconds) / <span class="number">60</span>;</span><br><span class="line">  <span class="keyword">const</span> minutes = time % <span class="number">60</span>;</span><br><span class="line">  <span class="keyword">const</span> hours = (time - minutes) / <span class="number">60</span>;</span><br><span class="line">  <span class="keyword">const</span> result = <span class="title function_">padStart</span>(hours, <span class="number">2</span>, <span class="string">&#x27;0&#x27;</span>) + <span class="string">&quot;:&quot;</span> + <span class="title function_">padStart</span>(minutes, <span class="number">2</span>, <span class="string">&#x27;0&#x27;</span>) + <span class="string">&quot;:&quot;</span> + <span class="title function_">padStart</span>(seconds, <span class="number">2</span>, <span class="string">&#x27;0&#x27;</span>) + <span class="string">&quot;.&quot;</span> + <span class="title function_">padStart</span>(ms, <span class="number">3</span>, <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />通过逐步从 <code>milliseconds</code> 中抽取毫秒、秒、分、时的信息，最终拼出正确的时间。不过，为了和数字时钟显示一致，需要补齐，比如 2 秒 23 毫秒，显示成 2:23 可不好看，不够的位数要补上 0，显示成 00:00:02:023 。这个补齐可以使用 lodash 中的 <code>padStart</code> 实现。为了在项目中使用 lodash，需要用 npm 完成对应的库安装。</p>
+<p>最后是 <code>SplitTimes</code> 这个组件，在 <code>SplitTimes.js</code> 这个文件中，需要这样定义 <code>SplitTimes</code>：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">MajorClock</span> <span class="keyword">from</span> <span class="string">&#x27;./MajorClock&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">SplitTimes</span> = (<span class="params">&#123;value=[]&#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> value.<span class="title function_">map</span>(<span class="function">(<span class="params">v, k</span>) =&gt;</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">MajorClock</span> <span class="attr">key</span>=<span class="string">&#123;k&#125;</span> <span class="attr">milliseconds</span>=<span class="string">&#123;v&#125;</span> /&gt;</span></span></span><br><span class="line">  ));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><br />因为根据毫秒数显示数字时钟的功能在 <code>MajorClock</code> 中已经做到了，所以直接导入 <code>MajorClock</code> 使用就好，这符合“重用代码”的原则。</p>
+<p><strong>利用循环或者数组 map 而产生的动态数量的 JSX 元件</strong>，必须要有 key 属性。这个 key 属性帮助 React 搞清楚组件的顺序，如果不用 key，那 React 会在开发模式下在 console 上输出红色警告。</p>
+<p><strong>注意：</strong>key 不应该取数组的序号，因为 key 要唯一而且稳定，也即是每一次渲染过程中，key 都能唯一标识一个内容。但是，对于 StopWatch 这个例子，可以直接使用数组序号，因为计次时间的数组顺序不会改变，使用数组序号足够唯一标识内容。</p>
+<p><a name="NKwHU"></a></p>
+<h3 id="（3）StopWatch-状态管理"><a href="#（3）StopWatch-状态管理" class="headerlink" title="（3）StopWatch 状态管理"></a>（3）StopWatch 状态管理</h3><p>在实现了 <code>MajorClock</code>、<code>ControlButtons</code> 和 <code>SplitTimes</code> 之后，我们需要把这些子组件串起来，这就是 <code>StopWatch</code>。<br /><code>StopWatch</code> 是一个有状态的组件，所以，不能只用一个函数实现，而是做成一个继承自 <code>React.Component</code> 的类：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">StopWatch</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">Fragment</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">MajorClock</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ControlButtons</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">SplitTimes</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Fragment</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />对于一个 React 组件类，最少要有一个 <code>render</code> 函数实现，不过，上面的 <code>render</code> 只是一个大概的代码框架，引用了相关子组件，但是没有传入 <code>props</code>。</p>
+<p>传入的 <code>props</code> 就是 <code>StopWatch</code> 记录的 <code>state</code>。<code>StopWatch</code> 的 <code>state</code> 需要有这些信息：<br />● <code>isStarted</code>，是否开始计时；<br />● <code>startTime</code>，计时开始时间，Date 对象；<br />● <code>currentTime</code>，当前时间，也是 Date 对象；<br />● <code>splits</code>，所有计次时间的数组，每个元素是一个毫秒数。</p>
+<p>React 组件的 state 需要初始化，一般来说，初始化 state 是在构造函数中：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">super</span>(...<span class="variable language_">arguments</span>);</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">    <span class="attr">isStarted</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">startTime</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">currentTime</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">splits</span>: [],</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br /> 如果定义构造函数 <code>constructor</code>，需要通过 <code>super</code> 调用父类 <code>React.Component</code> 的构造函数，不然，功能会不正常。React 官方网站上的代码示例是这样调用 super 函数：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props); <span class="comment">//目前可行，但有更好的方法</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />在早期版本中，<code>React.Component</code> 的构造函数参数有两个，第一个是 <code>props</code>，第二个是 <code>context</code>，如果忽略掉 <code>context</code> 参数，那么这个组件的 <code>context</code> 功能就不能正常工作，不过，现在 React 的行为已经变了，第二个参数传递不传递都能让<code>context</code>正常工作，看起来<code>React.Component</code> 的构造函数只有第一个参数被用到，但是，没准未来还会增加新的参数呢，所以，以不变应万变的方法，就是使用扩展操作符（spread operator）来展开 <code>arguments</code>，这样不管 React 将来怎么变，这样的代码都正确。<br /></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">super</span>(...<span class="variable language_">arguments</span>); <span class="comment">//永远正确！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />扩展操作符的作用，在 React 开发中会经常用到，在 JSX 中展开 props 的时候会用到。<br><a name="auoiZ"></a></p>
+<h3 id="（4）属性初始化方法"><a href="#（4）属性初始化方法" class="headerlink" title="（4）属性初始化方法"></a>（4）属性初始化方法</h3><p>其实我可以不写 <code>constructor</code> 函数，而直接使用属性初始化（Property Initializer），也就是在 <code>class</code> 定义中直接初始化类的成员变量。效果是完全一样的：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">StopWatch</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    <span class="attr">isStarted</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">startTime</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">currentTime</span>: <span class="literal">null</span>,</span><br><span class="line">    <span class="attr">splits</span>: [],</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />接下来实现传递给 <code>ControlButtons</code> 的一系列函数。需要注意，在实际工作中，在 JSX 中应用的函数 props 应该尽量使用类成员函数，不要用内联函数。</p>
+<p>以最 <code>onSplit</code> 为例，这个函数响应用户点击“计次”按钮的事件，代码如下：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">onSplit</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">    <span class="attr">splits</span>: [...<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">splits</span>, <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">currentTime</span> - <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">startTime</span>]</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />在 <code>onSplit</code> 中，利用 <code>this.setState</code> 来修改组件的状态。那这个函数执行时，<code>this</code> 是什么呢？对于 <code>ES6</code> 的类成员函数，并不自动绑定 <code>this</code>，也就是说，<code>onSplit</code> 中的 <code>this</code>，可不保证就是当前组件对象。至于 <code>render</code> 这些生命周期函数，里面访问的 <code>this</code> 就是当前组件本身，完全是因为这些函数是 React 调用的，React 对它们进行了特殊处理，对于其他普通的成员函数，特殊处理就要靠我们自己了。</p>
+<p>通常的处理方法，就是在构造函数中对函数进行绑定，然后把新产生的函数覆盖原有的函数，就像这样：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">super</span>(...<span class="variable language_">arguments</span>);</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">onSplit</span> = <span class="variable language_">this</span>.<span class="property">onSplit</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br /><code>StopWatch</code> 需要给 <code>ControlButtons</code> 传递四个函数类型的 <code>props</code>，分别是 <code>onStart</code>、<code>onPause</code>、<code>onReset</code> 和 <code>onSplit</code>，对每一个函数都在构造函数里加一个 <code>bind</code>很容易出错。更好的方法依然是使用属性初始化，就和初始化 <code>state</code> 一样，利用<strong>等号</strong>直接初始化</p>
+<p><code>StopWatch</code> 需要给 <code>ControlButtons</code> 传递四个函数类型的 <code>props</code>，分别是 <code>onStart</code>、<code>onPause</code>、<code>onReset</code> 和 <code>onSplit</code>，对每一个函数都在构造函数里加一个 <code>bind</code> 很容易出错，更好的方法依然是使用属性初始化，就和初始化 <code>state</code> 一样，利用<strong>等号直接初始化</strong> <code>onSplit</code>，代码如下：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">onSplit = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">      <span class="attr">splits</span>: [...<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">splits</span>, <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">currentTime</span> - <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">startTime</span>]</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />这样写，就不需要 <code>constructor</code>，函数体内的 <code>this</code> 绝对就是当前组件对象。用同样的方法来实现其他函数成员：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">onStart = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">      <span class="attr">isStarted</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">startTime</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(),</span><br><span class="line">      <span class="attr">currentTime</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(),</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">intervalHandle</span> = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;<span class="attr">currentTime</span>: <span class="keyword">new</span> <span class="title class_">Date</span>()&#125;);</span><br><span class="line">    &#125;, <span class="number">1000</span> / <span class="number">60</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  onPause = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">clearInterval</span>(<span class="variable language_">this</span>.<span class="property">intervalHandle</span>);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">      <span class="attr">isStarted</span>: <span class="literal">false</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  onReset = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">      <span class="attr">startTime</span>: <span class="literal">null</span>,</span><br><span class="line">      <span class="attr">currentTime</span>: <span class="literal">null</span>,</span><br><span class="line">      <span class="attr">splits</span>: [],</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />至此，秒表的功能就完成了，在 <code>App.js</code> 文件中导入 <code>StopWatch</code>，在浏览器中就可以看到这样的界面。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1611480143770-723eadd1-c6d2-4e94-be1c-f7df3fd16664.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1611480143770-723eadd1-c6d2-4e94-be1c-f7df3fd16664.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>点击“启动”按钮，可以看见数字时钟开始运转；点击“计次”按钮，在按钮下方可以看到点击瞬间的时间；点击“停止”，时钟停止运转。</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1611480143675-9d8ec352-e9ff-46ad-95e9-a7e1c3216772.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1611480143675-9d8ec352-e9ff-46ad-95e9-a7e1c3216772.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p><a name="ZD50T"></a></p>
+<h2 id="3-组件化样式"><a href="#3-组件化样式" class="headerlink" title="3. 组件化样式"></a>3. 组件化样式</h2><p>上面只实现了秒表的功能，而没有关注样式。下面就来给 React 组件增加样式，让“秒表”这个应用看起来更美观。</p>
+<p><a name="CnZe5"></a></p>
+<h3 id="（1）React-带来的对样式管理革命"><a href="#（1）React-带来的对样式管理革命" class="headerlink" title="（1）React 带来的对样式管理革命"></a>（1）React 带来的对样式管理革命</h3><p>在 React 诞生之前，为了修改一个功能，需要牵扯到 HTML、CSS 和 JavaScript 的修改，但是这三部分分别属于不同的文件，一个功能却要去修改至少三个文件。</p>
+<p>在软件开发中，同一个功能相关的代码最好放在一个地方，这就是<strong>高内聚性</strong>（High Cohesiveness）。把网页功能分在 HTML、CSS 和 JavaScript 中，明显背离了高内聚性的原则，直到 React 出现。</p>
+<p>在实现“秒表”的时候，“内容”和“动态功能”已经混合在一起，换句话说，JSX 负责产生“内容”，和各种响应用户输入的 JavaScript 代码共同存在于 React 组件之中。在 React 中，当修改一个功能的内容和行为时，在一个文件中就能完成，这样就达到了高内聚的要求。</p>
+<p>那么，在 React 中又是如何处理样式的呢？下面先从组件的 style 属性开始，最后过渡到组件式的样式。</p>
+<p><a name="WM4np"></a></p>
+<h3 id="（2）style-属性"><a href="#（2）style-属性" class="headerlink" title="（2）style 属性"></a>（2）style 属性</h3><p>上面实现的“秒表”中，虽然功能齐备，但是展示上有一个大问题，就是当时钟开始运转之后，因为各个数字的宽度不同，比如<code>1</code> 就没有 <code>0</code> 宽，导致时间宽度忽大忽小，产生闪烁效果，这样看起来很不专业。为了解决这个问题，就需要定制 <code>MajorClock</code> 的样式。</p>
+<p>最简单也是最直接的方法，就是给对应的 React 元素增加 <code>style</code> 属性，属性值为一个普通的 <code>JavaScript</code> 对象：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">MajorClock</span> = (<span class="params">&#123;milliseconds=<span class="number">0</span>&#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> style = &#123;</span><br><span class="line">    <span class="string">&#x27;font-family&#x27;</span>: <span class="string">&#x27;monospace&#x27;</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">&#123;style&#125;</span>&gt;</span>&#123;ms2Time(milliseconds)&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />在上面的例子中，把 <code>MajorClock</code> 中的 <code>h1</code> 元素的 <code>font-family</code> 设为 <code>monospace</code>,<code>monospace </code>是等宽字体，这样所有数字所占宽度相同，数字变化起来的时候宽度也就不会发生变化了，效果图如下：</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1611481542320-b85b1d25-5eaa-4ecf-b653-f3b12a513227.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1611481542320-b85b1d25-5eaa-4ecf-b653-f3b12a513227.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>如果 <code>style</code> 对象每次都是一样的，最好把它提取到组件之外，这样就可以重用一个对象：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> clockStyle = &#123;</span><br><span class="line">  <span class="string">&#x27;font-family&#x27;</span>: <span class="string">&#x27;monospace&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">MajorClock</span> = (<span class="params">&#123;milliseconds=<span class="number">0</span>&#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">&#123;clockStyle&#125;</span>&gt;</span>&#123;ms2Time(milliseconds)&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="BXleW"></a></p>
+<h3 id="（3）导入-CSS-文件"><a href="#（3）导入-CSS-文件" class="headerlink" title="（3）导入 CSS 文件"></a>（3）导入 CSS 文件</h3><p>React 也支持使用 CSS 来定制样式。下面以 <code>ControlButtons</code> 为例，改进控制按钮的样式。</p>
+<p>为了配合 CSS，需要在 <code>ControlButtons</code> 的 JSX 中让渲染出来的 DOM 元素包含 <code>class</code>。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">ControlButtons</span> = (<span class="params">&#123;activated, onStart, onPause, onReset, onSplit&#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &#123;activated ? (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">&quot;left-btn&quot;</span> <span class="attr">onClick</span>=<span class="string">&#123;onSplit&#125;</span>&gt;</span>计次<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">&quot;right-btn&quot;</span> <span class="attr">onClick</span>=<span class="string">&#123;onPause&#125;</span>&gt;</span>停止<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    ) : (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">&quot;left-btn&quot;</span> <span class="attr">onClick</span>=<span class="string">&#123;onReset&#125;</span>&gt;</span>复位<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">&quot;right-btn&quot;</span> <span class="attr">onClick</span>=<span class="string">&#123;onStart&#125;</span>&gt;</span>启动<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )&#125;</span><br><span class="line">  )</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><br />在 <code>ControlButtons.js</code> 中增加下面这样，导入一个同目录下的 <code>ControlButtons.css</code> 文件：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;./ControlButtons.css&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><br /><code>create-react-app</code> 会用 <code>webpack</code> 完成打包过程，只要 JavaScript 文件中应用的资源，都会被打包进最终的文件，所以，<code>ControlButtons.css</code> 中的样式规则就会被应用。<code>ControlButtons.css</code> 中的内容如下:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.left-btn</span>, <span class="selector-class">.right-btn</span> &#123;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">70px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">70px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left-btn</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">35px</span> <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.right-btn</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">35px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />最终的效果图如下：</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1611481542301-a8693b73-fe13-4379-8192-cdb58d64ffeb.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1611481542301-a8693b73-fe13-4379-8192-cdb58d64ffeb.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p><a name="DicWZ"></a></p>
+<h3 id="（4）组件式的样式"><a href="#（4）组件式的样式" class="headerlink" title="（4）组件式的样式"></a>（4）组件式的样式</h3><p>对比使用 <code>style</code> 属性和导入 CSS 两种方法，可以看出各有优缺点。</p>
+<p>使用 style 属性，好处是可以将样式应用到每个元素，互相不干扰；缺点就是非常不简洁，如果想要定制一个元素的样式，必须给这个元素加 style 属性。</p>
+<p>比如，我们想让 <code>MajorClock</code> 中的 <code>h1</code> 元素字体为 <code>monospace</code>，使用 <code>style</code> 属性来实现，就要给 <code>h1</code> 加上 <code>style</code>，如果只有一个 <code>h1</code> 元素还好应付，如果很多 <code>h1</code> 元素，就非常麻烦：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> style=&#123;</span><br><span class="line">  <span class="string">&#x27;font-family&#x27;</span>: <span class="string">&#x27;monospace&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">&#123;style&#125;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><br />相反，用 CSS 表达复杂的样式规则很容易，比如，上一段提到的样式，用 CSS 轻松可以实现，而且不用给每个 h1 加什么 style 属性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: monospace;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />不过，CSS 也有它的缺点，CSS 定义的样式是全局的，这样很容易失控，比如上面的 CSS 规则，一旦导入，那么所有的 h1 都具备这样的样式，即使不在 MajorClock 中的 h1 元素，一样被 MajorClock 导入的 CSS 文件影响。</p>
+<p>对于不同模块之间 CSS 互相干扰的问题，有很多种解决方法，基本原则就是给 CSS 规则增加更加特定的限制。比如，要限定上面的 CSS 规则只作用于 MajorClock 中的 h1 元素，就要这样来写一个 MajorClock.css：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clock</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: monospace;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />但是，也需要修改 MajorClock 的 JSX，让 h1 包含在一个类名为 clock 的元素中。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;./MajorClock.css&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">MajorClock</span> = (<span class="params">&#123;milliseconds=<span class="number">0</span>&#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;clock&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">     <span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">&#123;clockStyle&#125;</span>&gt;</span>&#123;ms2Time(milliseconds)&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />这样当然可行，但是这样不好处理 JSX 和 CSS 之间的关系，而且违背高内聚的原则。当需要修改一个组件时，要被迫去分别修改 JavaScript 文件 和 CSS 文件，明显不是最优的方法。</p>
+<p>在 React 的世界中，一切都是组件，所以很自然诞生了组件化的样式(Component Style）。组件化样式的实现方式很多，下面来看一下最容易理解的库：<code>styled-jsx</code>。</p>
+<p><a name="Czsqg"></a></p>
+<h4 id="1）添加-styled-jsx-支持"><a href="#1）添加-styled-jsx-支持" class="headerlink" title="1）添加 styled-jsx 支持"></a>1）添加 styled-jsx 支持</h4><p>要使用 <code>styled-jsx</code>，必须要修改 <code>webpack</code> 配置，一般来说，对于用 <code>create-react-app</code> 创建的应用，需要用 <code>eject</code> 方法来“弹射”出配置文件，只是，<code>eject</code> 指令是不可逆的，不到万不得已，我们还是不要轻易“弹射”。一个更简单的方式，是使用 <code>react-app-rewired</code>，不需要 <code>eject</code>，就能够修改 <code>create-react-app</code> 产生应用的配置方法。</p>
+<p>首先，在项目中安装 <code>react-app-rewired</code> 和 <code>styled-jsx</code>：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-app-rewired styled-jsx</span><br></pre></td></tr></table></figure>
+
+<p><br />打开 <code>package.json</code> 文件，找到 <code>scripts</code> 这个部分，应该是下面这样：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">     <span class="string">&quot;start&quot;</span>: <span class="string">&quot;react-scripts start&quot;</span>,</span><br><span class="line">     <span class="string">&quot;build&quot;</span>: <span class="string">&quot;react-scripts build&quot;</span>,</span><br><span class="line">     <span class="string">&quot;test&quot;</span>: <span class="string">&quot;react-scripts test --env=jsdom&quot;</span>,</span><br><span class="line">     <span class="string">&quot;eject&quot;</span>: <span class="string">&quot;react-scripts eject&quot;</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p><br />当执行 <code>npm start</code> 时，执行的就是 <code>scripts</code> 部分定义的指令，可以看到都是执行 <code>react-scripts</code>。在这里还可以看到 <code>eject</code> 指令的定义，做这个修改就是为避免使用 <code>eject</code>。</p>
+<p>修改 <code>scripts</code> 部分的代码如下:</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;start&quot;</span>: <span class="string">&quot;react-app-rewired start&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build&quot;</span>: <span class="string">&quot;react-app-rewired build&quot;</span>,</span><br><span class="line">    <span class="string">&quot;test&quot;</span>: <span class="string">&quot;react-app-rewired test --env=jsdom&quot;</span>,</span><br><span class="line">    <span class="string">&quot;eject&quot;</span>: <span class="string">&quot;react-scripts eject&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><br />修改的方法就是把 <code>start</code>、<code>build</code> 和 <code>test</code> 对应脚本中的 <code>react-scripts</code> 替换为 <code>react-app-rewired</code>，之后，当用 npm 执行这些指令的时候，就会使用 <code>react-app-rewired</code>。</p>
+<p><code>react-app-rewired</code> 扩展了 <code>react-scripts</code> 的功能，可以从当前目录的 <code>config-overrides.js</code> 文件中读取配置，扩充 <code>react-scripts</code> 的功能。</p>
+<p>需要让 <code>react-scripts</code> 支持 <code>styled-jsx</code>，对应只需要在项目根目录增加一个 <code>config-overrides.js</code> 文件，内容如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; injectBabelPlugin &#125; = <span class="built_in">require</span>(<span class="string">&#x27;react-app-rewired&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="keyword">function</span> <span class="title function_">override</span>(<span class="params">config, env</span>) &#123;</span><br><span class="line">  config = <span class="title function_">injectBabelPlugin</span>([<span class="string">&#x27;styled-jsx/babel&#x27;</span>], config);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> config;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><br />上面 <code>config-overrides.js</code> 文件就是把 <code>styled-jsx/babel</code> 注入到 <code>react-scripts</code> 的基本配置中去，然后应用就支持<code> styled-jsx</code> 了。</p>
+<p><a name="ehoV2"></a></p>
+<h4 id="2）使用-styled-jsx-定制样式"><a href="#2）使用-styled-jsx-定制样式" class="headerlink" title="2）使用 styled-jsx 定制样式"></a>2）使用 styled-jsx 定制样式</h4><p>有了 <code>styled-jsx</code> 中，就可以在 JSX 中用 <code>style jsx</code> 标签直接添加 CSS 规则。比如，给 <code>MajorClock</code> 中的 <code>h1</code> 增加 CSS 规则，可以这样使用：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">MajorClock</span> = (<span class="params">&#123;milliseconds=<span class="number">0</span>&#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">style</span> <span class="attr">jsx</span>&gt;</span><span class="language-css">&#123;`</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        <span class="selector-tag">h1</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">          <span class="attribute">font-family</span>: monospace;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">      `&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;ms2Time(milliseconds)&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><br />注意紧贴 <code>style jsx</code> 内部的是一对大括号，大括号代表里面是一段 JavaScript 的表达式，再往里，是一对符号，代表中间是一段多行的字符串，也就是说，<code>style jsx</code> 包裹的是一个字符串表达式，而这个字符串就是 CSS 规则。</p>
+<p>在 <code>MajorClock</code> 中用 <code>style jsx</code> 添加的 CSS 规则，只作用于 MajorClock 的 JSX 中出现的元素，不会影响其他的组件。</p>
+<p>在 <code>StopWatch</code> 中添加一个 <code>h1</code> 元素，内容就是“秒表”，然后用 <code>style jsx</code> 把 <code>h1</code> 的颜色设为绿色：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;<span class="title class_">Fragment</span>&gt;</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">jsx</span>&gt;</span><span class="language-css">&#123;`</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">          <span class="selector-tag">h1</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">            <span class="attribute">color</span>: green;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">          &#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">        `&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>秒表<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">MajorClock</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">milliseconds</span>=<span class="string">&#123;this.state.currentTime</span> <span class="attr">-</span> <span class="attr">this.state.startTime</span>&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">activated</span>=<span class="string">&#123;this.state.isStarted&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        /&gt;</span></span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，<code>StopWatch</code> 中的 <code>h1</code> 字体不是 <code>monospace</code>，<code>MajorClock</code> 中的 <code>color</code> 也不是绿色：</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1611481542327-7b08eeab-6064-4aa3-a7cf-5a297ba068e6.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1611481542327-7b08eeab-6064-4aa3-a7cf-5a297ba068e6.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<p>可见，<code>styled jsx</code> 中虽然使用了 CSS，但是这些 CSS 规则只作用于所在组件中的样式，甚至不会影响子组件的样式。这样既可以使用 CSS 的语法，又可以把 CSS 的作用域限定在一个组件之内，达到了高内聚的要求。</p>
+<p><a name="N94xa"></a></p>
+<h4 id="3）动态-styled-jsx"><a href="#3）动态-styled-jsx" class="headerlink" title="3）动态 styled jsx"></a>3）动态 styled jsx</h4><p>我们还可以动态修改 <code>styled jsx</code> 中的值，因为 <code>styled jsx</code> 的内容就是字符串，只要修改其中的字符串，就修改了样式效果。</p>
+<p>比如，让 <code>MajorClock</code> 在开始计时状态显示红色，否则显示黑色，修改代码如下：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">MajorClock</span> = (<span class="params">&#123;milliseconds=<span class="number">0</span>, activated=<span class="literal">false</span>&#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">style</span> <span class="attr">jsx</span>&gt;</span>&#123;`</span></span><br><span class="line"><span class="language-xml">        h1 &#123;</span></span><br><span class="line"><span class="language-xml">          color: $&#123;activated? &#x27;red&#x27; : &#x27;black&#x27;&#125;;</span></span><br><span class="line"><span class="language-xml">          font-family: monospace;</span></span><br><span class="line"><span class="language-xml">        &#125;</span></span><br><span class="line"><span class="language-xml">      `&#125;<span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;ms2Time(milliseconds)&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在<code> style jsx</code> 中，<code>color</code> 后面的值不是固定的，利用 ES6 的字符串模板功能，可以根据 <code>activated</code> 的值动态决定是 <code>red</code> 还是 <code>black</code>：</p>
+<p><img src="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1611481542342-7d29edc4-489f-4777-88f5-85ba28e26268.png" class="lazyload placeholder" data-srcset="https://img02.sogoucdn.com/v2/thumb/retype_exclude_gif/ext/auto/q/95/crop/xy/ai/t/0/?appid=122&url=cdn.nlark.com/yuque/0/2021/png/1500604/1611481542342-7d29edc4-489f-4777-88f5-85ba28e26268.png" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif"></p>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+      </div>
+      <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/React/" class="">
+              React
+            </a>
+          
+        </div>
+        
+      </div>
+      
+        <div class="copyright">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+    <strong>author:  </strong>梨逍遥</a>
+    </li>
+    <li class="post-copyright-link">
+    <strong>link:  </strong>
+    <a href="/2023/07/20/frontend/react/react-zu-jian-shi-jian/" target="_blank" title="React 组件实践">https://ywzzy.github.io/2023/07/20/frontend/react/react-zu-jian-shi-jian/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright notice:   </strong>
+      All articles on this website, unless otherwise stated, adopt <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+      reprint policy. If reproduced, please indicate source!
+    </li>
+  </ul>
+<div>
+      
+    </article>
+    <!-- 上一篇文章和下一篇文章 -->
+    
+      <!-- 文章详情页的上一页和下一页 -->
+<div class="post-nav">
+
+
+
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://images.pexels.com/photos/459301/pexels-photo-459301.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/459301/pexels-photo-459301.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+    </div>
+    <a href="/2023/07/25/frontend/react/react-sheng-ming-zhou-qi/" class="post-nav-link">
+      <div class="title">
+        <i class="fas fa-angle-left"></i> Prev:
+        <div class="title-text">React生命周期</div>
+      </div>
+      
+      <!-- <div class="content">
+        
+
+
+1. React 生命周期概览React 会把状态的变更更新到 UI，状态的变更过程必然会经历组件的生命周期。所谓
+      </div> -->
+    </a>
+  </div>
+
+
+
+  
+  <div class="post-nav-next post-nav-item">
+    <div class="post-nav-img" style="background-size: cover; 
+      background-position: center center;">
+      <img class="lazyload lazyload placeholder" src="https://images.pexels.com/photos/635279/pexels-photo-635279.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/635279/pexels-photo-635279.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" src="" alt="">
+    </div>
+    <a href="/2023/07/14/frontend/react/react-router/" class="post-nav-link">
+      <div class="title">
+        Next: <i class="fas fa-angle-right"></i>
+        <div class="title-text">React Router</div>
+      </div>
+      <!-- <div class="content">
+        
+
+React Router 是 React 生态系统中最受欢迎的第三方库之一，近一半的 React 项目中使用了 Re
+      </div> -->
+    </a>
+  </div>
+
+</div>
+
+    
+    
+
+    <!-- 打赏 -->
+    
+
+    <!-- 分享 -->
+    
+      <!-- https://github.com/overtrue/share.js -->
+<!-- 文章详情页的分享 -->
+<div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+
+<script src="/js/shareJs/social-share.min.js"></script>
+</script>
+
+<style>
+  .social-share {
+    margin: 20px 0;
+  }
+</style>
+
+
+    
+    
+    <!-- 评论 -->
+    <!-- 评论 -->
+
+  <div id="myComment">
+    
+      <div id="gitment-container"></div>
+
+    
+  </div>
+
+<!-- comment script in themes\hexo-theme-bamboo\layout\_partial\scripts\index.ejs -->
+
+
+  </div>
+
+  <!-- 目录 -->
+  <aside id='l_side'>
+  
+    
+      <section class="widget side_blogger">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/about/'>
+          <img src='https://avatars.githubusercontent.com/u/48836340?v=4'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+          <h2>梨逍遥</h2>
+        
+        
+          <p>一个码农</p>
+
+        
+        
+          <p><span id="jinrishici-sentence">梨逍遥</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/mailto:1738348915@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/YWzzy"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1738348915"
+              class="social fab fa-qq flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+    
+  
+  
+  
+    
+  
+
+  <div class="layout_sticky">    
+    
+      
+<section class="widget side_toc">
+  
+  <header>
+    
+      <i style="color: " class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name' style="color: ">本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="toc-main">
+      <div class="toc-content">
+        <!-- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E6%8E%A5%E5%8F%A3"><span class="toc-text">1. 定义组件接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-text">（1）设计原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E7%BB%84%E4%BB%B6%E7%9A%84%E5%88%92%E5%88%86"><span class="toc-text">（2）组件的划分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E6%8C%89%E7%85%A7%E6%95%B0%E6%8D%AE%E8%BE%B9%E7%95%8C%E6%9D%A5%E5%88%86%E5%89%B2%E7%BB%84%E4%BB%B6"><span class="toc-text">（3）按照数据边界来分割组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%884%EF%BC%89state-%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-text">（4）state 的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%885%EF%BC%89%E7%BB%84%E4%BB%B6-props-%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">（5）组件 props 的设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BB%84%E4%BB%B6%E5%86%85%E9%83%A8%E5%AE%9E%E7%8E%B0"><span class="toc-text">2. 组件内部实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E5%88%9D%E5%A7%8B%E5%8C%96%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6"><span class="toc-text">（1）初始化应用框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E6%9E%84%E5%BB%BA-StopWatch"><span class="toc-text">（2）构建 StopWatch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89StopWatch-%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86"><span class="toc-text">（3）StopWatch 状态管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E5%B1%9E%E6%80%A7%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E6%B3%95"><span class="toc-text">（4）属性初始化方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BB%84%E4%BB%B6%E5%8C%96%E6%A0%B7%E5%BC%8F"><span class="toc-text">3. 组件化样式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89React-%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%AF%B9%E6%A0%B7%E5%BC%8F%E7%AE%A1%E7%90%86%E9%9D%A9%E5%91%BD"><span class="toc-text">（1）React 带来的对样式管理革命</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89style-%E5%B1%9E%E6%80%A7"><span class="toc-text">（2）style 属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E5%AF%BC%E5%85%A5-CSS-%E6%96%87%E4%BB%B6"><span class="toc-text">（3）导入 CSS 文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E7%BB%84%E4%BB%B6%E5%BC%8F%E7%9A%84%E6%A0%B7%E5%BC%8F"><span class="toc-text">（4）组件式的样式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89%E6%B7%BB%E5%8A%A0-styled-jsx-%E6%94%AF%E6%8C%81"><span class="toc-text">1）添加 styled-jsx 支持</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%89%E4%BD%BF%E7%94%A8-styled-jsx-%E5%AE%9A%E5%88%B6%E6%A0%B7%E5%BC%8F"><span class="toc-text">2）使用 styled-jsx 定制样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%89%E5%8A%A8%E6%80%81-styled-jsx"><span class="toc-text">3）动态 styled jsx</span></a></li></ol></li></ol></li></ol> -->
+        <div class="toc"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 手机端目录按钮 -->
+<div id="toc-mobile-btn">
+  <i class="fas fa-list-ul" aria-hidden="true"></i>
+</div>
+
+      
+  <section class="widget side_recent_post">
+    
+  <header>
+    
+      <a style="color: " href='/tags/'><i class="fas fa-book fa-fw" aria-hidden="true"></i><span class='name'>最新文章</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      
+      <!-- hash算法 -->
+      
+      <div class="aside-list">
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/12/19/frontend/react/wei-shi-me-react-hui-chong-xin-xuan-ran/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">12-19</span>
+                
+              </div>
+              <a class="post-title" href="/2024/12/19/frontend/react/wei-shi-me-react-hui-chong-xin-xuan-ran/">为什么React会重新渲染</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">08-29</span>
+                
+              </div>
+              <a class="post-title" href="/2024/08/29/frontend/scrape/puppeteer-zhi-shi-hui-zong/">puppeteer知识汇总</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/292442/pexels-photo-292442.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/292442/pexels-photo-292442.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/27/mind/qian-duan-zhi-shi-ti-xi/">前端知识体系</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/27/mind/liu-lan-qi/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/40896/larch-conifer-cone-branch-tree-40896.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/40896/larch-conifer-cone-branch-tree-40896.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-27</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/27/mind/liu-lan-qi/">浏览器</a>
+            </div>
+          </div>
+        
+          <div class="aside-list-item">
+            
+            
+            
+
+            <div class="post-img-box">
+              <a href="/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/" class="post-img " style="background-size: cover; 
+                background-position: center center;">
+                <img class="lazyload lazyload placeholder" style="width:100%;height:100%;object-fit:cover;" data-src="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="lazyload placeholder" data-srcset="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" srcset="https://ossk.cc/file/c40b6c4ba22bbb6b6f944.gif" alt="">
+              </a>
+            </div>
+            <div class="post-date-title">
+              <div>
+                
+                  <span class="post-date">06-08</span>
+                
+              </div>
+              <a class="post-title" href="/2024/06/08/solution/shi-yong-big.js-jie-jue-js-xiao-shu-jing-du-wen-ti/">使用 big.js 解决 js 小数精度问题</a>
+            </div>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+    
+  </div>
+</aside>
+
+  <!-- 图片放大 Wrap images with fancybox support -->
+  <script src="/js/wrapImage.js"></script>
+</div>
+
+<!-- 文章详情页背景图 -->
+<div id="appBgSwiper" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -2;"
+	:style="{'background-color': bgColor ? bgColor : 'transparent'}">
+	<transition-group tag="ul" :name="names">
+		<li v-for='(image,index) in img' :key='index' v-show="index === mark" class="bg-swiper-box">
+			<img :src="image" class="bg-swiper-img no-lazy">
+		</li>
+	</transition-group>
+</div>
+<script>
+	var vm = new Vue({
+		el: '#appBgSwiper',
+		data: {
+			names: '' || 'fade' || 'fade', // translate-fade fade
+			mark: 0,
+			img: [],
+			bgColor: '',
+			time: null
+		},
+		methods: {   //添加方法
+			change(i, m) {
+				if (i > m) {
+					// this.names = 'fade';
+				} else if (i < m) {
+					// this.names = 'fade';
+				} else {
+					return;
+				}
+				this.mark = i;
+			},
+			prev() {
+				// this.names = 'fade';
+				this.mark--;
+				if (this.mark === -1) {
+					this.mark = 3;
+					return
+				}
+			},
+			next() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			autoPlay() {
+				// this.names = 'fade';
+				this.mark++;
+				if (this.mark === this.img.length) {
+					this.mark = 0;
+					return
+				}
+			},
+			play() {
+				let bgImgDelay = '' || '180000'
+				let delay = parseInt(bgImgDelay) || 180000;
+				this.time = setInterval(this.autoPlay, delay);
+			},
+			enter() {
+				clearInterval(this.time);
+			},
+			leave() {
+				this.play();
+			}
+		},
+		created() {
+			this.play()
+		},
+		beforeDestroy() {
+			clearInterval(this.time);
+		},
+		mounted() {
+			let prop = '' || '';
+			let isImg = prop.includes('.bmp') || prop.includes('.jpg') || prop.includes('.png') || prop.includes('.tif') || prop.includes('.gif') || prop.includes('.pcx') || prop.includes('.tga') || prop.includes('.exif') || prop.includes('.fpx') || prop.includes('.psd') || prop.includes('.cdr') || prop.includes('.pcd') || prop.includes('.dxf') || prop.includes('.ufo') || prop.includes('.eps') || prop.includes('.ai') || prop.includes('.raw') || prop.includes('.WMF') || prop.includes('.webp') || prop.includes('.jpeg') || prop.includes('http://') || prop.includes('https://')
+			if (isImg) {
+				let img = prop.split(',');
+				let configRoot = '/'
+				let arrImg = [];
+				img.forEach(el => {
+					var Expression = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/;
+					var objExp = new RegExp(Expression);
+
+					if (objExp.test(el)) {
+						// http or https
+						arrImg.push(el);
+					} else {
+						// 非http or https开头
+						// 本地文件
+						let firstStr = el.charAt(0);
+						if (firstStr == '/') {
+							el = el.substr(1); // 删除第一个字符 '/',因为 configRoot最后一个字符为 /
+						}
+						el = configRoot + el;
+						arrImg.push(el);
+					}
+				})
+				this.img = arrImg;
+			} else {
+				this.bgColor = prop;
+			}
+		}
+	})
+</script>
+
+<style>
+	.bg-swiper-box {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+
+	.bg-swiper-img {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+
+
+
+  <script>
+  function loadMermaid() {
+    if (document.getElementsByClassName('mermaid').length) {
+      if (window.mermaidJsLoad) mermaid.init()
+      else {
+        loadScript('https://unpkg.com/mermaid/dist/mermaid.min.js').then(() => {
+          window.mermaidJsLoad = true
+          mermaid.initialize({
+            theme: 'default',
+          })
+          if ('true') {
+            mermaid.init();
+          }
+        })
+      }
+    }
+  };
+  document.addEventListener("DOMContentLoaded", function () {
+    loadMermaid();
+  })
+
+  document.addEventListener('pjax:complete', function () {
+    loadMermaid();
+  })
+  
+</script>
+
+
+      </main>
+    </div>
+
+    <!-- 页脚 -->
+    
+  
+  
+    <!-- 底部鱼儿跳动效果，依赖于jquery-->
+<div id="j-fish-skip" style=" position: relative;height: 153px;width: auto;"></div>
+<script>
+  var RENDERER = {
+    POINT_INTERVAL: 5,
+    FISH_COUNT: 3,
+    MAX_INTERVAL_COUNT: 50,
+    INIT_HEIGHT_RATE: .5,
+    THRESHOLD: 50,
+    FISH_COLOR: '',
+    init: function () {
+      this.setFishColor(); this.setParameters(), this.reconstructMethods(), this.setup(), this.bindEvent(), this.render()
+    },
+    setFishColor: function () {
+      let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+      if (isDark) {
+        this.FISH_COLOR = '#222'; // 暗黑色，有时间把这整成一个变量
+      } else {
+        this.FISH_COLOR = '' || 'rgb(0, 4, 6, 0.8)';
+      }
+    },
+    setParameters: function () {
+      this.$window = $(window), this.$container = $("#j-fish-skip"), this.$canvas = $("<canvas />"), this.context = this.$canvas.appendTo(this.$container).get(0).getContext("2d"), this.points = [], this.fishes = [], this.watchIds = []
+    },
+    createSurfacePoints: function () {
+      var t = Math.round(this.width / this.POINT_INTERVAL);
+      this.pointInterval = this.width / (t - 1), this.points.push(new SURFACE_POINT(this, 0));
+      for (var i = 1; i < t; i++) {
+        var e = new SURFACE_POINT(this, i * this.pointInterval),
+          h = this.points[i - 1];
+        e.setPreviousPoint(h), h.setNextPoint(e), this.points.push(e)
+      }
+    },
+    reconstructMethods: function () {
+      this.watchWindowSize = this.watchWindowSize.bind(this), this.jdugeToStopResize = this.jdugeToStopResize.bind(this), this.startEpicenter = this.startEpicenter.bind(this), this.moveEpicenter = this.moveEpicenter.bind(this), this.reverseVertical = this.reverseVertical.bind(this), this.render = this.render.bind(this)
+    },
+    setup: function () {
+      this.points.length = 0, this.fishes.length = 0, this.watchIds.length = 0, this.intervalCount = this.MAX_INTERVAL_COUNT, this.width = this.$container.width(), this.height = this.$container.height(), this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500, this.$canvas.attr({
+        width: this.width,
+        height: this.height
+      }), this.reverse = !1, this.fishes.push(new FISH(this)), this.createSurfacePoints()
+    },
+    watchWindowSize: function () {
+      this.clearTimer(), this.tmpWidth = this.$window.width(), this.tmpHeight = this.$window.height(), this.watchIds.push(setTimeout(this.jdugeToStopResize, this.WATCH_INTERVAL))
+    },
+    clearTimer: function () {
+      for (; this.watchIds.length > 0;) clearTimeout(this.watchIds.pop())
+    },
+    jdugeToStopResize: function () {
+      var t = this.$window.width(),
+        i = this.$window.height(),
+        e = t == this.tmpWidth && i == this.tmpHeight;
+      this.tmpWidth = t, this.tmpHeight = i, e && this.setup()
+    },
+    bindEvent: function () {
+      this.$window.on("resize", this.watchWindowSize), this.$container.on("mouseenter", this.startEpicenter), this.$container.on("mousemove", this.moveEpicenter)
+    },
+    getAxis: function (t) {
+      var i = this.$container.offset();
+      return {
+        x: t.clientX - i.left + this.$window.scrollLeft(),
+        y: t.clientY - i.top + this.$window.scrollTop()
+      }
+    },
+    startEpicenter: function (t) {
+      this.axis = this.getAxis(t)
+    },
+    moveEpicenter: function (t) {
+      var i = this.getAxis(t);
+      this.axis || (this.axis = i), this.generateEpicenter(i.x, i.y, i.y - this.axis.y), this.axis = i
+    },
+    generateEpicenter: function (t, i, e) {
+      if (!(i < this.height / 2 - this.THRESHOLD || i > this.height / 2 + this.THRESHOLD)) {
+        var h = Math.round(t / this.pointInterval);
+        h < 0 || h >= this.points.length || this.points[h].interfere(i, e)
+      }
+    },
+    reverseVertical: function () {
+      this.reverse = !this.reverse;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].reverseVertical()
+    },
+    controlStatus: function () {
+      for (var t = 0, i = this.points.length; t < i; t++) this.points[t].updateSelf();
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].updateNeighbors();
+      this.fishes.length < this.fishCount && 0 == --this.intervalCount && (this.intervalCount = this.MAX_INTERVAL_COUNT, this.fishes.push(new FISH(this)))
+    },
+    render: function () {
+      requestAnimationFrame(this.render), this.controlStatus(), this.context.clearRect(0, 0, this.width, this.height), this.context.fillStyle = this.FISH_COLOR;
+      for (var t = 0, i = this.fishes.length; t < i; t++) this.fishes[t].render(this.context);
+      this.context.save(), this.context.globalCompositeOperation = "xor", this.context.beginPath(), this.context.moveTo(0, this.reverse ? 0 : this.height);
+      for (t = 0, i = this.points.length; t < i; t++) this.points[t].render(this.context);
+      this.context.lineTo(this.width, this.reverse ? 0 : this.height), this.context.closePath(), this.context.fill(), this.context.restore()
+    }
+  },
+  SURFACE_POINT = function (t, i) {
+    this.renderer = t, this.x = i, this.init()
+  };
+  SURFACE_POINT.prototype = {
+    SPRING_CONSTANT: .03,
+    SPRING_FRICTION: .9,
+    WAVE_SPREAD: .3,
+    ACCELARATION_RATE: .01,
+    init: function () {
+      this.initHeight = this.renderer.height * this.renderer.INIT_HEIGHT_RATE, this.height = this.initHeight, this.fy = 0, this.force = {
+        previous: 0,
+        next: 0
+      }
+    },
+    setPreviousPoint: function (t) {
+      this.previous = t
+    },
+    setNextPoint: function (t) {
+      this.next = t
+    },
+    interfere: function (t, i) {
+      this.fy = this.renderer.height * this.ACCELARATION_RATE * (this.renderer.height - this.height - t >= 0 ? -1 : 1) * Math.abs(i)
+    },
+    updateSelf: function () {
+      this.fy += this.SPRING_CONSTANT * (this.initHeight - this.height), this.fy *= this.SPRING_FRICTION, this.height += this.fy
+    },
+    updateNeighbors: function () {
+      this.previous && (this.force.previous = this.WAVE_SPREAD * (this.height - this.previous.height)), this.next && (this.force.next = this.WAVE_SPREAD * (this.height - this.next.height))
+    },
+    render: function (t) {
+      this.previous && (this.previous.height += this.force.previous, this.previous.fy += this.force.previous), this.next && (this.next.height += this.force.next, this.next.fy += this.force.next), t.lineTo(this.x, this.renderer.height - this.height)
+    }
+  };
+  var FISH = function (t) {
+    this.renderer = t, this.init()
+  };
+  FISH.prototype = {
+    GRAVITY: .4,
+    init: function () {
+      this.direction = Math.random() < .5, this.x = this.direction ? this.renderer.width + this.renderer.THRESHOLD : -this.renderer.THRESHOLD, this.previousY = this.y, this.vx = this.getRandomValue(4, 10) * (this.direction ? -1 : 1), this.renderer.reverse ? (this.y = this.getRandomValue(1 * this.renderer.height / 10, 4 * this.renderer.height / 10), this.vy = this.getRandomValue(2, 5), this.ay = this.getRandomValue(.05, .2)) : (this.y = this.getRandomValue(6 * this.renderer.height / 10, 9 * this.renderer.height / 10), this.vy = this.getRandomValue(-5, -2), this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1, this.theta = 0, this.phi = 0
+    },
+    getRandomValue: function (t, i) {
+      return t + (i - t) * Math.random()
+    },
+    reverseVertical: function () {
+      this.isOut = !this.isOut, this.ay *= -1
+    },
+    controlStatus: function (t) {
+      this.previousY = this.y, this.x += this.vx, this.y += this.vy, this.vy += this.ay, this.renderer.reverse ? this.y > this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy -= this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(.05, .2)), this.isOut = !1) : this.y < this.renderer.height * this.renderer.INIT_HEIGHT_RATE ? (this.vy += this.GRAVITY, this.isOut = !0) : (this.isOut && (this.ay = this.getRandomValue(-.2, -.05)), this.isOut = !1), this.isOut || (this.theta += Math.PI / 20, this.theta %= 2 * Math.PI, this.phi += Math.PI / 30, this.phi %= 2 * Math.PI), this.renderer.generateEpicenter(this.x + (this.direction ? -1 : 1) * this.renderer.THRESHOLD, this.y, this.y - this.previousY), (this.vx > 0 && this.x > this.renderer.width + this.renderer.THRESHOLD || this.vx < 0 && this.x < -this.renderer.THRESHOLD) && this.init()
+    },
+    render: function (t) {
+      t.save(), t.translate(this.x, this.y), t.rotate(Math.PI + Math.atan2(this.vy, this.vx)), t.scale(1, this.direction ? 1 : -1), t.beginPath(), t.moveTo(-30, 0), t.bezierCurveTo(-20, 15, 15, 10, 40, 0), t.bezierCurveTo(15, -10, -20, -15, -30, 0), t.fill(), t.save(), t.translate(40, 0), t.scale(.9 + .2 * Math.sin(this.theta), 1), t.beginPath(), t.moveTo(0, 0), t.quadraticCurveTo(5, 10, 20, 8), t.quadraticCurveTo(12, 5, 10, 0), t.quadraticCurveTo(12, -5, 20, -8), t.quadraticCurveTo(5, -10, 0, 0), t.fill(), t.restore(), t.save(), t.translate(-3, 0), t.rotate((Math.PI / 3 + Math.PI / 10 * Math.sin(this.phi)) * (this.renderer.reverse ? -1 : 1)), t.beginPath(), this.renderer.reverse ? (t.moveTo(5, 0), t.bezierCurveTo(10, 10, 10, 30, 0, 40), t.bezierCurveTo(-12, 25, -8, 10, 0, 0)) : (t.moveTo(-5, 0), t.bezierCurveTo(-10, -10, -10, -30, 0, -40), t.bezierCurveTo(12, -25, 8, -10, 0, 0)), t.closePath(), t.fill(), t.restore(), t.restore(), this.controlStatus(t)
+    }
+  }, $(function () {
+    RENDERER.init()
+    $('.dark').click(function () {
+      setTimeout(() => {
+        RENDERER.setFishColor();
+        RENDERER.context.fill();
+      });
+    })
+  });
+</script>
+  
+  <div class="footer bg-color">
+    <div class="footer-main">
+      
+        
+          <div class="link">
+            
+              
+                <a href="mailto:1738348915@qq.com" class="social">
+                  
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  
+                </a>
+              
+            
+          </div>
+        
+      
+        
+          <div class="footer-copyright">
+            <p>Copyright © 2019 - 2024 <a target="_blank" rel="noopener" href="https://gitee.com/yhyinhan">zhangzhiyong</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a></p>
+
+          </div>
+        
+      
+        
+          <div class="footer-custom">
+            
+              <div><br></div>
+            
+              <div><br></div>
+            
+          </div>
+        
+      
+    </div>
+  </div>
+
+
+
+    <!-- 渲染暗黑按钮 -->
+    
+      <div class="dark">
+  <div class="dark-content">
+    <i class="fas fa-moon" aria-hidden="true"></i>
+    <!-- <span>关灯</span> -->
+  </div>
+  
+</div>
+
+<script>
+  $(function() {
+    let isDark = JSON.parse(localStorage.getItem('dark'))  || JSON.parse('false');
+    if (isDark) {
+      $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+    }
+    $('.dark').click(function() {
+      if ($(document.body).is('.darkModel')) {
+        $(document.body).removeClass('darkModel');
+        localStorage.setItem('dark', false);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      } else {
+        $(document.body).addClass('darkModel');
+        localStorage.setItem('dark', true);
+        $(".dark-content").replaceWith(
+          `
+          <div class='dark-content'>
+            <i class="fas fa-lightbulb" aria-hidden="true"></i>
+          </div>
+          `
+        );
+      }
+    })
+  })
+</script>
+    
+    <!-- 渲染回到顶部按钮 -->
+    
+      <div class="goTop top-btn-color" pointer>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</div>
+<script src="/js/goTop.js"></script>
+
+    
+    <!-- 渲染左下角音乐播放器 -->
+    
+
+    <!-- 图片放大 -->
+    
+
+    <!-- 百度解析 -->
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <!-- 背景彩带 -->
+    
+      <script type="text/javascript" size="100" alpha='0.4' zIndex="-1" src="/js/ribbon.min.js"></script>
+    
+
+    <script src="/js/utils/index.js"></script>
+    <script src="/js/app.js"></script>
+    
+    <!-- 文章目录所需js -->
+<!-- <link href="/js/tocbot/tocbot.css" rel="stylesheet">
+<script src="/js/tocbot/tocbot.min.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.css">
+
+<script>
+  var headerEl = 'h1, h2, h3, h4, h5',  //headers 
+    content = '.post-detail',//文章容器
+    idArr = {};  //标题数组以确定是否增加索引id
+  //add #id
+  var option = {
+    // Where to render the table of contents.
+    tocSelector: '.toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: content,
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: headerEl,
+    scrollSmooth: true,
+    scrollSmoothOffset: -70,
+    // headingsOffset: -($(window).height() * 0.4 - 45),
+    headingsOffset: -($(window).height() * 0.4 - 70),
+    // positionFixedSelector: '.toc-main',
+    // positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    activeLinkClass: 'is-active-link',
+    orderedList: true,
+    collapseDepth: 3,
+    // onClick: function (e) {},
+  }
+  if ($('.toc').length > 0) {
+
+    $(content).children(headerEl).each(function () {
+      //去除空格以及多余标点
+      var headerId = $(this).text().replace(/[\s|\~|`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\_|\+|\=|\||\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\：|\，|\。]/g, '');
+
+      headerId = headerId.toLowerCase();
+      if (idArr[headerId]) {
+        //id已经存在
+        $(this).attr('id', headerId + '-' + idArr[headerId]);
+        idArr[headerId]++;
+      }
+      else {
+        //id未存在
+        idArr[headerId] = 1;
+        $(this).attr('id', headerId);
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      tocbot.init(option);
+      mobileTocClick();
+    });
+
+  }
+
+  window.tocScrollFn = function () {
+    return bamboo.throttle(function () {
+      findHeadPosition();
+    }, 100)()
+  }
+  window.addEventListener('scroll', tocScrollFn);
+
+  const findHeadPosition = function (top) {
+    if ($('.toc-list').length <= 0) {
+      return false;
+    }
+    setTimeout(() => {  // or DOMContentLoaded 
+      autoScrollToc();
+    }, 0);
+  }
+
+  const autoScrollToc = function () {
+    const $activeItem = document.querySelector('.is-active-link');
+    const $cardToc = document.querySelector('.toc-content');
+    const activePosition = $activeItem.getBoundingClientRect().top
+    const sidebarScrollTop = $cardToc.scrollTop
+    if (activePosition > (document.documentElement.clientHeight - 100)) {
+      $cardToc.scrollTop = sidebarScrollTop + 150
+    }
+    if (activePosition < 150) {
+      $cardToc.scrollTop = sidebarScrollTop - 150
+    }
+  }
+
+  document.addEventListener('pjax:send', function () {
+    if ($('.toc').length) {
+      tocbot.destroy();
+    }
+  });
+
+  document.addEventListener('pjax:complete', function () {
+    if ($('.toc').length) {
+      tocbot.init(option);
+      mobileTocClick();
+    }
+  });
+  
+  // 手机端toc按钮点击出现目录
+  const mobileTocClick = function () {
+    const $cardTocLayout = document.getElementsByClassName('side_toc')[0];
+    const $cardToc = $cardTocLayout.getElementsByClassName('toc-content')[0];
+    let right = '45px';
+    if (window.innerWidth >= 551 && window.innerWidth <= 992) {
+      right = '100px'
+    }
+    const mobileToc = {
+      open: () => {
+        $cardTocLayout.style.cssText = 'animation: toc-open .3s; opacity: 1; right: ' + right
+      },
+
+      close: () => {
+        $cardTocLayout.style.animation = 'toc-close .2s'
+        setTimeout(() => {
+          $cardTocLayout.style.cssText = "opacity:''; animation: ''; right: ''"
+        }, 100)
+      }
+    }
+    document.getElementById('toc-mobile-btn').addEventListener('click', () => {
+      if (window.getComputedStyle($cardTocLayout).getPropertyValue('opacity') === '0') mobileToc.open()
+      else mobileToc.close()
+    })
+
+    $cardToc.addEventListener('click', (e) => {
+      if (window.innerWidth < 992) { // 小于992px的时候
+        mobileToc.close()
+      }
+    })
+  }
+</script>
+
+<style>
+  /* .is-position-fixed {
+    position: sticky !important;
+    top: 74px;
+  }
+
+  .toc-main ul {
+    counter-reset: show-list;
+  }
+
+  .toc-main ul li::before {
+    content: counter(item)".";
+    display: block;
+    position: absolute;
+    left: 12px;
+    top: 0;
+  } */
+</style>
+ 
+
+<!-- 设置导航背景 -->
+<script>
+  let setHeaderClass = () => {
+    const nav = $('#navHeader');
+    const navTop = nav.outerHeight();
+    const winTop = $(window).scrollTop();
+    if(winTop > navTop) {
+      nav.addClass('header-bg-color');
+    }
+    else {
+      nav.removeClass('header-bg-color');
+    }
+  };
+
+  let scrollCollect = () => {
+    return bamboo.throttle(function (e) {
+      setHeaderClass();
+    }, 200)()
+  }
+
+  let initHeaderBg = () => {
+    setHeaderClass();
+  }
+
+  setHeaderClass();
+  window.addEventListener('scroll', scrollCollect);
+
+  document.addEventListener('pjax:send', function () {
+    window.removeEventListener('scroll', scrollCollect)
+  })
+  document.addEventListener('pjax:complete', function () {
+    window.addEventListener('scroll', scrollCollect);
+    setHeaderClass();
+  })
+</script> 
+
+<!-- 渲染issues标签里的内容 -->
+<script>
+  function loadIssuesJS() {
+    if ($(".post-detail").find(".issues-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/issues/index.js');
+  };
+  $(function () {
+    loadIssuesJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof IssuesAPI == "undefined") {
+      loadIssuesJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的图片标签(getPhotoOnline)里的内容 -->
+<script>
+  function loadPhotoOnlineJS() {
+    if ($(".post-detail").find(".getJsonPhoto-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getPhotoOnline/index.js');
+  };
+  $(function () {
+    loadPhotoOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getPhotoJson == "undefined") {
+      loadPhotoOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的talk标签(getTalkOnline)里的内容 -->
+<script>
+  function loadTalkOnlineJS() {
+    if ($(".post-detail").find(".getJsonTalk-api").length == 0) {
+      return;
+    } 
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/waterfall.js/1.0.2/waterfall.min.js'); // 瀑布流插件，https://raphamorim.io/waterfall.js/
+    loadScript('/js/getTalkOnline/index.js');
+  };
+  $(function () {
+    loadTalkOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getTalkJson == "undefined") {
+      loadTalkOnlineJS();
+    }
+  })
+</script>
+
+<!-- 渲染远程json加载的site-card标签(getSiteOnline)里的内容 -->
+<script>
+  function loadSiteOnlineJS() {
+    if ($(".post-detail").find(".getJsonSite-api").length == 0) {
+      return;
+    } 
+    loadScript('/js/getSiteOnline/index.js');
+  };
+  $(function () {
+    loadSiteOnlineJS();
+  });
+  document.addEventListener('pjax:complete', function () {
+    if (typeof getSiteJson == "undefined") {
+      loadSiteOnlineJS();
+    }
+  })
+</script>
+
+<!-- 输入框打字特效 -->
+<!-- 输入框打字特效 -->
+
+  <script src="/js/activate-power-mode.js"></script>
+  <script>
+    POWERMODE.colorful = true;  // 打开随机颜色特效
+    POWERMODE.shake = false;    // 关闭输入框抖动
+    document.body.addEventListener('input', POWERMODE);//监听打字事件
+  </script>
+
+
+<!-- markdown代码一键复制功能 -->
+
+  <link rel="stylesheet" href="https://unpkg.com/v-plugs-ayu/lib/ayu.css">
+  <script src="https://unpkg.com/v-plugs-ayu/lib/ayu.umd.min.js"></script>
+  <script src="/js/clipboard/clipboard.min.js"></script>
+  <div id="appCopy">
+  </div>
+  <script data-pjax>
+    var vm = new Vue({
+      el: '#appCopy',
+      data: {
+      },
+      computed: {
+      },
+      mounted() {
+        const that = this;
+        var copy = 'copy';
+        /* code */
+        var initCopyCode = function () {
+          var copyHtml = '';
+          copyHtml += '<button class="btn-copy" data-clipboard-snippet="" style="position:absolute;top:0;right:0;z-index:1;">';
+          copyHtml += '<i class="fas fa-copy"></i><span>' + copy + '</span>';
+          copyHtml += '</button>';
+          $(".post-detail pre").not('.gutter pre').wrap("<div class='codeBox' style='position:relative;width:100%;'></div>")
+          $(".post-detail pre").not('.gutter pre').before(copyHtml);
+          new ClipboardJS('.btn-copy', {
+            target: function (trigger) {
+              return trigger.nextElementSibling;
+            }
+          });
+        }
+        initCopyCode();
+        $('.btn-copy').unbind('click').bind('click', function () {
+          doSomething();
+        })
+        $(document).unbind('keypress').bind('keypress', function (e) {
+          if (e.ctrlKey && e.keyCode == 67) {
+            doSomething();
+          }
+        })
+
+        function doSomething() {
+          that.$notify({
+            title: "成功",
+            content: "代码已复制",
+            type: 'success'
+          })
+        }
+      },
+      methods: {
+      },
+      created() { }
+    })
+  </script>
+  
+
+<!-- 图片懒加载 -->
+<script defer src="https://unpkg.com/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+  document.addEventListener('pjax:complete', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+<!-- 卡片滚动动画 -->
+   
+
+<!-- 评论所需js -->
+
+  
+    <script type="text/javascript">
+  var utteranceCommon = {};
+
+  function check_utterance() {
+    let isDark = JSON.parse(localStorage.getItem('dark')) || JSON.parse('false');
+    if (isDark) {
+      utteranceCommon.Theme = 'github-dark';
+    } else {
+      utteranceCommon.Theme = 'github-light';
+    }
+
+    return document.getElementById("gitment-container");
+  }
+  comment_el = '#gitment-container';
+  load_utterance = function () {
+    if ($(comment_el).length) {
+      // 匿名函数，防止污染全局变量
+      const HEAD = check_utterance();
+
+      var utterances = document.createElement('script');
+      utterances.type = 'text/javascript';
+      utterances.async = true;
+      utterances.setAttribute('issue-term', 'pathname')
+      utterances.setAttribute('theme', utteranceCommon.Theme)
+      utterances.setAttribute('repo', 'YWzzy/utterance_repo')
+      utterances.crossorigin = 'anonymous';
+      utterances.src = 'https://utteranc.es/client.js';
+      // content 是要插入评论的地方
+      document.getElementById('gitment-container').appendChild(utterances);
+
+    }
+  }
+
+  function dark_utterance() {
+    const HEAD = check_utterance();
+    if (!HEAD) return;
+    const message = {
+      type: 'set-theme',
+      theme: utteranceCommon.Theme
+    };
+    const utteranceIframe = document.querySelector('iframe');
+    utteranceIframe.contentWindow.postMessage(message, 'https://utteranc.es');
+  }
+
+  $(document).ready(load_utterance);
+  document.addEventListener('pjax:complete', function () {
+    load_utterance();
+  });
+
+  $('.dark').click(function () {
+    setTimeout(() => {
+      dark_utterance();
+    });
+  })
+
+</script>
+
+<style>
+  .utterances {
+    max-width: inherit !important;
+  }
+</style>
+  
+
+
+<!-- 鼠标点击特效 -->
+<!-- 爱心点击 -->
+
+  
+    <script src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" data-pjax></script>
+
+
+<!-- 轮播图标签 -->
+<script>
+  var bambooSwiperTag = {};
+  function load_swiper() {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    loadCSS("https://unpkg.com/swiper@6/swiper-bundle.min.css")
+    loadScript("https://unpkg.com/swiper@6/swiper-bundle.min.js").then(() => {
+      pjax_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function pjax_swiper() {
+    bambooSwiperTag.swiper = new Swiper('.post-swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      autoplay: true ? {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: false,
+      } : false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on:{
+        init: function(){
+          swiperAnimateCache(this); //隐藏动画元素 
+          swiperAnimate(this); //初始化完成开始动画
+        }, 
+        slideChangeTransitionEnd: function(){ 
+          swiperAnimate(this); //每个slide切换结束时也运行当前slide动画
+          //this.slides.eq(this.activeIndex).find('.ani').removeClass('ani'); 动画只展现一次，去除ani类名
+        } 
+      }
+    });
+  }
+
+  document.addEventListener('pjax:complete', function () {
+    if (!document.querySelectorAll(".post-swiper-container")[0]) return;
+    if (typeof bambooSwiperTag.swiper === "undefined") {
+      load_swiper();
+    } else {
+      pjax_swiper();
+    }
+  });
+</script>
+    <!-- pjax -->
+    
+
+<!-- pjax -->
+
+
+  <script src="/js/pjax@0.2.8/index.js"></script>
+  
+    <!-- 样式位于：source/css/_third-party/pjaxanimate.styl -->
+
+<div class="pjax-animate">
+  
+    <div class="loading-circle"><div id="loader-circle"></div></div>
+    <script>
+      window.ShowLoading = function() {
+        $(".loading-circle").css("display", "block");
+      };
+      window.HideLoading = function() {
+        $(".loading-circle").css("display", "none");
+      }
+    </script>
+  
+	<script>
+    document.addEventListener('pjax:complete', function () {
+      window.HideLoading();
+    })
+    document.addEventListener('pjax:send', function () {
+      window.ShowLoading();
+    })
+    document.addEventListener('pjax:error', function () {
+      window.HideLoading();
+    })
+	</script>
+</div>
+
+  
+
+  <script>
+    var pjax = new Pjax({
+      elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([no-pjax])',   // 拦截正常带链接的 a 标签
+      selectors: ["#pjax-container","title"],                                   // 根据实际需要确认重载区域
+      cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
+      timeout: 5000
+    });
+
+    document.addEventListener('pjax:send', function (e) {
+
+      try {
+        var currentUrl = window.location.pathname;
+        var targetUrl = e.triggerElement.href;
+        var banUrl = [""];
+        if (banUrl[0] != "") {
+          banUrl.forEach(item => {
+            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
+              window.location.href = targetUrl;
+            }
+          });
+        }
+      } catch (error) {}
+
+      $(window).unbind('resize');
+      $(window).unbind('scroll');
+      $(document).unbind('scroll');
+      $(document).unbind('click');
+      $('body').unbind('click');
+
+    })
+    
+    document.addEventListener('pjax:complete', function () {
+      $('script[data-pjax], .pjax-reload script').each(function () {
+        $(this).parent().append($(this).remove());
+      });
+    });
+
+    document.addEventListener('pjax:error', function (e) {
+      window.location.href = e.triggerElement.href;
+    })
+    
+    // 刷新不从顶部开始
+    document.addEventListener("DOMContentLoaded", function () {
+      history.scrollRestoration = 'auto';
+    })
+  </script>
+
+
+
+  </body>
+</html>
